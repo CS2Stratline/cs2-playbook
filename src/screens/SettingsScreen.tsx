@@ -60,7 +60,7 @@ export function SettingsScreen() {
             : " · guest (this device only)"}
         </p>
         <p className="banner">
-          Login is optional. Guests get Match + packs on this phone. Sign in to sync across devices and share a private live-call link.
+          Login is optional. Guests get Match with Fundamentals + Stack on this phone. Sign in to sync that pool across devices and share a live-call link — Match stays ready either way.
         </p>
         {user && (
           <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>

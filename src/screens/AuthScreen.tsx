@@ -26,7 +26,7 @@ export function AuthScreen({ compact = false }: { compact?: boolean }) {
             Sync this device
           </h2>
           <p className="muted">
-            You can use Match and packs as a guest. Sign in to sync favorites and session across devices. Discord is recommended (avoids email rate limits).
+            Match works as a guest. Sign in to sync your pool across devices (Fundamentals are filled in automatically). Discord is recommended.
           </p>
         </>
       )}

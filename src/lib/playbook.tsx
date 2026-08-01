@@ -61,8 +61,20 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         api.getSubscriptions(userId),
         api.getSession(userId),
       ]);
+      let nextStrats = s;
+      // Signed-in users get Fundamentals auto-copied once so Match is ready
+      // immediately (same day-1 feel as guest packs — no shop gate).
+      if (usePersonalPool && !api.hasAutoSeededFundamentals(userId)) {
+        const mine = s.filter((row) => row.owner_user_id === userId);
+        if (mine.length === 0) {
+          await api.ensureFundamentalsSeeded(userId, p);
+          nextStrats = await api.listStrats();
+        } else {
+          api.markAutoSeededFundamentals(userId);
+        }
+      }
       setPacks(p);
-      setStrats(s);
+      setStrats(nextStrats);
       setFavorites(new Set(fav));
       const nextSubs = { ...subs };
       if (!Object.keys(nextSubs).length) {
@@ -77,7 +89,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     } finally {
       setLoading(false);
     }
-  }, [userId]);
+  }, [userId, usePersonalPool]);
 
   useEffect(() => {
     if (authLoading) return;
