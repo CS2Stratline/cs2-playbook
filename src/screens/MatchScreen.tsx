@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
 import type { Strat } from "../lib/types";
-import { bumpStratUsage, logStratResult } from "../lib/api";
+import { bumpStratUsage } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -82,7 +82,7 @@ export function MatchScreen() {
     }
     if (filterKeyRef.current === filterKey) return;
     filterKeyRef.current = filterKey;
-    void setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
+    void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey]);
 
@@ -91,7 +91,6 @@ export function MatchScreen() {
     await bumpStratUsage(strat.id);
     await setSession({
       current_pick_id: strat.id,
-      logged: null,
       timer_ends_at: null,
       called_at: calledAt,
       tab: "match",
@@ -116,13 +115,7 @@ export function MatchScreen() {
   }
 
   async function changeStrat() {
-    await setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
-  }
-
-  async function onLog(result: "win" | "loss") {
-    if (!currentPick || session.logged) return;
-    await logStratResult(currentPick.id, result);
-    await setSession({ logged: result });
+    await setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
   }
 
   const linkGroups = useMemo(() => {
@@ -293,23 +286,7 @@ export function MatchScreen() {
             {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
             <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
 
-            <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10 }}>
-              {session.logged ? (
-                <span className="badge" style={{ color: session.logged === "win" ? "var(--good)" : "var(--warn)" }}>
-                  {session.logged === "win" ? "Round won" : "Round lost"}
-                </span>
-              ) : (
-                <>
-                  <button type="button" className="pill" style={{ color: "var(--good)" }} onClick={() => void onLog("win")}>
-                    Won
-                  </button>
-                  <button type="button" className="pill" style={{ color: "var(--warn)" }} onClick={() => void onLog("loss")}>
-                    Lost
-                  </button>
-                </>
-              )}
-            </div>
-            <div className="row" style={{ marginTop: 10 }}>
+            <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10, marginTop: 4 }}>
               <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
                 Change strat
               </button>

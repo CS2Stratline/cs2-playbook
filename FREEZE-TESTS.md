@@ -17,8 +17,7 @@ Run on a phone (or narrow browser) during casual/scrim freeze. Goal: readable ca
 | 3 | Book → expand → **Use in match** | Switches to Match with that strat |
 | 4 | Refresh with an active call | Filters restored; call still visible |
 | 5 | Change site filter | Active call clears; pool updates |
-| 6 | Log Won/Lost | History strip updates; no double-log |
-| 7 | Full backup → clear site data → restore | Book + filters come back |
+| 6 | Full backup → clear site data → restore | Book + filters come back |
 
 ## Notes
 

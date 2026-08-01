@@ -262,31 +262,6 @@ export async function bumpStratUsage(stratId: string) {
   await supabase!.from("strats").update({ times_used: times, last_used: now }).eq("id", stratId);
 }
 
-export async function logStratResult(stratId: string, result: "win" | "loss") {
-  if (!isCloudMode()) {
-    memory.strats = memory.strats.map((s) =>
-      s.id === stratId
-        ? {
-            ...s,
-            wins: s.wins + (result === "win" ? 1 : 0),
-            losses: s.losses + (result === "loss" ? 1 : 0),
-          }
-        : s
-    );
-    saveLocal(memory);
-    return;
-  }
-  const { data } = await supabase!.from("strats").select("wins, losses").eq("id", stratId).single();
-  const row = data as { wins: number; losses: number };
-  await supabase!
-    .from("strats")
-    .update({
-      wins: row.wins + (result === "win" ? 1 : 0),
-      losses: row.losses + (result === "loss" ? 1 : 0),
-    })
-    .eq("id", stratId);
-}
-
 export async function upsertPrivateStrat(userId: string, packId: string, strat: Partial<Strat> & { id?: string }) {
   if (!isCloudMode()) {
     if (strat.id) {

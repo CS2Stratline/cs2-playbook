@@ -9,7 +9,7 @@ English-only UI for v1. Sibling lightweight app (no login): [cs2-callout-app](ht
 
 | Screen | Job |
 |--------|-----|
-| **Match** | Pick (or Surprise) a call → tasks + lineups + W/L |
+| **Match** | Pick (or Surprise) a call → tasks + lineups |
 | **Playbook** | Guest: pack toggles. Signed in: My pool (auto-seeded Fundamentals) + optional Add more |
 | **Settings** | Optional Discord login, live-call link, export |
 
