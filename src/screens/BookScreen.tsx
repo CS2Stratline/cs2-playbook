@@ -5,7 +5,8 @@ import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
-import { ExternalLink, Pack, Plus, Star } from "../components/icons";
+import { MapIcon, Pack, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
 import { suggestLineupLinks } from "../lib/lineupMatch";
 import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
@@ -278,8 +279,13 @@ export function BookScreen() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <p className="eyebrow">{tab === "catalog" || !usePersonalPool ? "Browse" : "My pool"}</p>
-            <h2 className="h2" style={{ fontSize: 24 }}>
-              {session.selected_map} {session.selected_side}
+            <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
+              <MapIcon map={session.selected_map} size={22} />
+              {session.selected_map}
+              <span className={`side-tag ${session.selected_side === "CT" ? "ct" : ""}`}>
+                {session.selected_side === "CT" ? <SideCT size={14} /> : <SideT size={14} />}
+                {session.selected_side}
+              </span>
             </h2>
           </div>
           {!usePersonalPool && (
@@ -340,7 +346,10 @@ export function BookScreen() {
       ) : (
         groups.map((g) => (
           <div key={g.id} className="panel">
-            <p className="eyebrow">{g.label}</p>
+            <p className="eyebrow eyebrow-site">
+              {g.id !== "ct" && g.id !== "default" ? <SiteIcon site={g.id} size={12} /> : null}
+              {g.label}
+            </p>
             {g.items.map((s) => {
               const open = expanded === s.id;
               const pack = packs.find((p) => p.id === s.pack_id);
@@ -376,9 +385,7 @@ export function BookScreen() {
                       ))}
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
                         {s.links.map((l, i) => (
-                          <a key={i} className="chip-link" href={l.url} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink size={11} /> {l.label}
-                          </a>
+                          <LineupChip key={i} label={l.label} url={l.url} />
                         ))}
                       </div>
                       <div className="row" style={{ marginTop: 8 }}>

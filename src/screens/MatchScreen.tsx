@@ -2,7 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
 import { FREEZE_SECONDS, type Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
-import { ExternalLink, Shuffle, Star } from "../components/icons";
+import { MapIcon, RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
+import { FreezeTimer } from "../components/FreezeTimer";
+import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 
@@ -20,7 +22,7 @@ const ROUNDS = [
   { id: "eco", label: "Eco" },
   { id: "pistol", label: "Pistol" },
   { id: "anti", label: "Anti" },
-];
+] as const;
 
 export function MatchScreen() {
   const { enabledStrats, strats, favorites, session, setSession, toggleFavorite, packs, loading } = usePlaybook();
@@ -166,10 +168,11 @@ export function MatchScreen() {
               <button
                 key={s.id}
                 type="button"
-                className={`pill ${session.site_filter === s.id ? `active ${accent}` : ""}`}
+                className={`pill pill-icon ${session.site_filter === s.id ? `active ${accent}` : ""}`}
                 onClick={() => void setSession({ site_filter: s.id })}
               >
-                {s.label}
+                <SiteIcon site={s.id} size={14} />
+                <span>{s.label}</span>
               </button>
             ))}
           </div>
@@ -181,16 +184,20 @@ export function MatchScreen() {
           <div style={{ marginTop: 10 }}>
             <p className="eyebrow">Round</p>
             <div className="row">
-              {ROUNDS.map((r) => (
-                <button
-                  key={r.id}
-                  type="button"
-                  className={`pill ${session.round_filter === r.id ? `active ${accent}` : ""}`}
-                  onClick={() => void setSession({ round_filter: r.id })}
-                >
-                  {r.label}
-                </button>
-              ))}
+              {ROUNDS.map((r) => {
+                const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
+                return (
+                  <button
+                    key={r.id}
+                    type="button"
+                    className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
+                    onClick={() => void setSession({ round_filter: r.id })}
+                  >
+                    <RoundIcon size={13} />
+                    <span>{r.label}</span>
+                  </button>
+                );
+              })}
             </div>
             <label className="muted" style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "center" }}>
               <input
@@ -218,8 +225,11 @@ export function MatchScreen() {
               const pack = packs.find((p) => p.id === s.pack_id);
               return (
                 <button key={s.id} type="button" className="list-item" onClick={() => void commitCall(s)}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-                    <strong>{s.callout}</strong>
+                  <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
+                    <strong className="list-callout">
+                      {s.site && <SiteIcon site={String(s.site)} size={14} />}
+                      {s.callout}
+                    </strong>
                     <button
                       type="button"
                       className="btn-ghost"
@@ -254,26 +264,31 @@ export function MatchScreen() {
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-              <span className={`badge ${accent === "ct" ? "five_stack" : "pro"}`}>
-                {currentPick.site ? `${session.selected_map} · ${String(currentPick.site).toUpperCase()}` : session.selected_map}
+              <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
+                <MapIcon map={session.selected_map} size={12} />
+                {currentPick.site ? (
+                  <>
+                    {session.selected_map}
+                    <SiteIcon site={String(currentPick.site)} size={12} />
+                    {String(currentPick.site).toUpperCase()}
+                  </>
+                ) : (
+                  session.selected_map
+                )}
               </span>
               <div className="row">
                 <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
                   <Star size={14} filled={favorites.has(currentPick.id)} />
                 </button>
-                {secondsLeft !== null && (
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: secondsLeft <= 4 ? "var(--warn)" : "var(--faint)" }}>
-                    {secondsLeft}s
-                  </span>
-                )}
+                {secondsLeft !== null && <FreezeTimer secondsLeft={secondsLeft} ct={side === "CT"} />}
               </div>
             </div>
             <div className="callout-hero">{currentPick.callout}</div>
             {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
             {currentPick.tasks.length > 0 && (
-              <div style={{ borderLeft: `2px solid ${side === "CT" ? "var(--accent-ct)" : "var(--accent-t)"}`, paddingLeft: 10, marginBottom: 12 }}>
+              <div className={`task-rail ${accent}`} style={{ marginBottom: 12 }}>
                 {currentPick.tasks.map((t, i) => (
-                  <p key={i} style={{ margin: "0 0 3px", fontSize: 13, color: "#b4bac2", fontFamily: "var(--font-mono)" }}>
+                  <p key={i} className="task-line">
                     {t}
                   </p>
                 ))}
@@ -283,14 +298,10 @@ export function MatchScreen() {
             {(linkGroups.pinned.length > 0 || linkGroups.suggested.length > 0) && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
                 {linkGroups.pinned.map((l, i) => (
-                  <a key={`p-${i}`} className="chip-link" href={l.url} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={11} /> {l.label}
-                  </a>
+                  <LineupChip key={`p-${i}`} label={l.label} url={l.url} />
                 ))}
                 {linkGroups.suggested.map((l, i) => (
-                  <a key={`s-${i}`} className="chip-link suggested" href={l.url} target="_blank" rel="noopener noreferrer" title="Suggested from catalog">
-                    <ExternalLink size={11} /> {l.label}
-                  </a>
+                  <LineupChip key={`s-${i}`} label={l.label} url={l.url} suggested title="Suggested from catalog" />
                 ))}
               </div>
             )}
