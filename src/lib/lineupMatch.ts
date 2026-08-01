@@ -96,19 +96,28 @@ function variantPenalty(slug: string) {
   return x;
 }
 
+function landingTokens(landing: string) {
+  const l = norm(landing);
+  const aliases = LANDING_ALIASES.find(([canonical]) => canonical === l)?.[1] || [l];
+  return [...new Set([l, ...aliases.map(norm)])];
+}
+
 function landingMatchScore(nade: Nade, landing: string) {
   const to = norm(nade.to);
   const slug = norm(nade.slug);
-  const l = norm(landing);
-  const dash = l.replace(/\s+/g, "-");
-  if (to === l) return 12;
-  if (to.startsWith(l + " ") || to.endsWith(" " + l)) return 10;
-  if (slug.startsWith(dash + "-from-") || slug.startsWith(dash + "-")) return 11;
-  if (to.includes(l) && !to.includes(" and ") && !to.includes(" + ")) return 8;
-  if (slug.includes(dash) && !slug.includes("-and-")) return 6;
-  if (to.includes(l)) return 3;
-  if (slug.includes(dash)) return 2;
-  return 0;
+  let best = 0;
+  for (const l of landingTokens(landing)) {
+    const dash = l.replace(/\s+/g, "-");
+    if (to === l) best = Math.max(best, 12);
+    // Landing is the throw *destination* (`to`), encoded as `{landing}-from-…` in CSNADES slugs.
+    // Do not treat origin suffixes like `chair-from-b-short` as a "short" landing.
+    if (slug.startsWith(dash + "-from-")) best = Math.max(best, 11);
+    // Multi-word destinations only (avoids "window" matching "Market Window").
+    if (l.includes(" ") && to === l) best = Math.max(best, 12);
+    // Catalog often uses "B Apts" for apps landings
+    if (to === `b ${l}`) best = Math.max(best, 10);
+  }
+  return best;
 }
 
 function bestTypeForLanding(blob: string, landing: string, globalTypes: string[]) {
@@ -123,6 +132,14 @@ function bestTypeForLanding(blob: string, landing: string, globalTypes: string[]
   return "smoke";
 }
 
+/** Only lines that mention utility — avoids matching hold callouts like "heaven" / "forklift". */
+function utilLines(blob: string) {
+  return blob
+    .split(/\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && (detectTypes(line).length > 0 || /\b(util|utility|nades?)\b/i.test(line)));
+}
+
 export function suggestLineupLinks(
   strat: Pick<Strat, "map" | "side" | "callout" | "description" | "tasks">,
   catalog: Nade[],
@@ -132,18 +149,28 @@ export function suggestLineupLinks(
   if (!mapSlug) return [];
 
   const blob = [strat.callout, strat.description, ...(strat.tasks || [])].join("\n");
-  const globalTypes = detectTypes(blob);
-  const landings = detectLandings(blob);
+  const utilBlob = utilLines(blob).join("\n");
+  if (!utilBlob) return [];
+
+  const globalTypes = detectTypes(utilBlob);
+  const landings = detectLandings(utilBlob);
   if (!landings.length) return [];
 
   const team = (strat.side || "").toLowerCase();
-  const pool = catalog.filter((n) => n.map === mapSlug || norm(n.map) === mapSlug);
+  // Hard filter by side — never suggest T execute smokes on CT holds (or vice versa).
+  const pool = catalog.filter((n) => {
+    if (!(n.map === mapSlug || norm(n.map) === mapSlug)) return false;
+    if (team !== "t" && team !== "ct") return true;
+    return !n.team || n.team === "both" || n.team === team;
+  });
+  if (!pool.length) return [];
+
   const out: StratLink[] = [];
   const seen = new Set<string>();
 
   for (const landing of landings) {
     if (out.length >= limit) break;
-    const wantType = bestTypeForLanding(blob, landing, globalTypes);
+    const wantType = bestTypeForLanding(utilBlob, landing, globalTypes);
     let best: Nade | null = null;
     let bestScore = 0;
 
@@ -153,10 +180,6 @@ export function suggestLineupLinks(
       if (nade.type === wantType) score += 4;
       else if (globalTypes.includes(nade.type)) score += 1;
       else score -= 2;
-      if (team === "t" || team === "ct") {
-        if (nade.team === team) score += 1;
-        else if (nade.team && nade.team !== "both") score -= 1;
-      }
       score -= variantPenalty(nade.slug);
       if (score > bestScore) {
         bestScore = score;
