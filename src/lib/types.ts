@@ -35,6 +35,8 @@ export type Strat = {
   rounds: string[];
   status: "ready" | "practice";
   links: StratLink[];
+  /** FACEIT-style execution difficulty 1–10 (how hard the call is to run). */
+  level: number;
   wins: number;
   losses: number;
   times_used: number;

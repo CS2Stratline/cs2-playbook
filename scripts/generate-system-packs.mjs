@@ -8,26 +8,49 @@ import { randomUUID } from "node:crypto";
 const starter = JSON.parse(readFileSync("src/cs2-startbibliotek.json", "utf8"));
 const uid = () => randomUUID();
 
-function enStrat(s) {
+function estimateLevel(s, tier) {
+  const callout = String(s.calloutEn || s.callout || "").toLowerCase();
+  const desc = String(s.descriptionEn || s.description || "").toLowerCase();
+  const tasks = (s.tasksEn?.length ? s.tasksEn : s.tasks || []).map((t) => String(t).toLowerCase());
+  const blob = `${callout} ${desc} ${tasks.join(" ")}`;
+  const rounds = s.rounds || [];
+  const links = (s.links || []).length;
+  const util = (blob.match(/\b(smoke|flash|molly|molotov|nade|hegrenade|incendiary)\b/g) || []).length;
+  let level = tier === "pro" ? 8 : tier === "five_stack" ? 6 : 3;
+  if (/\brush\b|\bfast\b/.test(blob) || rounds.some((r) => r === "pistol" || r === "eco")) level -= 2;
+  if (/\bpop\b/.test(callout) && util <= 2) level -= 1;
+  if (/\bhold\b|\bstack\b/.test(callout) && util <= 1 && s.side === "CT") level -= 1;
+  if (/\bdefault\b/.test(callout) && util === 0) level -= 1;
+  if (util >= 3 || links >= 3) level += 1;
+  if (util >= 5 || links >= 5) level += 1;
+  if (/\bfake\b|\bsplit\b|\bretake\b|\bfour in\b|\bunder split\b/.test(blob)) level += 2;
+  if (tasks.length >= 5) level += 1;
+  return Math.max(1, Math.min(10, Math.round(level)));
+}
+
+function enStrat(s, tier = "five_stack") {
   const links = (s.links || [])
     .map((l) => ({ label: l.labelEn || l.label || "", url: l.url }))
     .filter((l) => l.url);
-  return {
+  const tasks = (s.tasksEn?.length ? s.tasksEn : s.tasks || []).map((t) => String(t).trim()).filter(Boolean);
+  const strat = {
     id: uid(),
     map: s.map,
     side: s.side,
     site: s.site ?? null,
     callout: (s.calloutEn || s.callout || "").trim(),
     description: (s.descriptionEn || s.description || "").trim(),
-    tasks: (s.tasksEn?.length ? s.tasksEn : s.tasks || []).map((t) => String(t).trim()).filter(Boolean),
+    tasks,
     rounds: Array.isArray(s.rounds) ? s.rounds : [],
     status: s.status || "ready",
     links,
+    level: typeof s.level === "number" ? s.level : estimateLevel(s, tier),
     wins: 0,
     losses: 0,
     times_used: 0,
     last_used: null,
   };
+  return strat;
 }
 
 function tierOf(s) {
@@ -74,7 +97,7 @@ const packs = {
 
 for (const raw of starter.strats) {
   const t = tierOf(raw);
-  const strat = enStrat(raw);
+  const strat = enStrat(raw, t);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
 }
@@ -93,7 +116,7 @@ const extraCT = [
 
 for (const raw of extraCT) {
   const t = tierOf(raw);
-  const strat = enStrat(raw);
+  const strat = enStrat(raw, t);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
 }

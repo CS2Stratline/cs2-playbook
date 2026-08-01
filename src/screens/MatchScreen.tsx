@@ -4,8 +4,10 @@ import { FREEZE_SECONDS, type Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
 import { MapIcon, RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { FreezeTimer } from "../components/FreezeTimer";
+import { LevelBadge } from "../components/LevelBadge";
 import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
+import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 
 const SITES = [
@@ -260,6 +262,7 @@ export function MatchScreen() {
                 <button key={s.id} type="button" className="list-item" onClick={() => void commitCall(s)}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
                     <strong className="list-callout">
+                      <LevelBadge level={clampFaceitLevel(s.level || 5)} size={20} />
                       {s.site && <SiteIcon site={String(s.site)} size={14} />}
                       {s.callout}
                     </strong>
@@ -310,6 +313,7 @@ export function MatchScreen() {
                 )}
               </span>
               <div className="row">
+                <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
                 <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
                   <Star size={14} filled={favorites.has(currentPick.id)} />
                 </button>
