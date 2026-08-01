@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, UserSession } from "./types";
+import { isPackInMatchPool, isPackLocked } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -55,10 +56,12 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       setPacks(p);
       setStrats(s);
       setFavorites(new Set(fav));
-      // default: all system packs on if no subs yet
       const nextSubs = { ...subs };
+      // default: free system packs on; Pro stays off (locked until premium)
       if (!Object.keys(nextSubs).length) {
-        for (const pack of p.filter((x) => x.visibility === "system")) nextSubs[pack.id] = true;
+        for (const pack of p.filter((x) => x.visibility === "system")) {
+          nextSubs[pack.id] = pack.tier !== "pro";
+        }
       }
       setSubscriptions(nextSubs);
       setSessionState(sess);
@@ -88,10 +91,12 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const setPackEnabled = useCallback(
     async (packId: string, enabled: boolean) => {
+      const pack = packs.find((p) => p.id === packId);
+      if (isPackLocked(pack)) return;
       setSubscriptions((prev) => ({ ...prev, [packId]: enabled }));
       await api.setPackEnabled(userId, packId, enabled);
     },
-    [userId]
+    [userId, packs]
   );
 
   const toggleFavorite = useCallback(
@@ -108,14 +113,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   );
 
   const enabledStrats = useMemo(() => {
-    const enabled = new Set(Object.entries(subscriptions).filter(([, v]) => v).map(([k]) => k));
-    // if nothing enabled, treat all system packs as on
-    const any = enabled.size > 0;
-    return strats.filter((s) => {
-      if (any) return enabled.has(s.pack_id);
-      const pack = packs.find((p) => p.id === s.pack_id);
-      return pack?.visibility === "system";
-    });
+    return strats.filter((s) => isPackInMatchPool(s.pack_id, subscriptions, packs));
   }, [strats, subscriptions, packs]);
 
   const value: PlaybookState = {

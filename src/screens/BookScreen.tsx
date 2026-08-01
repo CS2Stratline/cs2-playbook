@@ -4,7 +4,7 @@ import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import { bumpStratUsage, createPrivatePack, deleteStrat, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
-import { FREEZE_SECONDS, TIER_LABEL } from "../lib/types";
+import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { ExternalLink, Pack, Plus, Star } from "../components/icons";
 import { NADE_CATALOG } from "../lib/catalog";
 import { suggestLineupLinks } from "../lib/lineupMatch";
@@ -47,10 +47,12 @@ export function BookScreen() {
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const poolIds = new Set(enabledStrats.map((s) => s.id));
     return strats
+      .filter((s) => poolIds.has(s.id))
       .filter((s) => s.map === session.selected_map && s.side === session.selected_side)
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
-  }, [strats, session.selected_map, session.selected_side, query]);
+  }, [strats, enabledStrats, session.selected_map, session.selected_side, query]);
 
   const groups = useMemo(() => {
     if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", items: list }];
@@ -104,7 +106,9 @@ export function BookScreen() {
   }
 
   async function useInMatch(s: Strat) {
-    if (subscriptions[s.pack_id] === false) {
+    const pack = packs.find((p) => p.id === s.pack_id);
+    if (isPackLocked(pack)) return;
+    if (!isPackInMatchPool(s.pack_id, subscriptions, packs)) {
       await setPackEnabled(s.pack_id, true);
     }
     const end = Date.now() + FREEZE_SECONDS * 1000;
@@ -129,14 +133,15 @@ export function BookScreen() {
       <div className="panel">
         <p className="eyebrow">Packs</p>
         <p className="muted" style={{ marginBottom: 8 }}>
-          Toggle packs for your Match pool. {enabledStrats.length} strats enabled.
+          Toggle which packs feed Match. {enabledStrats.length} strats in the pool right now.
         </p>
         {byTier.map(({ tier, items }) =>
           items.length ? (
             <div key={tier} style={{ marginTop: 8 }}>
               <p className="eyebrow">{TIER_LABEL[tier]}</p>
               {items.map((p) => {
-                const on = subscriptions[p.id] !== false;
+                const locked = isPackLocked(p);
+                const on = !locked && isPackInMatchPool(p.id, subscriptions, packs);
                 return (
                   <div
                     key={p.id}
@@ -146,6 +151,7 @@ export function BookScreen() {
                       alignItems: "flex-start",
                       padding: "8px 0",
                       borderBottom: "1px solid var(--line)",
+                      opacity: locked ? 0.72 : 1,
                     }}
                   >
                     <Pack size={16} />
@@ -153,11 +159,20 @@ export function BookScreen() {
                       <strong style={{ fontSize: 13 }}>{p.title}</strong>
                       <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
                         {p.strat_count ?? "—"} strats · {p.visibility === "system" ? "System" : "Yours"}
+                        {locked ? " · Premium soon" : ""}
                       </p>
                     </div>
-                    <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
-                      {on ? "On" : "Off"}
-                    </button>
+                    {locked ? (
+                      <span className="badge pro">Locked</span>
+                    ) : (
+                      <button
+                        className={`pill ${on ? "active" : ""}`}
+                        onClick={() => void setPackEnabled(p.id, !on)}
+                        type="button"
+                      >
+                        {on ? "On" : "Off"}
+                      </button>
+                    )}
                   </div>
                 );
               })}
@@ -222,7 +237,7 @@ export function BookScreen() {
       )}
 
       {groups.length === 0 ? (
-        <div className="empty">Nothing here for this map/side. Enable packs above or add a strat.</div>
+        <div className="empty">Nothing in the Match pool for this map/side. Turn a pack On above, or add a strat.</div>
       ) : (
         groups.map((g) => (
           <div key={g.id} className="panel">
