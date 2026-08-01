@@ -20,6 +20,8 @@ Optional repo secrets for cloud builds:
 3. Auth → enable Email (magic link). Add redirect URLs:
    - `https://jonaslundervold.github.io/cs2-playbook/`
    - `http://localhost:5173/`
+
+   Site URL must be the **playbook** path, not bare `https://jonaslundervold.github.io/` (that causes a 404 after magic link).
 4. Seed packs + nades:
 
 ```bash
