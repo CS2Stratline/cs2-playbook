@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { authRedirectTo, supabase, supabaseConfigured } from "./supabase";
 import {
   canEditSharedStrats,
+  canManageAdmins,
   getLocalUserId,
   getProfile,
   isCloudMode,
@@ -20,6 +21,8 @@ type AuthState = {
   profile: Profile | null;
   /** Edit Fundamentals/Stack strats for everyone (admin), or this device in local demo. */
   canEditShared: boolean;
+  /** Grant/revoke admins in Settings (super admin only). */
+  canManageAdmins: boolean;
   signInWithEmail: (email: string) => Promise<{ error?: string }>;
   signInWithDiscord: () => Promise<{ error?: string }>;
   signOut: () => Promise<void>;
@@ -35,13 +38,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function loadProfile(userId: string | null) {
     if (!userId || !supabaseConfigured) {
-      setProfile(supabaseConfigured ? null : { id: getLocalUserId(), display_name: "IGL", default_tier_filter: "all", is_admin: true });
+      setProfile(
+        supabaseConfigured
+          ? null
+          : {
+              id: getLocalUserId(),
+              display_name: "IGL",
+              default_tier_filter: "all",
+              is_admin: true,
+              is_super_admin: true,
+            }
+      );
       return;
     }
     try {
       setProfile(await getProfile(userId));
     } catch {
-      setProfile({ id: userId, display_name: "IGL", default_tier_filter: "all", is_admin: false });
+      setProfile({
+        id: userId,
+        display_name: "IGL",
+        default_tier_filter: "all",
+        is_admin: false,
+        is_super_admin: false,
+      });
     }
   }
 
@@ -78,6 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       userId,
       profile,
       canEditShared: canEditSharedStrats({ profile }),
+      canManageAdmins: canManageAdmins({ profile }),
       async signInWithEmail(email: string) {
         if (!supabase) return { error: "Supabase is not configured." };
         const redirectTo = authRedirectTo();

@@ -1,19 +1,11 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
-import type { Pack, Strat, UserSession, Profile, Side } from "./types";
+import type { AdminProfile, Pack, Strat, UserSession, Profile, Side } from "./types";
 import { MAPS, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
-
-/** Comma-separated emails that may edit shared strats once `profiles.is_admin` is set (see DEPLOY.md). */
-function adminEmailAllowlist() {
-  return String(import.meta.env.VITE_ADMIN_EMAILS || "")
-    .split(",")
-    .map((s) => s.trim().toLowerCase())
-    .filter(Boolean);
-}
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
@@ -24,16 +16,18 @@ export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | 
 }
 
 export function canEditSharedStrats(opts: {
-  profile?: Pick<Profile, "is_admin"> | null;
+  profile?: Pick<Profile, "is_admin" | "is_super_admin"> | null;
 }): boolean {
   // Local demo (no Supabase): edit shared strats on this device.
   if (!supabaseConfigured) return true;
-  return Boolean(opts.profile?.is_admin);
+  return Boolean(opts.profile?.is_admin || opts.profile?.is_super_admin);
 }
 
-export function isAdminEmailAllowlisted(email: string | null | undefined): boolean {
-  const e = (email || "").toLowerCase();
-  return Boolean(e && adminEmailAllowlist().includes(e));
+export function canManageAdmins(opts: {
+  profile?: Pick<Profile, "is_super_admin"> | null;
+}): boolean {
+  if (!supabaseConfigured) return true;
+  return Boolean(opts.profile?.is_super_admin);
 }
 
 type Store = {
@@ -69,7 +63,13 @@ function seedStore(): Store {
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
   return {
-    profile: { id: LOCAL_USER, display_name: "IGL", default_tier_filter: "all", is_admin: true },
+    profile: {
+      id: LOCAL_USER,
+      display_name: "IGL",
+      default_tier_filter: "all",
+      is_admin: true,
+      is_super_admin: true,
+    },
     packs,
     strats,
     favorites: [],
@@ -143,14 +143,60 @@ export async function getProfile(userId: string): Promise<Profile> {
       display_name: "IGL",
       default_tier_filter: "all",
       is_admin: false,
+      is_super_admin: false,
     };
   }
+  const superAdmin = Boolean(data.is_super_admin);
   return {
     id: String(data.id),
     display_name: (data.display_name as string) || null,
     default_tier_filter: String(data.default_tier_filter || "all"),
-    is_admin: Boolean(data.is_admin),
+    is_admin: Boolean(data.is_admin) || superAdmin,
+    is_super_admin: superAdmin,
   };
+}
+
+function mapAdminRow(row: Record<string, unknown>): AdminProfile {
+  return {
+    id: String(row.id),
+    display_name: (row.display_name as string) || null,
+    email: (row.email as string) || null,
+    is_admin: Boolean(row.is_admin),
+    is_super_admin: Boolean(row.is_super_admin),
+  };
+}
+
+/** Super admin: list everyone with admin or super_admin. */
+export async function listAdminProfiles(): Promise<AdminProfile[]> {
+  if (!isCloudMode()) {
+    return [
+      {
+        id: memory.profile.id,
+        display_name: memory.profile.display_name,
+        email: "local@demo",
+        is_admin: true,
+        is_super_admin: true,
+      },
+    ];
+  }
+  const { data, error } = await supabase!.rpc("list_admin_profiles");
+  if (error) throw error;
+  return (data || []).map((row: Record<string, unknown>) => mapAdminRow(row));
+}
+
+/** Super admin: grant/revoke regular admin by email (user must have signed in once). */
+export async function setAdminByEmail(email: string, isAdmin: boolean): Promise<AdminProfile> {
+  if (!isCloudMode()) {
+    throw new Error("Admin management requires cloud sign-in");
+  }
+  const { data, error } = await supabase!.rpc("set_admin_by_email", {
+    p_email: email.trim(),
+    p_is_admin: isAdmin,
+  });
+  if (error) throw error;
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) throw new Error("No result from set_admin_by_email");
+  return mapAdminRow(row as Record<string, unknown>);
 }
 
 export async function listPacks(): Promise<Pack[]> {
