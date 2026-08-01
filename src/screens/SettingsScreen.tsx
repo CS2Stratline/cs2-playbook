@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 import {
-  claimFirstSuperAdmin,
   ensureLiveShareToken,
   exportBookJson,
   isCloudMode,
@@ -172,34 +171,6 @@ export function SettingsScreen() {
             Shared library edits are admin-only. Ask a super admin to add your email in Settings → Admins (you must
             sign in once first).
           </p>
-        )}
-        {mode === "cloud" && user && !profile?.is_super_admin && !profile?.is_admin && (
-          <button
-            type="button"
-            className="btn-ghost"
-            style={{ marginTop: 10 }}
-            disabled={adminBusy}
-            onClick={async () => {
-              setAdminBusy(true);
-              setAdminMsg("");
-              try {
-                await claimFirstSuperAdmin();
-                await refreshProfile();
-                setAdminMsg("You are now the super admin");
-                try {
-                  setAdmins(await listAdminProfiles());
-                } catch {
-                  /* ignore until refresh */
-                }
-              } catch (e) {
-                setAdminMsg(e instanceof Error ? e.message : "Could not claim super admin");
-              } finally {
-                setAdminBusy(false);
-              }
-            }}
-          >
-            Claim first super admin
-          </button>
         )}
         {profile?.is_super_admin ? (
           <p className="banner" style={{ marginTop: 8 }}>
