@@ -1,13 +1,48 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
-import type { Pack, Strat, UserSession, Profile, Side } from "./types";
-import { MAPS, catalogSourceKey, isPackLocked } from "./types";
+import type { AdminProfile, Pack, Strat, UserSession, Profile, Side, StratLink } from "./types";
+import { MAPS, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
+import { safeHttpUrl } from "./safeUrl";
+
+function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
+  return (links || [])
+    .map((l) => {
+      const url = safeHttpUrl(l.url);
+      if (!url) return null;
+      return { label: String(l.label || "").trim().slice(0, 80), url };
+    })
+    .filter((l): l is StratLink => !!l)
+    .slice(0, 8);
+}
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
 const SEED_REVISION = 4;
+
+/** Shared catalog row id to edit, or null if this is a private-only strat. */
+export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
+  const fromCopy = catalogIdFromSource(strat.source);
+  if (fromCopy) return fromCopy;
+  if (!strat.owner_user_id) return strat.id;
+  return null;
+}
+
+export function canEditSharedStrats(opts: {
+  profile?: Pick<Profile, "is_admin" | "is_super_admin"> | null;
+}): boolean {
+  // Local demo (no Supabase): edit shared strats on this device.
+  if (!supabaseConfigured) return true;
+  return Boolean(opts.profile?.is_admin || opts.profile?.is_super_admin);
+}
+
+export function canManageAdmins(opts: {
+  profile?: Pick<Profile, "is_super_admin"> | null;
+}): boolean {
+  if (!supabaseConfigured) return true;
+  return Boolean(opts.profile?.is_super_admin);
+}
 
 type Store = {
   profile: Profile;
@@ -43,7 +78,13 @@ function seedStore(): Store {
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
   return {
-    profile: { id: LOCAL_USER, display_name: "IGL", default_tier_filter: "all" },
+    profile: {
+      id: LOCAL_USER,
+      display_name: "IGL",
+      default_tier_filter: "all",
+      is_admin: true,
+      is_super_admin: true,
+    },
     packs,
     strats,
     favorites: [],
@@ -132,13 +173,66 @@ export async function ensureBootstrap(): Promise<void> {
 export async function getProfile(userId: string): Promise<Profile> {
   if (!isCloudMode()) return memory.profile;
   const { data } = await supabase!.from("profiles").select("*").eq("id", userId).maybeSingle();
-  return (
-    data || {
+  if (!data) {
+    return {
       id: userId,
       display_name: "IGL",
       default_tier_filter: "all",
-    }
-  );
+      is_admin: false,
+      is_super_admin: false,
+    };
+  }
+  const superAdmin = Boolean(data.is_super_admin);
+  return {
+    id: String(data.id),
+    display_name: (data.display_name as string) || null,
+    default_tier_filter: String(data.default_tier_filter || "all"),
+    is_admin: Boolean(data.is_admin) || superAdmin,
+    is_super_admin: superAdmin,
+  };
+}
+
+function mapAdminRow(row: Record<string, unknown>): AdminProfile {
+  return {
+    id: String(row.id),
+    display_name: (row.display_name as string) || null,
+    email: (row.email as string) || null,
+    is_admin: Boolean(row.is_admin),
+    is_super_admin: Boolean(row.is_super_admin),
+  };
+}
+
+/** Super admin: list everyone with admin or super_admin. */
+export async function listAdminProfiles(): Promise<AdminProfile[]> {
+  if (!isCloudMode()) {
+    return [
+      {
+        id: memory.profile.id,
+        display_name: memory.profile.display_name,
+        email: "local@demo",
+        is_admin: true,
+        is_super_admin: true,
+      },
+    ];
+  }
+  const { data, error } = await supabase!.rpc("list_admin_profiles");
+  if (error) throw error;
+  return (data || []).map((row: Record<string, unknown>) => mapAdminRow(row));
+}
+
+/** Super admin: grant/revoke regular admin by email (user must have signed in once). */
+export async function setAdminByEmail(email: string, isAdmin: boolean): Promise<AdminProfile> {
+  if (!isCloudMode()) {
+    throw new Error("Admin management requires cloud sign-in");
+  }
+  const { data, error } = await supabase!.rpc("set_admin_by_email", {
+    p_email: email.trim(),
+    p_is_admin: isAdmin,
+  });
+  if (error) throw error;
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) throw new Error("No result from set_admin_by_email");
+  return mapAdminRow(row as Record<string, unknown>);
 }
 
 export async function listPacks(): Promise<Pack[]> {
@@ -281,41 +375,122 @@ export async function bumpStratUsage(stratId: string) {
     saveLocal(memory);
     return;
   }
-  const { data } = await supabase!.from("strats").select("times_used").eq("id", stratId).single();
-  const times = Number((data as { times_used?: number })?.times_used || 0) + 1;
-  await supabase!.from("strats").update({ times_used: times, last_used: now }).eq("id", stratId);
+  const { error } = await supabase!.rpc("bump_strat_usage", { p_strat_id: stratId });
+  if (error) throw error;
+}
+
+/** One-time: become the first super admin (fails if one already exists). */
+export async function claimFirstSuperAdmin(): Promise<void> {
+  if (!isCloudMode()) throw new Error("Cloud sign-in required");
+  const { error } = await supabase!.rpc("claim_first_super_admin");
+  if (error) throw error;
+}
+
+export type SharedStratPatch = {
+  callout: string;
+  description: string;
+  tasks: string[];
+  rounds: string[];
+  site: Strat["site"];
+  status: Strat["status"];
+  links: Strat["links"];
+  level?: number;
+  map?: string;
+  side?: Side;
+};
+
+/** Update a system strat for everyone. Syncs personal pool copies (`catalog:<id>`). */
+export async function upsertSharedStrat(systemStratId: string, patch: SharedStratPatch) {
+  const links = sanitizeLinks(patch.links);
+  const tasks = (patch.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const callout = String(patch.callout || "").trim().slice(0, 60);
+  const description = String(patch.description || "").trim().slice(0, 280);
+  const level =
+    patch.level ??
+    estimateStratLevel({
+      callout,
+      description,
+      tasks,
+      links,
+      rounds: patch.rounds,
+      side: patch.side,
+    });
+
+  if (!isCloudMode()) {
+    const apply = (s: Strat): Strat => {
+      const isTarget = s.id === systemStratId || catalogIdFromSource(s.source) === systemStratId;
+      if (!isTarget) return s;
+      return {
+        ...s,
+        callout,
+        description,
+        tasks,
+        rounds: patch.rounds,
+        site: patch.site,
+        status: patch.status,
+        links,
+        level,
+        ...(patch.map ? { map: patch.map } : {}),
+        ...(patch.side ? { side: patch.side } : {}),
+      };
+    };
+    memory.strats = memory.strats.map(apply);
+    saveLocal(memory);
+    return;
+  }
+
+  const { error } = await supabase!.rpc("admin_update_shared_strat", {
+    p_id: systemStratId,
+    p_callout: callout,
+    p_description: description,
+    p_tasks: tasks,
+    p_rounds: patch.rounds,
+    p_site: patch.site,
+    p_status: patch.status,
+    p_links: links,
+    p_level: level,
+    p_map: patch.map ?? null,
+    p_side: patch.side ?? null,
+  });
+  if (error) throw error;
 }
 
 export async function upsertPrivateStrat(userId: string, packId: string, strat: Partial<Strat> & { id?: string }) {
+  const links = sanitizeLinks(strat.links);
+  const tasks = (strat.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const callout = String(strat.callout || "").trim().slice(0, 60);
+  const description = String(strat.description || "").trim().slice(0, 280);
+  const cleaned = { ...strat, links, tasks, callout, description };
+
   if (!isCloudMode()) {
-    if (strat.id) {
-      memory.strats = memory.strats.map((s) => (s.id === strat.id ? { ...s, ...strat } as Strat : s));
+    if (cleaned.id) {
+      memory.strats = memory.strats.map((s) => (s.id === cleaned.id ? ({ ...s, ...cleaned } as Strat) : s));
     } else {
       const id = crypto.randomUUID();
       const level =
-        strat.level ??
+        cleaned.level ??
         estimateStratLevel({
-          callout: strat.callout,
-          description: strat.description,
-          tasks: strat.tasks,
-          links: strat.links,
-          rounds: strat.rounds,
-          side: strat.side,
+          callout,
+          description,
+          tasks,
+          links,
+          rounds: cleaned.rounds,
+          side: cleaned.side,
         });
       memory.strats.push({
         id,
         pack_id: packId,
         owner_user_id: userId,
         team_id: null,
-        map: strat.map || "Mirage",
-        side: strat.side || "T",
-        site: strat.site ?? "default",
-        callout: strat.callout || "",
-        description: strat.description || "",
-        tasks: strat.tasks || [],
-        rounds: strat.rounds || [],
-        status: strat.status || "ready",
-        links: strat.links || [],
+        map: cleaned.map || "Mirage",
+        side: cleaned.side || "T",
+        site: cleaned.site ?? "default",
+        callout,
+        description,
+        tasks,
+        rounds: cleaned.rounds || [],
+        status: cleaned.status || "ready",
+        links,
         level,
         wins: 0,
         losses: 0,
@@ -330,28 +505,28 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
   const payload = {
     pack_id: packId,
     owner_user_id: userId,
-    map: strat.map,
-    side: strat.side,
-    site: strat.site,
-    callout: strat.callout,
-    description: strat.description,
-    tasks: strat.tasks,
-    rounds: strat.rounds,
-    status: strat.status || "ready",
-    links: strat.links || [],
+    map: cleaned.map,
+    side: cleaned.side,
+    site: cleaned.site,
+    callout,
+    description,
+    tasks,
+    rounds: cleaned.rounds,
+    status: cleaned.status || "ready",
+    links,
     level:
-      strat.level ??
+      cleaned.level ??
       estimateStratLevel({
-        callout: strat.callout,
-        description: strat.description,
-        tasks: strat.tasks,
-        links: strat.links,
-        rounds: strat.rounds,
-        side: strat.side,
+        callout,
+        description,
+        tasks,
+        links,
+        rounds: cleaned.rounds,
+        side: cleaned.side,
       }),
     source: "user",
   };
-  if (strat.id) await supabase!.from("strats").update(payload).eq("id", strat.id).eq("owner_user_id", userId);
+  if (cleaned.id) await supabase!.from("strats").update(payload).eq("id", cleaned.id).eq("owner_user_id", userId);
   else await supabase!.from("strats").insert(payload);
 }
 

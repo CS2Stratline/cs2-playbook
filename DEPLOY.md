@@ -25,7 +25,7 @@ Optional repo secrets for cloud builds:
 
 3b. (Recommended) Authentication → Providers → **Discord** → enable.  
     Create an app at [discord.com/developers](https://discord.com/developers/applications):  
-    - OAuth2 redirect: `https://xlevljkrjlyfrqkowdmg.supabase.co/auth/v1/callback`  
+    - OAuth2 redirect: `https://YOUR_PROJECT.supabase.co/auth/v1/callback`  
     - Paste Client ID + Secret into Supabase Discord provider.  
     Login is **optional** — guests use the app without an account. Share `https://jonaslundervold.github.io/cs2-playbook/`.
 
@@ -40,6 +40,38 @@ npm run seed:supabase
 5. Add the same URL/anon key as GitHub Actions secrets (or `.env.local` for `npm run dev`).
 6. SQL editor: run [`003_live_share.sql`](supabase/migrations/003_live_share.sql) then [`004_fix_live_share_pgcrypto.sql`](supabase/migrations/004_fix_live_share_pgcrypto.sql) for private live-call links (Settings → Live call link when signed in).
 7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.
+
+8. **Migrations (run in order):** `001` → `002` (notes) → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql`.
+
+9. **Admins / super admin (shared strat edits):**
+
+   1. Sign in once with your Discord/email account.
+   2. **Settings → Claim first super admin** (works only if no super admin exists yet), **or** SQL with role-change opt-in:
+
+```sql
+select set_config('app.allow_role_change', 'on', true);
+update profiles p
+set is_super_admin = true, is_admin = true
+from auth.users u
+where p.id = u.id and lower(u.email) = lower('you@example.com');
+```
+
+   3. **Settings → Admins** — add others by email (they must sign in once first).  
+      - **Super admin:** edit shared strats + manage admins.  
+      - **Admin:** edit shared strats only.  
+      - Role flags cannot be self-granted via the profiles table (`009_launch_security.sql`).
+
+Without Supabase, local demo can edit shared strats on that device only.
+
+## Launch security checklist
+
+- [ ] All migrations through `009_launch_security.sql` applied
+- [ ] Non-admin JWT cannot `update profiles set is_admin = true`
+- [ ] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
+- [ ] Service role key never in client env or GitHub Actions `VITE_*` secrets
+- [ ] Supabase Auth redirect URLs match the real domain (Pages or custom)
+- [ ] Custom domain: update `VITE_BASE_PATH=/` (or `/`) and Discord/email redirects
+- [ ] Soft Reddit launch: prefer guest mode first, or invite-only Discord until checklist is green
 
 ## Vercel (optional)
 

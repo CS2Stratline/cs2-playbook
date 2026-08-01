@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 import {
+  claimFirstSuperAdmin,
   ensureLiveShareToken,
   exportBookJson,
   isCloudMode,
   isSupabaseConfigured,
+  listAdminProfiles,
   regenerateLiveShareToken,
   resetLocalDemo,
+  setAdminByEmail,
 } from "../lib/api";
+import type { AdminProfile } from "../lib/types";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
@@ -16,12 +20,17 @@ import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
-  const { mode, user, signOut, userId, supabaseReady } = useAuth();
+  const { mode, user, signOut, userId, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile } =
+    useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
   const [liveToken, setLiveToken] = useState<string | null>(null);
   const [liveMsg, setLiveMsg] = useState("");
   const [liveBusy, setLiveBusy] = useState(false);
+  const [admins, setAdmins] = useState<AdminProfile[]>([]);
+  const [adminEmail, setAdminEmail] = useState("");
+  const [adminMsg, setAdminMsg] = useState("");
+  const [adminBusy, setAdminBusy] = useState(false);
 
   const liveUrl = liveToken && baseUrl ? `${baseUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
 
@@ -46,6 +55,25 @@ export function SettingsScreen() {
       cancelled = true;
     };
   }, [user, supabaseReady]);
+
+  useEffect(() => {
+    if (!canManageAdmins) {
+      setAdmins([]);
+      return;
+    }
+    let cancelled = false;
+    void (async () => {
+      try {
+        const rows = await listAdminProfiles();
+        if (!cancelled) setAdmins(rows);
+      } catch {
+        if (!cancelled) setAdmins([]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [canManageAdmins, profile?.is_super_admin]);
 
   return (
     <div>
@@ -131,6 +159,154 @@ export function SettingsScreen() {
         </p>
         <LevelLegend />
       </div>
+
+      <div className="panel">
+        <p className="eyebrow">Shared edits</p>
+        {canEditShared ? (
+          <p className="muted">
+            You can edit Fundamentals / Stack strats from Match or Playbook. Changes save for everyone
+            {mode === "local" ? " on this device (local demo)." : " (admin)."}
+          </p>
+        ) : (
+          <p className="muted">
+            Shared library edits are admin-only. Ask a super admin to add your email in Settings → Admins (you must
+            sign in once first).
+          </p>
+        )}
+        {mode === "cloud" && user && !profile?.is_super_admin && !profile?.is_admin && (
+          <button
+            type="button"
+            className="btn-ghost"
+            style={{ marginTop: 10 }}
+            disabled={adminBusy}
+            onClick={async () => {
+              setAdminBusy(true);
+              setAdminMsg("");
+              try {
+                await claimFirstSuperAdmin();
+                await refreshProfile();
+                setAdminMsg("You are now the super admin");
+                try {
+                  setAdmins(await listAdminProfiles());
+                } catch {
+                  /* ignore until refresh */
+                }
+              } catch (e) {
+                setAdminMsg(e instanceof Error ? e.message : "Could not claim super admin");
+              } finally {
+                setAdminBusy(false);
+              }
+            }}
+          >
+            Claim first super admin
+          </button>
+        )}
+        {profile?.is_super_admin ? (
+          <p className="banner" style={{ marginTop: 8 }}>
+            Super admin · can edit strats and manage admins
+          </p>
+        ) : profile?.is_admin ? (
+          <p className="banner" style={{ marginTop: 8 }}>
+            Admin · shared edit enabled
+          </p>
+        ) : null}
+        {adminMsg && !canManageAdmins && <p className="banner" style={{ marginTop: 8 }}>{adminMsg}</p>}
+      </div>
+
+      {canManageAdmins && (
+        <div className="panel">
+          <p className="eyebrow">Admins</p>
+          <p className="muted" style={{ marginBottom: 10 }}>
+            Super admin only. Add someone by the email they use to sign in — they must open the app once first so a
+            profile exists. Admins can edit shared strats; only you can add or remove admins.
+          </p>
+          <div className="row" style={{ marginBottom: 10 }}>
+            <input
+              className="input"
+              style={{ flex: 1 }}
+              placeholder="email@example.com"
+              value={adminEmail}
+              onChange={(e) => setAdminEmail(e.target.value)}
+            />
+            <button
+              type="button"
+              className="btn btn-primary"
+              disabled={adminBusy || !adminEmail.trim()}
+              onClick={async () => {
+                setAdminBusy(true);
+                setAdminMsg("");
+                try {
+                  await setAdminByEmail(adminEmail, true);
+                  setAdminEmail("");
+                  setAdmins(await listAdminProfiles());
+                  setAdminMsg("Admin added");
+                  await refreshProfile();
+                } catch (e) {
+                  setAdminMsg(e instanceof Error ? e.message : "Could not add admin");
+                } finally {
+                  setAdminBusy(false);
+                }
+              }}
+            >
+              Add
+            </button>
+          </div>
+          {admins.length === 0 ? (
+            <p className="muted">No admins loaded.</p>
+          ) : (
+            admins.map((a) => (
+              <div
+                key={a.id}
+                className="row"
+                style={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  borderTop: "1px solid var(--line)",
+                  padding: "8px 0",
+                }}
+              >
+                <div style={{ minWidth: 0 }}>
+                  <strong style={{ display: "block", fontSize: 14 }}>{a.email || a.id.slice(0, 8)}</strong>
+                  <span className="muted" style={{ fontSize: 12 }}>
+                    {a.is_super_admin ? "Super admin" : "Admin"}
+                    {a.display_name ? ` · ${a.display_name}` : ""}
+                  </span>
+                </div>
+                {!a.is_super_admin && (
+                  <button
+                    type="button"
+                    className="btn-ghost"
+                    style={{ color: "var(--warn)" }}
+                    disabled={adminBusy}
+                    onClick={async () => {
+                      if (!a.email) return;
+                      setAdminBusy(true);
+                      setAdminMsg("");
+                      try {
+                        await setAdminByEmail(a.email, false);
+                        setAdmins(await listAdminProfiles());
+                        setAdminMsg("Admin removed");
+                      } catch (e) {
+                        setAdminMsg(e instanceof Error ? e.message : "Could not remove admin");
+                      } finally {
+                        setAdminBusy(false);
+                      }
+                    }}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))
+          )}
+          {adminMsg && <p className="banner" style={{ marginTop: 8 }}>{adminMsg}</p>}
+          {mode === "cloud" && (
+            <p className="muted" style={{ marginTop: 10, fontSize: 11 }}>
+              First-time bootstrap (SQL once): set your account as super admin after migrations 007 + 008 — see DEPLOY.md.
+            </p>
+          )}
+        </div>
+      )}
 
       <div className="panel">
         <p className="eyebrow">Library</p>
