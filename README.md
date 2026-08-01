@@ -10,8 +10,10 @@ English-only UI for v1. Sibling lightweight app (no login): [cs2-callout-app](ht
 | Screen | Job |
 |--------|-----|
 | **Match** | Pick (or Surprise) a call → timer + W/L + lineups |
-| **Playbook** | Packs on/off, browse/edit strats, Use in Match |
+| **Playbook** | Catalog shop + My pool (signed in), or pack toggles (guest) |
 | **Settings** | Optional Discord login, live-call link, export |
+
+Catalog levels: **Fundamentals** / **Stack** / **Advanced** (Advanced locked). Signed-in Match pool = My pool only.
 
 Pinned lineup links live on each strat; dashed chips are **suggested** from the CSNADES catalog.
 
