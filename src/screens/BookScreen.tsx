@@ -5,6 +5,7 @@ import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { MAPS, TIER_LABEL, isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -98,6 +99,9 @@ export function BookScreen() {
 
   const displayList = usePersonalPool && tab === "catalog" ? catalogList : poolList;
 
+  const formMap = allMaps ? form.map : session.selected_map;
+  const formLanes = useMemo(() => lanesForMap(formMap), [formMap]);
+
   const groups = useMemo(() => {
     if (isAllMaps(session.selected_map)) {
       return MAPS.map((map) => ({
@@ -108,12 +112,16 @@ export function BookScreen() {
       })).filter((g) => g.items.length);
     }
     if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", kind: "site" as const, items: displayList }];
-    return [
-      { id: "a", label: "A site", kind: "site" as const, items: displayList.filter((s) => s.site === "a") },
-      { id: "b", label: "B site", kind: "site" as const, items: displayList.filter((s) => s.site === "b") },
-      { id: "mid", label: "Mid", kind: "site" as const, items: displayList.filter((s) => s.site === "mid") },
-      { id: "default", label: "Default / other", kind: "site" as const, items: displayList.filter((s) => !s.site || s.site === "default") },
-    ].filter((g) => g.items.length);
+    return lanesForMap(session.selected_map)
+      .map((lane) => ({
+        id: lane.id,
+        label: lane.label,
+        kind: "site" as const,
+        items: displayList.filter((s) =>
+          lane.id === "default" ? !s.site || s.site === "default" : s.site === lane.id
+        ),
+      }))
+      .filter((g) => g.items.length);
   }, [displayList, session.selected_side, session.selected_map]);
 
   async function ensurePrivatePack() {
@@ -137,12 +145,19 @@ export function BookScreen() {
       description: form.description.trim(),
       tasks,
     };
+    const lanes = lanesForMap(map);
+    const site: Strat["site"] =
+      session.selected_side === "T"
+        ? lanes.some((l) => l.id === form.site)
+          ? (form.site as Strat["site"])
+          : "default"
+        : null;
     let links = editing?.links || [];
     if (!links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
     await upsertPrivateStrat(userId, packId, {
       id: editing?.id,
       ...draft,
-      site: session.selected_side === "T" ? (form.site as Strat["site"]) : null,
+      site,
       rounds: form.rounds
         .split(",")
         .map((r) => r.trim())
@@ -334,11 +349,16 @@ export function BookScreen() {
             onChange={(e) => setForm({ ...form, tasks: e.target.value })}
           />
           {session.selected_side === "T" && (
-            <select className="input" value={form.site} onChange={(e) => setForm({ ...form, site: e.target.value })}>
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="mid">Mid</option>
-              <option value="default">Default</option>
+            <select
+              className="input"
+              value={formLanes.some((l) => l.id === form.site) ? form.site : formLanes[0]?.id || "default"}
+              onChange={(e) => setForm({ ...form, site: e.target.value })}
+            >
+              {formLanes.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.label}
+                </option>
+              ))}
             </select>
           )}
           <input className="input" placeholder="Rounds (full,force,eco — blank = all)" value={form.rounds} onChange={(e) => setForm({ ...form, rounds: e.target.value })} />

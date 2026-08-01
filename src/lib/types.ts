@@ -1,7 +1,8 @@
 export type PackTier = "pug" | "five_stack" | "pro";
 export type PackVisibility = "system" | "private" | "team";
 export type Side = "T" | "CT";
-export type Site = "a" | "b" | "mid" | "default" | null;
+/** T-side approach lane (map-specific — see `lanesForMap`). CT uses null. */
+export type Site = "a" | "b" | "mid" | "default" | "outside" | "ramp" | null;
 export type RoundId = "full" | "force" | "eco" | "pistol" | "anti";
 
 export type StratLink = {

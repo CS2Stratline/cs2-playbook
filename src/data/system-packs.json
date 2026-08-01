@@ -13,7 +13,7 @@
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "slug": "essentials-pug",
       "title": "Fundamentals",
-      "description": "Defaults, rushes, simple executes \u2014 easy to call in freeze time.",
+      "description": "Defaults, rushes, simple executes — easy to call in freeze time.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,
@@ -35,7 +35,7 @@
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "slug": "pro-structure",
       "title": "Advanced",
-      "description": "Fakes, timings, denser utility \u2014 premium / locked for now.",
+      "description": "Fakes, timings, denser utility — premium / locked for now.",
       "tier": "pro",
       "visibility": "system",
       "owner_user_id": null,
@@ -50,9 +50,9 @@
       "side": "T",
       "site": "a",
       "callout": "Palace pop",
-      "description": "Fast palace exit with flash \u2014 works on eco/force for plant money.",
+      "description": "Fast palace exit with flash — works on eco/force for plant money.",
       "tasks": [
-        "1\u20132 in palace, rest default mid/ramp",
+        "1–2 in palace, rest default mid/ramp",
         "Flash balcony, pop out",
         "Plant default or fall back"
       ],
@@ -88,7 +88,7 @@
       "side": "T",
       "site": "b",
       "callout": "Rush apps",
-      "description": "Straight apps, no smokes \u2014 pistol/eco when CTs are passive.",
+      "description": "Straight apps, no smokes — pistol/eco when CTs are passive.",
       "tasks": [
         "Five apps immediately",
         "Flash site from back alley",
@@ -219,7 +219,7 @@
       "side": "T",
       "site": "b",
       "callout": "Rush B",
-      "description": "Straight tunnels \u2014 classic pistol/eco.",
+      "description": "Straight tunnels — classic pistol/eco.",
       "tasks": [
         "Five upper tunnels",
         "Flash B, spray doors",
@@ -442,7 +442,7 @@
       "callout": "Ramp stack",
       "description": "Strong ramp/lower, punish ramp rushes.",
       "tasks": [
-        "2\u20133 ramp/lower, 1 outside, 1 heaven",
+        "2–3 ramp/lower, 1 outside, 1 heaven",
         "HE/molly trophy",
         "Don't overcommit outside"
       ],
@@ -467,7 +467,7 @@
       "callout": "A hold",
       "description": "Strong A/donut.",
       "tasks": [
-        "2\u20133 A, 1 mid, 1 B",
+        "2–3 A, 1 mid, 1 B",
         "Deny donut early",
         "Rotate on ruins sound"
       ],
@@ -517,7 +517,7 @@
       "callout": "A hold",
       "description": "Strong heaven/water.",
       "tasks": [
-        "2\u20133 A, 1 mid, 1 B",
+        "2–3 A, 1 mid, 1 B",
         "Deny water early",
         "Rotate on ruins"
       ],
@@ -567,7 +567,7 @@
       "callout": "A hold",
       "description": "Strong A (forklift/checker).",
       "tasks": [
-        "2\u20133 A, 1 mid, 1 B",
+        "2–3 A, 1 mid, 1 B",
         "Deny squeaky",
         "Rotate B on heaven sound"
       ],
@@ -926,7 +926,7 @@
       "tasks": [
         "Take window / top mid",
         "Smoke market door or window",
-        "Flash short, go cat \u2192 B",
+        "Flash short, go cat → B",
         "Trade bench and van"
       ],
       "rounds": [
@@ -1007,7 +1007,7 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid to B",
-      "description": "Window \u2192 short \u2192 B after mid control.",
+      "description": "Window → short → B after mid control.",
       "tasks": [
         "Smoke window, win mid",
         "Catwalk smoke if needed",
@@ -1051,7 +1051,7 @@
       "tasks": [
         "Smoke window",
         "Smoke or clear connector",
-        "2\u20133 out con, 2 ramp support"
+        "2–3 out con, 2 ramp support"
       ],
       "rounds": [
         "full"
@@ -1090,7 +1090,7 @@
       "description": "Spread map control, play for picks before execute.",
       "tasks": [
         "2 apps / short info",
-        "1\u20132 mid, 1\u20132 ramp/palace",
+        "1–2 mid, 1–2 ramp/palace",
         "Play 20s, call execute after space"
       ],
       "rounds": [],
@@ -1121,7 +1121,7 @@
       "side": "CT",
       "site": null,
       "callout": "A stack",
-      "description": "Three A, one mid, one B \u2014 punish A takes.",
+      "description": "Three A, one mid, one B — punish A takes.",
       "tasks": [
         "3 A (ramp/palace/ticket)",
         "1 window or con",
@@ -1361,7 +1361,7 @@
       "description": "Long info + mid + B pressure, call after space.",
       "tasks": [
         "2 long, 2 mid/short, 1 B",
-        "Play 15\u201325s",
+        "Play 15–25s",
         "Hit the weak site"
       ],
       "rounds": [],
@@ -1433,7 +1433,7 @@
       "tasks": [
         "Control apps",
         "Smoke/molly balcony fights",
-        "Entry balcony \u2192 site",
+        "Entry balcony → site",
         "Clear pit and library"
       ],
       "rounds": [
@@ -1511,7 +1511,7 @@
       "side": "T",
       "site": "a",
       "callout": "Short A",
-      "description": "Mid \u2192 short with moto smoke.",
+      "description": "Mid → short with moto smoke.",
       "tasks": [
         "Take mid/alt-mid",
         "Smoke moto (AWP library)",
@@ -1589,7 +1589,7 @@
       "callout": "Default",
       "description": "Banana pressure + mid/apps info.",
       "tasks": [
-        "2\u20133 banana, 1\u20132 mid/apps",
+        "2–3 banana, 1–2 mid/apps",
         "Play for space",
         "Execute B or A"
       ],
@@ -1610,9 +1610,9 @@
       "id": "98ea6198-d34a-49c6-aa30-353bcb60e2fb",
       "map": "Nuke",
       "side": "T",
-      "site": "a",
+      "site": "outside",
       "callout": "Outside A",
-      "description": "Outside smokes \u2192 secret/ramp or heaven pressure.",
+      "description": "Outside smokes → secret/ramp or heaven pressure.",
       "tasks": [
         "Smoke outside main / garage",
         "Smoke secret close/far",
@@ -1694,7 +1694,7 @@
       "id": "731f2589-6b3c-4cd2-85e5-744ce3fc3fda",
       "map": "Nuke",
       "side": "T",
-      "site": "a",
+      "site": "ramp",
       "callout": "Ramp A",
       "description": "Trophy/ramp pressure into lower A.",
       "tasks": [
@@ -1732,7 +1732,7 @@
       "side": "T",
       "site": "b",
       "callout": "Secret B",
-      "description": "Outside \u2192 secret \u2192 B.",
+      "description": "Outside → secret → B.",
       "tasks": [
         "Outside smokes",
         "Secret entry",
@@ -1806,7 +1806,7 @@
       "id": "4279126a-e3a3-4f4d-96b1-c1e3149870bd",
       "map": "Nuke",
       "side": "T",
-      "site": "default",
+      "site": "outside",
       "callout": "Outside default",
       "description": "Outside control, play picks before hit.",
       "tasks": [
@@ -1890,7 +1890,7 @@
       "tasks": [
         "Smoke CT alley / back alley",
         "Smoke B alley",
-        "Entry ruins \u2192 B"
+        "Entry ruins → B"
       ],
       "rounds": [
         "full"
@@ -1995,7 +1995,7 @@
       "tasks": [
         "Smoke heaven",
         "Smoke temple / connector",
-        "Entry water \u2192 A"
+        "Entry water → A"
       ],
       "rounds": [
         "full"
@@ -2080,7 +2080,7 @@
       "side": "T",
       "site": "b",
       "callout": "Street B",
-      "description": "Mid street \u2192 B door.",
+      "description": "Mid street → B door.",
       "tasks": [
         "Control street/mid",
         "Smoke mid B door",
@@ -2428,7 +2428,7 @@
       "callout": "Donut stack",
       "description": "Deny donut, punish A hits.",
       "tasks": [
-        "2\u20133 A/donut",
+        "2–3 A/donut",
         "1 mid",
         "1 B",
         "Util donut early"
@@ -2486,7 +2486,7 @@
       "tasks": [
         "Win underpass / short",
         "Smoke jungle from under or tetris",
-        "2\u20133 out con, 2 ramp",
+        "2–3 out con, 2 ramp",
         "Touch site together"
       ],
       "rounds": [
@@ -2525,9 +2525,9 @@
       "callout": "A fake to B",
       "description": "Show A smokes, rotate fast to B apps while CTs fall A.",
       "tasks": [
-        "Throw 1\u20132 A smokes (jungle/stairs)",
-        "Make A noise/util for 3\u20134s",
-        "Full team apps \u2192 B",
+        "Throw 1–2 A smokes (jungle/stairs)",
+        "Make A noise/util for 3–4s",
+        "Full team apps → B",
         "Smoke market window + door on entry"
       ],
       "rounds": [
@@ -2653,7 +2653,7 @@
       "callout": "Split A",
       "description": "Long + short at the same time.",
       "tasks": [
-        "2\u20133 long, 2 short",
+        "2–3 long, 2 short",
         "Smoke CT cross",
         "Touch site same tick"
       ],
@@ -2942,7 +2942,7 @@
       "callout": "Connector stack",
       "description": "Stack con/jungle to punish A hits.",
       "tasks": [
-        "2\u20133 A/con",
+        "2–3 A/con",
         "1 mid",
         "1 B soft",
         "Util ticket early"
@@ -3027,7 +3027,7 @@
       "side": "T",
       "site": "a",
       "callout": "Apps rush",
-      "description": "Fast apartments \u2014 pistol/eco when A is soft.",
+      "description": "Fast apartments — pistol/eco when A is soft.",
       "tasks": [
         "Five apps immediately",
         "Flash balcony",
@@ -3058,7 +3058,7 @@
       "description": "Take second mid for info and splits.",
       "tasks": [
         "Smoke Arch/library lane",
-        "2\u20133 mid",
+        "2–3 mid",
         "Support banana soft",
         "Decide A or B"
       ],
@@ -3085,10 +3085,10 @@
       "side": "T",
       "site": "b",
       "callout": "Banana pop",
-      "description": "Short banana take with flash \u2014 plant money rounds.",
+      "description": "Short banana take with flash — plant money rounds.",
       "tasks": [
         "Flash deep banana",
-        "2\u20133 entry",
+        "2–3 entry",
         "Rest mid/apps fake",
         "Plant coffin or log"
       ],
@@ -3144,7 +3144,7 @@
       "callout": "Pit hold",
       "description": "Anchor pit/library, soft banana.",
       "tasks": [
-        "1\u20132 pit/library",
+        "1–2 pit/library",
         "1 mid",
         "2 banana soft",
         "Util on banana push"
@@ -3172,7 +3172,7 @@
       "side": "CT",
       "site": null,
       "callout": "Coffin stack",
-      "description": "Stack B on eco \u2014 punish banana rushes.",
+      "description": "Stack B on eco — punish banana rushes.",
       "tasks": [
         "3 B coffin/new box",
         "1 mid",
