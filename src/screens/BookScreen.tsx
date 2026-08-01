@@ -150,7 +150,6 @@ export function BookScreen() {
       selected_side: s.side,
       site_filter: s.site || "all",
       current_pick_id: s.id,
-      logged: null,
       timer_ends_at: null,
       called_at: Date.now(),
       tab: "match",
