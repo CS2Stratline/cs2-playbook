@@ -70,7 +70,8 @@
         "Smoke stairs",
         "Flash in, entry ramp + palace",
         "Hold con after plant"
-      ]
+      ],
+      "level": 6
     },
     {
       "rounds": [
@@ -117,7 +118,8 @@
         "Smoke stairs from spawn",
         "Smoke ticket from ramp (or spawn variant)",
         "Push ramp together when smokes land"
-      ]
+      ],
+      "level": 5
     },
     {
       "rounds": [
@@ -201,7 +203,8 @@
         "Molly/HE tetris or firebox",
         "Flash ramp entry, trade hard",
         "One holds top mid vs rotate"
-      ]
+      ],
+      "level": 6
     },
     {
       "rounds": [
@@ -339,7 +342,8 @@
         "Molly van / bench",
         "Flash site, entry apps",
         "Plant for apps or van"
-      ]
+      ],
+      "level": 6
     },
     {
       "rounds": [
@@ -438,7 +442,8 @@
         "Smoke market door or window",
         "Flash short, go cat → B",
         "Trade bench and van"
-      ]
+      ],
+      "level": 5
     },
     {
       "rounds": [
@@ -510,7 +515,8 @@
         "Smoke mid window from spawn",
         "Flash top mid, take control",
         "Decide A-con or B-short"
-      ]
+      ],
+      "level": 4
     },
     {
       "rounds": [
@@ -590,39 +596,6 @@
         "Smoke window",
         "Smoke or clear connector",
         "2–3 out con, 2 ramp support"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Røyk: Mid window",
-          "labelEn": "Smoke: Mid window",
-          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
-        },
-        {
-          "label": "Røyk: Catwalk",
-          "labelEn": "Smoke: Catwalk",
-          "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
-        }
-      ],
-      "map": "Mirage",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Spredt map-kontroll, spill picks før execute.",
-      "descriptionEn": "Spread map control, play for picks before execute.",
-      "tasks": [
-        "2 apps / short info",
-        "1–2 mid, 1–2 ramp/palace",
-        "Spill 20s, kall execute etter space"
-      ],
-      "tasksEn": [
-        "2 apps / short info",
-        "1–2 mid, 1–2 ramp/palace",
-        "Play 20s, call execute after space"
       ]
     },
     {
@@ -743,7 +716,8 @@
         "Stack 3+ before retake",
         "Utility stairs/tetris",
         "Swing together from con + CT"
-      ]
+      ],
+      "level": 7
     },
     {
       "rounds": [
@@ -1068,34 +1042,6 @@
     {
       "rounds": [],
       "status": "ready",
-      "links": [
-        {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
-          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
-        }
-      ],
-      "map": "Dust II",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Long info + mid + B pressure, kall etter space.",
-      "descriptionEn": "Long info + mid + B pressure, call after space.",
-      "tasks": [
-        "2 long, 2 mid/short, 1 B",
-        "Spill 15–25s",
-        "Hit den svake siten"
-      ],
-      "tasksEn": [
-        "2 long, 2 mid/short, 1 B",
-        "Play 15–25s",
-        "Hit the weak site"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
       "links": [],
       "map": "Dust II",
       "side": "CT",
@@ -1400,28 +1346,6 @@
       "status": "ready",
       "links": [],
       "map": "Inferno",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Banana pressure + mid/apps info.",
-      "descriptionEn": "Banana pressure + mid/apps info.",
-      "tasks": [
-        "2–3 banana, 1–2 mid/apps",
-        "Spill for space",
-        "Execute B eller A"
-      ],
-      "tasksEn": [
-        "2–3 banana, 1–2 mid/apps",
-        "Play for space",
-        "Execute B or A"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "map": "Inferno",
       "side": "CT",
       "site": null,
       "callout": "Banana hold",
@@ -1685,39 +1609,6 @@
     {
       "rounds": [],
       "status": "ready",
-      "links": [
-        {
-          "label": "Røyk: Outside main",
-          "labelEn": "Smoke: Outside main",
-          "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"
-        },
-        {
-          "label": "Røyk: Garage",
-          "labelEn": "Smoke: Garage",
-          "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"
-        }
-      ],
-      "map": "Nuke",
-      "side": "T",
-      "site": "default",
-      "callout": "Outside default",
-      "calloutEn": "Outside default",
-      "description": "Outside control, spill picks før hit.",
-      "descriptionEn": "Outside control, play picks before hit.",
-      "tasks": [
-        "Smokes outside early",
-        "Info ramp + secret",
-        "Kall A eller B"
-      ],
-      "tasksEn": [
-        "Smokes outside early",
-        "Info ramp + secret",
-        "Call A or B"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
       "links": [],
       "map": "Nuke",
       "side": "CT",
@@ -1922,28 +1813,6 @@
         "Smoke top mid",
         "Take elbow space",
         "Hit A donut or B"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "map": "Ancient",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Spread ruins/mid/A, kall etter info.",
-      "descriptionEn": "Spread ruins/mid/A, call after info.",
-      "tasks": [
-        "Map control 20s",
-        "Ikke force tidlig hit",
-        "Execute med smokes"
-      ],
-      "tasksEn": [
-        "Map control 20s",
-        "Don't force early hit",
-        "Execute with smokes"
       ]
     },
     {
@@ -2207,28 +2076,6 @@
       "status": "ready",
       "links": [],
       "map": "Anubis",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Canal + ruins + mid info.",
-      "descriptionEn": "Canal + ruins + mid info.",
-      "tasks": [
-        "Spread 20s",
-        "Kall etter space",
-        "Ikke dry peek heaven"
-      ],
-      "tasksEn": [
-        "Spread 20s",
-        "Call after space",
-        "Don't dry peek heaven"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "map": "Anubis",
       "side": "CT",
       "site": null,
       "callout": "A hold",
@@ -2471,28 +2318,6 @@
         "Smoke left/right mid",
         "Smoke connector",
         "Split A or B"
-      ]
-    },
-    {
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "map": "Cache",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "calloutEn": "Default",
-      "description": "Garage/mid info før hit.",
-      "descriptionEn": "Garage/mid info before hit.",
-      "tasks": [
-        "Spread mid + A/B",
-        "Kall etter pick",
-        "Hold utility til execute"
-      ],
-      "tasksEn": [
-        "Spread mid + A/B",
-        "Call after pick",
-        "Save util for execute"
       ]
     },
     {

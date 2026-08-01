@@ -67,7 +67,7 @@ const packs = {
     id: uid(),
     slug: "essentials-pug",
     title: "Fundamentals",
-    description: "Defaults, rushes, simple executes — easy to call in freeze time.",
+    description: "Rushes, holds, and simple executes — easy to call in freeze time.",
     tier: "pug",
     visibility: "system",
     owner_user_id: null,

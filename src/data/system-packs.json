@@ -13,7 +13,7 @@
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "slug": "essentials-pug",
       "title": "Fundamentals",
-      "description": "Defaults, rushes, simple executes — easy to call in freeze time.",
+      "description": "Rushes, holds, and simple executes — easy to call in freeze time.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,
@@ -29,7 +29,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 50
+      "strat_count": 43
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
@@ -774,7 +774,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 7
+      "level": 6
     },
     {
       "id": "efefd862-6ee0-47a4-b94f-ec07671d8e4b",
@@ -819,7 +819,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 8
+      "level": 5
     },
     {
       "id": "706f0c82-c4b6-4282-a3ff-e58f2686e594",
@@ -864,7 +864,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 7
+      "level": 6
     },
     {
       "id": "b8af459c-ed43-4039-a723-0b9c5f26c6e4",
@@ -914,7 +914,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 7
+      "level": 6
     },
     {
       "id": "25ffe5a6-8ff9-41da-b6d3-e0500cfe0a4f",
@@ -959,7 +959,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 6
+      "level": 5
     },
     {
       "id": "62346834-41a9-4a16-b99d-554762fe2c87",
@@ -999,7 +999,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 5
+      "level": 4
     },
     {
       "id": "0cf589f1-2f05-4280-8527-cc08cc1a57e2",
@@ -1080,40 +1080,6 @@
       "team_id": null,
       "source": "system-seed",
       "level": 6
-    },
-    {
-      "id": "e7d1eb3a-5832-4170-a505-67bc7464a5e9",
-      "map": "Mirage",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Spread map control, play for picks before execute.",
-      "tasks": [
-        "2 apps / short info",
-        "1–2 mid, 1–2 ramp/palace",
-        "Play 20s, call execute after space"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Mid window",
-          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
-        },
-        {
-          "label": "Smoke: Catwalk",
-          "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
-        }
-      ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
     },
     {
       "id": "aedf8eb5-fa9c-4a02-a7bd-1020276fe740",
@@ -1353,36 +1319,6 @@
       "level": 5
     },
     {
-      "id": "af1f1248-51b9-403c-ad3f-6378e6fdb19c",
-      "map": "Dust II",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Long info + mid + B pressure, call after space.",
-      "tasks": [
-        "2 long, 2 mid/short, 1 B",
-        "Play 15–25s",
-        "Hit the weak site"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Xbox",
-          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
-        }
-      ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
       "id": "398bbde5-24cf-41cb-968f-c7f82b1d73d0",
       "map": "Inferno",
       "side": "T",
@@ -1571,31 +1507,6 @@
           "url": "https://csnades.gg/inferno/smokes/arch-from-bottom-mid"
         }
       ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
-      "id": "10af5e5d-95d4-4849-a5f7-b6e1398190fa",
-      "map": "Inferno",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Banana pressure + mid/apps info.",
-      "tasks": [
-        "2–3 banana, 1–2 mid/apps",
-        "Play for space",
-        "Execute B or A"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [],
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1803,40 +1714,6 @@
       "level": 6
     },
     {
-      "id": "4279126a-e3a3-4f4d-96b1-c1e3149870bd",
-      "map": "Nuke",
-      "side": "T",
-      "site": "outside",
-      "callout": "Outside default",
-      "description": "Outside control, play picks before hit.",
-      "tasks": [
-        "Smokes outside early",
-        "Info ramp + secret",
-        "Call A or B"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Outside main",
-          "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"
-        },
-        {
-          "label": "Smoke: Garage",
-          "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"
-        }
-      ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
       "id": "ac0c3a5d-e8c5-4040-8655-b569f5a7016c",
       "map": "Ancient",
       "side": "T",
@@ -1950,31 +1827,6 @@
           "url": "https://csnades.gg/ancient/smokes/cat-from-t-spawn"
         }
       ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
-      "id": "718cec16-57c5-4dd7-a820-0d8a6f951148",
-      "map": "Ancient",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Spread ruins/mid/A, call after info.",
-      "tasks": [
-        "Map control 20s",
-        "Don't force early hit",
-        "Execute with smokes"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [],
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2155,31 +2007,6 @@
       "level": 5
     },
     {
-      "id": "fb46d9b0-1c41-45b2-a0c3-4ef6f7eba1ac",
-      "map": "Anubis",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Canal + ruins + mid info.",
-      "tasks": [
-        "Spread 20s",
-        "Call after space",
-        "Don't dry peek heaven"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
       "id": "c49a16ed-7f88-44d8-af9e-9b9886178ff3",
       "map": "Cache",
       "side": "T",
@@ -2333,31 +2160,6 @@
           "url": "https://csnades.gg/cache/smokes/ct-from-sun-room"
         }
       ],
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed",
-      "level": 5
-    },
-    {
-      "id": "915d9d50-279e-4ac1-8d42-277b09f3f3fb",
-      "map": "Cache",
-      "side": "T",
-      "site": "default",
-      "callout": "Default",
-      "description": "Garage/mid info before hit.",
-      "tasks": [
-        "Spread mid + A/B",
-        "Call after pick",
-        "Save util for execute"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [],
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2643,7 +2445,7 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed",
-      "level": 8
+      "level": 7
     },
     {
       "id": "bbdedc3d-3058-4dd4-91fd-3247d12d52e0",
@@ -3004,7 +2806,7 @@
         "Util bench/site",
         "Swing together"
       ],
-      "level": 8
+      "level": 6
     },
     {
       "id": "71eca630-bfc5-437c-86b2-62813c0de5c1",
