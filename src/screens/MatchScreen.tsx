@@ -10,14 +10,7 @@ import { StratTasks } from "../components/StratTasks";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
-
-const SITES = [
-  { id: "all", label: "All" },
-  { id: "a", label: "A" },
-  { id: "b", label: "B" },
-  { id: "mid", label: "Mid" },
-  { id: "default", label: "Def" },
-];
+import { isValidLane, matchSiteFilters } from "../lib/mapLanes";
 const ROUNDS = [
   { id: "all", label: "All" },
   { id: "full", label: "Full" },
@@ -48,6 +41,15 @@ export function MatchScreen() {
   const isT = side === "T";
   const accent = side === "CT" ? "ct" : "";
   const needsMap = isAllMaps(session.selected_map);
+  const siteFilters = useMemo(() => matchSiteFilters(session.selected_map), [session.selected_map]);
+
+  // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
+  useEffect(() => {
+    if (!isValidLane(session.selected_map, session.site_filter)) {
+      void setSession({ site_filter: "all" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session.selected_map]);
 
   // Resolve from full library — Use in Match / live share can set a pick outside the enabled pool.
   const currentPick = useMemo(
@@ -143,7 +145,7 @@ export function MatchScreen() {
       <div className="panel" style={{ paddingTop: 10, paddingBottom: 10 }}>
         {isT && (
           <div className="row" style={{ marginBottom: 8 }}>
-            {SITES.map((s) => (
+            {siteFilters.map((s) => (
               <button
                 key={s.id}
                 type="button"

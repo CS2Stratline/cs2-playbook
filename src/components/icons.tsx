@@ -210,9 +210,13 @@ export function SiteIcon({ site, size = 12 }: { site: string; size?: number }) {
         ? "site_b"
         : site === "mid"
           ? "site_mid"
-          : site === "all"
-            ? "all"
-            : null;
+          : site === "outside"
+            ? "outside"
+            : site === "ramp"
+              ? "ramp"
+              : site === "all"
+                ? "all"
+                : null;
   if (key) return <CsIcon name={key} size={size} />;
   // Default / other — letter badge
   const label = site === "default" ? "D" : String(site).toUpperCase().slice(0, 1) || "?";

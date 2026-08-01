@@ -25,7 +25,9 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 }
 ```
 
-- `site`: `a` | `b` | `mid` | `default` for T; `null` for CT
+- `site` (T-side approach lane; CT always `null`):
+  - Most maps: `a` | `b` | `mid` | `default`
+  - Nuke: `a` | `b` | `outside` | `ramp` | `default` (no Mid — Outside is the control layer)
 - `rounds`: empty array = all round types; otherwise subset of `full` | `force` | `eco` | `pistol` | `anti`
 - `status`: `ready` (match pool) or `practice`
 - `links`: optional CSNADES URLs (see [LINEUPS.md](./LINEUPS.md)); leave `[]` to let the app suggest
