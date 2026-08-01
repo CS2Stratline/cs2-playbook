@@ -15,6 +15,8 @@ English-only UI for v1. Sibling lightweight app (no login): [cs2-callout-app](ht
 
 Day-1 Match is ready for guests and signed-in users (Fundamentals auto-seed on first login). Stack is optional depth; Advanced is hidden until premium.
 
+Strats carry a FACEIT-style **execution level** (1–10): how hard the call is to run in freeze time (not player Elo). UI theme uses FACEIT orange `#FF5500` on a dark shell.
+
 Pinned lineup links live on each strat; dashed chips are **suggested** from the CSNADES catalog.
 
 ## Quick start (local demo)

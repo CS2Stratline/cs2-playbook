@@ -11,6 +11,7 @@ import {
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
+import { LevelLegend } from "../components/LevelBadge";
 import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
@@ -122,6 +123,14 @@ export function SettingsScreen() {
           {liveMsg && <p className="banner">{liveMsg}</p>}
         </div>
       )}
+
+      <div className="panel">
+        <p className="eyebrow">Skill colors</p>
+        <p className="muted" style={{ marginBottom: 10 }}>
+          Each strat has a FACEIT-style execution level (1–10): how hard the call is to run in freeze time — not your personal Elo.
+        </p>
+        <LevelLegend />
+      </div>
 
       <div className="panel">
         <p className="eyebrow">Library</p>

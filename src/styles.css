@@ -1,17 +1,22 @@
 :root {
-  --bg: #0c0f12;
-  --panel: #141a20;
-  --panel-hi: #1b222a;
-  --line: #2a333d;
-  --chalk: #ebe6da;
-  --dim: #8b949e;
-  --faint: #5a6570;
-  --accent-t: #c48a3c;
-  --accent-t-soft: rgba(196, 138, 60, 0.14);
-  --accent-ct: #6d97b5;
-  --accent-ct-soft: rgba(109, 151, 181, 0.14);
-  --good: #7e9e5e;
-  --warn: #c2604f;
+  /* FACEIT-inspired dark shell + brand orange (#FF5500) */
+  --bg: #0b0e12;
+  --panel: #151a1f;
+  --panel-hi: #1c2229;
+  --line: #2a313a;
+  --chalk: #f2f4f7;
+  --dim: #9aa3ad;
+  --faint: #6b7380;
+  --brand: #ff5500;
+  --brand-soft: rgba(255, 85, 0, 0.14);
+  --brand-ink: #1a0a00;
+  /* Side accents — T rides brand orange; CT stays cool blue for glanceability */
+  --accent-t: #ff5500;
+  --accent-t-soft: rgba(255, 85, 0, 0.14);
+  --accent-ct: #4d9fd6;
+  --accent-ct-soft: rgba(77, 159, 214, 0.16);
+  --good: #2ecb3a;
+  --warn: #ff3c1a;
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -35,8 +40,8 @@ body,
 
 body {
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(109, 151, 181, 0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(196, 138, 60, 0.08), transparent);
+    radial-gradient(ellipse 70% 45% at 50% -18%, rgba(255, 85, 0, 0.12), transparent),
+    radial-gradient(ellipse 50% 35% at 100% 100%, rgba(77, 159, 214, 0.08), transparent);
 }
 
 a {
@@ -63,8 +68,8 @@ select {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(10px);
-  background: rgba(12, 15, 18, 0.88);
+  backdrop-filter: blur(12px);
+  background: rgba(11, 14, 18, 0.92);
   border-bottom: 1px solid var(--line);
   margin: 0 -14px;
   padding: 12px 14px 10px;
@@ -88,6 +93,25 @@ select {
   margin-bottom: 2px;
 }
 
+.brand .brand-mark {
+  color: var(--chalk);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline;
+}
+
+.brand .brand-mark::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: 0.28em;
+  background: var(--brand);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  vertical-align: 0.05em;
+}
+
 .nav {
   position: fixed;
   bottom: 0;
@@ -98,7 +122,7 @@ select {
   justify-content: center;
   gap: 4px;
   padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(12, 15, 18, 0.94);
+  background: rgba(11, 14, 18, 0.96);
   border-top: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
@@ -136,8 +160,8 @@ select {
 }
 
 .nav a.active {
-  background: var(--panel-hi);
-  color: var(--chalk);
+  background: var(--brand-soft);
+  color: var(--brand);
 }
 
 .panel {
@@ -225,13 +249,18 @@ select {
 
 .btn-primary {
   width: 100%;
-  background: var(--accent-t);
-  color: #1a1208;
+  background: var(--brand);
+  color: #fff;
 }
 
 .btn-primary.ct {
   background: var(--accent-ct);
-  color: #0b1520;
+  color: #061018;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .btn-ghost {
@@ -337,9 +366,33 @@ select {
   color: var(--dim);
 }
 
-.badge.pug { color: #9ec27a; border-color: #3d5230; }
-.badge.five_stack { color: var(--accent-ct); border-color: #2f4a5c; }
-.badge.pro { color: var(--accent-t); border-color: #5c4522; }
+.badge.pug { color: #2ecb3a; border-color: rgba(46, 203, 58, 0.35); }
+.badge.five_stack { color: #ff8a00; border-color: rgba(255, 138, 0, 0.4); }
+.badge.pro { color: #ff1e1e; border-color: rgba(255, 30, 30, 0.4); }
+
+/* FACEIT skill level badges (SVG icons) */
+.level-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.level-badge-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.level-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
 
 .empty {
   text-align: center;
@@ -384,7 +437,7 @@ select {
   font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--accent-t);
-  border: 1px solid rgba(196, 138, 60, 0.35);
+  border: 1px solid rgba(255, 85, 0, 0.4);
   background: var(--accent-t-soft);
   border-radius: 999px;
   padding: 3px 9px;
@@ -394,7 +447,7 @@ select {
 
 .side-tag.ct {
   color: var(--accent-ct);
-  border-color: rgba(109, 151, 181, 0.4);
+  border-color: rgba(77, 159, 214, 0.45);
   background: var(--accent-ct-soft);
 }
 

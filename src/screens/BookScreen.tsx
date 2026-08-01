@@ -5,9 +5,11 @@ import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
-import { MapIcon, Pack, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { MapIcon, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { LevelBadge } from "../components/LevelBadge";
 import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
+import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { suggestLineupLinks } from "../lib/lineupMatch";
 import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
 
@@ -213,7 +215,10 @@ export function BookScreen() {
           {systemPacks.map(({ tier, items }) =>
             items.length ? (
               <div key={tier} style={{ marginTop: 8 }}>
-                <p className="eyebrow">{TIER_LABEL[tier]}</p>
+                <p className="eyebrow eyebrow-site">
+                  <LevelBadge level={tierToFaceitLevel(tier)} size={16} />
+                  {TIER_LABEL[tier]}
+                </p>
                 {items.map((p) => {
                   const on = isPackInMatchPool(p.id, subscriptions, packs);
                   return (
@@ -227,11 +232,11 @@ export function BookScreen() {
                         borderBottom: "1px solid var(--line)",
                       }}
                     >
-                      <Pack size={16} />
+                      <LevelBadge level={tierToFaceitLevel(p.tier)} size={22} title={`${TIER_LABEL[p.tier]} · FACEIT-style Lv ${tierToFaceitLevel(p.tier)}`} />
                       <div style={{ flex: 1 }}>
                         <strong style={{ fontSize: 13 }}>{p.title}</strong>
                         <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                          {p.strat_count ?? "—"} strats
+                          {p.strat_count ?? "—"} strats · {TIER_LABEL[p.tier]}
                         </p>
                       </div>
                       <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
@@ -340,12 +345,20 @@ export function BookScreen() {
                         </button>
                       </span>
                     </div>
-                    <div className="meta">
-                      {pack ? `${TIER_LABEL[pack.tier as PackTier]}` : ""}
-                      {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
-                      {locked ? " · Locked" : ""}
-                      {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
-                      {!open ? " · Tap for details" : ""}
+                    <div className="meta" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <LevelBadge
+                        level={clampFaceitLevel(s.level || (pack ? tierToFaceitLevel(pack.tier as PackTier) : 5))}
+                        size={18}
+                        title={`Execution difficulty · Level ${s.level || "?"}`}
+                      />
+                      <span>
+                        Lv {s.level || "?"}
+                        {pack ? ` · ${TIER_LABEL[pack.tier as PackTier]}` : ""}
+                        {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
+                        {locked ? " · Locked" : ""}
+                        {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
+                        {!open ? " · Tap for details" : ""}
+                      </span>
                     </div>
                   </button>
                   {open && (
