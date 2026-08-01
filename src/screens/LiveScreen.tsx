@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchLiveCall, type LiveCallView } from "../lib/api";
-import { MapIcon, SiteIcon } from "../components/icons";
+import { SiteIcon } from "../components/icons";
 import { FreezeTimer } from "../components/FreezeTimer";
-import { LineupChip } from "../components/LineupChip";
+import { MapLogo } from "../components/MapLogo";
+import { StratTasks } from "../components/StratTasks";
 
 export function LiveScreen() {
   const { token = "" } = useParams();
@@ -74,7 +75,7 @@ export function LiveScreen() {
         <div className="panel">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
             <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
-              <MapIcon map={data.selected_map} size={12} />
+              <MapLogo map={data.selected_map} size={16} />
               {data.site ? (
                 <>
                   {data.selected_map}
@@ -89,22 +90,7 @@ export function LiveScreen() {
           </div>
           <div className="callout-hero">{data.callout}</div>
           {data.description && <p className="muted" style={{ marginBottom: 10 }}>{data.description}</p>}
-          {data.tasks.length > 0 && (
-            <div className={`task-rail ${accent}`} style={{ marginBottom: 12 }}>
-              {data.tasks.map((t, i) => (
-                <p key={i} className="task-line">
-                  {t}
-                </p>
-              ))}
-            </div>
-          )}
-          {data.links.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {data.links.map((l, i) => (
-                <LineupChip key={i} label={l.label} url={l.url} />
-              ))}
-            </div>
-          )}
+          <StratTasks tasks={data.tasks} links={data.links} accent={accent} />
         </div>
       )}
 
