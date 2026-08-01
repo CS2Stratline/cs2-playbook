@@ -265,15 +265,8 @@ export function MatchScreen() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
               <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
                 <MapLogo map={session.selected_map} size={16} />
-                {currentPick.site ? (
-                  <>
-                    {session.selected_map}
-                    <SiteIcon site={String(currentPick.site)} size={12} />
-                    {String(currentPick.site).toUpperCase()}
-                  </>
-                ) : (
-                  session.selected_map
-                )}
+                {session.selected_map}
+                {currentPick.site ? <SiteIcon site={String(currentPick.site)} size={12} /> : null}
               </span>
               <div className="row">
                 <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
