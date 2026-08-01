@@ -41,13 +41,25 @@ npm run seed:supabase
 6. SQL editor: run [`003_live_share.sql`](supabase/migrations/003_live_share.sql) then [`004_fix_live_share_pgcrypto.sql`](supabase/migrations/004_fix_live_share_pgcrypto.sql) for private live-call links (Settings → Live call link when signed in).
 7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.
 
-8. **In-app shared edits (admin):** run [`007_admin_strat_edits.sql`](supabase/migrations/007_admin_strat_edits.sql), sign in, then grant yourself admin:
+8. **Admins / super admin (shared strat edits):**
+
+   1. Run [`007_admin_strat_edits.sql`](supabase/migrations/007_admin_strat_edits.sql) then [`008_super_admin.sql`](supabase/migrations/008_super_admin.sql).
+   2. Sign in once with your Discord/email account.
+   3. Bootstrap **yourself** as super admin (one-time SQL):
 
 ```sql
-update profiles set is_admin = true where id = '<your-auth-user-uuid>';
+update profiles p
+set is_super_admin = true, is_admin = true
+from auth.users u
+where p.id = u.id and lower(u.email) = lower('you@example.com');
 ```
 
-Admins see **Edit** on Match / Playbook for Fundamentals & Stack. Saves update the shared catalog (and personal pool copies). Without Supabase, local demo can edit shared strats on that device only.
+   4. In the app: **Settings → Admins** — add other people by email (they must sign in once first).  
+      - **Super admin:** edit shared strats + manage admins.  
+      - **Admin:** edit shared strats only.  
+      - Super-admin flag is SQL-only on purpose (cannot be granted from the app).
+
+Without Supabase, local demo can edit shared strats on that device only.
 
 ## Vercel (optional)
 
