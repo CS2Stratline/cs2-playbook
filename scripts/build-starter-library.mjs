@@ -27,6 +27,39 @@ function S(partial) {
 
 const strats = [
   // ─── MIRAGE T ───────────────────────────────────────────────
+  // Inspired by cs2strat.com pro themes (IEM / freeze-time adapted)
+  S({
+    map: "Mirage",
+    side: "T",
+    site: "a",
+    callout: "Contact A",
+    calloutEn: "Contact A",
+    description: "Fast A contact: light util, trade ramp together — no full triple setup.",
+    descriptionEn: "Fast A contact: light util, trade ramp together — no full triple setup.",
+    rounds: ["full", "force"],
+    tasks: ["One stairs or jungle smoke if you have it", "Flash ramp, five contact together", "Plant default, hold con soft"],
+    tasksEn: ["One stairs or jungle smoke if you have it", "Flash ramp, five contact together", "Plant default, hold con soft"],
+    links: [
+      L("Røyk: Stairs", "Smoke: Stairs", "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"),
+      L("Flash: Ramp", "Flash: Ramp", "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"),
+    ],
+  }),
+  S({
+    map: "Mirage",
+    side: "T",
+    site: "b",
+    callout: "Fast B",
+    calloutEn: "Fast B",
+    description: "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+    descriptionEn: "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+    rounds: ["full", "force"],
+    tasks: ["Smoke market window", "Flash site from apps", "Plant for retake, hold apps/short"],
+    tasksEn: ["Smoke market window", "Flash site from apps", "Plant for retake, hold apps/short"],
+    links: [
+      L("Røyk: Market window", "Smoke: Market window", "https://csnades.gg/mirage/smokes/market-window-from-back-alley"),
+      L("Flash: B site", "Flash: B site", "https://csnades.gg/mirage/flashbangs/b-site-from-apts"),
+    ],
+  }),
   // Inspired by cs2tactics / cs2strats (freeze-time adapted)
   S({
     map: "Mirage",
@@ -408,6 +441,32 @@ const strats = [
   }),
 
   // MIRAGE CT
+  S({
+    map: "Mirage",
+    side: "CT",
+    site: null,
+    callout: "Ramp hold",
+    calloutEn: "Ramp hold",
+    description: "Strong ramp/palace A — soft B, punish fast A contact.",
+    descriptionEn: "Strong ramp/palace A — soft B, punish fast A contact.",
+    rounds: [],
+    tasks: ["2 ramp / tetris", "1 palace or ticket", "1 mid, 1 B soft", "Fall con only on clear B info"],
+    tasksEn: ["2 ramp / tetris", "1 palace or ticket", "1 mid, 1 B soft", "Fall con only on clear B info"],
+    links: [],
+  }),
+  S({
+    map: "Mirage",
+    side: "CT",
+    site: null,
+    callout: "Mid give",
+    calloutEn: "Mid give",
+    description: "Give mid space on purpose — play for retake / late rotate, save util.",
+    descriptionEn: "Give mid space on purpose — play for retake / late rotate, save util.",
+    rounds: ["full", "force", "eco"],
+    tasks: ["Soft window — do not die mid", "2 A, 2 B anchors", "Util ready for retake, not mid duel"],
+    tasksEn: ["Soft window — do not die mid", "2 A, 2 B anchors", "Util ready for retake, not mid duel"],
+    links: [],
+  }),
   // Inspired by cs2tactics / cs2strats (freeze-time adapted)
   S({
     map: "Mirage",
