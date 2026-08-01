@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchLiveCall, type LiveCallView } from "../lib/api";
-import { ExternalLink } from "../components/icons";
+import { MapIcon, SiteIcon } from "../components/icons";
+import { FreezeTimer } from "../components/FreezeTimer";
+import { LineupChip } from "../components/LineupChip";
 
 export function LiveScreen() {
   const { token = "" } = useParams();
@@ -71,21 +73,26 @@ export function LiveScreen() {
       {data?.has_pick && (
         <div className="panel">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <span className={`badge ${accent === "ct" ? "five_stack" : "pro"}`}>
-              {data.site ? `${data.selected_map} · ${String(data.site).toUpperCase()}` : data.selected_map}
+            <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
+              <MapIcon map={data.selected_map} size={12} />
+              {data.site ? (
+                <>
+                  {data.selected_map}
+                  <SiteIcon site={String(data.site)} size={12} />
+                  {String(data.site).toUpperCase()}
+                </>
+              ) : (
+                data.selected_map
+              )}
             </span>
-            {secondsLeft !== null && (
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: secondsLeft <= 4 ? "var(--warn)" : "var(--faint)" }}>
-                {secondsLeft}s
-              </span>
-            )}
+            {secondsLeft !== null && <FreezeTimer secondsLeft={secondsLeft} ct={side === "CT"} />}
           </div>
           <div className="callout-hero">{data.callout}</div>
           {data.description && <p className="muted" style={{ marginBottom: 10 }}>{data.description}</p>}
           {data.tasks.length > 0 && (
-            <div style={{ borderLeft: `2px solid ${side === "CT" ? "var(--accent-ct)" : "var(--accent-t)"}`, paddingLeft: 10, marginBottom: 12 }}>
+            <div className={`task-rail ${accent}`} style={{ marginBottom: 12 }}>
               {data.tasks.map((t, i) => (
-                <p key={i} style={{ margin: "0 0 3px", fontSize: 13, color: "#b4bac2", fontFamily: "var(--font-mono)" }}>
+                <p key={i} className="task-line">
                   {t}
                 </p>
               ))}
@@ -94,9 +101,7 @@ export function LiveScreen() {
           {data.links.length > 0 && (
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {data.links.map((l, i) => (
-                <a key={i} className="chip-link" href={l.url} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink size={11} /> {l.label}
-                </a>
+                <LineupChip key={i} label={l.label} url={l.url} />
               ))}
             </div>
           )}
