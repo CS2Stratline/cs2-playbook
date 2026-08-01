@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
-import { supabase, supabaseConfigured } from "./supabase";
+import { authRedirectTo, supabase, supabaseConfigured } from "./supabase";
 import { getLocalUserId, isCloudMode } from "./api";
 
 type AuthState = {
@@ -43,9 +43,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       userId: cloud && user ? user.id : getLocalUserId(),
       async signInWithEmail(email: string) {
         if (!supabase) return { error: "Supabase is not configured. Running in local demo mode." };
+        const redirectTo = authRedirectTo();
         const { error } = await supabase.auth.signInWithOtp({
           email,
-          options: { emailRedirectTo: window.location.origin },
+          options: { emailRedirectTo: redirectTo },
         });
         return { error: error?.message };
       },
