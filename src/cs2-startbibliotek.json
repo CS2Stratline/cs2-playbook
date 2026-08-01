@@ -1350,15 +1350,15 @@
       "site": null,
       "callout": "Banana hold",
       "calloutEn": "Banana hold",
-      "description": "Dobbel banana, nekt early control.",
-      "descriptionEn": "Double banana, deny early control.",
+      "description": "Triple banana, deny early control.",
+      "descriptionEn": "Triple banana, deny early control.",
       "tasks": [
-        "2 banana, 2 A, 1 mid",
+        "3 banana, 2 A",
         "Molly/HE deep banana",
-        "Fall til coffins på execute"
+        "Fall to coffins on execute"
       ],
       "tasksEn": [
-        "2 banana, 2 A, 1 mid",
+        "3 banana, 2 A",
         "Molly/HE deep banana",
         "Fall to coffins on execute"
       ]
