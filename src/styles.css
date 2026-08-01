@@ -1,7 +1,22 @@
 :root {
-  color-scheme: dark;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0f1216;
+  --bg: #0c0f12;
+  --panel: #141a20;
+  --panel-hi: #1b222a;
+  --line: #2a333d;
+  --chalk: #ebe6da;
+  --dim: #8b949e;
+  --faint: #5a6570;
+  --accent-t: #c48a3c;
+  --accent-t-soft: rgba(196, 138, 60, 0.14);
+  --accent-ct: #6d97b5;
+  --accent-ct-soft: rgba(109, 151, 181, 0.14);
+  --good: #7e9e5e;
+  --warn: #c2604f;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius: 10px;
+  --max: 520px;
 }
 
 * {
@@ -11,19 +26,285 @@
 html,
 body,
 #root {
-  min-height: 100%;
   margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--chalk);
+  font-family: var(--font-body);
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(109, 151, 181, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(196, 138, 60, 0.08), transparent);
+}
+
+a {
+  color: inherit;
 }
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
 }
 
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+.app-shell {
+  max-width: var(--max);
+  margin: 0 auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px 88px;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: rgba(12, 15, 18, 0.88);
+  border-bottom: 1px solid var(--line);
+  margin: 0 -14px;
+  padding: 12px 14px 10px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.brand span {
+  color: var(--dim);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(12, 15, 18, 0.94);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: var(--max);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.nav a {
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 8px;
+  color: var(--faint);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.nav a.active {
+  background: var(--panel-hi);
+  color: var(--chalk);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-top: 12px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 8px;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.muted {
+  color: var(--dim);
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pill {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-hi);
+  color: var(--dim);
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pill.active {
+  border-color: var(--accent-t);
+  background: var(--accent-t-soft);
+  color: var(--accent-t);
+}
+
+.pill.active.ct {
+  border-color: var(--accent-ct);
+  background: var(--accent-ct-soft);
+  color: var(--accent-ct);
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent-t);
+  color: #1a1208;
+}
+
+.btn-primary.ct {
+  background: var(--accent-ct);
+  color: #0b1520;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--chalk);
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.callout-hero {
+  font-family: var(--font-display);
+  font-stretch: condensed;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 0.95;
+  margin: 0 0 12px;
+  word-break: break-word;
+}
+
+.chip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--dim);
+  text-decoration: none;
+}
+
+.chip-link.suggested {
+  border-style: dashed;
+  color: var(--faint);
+}
+
+.list-item {
+  width: 100%;
+  text-align: left;
+  background: var(--panel-hi);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--chalk);
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.list-item .meta {
+  font-size: 11px;
+  color: var(--faint);
+  margin-top: 4px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--dim);
+}
+
+.badge.pug { color: #9ec27a; border-color: #3d5230; }
+.badge.five_stack { color: var(--accent-ct); border-color: #2f4a5c; }
+.badge.pro { color: var(--accent-t); border-color: #5c4522; }
+
+.empty {
+  text-align: center;
+  padding: 28px 12px;
+  color: var(--dim);
+  font-size: 13px;
+}
+
+.banner {
+  font-size: 11px;
+  color: var(--dim);
+  background: var(--panel-hi);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 8px;
 }

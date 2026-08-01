@@ -1,23 +1,12 @@
-# Auth / cloud sync — parked
+# Auth — Cloud Playbook
 
-Login and cloud sync are **intentionally not built**.
+v1 uses **Supabase Auth** (email magic link). Local demo mode runs without auth when env vars are missing.
 
-## Why
+## Team sync (Phase 5)
 
-- The Match tab must stay a freeze-time tool on one phone.
-- The book already persists in `localStorage` on this device.
-- Session (filters, active call timer) also persists locally (schema v2).
-- Team sharing works via Export (maps + strats).
-- Device moves work via Full backup (strats + history + session).
+Not built yet. Schema reserves `team_id` on packs/strats. Build when:
 
-## When to revisit
+1. The same book must live on 2+ devices for a full roster, and
+2. Export is no longer enough.
 
-Build auth only when **all** of these are true:
-
-1. The same book must live on 2+ devices at once.
-2. Export / full backup is no longer enough for the team.
-3. Someone will own conflict resolution (who wins on concurrent edits).
-
-## Preferred shape later
-
-Keep Match UX unchanged. Add optional cloud backup behind the existing `storageGet` / `storageSet` adapter so local-first behavior remains the default offline path.
+Preferred shape: membership table + RLS on `team_id`, Match pool unchanged.

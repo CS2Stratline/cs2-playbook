@@ -1,0 +1,2787 @@
+{
+  "maps": [
+    "Dust II",
+    "Mirage",
+    "Inferno",
+    "Nuke",
+    "Ancient",
+    "Anubis",
+    "Cache"
+  ],
+  "packs": [
+    {
+      "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "slug": "essentials-pug",
+      "title": "Essentials (PUG)",
+      "description": "Short callouts, light utility — ranked and pickup friendly.",
+      "tier": "pug",
+      "visibility": "system",
+      "owner_user_id": null,
+      "team_id": null,
+      "strat_count": 24
+    },
+    {
+      "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "slug": "stack-standard",
+      "title": "Stack Standard",
+      "description": "Full executes, defaults, and CT holds for a coordinated five.",
+      "tier": "five_stack",
+      "visibility": "system",
+      "owner_user_id": null,
+      "team_id": null,
+      "strat_count": 46
+    },
+    {
+      "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "slug": "pro-structure",
+      "title": "Pro Structure",
+      "description": "Fakes, splits, retakes — tighter roles and timing.",
+      "tier": "pro",
+      "visibility": "system",
+      "owner_user_id": null,
+      "team_id": null,
+      "strat_count": 10
+    }
+  ],
+  "strats": [
+    {
+      "id": "15409a8b-af6d-4aca-aa38-d58ef10ad290",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Palace pop",
+      "description": "Fast palace exit with flash — works on eco/force for plant money.",
+      "tasks": [
+        "1–2 in palace, rest default mid/ramp",
+        "Flash balcony, pop out",
+        "Plant default or fall back"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Balcony",
+          "url": "https://csnades.gg/mirage/flashbangs/balcony-from-palace"
+        },
+        {
+          "label": "Molly: Dark",
+          "url": "https://csnades.gg/mirage/molotovs/dark-from-palace-safe"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "cbe40f3a-7f48-4fbc-916e-dffc760a60dc",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush apps",
+      "description": "Straight apps, no smokes — pistol/eco when CTs are passive.",
+      "tasks": [
+        "Five apps immediately",
+        "Flash site from back alley",
+        "Spray bench, plant fast"
+      ],
+      "rounds": [
+        "pistol",
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-back-alley"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2f8d986d-2f80-4e5f-b3b5-db83b9a073a9",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "B stack",
+      "description": "Three B, punish apps rushes.",
+      "tasks": [
+        "3 B (bench/van/market)",
+        "1 mid, 1 A",
+        "Molly apps early"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Apps",
+          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "893594e0-82a1-494c-b805-66256340c693",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid aggression",
+      "description": "Press mid/window for info and pace.",
+      "tasks": [
+        "2 mid (window + under/con)",
+        "Flash mid, take space",
+        "Fall back to site on execute"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Mid window",
+          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e531f31e-354b-4caf-999c-81dc8207e3d7",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Fast long",
+      "description": "Pistol/eco long rush without heavy utility.",
+      "tasks": [
+        "Five long immediately",
+        "Flash doors, spray through",
+        "Plant near long"
+      ],
+      "rounds": [
+        "pistol",
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Long corner",
+          "url": "https://csnades.gg/dust2/smokes/long-corner-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4cccfec2-6b1b-4733-8d7b-06d2e7740e87",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush B",
+      "description": "Straight tunnels — classic pistol/eco.",
+      "tasks": [
+        "Five upper tunnels",
+        "Flash B, spray doors",
+        "Plant default B"
+      ],
+      "rounds": [
+        "pistol",
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: B doors",
+          "url": "https://csnades.gg/dust2/smokes/b-doors-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f5e5fec9-9d66-4e9c-9bb4-35855073d728",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "A hold",
+      "description": "Strong A (long + short), soft B.",
+      "tasks": [
+        "2 long/pit, 1 short, 1 mid, 1 B",
+        "Hold close long angles",
+        "Rotate early on B sound"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "075b4f5a-3189-47e1-9db5-ffcd78af3b64",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "B hold",
+      "description": "Double B, punish tunnels.",
+      "tasks": [
+        "2 B, 1 mid, 2 A",
+        "Molly tunnels entry",
+        "Don't over-rotate A"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "79df8e28-cc1a-4cb0-bfda-b19e439334ad",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid push",
+      "description": "Aggression through mid doors for info.",
+      "tasks": [
+        "2 mid, flash doors",
+        "Take xbox space briefly",
+        "Fall back before execute"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b87e9392-1a0c-45b7-93b0-9598b8daccd9",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Fast banana",
+      "description": "Early banana for map control or rush.",
+      "tasks": [
+        "Utility banana first 10s",
+        "Flash deep, take car/logs",
+        "Hold or hit B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/inferno/smokes/ct-from-banana-b"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0fe5e709-0c5d-4e18-8986-58aa06fd28e1",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Banana hold",
+      "description": "Double banana, deny early control.",
+      "tasks": [
+        "2 banana, 2 A, 1 mid",
+        "Molly/HE deep banana",
+        "Fall to coffins on execute"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e8f7cb4d-12b0-41da-856c-fde5089180ce",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "A stack",
+      "description": "Strong A, soft banana.",
+      "tasks": [
+        "3 A (pit/site/library), 1 mid, 1 banana",
+        "Punish apps",
+        "Early call on banana loss"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f3784c44-ea8e-401a-888d-b4b65b7f6273",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Outside hold",
+      "description": "Deny outside, soft ramp.",
+      "tasks": [
+        "2 outside, 1 ramp, 1 heaven, 1 hut",
+        "Utility secret entry",
+        "Fall silent on A hit"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "58dc0672-d78a-4766-b18e-09f02ee341e4",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Ramp stack",
+      "description": "Strong ramp/lower, punish ramp rushes.",
+      "tasks": [
+        "2–3 ramp/lower, 1 outside, 1 heaven",
+        "HE/molly trophy",
+        "Don't overcommit outside"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "73bc158c-2fab-43dd-a761-79d6957a1c87",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "A hold",
+      "description": "Strong A/donut.",
+      "tasks": [
+        "2–3 A, 1 mid, 1 B",
+        "Deny donut early",
+        "Rotate on ruins sound"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8d16606f-5593-43b7-8914-3295f29e5bdc",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "B hold",
+      "description": "Strong ruins/B.",
+      "tasks": [
+        "2 B, 1 mid, 2 A",
+        "Utility ruins entry",
+        "Hold cave close"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0b7601ae-a863-4dfe-8dfe-8a15012ad7cc",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "A hold",
+      "description": "Strong heaven/water.",
+      "tasks": [
+        "2–3 A, 1 mid, 1 B",
+        "Deny water early",
+        "Rotate on ruins"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "672db4a8-add3-43bf-a099-4075cb1f780f",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "B hold",
+      "description": "Strong ruins/ebox.",
+      "tasks": [
+        "2 B, 1 mid, 2 A",
+        "Utility ruins",
+        "Hold ebox close"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0893ae70-6975-4c91-8664-293d44358ef4",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "A hold",
+      "description": "Strong A (forklift/checker).",
+      "tasks": [
+        "2–3 A, 1 mid, 1 B",
+        "Deny squeaky",
+        "Rotate B on heaven sound"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4ea926ff-4f63-4930-838d-62d7870bcfc8",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "B hold",
+      "description": "Strong heaven/B main.",
+      "tasks": [
+        "2 B, 1 mid, 2 A",
+        "Hold heaven close",
+        "Utility B halls"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9c30bbce-e8b8-480f-8837-72104bce2af5",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco stack",
+      "description": "Stack likely hit site on their eco.",
+      "tasks": [
+        "Stack predicted site",
+        "Save util for entry",
+        "Don't overpeek"
+      ],
+      "rounds": [
+        "anti",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "91024bc4-42b7-4cd8-a522-4024e20e3c92",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Apps nade",
+      "description": "Deny early apps with utility.",
+      "tasks": [
+        "Molly/HE apps early",
+        "1 short 1 market",
+        "Info mid"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Apps",
+          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8930eb46-7e8e-4a76-8226-947d930e18d2",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Long nade",
+      "description": "Delay long with early util.",
+      "tasks": [
+        "HE/molly long doors",
+        "2 A long/pit",
+        "Rotate on B sound"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "fcfd250e-03b4-4cf8-86ce-a75bb9ccc879",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Water deny",
+      "description": "Nade water, hold heaven.",
+      "tasks": [
+        "Utility water early",
+        "2 A",
+        "1 mid",
+        "1 B"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0e3a6aa8-d2b1-41dd-889c-1fc0b2461ff5",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Triple A",
+      "description": "Classic A execute: ticket, jungle and stairs together, then enter as five.",
+      "tasks": [
+        "Smoke ticket booth / CT",
+        "Smoke jungle",
+        "Smoke stairs",
+        "Flash in, entry ramp + palace",
+        "Hold con after plant"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Ticket",
+          "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp"
+        },
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp"
+        },
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
+        },
+        {
+          "label": "Molly: Firebox",
+          "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "efefd862-6ee0-47a4-b94f-ec07671d8e4b",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Spawn triple",
+      "description": "Same A isolation, all three smokes from T spawn (easier for newer players).",
+      "tasks": [
+        "Smoke jungle from spawn",
+        "Smoke stairs from spawn",
+        "Smoke ticket from ramp (or spawn variant)",
+        "Push ramp together when smokes land"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Ticket",
+          "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-t-spawn-fence"
+        },
+        {
+          "label": "Smoke: Deep stairs",
+          "url": "https://csnades.gg/mirage/smokes/deep-stairs-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "706f0c82-c4b6-4282-a3ff-e58f2686e594",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Ramp only",
+      "description": "Five on ramp, no palace. Jungle + stairs, then hard entry.",
+      "tasks": [
+        "Smoke jungle and stairs",
+        "Molly/HE tetris or firebox",
+        "Flash ramp entry, trade hard",
+        "One holds top mid vs rotate"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp"
+        },
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
+        },
+        {
+          "label": "Molly: Tetris",
+          "url": "https://csnades.gg/mirage/molotovs/triple-box-from-tetris"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-a-ramp"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b8af459c-ed43-4039-a723-0b9c5f26c6e4",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps B",
+      "description": "Standard B: market window + door, entry through apps.",
+      "tasks": [
+        "Smoke market window",
+        "Smoke market door",
+        "Molly van / bench",
+        "Flash site, entry apps",
+        "Plant for apps or van"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Molly: Van",
+          "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        },
+        {
+          "label": "Molly: Bench",
+          "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "25ffe5a6-8ff9-41da-b6d3-e0500cfe0a4f",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Short B",
+      "description": "Hit B via short/cat after mid control.",
+      "tasks": [
+        "Take window / top mid",
+        "Smoke market door or window",
+        "Flash short, go cat → B",
+        "Trade bench and van"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Catwalk",
+          "url": "https://csnades.gg/mirage/smokes/catwalk-from-top-mid"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Flash: Short",
+          "url": "https://csnades.gg/mirage/flashbangs/b-short-from-catwalk"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "62346834-41a9-4a16-b99d-554762fe2c87",
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Window control",
+      "description": "Smoke mid window, take top mid for info and splits.",
+      "tasks": [
+        "Smoke mid window from spawn",
+        "Flash top mid, take control",
+        "Decide A-con or B-short"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Connector",
+          "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
+        },
+        {
+          "label": "Flash: Top mid",
+          "url": "https://csnades.gg/mirage/flashbangs/top-mid-from-triple"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0cf589f1-2f05-4280-8527-cc08cc1a57e2",
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid to B",
+      "description": "Window → short → B after mid control.",
+      "tasks": [
+        "Smoke window, win mid",
+        "Catwalk smoke if needed",
+        "Hit B short with 4, 1 lurks A"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Catwalk",
+          "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-default-b"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3658f1fc-47d7-4d2a-835d-c9e90cbaf408",
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid to A",
+      "description": "Window/con control, then A through connector.",
+      "tasks": [
+        "Smoke window",
+        "Smoke or clear connector",
+        "2–3 out con, 2 ramp support"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-b"
+        },
+        {
+          "label": "Smoke: Connector",
+          "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e7d1eb3a-5832-4170-a505-67bc7464a5e9",
+      "map": "Mirage",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Spread map control, play for picks before execute.",
+      "tasks": [
+        "2 apps / short info",
+        "1–2 mid, 1–2 ramp/palace",
+        "Play 20s, call execute after space"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Catwalk",
+          "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "aedf8eb5-fa9c-4a02-a7bd-1020276fe740",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "A stack",
+      "description": "Three A, one mid, one B — punish A takes.",
+      "tasks": [
+        "3 A (ramp/palace/ticket)",
+        "1 window or con",
+        "1 B apps/short",
+        "Rotate B only on clear info"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a3b63e78-f484-4111-bea6-91f9b4f66e96",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Long A",
+      "description": "Take long, smoke CT cross, plant A.",
+      "tasks": [
+        "Smoke xbox early (mid info)",
+        "Clear long doors, molly car",
+        "Smoke CT spawn / cross",
+        "Flash pit, entry long"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        },
+        {
+          "label": "Smoke: CT spawn",
+          "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
+        },
+        {
+          "label": "Molly: Car",
+          "url": "https://csnades.gg/dust2/molotovs/car-from-long-doors"
+        },
+        {
+          "label": "Smoke: A cross",
+          "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7ae8ad17-4db8-4f63-89fa-07c4ecb594ee",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Short A",
+      "description": "Cat/short execute after mid control.",
+      "tasks": [
+        "Smoke xbox, take mid",
+        "Smoke CT from xbox",
+        "Flash short, go cat",
+        "Trade goose / site"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        },
+        {
+          "label": "Smoke: CT spawn",
+          "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
+        },
+        {
+          "label": "Flash: A short",
+          "url": "https://csnades.gg/dust2/flashbangs/a-site-from-a-short"
+        },
+        {
+          "label": "Smoke: Short",
+          "url": "https://csnades.gg/dust2/smokes/short-from-short"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "06ff34a6-0606-49b9-81de-5f45873d947a",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "B doors",
+      "description": "Standard B: smoke doors/window, entry tunnels.",
+      "tasks": [
+        "Smoke B doors",
+        "Smoke B window",
+        "Flash tunnels, entry",
+        "Clear car / plat"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: B doors",
+          "url": "https://csnades.gg/dust2/smokes/b-doors-from-upper-tunnels-a"
+        },
+        {
+          "label": "Smoke: B window",
+          "url": "https://csnades.gg/dust2/smokes/b-window-from-outside-b-tunnels"
+        },
+        {
+          "label": "Smoke: B plat",
+          "url": "https://csnades.gg/dust2/smokes/b-plat-from-upper-tunnels"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c7b4d01f-d7d5-4e2e-b3df-05624f7912c1",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Mid to B",
+      "description": "Xbox/mid doors, then B via CT or tunnels.",
+      "tasks": [
+        "Smoke xbox + mid doors",
+        "Take mid control",
+        "Hit B doors or CT rotate"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Mid doors",
+          "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn"
+        },
+        {
+          "label": "Smoke: B doors",
+          "url": "https://csnades.gg/dust2/smokes/b-doors-from-catwalk"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "aeacada5-a957-4e22-b6ec-f3100299d6dc",
+      "map": "Dust II",
+      "side": "T",
+      "site": "mid",
+      "callout": "Xbox mid",
+      "description": "Smoke xbox, press mid for picks.",
+      "tasks": [
+        "Smoke xbox from spawn",
+        "Flash mid doors",
+        "Hit short or B after info"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Mid doors",
+          "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn"
+        },
+        {
+          "label": "Flash: Mid doors",
+          "url": "https://csnades.gg/dust2/flashbangs/mid-doors-from-xbox"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "af1f1248-51b9-403c-ad3f-6378e6fdb19c",
+      "map": "Dust II",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Long info + mid + B pressure, call after space.",
+      "tasks": [
+        "2 long, 2 mid/short, 1 B",
+        "Play 15–25s",
+        "Hit the weak site"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "398bbde5-24cf-41cb-968f-c7f82b1d73d0",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Banana B",
+      "description": "BLAST standard: CT + coffins smoke, entry banana.",
+      "tasks": [
+        "Take banana control",
+        "Smoke CT (cover boost)",
+        "Smoke coffins",
+        "Molly new box, flash in"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/inferno/smokes/ct-from-banana"
+        },
+        {
+          "label": "Smoke: Coffins",
+          "url": "https://csnades.gg/inferno/smokes/coffins-from-banana"
+        },
+        {
+          "label": "Smoke: CT boost",
+          "url": "https://csnades.gg/inferno/smokes/ct-boost-from-banana"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a01ab160-f4b8-4b27-963d-ab9ece2fc033",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Apps A",
+      "description": "A through apartments / balcony.",
+      "tasks": [
+        "Control apps",
+        "Smoke/molly balcony fights",
+        "Entry balcony → site",
+        "Clear pit and library"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Hay",
+          "url": "https://csnades.gg/inferno/smokes/hay-from-apts-a"
+        },
+        {
+          "label": "Smoke: Pit",
+          "url": "https://csnades.gg/inferno/smokes/pit-from-mid"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7f85ca90-1a8f-4761-8f1a-e8b17ce2195d",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Arch A",
+      "description": "BLAST A wrap: arch + library + moto.",
+      "tasks": [
+        "Smoke arch",
+        "Smoke library",
+        "Smoke moto",
+        "Entry short/long together"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Arch",
+          "url": "https://csnades.gg/inferno/smokes/arch-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Library",
+          "url": "https://csnades.gg/inferno/smokes/library-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Moto",
+          "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Arches",
+          "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0b975a4e-bf53-4d5b-a505-fbc2cece2783",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Short A",
+      "description": "Mid → short with moto smoke.",
+      "tasks": [
+        "Take mid/alt-mid",
+        "Smoke moto (AWP library)",
+        "Flash short, entry"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Moto",
+          "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Pit",
+          "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Library",
+          "url": "https://csnades.gg/inferno/smokes/library-from-bottom-mid"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "bf2f392f-805c-43c0-8f3a-1f1d62924a8f",
+      "map": "Inferno",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid control",
+      "description": "Take mid for A-short or info.",
+      "tasks": [
+        "Utility top mid",
+        "Clear boiler / alt",
+        "Hit short or hold"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Boiler",
+          "url": "https://csnades.gg/inferno/smokes/boiler-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Arch",
+          "url": "https://csnades.gg/inferno/smokes/arch-from-bottom-mid"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "10af5e5d-95d4-4849-a5f7-b6e1398190fa",
+      "map": "Inferno",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Banana pressure + mid/apps info.",
+      "tasks": [
+        "2–3 banana, 1–2 mid/apps",
+        "Play for space",
+        "Execute B or A"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "98ea6198-d34a-49c6-aa30-353bcb60e2fb",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Outside A",
+      "description": "Outside smokes → secret/ramp or heaven pressure.",
+      "tasks": [
+        "Smoke outside main / garage",
+        "Smoke secret close/far",
+        "Take outside, hit A main or heaven"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Outside main",
+          "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Garage",
+          "url": "https://csnades.gg/nuke/smokes/front-garage-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Secret close",
+          "url": "https://csnades.gg/nuke/smokes/secret-close-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Secret far",
+          "url": "https://csnades.gg/nuke/smokes/secret-far-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b9953ea2-0bd6-49d9-8824-4278f3fdeeed",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Heaven A",
+      "description": "Silo/heaven smoke, enter A from above.",
+      "tasks": [
+        "Smoke heaven from silo",
+        "Control hut/silo",
+        "Drop A, clear rafters"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/nuke/smokes/heaven-from-silo"
+        },
+        {
+          "label": "Smoke: A main",
+          "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof"
+        },
+        {
+          "label": "Smoke: Lockers",
+          "url": "https://csnades.gg/nuke/smokes/lockers-from-t-spawn-a"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "731f2589-6b3c-4cd2-85e5-744ce3fc3fda",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Ramp A",
+      "description": "Trophy/ramp pressure into lower A.",
+      "tasks": [
+        "Control ramp/trophy",
+        "Flash ramp, entry",
+        "Clear dark / hut support"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Ramp",
+          "url": "https://csnades.gg/nuke/smokes/ramp-from-trophy-a"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "049ff2b7-f86b-4f0a-9583-3d62cde4df45",
+      "map": "Nuke",
+      "side": "T",
+      "site": "b",
+      "callout": "Secret B",
+      "description": "Outside → secret → B.",
+      "tasks": [
+        "Outside smokes",
+        "Secret entry",
+        "Hit B dark / site"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Outside main",
+          "url": "https://csnades.gg/nuke/smokes/outside-main-from-outside-t-spawn"
+        },
+        {
+          "label": "Smoke: Secret far",
+          "url": "https://csnades.gg/nuke/smokes/secret-far-from-outside-t-spawn"
+        },
+        {
+          "label": "Molly: Secret",
+          "url": "https://csnades.gg/nuke/molotovs/secret-entry-from-mini"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d8296198-5ff8-4c14-bc35-ab3d5ab1f7db",
+      "map": "Nuke",
+      "side": "T",
+      "site": "b",
+      "callout": "Vent B",
+      "description": "Vent drop into B/lower.",
+      "tasks": [
+        "Control vent area",
+        "Smoke/flash vent",
+        "Drop B, trade dark"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Vent",
+          "url": "https://csnades.gg/nuke/smokes/vent-from-t-spawn-a"
+        },
+        {
+          "label": "Molly: Back vent",
+          "url": "https://csnades.gg/nuke/molotovs/back-vent-from-t-roof"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4279126a-e3a3-4f4d-96b1-c1e3149870bd",
+      "map": "Nuke",
+      "side": "T",
+      "site": "default",
+      "callout": "Outside default",
+      "description": "Outside control, play picks before hit.",
+      "tasks": [
+        "Smokes outside early",
+        "Info ramp + secret",
+        "Call A or B"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Outside main",
+          "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Garage",
+          "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ac0c3a5d-e8c5-4040-8655-b569f5a7016c",
+      "map": "Ancient",
+      "side": "T",
+      "site": "a",
+      "callout": "Donut A",
+      "description": "Donut/temple smokes, entry A.",
+      "tasks": [
+        "Smoke donut",
+        "Smoke temple / CT",
+        "Entry A main or cave"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Donut",
+          "url": "https://csnades.gg/ancient/smokes/donut-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Temple",
+          "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a"
+        },
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/ancient/smokes/ct-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Plat",
+          "url": "https://csnades.gg/ancient/smokes/plat-from-outside-a"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "401bf440-f287-4793-99e1-de8dc06066c5",
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Ruins B",
+      "description": "B through ruins / alley.",
+      "tasks": [
+        "Smoke CT alley / back alley",
+        "Smoke B alley",
+        "Entry ruins → B"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: CT alley",
+          "url": "https://csnades.gg/ancient/smokes/ct-alley-from-ruins"
+        },
+        {
+          "label": "Smoke: B alley",
+          "url": "https://csnades.gg/ancient/smokes/b-alley-from-ruins"
+        },
+        {
+          "label": "Smoke: Back alley",
+          "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "59fe3c2c-41b7-476e-998a-151d1612ade0",
+      "map": "Ancient",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid control",
+      "description": "Top mid smokes for elbow/donut access.",
+      "tasks": [
+        "Smoke top mid",
+        "Take elbow space",
+        "Hit A donut or B"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Top mid",
+          "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Donut",
+          "url": "https://csnades.gg/ancient/smokes/donut-from-t-mid"
+        },
+        {
+          "label": "Smoke: Cat",
+          "url": "https://csnades.gg/ancient/smokes/cat-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "718cec16-57c5-4dd7-a820-0d8a6f951148",
+      "map": "Ancient",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Spread ruins/mid/A, call after info.",
+      "tasks": [
+        "Map control 20s",
+        "Don't force early hit",
+        "Execute with smokes"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "33a72758-4148-4435-9c33-e57dc6d8aaf9",
+      "map": "Anubis",
+      "side": "T",
+      "site": "a",
+      "callout": "Water A",
+      "description": "Heaven/canal smokes, entry water/A.",
+      "tasks": [
+        "Smoke heaven",
+        "Smoke temple / connector",
+        "Entry water → A"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/anubis/smokes/heaven-from-water"
+        },
+        {
+          "label": "Smoke: Temple",
+          "url": "https://csnades.gg/anubis/smokes/temple-from-canals"
+        },
+        {
+          "label": "Molly: Heaven",
+          "url": "https://csnades.gg/anubis/molotovs/heaven-from-water"
+        },
+        {
+          "label": "Smoke: Platform",
+          "url": "https://csnades.gg/anubis/smokes/platform-from-water"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f63f3cc2-3017-4ce4-94d1-1300516a8d55",
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Ruins B",
+      "description": "B through ruins with ebox/CT smokes.",
+      "tasks": [
+        "Smoke ebox / canals",
+        "Smoke CT",
+        "Smoke B site lane",
+        "Entry ruins"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: EBox",
+          "url": "https://csnades.gg/anubis/smokes/ebox-from-ruins"
+        },
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/anubis/smokes/ct-from-ruins"
+        },
+        {
+          "label": "Smoke: B site",
+          "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "57861f52-1464-48a8-8363-0a23354d2c81",
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Street B",
+      "description": "Mid street → B door.",
+      "tasks": [
+        "Control street/mid",
+        "Smoke mid B door",
+        "Hit B with ruins support"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid B door",
+          "url": "https://csnades.gg/anubis/smokes/mid-b-door-from-street"
+        },
+        {
+          "label": "Smoke: Top mid",
+          "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn"
+        },
+        {
+          "label": "Smoke: B site",
+          "url": "https://csnades.gg/anubis/smokes/b-site-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4886e36b-e4b7-4682-93c3-f81ae0f44db3",
+      "map": "Anubis",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid control",
+      "description": "Top mid for both sites.",
+      "tasks": [
+        "Smoke top mid",
+        "Take mid doors",
+        "Hit A con or B street"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Top mid",
+          "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Mid",
+          "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Connector",
+          "url": "https://csnades.gg/anubis/smokes/connector-from-t-upper"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "fb46d9b0-1c41-45b2-a0c3-4ef6f7eba1ac",
+      "map": "Anubis",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Canal + ruins + mid info.",
+      "tasks": [
+        "Spread 20s",
+        "Call after space",
+        "Don't dry peek heaven"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c49a16ed-7f88-44d8-af9e-9b9886178ff3",
+      "map": "Cache",
+      "side": "T",
+      "site": "a",
+      "callout": "Squeaky A",
+      "description": "Squeaky/forklift smokes into A.",
+      "tasks": [
+        "Smoke forklift",
+        "Smoke back site",
+        "Entry squeaky / main"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Forklift",
+          "url": "https://csnades.gg/cache/smokes/forklift-from-outside-squeaky"
+        },
+        {
+          "label": "Smoke: Back A",
+          "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-squeaky"
+        },
+        {
+          "label": "Molly: Forklift",
+          "url": "https://csnades.gg/cache/molotovs/forklift-from-a-main"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f34e21ab-bcc0-4561-9493-276be31f611f",
+      "map": "Cache",
+      "side": "T",
+      "site": "a",
+      "callout": "Main A",
+      "description": "A main with forklift smoke.",
+      "tasks": [
+        "Smoke forklift from main",
+        "Flash site",
+        "Clear checker / NBK"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Forklift",
+          "url": "https://csnades.gg/cache/smokes/forklift-from-a-main"
+        },
+        {
+          "label": "Smoke: NBK",
+          "url": "https://csnades.gg/cache/smokes/nbk-from-outside-a-main"
+        },
+        {
+          "label": "Smoke: Back A",
+          "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-garage"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "04350f90-5e68-4e04-aa70-3cd05c8d6e98",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "B main",
+      "description": "Heaven/CT smokes, entry B.",
+      "tasks": [
+        "Smoke heaven",
+        "Smoke CT",
+        "Entry B main / sun room"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/cache/smokes/heaven-from-b-main"
+        },
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/cache/smokes/ct-from-b-main"
+        },
+        {
+          "label": "Smoke: B main",
+          "url": "https://csnades.gg/cache/smokes/b-main-from-b-halls"
+        },
+        {
+          "label": "Smoke: Front B",
+          "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "139e8603-a6d2-4e87-9fd0-65fe1202e461",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Highway B",
+      "description": "Highway/truck path to B.",
+      "tasks": [
+        "Smoke highway",
+        "Support B main",
+        "Trade heaven"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Highway",
+          "url": "https://csnades.gg/cache/smokes/highway-from-truck"
+        },
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/cache/smokes/heaven-from-garbage"
+        },
+        {
+          "label": "Smoke: CT",
+          "url": "https://csnades.gg/cache/smokes/ct-from-sun-room"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "915d9d50-279e-4ac1-8d42-277b09f3f3fb",
+      "map": "Cache",
+      "side": "T",
+      "site": "default",
+      "callout": "Default",
+      "description": "Garage/mid info before hit.",
+      "tasks": [
+        "Spread mid + A/B",
+        "Call after pick",
+        "Save util for execute"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0aca27d8-4f13-457b-b5f1-689f4b4f16ce",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Heaven hold",
+      "description": "Strong heaven/hut, soft outside.",
+      "tasks": [
+        "2 heaven/hut",
+        "1 ramp",
+        "1 outside",
+        "1 secret watch"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "6464afb6-0fd5-4e24-a689-8be5e211cbc1",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Apps watch",
+      "description": "Hold balcony/apps, soft banana.",
+      "tasks": [
+        "2 A apps/balcony",
+        "1 pit",
+        "1 mid",
+        "1 banana"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ffc6ad5e-035a-41c3-9ff7-29bfaace434e",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Donut stack",
+      "description": "Deny donut, punish A hits.",
+      "tasks": [
+        "2–3 A/donut",
+        "1 mid",
+        "1 B",
+        "Util donut early"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "eeed3c02-c761-48e8-917d-18698fedd1ba",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid control",
+      "description": "Press mid for info, soft sites.",
+      "tasks": [
+        "2 mid",
+        "1 A",
+        "2 B soft",
+        "Fall on execute"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a604e78a-fcec-40d9-a245-c5a5a8553cc2",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Under split",
+      "description": "Take underpass control, split A via con + ramp.",
+      "tasks": [
+        "Win underpass / short",
+        "Smoke jungle from under or tetris",
+        "2–3 out con, 2 ramp",
+        "Touch site together"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-tetris"
+        },
+        {
+          "label": "Smoke: Jungle+con",
+          "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-underpass"
+        },
+        {
+          "label": "Molly: Underpass",
+          "url": "https://csnades.gg/mirage/molotovs/underpass-from-jungle"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ecf65429-8952-49b0-bf81-e49f1159a1bf",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "A fake to B",
+      "description": "Show A smokes, rotate fast to B apps while CTs fall A.",
+      "tasks": [
+        "Throw 1–2 A smokes (jungle/stairs)",
+        "Make A noise/util for 3–4s",
+        "Full team apps → B",
+        "Smoke market window + door on entry"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3e7ea6bb-09b8-45af-b490-d3c9659b158d",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Four in market",
+      "description": "Full B isolation: market + catwalk smokes. Full buy only.",
+      "tasks": [
+        "Smoke market window and door",
+        "Smoke catwalk / short",
+        "Molly van",
+        "Entry apps, not short"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Smoke: Catwalk",
+          "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
+        },
+        {
+          "label": "Smoke: B short",
+          "url": "https://csnades.gg/mirage/smokes/b-short-from-back-alley"
+        },
+        {
+          "label": "Molly: Van",
+          "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3eed368f-569a-4397-a486-2968b3b83a21",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Standard retake: utility from jungle/con + CT.",
+      "tasks": [
+        "Stack 3+ before retake",
+        "Utility stairs/tetris",
+        "Swing together from con + CT"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "HE: Tetris",
+          "url": "https://csnades.gg/mirage/hegrenades/tetris-from-jungle"
+        },
+        {
+          "label": "Flash: Stairs",
+          "url": "https://csnades.gg/mirage/flashbangs/stairs-from-stairs"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "bbdedc3d-3058-4dd4-91fd-3247d12d52e0",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Split A",
+      "description": "Long + short at the same time.",
+      "tasks": [
+        "2–3 long, 2 short",
+        "Smoke CT cross",
+        "Touch site same tick"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Xbox",
+          "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
+        },
+        {
+          "label": "Smoke: CT spawn",
+          "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
+        },
+        {
+          "label": "Smoke: A cross",
+          "url": "https://csnades.gg/dust2/smokes/a-cross-from-a-long"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c9d9b7f7-4c15-4297-ac5c-1d494a73e5cd",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake from CT + apps/banana.",
+      "tasks": [
+        "Group before peeks",
+        "Utility site/newbox",
+        "Swing CT + banana together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "634de9c2-b682-41b8-9d70-655033e046f2",
+      "map": "Ancient",
+      "side": "T",
+      "site": "a",
+      "callout": "Cave split",
+      "description": "Cave + A main split.",
+      "tasks": [
+        "Smoke cave lane",
+        "2 cave, 3 main",
+        "Touch site together"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Cave",
+          "url": "https://csnades.gg/ancient/smokes/cave-from-ruins"
+        },
+        {
+          "label": "Smoke: Temple",
+          "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a-b"
+        },
+        {
+          "label": "Smoke: Deep donut",
+          "url": "https://csnades.gg/ancient/smokes/deep-donut-from-outside-a-main"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f4ef1f9a-ded7-4615-b1f5-198dca241ce0",
+      "map": "Anubis",
+      "side": "T",
+      "site": "a",
+      "callout": "Connector A",
+      "description": "Mid/connector into A.",
+      "tasks": [
+        "Take mid doors",
+        "Smoke connector",
+        "Split A main + water"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Connector",
+          "url": "https://csnades.gg/anubis/smokes/connector-from-mid-doors"
+        },
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/anubis/smokes/heaven-from-t-upper"
+        },
+        {
+          "label": "Smoke: Mid",
+          "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3f073c92-3da5-4174-8763-e58fbbcfb5cc",
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid split",
+      "description": "Mid smokes for connector split.",
+      "tasks": [
+        "Smoke left/right mid",
+        "Smoke connector",
+        "Split A or B"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Left mid",
+          "url": "https://csnades.gg/cache/smokes/left-mid-from-garage"
+        },
+        {
+          "label": "Smoke: Right mid",
+          "url": "https://csnades.gg/cache/smokes/right-mid-from-garage"
+        },
+        {
+          "label": "Smoke: Connector",
+          "url": "https://csnades.gg/cache/smokes/connector-from-t-spawn"
+        }
+      ],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "22d3fd63-a1b2-4a40-be33-e8846d0f545a",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Group before swinging lower/heaven.",
+      "tasks": [
+        "Stack 3+",
+        "Util dark/site",
+        "Swing heaven + ramp together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    }
+  ]
+}

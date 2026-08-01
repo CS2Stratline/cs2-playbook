@@ -1,23 +1,29 @@
 {
-  "name": "cs2-callout-app",
+  "name": "cs2-playbook",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "starter": "node scripts/build-starter-library.mjs"
+    "seed:packs": "node scripts/generate-system-packs.mjs",
+    "seed:supabase": "node scripts/seed-supabase.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-router-dom": "^7.8.2"
   },
   "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "6.0.4",
+    "typescript": "^5.9.2",
     "vite": "8.1.5"
   }
 }
