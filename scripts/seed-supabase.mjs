@@ -55,6 +55,7 @@ const rows = seed.strats.map((s) => {
     rounds: s.rounds,
     status: s.status,
     links: s.links,
+    level: s.level || 5,
     wins: 0,
     losses: 0,
     times_used: 0,

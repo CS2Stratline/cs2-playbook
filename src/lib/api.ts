@@ -2,8 +2,9 @@ import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { Pack, Strat, UserSession, Profile, Side } from "./types";
 import { MAPS, catalogSourceKey, isPackLocked } from "./types";
+import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 
-const LOCAL_KEY = "cs2-playbook-cloud-v1";
+const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 
 type Store = {
@@ -32,7 +33,10 @@ function defaultSession(): UserSession {
 
 function seedStore(): Store {
   const packs = (systemSeed.packs as Pack[]).map((p) => ({ ...p, team_id: p.team_id ?? null }));
-  const strats = systemSeed.strats as Strat[];
+  const strats = (systemSeed.strats as Strat[]).map((s) => ({
+    ...s,
+    level: s.level || estimateStratLevel({ ...s, tier: packs.find((p) => p.id === s.pack_id)?.tier }),
+  }));
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
   return {
@@ -51,6 +55,12 @@ function loadLocal(): Store {
     if (raw) {
       const parsed = JSON.parse(raw) as Store;
       if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats) && parsed.packs.length > 0) {
+        parsed.strats = parsed.strats.map((s) => ({
+          ...s,
+          level:
+            s.level ||
+            estimateStratLevel({ ...s, tier: parsed.packs.find((p) => p.id === s.pack_id)?.tier }),
+        }));
         return parsed;
       }
     }
@@ -126,6 +136,18 @@ export async function listStrats(): Promise<Strat[]> {
 }
 
 function mapStratRow(row: Record<string, unknown>): Strat {
+  const levelRaw = row.level;
+  const level =
+    levelRaw == null || levelRaw === ""
+      ? estimateStratLevel({
+          callout: String(row.callout || ""),
+          description: String(row.description || ""),
+          tasks: (row.tasks as string[]) || [],
+          links: (row.links as Strat["links"]) || [],
+          rounds: (row.rounds as string[]) || [],
+          side: String(row.side || ""),
+        })
+      : clampFaceitLevel(Number(levelRaw));
   return {
     id: String(row.id),
     pack_id: String(row.pack_id),
@@ -140,6 +162,7 @@ function mapStratRow(row: Record<string, unknown>): Strat {
     rounds: (row.rounds as string[]) || [],
     status: (row.status as Strat["status"]) || "ready",
     links: (row.links as Strat["links"]) || [],
+    level,
     wins: Number(row.wins || 0),
     losses: Number(row.losses || 0),
     times_used: Number(row.times_used || 0),
@@ -270,6 +293,16 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
       memory.strats = memory.strats.map((s) => (s.id === strat.id ? { ...s, ...strat } as Strat : s));
     } else {
       const id = crypto.randomUUID();
+      const level =
+        strat.level ??
+        estimateStratLevel({
+          callout: strat.callout,
+          description: strat.description,
+          tasks: strat.tasks,
+          links: strat.links,
+          rounds: strat.rounds,
+          side: strat.side,
+        });
       memory.strats.push({
         id,
         pack_id: packId,
@@ -284,6 +317,7 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
         rounds: strat.rounds || [],
         status: strat.status || "ready",
         links: strat.links || [],
+        level,
         wins: 0,
         losses: 0,
         times_used: 0,
@@ -306,6 +340,16 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
     rounds: strat.rounds,
     status: strat.status || "ready",
     links: strat.links || [],
+    level:
+      strat.level ??
+      estimateStratLevel({
+        callout: strat.callout,
+        description: strat.description,
+        tasks: strat.tasks,
+        links: strat.links,
+        rounds: strat.rounds,
+        side: strat.side,
+      }),
     source: "user",
   };
   if (strat.id) await supabase!.from("strats").update(payload).eq("id", strat.id).eq("owner_user_id", userId);
@@ -392,6 +436,7 @@ export async function addCatalogStratToPool(userId: string, catalog: Strat, pack
       rounds: [...catalog.rounds],
       status: catalog.status,
       links: catalog.links.map((l) => ({ ...l })),
+      level: catalog.level || estimateStratLevel(catalog),
       wins: 0,
       losses: 0,
       times_used: 0,
@@ -416,6 +461,7 @@ export async function addCatalogStratToPool(userId: string, catalog: Strat, pack
       rounds: catalog.rounds,
       status: catalog.status,
       links: catalog.links,
+      level: catalog.level || estimateStratLevel(catalog),
       source,
     })
     .select("id")
@@ -440,6 +486,42 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
     added += 1;
   }
   return added;
+}
+
+function fundamentalsSeedKey(userId: string) {
+  return `cs2-playbook-fundamentals-seeded:${userId}`;
+}
+
+/** True after we have auto-seeded (or user already has pool strats). */
+export function hasAutoSeededFundamentals(userId: string) {
+  try {
+    return localStorage.getItem(fundamentalsSeedKey(userId)) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markAutoSeededFundamentals(userId: string) {
+  try {
+    localStorage.setItem(fundamentalsSeedKey(userId), "1");
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * First-login bootstrap: copy Fundamentals for every map into My pool.
+ * Idempotent — skips strats already in the pool. Marks a local flag so we
+ * don't re-run after the user intentionally clears their pool.
+ */
+export async function ensureFundamentalsSeeded(userId: string, packs: Pack[]): Promise<number> {
+  if (hasAutoSeededFundamentals(userId)) return 0;
+  let total = 0;
+  for (const map of MAPS) {
+    total += await addFundamentalsForMap(userId, map, packs);
+  }
+  markAutoSeededFundamentals(userId);
+  return total;
 }
 
 export async function deleteStrat(userId: string, stratId: string) {

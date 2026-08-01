@@ -44,7 +44,7 @@ function Shell() {
         <header className="topbar">
           <p className="brand">
             <span>CS2 · {subtitle}</span>
-            Playbook
+            <span className="brand-mark">Playbook</span>
           </p>
           {showChrome && <MapSideChrome />}
         </header>
