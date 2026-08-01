@@ -17,12 +17,12 @@ import { authRedirectTo } from "../lib/supabase";
 export function SettingsScreen() {
   const { mode, user, signOut, userId, supabaseReady } = useAuth();
   const { packs, strats, refresh } = usePlaybook();
-  const shareUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
+  const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
   const [liveToken, setLiveToken] = useState<string | null>(null);
   const [liveMsg, setLiveMsg] = useState("");
   const [liveBusy, setLiveBusy] = useState(false);
 
-  const liveUrl = liveToken && shareUrl ? `${shareUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
+  const liveUrl = liveToken && baseUrl ? `${baseUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
 
   useEffect(() => {
     if (!user || !supabaseReady) {
@@ -33,7 +33,10 @@ export function SettingsScreen() {
     void (async () => {
       try {
         const token = await ensureLiveShareToken();
-        if (!cancelled) setLiveToken(token);
+        if (!cancelled) {
+          setLiveToken(token);
+          setLiveMsg("");
+        }
       } catch (e) {
         if (!cancelled) setLiveMsg(e instanceof Error ? e.message : "Could not create live link");
       }
@@ -57,7 +60,7 @@ export function SettingsScreen() {
             : " · guest (this device only)"}
         </p>
         <p className="banner">
-          Login is optional. Guests get full Match + packs on this phone. Sign in to sync and share a live call link with the team.
+          Login is optional. Guests get Match + packs on this phone. Sign in to sync across devices and share a private live-call link.
         </p>
         {user && (
           <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>
@@ -72,32 +75,13 @@ export function SettingsScreen() {
         </div>
       )}
 
-      <div className="panel">
-        <p className="eyebrow">App link (no login)</p>
-        <p className="muted">Send this so teammates can open the app as guests.</p>
-        <input className="input" readOnly value={shareUrl} onFocus={(e) => e.target.select()} />
-        <button
-          type="button"
-          className="btn-ghost"
-          onClick={async () => {
-            try {
-              await navigator.clipboard.writeText(shareUrl);
-            } catch {
-              /* ignore */
-            }
-          }}
-        >
-          Copy app link
-        </button>
-      </div>
-
       {user && (
         <div className="panel">
-          <p className="eyebrow">Live call link (private)</p>
+          <p className="eyebrow">Live call link</p>
           <p className="muted">
-            Teammates open this without logging in and see your current Match call. It updates while you pick strats.
+            Private URL for teammates — no login. They see your current Match call and it updates as you change strats.
           </p>
-          <input className="input" readOnly value={liveUrl || "Creating link…"} onFocus={(e) => e.target.select()} />
+          <input className="input" readOnly value={liveUrl || (liveMsg ? "—" : "Creating link…")} onFocus={(e) => e.target.select()} />
           <div className="row">
             <button
               type="button"
@@ -106,7 +90,7 @@ export function SettingsScreen() {
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(liveUrl);
-                  setLiveMsg("Copied live link");
+                  setLiveMsg("Copied");
                 } catch {
                   setLiveMsg("Could not copy");
                 }
@@ -124,7 +108,7 @@ export function SettingsScreen() {
                 try {
                   const token = await regenerateLiveShareToken();
                   setLiveToken(token);
-                  setLiveMsg("New live link created (old one revoked)");
+                  setLiveMsg("New link created (old one revoked)");
                 } catch (e) {
                   setLiveMsg(e instanceof Error ? e.message : "Failed to regenerate");
                 } finally {

@@ -13,11 +13,12 @@ create policy "live_shares_own" on live_shares for all
   using (auth.uid() = owner_user_id)
   with check (auth.uid() = owner_user_id);
 
+-- Token helpers use extensions.gen_random_bytes (see 004_fix_live_share_pgcrypto.sql)
 create or replace function public.ensure_live_share()
 returns text
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_token text;
@@ -39,7 +40,7 @@ create or replace function public.regenerate_live_share()
 returns text
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_token text;
