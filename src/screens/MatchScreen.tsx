@@ -210,7 +210,7 @@ export function MatchScreen() {
             <p className="eyebrow">Choose a strat</p>
             <p className="muted" style={{ marginBottom: 12 }}>
               {eligible.length === 0
-                ? `No strats match this selection on ${session.selected_map}. Enable more packs in Book.`
+                ? `No strats match this selection on ${session.selected_map}. Enable more packs in Playbook.`
                 : `${eligible.length} strat${eligible.length === 1 ? "" : "s"} ready · tap one to call`}
             </p>
 

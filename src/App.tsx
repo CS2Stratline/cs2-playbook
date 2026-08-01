@@ -49,9 +49,10 @@ function Shell() {
         </header>
         <Routes>
           <Route path="/" element={<Navigate to="/match" replace />} />
-          <Route path="/lobby" element={<Navigate to="/book" replace />} />
+          <Route path="/lobby" element={<Navigate to="/playbook" replace />} />
+          <Route path="/book" element={<Navigate to="/playbook" replace />} />
           <Route path="/match" element={<MatchScreen />} />
-          <Route path="/book" element={<BookScreen />} />
+          <Route path="/playbook" element={<BookScreen />} />
           <Route path="/settings" element={<SettingsScreen />} />
           <Route path="*" element={<Navigate to="/match" replace />} />
         </Routes>
@@ -60,8 +61,8 @@ function Shell() {
             <NavLink to="/match" className={({ isActive }) => (isActive ? "active" : "")}>
               Match
             </NavLink>
-            <NavLink to="/book" className={({ isActive }) => (isActive ? "active" : "")}>
-              Book
+            <NavLink to="/playbook" className={({ isActive }) => (isActive ? "active" : "")}>
+              Playbook
             </NavLink>
             <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
               Settings

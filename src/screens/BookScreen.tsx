@@ -122,7 +122,7 @@ export function BookScreen() {
     navigate("/match");
   }
 
-  if (loading) return <div className="empty">Loading book…</div>;
+  if (loading) return <div className="empty">Loading playbook…</div>;
 
   return (
     <div>
@@ -169,7 +169,7 @@ export function BookScreen() {
       <div className="panel">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <p className="eyebrow">Book</p>
+            <p className="eyebrow">Playbook</p>
             <h2 className="h2" style={{ fontSize: 24 }}>
               {session.selected_map} {session.selected_side}
             </h2>
