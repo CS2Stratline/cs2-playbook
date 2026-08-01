@@ -23,7 +23,7 @@ export function LineupChip({ label, url, suggested, title, compact }: Props) {
       rel="noopener noreferrer"
       title={title || label}
     >
-      <NadeIcon type={type} size={compact ? 11 : 12} />
+      <NadeIcon type={type} size={compact ? 13 : 14} />
       <span>{text}</span>
     </a>
   );

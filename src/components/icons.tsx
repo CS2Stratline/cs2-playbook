@@ -1,5 +1,6 @@
 import type { ReactNode, SVGProps } from "react";
 import type { NadeKind } from "../lib/nadeType";
+import { CsIcon } from "./CsIcon";
 
 export type { NadeKind };
 
@@ -101,82 +102,32 @@ export const Gear = (p: { size?: number }) => (
   </Icon>
 );
 
-/** Terrorist side — C4-style charge */
-export const SideT = (p: { size?: number }) => (
-  <Icon {...p}>
-    <rect x="7" y="8" width="10" height="10" rx="1.5" />
-    <path d="M10 8V6.5a2 2 0 0 1 4 0V8" />
-    <circle cx="12" cy="13" r="1.5" fill="currentColor" stroke="none" />
-    <path d="M9 18v2M15 18v2" />
-  </Icon>
-);
+/** Official T silhouette (Valve). */
+export const SideT = (p: { size?: number }) => <CsIcon name="t" size={p.size ?? 14} />;
 
-/** CT side — shield */
-export const SideCT = (p: { size?: number }) => (
-  <Icon {...p}>
-    <path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6Z" />
-    <path d="M9.5 12.5 11.5 14.5 15 10.5" />
-  </Icon>
-);
-
-export const Smoke = (p: { size?: number }) => (
-  <Icon {...p} strokeWidth={1.75}>
-    <path d="M8 14c-2.2 0-4-1.5-4-3.4C4 8.6 5.8 7 8 7c.4-1.7 2-3 3.9-3 2.3 0 4.1 1.7 4.3 3.9 1.7.2 3 1.6 3 3.3 0 1.9-1.6 3.4-3.6 3.4H8Z" />
-    <path d="M9 17c0 1.2.9 2 2 2s2-.8 2-2" />
-  </Icon>
-);
-
-export const Flash = (p: { size?: number }) => (
-  <Icon {...p} strokeWidth={1.75}>
-    <circle cx="12" cy="12" r="3.5" />
-    <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" />
-  </Icon>
-);
-
-export const Molly = (p: { size?: number }) => (
-  <Icon {...p} strokeWidth={1.75}>
-    <path d="M10 10c0-2 1-3.5 2-5 1 1.5 2 3 2 5" />
-    <path d="M9 11h6l-.6 8.2a1.5 1.5 0 0 1-1.5 1.3h-1.8a1.5 1.5 0 0 1-1.5-1.3Z" />
-    <path d="M10.5 15h3" />
-  </Icon>
-);
-
-export const HE = (p: { size?: number }) => (
-  <Icon {...p} strokeWidth={1.75}>
-    <path d="M10 6h4l1 3v1.5a5 5 0 1 1-6 0V9Z" />
-    <path d="M10 6V4.5A1.5 1.5 0 0 1 11.5 3h1A1.5 1.5 0 0 1 14 4.5V6" />
-    <path d="M9 14h6" />
-  </Icon>
-);
-
-export const Combo = (p: { size?: number }) => (
-  <Icon {...p} strokeWidth={1.75}>
-    <circle cx="8" cy="10" r="3" />
-    <circle cx="16" cy="10" r="3" />
-    <circle cx="12" cy="16" r="3" />
-  </Icon>
-);
+/** Official CT silhouette (Valve). */
+export const SideCT = (p: { size?: number }) => <CsIcon name="ct" size={p.size ?? 14} />;
 
 export function NadeIcon({ type, size = 12 }: { type: NadeKind | string | null | undefined; size?: number }) {
   switch (type) {
     case "smoke":
     case "smokes":
-      return <Smoke size={size} />;
+      return <CsIcon name="smoke" size={size} />;
     case "flashbang":
     case "flashbangs":
     case "flash":
-      return <Flash size={size} />;
+      return <CsIcon name="flash" size={size} />;
     case "molotov":
     case "molotovs":
     case "incendiary":
-      return <Molly size={size} />;
+      return <CsIcon name="molotov" size={size} />;
     case "hegrenade":
     case "hegrenades":
     case "he":
-      return <HE size={size} />;
+      return <CsIcon name="he" size={size} />;
     case "combination":
     case "combinations":
-      return <Combo size={size} />;
+      return <CsIcon name="smoke" size={size} />;
     default:
       return <ExternalLink size={size} />;
   }
@@ -250,8 +201,21 @@ export function MapIcon({ map, size = 14 }: { map: string; size?: number }) {
   }
 }
 
+/** Bomb-site / filter icons — official CS map markers where available. */
 export function SiteIcon({ site, size = 12 }: { site: string; size?: number }) {
-  const label = site === "all" ? "·" : site === "default" ? "D" : site === "mid" ? "M" : String(site).toUpperCase().slice(0, 1);
+  const key =
+    site === "a"
+      ? "site_a"
+      : site === "b"
+        ? "site_b"
+        : site === "mid"
+          ? "site_mid"
+          : site === "all"
+            ? "all"
+            : null;
+  if (key) return <CsIcon name={key} size={size} />;
+  // Default / other — letter badge
+  const label = site === "default" ? "D" : String(site).toUpperCase().slice(0, 1) || "?";
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" aria-hidden="true" focusable="false" className="site-icon">
       <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="currentColor" strokeWidth="1.5" />
@@ -302,9 +266,5 @@ export const RoundIcons = {
       <path d="M9 12h6" />
     </Icon>
   ),
-  all: (p: { size?: number }) => (
-    <Icon {...p} strokeWidth={1.75}>
-      <circle cx="12" cy="12" r="8" />
-    </Icon>
-  ),
+  all: (p: { size?: number }) => <CsIcon name="all" size={p.size ?? 13} />,
 };
