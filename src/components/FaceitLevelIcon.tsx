@@ -3,15 +3,14 @@ import type { FaceitLevel } from "../lib/faceitLevels";
 /**
  * FACEIT skill icons from static assets in /public/levels/.
  *
- * Drop your files as:
+ * Expected files:
  *   public/levels/1.png … public/levels/10.png
- *   public/levels/challenger.png  (optional)
  *
- * PNG / WebP / SVG all work — keep the basename (1–10).
+ * PNG preferred; .webp / .svg with the same basename also work.
  */
 const EXT_CANDIDATES = ["png", "webp", "svg"] as const;
 
-function levelAssetUrl(level: FaceitLevel | "challenger", ext: string) {
+function levelAssetUrl(level: FaceitLevel, ext: string) {
   const base = import.meta.env.BASE_URL || "/";
   const root = base.endsWith("/") ? base : `${base}/`;
   return `${root}levels/${level}.${ext}`;
@@ -26,8 +25,9 @@ export function FaceitLevelIcon({
   size?: number;
   className?: string;
 }) {
-  // Prefer png, then webp, then svg — browser 404s flip via onError.
-  const primary = levelAssetUrl(level, EXT_CANDIDATES[0]);
+  // Challenger not used — map to level 10 artwork if ever requested.
+  const resolved: FaceitLevel = level === "challenger" ? 10 : level;
+  const primary = levelAssetUrl(resolved, EXT_CANDIDATES[0]);
 
   return (
     <img
@@ -45,10 +45,9 @@ export function FaceitLevelIcon({
         const next = tried + 1;
         if (next < EXT_CANDIDATES.length) {
           img.dataset.extIndex = String(next);
-          img.src = levelAssetUrl(level, EXT_CANDIDATES[next]);
+          img.src = levelAssetUrl(resolved, EXT_CANDIDATES[next]);
           return;
         }
-        // Last resort: hide broken image rather than show a sad icon.
         img.style.visibility = "hidden";
       }}
     />

@@ -1,15 +1,19 @@
 # FACEIT level icons
 
-Put the official / shared level images here:
+Drop the level images here as:
 
 ```
-public/levels/1.png
-public/levels/2.png
-…
-public/levels/10.png
-public/levels/challenger.png   # optional
+1.png
+2.png
+3.png
+4.png
+5.png
+6.png
+7.png
+8.png
+9.png
+10.png
 ```
 
-PNG preferred. WebP or SVG also work with the same basenames (`1.webp`, etc.).
-
-Vite serves this folder at `/levels/…` (or `/cs2-playbook/levels/…` on GitHub Pages).
+PNG preferred. `.webp` / `.svg` with the same names also work.
+No challenger icon needed.
