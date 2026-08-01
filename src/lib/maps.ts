@@ -1,3 +1,5 @@
+import { isAllMaps } from "./types";
+
 /** App map name → CS2 workshop / icon slug. */
 export const MAP_SLUG: Record<string, string> = {
   "Dust II": "de_dust2",
@@ -10,6 +12,7 @@ export const MAP_SLUG: Record<string, string> = {
 };
 
 export function mapIconUrl(map: string): string | null {
+  if (isAllMaps(map)) return null;
   const slug = MAP_SLUG[map];
   if (!slug) return null;
   const base = import.meta.env.BASE_URL || "/";

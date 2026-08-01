@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
 import type { Strat } from "../lib/types";
+import { isAllMaps } from "../lib/types";
 import { bumpStratUsage } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -46,6 +47,7 @@ export function MatchScreen() {
   const side = session.selected_side;
   const isT = side === "T";
   const accent = side === "CT" ? "ct" : "";
+  const needsMap = isAllMaps(session.selected_map);
 
   // Resolve from full library — Use in Match / live share can set a pick outside the enabled pool.
   const currentPick = useMemo(
@@ -189,7 +191,14 @@ export function MatchScreen() {
       </div>
 
       <div className="panel">
-        {!currentPick ? (
+        {needsMap && !currentPick ? (
+          <>
+            <p className="eyebrow">Pick a map</p>
+            <p className="muted">
+              Match stays one map so the call is scannable in freeze time. Pick a map above — use All in Playbook to browse everything.
+            </p>
+          </>
+        ) : !currentPick ? (
           <>
             <p className="eyebrow">Choose a strat</p>
             <p className="muted" style={{ marginBottom: 12 }}>
