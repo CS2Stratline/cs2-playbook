@@ -48,6 +48,7 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 - Defaults and mid control, not only site executes
 - Quality over volume — cut vague or duplicate callouts
 - Prefer well-known executes (BLAST / standard meta) with CSNADES URLs that exist in `csnades-catalog.json`
+- Inspiration (adapt to freeze-time tasks — do not copy role boards): [cs2tactics](https://cs2tactics.vercel.app/tactics), [cs2strats.net](https://cs2strats.net)
 
 ## Regenerating the starter file
 

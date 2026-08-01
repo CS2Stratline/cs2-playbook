@@ -18,7 +18,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 33
+      "strat_count": 35
     },
     {
       "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
@@ -29,7 +29,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 43
+      "strat_count": 46
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
@@ -3040,6 +3040,186 @@
         "Fall together"
       ],
       "level": 7
+    },
+    {
+      "id": "3f37d63c-a0c7-43a2-85bf-dbc10d431532",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "inspiration:cs2tactics+cs2strats",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol stairs",
+      "level": 2,
+      "description": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+      "tasks": [
+        "Smoke stairs from spawn",
+        "Flash ramp / palace exit",
+        "Plant default, save util"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ]
+    },
+    {
+      "id": "b6cbb462-5f5e-4670-b43f-e4ca94fe4587",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "inspiration:cs2tactics+cs2strats",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps split",
+      "level": 5,
+      "description": "Mid window + apps hit together — split B instead of five apps.",
+      "tasks": [
+        "Smoke mid window, take short",
+        "Two through apps with market smokes",
+        "Trade site together"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ]
+    },
+    {
+      "id": "33393970-09f5-4bd0-8485-fa3836e49432",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "inspiration:cs2tactics+cs2strats",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Eco window",
+      "level": 2,
+      "description": "Eco: stack window/top mid for info — fall to sites on execute.",
+      "tasks": [
+        "3–4 window / top mid",
+        "1 soft A or B",
+        "Fall on smoke execute"
+      ],
+      "rounds": [
+        "eco"
+      ],
+      "status": "ready",
+      "links": []
+    },
+    {
+      "id": "793e5ed1-7fa4-4c31-9255-d0271d87c5bf",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "inspiration:cs2tactics+cs2strats",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Short mid push",
+      "level": 5,
+      "description": "Push mid with short support to break T mid control.",
+      "tasks": [
+        "1 short ready to swing",
+        "2 mid (window + under)",
+        "1 A, 1 B anchors",
+        "Flash mid, take space, fall on rotate"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Mid window",
+          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
+        }
+      ]
+    },
+    {
+      "id": "5a55dece-1c34-42b1-ad77-6cdf8827f214",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "inspiration:cs2tactics+cs2strats",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti apps",
+      "level": 4,
+      "description": "When apps push: let them exit, molly floor/bench, trade from site + short.",
+      "tasks": [
+        "1 short, 1 site/van",
+        "Molly bench/site — not deep apps",
+        "Trade exit, hold market"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Bench",
+          "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
+        },
+        {
+          "label": "Molly: Van",
+          "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
+        }
+      ]
     }
   ]
 }

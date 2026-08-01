@@ -27,6 +27,42 @@ function S(partial) {
 
 const strats = [
   // ─── MIRAGE T ───────────────────────────────────────────────
+  // Inspired by cs2tactics / cs2strats (freeze-time adapted)
+  S({
+    map: "Mirage",
+    side: "T",
+    site: "a",
+    callout: "Pistol stairs",
+    calloutEn: "Pistol stairs",
+    descriptionEn: "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+    description: "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+    rounds: ["pistol"],
+    tasksEn: ["Smoke stairs from spawn", "Flash ramp / palace exit", "Plant default, save util"],
+    tasks: ["Smoke stairs from spawn", "Flash ramp / palace exit", "Plant default, save util"],
+    links: [
+      L("Røyk: Stairs", "Smoke: Stairs", "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"),
+      L("Flash: Ramp", "Flash: Ramp", "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"),
+    ],
+  }),
+  S({
+    map: "Mirage",
+    side: "T",
+    site: "b",
+    callout: "Apps split",
+    calloutEn: "Apps split",
+    descriptionEn: "Mid window + apps hit together — split B instead of five apps.",
+    description: "Mid window + apps hit together — split B instead of five apps.",
+    rounds: ["full", "force"],
+    tasksEn: ["Smoke mid window, take short", "Two through apps with market smokes", "Trade site together"],
+    tasks: ["Smoke mid window, take short", "Two through apps with market smokes", "Trade site together"],
+    links: [
+      L("Røyk: Mid window", "Smoke: Mid window", "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"),
+      L("Røyk: Market window", "Smoke: Market window", "https://csnades.gg/mirage/smokes/market-window-from-back-alley"),
+      L("Røyk: Market door", "Smoke: Market door", "https://csnades.gg/mirage/smokes/market-door-from-back-alley"),
+      L("Flash: B site", "Flash: B site", "https://csnades.gg/mirage/flashbangs/b-site-from-apts"),
+    ],
+  }),
+
   // BLAST.tv / OnlyCSGO: classic triple (CT/ticket + jungle + stairs)
   S({
     map: "Mirage",
@@ -372,6 +408,51 @@ const strats = [
   }),
 
   // MIRAGE CT
+  // Inspired by cs2tactics / cs2strats (freeze-time adapted)
+  S({
+    map: "Mirage",
+    side: "CT",
+    site: null,
+    callout: "Eco window",
+    calloutEn: "Eco window",
+    descriptionEn: "Eco: stack window/top mid for info — fall to sites on execute.",
+    description: "Eco: stack window/top mid for info — fall to sites on execute.",
+    rounds: ["eco"],
+    tasksEn: ["3–4 window / top mid", "1 soft A or B", "Fall on smoke execute"],
+    tasks: ["3–4 window / top mid", "1 soft A or B", "Fall on smoke execute"],
+    links: [],
+  }),
+  S({
+    map: "Mirage",
+    side: "CT",
+    site: null,
+    callout: "Short mid push",
+    calloutEn: "Short mid push",
+    descriptionEn: "Push mid with short support to break T mid control.",
+    description: "Push mid with short support to break T mid control.",
+    rounds: ["full", "force"],
+    tasksEn: ["1 short ready to swing", "2 mid (window + under)", "1 A, 1 B anchors", "Flash mid, take space, fall on rotate"],
+    tasks: ["1 short ready to swing", "2 mid (window + under)", "1 A, 1 B anchors", "Flash mid, take space, fall on rotate"],
+    links: [
+      L("Flash: Mid window", "Flash: Mid window", "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"),
+    ],
+  }),
+  S({
+    map: "Mirage",
+    side: "CT",
+    site: null,
+    callout: "Anti apps",
+    calloutEn: "Anti apps",
+    descriptionEn: "When apps push: let them exit, molly floor/bench, trade from site + short.",
+    description: "When apps push: let them exit, molly floor/bench, trade from site + short.",
+    rounds: ["full", "force", "anti"],
+    tasksEn: ["1 short, 1 site/van", "Molly bench/site — not deep apps", "Trade exit, hold market"],
+    tasks: ["1 short, 1 site/van", "Molly bench/site — not deep apps", "Trade exit, hold market"],
+    links: [
+      L("Molly: Bench", "Molly: Bench", "https://csnades.gg/mirage/molotovs/bench-from-b-apts"),
+      L("Molly: Van", "Molly: Van", "https://csnades.gg/mirage/molotovs/van-from-b-apts"),
+    ],
+  }),
   S({
     map: "Mirage",
     side: "CT",
