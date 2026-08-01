@@ -67,7 +67,6 @@ export type Nade = {
   url: string;
   team?: string;
   label: string;
-  labelEn: string;
 };
 
 export type Profile = {

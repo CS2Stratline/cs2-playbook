@@ -5,19 +5,19 @@ Run on a phone (or narrow browser) during casual/scrim freeze. Goal: readable ca
 ## Setup
 
 1. Hard-refresh the deployed app (or `npm run dev`).
-2. Confirm English default + strats already in the pool.
+2. Confirm strats are already in the pool (guest local seed, or signed-in cloud).
 3. Pick map + side you are actually playing.
 
 ## Cases
 
 | # | Action | Pass if |
 |---|---|---|
-| 1 | Surprise: tap **Give me a call** / **Surprise me** | Callout + tasks readable; lineup pills beside matching lines |
+| 1 | Surprise: tap **Surprise me** | Callout + tasks readable; lineup pills beside matching lines |
 | 2 | Pick: tap a strat row | Same call card; intended strat shown |
-| 3 | Book → expand → **Use in match** | Switches to Match with that strat |
+| 3 | Playbook → expand → **Use in match** | Switches to Match with that strat |
 | 4 | Refresh with an active call | Filters restored; call still visible |
 | 5 | Change site filter | Active call clears; pool updates |
-| 6 | Full backup → clear site data → restore | Book + filters come back |
+| 6 | Settings → Export JSON | Downloads `{ version, maps, packs, strats }` |
 
 ## Notes
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../lib/auth";
 import { isSupabaseConfigured } from "../lib/api";
 
-export function AuthScreen({ compact = false }: { compact?: boolean }) {
+export function AuthScreen() {
   const { signInWithEmail, signInWithDiscord, supabaseReady } = useAuth();
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
@@ -18,18 +18,15 @@ export function AuthScreen({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className={compact ? undefined : "panel"}>
-      {!compact && (
-        <>
-          <p className="eyebrow">Optional sign-in</p>
-          <h2 className="h2" style={{ fontSize: 22 }}>
-            Sync this device
-          </h2>
-          <p className="muted">
-            Match works as a guest. Sign in to sync your pool across devices (Fundamentals are filled in automatically). Discord is recommended.
-          </p>
-        </>
-      )}
+    <div className="panel">
+      <p className="eyebrow">Optional sign-in</p>
+      <h2 className="h2" style={{ fontSize: 22 }}>
+        Sync this device
+      </h2>
+      <p className="muted">
+        Match works as a guest. Sign in to sync your pool across devices (Fundamentals are filled in automatically).
+        Discord is recommended.
+      </p>
 
       <button
         type="button"

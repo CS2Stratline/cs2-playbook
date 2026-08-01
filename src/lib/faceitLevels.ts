@@ -1,23 +1,9 @@
 /**
- * FACEIT CS2 skill levels (1–10 + Challenger).
- * Colors matched to the official badge icons (white → green → yellow → orange → red).
+ * FACEIT CS2 skill levels (1–10).
  * Elo brackets: https://support.faceit.com/hc/en-us/articles/10525200579740-FACEIT-CS2-Elo-and-skill-levels
+ * Badge art lives in public/levels/ (PNG), not hex colors.
  */
 export type FaceitLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-
-export const FACEIT_LEVEL_COLOR: Record<FaceitLevel | "challenger", string> = {
-  1: "#FFFFFF",
-  2: "#5EFF3A",
-  3: "#3DFF3D",
-  4: "#FFCC00",
-  5: "#FFC800",
-  6: "#FFC200",
-  7: "#FFB800",
-  8: "#FF6A00",
-  9: "#FF5500",
-  10: "#FF1E1E",
-  challenger: "#E10600",
-};
 
 export const FACEIT_LEVEL_ELO: Record<FaceitLevel, string> = {
   1: "100 – 500",

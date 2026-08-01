@@ -192,7 +192,7 @@ export function suggestLineupLinks(
     if (seen.has(dedupe)) continue;
     seen.add(dedupe);
     out.push({
-      label: best.labelEn || best.label || best.to,
+      label: best.label || best.to,
       url: best.url,
     });
   }

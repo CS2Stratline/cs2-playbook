@@ -1,7 +1,7 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
 
@@ -708,7 +708,7 @@ export function resetLocalDemo() {
 
 export function exportBookJson() {
   return {
-    version: 3,
+    version: SCHEMA_VERSION,
     maps: [...MAPS],
     packs: memory.packs,
     strats: memory.strats,

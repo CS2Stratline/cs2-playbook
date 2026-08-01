@@ -1,24 +1,19 @@
-# Lineup-kilde: CSNADES.gg
+# Lineup source: CSNADES.gg
 
-**Kanonisk kilde for utility-lineups i Strat-boka er [CSNADES.gg](https://csnades.gg/).**
+**Canonical source for utility lineups is [CSNADES.gg](https://csnades.gg/).**
 
-## Hvorfor denne
+## Why this source
 
-| Kilde | Dekning | Stabile deep-links | Egnet for AI/auto |
+| Source | Coverage | Stable deep links | Fit for auto-suggest |
 |---|---|---|---|
-| **CSNADES.gg** | Site-wide 1000+; our snapshot ~566 on 7 maps | `/{map}/{type}/{slug}` | Ja |
-| cs2util.com | God, interaktivt kart | Svakere per-nade URL | Nei |
-| lineups.gg | ~200 | Begrenset | Delvis |
-| csdb.gg | ~118 | Delvis | Delvis |
+| **CSNADES.gg** | Site-wide 1000+; our snapshot ~566 on 7 maps | `/{map}/{type}/{slug}` | Yes |
+| cs2util.com | Strong, interactive map | Weaker per-nade URL | No |
+| lineups.gg | ~200 | Limited | Partial |
+| csdb.gg | ~118 | Partial | Partial |
 
-CSNADES har:
+CSNADES gives per-nade pages (video + aim point), a predictable URL pattern, combination pages for multi-smoke executes, and public coverage for Dust II, Mirage, Inferno, Nuke, Ancient, Anubis, and Cache.
 
-- Per-nade-sider med video + aim-point
-- Forutsigbart URL-mønster
-- Combinations for multi-smoke executes
-- Offentlige kart vi bruker: Dust II, Mirage, Inferno, Nuke, Ancient, Anubis, Cache
-
-## URL-mønster
+## URL pattern
 
 ```
 https://csnades.gg/{map}/{type}/{slug}
@@ -26,56 +21,52 @@ https://csnades.gg/{map}/{type}/{slug}
 
 - **map:** `dust2` | `mirage` | `inferno` | `nuke` | `ancient` | `anubis` | `cache`
 - **type:** `smokes` | `flashbangs` | `molotovs` | `hegrenades` | `combinations`
-- **slug:** `{landing}-from-{throw-spot}` (evt. `-b`, `-2`, … for varianter)
+- **slug:** `{landing}-from-{throw-spot}` (optional `-b`, `-2`, … for variants)
 
-Eksempler:
+Examples:
 
 - https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp
 - https://csnades.gg/dust2/smokes/ct-spawn-from-xbox
-- https://csnades.gg/inferno/molotovs/… (se katalogen)
 
-Kartnavn i appen → slug: `Dust II` → `dust2`.
+App map name → slug: `Dust II` → `dust2`.
 
-## Lokal katalog
+## Local catalog
 
-`src/csnades-catalog.json` is a **manual snapshot** of public CSNADES pages (~566 nades for our seven maps). Landing/type aliases for auto-suggest live in `src/lib/lineupMatch.ts`.
+`src/csnades-catalog.json` is a **manual snapshot** of public CSNADES pages (~566 nades). Landing/type aliases for auto-suggest live in `src/lib/lineupMatch.ts`.
 
-`suggestLineupLinks` only reads lines that mention utility, matches throw *destinations*, and **hard-filters by side** (`team` t/ct) so CT holds never get T execute smokes.
+`suggestLineupLinks` only reads utility task lines, matches throw destinations, and **hard-filters by side** (`team` t/ct) so CT holds never get T execute smokes.
 
-## When Claude / ChatGPT lager nye strats
+## When writing new strats
 
-1. Skriv tasks med **konkrete landing-spots** (ticket booth, jungle, xbox, banana, heaven, …).
-2. Sett `links` til konkrete CSNADES-URL-er fra mønsteret over, eller la feltet stå tomt — appen foreslår da automatisk ved lagring.
-3. Bruk **ikke** andre lineup-domener med mindre CSNADES mangler naden.
-4. Foretrekk én kanonisk variant per landing (unngå `-b`/`-2` med mindre laget har en bestemt preferanse).
-5. For executes med flere røyker: lenk hver røyk, eller en `combinations/`-side hvis den finnes.
-6. Følg også [CONTENT.md](./CONTENT.md) (korte callouts, ≤5 tasks, bilingual).
+1. Use **concrete landing spots** in tasks (ticket booth, jungle, xbox, banana, heaven, …).
+2. Set `links` to real CSNADES URLs, or leave `[]` — the app suggests on save.
+3. Prefer CSNADES over other domains unless a nade is missing.
+4. Prefer one canonical variant per landing (avoid `-b`/`-2` unless the team has a preferred line).
+5. For multi-smoke executes: one link per smoke, or a `combinations/` page if it exists.
+6. Follow [CONTENT.md](./CONTENT.md) (short callouts, ≤5 tasks, English only).
 
-Eksempel-payload:
+Example:
 
 ```json
 {
   "map": "Mirage",
   "side": "T",
   "site": "a",
-  "callout": "Trippel A",
-  "calloutEn": "Triple A",
-  "tasks": ["Røyk ticket booth", "Røyk jungle", "Røyk stairs"],
-  "tasksEn": ["Smoke ticket booth", "Smoke jungle", "Smoke stairs"],
+  "callout": "Triple A",
+  "tasks": ["Smoke ticket booth", "Smoke jungle", "Smoke stairs"],
   "links": [
     {
-      "label": "Røyk: Ticket Booth",
-      "labelEn": "Smoke: Ticket Booth",
+      "label": "Smoke: Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp"
     }
   ]
 }
 ```
 
-## Oppdatere katalogen
+## Updating the catalog
 
-Det finnes **ingen** auto-regen-script ennå. Oppdater `csnades-catalog.json` manuelt når CS2-patches endrer lineups (scrape/public pages → samme JSON-shape). Kjør deretter `npm run starter` for å validere at starter-URL-ene fortsatt finnes i katalogen.
+No auto-regen script yet. Update `csnades-catalog.json` manually when patches change lineups, then run `npm run starter` to validate starter URLs still exist.
 
-## Designregel
+## Design rule
 
-Lineups er **forberedelse**. Kamp-fanen viser bare små lenke-chips. Ikke embed video i live-calleren.
+Lineups are **prep**. Match shows small link chips only — do not embed video in the live caller.

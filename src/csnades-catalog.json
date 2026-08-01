@@ -15,7 +15,6 @@
     "Cache": "cache"
   },
   "typeAliases": {
-    "røyk": "smoke",
     "royk": "smoke",
     "smoke": "smoke",
     "smokes": "smoke",
@@ -39,9 +38,7 @@
       "from": "A Main",
       "to": "A Site",
       "url": "https://csnades.gg/ancient/flashbangs/a-site-from-a-main",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_bf4e42c4a3ee",
@@ -52,9 +49,7 @@
       "from": "B Doors",
       "to": "B Pillar",
       "url": "https://csnades.gg/ancient/flashbangs/b-pillar-from-b-doors",
-      "labelEn": "Flash: B Pillar",
-      "label": "Flash: B Pillar",
-      "labelEnShort": "Flashbang: B Pillar"
+      "label": "Flash: B Pillar"
     },
     {
       "id": "nade_33a9078588de",
@@ -65,9 +60,7 @@
       "from": "Cave",
       "to": "B Ramp",
       "url": "https://csnades.gg/ancient/flashbangs/b-ramp-from-cave",
-      "labelEn": "Flash: B Ramp",
-      "label": "Flash: B Ramp",
-      "labelEnShort": "Flashbang: B Ramp"
+      "label": "Flash: B Ramp"
     },
     {
       "id": "nade_6740cee770fa",
@@ -78,9 +71,7 @@
       "from": "Cave",
       "to": "B Ramp",
       "url": "https://csnades.gg/ancient/flashbangs/b-ramp-from-cave-b",
-      "labelEn": "Flash: B Ramp",
-      "label": "Flash: B Ramp",
-      "labelEnShort": "Flashbang: B Ramp"
+      "label": "Flash: B Ramp"
     },
     {
       "id": "nade_84f475d5a4c4",
@@ -91,9 +82,7 @@
       "from": "Ruins Box",
       "to": "B Site",
       "url": "https://csnades.gg/ancient/flashbangs/b-site-from-ruins-box",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_78f9a24ad715",
@@ -104,9 +93,7 @@
       "from": "Vent",
       "to": "B Site",
       "url": "https://csnades.gg/ancient/flashbangs/b-site-from-vent",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_5550d86b1dad",
@@ -117,9 +104,7 @@
       "from": "Donut",
       "to": "Cat",
       "url": "https://csnades.gg/ancient/flashbangs/cat-from-donut",
-      "labelEn": "Flash: Cat",
-      "label": "Flash: Cat",
-      "labelEnShort": "Flashbang: Cat"
+      "label": "Flash: Cat"
     },
     {
       "id": "nade_5372a431d331",
@@ -130,9 +115,7 @@
       "from": "Jaguar",
       "to": "Catwalk",
       "url": "https://csnades.gg/ancient/flashbangs/catwalk-from-jaguar",
-      "labelEn": "Flash: Catwalk",
-      "label": "Flash: Catwalk",
-      "labelEnShort": "Flashbang: Catwalk"
+      "label": "Flash: Catwalk"
     },
     {
       "id": "nade_96c78d4fcaa0",
@@ -143,9 +126,7 @@
       "from": "Jaguar",
       "to": "Catwalk",
       "url": "https://csnades.gg/ancient/flashbangs/catwalk-from-jaguar-b",
-      "labelEn": "Flash: Catwalk",
-      "label": "Flash: Catwalk",
-      "labelEnShort": "Flashbang: Catwalk"
+      "label": "Flash: Catwalk"
     },
     {
       "id": "nade_6673111ec8fa",
@@ -156,9 +137,7 @@
       "from": "Donut",
       "to": "Donut",
       "url": "https://csnades.gg/ancient/flashbangs/donut-from-donut",
-      "labelEn": "Flash: Donut",
-      "label": "Flash: Donut",
-      "labelEnShort": "Flashbang: Donut"
+      "label": "Flash: Donut"
     },
     {
       "id": "nade_435606bcb359",
@@ -169,9 +148,7 @@
       "from": "Catwalk",
       "to": "Jaguar",
       "url": "https://csnades.gg/ancient/flashbangs/jaguar-from-catwalk",
-      "labelEn": "Flash: Jaguar",
-      "label": "Flash: Jaguar",
-      "labelEnShort": "Flashbang: Jaguar"
+      "label": "Flash: Jaguar"
     },
     {
       "id": "nade_252114dae0fc",
@@ -182,9 +159,7 @@
       "from": "T Mid",
       "to": "Mid",
       "url": "https://csnades.gg/ancient/flashbangs/mid-from-t-mid",
-      "labelEn": "Flash: Mid",
-      "label": "Flash: Mid",
-      "labelEnShort": "Flashbang: Mid"
+      "label": "Flash: Mid"
     },
     {
       "id": "nade_c6ea9250b755",
@@ -195,9 +170,7 @@
       "from": "T Spawn",
       "to": "Mid",
       "url": "https://csnades.gg/ancient/flashbangs/mid-from-t-spawn",
-      "labelEn": "Flash: Mid",
-      "label": "Flash: Mid",
-      "labelEnShort": "Flashbang: Mid"
+      "label": "Flash: Mid"
     },
     {
       "id": "nade_ea0912b03eeb",
@@ -208,9 +181,7 @@
       "from": "Wood",
       "to": "Mid",
       "url": "https://csnades.gg/ancient/flashbangs/mid-from-wood",
-      "labelEn": "Flash: Mid",
-      "label": "Flash: Mid",
-      "labelEnShort": "Flashbang: Mid"
+      "label": "Flash: Mid"
     },
     {
       "id": "nade_aaa816a9ae21",
@@ -221,9 +192,7 @@
       "from": "Mid Catwalk",
       "to": "B Long",
       "url": "https://csnades.gg/ancient/hegrenades/b-long-from-mid-catwalk",
-      "labelEn": "HE: B Long",
-      "label": "HE: B Long",
-      "labelEnShort": "Hegrenade: B Long"
+      "label": "HE: B Long"
     },
     {
       "id": "nade_351bc9c03951",
@@ -234,9 +203,7 @@
       "from": "B Site",
       "to": "Back Wood",
       "url": "https://csnades.gg/ancient/hegrenades/back-wood-from-b-site",
-      "labelEn": "HE: Back Wood",
-      "label": "HE: Back Wood",
-      "labelEnShort": "Hegrenade: Back Wood"
+      "label": "HE: Back Wood"
     },
     {
       "id": "nade_533f1806d27f",
@@ -247,9 +214,7 @@
       "from": "B Long",
       "to": "Boost",
       "url": "https://csnades.gg/ancient/hegrenades/boost-from-b-long",
-      "labelEn": "HE: Boost",
-      "label": "HE: Boost",
-      "labelEnShort": "Hegrenade: Boost"
+      "label": "HE: Boost"
     },
     {
       "id": "nade_7ef010a843ca",
@@ -260,9 +225,7 @@
       "from": "Donut",
       "to": "Jaguar Rush",
       "url": "https://csnades.gg/ancient/hegrenades/jaguar-rush-from-donut",
-      "labelEn": "HE: Jaguar Rush",
-      "label": "HE: Jaguar Rush",
-      "labelEnShort": "Hegrenade: Jaguar Rush"
+      "label": "HE: Jaguar Rush"
     },
     {
       "id": "nade_81cfc511766c",
@@ -273,9 +236,7 @@
       "from": "B Site",
       "to": "Lower Catwalk",
       "url": "https://csnades.gg/ancient/hegrenades/lower-catwalk-from-b-site",
-      "labelEn": "HE: Lower Catwalk",
-      "label": "HE: Lower Catwalk",
-      "labelEnShort": "Hegrenade: Lower Catwalk"
+      "label": "HE: Lower Catwalk"
     },
     {
       "id": "nade_6703fd92ddd0",
@@ -286,9 +247,7 @@
       "from": "B Site",
       "to": "Mid Catwalk",
       "url": "https://csnades.gg/ancient/hegrenades/mid-catwalk-from-b-site",
-      "labelEn": "HE: Mid Catwalk",
-      "label": "HE: Mid Catwalk",
-      "labelEnShort": "Hegrenade: Mid Catwalk"
+      "label": "HE: Mid Catwalk"
     },
     {
       "id": "nade_ec227e620131",
@@ -299,9 +258,7 @@
       "from": "T Mid",
       "to": "Stairs",
       "url": "https://csnades.gg/ancient/hegrenades/stairs-from-t-mid",
-      "labelEn": "HE: Stairs",
-      "label": "HE: Stairs",
-      "labelEnShort": "Hegrenade: Stairs"
+      "label": "HE: Stairs"
     },
     {
       "id": "nade_580b99749cf5",
@@ -312,9 +269,7 @@
       "from": "A Main",
       "to": "A Default",
       "url": "https://csnades.gg/ancient/molotovs/a-default-from-a-main",
-      "labelEn": "Molly: A Default",
-      "label": "Molly: A Default",
-      "labelEnShort": "Molotov: A Default"
+      "label": "Molly: A Default"
     },
     {
       "id": "nade_c9edcf904108",
@@ -325,9 +280,7 @@
       "from": "CT Spawn",
       "to": "Boost",
       "url": "https://csnades.gg/ancient/molotovs/boost-from-ct-spawn",
-      "labelEn": "Molly: Boost",
-      "label": "Molly: Boost",
-      "labelEnShort": "Molotov: Boost"
+      "label": "Molly: Boost"
     },
     {
       "id": "nade_94c6feb6bfa7",
@@ -338,9 +291,7 @@
       "from": "Top Mid",
       "to": "Elbow",
       "url": "https://csnades.gg/ancient/molotovs/elbow-from-top-mid",
-      "labelEn": "Molly: Elbow",
-      "label": "Molly: Elbow",
-      "labelEnShort": "Molotov: Elbow"
+      "label": "Molly: Elbow"
     },
     {
       "id": "nade_a4ed3acb0a09",
@@ -351,9 +302,7 @@
       "from": "Catwalk",
       "to": "Long Alley",
       "url": "https://csnades.gg/ancient/molotovs/long-alley-from-catwalk",
-      "labelEn": "Molly: Long Alley",
-      "label": "Molly: Long Alley",
-      "labelEnShort": "Molotov: Long Alley"
+      "label": "Molly: Long Alley"
     },
     {
       "id": "nade_b4e336c92d6a",
@@ -364,9 +313,7 @@
       "from": "B Entry",
       "to": "Lower Catwalk",
       "url": "https://csnades.gg/ancient/molotovs/lower-catwalk-from-b-entry",
-      "labelEn": "Molly: Lower Catwalk",
-      "label": "Molly: Lower Catwalk",
-      "labelEnShort": "Molotov: Lower Catwalk"
+      "label": "Molly: Lower Catwalk"
     },
     {
       "id": "nade_9b6dfb0f1b61",
@@ -377,9 +324,7 @@
       "from": "B Entry",
       "to": "Mid Catwalk",
       "url": "https://csnades.gg/ancient/molotovs/mid-catwalk-from-b-entry",
-      "labelEn": "Molly: Mid Catwalk",
-      "label": "Molly: Mid Catwalk",
-      "labelEnShort": "Molotov: Mid Catwalk"
+      "label": "Molly: Mid Catwalk"
     },
     {
       "id": "nade_f824fb9cbc29",
@@ -390,9 +335,7 @@
       "from": "B Entry",
       "to": "Mid Catwalk",
       "url": "https://csnades.gg/ancient/molotovs/mid-catwalk-from-b-entry-b",
-      "labelEn": "Molly: Mid Catwalk",
-      "label": "Molly: Mid Catwalk",
-      "labelEnShort": "Molotov: Mid Catwalk"
+      "label": "Molly: Mid Catwalk"
     },
     {
       "id": "nade_1a2a62c9b9cc",
@@ -403,9 +346,7 @@
       "from": "B Entry",
       "to": "Mid Catwalk",
       "url": "https://csnades.gg/ancient/molotovs/mid-catwalk-from-b-entry-c",
-      "labelEn": "Molly: Mid Catwalk",
-      "label": "Molly: Mid Catwalk",
-      "labelEnShort": "Molotov: Mid Catwalk"
+      "label": "Molly: Mid Catwalk"
     },
     {
       "id": "nade_74fb0d2a85d1",
@@ -416,9 +357,7 @@
       "from": "B Doors",
       "to": "Pillar",
       "url": "https://csnades.gg/ancient/molotovs/pillar-from-b-doors",
-      "labelEn": "Molly: Pillar",
-      "label": "Molly: Pillar",
-      "labelEnShort": "Molotov: Pillar"
+      "label": "Molly: Pillar"
     },
     {
       "id": "nade_b26a237b4f69",
@@ -429,9 +368,7 @@
       "from": "B Door",
       "to": "Wood",
       "url": "https://csnades.gg/ancient/molotovs/wood-from-b-door",
-      "labelEn": "Molly: Wood",
-      "label": "Molly: Wood",
-      "labelEnShort": "Molotov: Wood"
+      "label": "Molly: Wood"
     },
     {
       "id": "nade_925d75fc0764",
@@ -442,9 +379,7 @@
       "from": "Ruins",
       "to": "Wood",
       "url": "https://csnades.gg/ancient/molotovs/wood-from-ruins",
-      "labelEn": "Molly: Wood",
-      "label": "Molly: Wood",
-      "labelEnShort": "Molotov: Wood"
+      "label": "Molly: Wood"
     },
     {
       "id": "nade_0864bad232ce",
@@ -455,9 +390,7 @@
       "from": "A Site",
       "to": "A Long",
       "url": "https://csnades.gg/ancient/smokes/a-long-from-a-site",
-      "labelEn": "Smoke: A Long",
-      "label": "Smoke: A Long",
-      "labelEnShort": "Smoke: A Long"
+      "label": "Smoke: A Long"
     },
     {
       "id": "nade_242249752eb6",
@@ -468,9 +401,7 @@
       "from": "Big Box",
       "to": "A Main",
       "url": "https://csnades.gg/ancient/smokes/a-main-from-big-box",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_864d6c29377a",
@@ -481,9 +412,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/ancient/smokes/a-main-from-ct-d",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_570e04aa9395",
@@ -494,9 +423,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/ancient/smokes/a-main-from-ct-spawn",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_00f3ea30000d",
@@ -507,9 +434,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/ancient/smokes/a-main-from-ct-spawn-a",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_e9e49b1f5753",
@@ -520,9 +445,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/ancient/smokes/a-main-from-ct-spawn-b",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_714f77ebd544",
@@ -533,9 +456,7 @@
       "from": "CT Spawn",
       "to": "A Site",
       "url": "https://csnades.gg/ancient/smokes/a-site-from-ct-spawn",
-      "labelEn": "Smoke: A Site",
-      "label": "Smoke: A Site",
-      "labelEnShort": "Smoke: A Site"
+      "label": "Smoke: A Site"
     },
     {
       "id": "nade_d0cd5551602c",
@@ -546,9 +467,7 @@
       "from": "CT Spawn",
       "to": "A Stairs",
       "url": "https://csnades.gg/ancient/smokes/a-stairs-from-ct-spawn",
-      "labelEn": "Smoke: A Stairs",
-      "label": "Smoke: A Stairs",
-      "labelEnShort": "Smoke: A Stairs"
+      "label": "Smoke: A Stairs"
     },
     {
       "id": "nade_fae09c387045",
@@ -559,9 +478,7 @@
       "from": "Ruins",
       "to": "B Alley",
       "url": "https://csnades.gg/ancient/smokes/b-alley-from-ruins",
-      "labelEn": "Smoke: B Alley",
-      "label": "Smoke: B Alley",
-      "labelEnShort": "Smoke: B Alley"
+      "label": "Smoke: B Alley"
     },
     {
       "id": "nade_fdab7563797b",
@@ -572,9 +489,7 @@
       "from": "B Site",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-b-site",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_c5f47a3f2c96",
@@ -585,9 +500,7 @@
       "from": "CT Spawn",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_075ab9da961e",
@@ -598,9 +511,7 @@
       "from": "CT Spawn 1",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn-1",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_7f606132582b",
@@ -611,9 +522,7 @@
       "from": "CT Spawn 2",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn-2",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_3766d381f889",
@@ -624,9 +533,7 @@
       "from": "CT Spawn 3",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn-3",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_f1fa1f34ac67",
@@ -637,9 +544,7 @@
       "from": "CT Spawn 4",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn-4",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_1d2baa30bf0b",
@@ -650,9 +555,7 @@
       "from": "CT Spawn 5",
       "to": "B Doors",
       "url": "https://csnades.gg/ancient/smokes/b-doors-from-ct-spawn-5",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_53605d36e0f2",
@@ -663,9 +566,7 @@
       "from": "B Entry",
       "to": "B Ramp",
       "url": "https://csnades.gg/ancient/smokes/b-ramp-from-b-entry",
-      "labelEn": "Smoke: B Ramp",
-      "label": "Smoke: B Ramp",
-      "labelEnShort": "Smoke: B Ramp"
+      "label": "Smoke: B Ramp"
     },
     {
       "id": "nade_6d102e27e957",
@@ -676,9 +577,7 @@
       "from": "Back Alley",
       "to": "B Ramp",
       "url": "https://csnades.gg/ancient/smokes/b-ramp-from-back-alley",
-      "labelEn": "Smoke: B Ramp",
-      "label": "Smoke: B Ramp",
-      "labelEnShort": "Smoke: B Ramp"
+      "label": "Smoke: B Ramp"
     },
     {
       "id": "nade_b2f7e780a32c",
@@ -689,9 +588,7 @@
       "from": "CT Spawn",
       "to": "B Ramp",
       "url": "https://csnades.gg/ancient/smokes/b-ramp-from-ct-spawn",
-      "labelEn": "Smoke: B Ramp",
-      "label": "Smoke: B Ramp",
-      "labelEnShort": "Smoke: B Ramp"
+      "label": "Smoke: B Ramp"
     },
     {
       "id": "nade_a3ec485ab5ac",
@@ -702,9 +599,7 @@
       "from": "Catwalk",
       "to": "Back Alley",
       "url": "https://csnades.gg/ancient/smokes/back-alley-from-catwalk",
-      "labelEn": "Smoke: Back Alley",
-      "label": "Smoke: Back Alley",
-      "labelEnShort": "Smoke: Back Alley"
+      "label": "Smoke: Back Alley"
     },
     {
       "id": "nade_f3e390833712",
@@ -715,9 +610,7 @@
       "from": "Catwalk",
       "to": "Back Alley",
       "url": "https://csnades.gg/ancient/smokes/back-alley-from-catwalk-b",
-      "labelEn": "Smoke: Back Alley",
-      "label": "Smoke: Back Alley",
-      "labelEnShort": "Smoke: Back Alley"
+      "label": "Smoke: Back Alley"
     },
     {
       "id": "nade_9735bf75e307",
@@ -728,9 +621,7 @@
       "from": "Ruins",
       "to": "Back Alley",
       "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins",
-      "labelEn": "Smoke: Back Alley",
-      "label": "Smoke: Back Alley",
-      "labelEnShort": "Smoke: Back Alley"
+      "label": "Smoke: Back Alley"
     },
     {
       "id": "nade_293da53a0c95",
@@ -741,9 +632,7 @@
       "from": "Ruins",
       "to": "Back Alley",
       "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins-corner",
-      "labelEn": "Smoke: Back Alley",
-      "label": "Smoke: Back Alley",
-      "labelEnShort": "Smoke: Back Alley"
+      "label": "Smoke: Back Alley"
     },
     {
       "id": "nade_5c8a66cc4e20",
@@ -754,9 +643,7 @@
       "from": "CT Spawn 1",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-1",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_6fd7fbba4951",
@@ -767,9 +654,7 @@
       "from": "CT Spawn 2",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-2",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_19d45c21af2b",
@@ -780,9 +665,7 @@
       "from": "CT Spawn 3",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-3",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_461b3e6ac9f8",
@@ -793,9 +676,7 @@
       "from": "CT Spawn 4",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-4",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_eb1ddbfe3abe",
@@ -806,9 +687,7 @@
       "from": "CT Spawn 5",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-5",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_ffdb7dab7b1e",
@@ -819,9 +698,7 @@
       "from": "CT Spawn 5",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/ancient/smokes/bottom-mid-from-ct-spawn-5-b",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_49c4076daf01",
@@ -832,9 +709,7 @@
       "from": "T Spawn",
       "to": "Cat",
       "url": "https://csnades.gg/ancient/smokes/cat-from-t-spawn",
-      "labelEn": "Smoke: Cat",
-      "label": "Smoke: Cat",
-      "labelEnShort": "Smoke: Cat"
+      "label": "Smoke: Cat"
     },
     {
       "id": "nade_c2e03f8334c6",
@@ -845,9 +720,7 @@
       "from": "Ruins",
       "to": "Cave",
       "url": "https://csnades.gg/ancient/smokes/cave-from-ruins",
-      "labelEn": "Smoke: Cave",
-      "label": "Smoke: Cave",
-      "labelEnShort": "Smoke: Cave"
+      "label": "Smoke: Cave"
     },
     {
       "id": "nade_85e0d16df29d",
@@ -858,9 +731,7 @@
       "from": "Ruins",
       "to": "Cave",
       "url": "https://csnades.gg/ancient/smokes/cave-from-ruins-b",
-      "labelEn": "Smoke: Cave",
-      "label": "Smoke: Cave",
-      "labelEnShort": "Smoke: Cave"
+      "label": "Smoke: Cave"
     },
     {
       "id": "nade_f8e1e2d51afd",
@@ -871,9 +742,7 @@
       "from": "Ruins",
       "to": "CT Alley",
       "url": "https://csnades.gg/ancient/smokes/ct-alley-from-ruins",
-      "labelEn": "Smoke: CT Alley",
-      "label": "Smoke: CT Alley",
-      "labelEnShort": "Smoke: CT Alley"
+      "label": "Smoke: CT Alley"
     },
     {
       "id": "nade_b8d679407523",
@@ -884,9 +753,7 @@
       "from": "Ruins",
       "to": "CT Alley",
       "url": "https://csnades.gg/ancient/smokes/ct-alley-from-ruins-b",
-      "labelEn": "Smoke: CT Alley",
-      "label": "Smoke: CT Alley",
-      "labelEnShort": "Smoke: CT Alley"
+      "label": "Smoke: CT Alley"
     },
     {
       "id": "nade_672f40b3e12c",
@@ -897,9 +764,7 @@
       "from": "Outside A",
       "to": "CT",
       "url": "https://csnades.gg/ancient/smokes/ct-from-outside-a",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_c66941fb6fbd",
@@ -910,9 +775,7 @@
       "from": "T Spawn",
       "to": "CT",
       "url": "https://csnades.gg/ancient/smokes/ct-from-t-spawn",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_062bb36c2f37",
@@ -923,9 +786,7 @@
       "from": "T Spawn",
       "to": "Cubby",
       "url": "https://csnades.gg/ancient/smokes/cubby-from-t-spawn",
-      "labelEn": "Smoke: Cubby",
-      "label": "Smoke: Cubby",
-      "labelEnShort": "Smoke: Cubby"
+      "label": "Smoke: Cubby"
     },
     {
       "id": "nade_35ef2187a59d",
@@ -936,9 +797,7 @@
       "from": "Outside A Main",
       "to": "Deep Donut",
       "url": "https://csnades.gg/ancient/smokes/deep-donut-from-outside-a-main",
-      "labelEn": "Smoke: Deep Donut",
-      "label": "Smoke: Deep Donut",
-      "labelEnShort": "Smoke: Deep Donut"
+      "label": "Smoke: Deep Donut"
     },
     {
       "id": "nade_5b67f88f03de",
@@ -949,9 +808,7 @@
       "from": "Outside Mid",
       "to": "Deep Donut",
       "url": "https://csnades.gg/ancient/smokes/deep-donut-from-outside-mid",
-      "labelEn": "Smoke: Deep Donut",
-      "label": "Smoke: Deep Donut",
-      "labelEnShort": "Smoke: Deep Donut"
+      "label": "Smoke: Deep Donut"
     },
     {
       "id": "nade_7093e4cb0033",
@@ -962,9 +819,7 @@
       "from": "T Mid",
       "to": "Donut",
       "url": "https://csnades.gg/ancient/smokes/donut-from-t-mid",
-      "labelEn": "Smoke: Donut",
-      "label": "Smoke: Donut",
-      "labelEnShort": "Smoke: Donut"
+      "label": "Smoke: Donut"
     },
     {
       "id": "nade_bd7dafc7589f",
@@ -975,9 +830,7 @@
       "from": "T Spawn",
       "to": "Donut",
       "url": "https://csnades.gg/ancient/smokes/donut-from-t-spawn",
-      "labelEn": "Smoke: Donut",
-      "label": "Smoke: Donut",
-      "labelEnShort": "Smoke: Donut"
+      "label": "Smoke: Donut"
     },
     {
       "id": "nade_5a0d424f0177",
@@ -988,9 +841,7 @@
       "from": "CT Spawn",
       "to": "Donut Tunnel",
       "url": "https://csnades.gg/ancient/smokes/donut-tunnel-from-ct-spawn",
-      "labelEn": "Smoke: Donut Tunnel",
-      "label": "Smoke: Donut Tunnel",
-      "labelEnShort": "Smoke: Donut Tunnel"
+      "label": "Smoke: Donut Tunnel"
     },
     {
       "id": "nade_7e3a702bfe0a",
@@ -1001,9 +852,7 @@
       "from": "CT Spawn",
       "to": "Donut Tunnel",
       "url": "https://csnades.gg/ancient/smokes/donut-tunnel-from-ct-spawn-b",
-      "labelEn": "Smoke: Donut Tunnel",
-      "label": "Smoke: Donut Tunnel",
-      "labelEnShort": "Smoke: Donut Tunnel"
+      "label": "Smoke: Donut Tunnel"
     },
     {
       "id": "nade_9221dfc4f9e0",
@@ -1014,9 +863,7 @@
       "from": "Outside A",
       "to": "Donut Tunnel",
       "url": "https://csnades.gg/ancient/smokes/donut-tunnel-from-outside-a",
-      "labelEn": "Smoke: Donut Tunnel",
-      "label": "Smoke: Donut Tunnel",
-      "labelEnShort": "Smoke: Donut Tunnel"
+      "label": "Smoke: Donut Tunnel"
     },
     {
       "id": "nade_ba0b3392b2e3",
@@ -1027,9 +874,7 @@
       "from": "A Site",
       "to": "Elbow",
       "url": "https://csnades.gg/ancient/smokes/elbow-from-a-site",
-      "labelEn": "Smoke: Elbow",
-      "label": "Smoke: Elbow",
-      "labelEnShort": "Smoke: Elbow"
+      "label": "Smoke: Elbow"
     },
     {
       "id": "nade_b3720f1426bd",
@@ -1040,9 +885,7 @@
       "from": "CT Spawn",
       "to": "Elbow",
       "url": "https://csnades.gg/ancient/smokes/elbow-from-ct-spawn",
-      "labelEn": "Smoke: Elbow",
-      "label": "Smoke: Elbow",
-      "labelEnShort": "Smoke: Elbow"
+      "label": "Smoke: Elbow"
     },
     {
       "id": "nade_ff872240f387",
@@ -1053,9 +896,7 @@
       "from": "Top Mid",
       "to": "Elbow",
       "url": "https://csnades.gg/ancient/smokes/elbow-from-top-mid",
-      "labelEn": "Smoke: Elbow",
-      "label": "Smoke: Elbow",
-      "labelEnShort": "Smoke: Elbow"
+      "label": "Smoke: Elbow"
     },
     {
       "id": "nade_b3b0900d94ac",
@@ -1066,9 +907,7 @@
       "from": "T Spawn",
       "to": "Jaguar",
       "url": "https://csnades.gg/ancient/smokes/jaguar-from-t-spawn",
-      "labelEn": "Smoke: Jaguar",
-      "label": "Smoke: Jaguar",
-      "labelEnShort": "Smoke: Jaguar"
+      "label": "Smoke: Jaguar"
     },
     {
       "id": "nade_a0d000a085aa",
@@ -1079,9 +918,7 @@
       "from": "Outside A",
       "to": "Plat",
       "url": "https://csnades.gg/ancient/smokes/plat-from-outside-a",
-      "labelEn": "Smoke: Plat",
-      "label": "Smoke: Plat",
-      "labelEnShort": "Smoke: Plat"
+      "label": "Smoke: Plat"
     },
     {
       "id": "nade_dcd9878e7efb",
@@ -1092,9 +929,7 @@
       "from": "B Site",
       "to": "T Upper",
       "url": "https://csnades.gg/ancient/smokes/t-upper-from-b-site",
-      "labelEn": "Smoke: T Upper",
-      "label": "Smoke: T Upper",
-      "labelEnShort": "Smoke: T Upper"
+      "label": "Smoke: T Upper"
     },
     {
       "id": "nade_8d7d85fad657",
@@ -1105,9 +940,7 @@
       "from": "Outside A",
       "to": "Temple",
       "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_f6806901b0c7",
@@ -1118,9 +951,7 @@
       "from": "Outside A",
       "to": "Temple",
       "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a-b",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_0539d866ca21",
@@ -1131,9 +962,7 @@
       "from": "Elbow",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-elbow",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_fdc4fea4a446",
@@ -1144,9 +973,7 @@
       "from": "Ruins",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-ruins",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_bc477d5e8716",
@@ -1157,9 +984,7 @@
       "from": "T Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_7a3a61ef4655",
@@ -1170,9 +995,7 @@
       "from": "T Spawn 1",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn-1",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_0421ef7f7d7b",
@@ -1183,9 +1006,7 @@
       "from": "T Spawn 2",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn-2",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_114fad63f798",
@@ -1196,9 +1017,7 @@
       "from": "T Spawn 3",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn-3",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_d3da3bfe5339",
@@ -1209,9 +1028,7 @@
       "from": "T Spawn 4",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn-4",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_22055d9eeeb4",
@@ -1222,9 +1039,7 @@
       "from": "T Spawn 5",
       "to": "Top Mid",
       "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn-5",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_4732c310e77d",
@@ -1235,9 +1050,7 @@
       "from": "Connector",
       "to": "A Main",
       "url": "https://csnades.gg/anubis/flashbangs/a-main-from-connector",
-      "labelEn": "Flash: A Main",
-      "label": "Flash: A Main",
-      "labelEnShort": "Flashbang: A Main"
+      "label": "Flash: A Main"
     },
     {
       "id": "nade_14b33fa2217e",
@@ -1248,9 +1061,7 @@
       "from": "Water",
       "to": "A Main",
       "url": "https://csnades.gg/anubis/flashbangs/a-main-from-water",
-      "labelEn": "Flash: A Main",
-      "label": "Flash: A Main",
-      "labelEnShort": "Flashbang: A Main"
+      "label": "Flash: A Main"
     },
     {
       "id": "nade_85bfdc0f0cc0",
@@ -1261,9 +1072,7 @@
       "from": "Water",
       "to": "A Site",
       "url": "https://csnades.gg/anubis/flashbangs/a-site-from-water",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_dd6f64a24250",
@@ -1274,9 +1083,7 @@
       "from": "CT",
       "to": "B Long",
       "url": "https://csnades.gg/anubis/flashbangs/b-long-from-ct",
-      "labelEn": "Flash: B Long",
-      "label": "Flash: B Long",
-      "labelEnShort": "Flashbang: B Long"
+      "label": "Flash: B Long"
     },
     {
       "id": "nade_22f47d03267a",
@@ -1287,9 +1094,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_ddfec18b3471",
@@ -1300,9 +1105,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins-b",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_0ffa7f45ee3f",
@@ -1313,9 +1116,7 @@
       "from": "Connector",
       "to": "Bridge",
       "url": "https://csnades.gg/anubis/flashbangs/bridge-from-connector",
-      "labelEn": "Flash: Bridge",
-      "label": "Flash: Bridge",
-      "labelEnShort": "Flashbang: Bridge"
+      "label": "Flash: Bridge"
     },
     {
       "id": "nade_8a28e5b4e41c",
@@ -1326,9 +1127,7 @@
       "from": "Ruins",
       "to": "Bridge",
       "url": "https://csnades.gg/anubis/flashbangs/bridge-from-ruins",
-      "labelEn": "Flash: Bridge",
-      "label": "Flash: Bridge",
-      "labelEnShort": "Flashbang: Bridge"
+      "label": "Flash: Bridge"
     },
     {
       "id": "nade_63a0d5c5b7e0",
@@ -1339,9 +1138,7 @@
       "from": "T Mid",
       "to": "Canals",
       "url": "https://csnades.gg/anubis/flashbangs/canals-from-t-mid",
-      "labelEn": "Flash: Canals",
-      "label": "Flash: Canals",
-      "labelEnShort": "Flashbang: Canals"
+      "label": "Flash: Canals"
     },
     {
       "id": "nade_8acae4d7e89d",
@@ -1352,9 +1149,7 @@
       "from": "Heaven",
       "to": "Water",
       "url": "https://csnades.gg/anubis/flashbangs/water-from-heaven",
-      "labelEn": "Flash: Water",
-      "label": "Flash: Water",
-      "labelEnShort": "Flashbang: Water"
+      "label": "Flash: Water"
     },
     {
       "id": "nade_98735d3c1cc3",
@@ -1365,9 +1160,7 @@
       "from": "Plat",
       "to": "A Main",
       "url": "https://csnades.gg/anubis/hegrenades/a-main-from-plat",
-      "labelEn": "HE: A Main",
-      "label": "HE: A Main",
-      "labelEnShort": "Hegrenade: A Main"
+      "label": "HE: A Main"
     },
     {
       "id": "nade_5ac2d4e5dc3d",
@@ -1378,9 +1171,7 @@
       "from": "Ruins",
       "to": "B Pillar",
       "url": "https://csnades.gg/anubis/hegrenades/b-pillar-from-ruins",
-      "labelEn": "HE: B Pillar",
-      "label": "HE: B Pillar",
-      "labelEnShort": "Hegrenade: B Pillar"
+      "label": "HE: B Pillar"
     },
     {
       "id": "nade_1e6853958ade",
@@ -1391,9 +1182,7 @@
       "from": "EBox",
       "to": "Backsite",
       "url": "https://csnades.gg/anubis/hegrenades/backsite-from-ebox",
-      "labelEn": "HE: Backsite",
-      "label": "HE: Backsite",
-      "labelEnShort": "Hegrenade: Backsite"
+      "label": "HE: Backsite"
     },
     {
       "id": "nade_1c8d8c0db6ab",
@@ -1404,9 +1193,7 @@
       "from": "A Main",
       "to": "Fountain",
       "url": "https://csnades.gg/anubis/hegrenades/fountain-from-a-main",
-      "labelEn": "HE: Fountain",
-      "label": "HE: Fountain",
-      "labelEnShort": "Hegrenade: Fountain"
+      "label": "HE: Fountain"
     },
     {
       "id": "nade_001cea322a64",
@@ -1417,9 +1204,7 @@
       "from": "Street",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/hegrenades/top-mid-from-street",
-      "labelEn": "HE: Top Mid",
-      "label": "HE: Top Mid",
-      "labelEnShort": "Hegrenade: Top Mid"
+      "label": "HE: Top Mid"
     },
     {
       "id": "nade_16fb289e8606",
@@ -1430,9 +1215,7 @@
       "from": "Plat",
       "to": "Water Corner",
       "url": "https://csnades.gg/anubis/hegrenades/water-corner-from-plat",
-      "labelEn": "HE: Water Corner",
-      "label": "HE: Water Corner",
-      "labelEnShort": "Hegrenade: Water Corner"
+      "label": "HE: Water Corner"
     },
     {
       "id": "nade_a1533c2a878c",
@@ -1443,9 +1226,7 @@
       "from": "Plat",
       "to": "Water Stairs",
       "url": "https://csnades.gg/anubis/hegrenades/water-stairs-from-plat",
-      "labelEn": "HE: Water Stairs",
-      "label": "HE: Water Stairs",
-      "labelEnShort": "Hegrenade: Water Stairs"
+      "label": "HE: Water Stairs"
     },
     {
       "id": "nade_820db864b7ad",
@@ -1456,9 +1237,7 @@
       "from": "Water",
       "to": "A Corner",
       "url": "https://csnades.gg/anubis/molotovs/a-corner-from-water",
-      "labelEn": "Molly: A Corner",
-      "label": "Molly: A Corner",
-      "labelEnShort": "Molotov: A Corner"
+      "label": "Molly: A Corner"
     },
     {
       "id": "nade_bc975c22bad3",
@@ -1469,9 +1248,7 @@
       "from": "Water",
       "to": "A Site",
       "url": "https://csnades.gg/anubis/molotovs/a-site-from-water",
-      "labelEn": "Molly: A Site",
-      "label": "Molly: A Site",
-      "labelEnShort": "Molotov: A Site"
+      "label": "Molly: A Site"
     },
     {
       "id": "nade_d6261f10040a",
@@ -1482,9 +1259,7 @@
       "from": "Sniper",
       "to": "B Default",
       "url": "https://csnades.gg/anubis/molotovs/b-default-from-sniper",
-      "labelEn": "Molly: B Default",
-      "label": "Molly: B Default",
-      "labelEnShort": "Molotov: B Default"
+      "label": "Molly: B Default"
     },
     {
       "id": "nade_ec028d45ff75",
@@ -1495,9 +1270,7 @@
       "from": "Ruins",
       "to": "B Pillar",
       "url": "https://csnades.gg/anubis/molotovs/b-pillar-from-ruins",
-      "labelEn": "Molly: B Pillar",
-      "label": "Molly: B Pillar",
-      "labelEnShort": "Molotov: B Pillar"
+      "label": "Molly: B Pillar"
     },
     {
       "id": "nade_2cb1523c2e68",
@@ -1508,9 +1281,7 @@
       "from": "Ruins",
       "to": "B Pillar",
       "url": "https://csnades.gg/anubis/molotovs/b-pillar-from-ruins-b",
-      "labelEn": "Molly: B Pillar",
-      "label": "Molly: B Pillar",
-      "labelEnShort": "Molotov: B Pillar"
+      "label": "Molly: B Pillar"
     },
     {
       "id": "nade_58101f7ecd82",
@@ -1521,9 +1292,7 @@
       "from": "EBox",
       "to": "Backsite",
       "url": "https://csnades.gg/anubis/molotovs/backsite-from-ebox",
-      "labelEn": "Molly: Backsite",
-      "label": "Molly: Backsite",
-      "labelEnShort": "Molotov: Backsite"
+      "label": "Molly: Backsite"
     },
     {
       "id": "nade_be9a5d89f822",
@@ -1534,9 +1303,7 @@
       "from": "EBox",
       "to": "Backsite",
       "url": "https://csnades.gg/anubis/molotovs/backsite-from-ebox-b",
-      "labelEn": "Molly: Backsite",
-      "label": "Molly: Backsite",
-      "labelEnShort": "Molotov: Backsite"
+      "label": "Molly: Backsite"
     },
     {
       "id": "nade_e38a27665768",
@@ -1547,9 +1314,7 @@
       "from": "Temple",
       "to": "Backsite",
       "url": "https://csnades.gg/anubis/molotovs/backsite-from-temple",
-      "labelEn": "Molly: Backsite",
-      "label": "Molly: Backsite",
-      "labelEnShort": "Molotov: Backsite"
+      "label": "Molly: Backsite"
     },
     {
       "id": "nade_f3a86ba0ab52",
@@ -1560,9 +1325,7 @@
       "from": "A Main",
       "to": "Fountain",
       "url": "https://csnades.gg/anubis/molotovs/fountain-from-a-main",
-      "labelEn": "Molly: Fountain",
-      "label": "Molly: Fountain",
-      "labelEnShort": "Molotov: Fountain"
+      "label": "Molly: Fountain"
     },
     {
       "id": "nade_2328f7acaa59",
@@ -1573,9 +1336,7 @@
       "from": "Water",
       "to": "Heaven",
       "url": "https://csnades.gg/anubis/molotovs/heaven-from-water",
-      "labelEn": "Molly: Heaven",
-      "label": "Molly: Heaven",
-      "labelEnShort": "Molotov: Heaven"
+      "label": "Molly: Heaven"
     },
     {
       "id": "nade_bd1b5e99fc0c",
@@ -1586,9 +1347,7 @@
       "from": "Bridge",
       "to": "Mid Doors",
       "url": "https://csnades.gg/anubis/molotovs/mid-doors-from-bridge",
-      "labelEn": "Molly: Mid Doors",
-      "label": "Molly: Mid Doors",
-      "labelEnShort": "Molotov: Mid Doors"
+      "label": "Molly: Mid Doors"
     },
     {
       "id": "nade_36c0c123e5d8",
@@ -1599,9 +1358,7 @@
       "from": "Back Heaven",
       "to": "Pillar",
       "url": "https://csnades.gg/anubis/molotovs/pillar-from-back-heaven",
-      "labelEn": "Molly: Pillar",
-      "label": "Molly: Pillar",
-      "labelEnShort": "Molotov: Pillar"
+      "label": "Molly: Pillar"
     },
     {
       "id": "nade_f924ad43eeb2",
@@ -1612,9 +1369,7 @@
       "from": "A Main",
       "to": "Plat",
       "url": "https://csnades.gg/anubis/molotovs/plat-from-a-main",
-      "labelEn": "Molly: Plat",
-      "label": "Molly: Plat",
-      "labelEnShort": "Molotov: Plat"
+      "label": "Molly: Plat"
     },
     {
       "id": "nade_a4f8a72b3c12",
@@ -1625,9 +1380,7 @@
       "from": "Water",
       "to": "Plat",
       "url": "https://csnades.gg/anubis/molotovs/plat-from-water",
-      "labelEn": "Molly: Plat",
-      "label": "Molly: Plat",
-      "labelEnShort": "Molotov: Plat"
+      "label": "Molly: Plat"
     },
     {
       "id": "nade_b02c2a9aee77",
@@ -1638,9 +1391,7 @@
       "from": "Bridge",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/molotovs/top-mid-from-bridge",
-      "labelEn": "Molly: Top Mid",
-      "label": "Molly: Top Mid",
-      "labelEnShort": "Molotov: Top Mid"
+      "label": "Molly: Top Mid"
     },
     {
       "id": "nade_3af9ab3b6491",
@@ -1651,9 +1402,7 @@
       "from": "Street",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/molotovs/top-mid-from-street",
-      "labelEn": "Molly: Top Mid",
-      "label": "Molly: Top Mid",
-      "labelEnShort": "Molotov: Top Mid"
+      "label": "Molly: Top Mid"
     },
     {
       "id": "nade_5570f9514ea9",
@@ -1664,9 +1413,7 @@
       "from": "Alley",
       "to": "Window",
       "url": "https://csnades.gg/anubis/molotovs/window-from-alley",
-      "labelEn": "Molly: Window",
-      "label": "Molly: Window",
-      "labelEnShort": "Molotov: Window"
+      "label": "Molly: Window"
     },
     {
       "id": "nade_ef1740113445",
@@ -1677,9 +1424,7 @@
       "from": "Ruins",
       "to": "Window",
       "url": "https://csnades.gg/anubis/molotovs/window-from-ruins",
-      "labelEn": "Molly: Window",
-      "label": "Molly: Window",
-      "labelEnShort": "Molotov: Window"
+      "label": "Molly: Window"
     },
     {
       "id": "nade_a3d00385ce42",
@@ -1690,9 +1435,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/anubis/smokes/a-main-from-ct-spawn",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_ebe01f9a60b6",
@@ -1703,9 +1446,7 @@
       "from": "CT Spawn",
       "to": "B Main",
       "url": "https://csnades.gg/anubis/smokes/b-main-from-ct-spawn",
-      "labelEn": "Smoke: B Main",
-      "label": "Smoke: B Main",
-      "labelEnShort": "Smoke: B Main"
+      "label": "Smoke: B Main"
     },
     {
       "id": "nade_c1dec1874033",
@@ -1716,9 +1457,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_af38ca7d0fda",
@@ -1729,9 +1468,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins-b",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_7fd3457273bc",
@@ -1742,9 +1479,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins-c",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_69bd02383a8b",
@@ -1755,9 +1490,7 @@
       "from": "Ruins",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins-d",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_8620921c9831",
@@ -1768,9 +1501,7 @@
       "from": "T Spawn",
       "to": "B Site",
       "url": "https://csnades.gg/anubis/smokes/b-site-from-t-spawn",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_4fac6869d3e3",
@@ -1781,9 +1512,7 @@
       "from": "Ruins",
       "to": "Back Site",
       "url": "https://csnades.gg/anubis/smokes/back-site-from-ruins",
-      "labelEn": "Smoke: Back Site",
-      "label": "Smoke: Back Site",
-      "labelEnShort": "Smoke: Back Site"
+      "label": "Smoke: Back Site"
     },
     {
       "id": "nade_e9f1b156e724",
@@ -1794,9 +1523,7 @@
       "from": "Ruins",
       "to": "Back Site",
       "url": "https://csnades.gg/anubis/smokes/back-site-from-ruins-b",
-      "labelEn": "Smoke: Back Site",
-      "label": "Smoke: Back Site",
-      "labelEnShort": "Smoke: Back Site"
+      "label": "Smoke: Back Site"
     },
     {
       "id": "nade_0d4d95185279",
@@ -1807,9 +1534,7 @@
       "from": "CT Spawn",
       "to": "Bridge",
       "url": "https://csnades.gg/anubis/smokes/bridge-from-ct-spawn",
-      "labelEn": "Smoke: Bridge",
-      "label": "Smoke: Bridge",
-      "labelEnShort": "Smoke: Bridge"
+      "label": "Smoke: Bridge"
     },
     {
       "id": "nade_5c412656332a",
@@ -1820,9 +1545,7 @@
       "from": "Mid",
       "to": "Bridge",
       "url": "https://csnades.gg/anubis/smokes/bridge-from-mid",
-      "labelEn": "Smoke: Bridge",
-      "label": "Smoke: Bridge",
-      "labelEnShort": "Smoke: Bridge"
+      "label": "Smoke: Bridge"
     },
     {
       "id": "nade_84a60e1754c8",
@@ -1833,9 +1556,7 @@
       "from": "CT Spawn",
       "to": "Canals",
       "url": "https://csnades.gg/anubis/smokes/canals-from-ct-spawn",
-      "labelEn": "Smoke: Canals",
-      "label": "Smoke: Canals",
-      "labelEnShort": "Smoke: Canals"
+      "label": "Smoke: Canals"
     },
     {
       "id": "nade_77210876622b",
@@ -1846,9 +1567,7 @@
       "from": "T Spawn",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/canals-from-t-spawn",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_0a45b9b367e0",
@@ -1859,9 +1578,7 @@
       "from": "T Spawn",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/canals-from-t-spawn-b",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_35e8fce99cbf",
@@ -1872,9 +1589,7 @@
       "from": "Mid Doors",
       "to": "Connector",
       "url": "https://csnades.gg/anubis/smokes/connector-from-mid-doors",
-      "labelEn": "Smoke: Connector",
-      "label": "Smoke: Connector",
-      "labelEnShort": "Smoke: Connector"
+      "label": "Smoke: Connector"
     },
     {
       "id": "nade_0da2f535c332",
@@ -1885,9 +1600,7 @@
       "from": "T Upper",
       "to": "Connector",
       "url": "https://csnades.gg/anubis/smokes/connector-from-t-upper",
-      "labelEn": "Smoke: Connector",
-      "label": "Smoke: Connector",
-      "labelEnShort": "Smoke: Connector"
+      "label": "Smoke: Connector"
     },
     {
       "id": "nade_2aa7c97471df",
@@ -1898,9 +1611,7 @@
       "from": "Ruins",
       "to": "CT",
       "url": "https://csnades.gg/anubis/smokes/ct-from-ruins",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_f0b2eff328ee",
@@ -1911,9 +1622,7 @@
       "from": "Ruins",
       "to": "CT",
       "url": "https://csnades.gg/anubis/smokes/ct-from-ruins-b",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_a7585273fd18",
@@ -1924,9 +1633,7 @@
       "from": "Ruins",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/ebox-from-ruins",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_ae9a1a7d6fb9",
@@ -1937,9 +1644,7 @@
       "from": "Ruins",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/ebox-from-ruins-b",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_c391fa0cc603",
@@ -1950,9 +1655,7 @@
       "from": "T Spawn",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/ebox-from-t-spawn",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_485a8d5945ae",
@@ -1963,9 +1666,7 @@
       "from": "T Spawn",
       "to": "EBox",
       "url": "https://csnades.gg/anubis/smokes/ebox-from-t-spawn-b",
-      "labelEn": "Smoke: EBox",
-      "label": "Smoke: EBox",
-      "labelEnShort": "Smoke: EBox"
+      "label": "Smoke: EBox"
     },
     {
       "id": "nade_93b57a41e611",
@@ -1976,9 +1677,7 @@
       "from": "Door",
       "to": "Heaven",
       "url": "https://csnades.gg/anubis/smokes/heaven-from-door",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_da5da9406b2e",
@@ -1989,9 +1688,7 @@
       "from": "T Upper",
       "to": "Heaven",
       "url": "https://csnades.gg/anubis/smokes/heaven-from-t-upper",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_b3ae5c06ce56",
@@ -2002,9 +1699,7 @@
       "from": "Water",
       "to": "Heaven",
       "url": "https://csnades.gg/anubis/smokes/heaven-from-water",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_0f6c0098eb02",
@@ -2015,9 +1710,7 @@
       "from": "Water",
       "to": "Heaven",
       "url": "https://csnades.gg/anubis/smokes/heaven-from-water-b",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_03e8c7cf8543",
@@ -2028,9 +1721,7 @@
       "from": "Street",
       "to": "Mid B Door",
       "url": "https://csnades.gg/anubis/smokes/mid-b-door-from-street",
-      "labelEn": "Smoke: Mid B Door",
-      "label": "Smoke: Mid B Door",
-      "labelEnShort": "Smoke: Mid B Door"
+      "label": "Smoke: Mid B Door"
     },
     {
       "id": "nade_2ef2720697ff",
@@ -2041,9 +1732,7 @@
       "from": "T Spawn",
       "to": "Mid",
       "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn",
-      "labelEn": "Smoke: Mid",
-      "label": "Smoke: Mid",
-      "labelEnShort": "Smoke: Mid"
+      "label": "Smoke: Mid"
     },
     {
       "id": "nade_c1d969a5ffed",
@@ -2054,9 +1743,7 @@
       "from": "T Spawn",
       "to": "Mid",
       "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn-b",
-      "labelEn": "Smoke: Mid",
-      "label": "Smoke: Mid",
-      "labelEnShort": "Smoke: Mid"
+      "label": "Smoke: Mid"
     },
     {
       "id": "nade_48b4b6ceb0a9",
@@ -2067,9 +1754,7 @@
       "from": "Water",
       "to": "Platform",
       "url": "https://csnades.gg/anubis/smokes/platform-from-water",
-      "labelEn": "Smoke: Platform",
-      "label": "Smoke: Platform",
-      "labelEnShort": "Smoke: Platform"
+      "label": "Smoke: Platform"
     },
     {
       "id": "nade_1fdb3eddf039",
@@ -2080,9 +1765,7 @@
       "from": "Canals",
       "to": "Temple",
       "url": "https://csnades.gg/anubis/smokes/temple-from-canals",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_a6dbcae0b5ed",
@@ -2093,9 +1776,7 @@
       "from": "Ruins",
       "to": "Temple",
       "url": "https://csnades.gg/anubis/smokes/temple-from-ruins",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_7f2c5ece24ff",
@@ -2106,9 +1787,7 @@
       "from": "Ruins",
       "to": "Temple",
       "url": "https://csnades.gg/anubis/smokes/temple-from-ruins-b",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_4b602de15309",
@@ -2119,9 +1798,7 @@
       "from": "T Spawn",
       "to": "Temple",
       "url": "https://csnades.gg/anubis/smokes/temple-from-t-spawn",
-      "labelEn": "Smoke: Temple",
-      "label": "Smoke: Temple",
-      "labelEnShort": "Smoke: Temple"
+      "label": "Smoke: Temple"
     },
     {
       "id": "nade_4968469f635d",
@@ -2132,9 +1809,7 @@
       "from": "Outside Mid",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-outside-mid",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_6dbd747b97b3",
@@ -2145,9 +1820,7 @@
       "from": "T Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_8c99f3d96bb2",
@@ -2158,9 +1831,7 @@
       "from": "T Spawn 1",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-1",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_4226e717799c",
@@ -2171,9 +1842,7 @@
       "from": "T Spawn 10",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-10",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_003c5d468947",
@@ -2184,9 +1853,7 @@
       "from": "T Spawn 11",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-11",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_1910f54c4e2f",
@@ -2197,9 +1864,7 @@
       "from": "T Spawn 2",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-2",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_802b6b1c0a84",
@@ -2210,9 +1875,7 @@
       "from": "T Spawn 3",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-3",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_aafe5e6df71b",
@@ -2223,9 +1886,7 @@
       "from": "T Spawn 4",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-4",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_26920119553d",
@@ -2236,9 +1897,7 @@
       "from": "T Spawn 5",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-5",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_1666f0df168e",
@@ -2249,9 +1908,7 @@
       "from": "T Spawn 6",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-6",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_8e6ce7893633",
@@ -2262,9 +1919,7 @@
       "from": "T Spawn 7",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-7",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_8f8497dc97c9",
@@ -2275,9 +1930,7 @@
       "from": "T Spawn 8",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-8",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_84b20c3d469b",
@@ -2288,9 +1941,7 @@
       "from": "T Spawn 9",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-9",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_535666a9ca51",
@@ -2301,9 +1952,7 @@
       "from": "T Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn-b",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_cd6f9d93d81e",
@@ -2314,9 +1963,7 @@
       "from": "T Spawn",
       "to": "Window",
       "url": "https://csnades.gg/anubis/smokes/window-from-t-spawn",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_7cf82d085af1",
@@ -2327,9 +1974,7 @@
       "from": "A Main",
       "to": "A Main",
       "url": "https://csnades.gg/cache/flashbangs/a-main-from-a-main",
-      "labelEn": "Flash: A Main",
-      "label": "Flash: A Main",
-      "labelEnShort": "Flashbang: A Main"
+      "label": "Flash: A Main"
     },
     {
       "id": "nade_e9e4f70c0087",
@@ -2340,9 +1985,7 @@
       "from": "Sun Room",
       "to": "Backsite",
       "url": "https://csnades.gg/cache/hegrenades/backsite-from-sun-room",
-      "labelEn": "HE: Backsite",
-      "label": "HE: Backsite",
-      "labelEnShort": "Hegrenade: Backsite"
+      "label": "HE: Backsite"
     },
     {
       "id": "nade_849f3a3ef38d",
@@ -2353,9 +1996,7 @@
       "from": "Sun Room",
       "to": "Backsite",
       "url": "https://csnades.gg/cache/molotovs/backsite-from-sun-room",
-      "labelEn": "Molly: Backsite",
-      "label": "Molly: Backsite",
-      "labelEnShort": "Molotov: Backsite"
+      "label": "Molly: Backsite"
     },
     {
       "id": "nade_9f9186f310ca",
@@ -2366,9 +2007,7 @@
       "from": "Connector",
       "to": "Boost",
       "url": "https://csnades.gg/cache/molotovs/boost-from-connector",
-      "labelEn": "Molly: Boost",
-      "label": "Molly: Boost",
-      "labelEnShort": "Molotov: Boost"
+      "label": "Molly: Boost"
     },
     {
       "id": "nade_03860877697d",
@@ -2379,9 +2018,7 @@
       "from": "Connector",
       "to": "Boost",
       "url": "https://csnades.gg/cache/molotovs/boost-from-connector-b",
-      "labelEn": "Molly: Boost",
-      "label": "Molly: Boost",
-      "labelEnShort": "Molotov: Boost"
+      "label": "Molly: Boost"
     },
     {
       "id": "nade_8645122b1fa2",
@@ -2392,9 +2029,7 @@
       "from": "A Main",
       "to": "Forklift",
       "url": "https://csnades.gg/cache/molotovs/forklift-from-a-main",
-      "labelEn": "Molly: Forklift",
-      "label": "Molly: Forklift",
-      "labelEnShort": "Molotov: Forklift"
+      "label": "Molly: Forklift"
     },
     {
       "id": "nade_dddb36603e98",
@@ -2405,9 +2040,7 @@
       "from": "Sun Room",
       "to": "Headshot",
       "url": "https://csnades.gg/cache/molotovs/headshot-from-sun-room",
-      "labelEn": "Molly: Headshot",
-      "label": "Molly: Headshot",
-      "labelEnShort": "Molotov: Headshot"
+      "label": "Molly: Headshot"
     },
     {
       "id": "nade_2bd52a8edc10",
@@ -2418,9 +2051,7 @@
       "from": "Sun Room",
       "to": "Headshot",
       "url": "https://csnades.gg/cache/molotovs/headshot-from-sun-room-b",
-      "labelEn": "Molly: Headshot",
-      "label": "Molly: Headshot",
-      "labelEnShort": "Molotov: Headshot"
+      "label": "Molly: Headshot"
     },
     {
       "id": "nade_b35b40491718",
@@ -2431,9 +2062,7 @@
       "from": "Sun Room",
       "to": "Newbox",
       "url": "https://csnades.gg/cache/molotovs/newbox-from-sun-room",
-      "labelEn": "Molly: Newbox",
-      "label": "Molly: Newbox",
-      "labelEnShort": "Molotov: Newbox"
+      "label": "Molly: Newbox"
     },
     {
       "id": "nade_00706947580c",
@@ -2444,9 +2073,7 @@
       "from": "Garage",
       "to": "Sandbags",
       "url": "https://csnades.gg/cache/molotovs/sandbags-from-garage",
-      "labelEn": "Molly: Sandbags",
-      "label": "Molly: Sandbags",
-      "labelEnShort": "Molotov: Sandbags"
+      "label": "Molly: Sandbags"
     },
     {
       "id": "nade_96f3e56782f4",
@@ -2457,9 +2084,7 @@
       "from": "CT Spawn",
       "to": "A Main",
       "url": "https://csnades.gg/cache/smokes/a-main-from-ct-spawn",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_b74b17743c76",
@@ -2470,9 +2095,7 @@
       "from": "Quad",
       "to": "A Main",
       "url": "https://csnades.gg/cache/smokes/a-main-from-quad",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_0c08f147877a",
@@ -2483,9 +2106,7 @@
       "from": "Truck",
       "to": "A Main",
       "url": "https://csnades.gg/cache/smokes/a-main-from-truck",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_1191e925c9ff",
@@ -2496,9 +2117,7 @@
       "from": "B Halls",
       "to": "B Main",
       "url": "https://csnades.gg/cache/smokes/b-main-from-b-halls",
-      "labelEn": "Smoke: B Main",
-      "label": "Smoke: B Main",
-      "labelEnShort": "Smoke: B Main"
+      "label": "Smoke: B Main"
     },
     {
       "id": "nade_39b3e4257cbf",
@@ -2509,9 +2128,7 @@
       "from": "Heaven",
       "to": "B Main",
       "url": "https://csnades.gg/cache/smokes/b-main-from-heaven",
-      "labelEn": "Smoke: B Main",
-      "label": "Smoke: B Main",
-      "labelEnShort": "Smoke: B Main"
+      "label": "Smoke: B Main"
     },
     {
       "id": "nade_ea30816eb266",
@@ -2522,9 +2139,7 @@
       "from": "Outside Garage",
       "to": "Back A Site",
       "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-garage",
-      "labelEn": "Smoke: Back A Site",
-      "label": "Smoke: Back A Site",
-      "labelEnShort": "Smoke: Back A Site"
+      "label": "Smoke: Back A Site"
     },
     {
       "id": "nade_8dbaecb2ed25",
@@ -2535,9 +2150,7 @@
       "from": "Outside Squeaky",
       "to": "Back A Site",
       "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-squeaky",
-      "labelEn": "Smoke: Back A Site",
-      "label": "Smoke: Back A Site",
-      "labelEnShort": "Smoke: Back A Site"
+      "label": "Smoke: Back A Site"
     },
     {
       "id": "nade_643db0dbcd4b",
@@ -2548,9 +2161,7 @@
       "from": "T Spawn",
       "to": "Connector",
       "url": "https://csnades.gg/cache/smokes/connector-from-t-spawn",
-      "labelEn": "Smoke: Connector",
-      "label": "Smoke: Connector",
-      "labelEnShort": "Smoke: Connector"
+      "label": "Smoke: Connector"
     },
     {
       "id": "nade_d2d0591d2f2b",
@@ -2561,9 +2172,7 @@
       "from": "B Main",
       "to": "CT",
       "url": "https://csnades.gg/cache/smokes/ct-from-b-main",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_93eb02c0b372",
@@ -2574,9 +2183,7 @@
       "from": "Sun Room",
       "to": "CT",
       "url": "https://csnades.gg/cache/smokes/ct-from-sun-room",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_692feb153cea",
@@ -2587,9 +2194,7 @@
       "from": "A Main",
       "to": "Forklift",
       "url": "https://csnades.gg/cache/smokes/forklift-from-a-main",
-      "labelEn": "Smoke: Forklift",
-      "label": "Smoke: Forklift",
-      "labelEnShort": "Smoke: Forklift"
+      "label": "Smoke: Forklift"
     },
     {
       "id": "nade_f2acc3a55b5f",
@@ -2600,9 +2205,7 @@
       "from": "Outside Squeaky",
       "to": "Forklift",
       "url": "https://csnades.gg/cache/smokes/forklift-from-outside-squeaky",
-      "labelEn": "Smoke: Forklift",
-      "label": "Smoke: Forklift",
-      "labelEnShort": "Smoke: Forklift"
+      "label": "Smoke: Forklift"
     },
     {
       "id": "nade_aeae5a6faaf0",
@@ -2613,9 +2216,7 @@
       "from": "Squeaky",
       "to": "Forklift",
       "url": "https://csnades.gg/cache/smokes/forklift-from-squeaky",
-      "labelEn": "Smoke: Forklift",
-      "label": "Smoke: Forklift",
-      "labelEnShort": "Smoke: Forklift"
+      "label": "Smoke: Forklift"
     },
     {
       "id": "nade_c1a5958e197e",
@@ -2626,9 +2227,7 @@
       "from": "Sun Room",
       "to": "Front B Site",
       "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room",
-      "labelEn": "Smoke: Front B Site",
-      "label": "Smoke: Front B Site",
-      "labelEnShort": "Smoke: Front B Site"
+      "label": "Smoke: Front B Site"
     },
     {
       "id": "nade_67270d5ae235",
@@ -2639,9 +2238,7 @@
       "from": "Connector",
       "to": "Garage",
       "url": "https://csnades.gg/cache/smokes/garage-from-connector",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_c0214941f82a",
@@ -2652,9 +2249,7 @@
       "from": "CT Spawn 1",
       "to": "Garage",
       "url": "https://csnades.gg/cache/smokes/garage-from-ct-spawn-1",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_832b3b339b86",
@@ -2665,9 +2260,7 @@
       "from": "CT Spawn 2",
       "to": "Garage",
       "url": "https://csnades.gg/cache/smokes/garage-from-ct-spawn-2",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_40b419eebbad",
@@ -2678,9 +2271,7 @@
       "from": "CT Spawn 3",
       "to": "Garage",
       "url": "https://csnades.gg/cache/smokes/garage-from-ct-spawn-3",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_168014e2d434",
@@ -2691,9 +2282,7 @@
       "from": "CT Spawn 4",
       "to": "Garage",
       "url": "https://csnades.gg/cache/smokes/garage-from-ct-spawn-4",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_0e06c3c5da94",
@@ -2704,9 +2293,7 @@
       "from": "Connector",
       "to": "Garbage",
       "url": "https://csnades.gg/cache/smokes/garbage-from-connector",
-      "labelEn": "Smoke: Garbage",
-      "label": "Smoke: Garbage",
-      "labelEnShort": "Smoke: Garbage"
+      "label": "Smoke: Garbage"
     },
     {
       "id": "nade_8c8616fc9af3",
@@ -2717,9 +2304,7 @@
       "from": "B Main",
       "to": "Heaven",
       "url": "https://csnades.gg/cache/smokes/heaven-from-b-main",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_38dad25e7fd6",
@@ -2730,9 +2315,7 @@
       "from": "Garbage",
       "to": "Heaven",
       "url": "https://csnades.gg/cache/smokes/heaven-from-garbage",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_28bd64bb8cb9",
@@ -2743,9 +2326,7 @@
       "from": "Truck",
       "to": "Highway",
       "url": "https://csnades.gg/cache/smokes/highway-from-truck",
-      "labelEn": "Smoke: Highway",
-      "label": "Smoke: Highway",
-      "labelEnShort": "Smoke: Highway"
+      "label": "Smoke: Highway"
     },
     {
       "id": "nade_7c7ec49cd108",
@@ -2756,9 +2337,7 @@
       "from": "Garage",
       "to": "Left Mid",
       "url": "https://csnades.gg/cache/smokes/left-mid-from-garage",
-      "labelEn": "Smoke: Left Mid",
-      "label": "Smoke: Left Mid",
-      "labelEnShort": "Smoke: Left Mid"
+      "label": "Smoke: Left Mid"
     },
     {
       "id": "nade_ea6e3d75b59a",
@@ -2769,9 +2348,7 @@
       "from": "Outside A Main",
       "to": "NBK",
       "url": "https://csnades.gg/cache/smokes/nbk-from-outside-a-main",
-      "labelEn": "Smoke: NBK",
-      "label": "Smoke: NBK",
-      "labelEnShort": "Smoke: NBK"
+      "label": "Smoke: NBK"
     },
     {
       "id": "nade_d35f2aaff5b6",
@@ -2782,9 +2359,7 @@
       "from": "Garage",
       "to": "Right Mid",
       "url": "https://csnades.gg/cache/smokes/right-mid-from-garage",
-      "labelEn": "Smoke: Right Mid",
-      "label": "Smoke: Right Mid",
-      "labelEnShort": "Smoke: Right Mid"
+      "label": "Smoke: Right Mid"
     },
     {
       "id": "nade_90e5eb7a1e2b",
@@ -2795,9 +2370,7 @@
       "from": "CT Cross",
       "to": "A Long",
       "url": "https://csnades.gg/dust2/flashbangs/a-long-from-ct-cross",
-      "labelEn": "Flash: A Long",
-      "label": "Flash: A Long",
-      "labelEnShort": "Flashbang: A Long"
+      "label": "Flash: A Long"
     },
     {
       "id": "nade_e47969794ebb",
@@ -2808,9 +2381,7 @@
       "from": "Long Doors",
       "to": "A Long",
       "url": "https://csnades.gg/dust2/flashbangs/a-long-from-long-doors",
-      "labelEn": "Flash: A Long",
-      "label": "Flash: A Long",
-      "labelEnShort": "Flashbang: A Long"
+      "label": "Flash: A Long"
     },
     {
       "id": "nade_b96cd073a7e5",
@@ -2821,9 +2392,7 @@
       "from": "Outside Long",
       "to": "A Long",
       "url": "https://csnades.gg/dust2/flashbangs/a-long-from-outside-long",
-      "labelEn": "Flash: A Long",
-      "label": "Flash: A Long",
-      "labelEnShort": "Flashbang: A Long"
+      "label": "Flash: A Long"
     },
     {
       "id": "nade_c38f3c732751",
@@ -2834,9 +2403,7 @@
       "from": "A Short",
       "to": "A Site",
       "url": "https://csnades.gg/dust2/flashbangs/a-site-from-a-short",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_6b797cf40ae1",
@@ -2847,9 +2414,7 @@
       "from": "CT Spawn",
       "to": "A Site",
       "url": "https://csnades.gg/dust2/flashbangs/a-site-from-ct-spawn",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_74346e4f482d",
@@ -2860,9 +2425,7 @@
       "from": "Short",
       "to": "A Site",
       "url": "https://csnades.gg/dust2/flashbangs/a-site-from-short",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_1f61f254c434",
@@ -2873,9 +2436,7 @@
       "from": "CT Mid",
       "to": "B Site",
       "url": "https://csnades.gg/dust2/flashbangs/b-site-from-ct-mid",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_cdbcef76af77",
@@ -2886,9 +2447,7 @@
       "from": "Upper Tunnels",
       "to": "B Site",
       "url": "https://csnades.gg/dust2/flashbangs/b-site-from-upper-tunnels",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_d9f518859163",
@@ -2899,9 +2458,7 @@
       "from": "Upper Tunnels",
       "to": "B Site",
       "url": "https://csnades.gg/dust2/flashbangs/b-site-from-upper-tunnels-b",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_0095f5d6b41f",
@@ -2912,9 +2469,7 @@
       "from": "CT Mid",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/dust2/flashbangs/bottom-mid-from-ct-mid",
-      "labelEn": "Flash: Bottom Mid",
-      "label": "Flash: Bottom Mid",
-      "labelEnShort": "Flashbang: Bottom Mid"
+      "label": "Flash: Bottom Mid"
     },
     {
       "id": "nade_1dbeac0c72c1",
@@ -2925,9 +2480,7 @@
       "from": "Upper Tunnels",
       "to": "Fence",
       "url": "https://csnades.gg/dust2/flashbangs/fence-from-upper-tunnels",
-      "labelEn": "Flash: Fence",
-      "label": "Flash: Fence",
-      "labelEnShort": "Flashbang: Fence"
+      "label": "Flash: Fence"
     },
     {
       "id": "nade_3d14874fd535",
@@ -2938,9 +2491,7 @@
       "from": "CT Cross",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/flashbangs/long-doors-from-ct-cross",
-      "labelEn": "Flash: Long Doors",
-      "label": "Flash: Long Doors",
-      "labelEnShort": "Flashbang: Long Doors"
+      "label": "Flash: Long Doors"
     },
     {
       "id": "nade_aa2340f73d35",
@@ -2951,9 +2502,7 @@
       "from": "Long Corner",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/flashbangs/long-doors-from-long-corner",
-      "labelEn": "Flash: Long Doors",
-      "label": "Flash: Long Doors",
-      "labelEnShort": "Flashbang: Long Doors"
+      "label": "Flash: Long Doors"
     },
     {
       "id": "nade_02ef3ee0681b",
@@ -2964,9 +2513,7 @@
       "from": "Outside Long",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/flashbangs/long-doors-from-outside-long",
-      "labelEn": "Flash: Long Doors",
-      "label": "Flash: Long Doors",
-      "labelEnShort": "Flashbang: Long Doors"
+      "label": "Flash: Long Doors"
     },
     {
       "id": "nade_ebd9d724187e",
@@ -2977,9 +2524,7 @@
       "from": "XBox",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/flashbangs/mid-doors-from-xbox",
-      "labelEn": "Flash: Mid Doors",
-      "label": "Flash: Mid Doors",
-      "labelEnShort": "Flashbang: Mid Doors"
+      "label": "Flash: Mid Doors"
     },
     {
       "id": "nade_7102ea560767",
@@ -2990,9 +2535,7 @@
       "from": "Long Doors",
       "to": "Pit",
       "url": "https://csnades.gg/dust2/flashbangs/pit-from-long-doors",
-      "labelEn": "Flash: Pit",
-      "label": "Flash: Pit",
-      "labelEnShort": "Flashbang: Pit"
+      "label": "Flash: Pit"
     },
     {
       "id": "nade_30fa32ce2afb",
@@ -3003,9 +2546,7 @@
       "from": "Catwalk",
       "to": "Short",
       "url": "https://csnades.gg/dust2/flashbangs/short-from-catwalk",
-      "labelEn": "Flash: Short",
-      "label": "Flash: Short",
-      "labelEnShort": "Flashbang: Short"
+      "label": "Flash: Short"
     },
     {
       "id": "nade_7f219bfa2794",
@@ -3016,9 +2557,7 @@
       "from": "Lower Tunnels",
       "to": "Short",
       "url": "https://csnades.gg/dust2/flashbangs/short-from-lower-tunnels",
-      "labelEn": "Flash: Short",
-      "label": "Flash: Short",
-      "labelEnShort": "Flashbang: Short"
+      "label": "Flash: Short"
     },
     {
       "id": "nade_8d88acd5ac5b",
@@ -3029,9 +2568,7 @@
       "from": "Short",
       "to": "Short",
       "url": "https://csnades.gg/dust2/flashbangs/short-from-short",
-      "labelEn": "Flash: Short",
-      "label": "Flash: Short",
-      "labelEnShort": "Flashbang: Short"
+      "label": "Flash: Short"
     },
     {
       "id": "nade_01dae2e90adc",
@@ -3042,9 +2579,7 @@
       "from": "B Site",
       "to": "B Main",
       "url": "https://csnades.gg/dust2/hegrenades/b-main-from-b-site",
-      "labelEn": "HE: B Main",
-      "label": "HE: B Main",
-      "labelEnShort": "Hegrenade: B Main"
+      "label": "HE: B Main"
     },
     {
       "id": "nade_6ba91dfd9bce",
@@ -3055,9 +2590,7 @@
       "from": "Upper Tunnels",
       "to": "Back Plat",
       "url": "https://csnades.gg/dust2/hegrenades/back-plat-from-upper-tunnels",
-      "labelEn": "HE: Back Plat",
-      "label": "HE: Back Plat",
-      "labelEnShort": "Hegrenade: Back Plat"
+      "label": "HE: Back Plat"
     },
     {
       "id": "nade_8f19d0e67c2a",
@@ -3068,9 +2601,7 @@
       "from": "XBox",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/hegrenades/mid-doors-from-xbox",
-      "labelEn": "HE: Mid Doors",
-      "label": "HE: Mid Doors",
-      "labelEnShort": "Hegrenade: Mid Doors"
+      "label": "HE: Mid Doors"
     },
     {
       "id": "nade_fbb71c8b7935",
@@ -3081,9 +2612,7 @@
       "from": "Lower Tunnels",
       "to": "Short",
       "url": "https://csnades.gg/dust2/hegrenades/short-from-lower-tunnels",
-      "labelEn": "HE: Short",
-      "label": "HE: Short",
-      "labelEnShort": "Hegrenade: Short"
+      "label": "HE: Short"
     },
     {
       "id": "nade_220834dd48f4",
@@ -3094,9 +2623,7 @@
       "from": "Mid",
       "to": "Short Stairs Corner",
       "url": "https://csnades.gg/dust2/hegrenades/short-stairs-corner-from-mid",
-      "labelEn": "HE: Short Stairs Corner",
-      "label": "HE: Short Stairs Corner",
-      "labelEnShort": "Hegrenade: Short Stairs Corner"
+      "label": "HE: Short Stairs Corner"
     },
     {
       "id": "nade_2288e8c0651f",
@@ -3107,9 +2634,7 @@
       "from": "Outside B",
       "to": "Under B Window",
       "url": "https://csnades.gg/dust2/hegrenades/under-b-window-from-outside-b",
-      "labelEn": "HE: Under B Window",
-      "label": "HE: Under B Window",
-      "labelEnShort": "Hegrenade: Under B Window"
+      "label": "HE: Under B Window"
     },
     {
       "id": "nade_32fea7ed0e40",
@@ -3120,9 +2645,7 @@
       "from": "Lower Tunnels",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/molotovs/a-default-from-plat",
-      "labelEn": "Molly: Mid Doors",
-      "label": "Molly: Mid Doors",
-      "labelEnShort": "Molotov: Mid Doors"
+      "label": "Molly: Mid Doors"
     },
     {
       "id": "nade_00e4066c559f",
@@ -3133,9 +2656,7 @@
       "from": "Short",
       "to": "A Default",
       "url": "https://csnades.gg/dust2/molotovs/a-default-from-short",
-      "labelEn": "Molly: A Default",
-      "label": "Molly: A Default",
-      "labelEnShort": "Molotov: A Default"
+      "label": "Molly: A Default"
     },
     {
       "id": "nade_3781091e1b41",
@@ -3146,9 +2667,7 @@
       "from": "CT Spawn",
       "to": "A Site",
       "url": "https://csnades.gg/dust2/molotovs/a-site-from-ct-spawn",
-      "labelEn": "Molly: A Site",
-      "label": "Molly: A Site",
-      "labelEnShort": "Molotov: A Site"
+      "label": "Molly: A Site"
     },
     {
       "id": "nade_27ebf1ec6575",
@@ -3159,9 +2678,7 @@
       "from": "Outside B Doors",
       "to": "Back Plat",
       "url": "https://csnades.gg/dust2/molotovs/back-plat-from-outside-b-doors",
-      "labelEn": "Molly: Back Plat",
-      "label": "Molly: Back Plat",
-      "labelEnShort": "Molotov: Back Plat"
+      "label": "Molly: Back Plat"
     },
     {
       "id": "nade_ebd0385727f2",
@@ -3172,9 +2689,7 @@
       "from": "Upper Tunnels",
       "to": "Back Plat",
       "url": "https://csnades.gg/dust2/molotovs/back-plat-from-upper-tunnels",
-      "labelEn": "Molly: Back Plat",
-      "label": "Molly: Back Plat",
-      "labelEnShort": "Molotov: Back Plat"
+      "label": "Molly: Back Plat"
     },
     {
       "id": "nade_6be26101215b",
@@ -3185,9 +2700,7 @@
       "from": "Upper Tunnels",
       "to": "Boost",
       "url": "https://csnades.gg/dust2/molotovs/boost-from-upper-tunnels",
-      "labelEn": "Molly: Boost",
-      "label": "Molly: Boost",
-      "labelEnShort": "Molotov: Boost"
+      "label": "Molly: Boost"
     },
     {
       "id": "nade_2a6ce19567bf",
@@ -3198,9 +2711,7 @@
       "from": "Long Doors",
       "to": "Car",
       "url": "https://csnades.gg/dust2/molotovs/car-from-long-doors",
-      "labelEn": "Molly: Car",
-      "label": "Molly: Car",
-      "labelEnShort": "Molotov: Car"
+      "label": "Molly: Car"
     },
     {
       "id": "nade_07fa72f4a2c2",
@@ -3211,9 +2722,7 @@
       "from": "Mid Doors",
       "to": "Catwalk",
       "url": "https://csnades.gg/dust2/molotovs/catwalk-from-mid-doors",
-      "labelEn": "Molly: Catwalk",
-      "label": "Molly: Catwalk",
-      "labelEnShort": "Molotov: Catwalk"
+      "label": "Molly: Catwalk"
     },
     {
       "id": "nade_201c100cdde7",
@@ -3224,9 +2733,7 @@
       "from": "Long Corner",
       "to": "Dumpster",
       "url": "https://csnades.gg/dust2/molotovs/dumpster-from-long-corner",
-      "labelEn": "Molly: Dumpster",
-      "label": "Molly: Dumpster",
-      "labelEnShort": "Molotov: Dumpster"
+      "label": "Molly: Dumpster"
     },
     {
       "id": "nade_ff65cc8afe99",
@@ -3237,9 +2744,7 @@
       "from": "Cat Stairs",
       "to": "Goose",
       "url": "https://csnades.gg/dust2/molotovs/goose-from-cat-stairs",
-      "labelEn": "Molly: Goose",
-      "label": "Molly: Goose",
-      "labelEnShort": "Molotov: Goose"
+      "label": "Molly: Goose"
     },
     {
       "id": "nade_1719c6541b82",
@@ -3250,9 +2755,7 @@
       "from": "B Doors",
       "to": "Plat Box",
       "url": "https://csnades.gg/dust2/molotovs/plat-box-from-b-doors",
-      "labelEn": "Molly: Plat Box",
-      "label": "Molly: Plat Box",
-      "labelEnShort": "Molotov: Plat Box"
+      "label": "Molly: Plat Box"
     },
     {
       "id": "nade_c810c0212a27",
@@ -3263,9 +2766,7 @@
       "from": "Goose",
       "to": "Short",
       "url": "https://csnades.gg/dust2/molotovs/short-from-goose",
-      "labelEn": "Molly: Short",
-      "label": "Molly: Short",
-      "labelEnShort": "Molotov: Short"
+      "label": "Molly: Short"
     },
     {
       "id": "nade_ae8a279b0fc1",
@@ -3276,9 +2777,7 @@
       "from": "Lower Tunnel",
       "to": "Short",
       "url": "https://csnades.gg/dust2/molotovs/short-from-lower-tunnel",
-      "labelEn": "Molly: Short",
-      "label": "Molly: Short",
-      "labelEnShort": "Molotov: Short"
+      "label": "Molly: Short"
     },
     {
       "id": "nade_f9e3b396a9af",
@@ -3289,9 +2788,7 @@
       "from": "Scaffolding",
       "to": "Under B Window",
       "url": "https://csnades.gg/dust2/molotovs/under-b-window-from-scaffolding",
-      "labelEn": "Molly: Under B Window",
-      "label": "Molly: Under B Window",
-      "labelEnShort": "Molotov: Under B Window"
+      "label": "Molly: Under B Window"
     },
     {
       "id": "nade_eebbe493e315",
@@ -3302,9 +2799,7 @@
       "from": "A Long",
       "to": "A Cross",
       "url": "https://csnades.gg/dust2/smokes/a-cross-from-a-long",
-      "labelEn": "Smoke: A Cross",
-      "label": "Smoke: A Cross",
-      "labelEnShort": "Smoke: A Cross"
+      "label": "Smoke: A Cross"
     },
     {
       "id": "nade_4ea2f77e1673",
@@ -3315,9 +2810,7 @@
       "from": "Dumpster",
       "to": "A Cross",
       "url": "https://csnades.gg/dust2/smokes/a-cross-from-dumpster",
-      "labelEn": "Smoke: A Cross",
-      "label": "Smoke: A Cross",
-      "labelEnShort": "Smoke: A Cross"
+      "label": "Smoke: A Cross"
     },
     {
       "id": "nade_15843c349e13",
@@ -3328,9 +2821,7 @@
       "from": "Long Doors",
       "to": "A Cross",
       "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors",
-      "labelEn": "Smoke: A Cross",
-      "label": "Smoke: A Cross",
-      "labelEnShort": "Smoke: A Cross"
+      "label": "Smoke: A Cross"
     },
     {
       "id": "nade_3c990d971601",
@@ -3341,9 +2832,7 @@
       "from": "Long Doors",
       "to": "A Cross",
       "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors-b",
-      "labelEn": "Smoke: A Cross",
-      "label": "Smoke: A Cross",
-      "labelEnShort": "Smoke: A Cross"
+      "label": "Smoke: A Cross"
     },
     {
       "id": "nade_72501f5f6e3b",
@@ -3354,9 +2843,7 @@
       "from": "Catwalk",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-catwalk",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_4bbfc52a3ae5",
@@ -3367,9 +2854,7 @@
       "from": "Outside B Tunnels",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-outside-b-tunnels",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_566b056616a0",
@@ -3380,9 +2865,7 @@
       "from": "Outside B Tunnels",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-outside-b-tunnels-b",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_2b2c5d734c33",
@@ -3393,9 +2876,7 @@
       "from": "T Spawn",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-t-spawn",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_2a0d1742478c",
@@ -3406,9 +2887,7 @@
       "from": "Upper Tunnels",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-upper-tunnels-a",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_e4b42ed44f65",
@@ -3419,9 +2898,7 @@
       "from": "Upper Tunnels",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-upper-tunnels-b",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_31fb0379a115",
@@ -3432,9 +2909,7 @@
       "from": "Upper Tunnels",
       "to": "B Doors",
       "url": "https://csnades.gg/dust2/smokes/b-doors-from-upper-tunnels-c",
-      "labelEn": "Smoke: B Doors",
-      "label": "Smoke: B Doors",
-      "labelEnShort": "Smoke: B Doors"
+      "label": "Smoke: B Doors"
     },
     {
       "id": "nade_3a0e34fbaef7",
@@ -3445,9 +2920,7 @@
       "from": "Upper Tunnels",
       "to": "B Lurk",
       "url": "https://csnades.gg/dust2/smokes/b-lurk-from-upper-tunnels",
-      "labelEn": "Smoke: B Lurk",
-      "label": "Smoke: B Lurk",
-      "labelEnShort": "Smoke: B Lurk"
+      "label": "Smoke: B Lurk"
     },
     {
       "id": "nade_f95230ac6441",
@@ -3458,9 +2931,7 @@
       "from": "Upper Tunnels",
       "to": "B Plat",
       "url": "https://csnades.gg/dust2/smokes/b-plat-from-upper-tunnels",
-      "labelEn": "Smoke: B Plat",
-      "label": "Smoke: B Plat",
-      "labelEnShort": "Smoke: B Plat"
+      "label": "Smoke: B Plat"
     },
     {
       "id": "nade_b89450b3196b",
@@ -3471,9 +2942,7 @@
       "from": "CT Mid",
       "to": "B Tunnels",
       "url": "https://csnades.gg/dust2/smokes/b-tunnels-from-ct-mid",
-      "labelEn": "Smoke: B Tunnels",
-      "label": "Smoke: B Tunnels",
-      "labelEnShort": "Smoke: B Tunnels"
+      "label": "Smoke: B Tunnels"
     },
     {
       "id": "nade_7a57538ba58a",
@@ -3484,9 +2953,7 @@
       "from": "Outside B Tunnels",
       "to": "B Window",
       "url": "https://csnades.gg/dust2/smokes/b-window-from-outside-b-tunnels",
-      "labelEn": "Smoke: B Window",
-      "label": "Smoke: B Window",
-      "labelEnShort": "Smoke: B Window"
+      "label": "Smoke: B Window"
     },
     {
       "id": "nade_f3222539a063",
@@ -3497,9 +2964,7 @@
       "from": "Outside B Tunnels",
       "to": "B Window",
       "url": "https://csnades.gg/dust2/smokes/b-window-from-outside-b-tunnels-b",
-      "labelEn": "Smoke: B Window",
-      "label": "Smoke: B Window",
-      "labelEnShort": "Smoke: B Window"
+      "label": "Smoke: B Window"
     },
     {
       "id": "nade_b8c5719fbd06",
@@ -3510,9 +2975,7 @@
       "from": "CT Mid",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/dust2/smokes/bottom-mid-from-ct-mid",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_4ee166cd8677",
@@ -3523,9 +2986,7 @@
       "from": "Outside A Long",
       "to": "Car",
       "url": "https://csnades.gg/dust2/smokes/car-from-outside-a-long",
-      "labelEn": "Smoke: Car",
-      "label": "Smoke: Car",
-      "labelEnShort": "Smoke: Car"
+      "label": "Smoke: Car"
     },
     {
       "id": "nade_08d5dbabb55c",
@@ -3536,9 +2997,7 @@
       "from": "CT Spawn",
       "to": "CT Mid",
       "url": "https://csnades.gg/dust2/smokes/ct-mid-from-ct-spawn",
-      "labelEn": "Smoke: CT Mid",
-      "label": "Smoke: CT Mid",
-      "labelEnShort": "Smoke: CT Mid"
+      "label": "Smoke: CT Mid"
     },
     {
       "id": "nade_dacc9ba841e1",
@@ -3549,9 +3008,7 @@
       "from": "Outside Long",
       "to": "CT Mid",
       "url": "https://csnades.gg/dust2/smokes/ct-mid-from-outside-long",
-      "labelEn": "Smoke: CT Mid",
-      "label": "Smoke: CT Mid",
-      "labelEnShort": "Smoke: CT Mid"
+      "label": "Smoke: CT Mid"
     },
     {
       "id": "nade_1da2e441a011",
@@ -3562,9 +3019,7 @@
       "from": "Cat",
       "to": "CT Spawn Boost",
       "url": "https://csnades.gg/dust2/smokes/ct-spawn-boost-from-cat",
-      "labelEn": "Smoke: CT Spawn Boost",
-      "label": "Smoke: CT Spawn Boost",
-      "labelEnShort": "Smoke: CT Spawn Boost"
+      "label": "Smoke: CT Spawn Boost"
     },
     {
       "id": "nade_92c1b05731f1",
@@ -3575,9 +3030,7 @@
       "from": "XBox",
       "to": "CT Spawn Boost",
       "url": "https://csnades.gg/dust2/smokes/ct-spawn-boost-from-xbox",
-      "labelEn": "Smoke: CT Spawn Boost",
-      "label": "Smoke: CT Spawn Boost",
-      "labelEnShort": "Smoke: CT Spawn Boost"
+      "label": "Smoke: CT Spawn Boost"
     },
     {
       "id": "nade_cc96febce51f",
@@ -3588,9 +3041,7 @@
       "from": "A Ramp",
       "to": "CT Spawn",
       "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-a-ramp",
-      "labelEn": "Smoke: CT Spawn",
-      "label": "Smoke: CT Spawn",
-      "labelEnShort": "Smoke: CT Spawn"
+      "label": "Smoke: CT Spawn"
     },
     {
       "id": "nade_f5eee97e9f8f",
@@ -3601,9 +3052,7 @@
       "from": "Top Mid",
       "to": "CT Spawn",
       "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-top-mid",
-      "labelEn": "Smoke: CT Spawn",
-      "label": "Smoke: CT Spawn",
-      "labelEnShort": "Smoke: CT Spawn"
+      "label": "Smoke: CT Spawn"
     },
     {
       "id": "nade_9cddb0e5478e",
@@ -3614,9 +3063,7 @@
       "from": "XBox",
       "to": "CT Spawn",
       "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox",
-      "labelEn": "Smoke: CT Spawn",
-      "label": "Smoke: CT Spawn",
-      "labelEnShort": "Smoke: CT Spawn"
+      "label": "Smoke: CT Spawn"
     },
     {
       "id": "nade_baac981cd627",
@@ -3627,9 +3074,7 @@
       "from": "B Plat",
       "to": "Deep Tunnels",
       "url": "https://csnades.gg/dust2/smokes/deep-tunnels-from-b-plat",
-      "labelEn": "Smoke: Deep Tunnels",
-      "label": "Smoke: Deep Tunnels",
-      "labelEnShort": "Smoke: Deep Tunnels"
+      "label": "Smoke: Deep Tunnels"
     },
     {
       "id": "nade_ca1a7f574a24",
@@ -3640,9 +3085,7 @@
       "from": "Mid Doors",
       "to": "Hinge",
       "url": "https://csnades.gg/dust2/smokes/hinge-from-mid-doors",
-      "labelEn": "Smoke: Hinge",
-      "label": "Smoke: Hinge",
-      "labelEnShort": "Smoke: Hinge"
+      "label": "Smoke: Hinge"
     },
     {
       "id": "nade_bb5f31055d6b",
@@ -3653,9 +3096,7 @@
       "from": "Outside A Long",
       "to": "Long Corner",
       "url": "https://csnades.gg/dust2/smokes/long-corner-from-outside-a-long",
-      "labelEn": "Smoke: Long Corner",
-      "label": "Smoke: Long Corner",
-      "labelEnShort": "Smoke: Long Corner"
+      "label": "Smoke: Long Corner"
     },
     {
       "id": "nade_faa50e56a793",
@@ -3666,9 +3107,7 @@
       "from": "T Spawn",
       "to": "Long Corner",
       "url": "https://csnades.gg/dust2/smokes/long-corner-from-t-spawn",
-      "labelEn": "Smoke: Long Corner",
-      "label": "Smoke: Long Corner",
-      "labelEnShort": "Smoke: Long Corner"
+      "label": "Smoke: Long Corner"
     },
     {
       "id": "nade_3fb8b1ec2c9c",
@@ -3679,9 +3118,7 @@
       "from": "T Spawn",
       "to": "Long Doors Anti-Molly",
       "url": "https://csnades.gg/dust2/smokes/long-doors-anti-molly-from-t-spawn",
-      "labelEn": "Smoke: Long Doors Anti-Molly",
-      "label": "Smoke: Long Doors Anti-Molly",
-      "labelEnShort": "Smoke: Long Doors Anti-Molly"
+      "label": "Smoke: Long Doors Anti-Molly"
     },
     {
       "id": "nade_a239067e755f",
@@ -3692,9 +3129,7 @@
       "from": "Car",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/smokes/long-doors-from-car",
-      "labelEn": "Smoke: Long Doors",
-      "label": "Smoke: Long Doors",
-      "labelEnShort": "Smoke: Long Doors"
+      "label": "Smoke: Long Doors"
     },
     {
       "id": "nade_72d0c965f5c7",
@@ -3705,9 +3140,7 @@
       "from": "Car",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/smokes/long-doors-from-car-b",
-      "labelEn": "Smoke: Long Doors",
-      "label": "Smoke: Long Doors",
-      "labelEnShort": "Smoke: Long Doors"
+      "label": "Smoke: Long Doors"
     },
     {
       "id": "nade_0fd702db6e9b",
@@ -3718,9 +3151,7 @@
       "from": "Elevator",
       "to": "Long Doors",
       "url": "https://csnades.gg/dust2/smokes/long-doors-from-elevator",
-      "labelEn": "Smoke: Long Doors",
-      "label": "Smoke: Long Doors",
-      "labelEnShort": "Smoke: Long Doors"
+      "label": "Smoke: Long Doors"
     },
     {
       "id": "nade_2ca1096166f3",
@@ -3731,9 +3162,7 @@
       "from": "CT Spawn",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/smokes/mid-doors-from-ct-spawn",
-      "labelEn": "Smoke: Mid Doors",
-      "label": "Smoke: Mid Doors",
-      "labelEnShort": "Smoke: Mid Doors"
+      "label": "Smoke: Mid Doors"
     },
     {
       "id": "nade_d47668f9c643",
@@ -3744,9 +3173,7 @@
       "from": "T Spawn",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn",
-      "labelEn": "Smoke: Mid Doors",
-      "label": "Smoke: Mid Doors",
-      "labelEnShort": "Smoke: Mid Doors"
+      "label": "Smoke: Mid Doors"
     },
     {
       "id": "nade_3d6010d1f14c",
@@ -3757,9 +3184,7 @@
       "from": "T Spawn Railing",
       "to": "Mid Doors",
       "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn-railing",
-      "labelEn": "Smoke: Mid Doors",
-      "label": "Smoke: Mid Doors",
-      "labelEnShort": "Smoke: Mid Doors"
+      "label": "Smoke: Mid Doors"
     },
     {
       "id": "nade_639afc07cbcc",
@@ -3770,9 +3195,7 @@
       "from": "Short",
       "to": "Short",
       "url": "https://csnades.gg/dust2/smokes/short-from-short",
-      "labelEn": "Smoke: Short",
-      "label": "Smoke: Short",
-      "labelEnShort": "Smoke: Short"
+      "label": "Smoke: Short"
     },
     {
       "id": "nade_7f6612df8d10",
@@ -3783,9 +3206,7 @@
       "from": "Stairs",
       "to": "Short",
       "url": "https://csnades.gg/dust2/smokes/short-from-stairs",
-      "labelEn": "Smoke: Short",
-      "label": "Smoke: Short",
-      "labelEnShort": "Smoke: Short"
+      "label": "Smoke: Short"
     },
     {
       "id": "nade_7ed81ff70354",
@@ -3796,9 +3217,7 @@
       "from": "CT Mid",
       "to": "Suicide",
       "url": "https://csnades.gg/dust2/smokes/suicide-from-ct-mid",
-      "labelEn": "Smoke: Suicide",
-      "label": "Smoke: Suicide",
-      "labelEnShort": "Smoke: Suicide"
+      "label": "Smoke: Suicide"
     },
     {
       "id": "nade_5aba091b71da",
@@ -3809,9 +3228,7 @@
       "from": "Upper Tunnels",
       "to": "Tunnels Entry",
       "url": "https://csnades.gg/dust2/smokes/tunnels-entry-from-upper-tunnels",
-      "labelEn": "Smoke: Tunnels Entry",
-      "label": "Smoke: Tunnels Entry",
-      "labelEnShort": "Smoke: Tunnels Entry"
+      "label": "Smoke: Tunnels Entry"
     },
     {
       "id": "nade_73d0d1f33c44",
@@ -3822,9 +3239,7 @@
       "from": "T Spawn",
       "to": "Window",
       "url": "https://csnades.gg/dust2/smokes/window-from-t-spawn",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_9cb3c791b91c",
@@ -3835,9 +3250,7 @@
       "from": "Lower Tunnels",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-lower-tunnels",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_ccdabe8bb596",
@@ -3848,9 +3261,7 @@
       "from": "Outside Long",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-outside-long",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_f492beead137",
@@ -3861,9 +3272,7 @@
       "from": "Outside T Spawn",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-outside-t-spawn",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_d6798d238f24",
@@ -3874,9 +3283,7 @@
       "from": "T Spawn",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_a9acc9e37c9f",
@@ -3887,9 +3294,7 @@
       "from": "T Spawn Corner",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn-corner",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_da9652be1fe3",
@@ -3900,9 +3305,7 @@
       "from": "T Spawn Railing",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn-railing-a",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_5940120ca699",
@@ -3913,9 +3316,7 @@
       "from": "T Spawn Railing",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn-railing-b",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_2393542bea15",
@@ -3926,9 +3327,7 @@
       "from": "Top Mid",
       "to": "XBox",
       "url": "https://csnades.gg/dust2/smokes/xbox-from-top-mid",
-      "labelEn": "Smoke: XBox",
-      "label": "Smoke: XBox",
-      "labelEnShort": "Smoke: XBox"
+      "label": "Smoke: XBox"
     },
     {
       "id": "nade_de64d2e20c8b",
@@ -3939,9 +3338,7 @@
       "from": "Safe Plant",
       "to": "Arches",
       "url": "https://csnades.gg/inferno/flashbangs/arches-from-safe-plant",
-      "labelEn": "Flash: Arches",
-      "label": "Flash: Arches",
-      "labelEnShort": "Flashbang: Arches"
+      "label": "Flash: Arches"
     },
     {
       "id": "nade_26658f9f9d25",
@@ -3952,9 +3349,7 @@
       "from": "CT",
       "to": "B Entrance",
       "url": "https://csnades.gg/inferno/flashbangs/b-entrance-from-ct",
-      "labelEn": "Flash: B Entrance",
-      "label": "Flash: B Entrance",
-      "labelEnShort": "Flashbang: B Entrance"
+      "label": "Flash: B Entrance"
     },
     {
       "id": "nade_ee073d340b0a",
@@ -3965,9 +3360,7 @@
       "from": "Apts",
       "to": "Balcony",
       "url": "https://csnades.gg/inferno/flashbangs/balcony-from-apts",
-      "labelEn": "Flash: Balcony",
-      "label": "Flash: Balcony",
-      "labelEnShort": "Flashbang: Balcony"
+      "label": "Flash: Balcony"
     },
     {
       "id": "nade_452fabb627b2",
@@ -3978,9 +3371,7 @@
       "from": "Front Sandbags",
       "to": "Banana",
       "url": "https://csnades.gg/inferno/flashbangs/banana-from-front-sandbags",
-      "labelEn": "Flash: Banana",
-      "label": "Flash: Banana",
-      "labelEnShort": "Flashbang: Banana"
+      "label": "Flash: Banana"
     },
     {
       "id": "nade_b2db36fc7873",
@@ -3991,9 +3382,7 @@
       "from": "T Spawn",
       "to": "Banana",
       "url": "https://csnades.gg/inferno/flashbangs/banana-from-t-spawn",
-      "labelEn": "Flash: Banana",
-      "label": "Flash: Banana",
-      "labelEnShort": "Flashbang: Banana"
+      "label": "Flash: Banana"
     },
     {
       "id": "nade_15e85d3dba5e",
@@ -4004,9 +3393,7 @@
       "from": "Apts",
       "to": "Boiler",
       "url": "https://csnades.gg/inferno/flashbangs/boiler-from-apts",
-      "labelEn": "Flash: Boiler",
-      "label": "Flash: Boiler",
-      "labelEnShort": "Flashbang: Boiler"
+      "label": "Flash: Boiler"
     },
     {
       "id": "nade_a283b6bf76c7",
@@ -4017,9 +3404,7 @@
       "from": "Pit",
       "to": "Short",
       "url": "https://csnades.gg/inferno/flashbangs/short-from-pit",
-      "labelEn": "Flash: Short",
-      "label": "Flash: Short",
-      "labelEnShort": "Flashbang: Short"
+      "label": "Flash: Short"
     },
     {
       "id": "nade_c642bfb3ae3c",
@@ -4030,9 +3415,7 @@
       "from": "CT",
       "to": "Top Banana",
       "url": "https://csnades.gg/inferno/flashbangs/top-banana-from-ct",
-      "labelEn": "Flash: Top Banana",
-      "label": "Flash: Top Banana",
-      "labelEnShort": "Flashbang: Top Banana"
+      "label": "Flash: Top Banana"
     },
     {
       "id": "nade_4614fc903277",
@@ -4043,9 +3426,7 @@
       "from": "Underpass",
       "to": "Top Mid",
       "url": "https://csnades.gg/inferno/flashbangs/top-mid-from-underpass",
-      "labelEn": "Flash: Top Mid",
-      "label": "Flash: Top Mid",
-      "labelEnShort": "Flashbang: Top Mid"
+      "label": "Flash: Top Mid"
     },
     {
       "id": "nade_c64fb706185e",
@@ -4056,9 +3437,7 @@
       "from": "Outside Church",
       "to": "B Default",
       "url": "https://csnades.gg/inferno/hegrenades/b-default-from-outside-church",
-      "labelEn": "HE: B Default",
-      "label": "HE: B Default",
-      "labelEnShort": "Hegrenade: B Default"
+      "label": "HE: B Default"
     },
     {
       "id": "nade_2fa499ca4c60",
@@ -4069,9 +3448,7 @@
       "from": "B Entrance",
       "to": "Banana",
       "url": "https://csnades.gg/inferno/hegrenades/banana-from-b-entrance",
-      "labelEn": "HE: Banana",
-      "label": "HE: Banana",
-      "labelEnShort": "Hegrenade: Banana"
+      "label": "HE: Banana"
     },
     {
       "id": "nade_1b59cb5ef0f0",
@@ -4082,9 +3459,7 @@
       "from": "Dark",
       "to": "Car",
       "url": "https://csnades.gg/inferno/hegrenades/car-from-dark",
-      "labelEn": "HE: Car",
-      "label": "HE: Car",
-      "labelEnShort": "Hegrenade: Car"
+      "label": "HE: Car"
     },
     {
       "id": "nade_da7e58fa94f1",
@@ -4095,9 +3470,7 @@
       "from": "Car",
       "to": "First Orange",
       "url": "https://csnades.gg/inferno/hegrenades/first-orange-from-car",
-      "labelEn": "HE: First Orange",
-      "label": "HE: First Orange",
-      "labelEnShort": "Hegrenade: First Orange"
+      "label": "HE: First Orange"
     },
     {
       "id": "nade_55c9b4d609c1",
@@ -4108,9 +3481,7 @@
       "from": "Short",
       "to": "Mini Pit",
       "url": "https://csnades.gg/inferno/hegrenades/mini-pit-from-short",
-      "labelEn": "HE: Mini Pit",
-      "label": "HE: Mini Pit",
-      "labelEnShort": "Hegrenade: Mini Pit"
+      "label": "HE: Mini Pit"
     },
     {
       "id": "nade_a7855ce23aab",
@@ -4121,9 +3492,7 @@
       "from": "CT",
       "to": "New Box",
       "url": "https://csnades.gg/inferno/hegrenades/new-box-from-ct",
-      "labelEn": "HE: New Box",
-      "label": "HE: New Box",
-      "labelEnShort": "Hegrenade: New Box"
+      "label": "HE: New Box"
     },
     {
       "id": "nade_17dae683b8cd",
@@ -4134,9 +3503,7 @@
       "from": "Mid",
       "to": "Ramp",
       "url": "https://csnades.gg/inferno/hegrenades/ramp-from-mid",
-      "labelEn": "HE: Ramp",
-      "label": "HE: Ramp",
-      "labelEnShort": "Hegrenade: Ramp"
+      "label": "HE: Ramp"
     },
     {
       "id": "nade_8210f1a9145e",
@@ -4147,9 +3514,7 @@
       "from": "Mid",
       "to": "Ramp",
       "url": "https://csnades.gg/inferno/hegrenades/ramp-from-mid-b",
-      "labelEn": "HE: Ramp",
-      "label": "HE: Ramp",
-      "labelEnShort": "Hegrenade: Ramp"
+      "label": "HE: Ramp"
     },
     {
       "id": "nade_ebc8aaba3248",
@@ -4160,9 +3525,7 @@
       "from": "Car",
       "to": "1st Oranges",
       "url": "https://csnades.gg/inferno/molotovs/1st-oranges-from-car",
-      "labelEn": "Molly: 1st Oranges",
-      "label": "Molly: 1st Oranges",
-      "labelEnShort": "Molotov: 1st Oranges"
+      "label": "Molly: 1st Oranges"
     },
     {
       "id": "nade_9aaaed8c41bd",
@@ -4173,9 +3536,7 @@
       "from": "Top Banana",
       "to": "Banana",
       "url": "https://csnades.gg/inferno/molotovs/banana-from-top-banana",
-      "labelEn": "Molly: Banana",
-      "label": "Molly: Banana",
-      "labelEnShort": "Molotov: Banana"
+      "label": "Molly: Banana"
     },
     {
       "id": "nade_a394cfcd58d1",
@@ -4186,9 +3547,7 @@
       "from": "Bottom Banana",
       "to": "Car",
       "url": "https://csnades.gg/inferno/molotovs/car-from-bottom-banana",
-      "labelEn": "Molly: Car",
-      "label": "Molly: Car",
-      "labelEnShort": "Molotov: Car"
+      "label": "Molly: Car"
     },
     {
       "id": "nade_b92bea276f72",
@@ -4199,9 +3558,7 @@
       "from": "Half Wall",
       "to": "Coffins",
       "url": "https://csnades.gg/inferno/molotovs/coffins-from-half-wall-b",
-      "labelEn": "Molly: Coffins",
-      "label": "Molly: Coffins",
-      "labelEnShort": "Molotov: Coffins"
+      "label": "Molly: Coffins"
     },
     {
       "id": "nade_05d5c9b78990",
@@ -4212,9 +3569,7 @@
       "from": "Banana",
       "to": "Dark",
       "url": "https://csnades.gg/inferno/molotovs/dark-from-banana",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_5ff0c183fea8",
@@ -4225,9 +3580,7 @@
       "from": "Sandbags",
       "to": "Dark",
       "url": "https://csnades.gg/inferno/molotovs/dark-from-sandbags",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_31ea092d1abe",
@@ -4238,9 +3591,7 @@
       "from": "Oranges",
       "to": "Car",
       "url": "https://csnades.gg/inferno/molotovs/mini-pit-from-short",
-      "labelEn": "Molly: Car",
-      "label": "Molly: Car",
-      "labelEnShort": "Molotov: Car"
+      "label": "Molly: Car"
     },
     {
       "id": "nade_8ece146527d9",
@@ -4251,9 +3602,7 @@
       "from": "Car",
       "to": "New Box",
       "url": "https://csnades.gg/inferno/molotovs/new-box-from-car",
-      "labelEn": "Molly: New Box",
-      "label": "Molly: New Box",
-      "labelEnShort": "Molotov: New Box"
+      "label": "Molly: New Box"
     },
     {
       "id": "nade_451db50634cd",
@@ -4264,9 +3613,7 @@
       "from": "CT",
       "to": "New Box",
       "url": "https://csnades.gg/inferno/molotovs/new-box-from-ct",
-      "labelEn": "Molly: New Box",
-      "label": "Molly: New Box",
-      "labelEnShort": "Molotov: New Box"
+      "label": "Molly: New Box"
     },
     {
       "id": "nade_b0187875d3ad",
@@ -4277,9 +3624,7 @@
       "from": "Car",
       "to": "Oranges",
       "url": "https://csnades.gg/inferno/molotovs/oranges-from-car",
-      "labelEn": "Molly: Oranges",
-      "label": "Molly: Oranges",
-      "labelEnShort": "Molotov: Oranges"
+      "label": "Molly: Oranges"
     },
     {
       "id": "nade_9cec3cd2d5bc",
@@ -4290,9 +3635,7 @@
       "from": "Arch Side",
       "to": "Pit",
       "url": "https://csnades.gg/inferno/molotovs/pit-from-arch-side",
-      "labelEn": "Molly: Pit",
-      "label": "Molly: Pit",
-      "labelEnShort": "Molotov: Pit"
+      "label": "Molly: Pit"
     },
     {
       "id": "nade_9bba71a98920",
@@ -4303,9 +3646,7 @@
       "from": "Short",
       "to": "Pit",
       "url": "https://csnades.gg/inferno/molotovs/pit-from-short",
-      "labelEn": "Molly: Pit",
-      "label": "Molly: Pit",
-      "labelEnShort": "Molotov: Pit"
+      "label": "Molly: Pit"
     },
     {
       "id": "nade_b069d5edfcc9",
@@ -4316,9 +3657,7 @@
       "from": "Top Mid",
       "to": "Quad",
       "url": "https://csnades.gg/inferno/molotovs/quad-from-top-mid",
-      "labelEn": "Molly: Quad",
-      "label": "Molly: Quad",
-      "labelEnShort": "Molotov: Quad"
+      "label": "Molly: Quad"
     },
     {
       "id": "nade_57522f56e9f8",
@@ -4329,9 +3668,7 @@
       "from": "Car",
       "to": "Second Oranges",
       "url": "https://csnades.gg/inferno/molotovs/second-oranges-from-car",
-      "labelEn": "Molly: Second Oranges",
-      "label": "Molly: Second Oranges",
-      "labelEnShort": "Molotov: Second Oranges"
+      "label": "Molly: Second Oranges"
     },
     {
       "id": "nade_8f1947c9a75c",
@@ -4342,9 +3679,7 @@
       "from": "Alt Mid",
       "to": "Arch",
       "url": "https://csnades.gg/inferno/smokes/arch-from-alt-mid",
-      "labelEn": "Smoke: Arch",
-      "label": "Smoke: Arch",
-      "labelEnShort": "Smoke: Arch"
+      "label": "Smoke: Arch"
     },
     {
       "id": "nade_faf170cf52a9",
@@ -4355,9 +3690,7 @@
       "from": "Bottom Mid",
       "to": "Arch",
       "url": "https://csnades.gg/inferno/smokes/arch-from-bottom-mid",
-      "labelEn": "Smoke: Arch",
-      "label": "Smoke: Arch",
-      "labelEnShort": "Smoke: Arch"
+      "label": "Smoke: Arch"
     },
     {
       "id": "nade_3f1fcfa6dee2",
@@ -4368,9 +3701,7 @@
       "from": "Alt Mid",
       "to": "Arches",
       "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid",
-      "labelEn": "Smoke: Arches",
-      "label": "Smoke: Arches",
-      "labelEnShort": "Smoke: Arches"
+      "label": "Smoke: Arches"
     },
     {
       "id": "nade_e889e3e2d911",
@@ -4381,9 +3712,7 @@
       "from": "Alt Mid",
       "to": "Arches",
       "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid-b",
-      "labelEn": "Smoke: Arches",
-      "label": "Smoke: Arches",
-      "labelEnShort": "Smoke: Arches"
+      "label": "Smoke: Arches"
     },
     {
       "id": "nade_13c69756148c",
@@ -4394,9 +3723,7 @@
       "from": "Mid",
       "to": "Arches",
       "url": "https://csnades.gg/inferno/smokes/arches-from-mid",
-      "labelEn": "Smoke: Arches",
-      "label": "Smoke: Arches",
-      "labelEnShort": "Smoke: Arches"
+      "label": "Smoke: Arches"
     },
     {
       "id": "nade_9853234964c8",
@@ -4407,9 +3734,7 @@
       "from": "Under Light Room",
       "to": "Arches",
       "url": "https://csnades.gg/inferno/smokes/arches-from-under-light-room",
-      "labelEn": "Smoke: Arches",
-      "label": "Smoke: Arches",
-      "labelEnShort": "Smoke: Arches"
+      "label": "Smoke: Arches"
     },
     {
       "id": "nade_e393976a84e1",
@@ -4420,9 +3745,7 @@
       "from": "Coffins",
       "to": "B Entrace",
       "url": "https://csnades.gg/inferno/smokes/b-entrace-from-coffins",
-      "labelEn": "Smoke: B Entrace",
-      "label": "Smoke: B Entrace",
-      "labelEnShort": "Smoke: B Entrace"
+      "label": "Smoke: B Entrace"
     },
     {
       "id": "nade_8cf794ee794e",
@@ -4433,9 +3756,7 @@
       "from": "CT",
       "to": "B Entrance",
       "url": "https://csnades.gg/inferno/smokes/b-entrance-from-ct",
-      "labelEn": "Smoke: B Entrance",
-      "label": "Smoke: B Entrance",
-      "labelEnShort": "Smoke: B Entrance"
+      "label": "Smoke: B Entrance"
     },
     {
       "id": "nade_dac24838503e",
@@ -4446,9 +3767,7 @@
       "from": "Moto",
       "to": "B Entrance",
       "url": "https://csnades.gg/inferno/smokes/b-entrance-from-moto",
-      "labelEn": "Smoke: B Entrance",
-      "label": "Smoke: B Entrance",
-      "labelEnShort": "Smoke: B Entrance"
+      "label": "Smoke: B Entrance"
     },
     {
       "id": "nade_46ad077f7194",
@@ -4459,9 +3778,7 @@
       "from": "Banana",
       "to": "B Site",
       "url": "https://csnades.gg/inferno/smokes/b-site-from-banana",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_18789a077f71",
@@ -4472,9 +3789,7 @@
       "from": "Alt Mid",
       "to": "Boiler",
       "url": "https://csnades.gg/inferno/smokes/boiler-from-alt-mid",
-      "labelEn": "Smoke: Boiler",
-      "label": "Smoke: Boiler",
-      "labelEnShort": "Smoke: Boiler"
+      "label": "Smoke: Boiler"
     },
     {
       "id": "nade_edff5497ff47",
@@ -4485,9 +3800,7 @@
       "from": "T Spawn",
       "to": "Boiler",
       "url": "https://csnades.gg/inferno/smokes/boiler-from-t-spawn",
-      "labelEn": "Smoke: Boiler",
-      "label": "Smoke: Boiler",
-      "labelEnShort": "Smoke: Boiler"
+      "label": "Smoke: Boiler"
     },
     {
       "id": "nade_8ed886736b4c",
@@ -4498,9 +3811,7 @@
       "from": "CT Spawn 1",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-1",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_df9c7ca1b674",
@@ -4511,9 +3822,7 @@
       "from": "CT Spawn 2",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-2",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_53c9d4ff1b04",
@@ -4524,9 +3833,7 @@
       "from": "CT Spawn 3",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-3",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_c56808028e0c",
@@ -4537,9 +3844,7 @@
       "from": "CT Spawn 4",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-4",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_3847eae7908e",
@@ -4550,9 +3855,7 @@
       "from": "CT Spawn 5",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-5",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_2ad7cf856023",
@@ -4563,9 +3866,7 @@
       "from": "CT Spawn 6",
       "to": "Bottom Mid",
       "url": "https://csnades.gg/inferno/smokes/bottom-mid-from-ct-spawn-6",
-      "labelEn": "Smoke: Bottom Mid",
-      "label": "Smoke: Bottom Mid",
-      "labelEnShort": "Smoke: Bottom Mid"
+      "label": "Smoke: Bottom Mid"
     },
     {
       "id": "nade_4bda1f5e3d20",
@@ -4576,9 +3877,7 @@
       "from": "Banana",
       "to": "Coffins",
       "url": "https://csnades.gg/inferno/smokes/coffins-from-banana",
-      "labelEn": "Smoke: Coffins",
-      "label": "Smoke: Coffins",
-      "labelEnShort": "Smoke: Coffins"
+      "label": "Smoke: Coffins"
     },
     {
       "id": "nade_ad9e4213dcb5",
@@ -4589,9 +3888,7 @@
       "from": "Banana",
       "to": "Coffins",
       "url": "https://csnades.gg/inferno/smokes/coffins-from-banana-b",
-      "labelEn": "Smoke: Coffins",
-      "label": "Smoke: Coffins",
-      "labelEnShort": "Smoke: Coffins"
+      "label": "Smoke: Coffins"
     },
     {
       "id": "nade_daf36c4ad8d8",
@@ -4602,9 +3899,7 @@
       "from": "Half-Wall",
       "to": "Coffins",
       "url": "https://csnades.gg/inferno/smokes/coffins-from-half-wall-a",
-      "labelEn": "Smoke: Coffins",
-      "label": "Smoke: Coffins",
-      "labelEnShort": "Smoke: Coffins"
+      "label": "Smoke: Coffins"
     },
     {
       "id": "nade_393070530339",
@@ -4615,9 +3910,7 @@
       "from": "Banana",
       "to": "CT Boost",
       "url": "https://csnades.gg/inferno/smokes/ct-boost-from-banana",
-      "labelEn": "Smoke: CT Boost",
-      "label": "Smoke: CT Boost",
-      "labelEnShort": "Smoke: CT Boost"
+      "label": "Smoke: CT Boost"
     },
     {
       "id": "nade_8b678b63bd56",
@@ -4628,9 +3921,7 @@
       "from": "Logs",
       "to": "CT Boost",
       "url": "https://csnades.gg/inferno/smokes/ct-boost-from-logs",
-      "labelEn": "Smoke: CT Boost",
-      "label": "Smoke: CT Boost",
-      "labelEnShort": "Smoke: CT Boost"
+      "label": "Smoke: CT Boost"
     },
     {
       "id": "nade_d09d3e4ce884",
@@ -4641,9 +3932,7 @@
       "from": "Banana",
       "to": "CT",
       "url": "https://csnades.gg/inferno/smokes/ct-from-banana",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_fc77188a88bd",
@@ -4654,9 +3943,7 @@
       "from": "Banana",
       "to": "CT",
       "url": "https://csnades.gg/inferno/smokes/ct-from-banana-b",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_902b17c29167",
@@ -4667,9 +3954,7 @@
       "from": "Banana",
       "to": "CT",
       "url": "https://csnades.gg/inferno/smokes/ct-from-banana-c",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_54a8a4e520bf",
@@ -4680,9 +3965,7 @@
       "from": "Car",
       "to": "CT",
       "url": "https://csnades.gg/inferno/smokes/ct-from-car",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_3cec1f9adb49",
@@ -4693,9 +3976,7 @@
       "from": "T Spawn",
       "to": "CT",
       "url": "https://csnades.gg/inferno/smokes/ct-from-t-spawn",
-      "labelEn": "Smoke: CT",
-      "label": "Smoke: CT",
-      "labelEnShort": "Smoke: CT"
+      "label": "Smoke: CT"
     },
     {
       "id": "nade_7dedbb1322dc",
@@ -4706,9 +3987,7 @@
       "from": "Car",
       "to": "Deep CT",
       "url": "https://csnades.gg/inferno/smokes/deep-ct-from-car",
-      "labelEn": "Smoke: Deep CT",
-      "label": "Smoke: Deep CT",
-      "labelEnShort": "Smoke: Deep CT"
+      "label": "Smoke: Deep CT"
     },
     {
       "id": "nade_7f93a004a209",
@@ -4719,9 +3998,7 @@
       "from": "T Spawn",
       "to": "Arch",
       "url": "https://csnades.gg/inferno/smokes/front-graveyard-from-arch",
-      "labelEn": "Smoke: Arch",
-      "label": "Smoke: Arch",
-      "labelEnShort": "Smoke: Arch"
+      "label": "Smoke: Arch"
     },
     {
       "id": "nade_ebafb2f0293b",
@@ -4732,9 +4009,7 @@
       "from": "Church",
       "to": "Half Wall",
       "url": "https://csnades.gg/inferno/smokes/half-wall-from-church",
-      "labelEn": "Smoke: Half Wall",
-      "label": "Smoke: Half Wall",
-      "labelEnShort": "Smoke: Half Wall"
+      "label": "Smoke: Half Wall"
     },
     {
       "id": "nade_7cda0f47e07f",
@@ -4745,9 +4020,7 @@
       "from": "Coffins",
       "to": "Half Wall",
       "url": "https://csnades.gg/inferno/smokes/half-wall-from-coffins",
-      "labelEn": "Smoke: Half Wall",
-      "label": "Smoke: Half Wall",
-      "labelEnShort": "Smoke: Half Wall"
+      "label": "Smoke: Half Wall"
     },
     {
       "id": "nade_c6e11c4fdff3",
@@ -4758,9 +4031,7 @@
       "from": "CT Spawn",
       "to": "Half Wall",
       "url": "https://csnades.gg/inferno/smokes/half-wall-from-ct-spawn",
-      "labelEn": "Smoke: Half Wall",
-      "label": "Smoke: Half Wall",
-      "labelEnShort": "Smoke: Half Wall"
+      "label": "Smoke: Half Wall"
     },
     {
       "id": "nade_0acee6607620",
@@ -4771,9 +4042,7 @@
       "from": "Alt Mid",
       "to": "Hay",
       "url": "https://csnades.gg/inferno/smokes/hay-from-alt-mid-3",
-      "labelEn": "Smoke: Hay",
-      "label": "Smoke: Hay",
-      "labelEnShort": "Smoke: Hay"
+      "label": "Smoke: Hay"
     },
     {
       "id": "nade_5394bf442016",
@@ -4784,9 +4053,7 @@
       "from": "Apts",
       "to": "Hay",
       "url": "https://csnades.gg/inferno/smokes/hay-from-apts-a",
-      "labelEn": "Smoke: Hay",
-      "label": "Smoke: Hay",
-      "labelEnShort": "Smoke: Hay"
+      "label": "Smoke: Hay"
     },
     {
       "id": "nade_9a19d9347337",
@@ -4797,9 +4064,7 @@
       "from": "Alt Mid",
       "to": "Library",
       "url": "https://csnades.gg/inferno/smokes/library-from-alt-mid",
-      "labelEn": "Smoke: Library",
-      "label": "Smoke: Library",
-      "labelEnShort": "Smoke: Library"
+      "label": "Smoke: Library"
     },
     {
       "id": "nade_1acca6b720ac",
@@ -4810,9 +4075,7 @@
       "from": "Bottom Mid",
       "to": "Library",
       "url": "https://csnades.gg/inferno/smokes/library-from-bottom-mid",
-      "labelEn": "Smoke: Library",
-      "label": "Smoke: Library",
-      "labelEnShort": "Smoke: Library"
+      "label": "Smoke: Library"
     },
     {
       "id": "nade_05221f0c542b",
@@ -4823,9 +4086,7 @@
       "from": "T Spawn",
       "to": "Library",
       "url": "https://csnades.gg/inferno/smokes/library-from-t-spawn",
-      "labelEn": "Smoke: Library",
-      "label": "Smoke: Library",
-      "labelEnShort": "Smoke: Library"
+      "label": "Smoke: Library"
     },
     {
       "id": "nade_810a605d50f8",
@@ -4836,9 +4097,7 @@
       "from": "Mid",
       "to": "Mid Arches",
       "url": "https://csnades.gg/inferno/smokes/mid-arches-from-mid",
-      "labelEn": "Smoke: Mid Arches",
-      "label": "Smoke: Mid Arches",
-      "labelEnShort": "Smoke: Mid Arches"
+      "label": "Smoke: Mid Arches"
     },
     {
       "id": "nade_b20c8afec2a7",
@@ -4849,9 +4108,7 @@
       "from": "Alt-Mid",
       "to": "Moto",
       "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid",
-      "labelEn": "Smoke: Moto",
-      "label": "Smoke: Moto",
-      "labelEnShort": "Smoke: Moto"
+      "label": "Smoke: Moto"
     },
     {
       "id": "nade_dcd962427199",
@@ -4862,9 +4119,7 @@
       "from": "Alt Mid",
       "to": "Moto",
       "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid-b",
-      "labelEn": "Smoke: Moto",
-      "label": "Smoke: Moto",
-      "labelEnShort": "Smoke: Moto"
+      "label": "Smoke: Moto"
     },
     {
       "id": "nade_06d11f0b7910",
@@ -4875,9 +4130,7 @@
       "from": "Boiler",
       "to": "Moto",
       "url": "https://csnades.gg/inferno/smokes/moto-from-boiler",
-      "labelEn": "Smoke: Moto",
-      "label": "Smoke: Moto",
-      "labelEnShort": "Smoke: Moto"
+      "label": "Smoke: Moto"
     },
     {
       "id": "nade_798359848c22",
@@ -4888,9 +4141,7 @@
       "from": "T Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/inferno/smokes/moto-from-pit",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_2e8c25343c02",
@@ -4901,9 +4152,7 @@
       "from": "Alt Mid",
       "to": "Pit",
       "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid",
-      "labelEn": "Smoke: Pit",
-      "label": "Smoke: Pit",
-      "labelEnShort": "Smoke: Pit"
+      "label": "Smoke: Pit"
     },
     {
       "id": "nade_b072885c522a",
@@ -4914,9 +4163,7 @@
       "from": "Alt Mid",
       "to": "Pit",
       "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid-2",
-      "labelEn": "Smoke: Pit",
-      "label": "Smoke: Pit",
-      "labelEnShort": "Smoke: Pit"
+      "label": "Smoke: Pit"
     },
     {
       "id": "nade_116c9dd63394",
@@ -4927,9 +4174,7 @@
       "from": "Mid",
       "to": "Pit",
       "url": "https://csnades.gg/inferno/smokes/pit-from-mid",
-      "labelEn": "Smoke: Pit",
-      "label": "Smoke: Pit",
-      "labelEnShort": "Smoke: Pit"
+      "label": "Smoke: Pit"
     },
     {
       "id": "nade_85bdd216ce2d",
@@ -4940,9 +4185,7 @@
       "from": "CT Spawn",
       "to": "Stairs",
       "url": "https://csnades.gg/inferno/smokes/stairs-from-ct-spawn",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_8f9703414578",
@@ -4953,9 +4196,7 @@
       "from": "CT Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/inferno/smokes/top-mid-from-ct-spawn",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_a7a66bbf810b",
@@ -4966,9 +4207,7 @@
       "from": "A Ramp",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-a-ramp",
-      "labelEn": "Flash: A Ramp",
-      "label": "Flash: A Ramp",
-      "labelEnShort": "Flashbang: A Ramp"
+      "label": "Flash: A Ramp"
     },
     {
       "id": "nade_8d23656760a7",
@@ -4979,9 +4218,7 @@
       "from": "Jungle",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-jungle",
-      "labelEn": "Flash: A Ramp",
-      "label": "Flash: A Ramp",
-      "labelEnShort": "Flashbang: A Ramp"
+      "label": "Flash: A Ramp"
     },
     {
       "id": "nade_4a6014932212",
@@ -4992,9 +4229,7 @@
       "from": "T Spawn",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn",
-      "labelEn": "Flash: A Ramp",
-      "label": "Flash: A Ramp",
-      "labelEnShort": "Flashbang: A Ramp"
+      "label": "Flash: A Ramp"
     },
     {
       "id": "nade_5f87a8406de2",
@@ -5005,9 +4240,7 @@
       "from": "Catwalk",
       "to": "B Short",
       "url": "https://csnades.gg/mirage/flashbangs/b-short-from-catwalk",
-      "labelEn": "Flash: B Short",
-      "label": "Flash: B Short",
-      "labelEnShort": "Flashbang: B Short"
+      "label": "Flash: B Short"
     },
     {
       "id": "nade_dbeea5e9057d",
@@ -5018,9 +4251,7 @@
       "from": "Apts",
       "to": "B Site",
       "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_cefa20ae8efb",
@@ -5031,9 +4262,7 @@
       "from": "Back Alley",
       "to": "B Site",
       "url": "https://csnades.gg/mirage/flashbangs/b-site-from-back-alley",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_1a2b27ff61d1",
@@ -5044,9 +4273,7 @@
       "from": "Back Apts",
       "to": "B Site",
       "url": "https://csnades.gg/mirage/flashbangs/b-site-from-back-apts",
-      "labelEn": "Flash: B Site",
-      "label": "Flash: B Site",
-      "labelEnShort": "Flashbang: B Site"
+      "label": "Flash: B Site"
     },
     {
       "id": "nade_dffab7ade7e0",
@@ -5057,9 +4284,7 @@
       "from": "Palace",
       "to": "Balcony",
       "url": "https://csnades.gg/mirage/flashbangs/balcony-from-palace",
-      "labelEn": "Flash: Balcony",
-      "label": "Flash: Balcony",
-      "labelEnShort": "Flashbang: Balcony"
+      "label": "Flash: Balcony"
     },
     {
       "id": "nade_61c1ad8904d0",
@@ -5070,9 +4295,7 @@
       "from": "Top Mid Boxes",
       "to": "Connector",
       "url": "https://csnades.gg/mirage/flashbangs/connector-from-top-mid-boxes",
-      "labelEn": "Flash: Connector",
-      "label": "Flash: Connector",
-      "labelEnShort": "Flashbang: Connector"
+      "label": "Flash: Connector"
     },
     {
       "id": "nade_d4bad3f503cc",
@@ -5083,9 +4306,7 @@
       "from": "B Short",
       "to": "Mid",
       "url": "https://csnades.gg/mirage/flashbangs/mid-from-b-short",
-      "labelEn": "Flash: Mid",
-      "label": "Flash: Mid",
-      "labelEnShort": "Flashbang: Mid"
+      "label": "Flash: Mid"
     },
     {
       "id": "nade_f68e0ac90f13",
@@ -5096,9 +4317,7 @@
       "from": "Outside T Apts",
       "to": "Mid",
       "url": "https://csnades.gg/mirage/flashbangs/mid-from-outside-t-apts",
-      "labelEn": "Flash: Mid",
-      "label": "Flash: Mid",
-      "labelEnShort": "Flashbang: Mid"
+      "label": "Flash: Mid"
     },
     {
       "id": "nade_22df1251c8a8",
@@ -5109,9 +4328,7 @@
       "from": "Jungle",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle",
-      "labelEn": "Flash: Mid Window",
-      "label": "Flash: Mid Window",
-      "labelEnShort": "Flashbang: Mid Window"
+      "label": "Flash: Mid Window"
     },
     {
       "id": "nade_ce717928c6bf",
@@ -5122,9 +4339,7 @@
       "from": "Stairs",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/flashbangs/stairs-from-stairs",
-      "labelEn": "Flash: Stairs",
-      "label": "Flash: Stairs",
-      "labelEnShort": "Flashbang: Stairs"
+      "label": "Flash: Stairs"
     },
     {
       "id": "nade_2dbb5a6355a0",
@@ -5135,9 +4350,7 @@
       "from": "Under Balcony",
       "to": "Tetris",
       "url": "https://csnades.gg/mirage/flashbangs/tetris-from-under-balcony",
-      "labelEn": "Flash: Tetris",
-      "label": "Flash: Tetris",
-      "labelEnShort": "Flashbang: Tetris"
+      "label": "Flash: Tetris"
     },
     {
       "id": "nade_95e1f06699b9",
@@ -5148,9 +4361,7 @@
       "from": "Triple",
       "to": "Top Mid",
       "url": "https://csnades.gg/mirage/flashbangs/top-mid-from-triple",
-      "labelEn": "Flash: Top Mid",
-      "label": "Flash: Top Mid",
-      "labelEnShort": "Flashbang: Top Mid"
+      "label": "Flash: Top Mid"
     },
     {
       "id": "nade_1b8b0a226db5",
@@ -5161,9 +4372,7 @@
       "from": "Back Alley Stairs",
       "to": "Underpass",
       "url": "https://csnades.gg/mirage/flashbangs/underpass-from-back-alley-stairs",
-      "labelEn": "Flash: Underpass",
-      "label": "Flash: Underpass",
-      "labelEnShort": "Flashbang: Underpass"
+      "label": "Flash: Underpass"
     },
     {
       "id": "nade_09a38d54fc08",
@@ -5174,9 +4383,7 @@
       "from": "Top Mid Boxes",
       "to": "Window",
       "url": "https://csnades.gg/mirage/flashbangs/window-from-top-mid-boxes",
-      "labelEn": "Flash: Window",
-      "label": "Flash: Window",
-      "labelEnShort": "Flashbang: Window"
+      "label": "Flash: Window"
     },
     {
       "id": "nade_e600e9263f0f",
@@ -5187,9 +4394,7 @@
       "from": "Default",
       "to": "A Main",
       "url": "https://csnades.gg/mirage/hegrenades/a-main-from-default",
-      "labelEn": "HE: A Main",
-      "label": "HE: A Main",
-      "labelEnShort": "Hegrenade: A Main"
+      "label": "HE: A Main"
     },
     {
       "id": "nade_c06ffa0c6733",
@@ -5200,9 +4405,7 @@
       "from": "Jungle",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/hegrenades/a-ramp-from-jungle",
-      "labelEn": "HE: A Ramp",
-      "label": "HE: A Ramp",
-      "labelEnShort": "Hegrenade: A Ramp"
+      "label": "HE: A Ramp"
     },
     {
       "id": "nade_3fd0ad4bf6ae",
@@ -5213,9 +4416,7 @@
       "from": "B Short",
       "to": "Chair",
       "url": "https://csnades.gg/mirage/hegrenades/chair-from-b-short",
-      "labelEn": "HE: Chair",
-      "label": "HE: Chair",
-      "labelEnShort": "Hegrenade: Chair"
+      "label": "HE: Chair"
     },
     {
       "id": "nade_c4cb937db2b6",
@@ -5226,9 +4427,7 @@
       "from": "Van",
       "to": "Deep Apts",
       "url": "https://csnades.gg/mirage/hegrenades/deep-apts-from-van",
-      "labelEn": "HE: Deep Apts",
-      "label": "HE: Deep Apts",
-      "labelEnShort": "Hegrenade: Deep Apts"
+      "label": "HE: Deep Apts"
     },
     {
       "id": "nade_871a52517b61",
@@ -5239,9 +4438,7 @@
       "from": "Top Connector",
       "to": "Default",
       "url": "https://csnades.gg/mirage/hegrenades/default-from-top-connector",
-      "labelEn": "HE: Default",
-      "label": "HE: Default",
-      "labelEnShort": "Hegrenade: Default"
+      "label": "HE: Default"
     },
     {
       "id": "nade_757456e5a7c5",
@@ -5252,9 +4449,7 @@
       "from": "Underpass",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/hegrenades/jungle-from-underpass",
-      "labelEn": "HE: Jungle",
-      "label": "HE: Jungle",
-      "labelEnShort": "Hegrenade: Jungle"
+      "label": "HE: Jungle"
     },
     {
       "id": "nade_d7f7d7f43c2d",
@@ -5265,9 +4460,7 @@
       "from": "Jungle",
       "to": "Tetris",
       "url": "https://csnades.gg/mirage/hegrenades/tetris-from-jungle",
-      "labelEn": "HE: Tetris",
-      "label": "HE: Tetris",
-      "labelEnShort": "Hegrenade: Tetris"
+      "label": "HE: Tetris"
     },
     {
       "id": "nade_2b69a9ce94f8",
@@ -5278,9 +4471,7 @@
       "from": "Window",
       "to": "Top Mid Boxes",
       "url": "https://csnades.gg/mirage/hegrenades/top-mid-boxes-from-window",
-      "labelEn": "HE: Top Mid Boxes",
-      "label": "HE: Top Mid Boxes",
-      "labelEnShort": "Hegrenade: Top Mid Boxes"
+      "label": "HE: Top Mid Boxes"
     },
     {
       "id": "nade_52046f2dd638",
@@ -5291,9 +4482,7 @@
       "from": "Catwalk",
       "to": "Underpass",
       "url": "https://csnades.gg/mirage/hegrenades/underpass-from-catwalk",
-      "labelEn": "HE: Underpass",
-      "label": "HE: Underpass",
-      "labelEnShort": "Hegrenade: Underpass"
+      "label": "HE: Underpass"
     },
     {
       "id": "nade_cfc334843eb3",
@@ -5304,9 +4493,7 @@
       "from": "Top Mid Boxes",
       "to": "Window",
       "url": "https://csnades.gg/mirage/hegrenades/window-from-top-mid-boxes",
-      "labelEn": "HE: Window",
-      "label": "HE: Window",
-      "labelEnShort": "Hegrenade: Window"
+      "label": "HE: Window"
     },
     {
       "id": "nade_16e9431cb5bc",
@@ -5317,9 +4504,7 @@
       "from": "Top Connector",
       "to": "A Default",
       "url": "https://csnades.gg/mirage/molotovs/a-default-from-top-connector",
-      "labelEn": "Molly: A Default",
-      "label": "Molly: A Default",
-      "labelEnShort": "Molotov: A Default"
+      "label": "Molly: A Default"
     },
     {
       "id": "nade_ada774b24147",
@@ -5330,9 +4515,7 @@
       "from": "Triple Box",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/molotovs/a-ramp-from-triple-box",
-      "labelEn": "Molly: A Ramp",
-      "label": "Molly: A Ramp",
-      "labelEnShort": "Molotov: A Ramp"
+      "label": "Molly: A Ramp"
     },
     {
       "id": "nade_3dac4275c8ec",
@@ -5343,9 +4526,7 @@
       "from": "B Site",
       "to": "B Apts",
       "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site",
-      "labelEn": "Molly: B Apts",
-      "label": "Molly: B Apts",
-      "labelEnShort": "Molotov: B Apts"
+      "label": "Molly: B Apts"
     },
     {
       "id": "nade_85128f4a16eb",
@@ -5356,9 +4537,7 @@
       "from": "B Apts",
       "to": "Bench",
       "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts",
-      "labelEn": "Molly: Bench",
-      "label": "Molly: Bench",
-      "labelEnShort": "Molotov: Bench"
+      "label": "Molly: Bench"
     },
     {
       "id": "nade_c042f28f51b3",
@@ -5369,9 +4548,7 @@
       "from": "B Short",
       "to": "Chair",
       "url": "https://csnades.gg/mirage/molotovs/chair-from-b-short",
-      "labelEn": "Molly: Chair",
-      "label": "Molly: Chair",
-      "labelEnShort": "Molotov: Chair"
+      "label": "Molly: Chair"
     },
     {
       "id": "nade_1975e561d801",
@@ -5382,9 +4559,7 @@
       "from": "Palace",
       "to": "Dark",
       "url": "https://csnades.gg/mirage/molotovs/dark-from-palace-safe",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_d69c92b1056d",
@@ -5395,9 +4570,7 @@
       "from": "Palace",
       "to": "Dark",
       "url": "https://csnades.gg/mirage/molotovs/dark-from-palace-unsafe",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_72cbf282d369",
@@ -5408,9 +4581,7 @@
       "from": "Tetris",
       "to": "Dark",
       "url": "https://csnades.gg/mirage/molotovs/dark-from-tetris",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_b96047b3b243",
@@ -5421,9 +4592,7 @@
       "from": "Ramp",
       "to": "Default A",
       "url": "https://csnades.gg/mirage/molotovs/default-a-from-ramp",
-      "labelEn": "Molly: Default A",
-      "label": "Molly: Default A",
-      "labelEnShort": "Molotov: Default A"
+      "label": "Molly: Default A"
     },
     {
       "id": "nade_3854d0806e7e",
@@ -5434,9 +4603,7 @@
       "from": "B Apts",
       "to": "Empty Pillar",
       "url": "https://csnades.gg/mirage/molotovs/empty-pillar-from-b-apts",
-      "labelEn": "Molly: Empty Pillar",
-      "label": "Molly: Empty Pillar",
-      "labelEnShort": "Molotov: Empty Pillar"
+      "label": "Molly: Empty Pillar"
     },
     {
       "id": "nade_05c83497521b",
@@ -5447,9 +4614,7 @@
       "from": "Stairs",
       "to": "Firebox",
       "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs",
-      "labelEn": "Molly: Firebox",
-      "label": "Molly: Firebox",
-      "labelEnShort": "Molotov: Firebox"
+      "label": "Molly: Firebox"
     },
     {
       "id": "nade_62b68663e118",
@@ -5460,9 +4625,7 @@
       "from": "Default B",
       "to": "Market",
       "url": "https://csnades.gg/mirage/molotovs/market-from-default-b",
-      "labelEn": "Molly: Market",
-      "label": "Molly: Market",
-      "labelEnShort": "Molotov: Market"
+      "label": "Molly: Market"
     },
     {
       "id": "nade_34587dc64c5b",
@@ -5473,9 +4636,7 @@
       "from": "Behind Triple",
       "to": "Tetris",
       "url": "https://csnades.gg/mirage/molotovs/tetris-from-behind-triple",
-      "labelEn": "Molly: Tetris",
-      "label": "Molly: Tetris",
-      "labelEnShort": "Molotov: Tetris"
+      "label": "Molly: Tetris"
     },
     {
       "id": "nade_c94068fd2986",
@@ -5486,9 +4647,7 @@
       "from": "Under Chair",
       "to": "Top Ladder",
       "url": "https://csnades.gg/mirage/molotovs/top-ladder-from-under-chair",
-      "labelEn": "Molly: Top Ladder",
-      "label": "Molly: Top Ladder",
-      "labelEnShort": "Molotov: Top Ladder"
+      "label": "Molly: Top Ladder"
     },
     {
       "id": "nade_8fa67643f937",
@@ -5499,9 +4658,7 @@
       "from": "Window",
       "to": "Top Mid Boxes",
       "url": "https://csnades.gg/mirage/molotovs/top-mid-boxes-from-window-blind",
-      "labelEn": "Molly: Top Mid Boxes",
-      "label": "Molly: Top Mid Boxes",
-      "labelEnShort": "Molotov: Top Mid Boxes"
+      "label": "Molly: Top Mid Boxes"
     },
     {
       "id": "nade_eb9451f6a5d9",
@@ -5512,9 +4669,7 @@
       "from": "Tetris",
       "to": "Triple Box",
       "url": "https://csnades.gg/mirage/molotovs/triple-box-from-tetris",
-      "labelEn": "Molly: Triple Box",
-      "label": "Molly: Triple Box",
-      "labelEnShort": "Molotov: Triple Box"
+      "label": "Molly: Triple Box"
     },
     {
       "id": "nade_db2480fd6e43",
@@ -5525,9 +4680,7 @@
       "from": "Catwalk",
       "to": "Underpass",
       "url": "https://csnades.gg/mirage/molotovs/underpass-from-catwalk",
-      "labelEn": "Molly: Underpass",
-      "label": "Molly: Underpass",
-      "labelEnShort": "Molotov: Underpass"
+      "label": "Molly: Underpass"
     },
     {
       "id": "nade_00a6e75ad894",
@@ -5538,9 +4691,7 @@
       "from": "Jungle",
       "to": "Underpass",
       "url": "https://csnades.gg/mirage/molotovs/underpass-from-jungle",
-      "labelEn": "Molly: Underpass",
-      "label": "Molly: Underpass",
-      "labelEnShort": "Molotov: Underpass"
+      "label": "Molly: Underpass"
     },
     {
       "id": "nade_3624ea054e1c",
@@ -5551,9 +4702,7 @@
       "from": "B Apts",
       "to": "Van",
       "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts",
-      "labelEn": "Molly: Van",
-      "label": "Molly: Van",
-      "labelEnShort": "Molotov: Van"
+      "label": "Molly: Van"
     },
     {
       "id": "nade_a3ce7e79d38e",
@@ -5564,9 +4713,7 @@
       "from": "Top Mid Boxes",
       "to": "Window",
       "url": "https://csnades.gg/mirage/molotovs/window-from-top-mid-boxes",
-      "labelEn": "Molly: Window",
-      "label": "Molly: Window",
-      "labelEnShort": "Molotov: Window"
+      "label": "Molly: Window"
     },
     {
       "id": "nade_1ce6e212a6e6",
@@ -5577,9 +4724,7 @@
       "from": "CT Spawn",
       "to": "A Ramp",
       "url": "https://csnades.gg/mirage/smokes/a-ramp-from-ct-spawn",
-      "labelEn": "Smoke: A Ramp",
-      "label": "Smoke: A Ramp",
-      "labelEnShort": "Smoke: A Ramp"
+      "label": "Smoke: A Ramp"
     },
     {
       "id": "nade_d13347d74d1f",
@@ -5590,9 +4735,7 @@
       "from": "CT Spawn",
       "to": "Apts",
       "url": "https://csnades.gg/mirage/smokes/apts-from-ct-spawn",
-      "labelEn": "Smoke: Apts",
-      "label": "Smoke: Apts",
-      "labelEnShort": "Smoke: Apts"
+      "label": "Smoke: Apts"
     },
     {
       "id": "nade_7636ccfadb94",
@@ -5603,9 +4746,7 @@
       "from": "Market",
       "to": "Apts",
       "url": "https://csnades.gg/mirage/smokes/apts-from-market",
-      "labelEn": "Smoke: Apts",
-      "label": "Smoke: Apts",
-      "labelEnShort": "Smoke: Apts"
+      "label": "Smoke: Apts"
     },
     {
       "id": "nade_049844502d96",
@@ -5616,9 +4757,7 @@
       "from": "Market Window",
       "to": "B Apts",
       "url": "https://csnades.gg/mirage/smokes/b-apts-from-market-window",
-      "labelEn": "Smoke: B Apts",
-      "label": "Smoke: B Apts",
-      "labelEnShort": "Smoke: B Apts"
+      "label": "Smoke: B Apts"
     },
     {
       "id": "nade_72f3b671fc2d",
@@ -5629,9 +4768,7 @@
       "from": "Trash",
       "to": "B Apts",
       "url": "https://csnades.gg/mirage/smokes/b-apts-from-trash",
-      "labelEn": "Smoke: B Apts",
-      "label": "Smoke: B Apts",
-      "labelEnShort": "Smoke: B Apts"
+      "label": "Smoke: B Apts"
     },
     {
       "id": "nade_f3a397f1e923",
@@ -5642,9 +4779,7 @@
       "from": "Back Alley",
       "to": "B Short",
       "url": "https://csnades.gg/mirage/smokes/b-short-from-back-alley",
-      "labelEn": "Smoke: B Short",
-      "label": "Smoke: B Short",
-      "labelEnShort": "Smoke: B Short"
+      "label": "Smoke: B Short"
     },
     {
       "id": "nade_b6e97c8d1593",
@@ -5655,9 +4790,7 @@
       "from": "Back Alley",
       "to": "B Site",
       "url": "https://csnades.gg/mirage/smokes/b-site-from-back-alley",
-      "labelEn": "Smoke: B Site",
-      "label": "Smoke: B Site",
-      "labelEnShort": "Smoke: B Site"
+      "label": "Smoke: B Site"
     },
     {
       "id": "nade_bd7b3094277b",
@@ -5668,9 +4801,7 @@
       "from": "B Site",
       "to": "Back Apts",
       "url": "https://csnades.gg/mirage/smokes/back-apts-from-b-site",
-      "labelEn": "Smoke: Back Apts",
-      "label": "Smoke: Back Apts",
-      "labelEnShort": "Smoke: Back Apts"
+      "label": "Smoke: Back Apts"
     },
     {
       "id": "nade_1bb33236414b",
@@ -5681,9 +4812,7 @@
       "from": "Back Alley",
       "to": "Bench",
       "url": "https://csnades.gg/mirage/smokes/bench-from-back-alley",
-      "labelEn": "Smoke: Bench",
-      "label": "Smoke: Bench",
-      "labelEnShort": "Smoke: Bench"
+      "label": "Smoke: Bench"
     },
     {
       "id": "nade_5a6554c4aa81",
@@ -5694,9 +4823,7 @@
       "from": "Back Alley",
       "to": "Bench",
       "url": "https://csnades.gg/mirage/smokes/bench-from-back-alley-b",
-      "labelEn": "Smoke: Bench",
-      "label": "Smoke: Bench",
-      "labelEnShort": "Smoke: Bench"
+      "label": "Smoke: Bench"
     },
     {
       "id": "nade_17de3b88de8c",
@@ -5707,9 +4834,7 @@
       "from": "Apts Ramp",
       "to": "Bottom Connector",
       "url": "https://csnades.gg/mirage/smokes/bottom-connector-from-apts-ramp",
-      "labelEn": "Smoke: Bottom Connector",
-      "label": "Smoke: Bottom Connector",
-      "labelEnShort": "Smoke: Bottom Connector"
+      "label": "Smoke: Bottom Connector"
     },
     {
       "id": "nade_1ea08c7f3d90",
@@ -5720,9 +4845,7 @@
       "from": "B Short",
       "to": "Catwalk",
       "url": "https://csnades.gg/mirage/smokes/catwalk-from-b-short",
-      "labelEn": "Smoke: Catwalk",
-      "label": "Smoke: Catwalk",
-      "labelEnShort": "Smoke: Catwalk"
+      "label": "Smoke: Catwalk"
     },
     {
       "id": "nade_c3a7af037e28",
@@ -5733,9 +4856,7 @@
       "from": "T Spawn",
       "to": "Catwalk",
       "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn",
-      "labelEn": "Smoke: Catwalk",
-      "label": "Smoke: Catwalk",
-      "labelEnShort": "Smoke: Catwalk"
+      "label": "Smoke: Catwalk"
     },
     {
       "id": "nade_a1d57ec22e84",
@@ -5746,9 +4867,7 @@
       "from": "Top Mid",
       "to": "Catwalk",
       "url": "https://csnades.gg/mirage/smokes/catwalk-from-top-mid",
-      "labelEn": "Smoke: Catwalk",
-      "label": "Smoke: Catwalk",
-      "labelEnShort": "Smoke: Catwalk"
+      "label": "Smoke: Catwalk"
     },
     {
       "id": "nade_71f75933400d",
@@ -5759,9 +4878,7 @@
       "from": "T Spawn",
       "to": "Connector",
       "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn",
-      "labelEn": "Smoke: Connector",
-      "label": "Smoke: Connector",
-      "labelEnShort": "Smoke: Connector"
+      "label": "Smoke: Connector"
     },
     {
       "id": "nade_62ea758e87ee",
@@ -5772,9 +4889,7 @@
       "from": "T Spawn",
       "to": "Connector",
       "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn-b",
-      "labelEn": "Smoke: Connector",
-      "label": "Smoke: Connector",
-      "labelEnShort": "Smoke: Connector"
+      "label": "Smoke: Connector"
     },
     {
       "id": "nade_6b504dc98d0d",
@@ -5785,9 +4900,7 @@
       "from": "T Spawn",
       "to": "Deep Stairs",
       "url": "https://csnades.gg/mirage/smokes/deep-stairs-from-t-spawn",
-      "labelEn": "Smoke: Deep Stairs",
-      "label": "Smoke: Deep Stairs",
-      "labelEnShort": "Smoke: Deep Stairs"
+      "label": "Smoke: Deep Stairs"
     },
     {
       "id": "nade_d8f1e0a93932",
@@ -5798,9 +4911,7 @@
       "from": "Back Alley",
       "to": "Jungle And Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-back-alley",
-      "labelEn": "Smoke: Jungle And Connector",
-      "label": "Smoke: Jungle And Connector",
-      "labelEnShort": "Smoke: Jungle And Connector"
+      "label": "Smoke: Jungle And Connector"
     },
     {
       "id": "nade_1c0c0a606446",
@@ -5811,9 +4922,7 @@
       "from": "Palace",
       "to": "Jungle And Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-palace",
-      "labelEn": "Smoke: Jungle And Connector",
-      "label": "Smoke: Jungle And Connector",
-      "labelEnShort": "Smoke: Jungle And Connector"
+      "label": "Smoke: Jungle And Connector"
     },
     {
       "id": "nade_c90d2b335678",
@@ -5824,9 +4933,7 @@
       "from": "T Roof",
       "to": "Jungle And Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-t-roof-a",
-      "labelEn": "Smoke: Jungle And Connector",
-      "label": "Smoke: Jungle And Connector",
-      "labelEnShort": "Smoke: Jungle And Connector"
+      "label": "Smoke: Jungle And Connector"
     },
     {
       "id": "nade_829ea72fa87d",
@@ -5837,9 +4944,7 @@
       "from": "T Roof",
       "to": "Jungle And Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-t-roof-b",
-      "labelEn": "Smoke: Jungle And Connector",
-      "label": "Smoke: Jungle And Connector",
-      "labelEnShort": "Smoke: Jungle And Connector"
+      "label": "Smoke: Jungle And Connector"
     },
     {
       "id": "nade_0eb7bc8d50f5",
@@ -5850,9 +4955,7 @@
       "from": "T Roof",
       "to": "Jungle and Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-t-roof-c",
-      "labelEn": "Smoke: Jungle and Connector",
-      "label": "Smoke: Jungle and Connector",
-      "labelEnShort": "Smoke: Jungle and Connector"
+      "label": "Smoke: Jungle and Connector"
     },
     {
       "id": "nade_d80d447008e5",
@@ -5863,9 +4966,7 @@
       "from": "Underpass",
       "to": "Jungle And Connector",
       "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-underpass",
-      "labelEn": "Smoke: Jungle And Connector",
-      "label": "Smoke: Jungle And Connector",
-      "labelEnShort": "Smoke: Jungle And Connector"
+      "label": "Smoke: Jungle And Connector"
     },
     {
       "id": "nade_10eecffc13df",
@@ -5876,9 +4977,7 @@
       "from": "A Ramp",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp",
-      "labelEn": "Smoke: Jungle",
-      "label": "Smoke: Jungle",
-      "labelEnShort": "Smoke: Jungle"
+      "label": "Smoke: Jungle"
     },
     {
       "id": "nade_59547db47620",
@@ -5889,9 +4988,7 @@
       "from": "A Ramp",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp-b",
-      "labelEn": "Smoke: Jungle",
-      "label": "Smoke: Jungle",
-      "labelEnShort": "Smoke: Jungle"
+      "label": "Smoke: Jungle"
     },
     {
       "id": "nade_7e2b8b8636d6",
@@ -5902,9 +4999,7 @@
       "from": "Back Alley",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/smokes/jungle-from-back-alley",
-      "labelEn": "Smoke: Jungle",
-      "label": "Smoke: Jungle",
-      "labelEnShort": "Smoke: Jungle"
+      "label": "Smoke: Jungle"
     },
     {
       "id": "nade_9bd3e2193568",
@@ -5915,9 +5010,7 @@
       "from": "T Spawn",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn",
-      "labelEn": "Smoke: Jungle",
-      "label": "Smoke: Jungle",
-      "labelEnShort": "Smoke: Jungle"
+      "label": "Smoke: Jungle"
     },
     {
       "id": "nade_88eb292685f7",
@@ -5928,9 +5021,7 @@
       "from": "Tetris",
       "to": "Jungle",
       "url": "https://csnades.gg/mirage/smokes/jungle-from-tetris",
-      "labelEn": "Smoke: Jungle",
-      "label": "Smoke: Jungle",
-      "labelEnShort": "Smoke: Jungle"
+      "label": "Smoke: Jungle"
     },
     {
       "id": "nade_3ba94476c261",
@@ -5941,9 +5032,7 @@
       "from": "Back Alley",
       "to": "Left Arch",
       "url": "https://csnades.gg/mirage/smokes/left-arch-from-back-alley",
-      "labelEn": "Smoke: Left Arch",
-      "label": "Smoke: Left Arch",
-      "labelEnShort": "Smoke: Left Arch"
+      "label": "Smoke: Left Arch"
     },
     {
       "id": "nade_87f3c18d6b62",
@@ -5954,9 +5043,7 @@
       "from": "Back Alley",
       "to": "Left Arch",
       "url": "https://csnades.gg/mirage/smokes/left-arch-from-back-alley-b",
-      "labelEn": "Smoke: Left Arch",
-      "label": "Smoke: Left Arch",
-      "labelEnShort": "Smoke: Left Arch"
+      "label": "Smoke: Left Arch"
     },
     {
       "id": "nade_e851d3a623d9",
@@ -5967,9 +5054,7 @@
       "from": "Back Alley",
       "to": "Market Door",
       "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley",
-      "labelEn": "Smoke: Market Door",
-      "label": "Smoke: Market Door",
-      "labelEnShort": "Smoke: Market Door"
+      "label": "Smoke: Market Door"
     },
     {
       "id": "nade_c9dba8b68b02",
@@ -5980,9 +5065,7 @@
       "from": "Back Alley",
       "to": "Market Door",
       "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley-b",
-      "labelEn": "Smoke: Market Door",
-      "label": "Smoke: Market Door",
-      "labelEnShort": "Smoke: Market Door"
+      "label": "Smoke: Market Door"
     },
     {
       "id": "nade_53a8a65069d2",
@@ -5993,9 +5076,7 @@
       "from": "Back Alley",
       "to": "Market Window",
       "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley",
-      "labelEn": "Smoke: Market Window",
-      "label": "Smoke: Market Window",
-      "labelEnShort": "Smoke: Market Window"
+      "label": "Smoke: Market Window"
     },
     {
       "id": "nade_b6aeeacb519a",
@@ -6006,9 +5087,7 @@
       "from": "Default B",
       "to": "Market Window",
       "url": "https://csnades.gg/mirage/smokes/market-window-from-default-b",
-      "labelEn": "Smoke: Market Window",
-      "label": "Smoke: Market Window",
-      "labelEnShort": "Smoke: Market Window"
+      "label": "Smoke: Market Window"
     },
     {
       "id": "nade_82aeca6b400a",
@@ -6019,9 +5098,7 @@
       "from": "T Roof",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-roof",
-      "labelEn": "Smoke: Mid Window",
-      "label": "Smoke: Mid Window",
-      "labelEnShort": "Smoke: Mid Window"
+      "label": "Smoke: Mid Window"
     },
     {
       "id": "nade_b2b60880bd1f",
@@ -6032,9 +5109,7 @@
       "from": "T Roof",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-roof-b",
-      "labelEn": "Smoke: Mid Window",
-      "label": "Smoke: Mid Window",
-      "labelEnShort": "Smoke: Mid Window"
+      "label": "Smoke: Mid Window"
     },
     {
       "id": "nade_b45d37f3f90f",
@@ -6045,9 +5120,7 @@
       "from": "T Spawn",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a",
-      "labelEn": "Smoke: Mid Window",
-      "label": "Smoke: Mid Window",
-      "labelEnShort": "Smoke: Mid Window"
+      "label": "Smoke: Mid Window"
     },
     {
       "id": "nade_cbbc8797d483",
@@ -6058,9 +5131,7 @@
       "from": "T Spawn",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-b",
-      "labelEn": "Smoke: Mid Window",
-      "label": "Smoke: Mid Window",
-      "labelEnShort": "Smoke: Mid Window"
+      "label": "Smoke: Mid Window"
     },
     {
       "id": "nade_55bb6c36a3a9",
@@ -6071,9 +5142,7 @@
       "from": "Underpass",
       "to": "Mid Window",
       "url": "https://csnades.gg/mirage/smokes/mid-window-from-underpass",
-      "labelEn": "Smoke: Mid Window",
-      "label": "Smoke: Mid Window",
-      "labelEnShort": "Smoke: Mid Window"
+      "label": "Smoke: Mid Window"
     },
     {
       "id": "nade_b12bd8a2a17c",
@@ -6084,9 +5153,7 @@
       "from": "CT Spawn",
       "to": "Palace",
       "url": "https://csnades.gg/mirage/smokes/palace-from-ct-spawn",
-      "labelEn": "Smoke: Palace",
-      "label": "Smoke: Palace",
-      "labelEnShort": "Smoke: Palace"
+      "label": "Smoke: Palace"
     },
     {
       "id": "nade_5d1e06538e54",
@@ -6097,9 +5164,7 @@
       "from": "Outside Market",
       "to": "Palace",
       "url": "https://csnades.gg/mirage/smokes/palace-from-outside-market",
-      "labelEn": "Smoke: Palace",
-      "label": "Smoke: Palace",
-      "labelEnShort": "Smoke: Palace"
+      "label": "Smoke: Palace"
     },
     {
       "id": "nade_b7e5b809260c",
@@ -6110,9 +5175,7 @@
       "from": "Back Alley",
       "to": "Right Arch",
       "url": "https://csnades.gg/mirage/smokes/right-arch-from-back-alley",
-      "labelEn": "Smoke: Right Arch",
-      "label": "Smoke: Right Arch",
-      "labelEnShort": "Smoke: Right Arch"
+      "label": "Smoke: Right Arch"
     },
     {
       "id": "nade_1741aa20af8b",
@@ -6123,9 +5186,7 @@
       "from": "Outside T Apts",
       "to": "Right Arch",
       "url": "https://csnades.gg/mirage/smokes/right-arch-from-outside-t-apts",
-      "labelEn": "Smoke: Right Arch",
-      "label": "Smoke: Right Arch",
-      "labelEnShort": "Smoke: Right Arch"
+      "label": "Smoke: Right Arch"
     },
     {
       "id": "nade_2668c503103f",
@@ -6136,9 +5197,7 @@
       "from": "A Ramp",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_ef1752234720",
@@ -6149,9 +5208,7 @@
       "from": "A Ramp",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp-b",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_3848d5e1595c",
@@ -6162,9 +5219,7 @@
       "from": "Back Alley",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/smokes/stairs-from-back-alley",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_620f79076773",
@@ -6175,9 +5230,7 @@
       "from": "T Roof",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/smokes/stairs-from-t-roof",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_ac26b4eb437c",
@@ -6188,9 +5241,7 @@
       "from": "T Spawn",
       "to": "Stairs",
       "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn",
-      "labelEn": "Smoke: Stairs",
-      "label": "Smoke: Stairs",
-      "labelEnShort": "Smoke: Stairs"
+      "label": "Smoke: Stairs"
     },
     {
       "id": "nade_feba43ec0bfc",
@@ -6201,9 +5252,7 @@
       "from": "A Ramp",
       "to": "Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp",
-      "labelEn": "Smoke: Ticket Booth",
-      "label": "Smoke: Ticket Booth",
-      "labelEnShort": "Smoke: Ticket Booth"
+      "label": "Smoke: Ticket Booth"
     },
     {
       "id": "nade_7922adf6ceb2",
@@ -6214,9 +5263,7 @@
       "from": "A Ramp",
       "to": "Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp-b",
-      "labelEn": "Smoke: Ticket Booth",
-      "label": "Smoke: Ticket Booth",
-      "labelEnShort": "Smoke: Ticket Booth"
+      "label": "Smoke: Ticket Booth"
     },
     {
       "id": "nade_916aa050d07d",
@@ -6227,9 +5274,7 @@
       "from": "T Spawn Fence",
       "to": "Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-t-spawn-fence",
-      "labelEn": "Smoke: Ticket Booth",
-      "label": "Smoke: Ticket Booth",
-      "labelEnShort": "Smoke: Ticket Booth"
+      "label": "Smoke: Ticket Booth"
     },
     {
       "id": "nade_546c3fb3253c",
@@ -6240,9 +5285,7 @@
       "from": "Tetris",
       "to": "Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-tetris",
-      "labelEn": "Smoke: Ticket Booth",
-      "label": "Smoke: Ticket Booth",
-      "labelEnShort": "Smoke: Ticket Booth"
+      "label": "Smoke: Ticket Booth"
     },
     {
       "id": "nade_0abc0b637903",
@@ -6253,9 +5296,7 @@
       "from": "T Spawn",
       "to": "Top Mid",
       "url": "https://csnades.gg/mirage/smokes/top-mid-from-t-spawn",
-      "labelEn": "Smoke: Top Mid",
-      "label": "Smoke: Top Mid",
-      "labelEnShort": "Smoke: Top Mid"
+      "label": "Smoke: Top Mid"
     },
     {
       "id": "nade_07de9469e633",
@@ -6266,9 +5307,7 @@
       "from": "A Ramp",
       "to": "Top Of Ticket Booth",
       "url": "https://csnades.gg/mirage/smokes/top-of-ticket-booth-from-a-ramp",
-      "labelEn": "Smoke: Top Of Ticket Booth",
-      "label": "Smoke: Top Of Ticket Booth",
-      "labelEnShort": "Smoke: Top Of Ticket Booth"
+      "label": "Smoke: Top Of Ticket Booth"
     },
     {
       "id": "nade_78f39a801230",
@@ -6279,9 +5318,7 @@
       "from": "A Ramp",
       "to": "Triple",
       "url": "https://csnades.gg/mirage/smokes/triple-from-a-ramp",
-      "labelEn": "Smoke: Triple",
-      "label": "Smoke: Triple",
-      "labelEnShort": "Smoke: Triple"
+      "label": "Smoke: Triple"
     },
     {
       "id": "nade_20b5caf4df4f",
@@ -6292,9 +5329,7 @@
       "from": "Back Alley",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-back-alley-b",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_9af71b15e53b",
@@ -6305,9 +5340,7 @@
       "from": "T Spawn 1",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-1",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_c866a65ef0bc",
@@ -6318,9 +5351,7 @@
       "from": "T Spawn 10",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-10",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_3a9fd5fcea08",
@@ -6331,9 +5362,7 @@
       "from": "T Spawn 2",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-2",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_22d2b1924a98",
@@ -6344,9 +5373,7 @@
       "from": "T Spawn 3",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-3",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_de16d8ebe96e",
@@ -6357,9 +5384,7 @@
       "from": "T Spawn 4",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-4",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_fa637ae1be56",
@@ -6370,9 +5395,7 @@
       "from": "T Spawn 5",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-5",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_6b1b78d045ae",
@@ -6383,9 +5406,7 @@
       "from": "T Spawn 6",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-6",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_9cf287d29958",
@@ -6396,9 +5417,7 @@
       "from": "T Spawn 7",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-7",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_11c64fabf097",
@@ -6409,9 +5428,7 @@
       "from": "T Spawn 8",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-8",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_5311bad4bd9c",
@@ -6422,9 +5439,7 @@
       "from": "T Spawn 9",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-9",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_aa525db67777",
@@ -6435,9 +5450,7 @@
       "from": "T Spawn",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-c",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_31d27d180130",
@@ -6448,9 +5461,7 @@
       "from": "T Spawn",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-d",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_c5d993b81c90",
@@ -6461,9 +5472,7 @@
       "from": "T Spawn",
       "to": "Window",
       "url": "https://csnades.gg/mirage/smokes/window-from-t-spawn-e",
-      "labelEn": "Smoke: Window",
-      "label": "Smoke: Window",
-      "labelEnShort": "Smoke: Window"
+      "label": "Smoke: Window"
     },
     {
       "id": "nade_69811f3511b7",
@@ -6474,9 +5483,7 @@
       "from": "A Main Roof",
       "to": "A Main",
       "url": "https://csnades.gg/nuke/flashbangs/a-main-from-a-main-roof",
-      "labelEn": "Flash: A Main",
-      "label": "Flash: A Main",
-      "labelEnShort": "Flashbang: A Main"
+      "label": "Flash: A Main"
     },
     {
       "id": "nade_fcdf81dfc775",
@@ -6487,9 +5494,7 @@
       "from": "CT Spawn",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/flashbangs/a-site-from-ct-spawn",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_cd33720c03ca",
@@ -6500,9 +5505,7 @@
       "from": "Heaven",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/flashbangs/a-site-from-heaven",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_073c6d922d55",
@@ -6513,9 +5516,7 @@
       "from": "Heaven",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/flashbangs/a-site-from-heaven-b",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_634d6d88e54b",
@@ -6526,9 +5527,7 @@
       "from": "T Roof",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/flashbangs/a-site-from-t-roof-a",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_ad1dd40070b8",
@@ -6539,9 +5538,7 @@
       "from": "T Roof",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/flashbangs/a-site-from-t-roof-b",
-      "labelEn": "Flash: A Site",
-      "label": "Flash: A Site",
-      "labelEnShort": "Flashbang: A Site"
+      "label": "Flash: A Site"
     },
     {
       "id": "nade_d7332de761d7",
@@ -6552,9 +5549,7 @@
       "from": "Lobby",
       "to": "Hut",
       "url": "https://csnades.gg/nuke/flashbangs/hut-from-lobby",
-      "labelEn": "Flash: Hut",
-      "label": "Flash: Hut",
-      "labelEnShort": "Flashbang: Hut"
+      "label": "Flash: Hut"
     },
     {
       "id": "nade_f8579c6d0dc1",
@@ -6565,9 +5560,7 @@
       "from": "Lobby",
       "to": "Hut",
       "url": "https://csnades.gg/nuke/flashbangs/hut-from-lobby-a",
-      "labelEn": "Flash: Hut",
-      "label": "Flash: Hut",
-      "labelEnShort": "Flashbang: Hut"
+      "label": "Flash: Hut"
     },
     {
       "id": "nade_1ccc0e06edbb",
@@ -6578,9 +5571,7 @@
       "from": "Trophy",
       "to": "Ramp",
       "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy",
-      "labelEn": "Flash: Ramp",
-      "label": "Flash: Ramp",
-      "labelEnShort": "Flashbang: Ramp"
+      "label": "Flash: Ramp"
     },
     {
       "id": "nade_1149d038bfd6",
@@ -6591,9 +5582,7 @@
       "from": "Under Silo",
       "to": "T Red",
       "url": "https://csnades.gg/nuke/flashbangs/t-red-from-under-silo",
-      "labelEn": "Flash: T Red",
-      "label": "Flash: T Red",
-      "labelEnShort": "Flashbang: T Red"
+      "label": "Flash: T Red"
     },
     {
       "id": "nade_c21aacdd5581",
@@ -6604,9 +5593,7 @@
       "from": "Tetris",
       "to": "Vent",
       "url": "https://csnades.gg/nuke/flashbangs/vent-from-tetris",
-      "labelEn": "Flash: Vent",
-      "label": "Flash: Vent",
-      "labelEnShort": "Flashbang: Vent"
+      "label": "Flash: Vent"
     },
     {
       "id": "nade_20cdfe70ab82",
@@ -6617,9 +5604,7 @@
       "from": "B Ramp",
       "to": "Dark",
       "url": "https://csnades.gg/nuke/hegrenades/dark-from-b-ramp",
-      "labelEn": "HE: Dark",
-      "label": "HE: Dark",
-      "labelEnShort": "Hegrenade: Dark"
+      "label": "HE: Dark"
     },
     {
       "id": "nade_e9c19735ec1a",
@@ -6630,9 +5615,7 @@
       "from": "A Main",
       "to": "Silo",
       "url": "https://csnades.gg/nuke/hegrenades/silo-from-a-main",
-      "labelEn": "HE: Silo",
-      "label": "HE: Silo",
-      "labelEnShort": "Hegrenade: Silo"
+      "label": "HE: Silo"
     },
     {
       "id": "nade_db1b0ccd48ae",
@@ -6643,9 +5626,7 @@
       "from": "Lobby",
       "to": "Squeaky Door",
       "url": "https://csnades.gg/nuke/hegrenades/squeaky-door-from-lobby",
-      "labelEn": "HE: Squeaky Door",
-      "label": "HE: Squeaky Door",
-      "labelEnShort": "Hegrenade: Squeaky Door"
+      "label": "HE: Squeaky Door"
     },
     {
       "id": "nade_5b466e16a0da",
@@ -6656,9 +5637,7 @@
       "from": "Under Silo",
       "to": "T Red",
       "url": "https://csnades.gg/nuke/hegrenades/t-red-from-under-silo",
-      "labelEn": "HE: T Red",
-      "label": "HE: T Red",
-      "labelEnShort": "Hegrenade: T Red"
+      "label": "HE: T Red"
     },
     {
       "id": "nade_057f428bf738",
@@ -6669,9 +5648,7 @@
       "from": "Ramp",
       "to": "Trophy",
       "url": "https://csnades.gg/nuke/hegrenades/trophy-from-ramp-a",
-      "labelEn": "HE: Trophy",
-      "label": "HE: Trophy",
-      "labelEnShort": "Hegrenade: Trophy"
+      "label": "HE: Trophy"
     },
     {
       "id": "nade_f5cf2ebba98a",
@@ -6682,9 +5659,7 @@
       "from": "Ramp",
       "to": "Trophy",
       "url": "https://csnades.gg/nuke/hegrenades/trophy-from-ramp-b",
-      "labelEn": "HE: Trophy",
-      "label": "HE: Trophy",
-      "labelEnShort": "Hegrenade: Trophy"
+      "label": "HE: Trophy"
     },
     {
       "id": "nade_0512334c32af",
@@ -6695,9 +5670,7 @@
       "from": "Heaven",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/molotovs/a-site-from-heaven",
-      "labelEn": "Molly: A Site",
-      "label": "Molly: A Site",
-      "labelEnShort": "Molotov: A Site"
+      "label": "Molly: A Site"
     },
     {
       "id": "nade_81577034ac34",
@@ -6708,9 +5681,7 @@
       "from": "T Roof",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/molotovs/a-site-from-t-roof",
-      "labelEn": "Molly: A Site",
-      "label": "Molly: A Site",
-      "labelEnShort": "Molotov: A Site"
+      "label": "Molly: A Site"
     },
     {
       "id": "nade_4206da85fbbd",
@@ -6721,9 +5692,7 @@
       "from": "T Roof",
       "to": "A Site",
       "url": "https://csnades.gg/nuke/molotovs/a-site-from-t-roof-b",
-      "labelEn": "Molly: A Site",
-      "label": "Molly: A Site",
-      "labelEnShort": "Molotov: A Site"
+      "label": "Molly: A Site"
     },
     {
       "id": "nade_2d7d2f341f97",
@@ -6734,9 +5703,7 @@
       "from": "T Roof",
       "to": "Back Vent",
       "url": "https://csnades.gg/nuke/molotovs/back-vent-from-t-roof",
-      "labelEn": "Molly: Back Vent",
-      "label": "Molly: Back Vent",
-      "labelEnShort": "Molotov: Back Vent"
+      "label": "Molly: Back Vent"
     },
     {
       "id": "nade_483e3e550192",
@@ -6747,9 +5714,7 @@
       "from": "Under Silo",
       "to": "Behind T Red",
       "url": "https://csnades.gg/nuke/molotovs/behind-t-red-from-under-silo",
-      "labelEn": "Molly: Behind T Red",
-      "label": "Molly: Behind T Red",
-      "labelEnShort": "Molotov: Behind T Red"
+      "label": "Molly: Behind T Red"
     },
     {
       "id": "nade_7afb0af7c9e8",
@@ -6760,9 +5725,7 @@
       "from": "B Ramp",
       "to": "Dark",
       "url": "https://csnades.gg/nuke/molotovs/dark-from-b-ramp",
-      "labelEn": "Molly: Dark",
-      "label": "Molly: Dark",
-      "labelEnShort": "Molotov: Dark"
+      "label": "Molly: Dark"
     },
     {
       "id": "nade_8dd19d579003",
@@ -6773,9 +5736,7 @@
       "from": "T Roof",
       "to": "Heaven",
       "url": "https://csnades.gg/nuke/molotovs/heaven-from-t-roof",
-      "labelEn": "Molly: Heaven",
-      "label": "Molly: Heaven",
-      "labelEnShort": "Molotov: Heaven"
+      "label": "Molly: Heaven"
     },
     {
       "id": "nade_b9eb33ea415a",
@@ -6786,9 +5747,7 @@
       "from": "Heaven",
       "to": "Hut",
       "url": "https://csnades.gg/nuke/molotovs/hut-from-heaven",
-      "labelEn": "Molly: Hut",
-      "label": "Molly: Hut",
-      "labelEnShort": "Molotov: Hut"
+      "label": "Molly: Hut"
     },
     {
       "id": "nade_c6b98f8239dc",
@@ -6799,9 +5758,7 @@
       "from": "Silo",
       "to": "Hut Roof",
       "url": "https://csnades.gg/nuke/molotovs/hut-roof-from-silo",
-      "labelEn": "Molly: Hut Roof",
-      "label": "Molly: Hut Roof",
-      "labelEnShort": "Molotov: Hut Roof"
+      "label": "Molly: Hut Roof"
     },
     {
       "id": "nade_89f737180641",
@@ -6812,9 +5769,7 @@
       "from": "Outside CT",
       "to": "Outside",
       "url": "https://csnades.gg/nuke/molotovs/outside-from-outside-ct",
-      "labelEn": "Molly: Outside",
-      "label": "Molly: Outside",
-      "labelEnShort": "Molotov: Outside"
+      "label": "Molly: Outside"
     },
     {
       "id": "nade_fc5d6545349b",
@@ -6825,9 +5780,7 @@
       "from": "T Roof",
       "to": "Rafters",
       "url": "https://csnades.gg/nuke/molotovs/rafters-from-t-roof",
-      "labelEn": "Molly: Rafters",
-      "label": "Molly: Rafters",
-      "labelEnShort": "Molotov: Rafters"
+      "label": "Molly: Rafters"
     },
     {
       "id": "nade_2105856e58fa",
@@ -6838,9 +5791,7 @@
       "from": "Mini",
       "to": "Secret Entry",
       "url": "https://csnades.gg/nuke/molotovs/secret-entry-from-mini",
-      "labelEn": "Molly: Secret Entry",
-      "label": "Molly: Secret Entry",
-      "labelEnShort": "Molotov: Secret Entry"
+      "label": "Molly: Secret Entry"
     },
     {
       "id": "nade_479e8063ae82",
@@ -6851,9 +5802,7 @@
       "from": "CT Red",
       "to": "Silo",
       "url": "https://csnades.gg/nuke/molotovs/silo-from-ct-red",
-      "labelEn": "Molly: Silo",
-      "label": "Molly: Silo",
-      "labelEnShort": "Molotov: Silo"
+      "label": "Molly: Silo"
     },
     {
       "id": "nade_ec0662faa89f",
@@ -6864,9 +5813,7 @@
       "from": "Heaven",
       "to": "Squeaky",
       "url": "https://csnades.gg/nuke/molotovs/squeaky-from-heaven",
-      "labelEn": "Molly: Squeaky",
-      "label": "Molly: Squeaky",
-      "labelEnShort": "Molotov: Squeaky"
+      "label": "Molly: Squeaky"
     },
     {
       "id": "nade_bcc50b702c5c",
@@ -6877,9 +5824,7 @@
       "from": "CT Red",
       "to": "Top A Main",
       "url": "https://csnades.gg/nuke/molotovs/top-a-main-from-ct-red",
-      "labelEn": "Molly: Top A Main",
-      "label": "Molly: Top A Main",
-      "labelEnShort": "Molotov: Top A Main"
+      "label": "Molly: Top A Main"
     },
     {
       "id": "nade_cc72ce6d1200",
@@ -6890,9 +5835,7 @@
       "from": "T Roof",
       "to": "Top Hut",
       "url": "https://csnades.gg/nuke/molotovs/top-hut-from-t-roof",
-      "labelEn": "Molly: Top Hut",
-      "label": "Molly: Top Hut",
-      "labelEnShort": "Molotov: Top Hut"
+      "label": "Molly: Top Hut"
     },
     {
       "id": "nade_c896583b5b84",
@@ -6903,9 +5846,7 @@
       "from": "T Roof",
       "to": "Top Hut",
       "url": "https://csnades.gg/nuke/molotovs/top-hut-from-t-roof-a",
-      "labelEn": "Molly: Top Hut",
-      "label": "Molly: Top Hut",
-      "labelEnShort": "Molotov: Top Hut"
+      "label": "Molly: Top Hut"
     },
     {
       "id": "nade_67467fcde3bf",
@@ -6916,9 +5857,7 @@
       "from": "T Roof",
       "to": "A Main",
       "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_98e97a1aead6",
@@ -6929,9 +5868,7 @@
       "from": "T Roof",
       "to": "A Main",
       "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof-b",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_e63595612a98",
@@ -6942,9 +5879,7 @@
       "from": "T Roof",
       "to": "A Main",
       "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof-c",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_665f502b5f40",
@@ -6955,9 +5890,7 @@
       "from": "Under Silo",
       "to": "A Main",
       "url": "https://csnades.gg/nuke/smokes/a-main-from-under-silo",
-      "labelEn": "Smoke: A Main",
-      "label": "Smoke: A Main",
-      "labelEnShort": "Smoke: A Main"
+      "label": "Smoke: A Main"
     },
     {
       "id": "nade_1b4a343f32e1",
@@ -6968,9 +5901,7 @@
       "from": "Under Silo",
       "to": "CT Red",
       "url": "https://csnades.gg/nuke/smokes/ct-red-from-under-silo",
-      "labelEn": "Smoke: CT Red",
-      "label": "Smoke: CT Red",
-      "labelEnShort": "Smoke: CT Red"
+      "label": "Smoke: CT Red"
     },
     {
       "id": "nade_bb1f2cd370fe",
@@ -6981,9 +5912,7 @@
       "from": "Back Vents",
       "to": "Decon Cross",
       "url": "https://csnades.gg/nuke/smokes/decon-cross-from-back-vents",
-      "labelEn": "Smoke: Decon Cross",
-      "label": "Smoke: Decon Cross",
-      "labelEnShort": "Smoke: Decon Cross"
+      "label": "Smoke: Decon Cross"
     },
     {
       "id": "nade_c6ee83921aec",
@@ -6994,9 +5923,7 @@
       "from": "B Ramp",
       "to": "Double Doors",
       "url": "https://csnades.gg/nuke/smokes/double-doors-from-b-ramp",
-      "labelEn": "Smoke: Double Doors",
-      "label": "Smoke: Double Doors",
-      "labelEnShort": "Smoke: Double Doors"
+      "label": "Smoke: Double Doors"
     },
     {
       "id": "nade_f903ebb3304d",
@@ -7007,9 +5934,7 @@
       "from": "T Spawn",
       "to": "Front Garage",
       "url": "https://csnades.gg/nuke/smokes/front-garage-from-t-spawn",
-      "labelEn": "Smoke: Front Garage",
-      "label": "Smoke: Front Garage",
-      "labelEnShort": "Smoke: Front Garage"
+      "label": "Smoke: Front Garage"
     },
     {
       "id": "nade_5fa8650c8e12",
@@ -7020,9 +5945,7 @@
       "from": "T Spawn",
       "to": "Front Garage",
       "url": "https://csnades.gg/nuke/smokes/front-garage-from-t-spawn-b",
-      "labelEn": "Smoke: Front Garage",
-      "label": "Smoke: Front Garage",
-      "labelEnShort": "Smoke: Front Garage"
+      "label": "Smoke: Front Garage"
     },
     {
       "id": "nade_7c70945d77bc",
@@ -7033,9 +5956,7 @@
       "from": "Outside T Spawn",
       "to": "Garage",
       "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_85d0e6b3cfc7",
@@ -7046,9 +5967,7 @@
       "from": "Under Silo",
       "to": "Garage",
       "url": "https://csnades.gg/nuke/smokes/garage-from-under-silo",
-      "labelEn": "Smoke: Garage",
-      "label": "Smoke: Garage",
-      "labelEnShort": "Smoke: Garage"
+      "label": "Smoke: Garage"
     },
     {
       "id": "nade_cea9c9aeab87",
@@ -7059,9 +5978,7 @@
       "from": "Silo",
       "to": "Heaven",
       "url": "https://csnades.gg/nuke/smokes/heaven-from-silo",
-      "labelEn": "Smoke: Heaven",
-      "label": "Smoke: Heaven",
-      "labelEnShort": "Smoke: Heaven"
+      "label": "Smoke: Heaven"
     },
     {
       "id": "nade_5d6aae9bf29a",
@@ -7072,9 +5989,7 @@
       "from": "T Spawn",
       "to": "Lockers",
       "url": "https://csnades.gg/nuke/smokes/lockers-from-t-spawn-a",
-      "labelEn": "Smoke: Lockers",
-      "label": "Smoke: Lockers",
-      "labelEnShort": "Smoke: Lockers"
+      "label": "Smoke: Lockers"
     },
     {
       "id": "nade_0428fda9d8c5",
@@ -7085,9 +6000,7 @@
       "from": "T Spawn",
       "to": "Lockers",
       "url": "https://csnades.gg/nuke/smokes/lockers-from-t-spawn-b",
-      "labelEn": "Smoke: Lockers",
-      "label": "Smoke: Lockers",
-      "labelEnShort": "Smoke: Lockers"
+      "label": "Smoke: Lockers"
     },
     {
       "id": "nade_0303ced24771",
@@ -7098,9 +6011,7 @@
       "from": "Under Silo",
       "to": "Lockers",
       "url": "https://csnades.gg/nuke/smokes/lockers-from-under-silo",
-      "labelEn": "Smoke: Lockers",
-      "label": "Smoke: Lockers",
-      "labelEnShort": "Smoke: Lockers"
+      "label": "Smoke: Lockers"
     },
     {
       "id": "nade_9ef43f155a6c",
@@ -7111,9 +6022,7 @@
       "from": "Outside T Spawn",
       "to": "Outside Garage",
       "url": "https://csnades.gg/nuke/smokes/outside-garage-from-outside-t-spawn",
-      "labelEn": "Smoke: Outside Garage",
-      "label": "Smoke: Outside Garage",
-      "labelEnShort": "Smoke: Outside Garage"
+      "label": "Smoke: Outside Garage"
     },
     {
       "id": "nade_7feecbe5ab6c",
@@ -7124,9 +6033,7 @@
       "from": "Outside T Spawn",
       "to": "Outside Main",
       "url": "https://csnades.gg/nuke/smokes/outside-main-from-outside-t-spawn",
-      "labelEn": "Smoke: Outside Main",
-      "label": "Smoke: Outside Main",
-      "labelEnShort": "Smoke: Outside Main"
+      "label": "Smoke: Outside Main"
     },
     {
       "id": "nade_f047fe559704",
@@ -7137,9 +6044,7 @@
       "from": "T Spawn",
       "to": "Outside Main",
       "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn",
-      "labelEn": "Smoke: Outside Main",
-      "label": "Smoke: Outside Main",
-      "labelEnShort": "Smoke: Outside Main"
+      "label": "Smoke: Outside Main"
     },
     {
       "id": "nade_35cbefa9a2b2",
@@ -7150,9 +6055,7 @@
       "from": "T Spawn",
       "to": "Outside Main",
       "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn-b",
-      "labelEn": "Smoke: Outside Main",
-      "label": "Smoke: Outside Main",
-      "labelEnShort": "Smoke: Outside Main"
+      "label": "Smoke: Outside Main"
     },
     {
       "id": "nade_acbe6740739d",
@@ -7163,9 +6066,7 @@
       "from": "Trophy",
       "to": "Ramp",
       "url": "https://csnades.gg/nuke/smokes/ramp-from-trophy-a",
-      "labelEn": "Smoke: Ramp",
-      "label": "Smoke: Ramp",
-      "labelEnShort": "Smoke: Ramp"
+      "label": "Smoke: Ramp"
     },
     {
       "id": "nade_b09aa9364fdd",
@@ -7176,9 +6077,7 @@
       "from": "Trophy",
       "to": "Ramp",
       "url": "https://csnades.gg/nuke/smokes/ramp-from-trophy-b",
-      "labelEn": "Smoke: Ramp",
-      "label": "Smoke: Ramp",
-      "labelEnShort": "Smoke: Ramp"
+      "label": "Smoke: Ramp"
     },
     {
       "id": "nade_e7438e70a49d",
@@ -7189,9 +6088,7 @@
       "from": "Outside T Spawn",
       "to": "Secret Close",
       "url": "https://csnades.gg/nuke/smokes/secret-close-from-outside-t-spawn",
-      "labelEn": "Smoke: Secret Close",
-      "label": "Smoke: Secret Close",
-      "labelEnShort": "Smoke: Secret Close"
+      "label": "Smoke: Secret Close"
     },
     {
       "id": "nade_64ecb38fdc05",
@@ -7202,9 +6099,7 @@
       "from": "T Spawn",
       "to": "Secret Close",
       "url": "https://csnades.gg/nuke/smokes/secret-close-from-t-spawn",
-      "labelEn": "Smoke: Secret Close",
-      "label": "Smoke: Secret Close",
-      "labelEnShort": "Smoke: Secret Close"
+      "label": "Smoke: Secret Close"
     },
     {
       "id": "nade_1379710bc95d",
@@ -7215,9 +6110,7 @@
       "from": "Under Silo",
       "to": "Secret Close",
       "url": "https://csnades.gg/nuke/smokes/secret-close-from-under-silo",
-      "labelEn": "Smoke: Secret Close",
-      "label": "Smoke: Secret Close",
-      "labelEnShort": "Smoke: Secret Close"
+      "label": "Smoke: Secret Close"
     },
     {
       "id": "nade_6f59743cee68",
@@ -7228,9 +6121,7 @@
       "from": "Outside T Spawn",
       "to": "Secret Far",
       "url": "https://csnades.gg/nuke/smokes/secret-far-from-outside-t-spawn",
-      "labelEn": "Smoke: Secret Far",
-      "label": "Smoke: Secret Far",
-      "labelEnShort": "Smoke: Secret Far"
+      "label": "Smoke: Secret Far"
     },
     {
       "id": "nade_be649b2a86a9",
@@ -7241,9 +6132,7 @@
       "from": "T Spawn",
       "to": "Secret Far",
       "url": "https://csnades.gg/nuke/smokes/secret-far-from-t-spawn",
-      "labelEn": "Smoke: Secret Far",
-      "label": "Smoke: Secret Far",
-      "labelEnShort": "Smoke: Secret Far"
+      "label": "Smoke: Secret Far"
     },
     {
       "id": "nade_be3bc872dac3",
@@ -7254,9 +6143,7 @@
       "from": "T Spawn",
       "to": "Secret Far",
       "url": "https://csnades.gg/nuke/smokes/secret-far-from-t-spawn-b",
-      "labelEn": "Smoke: Secret Far",
-      "label": "Smoke: Secret Far",
-      "labelEnShort": "Smoke: Secret Far"
+      "label": "Smoke: Secret Far"
     },
     {
       "id": "nade_49d2c5aa58d5",
@@ -7267,9 +6154,7 @@
       "from": "Under Silo",
       "to": "Secret Far",
       "url": "https://csnades.gg/nuke/smokes/secret-far-from-under-silo",
-      "labelEn": "Smoke: Secret Far",
-      "label": "Smoke: Secret Far",
-      "labelEnShort": "Smoke: Secret Far"
+      "label": "Smoke: Secret Far"
     },
     {
       "id": "nade_2ef682d3de51",
@@ -7280,9 +6165,7 @@
       "from": "Heaven",
       "to": "Squeaky",
       "url": "https://csnades.gg/nuke/smokes/squeaky-from-heaven",
-      "labelEn": "Smoke: Squeaky",
-      "label": "Smoke: Squeaky",
-      "labelEnShort": "Smoke: Squeaky"
+      "label": "Smoke: Squeaky"
     },
     {
       "id": "nade_6621ee60a37f",
@@ -7293,9 +6176,7 @@
       "from": "CT Red",
       "to": "T Red",
       "url": "https://csnades.gg/nuke/smokes/t-red-from-ct-red",
-      "labelEn": "Smoke: T Red",
-      "label": "Smoke: T Red",
-      "labelEnShort": "Smoke: T Red"
+      "label": "Smoke: T Red"
     },
     {
       "id": "nade_bd972bfaf179",
@@ -7306,9 +6187,7 @@
       "from": "Under Silo",
       "to": "T Red",
       "url": "https://csnades.gg/nuke/smokes/t-red-from-under-silo",
-      "labelEn": "Smoke: T Red",
-      "label": "Smoke: T Red",
-      "labelEnShort": "Smoke: T Red"
+      "label": "Smoke: T Red"
     },
     {
       "id": "nade_beff77608ce6",
@@ -7319,9 +6198,7 @@
       "from": "T Spawn",
       "to": "Top A Main",
       "url": "https://csnades.gg/nuke/smokes/top-a-main-from-t-spawn",
-      "labelEn": "Smoke: Top A Main",
-      "label": "Smoke: Top A Main",
-      "labelEnShort": "Smoke: Top A Main"
+      "label": "Smoke: Top A Main"
     },
     {
       "id": "nade_eac2180d23c7",
@@ -7332,9 +6209,7 @@
       "from": "T Spawn",
       "to": "Top Main",
       "url": "https://csnades.gg/nuke/smokes/top-main-from-t-spawn-b",
-      "labelEn": "Smoke: Top Main",
-      "label": "Smoke: Top Main",
-      "labelEnShort": "Smoke: Top Main"
+      "label": "Smoke: Top Main"
     },
     {
       "id": "nade_c5f476f3afe3",
@@ -7345,9 +6220,7 @@
       "from": "CT Spawn",
       "to": "Top Silo",
       "url": "https://csnades.gg/nuke/smokes/top-silo-from-ct-spawn",
-      "labelEn": "Smoke: Top Silo",
-      "label": "Smoke: Top Silo",
-      "labelEnShort": "Smoke: Top Silo"
+      "label": "Smoke: Top Silo"
     },
     {
       "id": "nade_40714b6784cf",
@@ -7358,9 +6231,7 @@
       "from": "Ramp",
       "to": "Trophy",
       "url": "https://csnades.gg/nuke/smokes/trophy-from-ramp",
-      "labelEn": "Smoke: Trophy",
-      "label": "Smoke: Trophy",
-      "labelEnShort": "Smoke: Trophy"
+      "label": "Smoke: Trophy"
     },
     {
       "id": "nade_0d9006c00178",
@@ -7371,9 +6242,7 @@
       "from": "T Spawn",
       "to": "Vent",
       "url": "https://csnades.gg/nuke/smokes/vent-from-t-spawn-a",
-      "labelEn": "Smoke: Vent",
-      "label": "Smoke: Vent",
-      "labelEnShort": "Smoke: Vent"
+      "label": "Smoke: Vent"
     },
     {
       "id": "nade_6de239ce235a",
@@ -7384,9 +6253,7 @@
       "from": "T Spawn",
       "to": "Vent",
       "url": "https://csnades.gg/nuke/smokes/vent-from-t-spawn-b",
-      "labelEn": "Smoke: Vent",
-      "label": "Smoke: Vent",
-      "labelEnShort": "Smoke: Vent"
+      "label": "Smoke: Vent"
     }
   ]
 }

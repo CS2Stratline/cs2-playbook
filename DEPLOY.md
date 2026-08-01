@@ -68,15 +68,24 @@ Without Supabase, local demo can edit shared strats on that device only.
 
 ## Launch security checklist
 
-- [ ] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
-- [ ] Super admin bootstrapped via SQL (not open signup claim)
-- [ ] Non-admin JWT cannot `update profiles set is_admin = true`
+- [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
+- [x] Super admin bootstrapped via SQL (not open signup claim)
+- [ ] Non-admin JWT cannot `update profiles set is_admin = true` (spot-check once)
 - [ ] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
 - [ ] Live share: setting `current_pick_id` to another user’s private strat UUID does not leak content via `get_live_call`
-- [ ] Service role key never in client env or GitHub Actions `VITE_*` secrets
-- [ ] Supabase Auth redirect URLs match the real domain (Pages or custom)
-- [ ] Custom domain: update `VITE_BASE_PATH=/` (or `/`) and Discord/email redirects
+- [x] Service role key never in client env or GitHub Actions `VITE_*` secrets
+- [ ] Supabase Auth redirect URLs match the real domain (Pages + localhost; add custom domain later)
+- [ ] Custom domain: set `VITE_BASE_PATH=/` in deploy workflow, attach DNS, update Auth allowlist
 - [ ] Soft Reddit launch: prefer guest mode first, or invite-only Discord until checklist is green
+- [x] Cloud catalog re-seeded from `system-packs.json` (`npm run seed:supabase`)
+
+## Custom domain (when ready)
+
+1. Buy domain / point DNS at GitHub Pages or Vercel.
+2. In `.github/workflows/deploy.yml`, set `VITE_BASE_PATH: /` if the site is at the domain root.
+3. Supabase Auth → add `https://your.domain/` to Site URL / Redirect URLs (keep Pages URL during transition).
+4. Discord app callback stays `https://YOUR.supabase.co/auth/v1/callback` (no change).
+5. Redeploy and smoke-test Discord + magic link + live share link.
 
 ## Vercel (optional)
 
