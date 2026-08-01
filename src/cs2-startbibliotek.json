@@ -20,6 +20,159 @@
   "strats": [
     {
       "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Røyk: Stairs",
+          "labelEn": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "labelEn": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Contact A",
+      "calloutEn": "Contact A",
+      "description": "Fast A contact: light util, trade ramp together — no full triple setup.",
+      "descriptionEn": "Fast A contact: light util, trade ramp together — no full triple setup.",
+      "tasks": [
+        "One stairs or jungle smoke if you have it",
+        "Flash ramp, five contact together",
+        "Plant default, hold con soft"
+      ],
+      "tasksEn": [
+        "One stairs or jungle smoke if you have it",
+        "Flash ramp, five contact together",
+        "Plant default, hold con soft"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Røyk: Market window",
+          "labelEn": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "labelEn": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Fast B",
+      "calloutEn": "Fast B",
+      "description": "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+      "descriptionEn": "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+      "tasks": [
+        "Smoke market window",
+        "Flash site from apps",
+        "Plant for retake, hold apps/short"
+      ],
+      "tasksEn": [
+        "Smoke market window",
+        "Flash site from apps",
+        "Plant for retake, hold apps/short"
+      ]
+    },
+    {
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Røyk: Stairs",
+          "labelEn": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "labelEn": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol stairs",
+      "calloutEn": "Pistol stairs",
+      "descriptionEn": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+      "description": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+      "tasksEn": [
+        "Smoke stairs from spawn",
+        "Flash ramp / palace exit",
+        "Plant default, save util"
+      ],
+      "tasks": [
+        "Smoke stairs from spawn",
+        "Flash ramp / palace exit",
+        "Plant default, save util"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Røyk: Mid window",
+          "labelEn": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Røyk: Market window",
+          "labelEn": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Røyk: Market door",
+          "labelEn": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "labelEn": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps split",
+      "calloutEn": "Apps split",
+      "descriptionEn": "Mid window + apps hit together — split B instead of five apps.",
+      "description": "Mid window + apps hit together — split B instead of five apps.",
+      "tasksEn": [
+        "Smoke mid window, take short",
+        "Two through apps with market smokes",
+        "Trade site together"
+      ],
+      "tasks": [
+        "Smoke mid window, take short",
+        "Two through apps with market smokes",
+        "Trade site together"
+      ]
+    },
+    {
+      "rounds": [
         "full"
       ],
       "status": "ready",
@@ -38,11 +191,6 @@
           "label": "Røyk: Stairs",
           "labelEn": "Smoke: Stairs",
           "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
-        },
-        {
-          "label": "Molly: Firebox",
-          "labelEn": "Molly: Firebox",
-          "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs"
         },
         {
           "label": "Flash: Ramp",
@@ -70,8 +218,7 @@
         "Smoke stairs",
         "Flash in, entry ramp + palace",
         "Hold con after plant"
-      ],
-      "level": 6
+      ]
     },
     {
       "rounds": [
@@ -118,8 +265,7 @@
         "Smoke stairs from spawn",
         "Smoke ticket from ramp (or spawn variant)",
         "Push ramp together when smokes land"
-      ],
-      "level": 5
+      ]
     },
     {
       "rounds": [
@@ -203,8 +349,7 @@
         "Molly/HE tetris or firebox",
         "Flash ramp entry, trade hard",
         "One holds top mid vs rotate"
-      ],
-      "level": 6
+      ]
     },
     {
       "rounds": [
@@ -221,11 +366,6 @@
           "label": "Røyk: Jungle+con",
           "labelEn": "Smoke: Jungle+con",
           "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-underpass"
-        },
-        {
-          "label": "Molly: Underpass",
-          "labelEn": "Molly: Underpass",
-          "url": "https://csnades.gg/mirage/molotovs/underpass-from-jungle"
         }
       ],
       "map": "Mirage",
@@ -342,8 +482,7 @@
         "Molly van / bench",
         "Flash site, entry apps",
         "Plant for apps or van"
-      ],
-      "level": 6
+      ]
     },
     {
       "rounds": [
@@ -442,8 +581,7 @@
         "Smoke market door or window",
         "Flash short, go cat → B",
         "Trade bench and van"
-      ],
-      "level": 5
+      ]
     },
     {
       "rounds": [
@@ -494,9 +632,9 @@
           "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
         },
         {
-          "label": "Flash: Top mid",
-          "labelEn": "Flash: Top mid",
-          "url": "https://csnades.gg/mirage/flashbangs/top-mid-from-triple"
+          "label": "Flash: Window",
+          "labelEn": "Flash: Window",
+          "url": "https://csnades.gg/mirage/flashbangs/window-from-top-mid-boxes"
         }
       ],
       "map": "Mirage",
@@ -515,8 +653,7 @@
         "Smoke mid window from spawn",
         "Flash top mid, take control",
         "Decide A-con or B-short"
-      ],
-      "level": 4
+      ]
     },
     {
       "rounds": [
@@ -596,6 +733,145 @@
         "Smoke window",
         "Smoke or clear connector",
         "2–3 out con, 2 ramp support"
+      ]
+    },
+    {
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ramp hold",
+      "calloutEn": "Ramp hold",
+      "description": "Strong ramp/palace A — soft B, punish fast A contact.",
+      "descriptionEn": "Strong ramp/palace A — soft B, punish fast A contact.",
+      "tasks": [
+        "2 ramp / tetris",
+        "1 palace or ticket",
+        "1 mid, 1 B soft",
+        "Fall con only on clear B info"
+      ],
+      "tasksEn": [
+        "2 ramp / tetris",
+        "1 palace or ticket",
+        "1 mid, 1 B soft",
+        "Fall con only on clear B info"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid give",
+      "calloutEn": "Mid give",
+      "description": "Give mid space on purpose — play for retake / late rotate, save util.",
+      "descriptionEn": "Give mid space on purpose — play for retake / late rotate, save util.",
+      "tasks": [
+        "Soft window — do not die mid",
+        "2 A, 2 B anchors",
+        "Util ready for retake, not mid duel"
+      ],
+      "tasksEn": [
+        "Soft window — do not die mid",
+        "2 A, 2 B anchors",
+        "Util ready for retake, not mid duel"
+      ]
+    },
+    {
+      "rounds": [
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Eco window",
+      "calloutEn": "Eco window",
+      "descriptionEn": "Eco: stack window/top mid for info — fall to sites on execute.",
+      "description": "Eco: stack window/top mid for info — fall to sites on execute.",
+      "tasksEn": [
+        "3–4 window / top mid",
+        "1 soft A or B",
+        "Fall on smoke execute"
+      ],
+      "tasks": [
+        "3–4 window / top mid",
+        "1 soft A or B",
+        "Fall on smoke execute"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Mid window",
+          "labelEn": "Flash: Mid window",
+          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
+        }
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Short mid push",
+      "calloutEn": "Short mid push",
+      "descriptionEn": "Push mid with short support to break T mid control.",
+      "description": "Push mid with short support to break T mid control.",
+      "tasksEn": [
+        "1 short ready to swing",
+        "2 mid (window + under)",
+        "1 A, 1 B anchors",
+        "Flash mid, take space, fall on rotate"
+      ],
+      "tasks": [
+        "1 short ready to swing",
+        "2 mid (window + under)",
+        "1 A, 1 B anchors",
+        "Flash mid, take space, fall on rotate"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Apps",
+          "labelEn": "Molly: Apps",
+          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
+        }
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti apps",
+      "calloutEn": "Anti apps",
+      "descriptionEn": "When apps push: let them exit, molly apps from site, trade from site + short.",
+      "description": "When apps push: let them exit, molly apps from site, trade from site + short.",
+      "tasksEn": [
+        "1 short, 1 site/van",
+        "Molly apps from site — not deep into apps",
+        "Trade exit, hold market"
+      ],
+      "tasks": [
+        "1 short, 1 site/van",
+        "Molly apps from site — not deep into apps",
+        "Trade exit, hold market"
       ]
     },
     {
@@ -716,8 +992,7 @@
         "Stack 3+ before retake",
         "Utility stairs/tetris",
         "Swing together from con + CT"
-      ],
-      "level": 7
+      ]
     },
     {
       "rounds": [
@@ -1440,7 +1715,7 @@
       ],
       "map": "Nuke",
       "side": "T",
-      "site": "a",
+      "site": "outside",
       "callout": "Outside A",
       "calloutEn": "Outside A",
       "description": "Outside smokes → secret/ramp eller heaven pressure.",
@@ -1515,11 +1790,11 @@
       ],
       "map": "Nuke",
       "side": "T",
-      "site": "a",
-      "callout": "Ramp A",
-      "calloutEn": "Ramp A",
-      "description": "Trophy/ramp trykk inn A lower.",
-      "descriptionEn": "Trophy/ramp pressure into lower A.",
+      "site": "ramp",
+      "callout": "Ramp",
+      "calloutEn": "Ramp",
+      "description": "Trophy/ramp trykk ned mot B/lower.",
+      "descriptionEn": "Trophy/ramp pressure down toward B/lower.",
       "tasks": [
         "Kontroller ramp/trophy",
         "Flash ramp, entry",
@@ -2080,17 +2355,17 @@
       "site": null,
       "callout": "A hold",
       "calloutEn": "A hold",
-      "description": "Heaven/water sterk.",
-      "descriptionEn": "Strong heaven/water.",
+      "description": "Strong A (heaven/water), soft B.",
+      "descriptionEn": "Strong A (heaven/water), soft B.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Nekt water early",
-        "Rotate på ruins"
+        "2–3 A (heaven/water), 1 mid, 1 B",
+        "Deny water early",
+        "Rotate B only on clear ruins / mid info"
       ],
       "tasksEn": [
-        "2–3 A, 1 mid, 1 B",
+        "2–3 A (heaven/water), 1 mid, 1 B",
         "Deny water early",
-        "Rotate on ruins"
+        "Rotate B only on clear ruins / mid info"
       ]
     },
     {
@@ -2329,39 +2604,45 @@
       "site": null,
       "callout": "A hold",
       "calloutEn": "A hold",
-      "description": "Sterk A (forklift/checker).",
-      "descriptionEn": "Strong A (forklift/checker).",
+      "description": "Strong A (forklift/checker), soft B.",
+      "descriptionEn": "Strong A (forklift/checker), soft B.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Nekt squeaky",
-        "Rotate B på heaven sound"
+        "2–3 A (forklift/checker/site), 1 mid, 1 B",
+        "Deny squeaky / A main entry",
+        "Rotate B only on clear mid or B info"
       ],
       "tasksEn": [
-        "2–3 A, 1 mid, 1 B",
-        "Deny squeaky",
-        "Rotate B on heaven sound"
+        "2–3 A (forklift/checker/site), 1 mid, 1 B",
+        "Deny squeaky / A main entry",
+        "Rotate B only on clear mid or B info"
       ]
     },
     {
       "rounds": [],
       "status": "ready",
-      "links": [],
+      "links": [
+        {
+          "label": "Smoke: B Main",
+          "labelEn": "Smoke: B Main",
+          "url": "https://csnades.gg/cache/smokes/b-main-from-heaven"
+        }
+      ],
       "map": "Cache",
       "side": "CT",
       "site": null,
       "callout": "B hold",
       "calloutEn": "B hold",
-      "description": "Heaven/B main sterk.",
-      "descriptionEn": "Strong heaven/B main.",
+      "description": "Strong heaven / B main — punish halls commits.",
+      "descriptionEn": "Strong heaven / B main — punish halls commits.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Hold heaven close",
-        "Utility B halls"
+        "2 B (heaven + site), 1 mid, 2 A soft",
+        "Hold heaven — watch B main / garbage",
+        "Smoke B main from heaven when they commit halls"
       ],
       "tasksEn": [
-        "2 B, 1 mid, 2 A",
-        "Hold heaven close",
-        "Utility B halls"
+        "2 B (heaven + site), 1 mid, 2 A soft",
+        "Hold heaven — watch B main / garbage",
+        "Smoke B main from heaven when they commit halls"
       ]
     }
   ]
