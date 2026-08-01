@@ -5,9 +5,11 @@ import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
-import { MapIcon, Pack, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { MapIcon, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { LevelBadge } from "../components/LevelBadge";
 import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
+import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { suggestLineupLinks } from "../lib/lineupMatch";
 import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
 
@@ -56,9 +58,10 @@ export function BookScreen() {
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
+  /** v1: hide Advanced (locked) from the UI — dead end for new users. */
   const systemPacks = useMemo(
     () =>
-      (["pug", "five_stack", "pro"] as PackTier[]).map((tier) => ({
+      (["pug", "five_stack"] as PackTier[]).map((tier) => ({
         tier,
         items: packs.filter((p) => p.tier === tier && p.visibility === "system"),
       })),
@@ -68,9 +71,13 @@ export function BookScreen() {
   const catalogList = useMemo(() => {
     const q = query.trim().toLowerCase();
     return catalogStrats
-      .filter((s) => s.map === session.selected_map && s.side === session.selected_side)
+      .filter((s) => {
+        const pack = packs.find((p) => p.id === s.pack_id);
+        if (!pack || isPackLocked(pack)) return false;
+        return s.map === session.selected_map && s.side === session.selected_side;
+      })
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
-  }, [catalogStrats, session.selected_map, session.selected_side, query]);
+  }, [catalogStrats, packs, session.selected_map, session.selected_side, query]);
 
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -163,26 +170,27 @@ export function BookScreen() {
               My pool · {myPoolStrats.length}
             </button>
             <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
-              Catalog
+              Add more
             </button>
           </div>
           <p className="muted">
             {tab === "pool"
-              ? "Match uses only strats in My pool. Shop from Catalog or create your own."
-              : "Browse levels and add strats to My pool. Advanced stays locked for now."}
+              ? "These feed Match. Fundamentals are added automatically when you sign in."
+              : "Optional — add Stack strats into My pool when you want more variety."}
           </p>
-          {tab === "pool" && (
+          {tab === "pool" && myPoolStrats.length === 0 && (
             <div className="row" style={{ marginTop: 10 }}>
               <button
                 type="button"
-                className="btn-ghost"
+                className="btn btn-primary"
+                style={{ flex: 1 }}
                 disabled={!!busyId}
                 onClick={async () => {
                   setBusyId("starter");
                   setStarterMsg("");
                   try {
                     const n = await addFundamentalsStarter(session.selected_map);
-                    setStarterMsg(n ? `Added ${n} Fundamentals for ${session.selected_map}` : `Fundamentals for ${session.selected_map} already in your pool`);
+                    setStarterMsg(n ? `Added ${n} for ${session.selected_map}` : `Already in your pool for ${session.selected_map}`);
                   } catch (e) {
                     setStarterMsg(e instanceof Error ? e.message : "Could not add starter kit");
                   } finally {
@@ -192,17 +200,6 @@ export function BookScreen() {
               >
                 Add Fundamentals for {session.selected_map}
               </button>
-              <button
-                type="button"
-                className="btn-ghost"
-                onClick={() => {
-                  setEditing(null);
-                  setForm({ callout: "", description: "", tasks: "", site: "default", rounds: "", status: "ready" });
-                  setShowForm(true);
-                }}
-              >
-                <Plus size={14} /> New
-              </button>
             </div>
           )}
           {starterMsg && <p className="banner">{starterMsg}</p>}
@@ -211,17 +208,19 @@ export function BookScreen() {
         <div className="panel">
           <p className="eyebrow">Packs</p>
           <p className="muted" style={{ marginBottom: 8 }}>
-            Guest mode: toggle packs for Match. Sign in to shop individual strats into your own pool.
-            {supabaseReady && !user ? " (Discord in Settings)" : ""}
+            Toggle what feeds Match on this device.
+            {supabaseReady && !user ? " Sign in (Settings) to sync the same pool across phones." : ""}
           </p>
-          <p className="muted" style={{ marginBottom: 8 }}>{enabledStrats.length} strats in the pool right now.</p>
+          <p className="muted" style={{ marginBottom: 8 }}>{enabledStrats.length} strats ready for Match.</p>
           {systemPacks.map(({ tier, items }) =>
             items.length ? (
               <div key={tier} style={{ marginTop: 8 }}>
-                <p className="eyebrow">{TIER_LABEL[tier]}</p>
+                <p className="eyebrow eyebrow-site">
+                  <LevelBadge level={tierToFaceitLevel(tier)} size={16} />
+                  {TIER_LABEL[tier]}
+                </p>
                 {items.map((p) => {
-                  const locked = isPackLocked(p);
-                  const on = !locked && isPackInMatchPool(p.id, subscriptions, packs);
+                  const on = isPackInMatchPool(p.id, subscriptions, packs);
                   return (
                     <div
                       key={p.id}
@@ -231,24 +230,18 @@ export function BookScreen() {
                         alignItems: "flex-start",
                         padding: "8px 0",
                         borderBottom: "1px solid var(--line)",
-                        opacity: locked ? 0.72 : 1,
                       }}
                     >
-                      <Pack size={16} />
+                      <LevelBadge level={tierToFaceitLevel(p.tier)} size={22} title={`${TIER_LABEL[p.tier]} · FACEIT-style Lv ${tierToFaceitLevel(p.tier)}`} />
                       <div style={{ flex: 1 }}>
                         <strong style={{ fontSize: 13 }}>{p.title}</strong>
                         <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                          {p.strat_count ?? "—"} strats
-                          {locked ? " · Premium soon" : ""}
+                          {p.strat_count ?? "—"} strats · {TIER_LABEL[p.tier]}
                         </p>
                       </div>
-                      {locked ? (
-                        <span className="badge pro">Locked</span>
-                      ) : (
-                        <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
-                          {on ? "On" : "Off"}
-                        </button>
-                      )}
+                      <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
+                        {on ? "On" : "Off"}
+                      </button>
                     </div>
                   );
                 })}
@@ -258,27 +251,10 @@ export function BookScreen() {
         </div>
       )}
 
-      {usePersonalPool && tab === "catalog" && (
-        <div className="panel">
-          <p className="eyebrow">Levels</p>
-          {systemPacks.map(({ tier, items }) =>
-            items.map((p) => (
-              <div key={p.id} className="row" style={{ marginBottom: 6 }}>
-                <span className={`badge ${p.tier}`}>{TIER_LABEL[p.tier]}</span>
-                <span className="muted" style={{ fontSize: 12 }}>
-                  {p.title}
-                  {isPackLocked(p) ? " · Locked" : ""}
-                </span>
-              </div>
-            ))
-          )}
-        </div>
-      )}
-
       <div className="panel">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <p className="eyebrow">{tab === "catalog" || !usePersonalPool ? "Browse" : "My pool"}</p>
+            <p className="eyebrow">{usePersonalPool ? (tab === "catalog" ? "Add more" : "My pool") : "Browse"}</p>
             <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
               <MapIcon map={session.selected_map} size={22} />
               {session.selected_map}
@@ -288,7 +264,7 @@ export function BookScreen() {
               </span>
             </h2>
           </div>
-          {!usePersonalPool && (
+          {tab === "pool" && (
             <button
               type="button"
               className="btn-ghost"
@@ -340,8 +316,10 @@ export function BookScreen() {
       {groups.length === 0 ? (
         <div className="empty">
           {tab === "pool" && usePersonalPool
-            ? `My pool is empty for ${session.selected_map} ${session.selected_side}. Add Fundamentals above or shop the Catalog.`
-            : "Nothing here for this map/side."}
+            ? `Nothing for ${session.selected_map} ${session.selected_side} yet. Add Fundamentals above, or switch side/map.`
+            : tab === "catalog"
+              ? "No more unlocked strats for this map/side."
+              : "Nothing here for this map/side."}
         </div>
       ) : (
         groups.map((g) => (
@@ -367,12 +345,20 @@ export function BookScreen() {
                         </button>
                       </span>
                     </div>
-                    <div className="meta">
-                      {pack ? `${TIER_LABEL[pack.tier as PackTier]}` : ""}
-                      {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
-                      {locked ? " · Locked" : ""}
-                      {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
-                      {!open ? " · Tap for details" : ""}
+                    <div className="meta" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <LevelBadge
+                        level={clampFaceitLevel(s.level || (pack ? tierToFaceitLevel(pack.tier as PackTier) : 5))}
+                        size={18}
+                        title={`Execution difficulty · Level ${s.level || "?"}`}
+                      />
+                      <span>
+                        Lv {s.level || "?"}
+                        {pack ? ` · ${TIER_LABEL[pack.tier as PackTier]}` : ""}
+                        {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
+                        {locked ? " · Locked" : ""}
+                        {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
+                        {!open ? " · Tap for details" : ""}
+                      </span>
                     </div>
                   </button>
                   {open && (

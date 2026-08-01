@@ -4,8 +4,10 @@ import { FREEZE_SECONDS, type Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
 import { MapIcon, RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { FreezeTimer } from "../components/FreezeTimer";
+import { LevelBadge } from "../components/LevelBadge";
 import { LineupChip } from "../components/LineupChip";
 import { NADE_CATALOG } from "../lib/catalog";
+import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 
 const SITES = [
@@ -25,9 +27,21 @@ const ROUNDS = [
 ] as const;
 
 export function MatchScreen() {
-  const { enabledStrats, strats, favorites, session, setSession, toggleFavorite, packs, loading } = usePlaybook();
+  const {
+    enabledStrats,
+    strats,
+    favorites,
+    session,
+    setSession,
+    toggleFavorite,
+    packs,
+    loading,
+    usePersonalPool,
+    addFundamentalsStarter,
+  } = usePlaybook();
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [seedBusy, setSeedBusy] = useState(false);
   const timerRef = useRef<number | null>(null);
   const filterKeyRef = useRef<string | null>(null);
 
@@ -217,9 +231,30 @@ export function MatchScreen() {
             <p className="eyebrow">Choose a strat</p>
             <p className="muted" style={{ marginBottom: 12 }}>
               {eligible.length === 0
-                ? `No strats match this selection on ${session.selected_map}. Add strats in Playbook (My pool or packs).`
+                ? usePersonalPool
+                  ? `No strats for ${session.selected_map} ${session.selected_side} in your pool yet.`
+                  : `No strats match this selection on ${session.selected_map}. Turn on a pack in Playbook, or loosen filters.`
                 : `${eligible.length} strat${eligible.length === 1 ? "" : "s"} ready · tap one to call`}
             </p>
+
+            {eligible.length === 0 && usePersonalPool && (
+              <button
+                type="button"
+                className={`btn btn-primary ${accent}`}
+                style={{ marginBottom: 12 }}
+                disabled={seedBusy}
+                onClick={async () => {
+                  setSeedBusy(true);
+                  try {
+                    await addFundamentalsStarter(session.selected_map);
+                  } finally {
+                    setSeedBusy(false);
+                  }
+                }}
+              >
+                {seedBusy ? "Adding…" : `Add Fundamentals for ${session.selected_map}`}
+              </button>
+            )}
 
             {pickList.map((s) => {
               const pack = packs.find((p) => p.id === s.pack_id);
@@ -227,6 +262,7 @@ export function MatchScreen() {
                 <button key={s.id} type="button" className="list-item" onClick={() => void commitCall(s)}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
                     <strong className="list-callout">
+                      <LevelBadge level={clampFaceitLevel(s.level || 5)} size={20} />
                       {s.site && <SiteIcon site={String(s.site)} size={14} />}
                       {s.callout}
                     </strong>
@@ -277,6 +313,7 @@ export function MatchScreen() {
                 )}
               </span>
               <div className="row">
+                <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
                 <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
                   <Star size={14} filled={favorites.has(currentPick.id)} />
                 </button>
