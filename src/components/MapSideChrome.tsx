@@ -1,5 +1,5 @@
 import { usePlaybook } from "../lib/playbook";
-import { MAPS, type Side } from "../lib/types";
+import { ALL_MAPS, MAPS, type Side } from "../lib/types";
 import { MapLogo } from "./MapLogo";
 import { SideCT, SideT } from "./icons";
 
@@ -20,6 +20,15 @@ export function MapSideChrome() {
   return (
     <div className="map-side-chrome">
       <div className="row map-pills" style={{ marginBottom: 6 }}>
+        <button
+          type="button"
+          className={`pill pill-icon ${session.selected_map === ALL_MAPS ? `active ${accent}` : ""}`}
+          onClick={() => void setSession({ selected_map: ALL_MAPS, current_pick_id: null, timer_ends_at: null, called_at: null })}
+          title="All maps"
+          aria-label="All maps"
+        >
+          <span>All</span>
+        </button>
         {MAPS.map((m) => (
           <button
             key={m}

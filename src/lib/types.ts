@@ -77,6 +77,13 @@ export type Profile = {
 
 export const MAPS = ["Dust II", "Mirage", "Inferno", "Nuke", "Ancient", "Anubis", "Cache"] as const;
 
+/** Session map filter: all maps (Playbook browse), not a real CS map. */
+export const ALL_MAPS = "all";
+
+export function isAllMaps(map: string | null | undefined): boolean {
+  return map === ALL_MAPS;
+}
+
 export const TIER_LABEL: Record<PackTier, string> = {
   pug: "Fundamentals",
   five_stack: "Stack",

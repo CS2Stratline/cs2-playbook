@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, UserSession } from "./types";
-import { isPackInMatchPool, isPackLocked } from "./types";
+import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -168,7 +168,12 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const addFundamentalsStarter = useCallback(
     async (map: string) => {
-      const n = await api.addFundamentalsForMap(userId, map, packs);
+      let n = 0;
+      if (isAllMaps(map)) {
+        for (const m of MAPS) n += await api.addFundamentalsForMap(userId, m, packs);
+      } else {
+        n = await api.addFundamentalsForMap(userId, map, packs);
+      }
       await refresh();
       return n;
     },

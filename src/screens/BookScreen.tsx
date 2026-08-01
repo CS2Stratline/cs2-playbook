@@ -4,7 +4,7 @@ import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
-import { TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { MAPS, TIER_LABEL, isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -49,6 +49,7 @@ export function BookScreen() {
   const [busyId, setBusyId] = useState<string | null>(null);
   const [starterMsg, setStarterMsg] = useState("");
   const [form, setForm] = useState({
+    map: "Mirage",
     callout: "",
     description: "",
     tasks: "",
@@ -56,6 +57,7 @@ export function BookScreen() {
     rounds: "" as string,
     status: "ready" as "ready" | "practice",
   });
+  const allMaps = isAllMaps(session.selected_map);
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
@@ -75,30 +77,44 @@ export function BookScreen() {
       .filter((s) => {
         const pack = packs.find((p) => p.id === s.pack_id);
         if (!pack || isPackLocked(pack)) return false;
-        return s.map === session.selected_map && s.side === session.selected_side;
+        if (s.side !== session.selected_side) return false;
+        if (!isAllMaps(session.selected_map) && s.map !== session.selected_map) return false;
+        return true;
       })
-      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
+      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
   }, [catalogStrats, packs, session.selected_map, session.selected_side, query]);
 
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
     const base = usePersonalPool ? myPoolStrats : enabledStrats;
     return base
-      .filter((s) => s.map === session.selected_map && s.side === session.selected_side)
-      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
+      .filter((s) => {
+        if (s.side !== session.selected_side) return false;
+        if (!isAllMaps(session.selected_map) && s.map !== session.selected_map) return false;
+        return true;
+      })
+      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
   }, [usePersonalPool, myPoolStrats, enabledStrats, session.selected_map, session.selected_side, query]);
 
   const displayList = usePersonalPool && tab === "catalog" ? catalogList : poolList;
 
   const groups = useMemo(() => {
-    if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", items: displayList }];
+    if (isAllMaps(session.selected_map)) {
+      return MAPS.map((map) => ({
+        id: map,
+        label: map,
+        kind: "map" as const,
+        items: displayList.filter((s) => s.map === map),
+      })).filter((g) => g.items.length);
+    }
+    if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", kind: "site" as const, items: displayList }];
     return [
-      { id: "a", label: "A site", items: displayList.filter((s) => s.site === "a") },
-      { id: "b", label: "B site", items: displayList.filter((s) => s.site === "b") },
-      { id: "mid", label: "Mid", items: displayList.filter((s) => s.site === "mid") },
-      { id: "default", label: "Default / other", items: displayList.filter((s) => !s.site || s.site === "default") },
+      { id: "a", label: "A site", kind: "site" as const, items: displayList.filter((s) => s.site === "a") },
+      { id: "b", label: "B site", kind: "site" as const, items: displayList.filter((s) => s.site === "b") },
+      { id: "mid", label: "Mid", kind: "site" as const, items: displayList.filter((s) => s.site === "mid") },
+      { id: "default", label: "Default / other", kind: "site" as const, items: displayList.filter((s) => !s.site || s.site === "default") },
     ].filter((g) => g.items.length);
-  }, [displayList, session.selected_side]);
+  }, [displayList, session.selected_side, session.selected_map]);
 
   async function ensurePrivatePack() {
     if (privatePack) return privatePack.id;
@@ -112,8 +128,10 @@ export function BookScreen() {
       .map((t) => t.trim())
       .filter(Boolean)
       .slice(0, 5);
+    const map = isAllMaps(session.selected_map) ? form.map : session.selected_map;
+    if (!map || isAllMaps(map)) return;
     const draft = {
-      map: session.selected_map,
+      map,
       side: session.selected_side,
       callout: form.callout.trim(),
       description: form.description.trim(),
@@ -189,7 +207,13 @@ export function BookScreen() {
                   setStarterMsg("");
                   try {
                     const n = await addFundamentalsStarter(session.selected_map);
-                    setStarterMsg(n ? `Added ${n} for ${session.selected_map}` : `Already in your pool for ${session.selected_map}`);
+                    setStarterMsg(
+                      n
+                        ? `Added ${n} strat${n === 1 ? "" : "s"}${allMaps ? " across all maps" : ` for ${session.selected_map}`}`
+                        : allMaps
+                          ? "Fundamentals already in your pool"
+                          : `Already in your pool for ${session.selected_map}`
+                    );
                   } catch (e) {
                     setStarterMsg(e instanceof Error ? e.message : "Could not add starter kit");
                   } finally {
@@ -197,7 +221,7 @@ export function BookScreen() {
                   }
                 }}
               >
-                Add Fundamentals for {session.selected_map}
+                {allMaps ? "Add Fundamentals (all maps)" : `Add Fundamentals for ${session.selected_map}`}
               </button>
             </div>
           )}
@@ -250,8 +274,8 @@ export function BookScreen() {
           <div>
             <p className="eyebrow">{usePersonalPool ? (tab === "catalog" ? "Add more" : "My pool") : "Browse"}</p>
             <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
-              <MapLogo map={session.selected_map} size={26} />
-              {session.selected_map}
+              {!allMaps && <MapLogo map={session.selected_map} size={26} />}
+              {allMaps ? "All maps" : session.selected_map}
               <span className={`side-tag ${session.selected_side === "CT" ? "ct" : ""}`}>
                 {session.selected_side === "CT" ? <SideCT size={14} /> : <SideT size={14} />}
                 {session.selected_side}
@@ -264,7 +288,15 @@ export function BookScreen() {
               className="btn-ghost"
               onClick={() => {
                 setEditing(null);
-                setForm({ callout: "", description: "", tasks: "", site: "default", rounds: "", status: "ready" });
+                setForm({
+                  map: allMaps ? "Mirage" : session.selected_map,
+                  callout: "",
+                  description: "",
+                  tasks: "",
+                  site: "default",
+                  rounds: "",
+                  status: "ready",
+                });
                 setShowForm(true);
               }}
             >
@@ -272,12 +304,26 @@ export function BookScreen() {
             </button>
           )}
         </div>
-        <input className="input" placeholder="Search callouts and tasks…" value={query} onChange={(e) => setQuery(e.target.value)} />
+        <input
+          className="input"
+          placeholder={allMaps ? "Search maps, callouts, tasks…" : "Search callouts and tasks…"}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
 
       {showForm && (
         <div className="panel">
           <p className="eyebrow">{editing ? "Edit strat" : "New strat"}</p>
+          {(allMaps || editing) && (
+            <select className="input" value={form.map} onChange={(e) => setForm({ ...form, map: e.target.value })}>
+              {MAPS.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          )}
           <input className="input" placeholder="Callout" value={form.callout} onChange={(e) => setForm({ ...form, callout: e.target.value })} />
           <input className="input" placeholder="Short explanation" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           <textarea
@@ -310,17 +356,20 @@ export function BookScreen() {
       {groups.length === 0 ? (
         <div className="empty">
           {tab === "pool" && usePersonalPool
-            ? `Nothing for ${session.selected_map} ${session.selected_side} yet. Add Fundamentals above, or switch side/map.`
+            ? allMaps
+              ? `Nothing for ${session.selected_side} yet. Add Fundamentals above, or switch side.`
+              : `Nothing for ${session.selected_map} ${session.selected_side} yet. Add Fundamentals above, or switch side/map.`
             : tab === "catalog"
-              ? "No more unlocked strats for this map/side."
-              : "Nothing here for this map/side."}
+              ? "No more unlocked strats for this selection."
+              : "Nothing here for this selection."}
         </div>
       ) : (
         groups.map((g) => (
           <div key={g.id} className="panel">
             <p className="eyebrow eyebrow-site">
-              {g.id !== "ct" && g.id !== "default" ? <SiteIcon site={g.id} size={12} /> : null}
+              {g.kind === "map" ? <MapLogo map={g.id} size={14} /> : g.id !== "ct" && g.id !== "default" ? <SiteIcon site={g.id} size={12} /> : null}
               {g.label}
+              {g.kind === "map" ? ` · ${g.items.length}` : null}
             </p>
             {g.items.map((s) => {
               const open = expanded === s.id;
@@ -401,6 +450,7 @@ export function BookScreen() {
                               onClick={() => {
                                 setEditing(s);
                                 setForm({
+                                  map: s.map,
                                   callout: s.callout,
                                   description: s.description,
                                   tasks: s.tasks.join("\n"),
