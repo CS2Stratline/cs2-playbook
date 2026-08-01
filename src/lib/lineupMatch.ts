@@ -1,24 +1,20 @@
-import CATALOG from "./csnades-catalog.json";
+import type { Nade, Strat, StratLink } from "./types";
 
 const TYPE_WORDS = [
-  { type: "smoke", words: ["røyk", "royk", "smoke", "smokes"] },
+  { type: "smoke", words: ["smoke", "smokes"] },
   { type: "flashbang", words: ["flash", "flashbang", "popflash", "pop-flash"] },
-  { type: "molotov", words: ["molly", "molotov", "incendiary", "brann"] },
-  { type: "hegrenade", words: ["hegrenade", "grenade"] },
+  { type: "molotov", words: ["molly", "molotov", "incendiary"] },
+  { type: "hegrenade", words: ["hegrenade", "grenade", "he "] },
 ];
 
-/**
- * Landing aliases matched against CSNADES titleTo / slug.
- * Keep aliases specific — short tokens like "con" create false positives.
- */
-const LANDING_ALIASES = [
-  ["ticket booth", ["ticket booth", "ticket", "booth", "ct / ticket", "ct/ticket"]],
+const LANDING_ALIASES: [string, string[]][] = [
+  ["ticket booth", ["ticket booth", "ticket", "booth"]],
   ["jungle", ["jungle"]],
   ["stairs", ["stairs", "stair"]],
-  ["window", ["mid window", "midt window", "window"]],
+  ["window", ["mid window", "window"]],
   ["connector", ["connector"]],
-  ["market window", ["market window", "marked window", "markedvindu"]],
-  ["market door", ["market door", "marked door", "markeddor", "markeddør"]],
+  ["market window", ["market window"]],
+  ["market door", ["market door"]],
   ["catwalk", ["catwalk"]],
   ["palace", ["palace"]],
   ["tetris", ["tetris"]],
@@ -26,12 +22,12 @@ const LANDING_ALIASES = [
   ["van", ["van"]],
   ["apps", ["apartments", "apts", "apps"]],
   ["xbox", ["xbox", "x-box"]],
-  ["ct spawn", ["ct spawn", "ct-kryss", "ct cross"]],
+  ["ct spawn", ["ct spawn", "ct cross"]],
   ["long doors", ["long doors", "long door"]],
-  ["mid doors", ["mid doors", "midt doors"]],
+  ["mid doors", ["mid doors"]],
   ["b doors", ["b doors", "b door"]],
   ["tunnels", ["tunnels", "tunnel"]],
-  ["banana", ["banana", "banan"]],
+  ["banana", ["banana"]],
   ["coffins", ["coffins", "coffin"]],
   ["library", ["library"]],
   ["moto", ["moto", "motorcycle"]],
@@ -53,62 +49,58 @@ const LANDING_ALIASES = [
   ["bridge", ["bridge"]],
   ["squeaky", ["squeaky"]],
   ["forklift", ["forklift"]],
-  ["checker", ["checker"]],
   ["short", ["short"]],
 ];
 
-function norm(s) {
+const MAP_ALIASES: Record<string, string> = {
+  "dust ii": "dust2",
+  dust2: "dust2",
+  mirage: "mirage",
+  inferno: "inferno",
+  nuke: "nuke",
+  ancient: "ancient",
+  anubis: "anubis",
+  cache: "cache",
+};
+
+function norm(s: string) {
   return (s || "")
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/æ/g, "ae")
-    .replace(/ø/g, "o")
-    .replace(/å/g, "a");
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
-function mapSlug(mapName) {
-  return CATALOG.mapAliases[mapName] || CATALOG.mapAliases[norm(mapName)] || null;
-}
-
-function detectTypes(text) {
+function detectTypes(text: string) {
   const n = ` ${norm(text)} `;
-  const found = [];
+  const found: string[] = [];
   for (const row of TYPE_WORDS) {
     if (row.words.some((w) => n.includes(norm(w)))) found.push(row.type);
-  }
-  // bare "he " only when clearly utility context
-  if (/\bhe\b/.test(n) && /(røyk|royk|smoke|flash|molly|nade|grenade|utility|utstyr)/.test(n)) {
-    if (!found.includes("hegrenade")) found.push("hegrenade");
   }
   return found;
 }
 
-function detectLandings(text) {
+function detectLandings(text: string) {
   const n = norm(text);
-  const hits = [];
+  const hits: string[] = [];
   for (const [canonical, aliases] of LANDING_ALIASES) {
-    // longer aliases first already by list order within each row
     const sorted = [...aliases].sort((a, b) => b.length - a.length);
     if (sorted.some((a) => n.includes(norm(a)))) hits.push(canonical);
   }
   return [...new Set(hits)];
 }
 
-function variantPenalty(slug) {
+function variantPenalty(slug: string) {
   let x = 0;
   if (/-(b|c|d|e)$/.test(slug)) x += 2;
   if (/-\d+$/.test(slug)) x += 3;
   return x;
 }
 
-function landingMatchScore(nade, landing) {
+function landingMatchScore(nade: Nade, landing: string) {
   const to = norm(nade.to);
   const slug = norm(nade.slug);
   const l = norm(landing);
   const dash = l.replace(/\s+/g, "-");
-
-  // Prefer exact / dedicated landing smokes over "Jungle And Connector"
   if (to === l) return 12;
   if (to.startsWith(l + " ") || to.endsWith(" " + l)) return 10;
   if (slug.startsWith(dash + "-from-") || slug.startsWith(dash + "-")) return 11;
@@ -119,8 +111,7 @@ function landingMatchScore(nade, landing) {
   return 0;
 }
 
-function bestTypeForLanding(blob, landing, globalTypes) {
-  // Look at the sentence/task that mentions this landing
+function bestTypeForLanding(blob: string, landing: string, globalTypes: string[]) {
   const lines = blob.split(/\n|·|\./);
   const l = norm(landing);
   for (const line of lines) {
@@ -132,52 +123,41 @@ function bestTypeForLanding(blob, landing, globalTypes) {
   return "smoke";
 }
 
-/**
- * Suggest CSNADES lineup links for a strat draft.
- * Picks up to one strong link per detected landing spot.
- */
-export function suggestLineupLinks(strat, { limit = 5, side } = {}) {
-  const map = mapSlug(strat.map);
-  if (!map) return [];
+export function suggestLineupLinks(
+  strat: Pick<Strat, "map" | "side" | "callout" | "description" | "tasks">,
+  catalog: Nade[],
+  { limit = 5 }: { limit?: number } = {}
+): StratLink[] {
+  const mapSlug = MAP_ALIASES[norm(strat.map)];
+  if (!mapSlug) return [];
 
-  const blob = [
-    strat.callout,
-    strat.calloutEn,
-    strat.description,
-    strat.descriptionEn,
-    ...(strat.tasks || []),
-    ...(strat.tasksEn || []),
-  ].join("\n");
-
+  const blob = [strat.callout, strat.description, ...(strat.tasks || [])].join("\n");
   const globalTypes = detectTypes(blob);
   const landings = detectLandings(blob);
   if (!landings.length) return [];
 
-  const team = (side || strat.side || "").toLowerCase();
-  const pool = CATALOG.nades.filter((n) => n.map === map);
-  const out = [];
-  const seenTo = new Set();
+  const team = (strat.side || "").toLowerCase();
+  const pool = catalog.filter((n) => n.map === mapSlug || norm(n.map) === mapSlug);
+  const out: StratLink[] = [];
+  const seen = new Set<string>();
 
   for (const landing of landings) {
     if (out.length >= limit) break;
     const wantType = bestTypeForLanding(blob, landing, globalTypes);
-    let best = null;
+    let best: Nade | null = null;
     let bestScore = 0;
 
     for (const nade of pool) {
       let score = landingMatchScore(nade, landing);
-      if (score < 6) continue; // skip weak / combo-only hits
+      if (score < 6) continue;
       if (nade.type === wantType) score += 4;
       else if (globalTypes.includes(nade.type)) score += 1;
       else score -= 2;
-
       if (team === "t" || team === "ct") {
         if (nade.team === team) score += 1;
         else if (nade.team && nade.team !== "both") score -= 1;
       }
-
       score -= variantPenalty(nade.slug);
-
       if (score > bestScore) {
         bestScore = score;
         best = nade;
@@ -186,11 +166,10 @@ export function suggestLineupLinks(strat, { limit = 5, side } = {}) {
 
     if (!best || bestScore < 8) continue;
     const dedupe = `${best.type}|${norm(best.to)}`;
-    if (seenTo.has(dedupe)) continue;
-    seenTo.add(dedupe);
+    if (seen.has(dedupe)) continue;
+    seen.add(dedupe);
     out.push({
-      label: best.label,
-      labelEn: best.labelEn,
+      label: best.labelEn || best.label || best.to,
       url: best.url,
     });
   }
@@ -198,5 +177,12 @@ export function suggestLineupLinks(strat, { limit = 5, side } = {}) {
   return out;
 }
 
-/** Snapshot size for settings hint — aliases for matching live in this file, not catalog JSON. */
-export const CATALOG_SIZE = CATALOG.nades.length;
+export function mergeSuggested(
+  pinned: StratLink[],
+  suggested: StratLink[],
+  limit = 5
+): { pinned: StratLink[]; suggested: StratLink[] } {
+  const pinnedUrls = new Set(pinned.map((l) => l.url));
+  const extra = suggested.filter((s) => !pinnedUrls.has(s.url)).slice(0, Math.max(0, limit - pinned.length));
+  return { pinned, suggested: extra };
+}
