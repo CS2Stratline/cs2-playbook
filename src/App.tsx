@@ -1,15 +1,13 @@
 import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "./lib/auth";
 import { PlaybookProvider } from "./lib/playbook";
-import { isCloudMode } from "./lib/api";
 import { LobbyScreen } from "./screens/LobbyScreen";
 import { MatchScreen } from "./screens/MatchScreen";
 import { BookScreen } from "./screens/BookScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
-import { AuthScreen } from "./screens/AuthScreen";
 
 function Shell() {
-  const { loading, user, mode } = useAuth();
+  const { loading, mode, user, supabaseReady } = useAuth();
 
   if (loading) {
     return (
@@ -19,27 +17,20 @@ function Shell() {
     );
   }
 
-  // Cloud mode requires auth for app routes (except we show auth on settings/landing)
-  if (isCloudMode() && !user) {
-    return (
-      <div className="app-shell">
-        <header className="topbar">
-          <p className="brand">
-            <span>CS2</span>
-            Cloud Playbook
-          </p>
-        </header>
-        <AuthScreen />
-      </div>
-    );
-  }
+  const subtitle = user
+    ? "Cloud"
+    : supabaseReady
+      ? "Guest · local"
+      : mode === "local"
+        ? "Local demo"
+        : "Guest";
 
   return (
     <PlaybookProvider>
       <div className="app-shell">
         <header className="topbar">
           <p className="brand">
-            <span>CS2 · {mode === "local" ? "Local demo" : "Cloud"}</span>
+            <span>CS2 · {subtitle}</span>
             Playbook
           </p>
         </header>
