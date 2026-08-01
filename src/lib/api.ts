@@ -50,7 +50,9 @@ function loadLocal(): Store {
     const raw = localStorage.getItem(LOCAL_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as Store;
-      if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats)) return parsed;
+      if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats) && parsed.packs.length > 0) {
+        return parsed;
+      }
     }
   } catch {
     /* fall through */
