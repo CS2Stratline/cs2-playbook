@@ -1,8 +1,20 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
-import type { AdminProfile, Pack, Strat, UserSession, Profile, Side } from "./types";
+import type { AdminProfile, Pack, Strat, UserSession, Profile, Side, StratLink } from "./types";
 import { MAPS, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
+import { safeHttpUrl } from "./safeUrl";
+
+function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
+  return (links || [])
+    .map((l) => {
+      const url = safeHttpUrl(l.url);
+      if (!url) return null;
+      return { label: String(l.label || "").trim().slice(0, 80), url };
+    })
+    .filter((l): l is StratLink => !!l)
+    .slice(0, 8);
+}
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
@@ -365,13 +377,17 @@ export type SharedStratPatch = {
 
 /** Update a system strat for everyone. Syncs personal pool copies (`catalog:<id>`). */
 export async function upsertSharedStrat(systemStratId: string, patch: SharedStratPatch) {
+  const links = sanitizeLinks(patch.links);
+  const tasks = (patch.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const callout = String(patch.callout || "").trim().slice(0, 60);
+  const description = String(patch.description || "").trim().slice(0, 280);
   const level =
     patch.level ??
     estimateStratLevel({
-      callout: patch.callout,
-      description: patch.description,
-      tasks: patch.tasks,
-      links: patch.links,
+      callout,
+      description,
+      tasks,
+      links,
       rounds: patch.rounds,
       side: patch.side,
     });
@@ -382,13 +398,13 @@ export async function upsertSharedStrat(systemStratId: string, patch: SharedStra
       if (!isTarget) return s;
       return {
         ...s,
-        callout: patch.callout,
-        description: patch.description,
-        tasks: patch.tasks,
+        callout,
+        description,
+        tasks,
         rounds: patch.rounds,
         site: patch.site,
         status: patch.status,
-        links: patch.links,
+        links,
         level,
         ...(patch.map ? { map: patch.map } : {}),
         ...(patch.side ? { side: patch.side } : {}),
@@ -401,13 +417,13 @@ export async function upsertSharedStrat(systemStratId: string, patch: SharedStra
 
   const { error } = await supabase!.rpc("admin_update_shared_strat", {
     p_id: systemStratId,
-    p_callout: patch.callout,
-    p_description: patch.description,
-    p_tasks: patch.tasks,
+    p_callout: callout,
+    p_description: description,
+    p_tasks: tasks,
     p_rounds: patch.rounds,
     p_site: patch.site,
     p_status: patch.status,
-    p_links: patch.links,
+    p_links: links,
     p_level: level,
     p_map: patch.map ?? null,
     p_side: patch.side ?? null,
@@ -416,35 +432,41 @@ export async function upsertSharedStrat(systemStratId: string, patch: SharedStra
 }
 
 export async function upsertPrivateStrat(userId: string, packId: string, strat: Partial<Strat> & { id?: string }) {
+  const links = sanitizeLinks(strat.links);
+  const tasks = (strat.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const callout = String(strat.callout || "").trim().slice(0, 60);
+  const description = String(strat.description || "").trim().slice(0, 280);
+  const cleaned = { ...strat, links, tasks, callout, description };
+
   if (!isCloudMode()) {
-    if (strat.id) {
-      memory.strats = memory.strats.map((s) => (s.id === strat.id ? { ...s, ...strat } as Strat : s));
+    if (cleaned.id) {
+      memory.strats = memory.strats.map((s) => (s.id === cleaned.id ? ({ ...s, ...cleaned } as Strat) : s));
     } else {
       const id = crypto.randomUUID();
       const level =
-        strat.level ??
+        cleaned.level ??
         estimateStratLevel({
-          callout: strat.callout,
-          description: strat.description,
-          tasks: strat.tasks,
-          links: strat.links,
-          rounds: strat.rounds,
-          side: strat.side,
+          callout,
+          description,
+          tasks,
+          links,
+          rounds: cleaned.rounds,
+          side: cleaned.side,
         });
       memory.strats.push({
         id,
         pack_id: packId,
         owner_user_id: userId,
         team_id: null,
-        map: strat.map || "Mirage",
-        side: strat.side || "T",
-        site: strat.site ?? "default",
-        callout: strat.callout || "",
-        description: strat.description || "",
-        tasks: strat.tasks || [],
-        rounds: strat.rounds || [],
-        status: strat.status || "ready",
-        links: strat.links || [],
+        map: cleaned.map || "Mirage",
+        side: cleaned.side || "T",
+        site: cleaned.site ?? "default",
+        callout,
+        description,
+        tasks,
+        rounds: cleaned.rounds || [],
+        status: cleaned.status || "ready",
+        links,
         level,
         wins: 0,
         losses: 0,
@@ -459,28 +481,28 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
   const payload = {
     pack_id: packId,
     owner_user_id: userId,
-    map: strat.map,
-    side: strat.side,
-    site: strat.site,
-    callout: strat.callout,
-    description: strat.description,
-    tasks: strat.tasks,
-    rounds: strat.rounds,
-    status: strat.status || "ready",
-    links: strat.links || [],
+    map: cleaned.map,
+    side: cleaned.side,
+    site: cleaned.site,
+    callout,
+    description,
+    tasks,
+    rounds: cleaned.rounds,
+    status: cleaned.status || "ready",
+    links,
     level:
-      strat.level ??
+      cleaned.level ??
       estimateStratLevel({
-        callout: strat.callout,
-        description: strat.description,
-        tasks: strat.tasks,
-        links: strat.links,
-        rounds: strat.rounds,
-        side: strat.side,
+        callout,
+        description,
+        tasks,
+        links,
+        rounds: cleaned.rounds,
+        side: cleaned.side,
       }),
     source: "user",
   };
-  if (strat.id) await supabase!.from("strats").update(payload).eq("id", strat.id).eq("owner_user_id", userId);
+  if (cleaned.id) await supabase!.from("strats").update(payload).eq("id", cleaned.id).eq("owner_user_id", userId);
   else await supabase!.from("strats").insert(payload);
 }
 
