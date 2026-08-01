@@ -34,7 +34,7 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 
 ## Writing rules
 
-1. **Callout:** 1–3 words, shoutable (`Short split`, `Rush B`, not a sentence).
+1. **Callout:** 1–3 words, shoutable (`Short split`, `Rush B`, not a sentence). Avoid vague `Default` callouts — name the approach (`Window control`, `Outside`, `Banana B`).
 2. **Description:** one sentence — the idea, not a novel.
 3. **Tasks:** max 5, one per player / job; concrete verbs.
 4. **Landings:** name real spots (`ticket booth`, `xbox`, `banana`, `heaven`) so CSNADES matching works.

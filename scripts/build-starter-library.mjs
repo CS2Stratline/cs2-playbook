@@ -370,30 +370,6 @@ const strats = [
       L("Røyk: Jungle", "Smoke: Jungle", "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"),
     ],
   }),
-  S({
-    map: "Mirage",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Spredt map-kontroll, spill picks før execute.",
-    descriptionEn: "Spread map control, play for picks before execute.",
-    rounds: [],
-    tasks: [
-      "2 apps / short info",
-      "1–2 mid, 1–2 ramp/palace",
-      "Spill 20s, kall execute etter space",
-    ],
-    tasksEn: [
-      "2 apps / short info",
-      "1–2 mid, 1–2 ramp/palace",
-      "Play 20s, call execute after space",
-    ],
-    links: [
-      L("Røyk: Mid window", "Smoke: Mid window", "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"),
-      L("Røyk: Catwalk", "Smoke: Catwalk", "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"),
-    ],
-  }),
 
   // MIRAGE CT
   S({
@@ -691,29 +667,6 @@ const strats = [
   }),
   S({
     map: "Dust II",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Long info + mid + B pressure, kall etter space.",
-    descriptionEn: "Long info + mid + B pressure, call after space.",
-    rounds: [],
-    tasks: [
-      "2 long, 2 mid/short, 1 B",
-      "Spill 15–25s",
-      "Hit den svake siten",
-    ],
-    tasksEn: [
-      "2 long, 2 mid/short, 1 B",
-      "Play 15–25s",
-      "Hit the weak site",
-    ],
-    links: [
-      L("Røyk: Xbox", "Smoke: Xbox", "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"),
-    ],
-  }),
-  S({
-    map: "Dust II",
     side: "CT",
     site: null,
     callout: "A hold",
@@ -924,26 +877,6 @@ const strats = [
   }),
   S({
     map: "Inferno",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Banana pressure + mid/apps info.",
-    descriptionEn: "Banana pressure + mid/apps info.",
-    rounds: [],
-    tasks: [
-      "2–3 banana, 1–2 mid/apps",
-      "Spill for space",
-      "Execute B eller A",
-    ],
-    tasksEn: [
-      "2–3 banana, 1–2 mid/apps",
-      "Play for space",
-      "Execute B or A",
-    ],
-  }),
-  S({
-    map: "Inferno",
     side: "CT",
     site: null,
     callout: "Banana hold",
@@ -1125,30 +1058,6 @@ const strats = [
   }),
   S({
     map: "Nuke",
-    side: "T",
-    site: "outside",
-    callout: "Outside default",
-    calloutEn: "Outside default",
-    description: "Outside control, spill picks før hit.",
-    descriptionEn: "Outside control, play picks before hit.",
-    rounds: [],
-    tasks: [
-      "Smokes outside early",
-      "Info ramp + secret",
-      "Kall A eller B",
-    ],
-    tasksEn: [
-      "Smokes outside early",
-      "Info ramp + secret",
-      "Call A or B",
-    ],
-    links: [
-      L("Røyk: Outside main", "Smoke: Outside main", "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"),
-      L("Røyk: Garage", "Smoke: Garage", "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"),
-    ],
-  }),
-  S({
-    map: "Nuke",
     side: "CT",
     site: null,
     callout: "Outside hold",
@@ -1284,26 +1193,6 @@ const strats = [
       L("Røyk: Top mid", "Smoke: Top mid", "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn"),
       L("Røyk: Donut", "Smoke: Donut", "https://csnades.gg/ancient/smokes/donut-from-t-mid"),
       L("Røyk: Cat", "Smoke: Cat", "https://csnades.gg/ancient/smokes/cat-from-t-spawn"),
-    ],
-  }),
-  S({
-    map: "Ancient",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Spread ruins/mid/A, kall etter info.",
-    descriptionEn: "Spread ruins/mid/A, call after info.",
-    rounds: [],
-    tasks: [
-      "Map control 20s",
-      "Ikke force tidlig hit",
-      "Execute med smokes",
-    ],
-    tasksEn: [
-      "Map control 20s",
-      "Don't force early hit",
-      "Execute with smokes",
     ],
   }),
   S({
@@ -1450,18 +1339,6 @@ const strats = [
   }),
   S({
     map: "Anubis",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Canal + ruins + mid info.",
-    descriptionEn: "Canal + ruins + mid info.",
-    rounds: [],
-    tasks: ["Spread 20s", "Kall etter space", "Ikke dry peek heaven"],
-    tasksEn: ["Spread 20s", "Call after space", "Don't dry peek heaven"],
-  }),
-  S({
-    map: "Anubis",
     side: "CT",
     site: null,
     callout: "A hold",
@@ -1582,18 +1459,6 @@ const strats = [
       L("Røyk: Right mid", "Smoke: Right mid", "https://csnades.gg/cache/smokes/right-mid-from-garage"),
       L("Røyk: Connector", "Smoke: Connector", "https://csnades.gg/cache/smokes/connector-from-t-spawn"),
     ],
-  }),
-  S({
-    map: "Cache",
-    side: "T",
-    site: "default",
-    callout: "Default",
-    calloutEn: "Default",
-    description: "Garage/mid info før hit.",
-    descriptionEn: "Garage/mid info before hit.",
-    rounds: [],
-    tasks: ["Spread mid + A/B", "Kall etter pick", "Hold utility til execute"],
-    tasksEn: ["Spread mid + A/B", "Call after pick", "Save util for execute"],
   }),
   S({
     map: "Cache",
