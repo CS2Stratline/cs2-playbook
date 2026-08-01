@@ -17,7 +17,7 @@ type Store = {
 
 function defaultSession(): UserSession {
   return {
-    tab: "lobby",
+    tab: "match",
     selected_map: MAPS[1],
     selected_side: "T",
     site_filter: "all",
@@ -190,7 +190,7 @@ export async function getSession(userId: string): Promise<UserSession> {
   if (!data) return defaultSession();
   const row = data as Record<string, unknown>;
   return {
-    tab: (row.tab as UserSession["tab"]) || "match",
+    tab: row.tab === "book" || row.tab === "settings" ? row.tab : "match",
     selected_map: String(row.selected_map || MAPS[1]),
     selected_side: (row.selected_side as Side) || "T",
     site_filter: String(row.site_filter || "all"),
@@ -369,5 +369,59 @@ export function exportBookJson() {
     maps: [...MAPS],
     packs: memory.packs,
     strats: memory.strats,
+  };
+}
+
+export type LiveCallView = {
+  ok: boolean;
+  has_pick: boolean;
+  selected_map: string;
+  selected_side: Side;
+  site_filter: string;
+  timer_ends_at: string | null;
+  updated_at: string | null;
+  logged: "win" | "loss" | null;
+  callout: string | null;
+  description: string | null;
+  tasks: string[];
+  links: { label: string; url: string }[];
+  site: string | null;
+};
+
+export async function ensureLiveShareToken(): Promise<string> {
+  if (!supabase) throw new Error("Supabase is not configured.");
+  const { data, error } = await supabase.rpc("ensure_live_share");
+  if (error) throw error;
+  return String(data);
+}
+
+export async function regenerateLiveShareToken(): Promise<string> {
+  if (!supabase) throw new Error("Supabase is not configured.");
+  const { data, error } = await supabase.rpc("regenerate_live_share");
+  if (error) throw error;
+  return String(data);
+}
+
+export async function fetchLiveCall(token: string): Promise<LiveCallView | null> {
+  if (!supabase || !token) return null;
+  const { data, error } = await supabase.rpc("get_live_call", { p_token: token });
+  if (error || !data) return null;
+  const row = data as Record<string, unknown>;
+  const tasks = Array.isArray(row.tasks) ? (row.tasks as string[]) : [];
+  const links = Array.isArray(row.links) ? (row.links as { label: string; url: string }[]) : [];
+  return {
+    ok: Boolean(row.ok),
+    has_pick: Boolean(row.has_pick),
+    selected_map: String(row.selected_map || "Mirage"),
+    selected_side: (row.selected_side as Side) || "T",
+    site_filter: String(row.site_filter || "all"),
+    timer_ends_at: row.timer_ends_at ? String(row.timer_ends_at) : null,
+    updated_at: row.updated_at ? String(row.updated_at) : null,
+    logged: (row.logged as LiveCallView["logged"]) || null,
+    callout: row.callout ? String(row.callout) : null,
+    description: row.description ? String(row.description) : null,
+    tasks,
+    links,
+    site: row.site ? String(row.site) : null,
   };
 }

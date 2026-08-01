@@ -107,8 +107,16 @@ select {
   width: 100%;
   max-width: var(--max);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
+}
+
+.map-side-chrome {
+  margin-top: 10px;
+}
+
+.live-shell {
+  padding-bottom: 24px;
 }
 
 .nav a {

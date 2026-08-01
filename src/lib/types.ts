@@ -43,7 +43,7 @@ export type Strat = {
 };
 
 export type UserSession = {
-  tab: "match" | "book" | "lobby" | "settings";
+  tab: "match" | "book" | "settings";
   selected_map: string;
   selected_side: Side;
   site_filter: string;

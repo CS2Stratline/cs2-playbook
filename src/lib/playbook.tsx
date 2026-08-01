@@ -29,7 +29,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [subscriptions, setSubscriptions] = useState<Record<string, boolean>>({});
   const [session, setSessionState] = useState<UserSession>({
-    tab: "lobby",
+    tab: "match",
     selected_map: "Mirage",
     selected_side: "T",
     site_filter: "all",
