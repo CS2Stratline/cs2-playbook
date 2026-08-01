@@ -76,12 +76,12 @@ export type Profile = {
 export const MAPS = ["Dust II", "Mirage", "Inferno", "Nuke", "Ancient", "Anubis", "Cache"] as const;
 
 export const TIER_LABEL: Record<PackTier, string> = {
-  pug: "PUG",
-  five_stack: "5-stack",
-  pro: "Pro",
+  pug: "Fundamentals",
+  five_stack: "Stack",
+  pro: "Advanced",
 };
 
-/** Pro packs stay out of the Match pool until premium is wired up. */
+/** Advanced (pro) packs stay locked until premium is wired up. */
 export const PREMIUM_UNLOCKED = false;
 
 export function isPackLocked(pack: Pick<Pack, "tier"> | undefined | null): boolean {
@@ -89,7 +89,7 @@ export function isPackLocked(pack: Pick<Pack, "tier"> | undefined | null): boole
   return pack.tier === "pro" && !PREMIUM_UNLOCKED;
 }
 
-/** Whether a pack contributes to the Match pool. Missing subscription key defaults to on (except locked). */
+/** Guest Match pool: pack toggles. Missing subscription key defaults to on (except locked). */
 export function isPackInMatchPool(
   packId: string,
   subscriptions: Record<string, boolean>,
@@ -99,6 +99,15 @@ export function isPackInMatchPool(
   if (!pack) return false;
   if (isPackLocked(pack)) return false;
   return subscriptions[packId] !== false;
+}
+
+export function catalogSourceKey(catalogStratId: string) {
+  return `catalog:${catalogStratId}`;
+}
+
+export function catalogIdFromSource(source: string | null | undefined): string | null {
+  if (!source || !source.startsWith("catalog:")) return null;
+  return source.slice("catalog:".length);
 }
 
 export const FREEZE_SECONDS = 15;
