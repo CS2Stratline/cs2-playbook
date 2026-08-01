@@ -1,7 +1,7 @@
 {
-  "name": "Startbibliotek / Starter library",
+  "name": "Starter library",
   "version": 2,
-  "note": "Velprøvde CS2-executes (BLAST.tv smoke guides + standard meta). Alle lineup-URL-er er verifisert mot CSNADES.gg-katalogen. Hold callouts korte; øv lineups før scrim.",
+  "note": "Well-known CS2 executes (BLAST.tv smoke guides + standard meta). All lineup URLs are verified against the CSNADES.gg catalog. Keep callouts short; practice lineups before scrim.",
   "sources": [
     "https://blast.tv/article/cs2-mirage-smokes",
     "https://blast.tv/article/cs2-inferno-smokes",
@@ -20,58 +20,118 @@
   "strats": [
     {
       "rounds": [
-        "full"
+        "full",
+        "force"
       ],
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Ticket",
-          "labelEn": "Smoke: Ticket",
-          "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp"
-        },
-        {
-          "label": "Røyk: Jungle",
-          "labelEn": "Smoke: Jungle",
-          "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp"
-        },
-        {
-          "label": "Røyk: Stairs",
-          "labelEn": "Smoke: Stairs",
-          "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
-        },
-        {
-          "label": "Molly: Firebox",
-          "labelEn": "Molly: Firebox",
-          "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs"
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
         },
         {
           "label": "Flash: Ramp",
-          "labelEn": "Flash: Ramp",
           "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
         }
       ],
       "map": "Mirage",
       "side": "T",
       "site": "a",
-      "callout": "Trippel A",
-      "calloutEn": "Triple A",
-      "description": "Klassisk A-execute: ticket, jungle og stairs samtidig, så samlet inn.",
-      "descriptionEn": "Classic A execute: ticket, jungle and stairs together, then enter as five.",
+      "callout": "Contact A",
+      "description": "Fast A contact: light util, trade ramp together — no full triple setup.",
       "tasks": [
-        "Røyk ticket booth / CT",
-        "Røyk jungle",
-        "Røyk stairs",
-        "Flash inn, entry ramp + palace",
-        "Hold con etter plant"
+        "One stairs or jungle smoke if you have it",
+        "Flash ramp, five contact together",
+        "Plant default, hold con soft"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
       ],
-      "tasksEn": [
-        "Smoke ticket booth / CT",
-        "Smoke jungle",
-        "Smoke stairs",
-        "Flash in, entry ramp + palace",
-        "Hold con after plant"
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
       ],
-      "level": 6
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Fast B",
+      "description": "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+      "tasks": [
+        "Smoke market window",
+        "Flash site from apps",
+        "Plant for retake, hold apps/short"
+      ]
+    },
+    {
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol stairs",
+      "description": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+      "tasks": [
+        "Smoke stairs from spawn",
+        "Flash ramp / palace exit",
+        "Plant default, save util"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps split",
+      "description": "Mid window + apps hit together — split B instead of five apps.",
+      "tasks": [
+        "Smoke mid window, take short",
+        "Two through apps with market smokes",
+        "Trade site together"
+      ]
     },
     {
       "rounds": [
@@ -80,46 +140,73 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Jungle",
-          "labelEn": "Smoke: Jungle",
+          "label": "Smoke: Ticket",
+          "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-a-ramp"
+        },
+        {
+          "label": "Smoke: Jungle",
+          "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp"
+        },
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
+        },
+        {
+          "label": "Molly: Firebox",
+          "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Triple A",
+      "description": "Classic A execute: ticket, jungle and stairs together, then enter as five.",
+      "tasks": [
+        "Smoke ticket booth / CT",
+        "Smoke jungle",
+        "Smoke stairs",
+        "Flash in, entry ramp + palace",
+        "Hold con after plant"
+      ]
+    },
+    {
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Jungle",
           "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"
         },
         {
-          "label": "Røyk: Stairs",
-          "labelEn": "Smoke: Stairs",
+          "label": "Smoke: Stairs",
           "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
         },
         {
-          "label": "Røyk: Ticket",
-          "labelEn": "Smoke: Ticket",
+          "label": "Smoke: Ticket",
           "url": "https://csnades.gg/mirage/smokes/ticket-booth-from-t-spawn-fence"
         },
         {
-          "label": "Røyk: Deep stairs",
-          "labelEn": "Smoke: Deep stairs",
+          "label": "Smoke: Deep stairs",
           "url": "https://csnades.gg/mirage/smokes/deep-stairs-from-t-spawn"
         }
       ],
       "map": "Mirage",
       "side": "T",
       "site": "a",
-      "callout": "Spawn-trippel",
-      "calloutEn": "Spawn triple",
-      "description": "Samme A-isolering, men alle tre røyker fra T-spawn (enklere for nye spillere).",
-      "descriptionEn": "Same A isolation, all three smokes from T spawn (easier for newer players).",
+      "callout": "Spawn triple",
+      "description": "Same A isolation, all three smokes from T spawn (easier for newer players).",
       "tasks": [
-        "Røyk jungle fra spawn",
-        "Røyk stairs fra spawn",
-        "Røyk ticket fra ramp (eller spawn-variant)",
-        "Gå samlet ramp når røyken lander"
-      ],
-      "tasksEn": [
         "Smoke jungle from spawn",
         "Smoke stairs from spawn",
         "Smoke ticket from ramp (or spawn variant)",
         "Push ramp together when smokes land"
-      ],
-      "level": 5
+      ]
     },
     {
       "rounds": [
@@ -131,12 +218,10 @@
       "links": [
         {
           "label": "Flash: Balcony",
-          "labelEn": "Flash: Balcony",
           "url": "https://csnades.gg/mirage/flashbangs/balcony-from-palace"
         },
         {
           "label": "Molly: Dark",
-          "labelEn": "Molly: Dark",
           "url": "https://csnades.gg/mirage/molotovs/dark-from-palace-safe"
         }
       ],
@@ -144,15 +229,8 @@
       "side": "T",
       "site": "a",
       "callout": "Palace pop",
-      "calloutEn": "Palace pop",
-      "description": "Raskt ut palace med flash — fungerer på eco/force for plant-penger.",
-      "descriptionEn": "Fast palace exit with flash — works on eco/force for plant money.",
+      "description": "Fast palace exit with flash — works on eco/force for plant money.",
       "tasks": [
-        "1–2 i palace, resten default mid/ramp",
-        "Flash balcony, pop ut",
-        "Plant default eller fall tilbake"
-      ],
-      "tasksEn": [
         "1–2 in palace, rest default mid/ramp",
         "Flash balcony, pop out",
         "Plant default or fall back"
@@ -165,23 +243,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Jungle",
-          "labelEn": "Smoke: Jungle",
+          "label": "Smoke: Jungle",
           "url": "https://csnades.gg/mirage/smokes/jungle-from-a-ramp"
         },
         {
-          "label": "Røyk: Stairs",
-          "labelEn": "Smoke: Stairs",
+          "label": "Smoke: Stairs",
           "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
         },
         {
           "label": "Molly: Tetris",
-          "labelEn": "Molly: Tetris",
           "url": "https://csnades.gg/mirage/molotovs/triple-box-from-tetris"
         },
         {
           "label": "Flash: Ramp",
-          "labelEn": "Flash: Ramp",
           "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-a-ramp"
         }
       ],
@@ -189,22 +263,13 @@
       "side": "T",
       "site": "a",
       "callout": "Ramp only",
-      "calloutEn": "Ramp only",
-      "description": "Fem på ramp uten palace. Jungle + stairs, deretter hard entry.",
-      "descriptionEn": "Five on ramp, no palace. Jungle + stairs, then hard entry.",
+      "description": "Five on ramp, no palace. Jungle + stairs, then hard entry.",
       "tasks": [
-        "Røyk jungle og stairs",
-        "Molly/HE tetris eller firebox",
-        "Flash inn ramp, trade hard",
-        "Én holder top mid mot rotate"
-      ],
-      "tasksEn": [
         "Smoke jungle and stairs",
         "Molly/HE tetris or firebox",
         "Flash ramp entry, trade hard",
         "One holds top mid vs rotate"
-      ],
-      "level": 6
+      ]
     },
     {
       "rounds": [
@@ -213,18 +278,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Jungle",
-          "labelEn": "Smoke: Jungle",
+          "label": "Smoke: Jungle",
           "url": "https://csnades.gg/mirage/smokes/jungle-from-tetris"
         },
         {
-          "label": "Røyk: Jungle+con",
-          "labelEn": "Smoke: Jungle+con",
+          "label": "Smoke: Jungle+con",
           "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-underpass"
         },
         {
           "label": "Molly: Underpass",
-          "labelEn": "Molly: Underpass",
           "url": "https://csnades.gg/mirage/molotovs/underpass-from-jungle"
         }
       ],
@@ -232,16 +294,8 @@
       "side": "T",
       "site": "a",
       "callout": "Under split",
-      "calloutEn": "Under split",
-      "description": "Kontroller underpass, split A via con + ramp.",
-      "descriptionEn": "Take underpass control, split A via con + ramp.",
+      "description": "Take underpass control, split A via con + ramp.",
       "tasks": [
-        "Vinn underpass / short",
-        "Røyk jungle fra under eller tetris",
-        "2–3 ut con, 2 ramp",
-        "Samtidig site-touch"
-      ],
-      "tasksEn": [
         "Win underpass / short",
         "Smoke jungle from under or tetris",
         "2–3 out con, 2 ramp",
@@ -255,35 +309,24 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Stairs",
-          "labelEn": "Smoke: Stairs",
+          "label": "Smoke: Stairs",
           "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
         },
         {
-          "label": "Røyk: Market window",
-          "labelEn": "Smoke: Market window",
+          "label": "Smoke: Market window",
           "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
         },
         {
-          "label": "Røyk: Market door",
-          "labelEn": "Smoke: Market door",
+          "label": "Smoke: Market door",
           "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
         }
       ],
       "map": "Mirage",
       "side": "T",
       "site": "a",
-      "callout": "A fake B",
-      "calloutEn": "A fake to B",
-      "description": "Vis A-røyker, roter raskt B apps mens CT faller A.",
-      "descriptionEn": "Show A smokes, rotate fast to B apps while CTs fall A.",
+      "callout": "A fake to B",
+      "description": "Show A smokes, rotate fast to B apps while CTs fall A.",
       "tasks": [
-        "Kast 1–2 A-røyker (jungle/stairs)",
-        "Lyd/utility A i 3–4 sek",
-        "Hele laget apps → B",
-        "Røyk market window + door på vei inn"
-      ],
-      "tasksEn": [
         "Throw 1–2 A smokes (jungle/stairs)",
         "Make A noise/util for 3–4s",
         "Full team apps → B",
@@ -297,28 +340,23 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Market window",
-          "labelEn": "Smoke: Market window",
+          "label": "Smoke: Market window",
           "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
         },
         {
-          "label": "Røyk: Market door",
-          "labelEn": "Smoke: Market door",
+          "label": "Smoke: Market door",
           "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
         },
         {
           "label": "Molly: Van",
-          "labelEn": "Molly: Van",
           "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
         },
         {
           "label": "Flash: B site",
-          "labelEn": "Flash: B site",
           "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
         },
         {
           "label": "Molly: Bench",
-          "labelEn": "Molly: Bench",
           "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
         }
       ],
@@ -326,24 +364,14 @@
       "side": "T",
       "site": "b",
       "callout": "Apps B",
-      "calloutEn": "Apps B",
-      "description": "Standard B: market window + door, entry apps.",
-      "descriptionEn": "Standard B: market window + door, entry through apps.",
+      "description": "Standard B: market window + door, entry through apps.",
       "tasks": [
-        "Røyk market window",
-        "Røyk market door",
-        "Molly van / bench",
-        "Flash site, entry apps",
-        "Plant for apps eller van"
-      ],
-      "tasksEn": [
         "Smoke market window",
         "Smoke market door",
         "Molly van / bench",
         "Flash site, entry apps",
         "Plant for apps or van"
-      ],
-      "level": 6
+      ]
     },
     {
       "rounds": [
@@ -352,45 +380,32 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Market window",
-          "labelEn": "Smoke: Market window",
+          "label": "Smoke: Market window",
           "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
         },
         {
-          "label": "Røyk: Market door",
-          "labelEn": "Smoke: Market door",
+          "label": "Smoke: Market door",
           "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
         },
         {
-          "label": "Røyk: Catwalk",
-          "labelEn": "Smoke: Catwalk",
+          "label": "Smoke: Catwalk",
           "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
         },
         {
-          "label": "Røyk: B short",
-          "labelEn": "Smoke: B short",
+          "label": "Smoke: B short",
           "url": "https://csnades.gg/mirage/smokes/b-short-from-back-alley"
         },
         {
           "label": "Molly: Van",
-          "labelEn": "Molly: Van",
           "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
         }
       ],
       "map": "Mirage",
       "side": "T",
       "site": "b",
-      "callout": "Fire i marked",
-      "calloutEn": "Four in market",
-      "description": "Full B-isolering: market + catwalk-røyker. Kun full buy.",
-      "descriptionEn": "Full B isolation: market + catwalk smokes. Full buy only.",
+      "callout": "Four in market",
+      "description": "Full B isolation: market + catwalk smokes. Full buy only.",
       "tasks": [
-        "Røyk market window og door",
-        "Røyk catwalk / short",
-        "Molly van",
-        "Entry apps, ikke short"
-      ],
-      "tasksEn": [
         "Smoke market window and door",
         "Smoke catwalk / short",
         "Molly van",
@@ -404,23 +419,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Mid window",
-          "labelEn": "Smoke: Mid window",
+          "label": "Smoke: Mid window",
           "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
         },
         {
-          "label": "Røyk: Catwalk",
-          "labelEn": "Smoke: Catwalk",
+          "label": "Smoke: Catwalk",
           "url": "https://csnades.gg/mirage/smokes/catwalk-from-top-mid"
         },
         {
-          "label": "Røyk: Market door",
-          "labelEn": "Smoke: Market door",
+          "label": "Smoke: Market door",
           "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
         },
         {
           "label": "Flash: Short",
-          "labelEn": "Flash: Short",
           "url": "https://csnades.gg/mirage/flashbangs/b-short-from-catwalk"
         }
       ],
@@ -428,22 +439,13 @@
       "side": "T",
       "site": "b",
       "callout": "Short B",
-      "calloutEn": "Short B",
-      "description": "Trykk B via short/cat etter mid-kontroll.",
-      "descriptionEn": "Hit B via short/cat after mid control.",
+      "description": "Hit B via short/cat after mid control.",
       "tasks": [
-        "Ta window / top mid",
-        "Røyk market door eller window",
-        "Flash short, gå cat → B",
-        "Trade bench og van"
-      ],
-      "tasksEn": [
         "Take window / top mid",
         "Smoke market door or window",
         "Flash short, go cat → B",
         "Trade bench and van"
-      ],
-      "level": 5
+      ]
     },
     {
       "rounds": [
@@ -455,7 +457,6 @@
       "links": [
         {
           "label": "Flash: B site",
-          "labelEn": "Flash: B site",
           "url": "https://csnades.gg/mirage/flashbangs/b-site-from-back-alley"
         }
       ],
@@ -463,15 +464,8 @@
       "side": "T",
       "site": "b",
       "callout": "Rush apps",
-      "calloutEn": "Rush apps",
-      "description": "Rett apps uten røyker — pistol/eco når CT er passive.",
-      "descriptionEn": "Straight apps, no smokes — pistol/eco when CTs are passive.",
+      "description": "Straight apps, no smokes — pistol/eco when CTs are passive.",
       "tasks": [
-        "Fem apps umiddelbart",
-        "Flash site fra back alley",
-        "Spray bench, plant raskt"
-      ],
-      "tasksEn": [
         "Five apps immediately",
         "Flash site from back alley",
         "Spray bench, plant fast"
@@ -484,18 +478,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Mid window",
-          "labelEn": "Smoke: Mid window",
+          "label": "Smoke: Mid window",
           "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
         },
         {
-          "label": "Røyk: Connector",
-          "labelEn": "Smoke: Connector",
+          "label": "Smoke: Connector",
           "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
         },
         {
           "label": "Flash: Top mid",
-          "labelEn": "Flash: Top mid",
           "url": "https://csnades.gg/mirage/flashbangs/top-mid-from-triple"
         }
       ],
@@ -503,20 +494,12 @@
       "side": "T",
       "site": "mid",
       "callout": "Window control",
-      "calloutEn": "Window control",
-      "description": "Røyk mid window, ta top mid for info og split.",
-      "descriptionEn": "Smoke mid window, take top mid for info and splits.",
+      "description": "Smoke mid window, take top mid for info and splits.",
       "tasks": [
-        "Røyk mid window fra spawn",
-        "Flash top mid, ta control",
-        "Bestem A-con eller B-short"
-      ],
-      "tasksEn": [
         "Smoke mid window from spawn",
         "Flash top mid, take control",
         "Decide A-con or B-short"
-      ],
-      "level": 4
+      ]
     },
     {
       "rounds": [
@@ -525,18 +508,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Mid window",
-          "labelEn": "Smoke: Mid window",
+          "label": "Smoke: Mid window",
           "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
         },
         {
-          "label": "Røyk: Catwalk",
-          "labelEn": "Smoke: Catwalk",
+          "label": "Smoke: Catwalk",
           "url": "https://csnades.gg/mirage/smokes/catwalk-from-t-spawn"
         },
         {
-          "label": "Røyk: Market window",
-          "labelEn": "Smoke: Market window",
+          "label": "Smoke: Market window",
           "url": "https://csnades.gg/mirage/smokes/market-window-from-default-b"
         }
       ],
@@ -544,15 +524,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid to B",
-      "calloutEn": "Mid to B",
-      "description": "Window → short → B etter mid-kontroll.",
-      "descriptionEn": "Window → short → B after mid control.",
+      "description": "Window → short → B after mid control.",
       "tasks": [
-        "Røyk window, vinn mid",
-        "Catwalk-røyk om nødvendig",
-        "Fall B short med 4, 1 lurk A"
-      ],
-      "tasksEn": [
         "Smoke window, win mid",
         "Catwalk smoke if needed",
         "Hit B short with 4, 1 lurks A"
@@ -565,18 +538,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Mid window",
-          "labelEn": "Smoke: Mid window",
+          "label": "Smoke: Mid window",
           "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-b"
         },
         {
-          "label": "Røyk: Connector",
-          "labelEn": "Smoke: Connector",
+          "label": "Smoke: Connector",
           "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
         },
         {
-          "label": "Røyk: Jungle",
-          "labelEn": "Smoke: Jungle",
+          "label": "Smoke: Jungle",
           "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"
         }
       ],
@@ -584,15 +554,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid to A",
-      "calloutEn": "Mid to A",
-      "description": "Window/con-kontroll, deretter A via connector.",
-      "descriptionEn": "Window/con control, then A through connector.",
+      "description": "Window/con control, then A through connector.",
       "tasks": [
-        "Røyk window",
-        "Røyk eller clear connector",
-        "2–3 ut con, 2 ramp support"
-      ],
-      "tasksEn": [
         "Smoke window",
         "Smoke or clear connector",
         "2–3 out con, 2 ramp support"
@@ -605,17 +568,113 @@
       "map": "Mirage",
       "side": "CT",
       "site": null,
-      "callout": "A stack",
-      "calloutEn": "A stack",
-      "description": "Tre A, én mid, én B — straff A-takes.",
-      "descriptionEn": "Three A, one mid, one B — punish A takes.",
+      "callout": "Ramp hold",
+      "description": "Strong ramp/palace A — soft B, punish fast A contact.",
       "tasks": [
-        "3 A (ramp/palace/ticket)",
-        "1 window eller con",
-        "1 B apps/short",
-        "Rask rotate B bare på clear info"
+        "2 ramp / tetris",
+        "1 palace or ticket",
+        "1 mid, 1 B soft",
+        "Fall con only on clear B info"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force",
+        "eco"
       ],
-      "tasksEn": [
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid give",
+      "description": "Give mid space on purpose — play for retake / late rotate, save util.",
+      "tasks": [
+        "Soft window — do not die mid",
+        "2 A, 2 B anchors",
+        "Util ready for retake, not mid duel"
+      ]
+    },
+    {
+      "rounds": [
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Eco window",
+      "description": "Eco: stack window/top mid for info — fall to sites on execute.",
+      "tasks": [
+        "3–4 window / top mid",
+        "1 soft A or B",
+        "Fall on smoke execute"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Mid window",
+          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
+        }
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Short mid push",
+      "description": "Push mid with short support to break T mid control.",
+      "tasks": [
+        "1 short ready to swing",
+        "2 mid (window + under)",
+        "1 A, 1 B anchors",
+        "Flash mid, take space, fall on rotate"
+      ]
+    },
+    {
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Bench",
+          "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
+        },
+        {
+          "label": "Molly: Van",
+          "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
+        }
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti apps",
+      "description": "When apps push: let them exit, molly floor/bench, trade from site + short.",
+      "tasks": [
+        "1 short, 1 site/van",
+        "Molly bench/site — not deep apps",
+        "Trade exit, hold market"
+      ]
+    },
+    {
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "A stack",
+      "description": "Three A, one mid, one B — punish A takes.",
+      "tasks": [
         "3 A (ramp/palace/ticket)",
         "1 window or con",
         "1 B apps/short",
@@ -628,7 +687,6 @@
       "links": [
         {
           "label": "Molly: Apps",
-          "labelEn": "Molly: Apps",
           "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
         }
       ],
@@ -636,15 +694,8 @@
       "side": "CT",
       "site": null,
       "callout": "B stack",
-      "calloutEn": "B stack",
-      "description": "Tre B, straff apps-rusher.",
-      "descriptionEn": "Three B, punish apps rushes.",
+      "description": "Three B, punish apps rushes.",
       "tasks": [
-        "3 B (bench/van/market)",
-        "1 mid, 1 A",
-        "Molly apps early"
-      ],
-      "tasksEn": [
         "3 B (bench/van/market)",
         "1 mid, 1 A",
         "Molly apps early"
@@ -659,7 +710,6 @@
       "links": [
         {
           "label": "Flash: Mid window",
-          "labelEn": "Flash: Mid window",
           "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
         }
       ],
@@ -667,15 +717,8 @@
       "side": "CT",
       "site": null,
       "callout": "Mid aggression",
-      "calloutEn": "Mid aggression",
-      "description": "Press mid/window for info og tempo.",
-      "descriptionEn": "Press mid/window for info and pace.",
+      "description": "Press mid/window for info and pace.",
       "tasks": [
-        "2 mid (window + under/con)",
-        "Flash mid, ta space",
-        "Fall tilbake til site på execute"
-      ],
-      "tasksEn": [
         "2 mid (window + under/con)",
         "Flash mid, take space",
         "Fall back to site on execute"
@@ -691,12 +734,10 @@
       "links": [
         {
           "label": "HE: Tetris",
-          "labelEn": "HE: Tetris",
           "url": "https://csnades.gg/mirage/hegrenades/tetris-from-jungle"
         },
         {
           "label": "Flash: Stairs",
-          "labelEn": "Flash: Stairs",
           "url": "https://csnades.gg/mirage/flashbangs/stairs-from-stairs"
         }
       ],
@@ -704,20 +745,12 @@
       "side": "CT",
       "site": null,
       "callout": "Retake A",
-      "calloutEn": "Retake A",
-      "description": "Standard retake: utility fra jungle/con + CT.",
-      "descriptionEn": "Standard retake: utility from jungle/con + CT.",
+      "description": "Standard retake: utility from jungle/con + CT.",
       "tasks": [
-        "Samle 3+ før retake",
-        "Utility stairs/tetris",
-        "Samtidig fra con + CT"
-      ],
-      "tasksEn": [
         "Stack 3+ before retake",
         "Utility stairs/tetris",
         "Swing together from con + CT"
-      ],
-      "level": 7
+      ]
     },
     {
       "rounds": [
@@ -726,23 +759,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
+          "label": "Smoke: Xbox",
           "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
         },
         {
-          "label": "Røyk: CT spawn",
-          "labelEn": "Smoke: CT spawn",
+          "label": "Smoke: CT spawn",
           "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
         },
         {
           "label": "Molly: Car",
-          "labelEn": "Molly: Car",
           "url": "https://csnades.gg/dust2/molotovs/car-from-long-doors"
         },
         {
-          "label": "Røyk: A cross",
-          "labelEn": "Smoke: A cross",
+          "label": "Smoke: A cross",
           "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors"
         }
       ],
@@ -750,16 +779,8 @@
       "side": "T",
       "site": "a",
       "callout": "Long A",
-      "calloutEn": "Long A",
-      "description": "Ta long, røyk CT-kryss, plant A.",
-      "descriptionEn": "Take long, smoke CT cross, plant A.",
+      "description": "Take long, smoke CT cross, plant A.",
       "tasks": [
-        "Røyk xbox tidlig (mid-info)",
-        "Clear long doors, molly car",
-        "Røyk CT spawn / cross",
-        "Flash pit, entry long"
-      ],
-      "tasksEn": [
         "Smoke xbox early (mid info)",
         "Clear long doors, molly car",
         "Smoke CT spawn / cross",
@@ -773,23 +794,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
+          "label": "Smoke: Xbox",
           "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
         },
         {
-          "label": "Røyk: CT spawn",
-          "labelEn": "Smoke: CT spawn",
+          "label": "Smoke: CT spawn",
           "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
         },
         {
           "label": "Flash: A short",
-          "labelEn": "Flash: A short",
           "url": "https://csnades.gg/dust2/flashbangs/a-site-from-a-short"
         },
         {
-          "label": "Røyk: Short",
-          "labelEn": "Smoke: Short",
+          "label": "Smoke: Short",
           "url": "https://csnades.gg/dust2/smokes/short-from-short"
         }
       ],
@@ -797,16 +814,8 @@
       "side": "T",
       "site": "a",
       "callout": "Short A",
-      "calloutEn": "Short A",
-      "description": "Cat/short execute etter mid-control.",
-      "descriptionEn": "Cat/short execute after mid control.",
+      "description": "Cat/short execute after mid control.",
       "tasks": [
-        "Røyk xbox, ta mid",
-        "Røyk CT fra xbox",
-        "Flash short, gå cat",
-        "Trade goose / site"
-      ],
-      "tasksEn": [
         "Smoke xbox, take mid",
         "Smoke CT from xbox",
         "Flash short, go cat",
@@ -820,18 +829,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
+          "label": "Smoke: Xbox",
           "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
         },
         {
-          "label": "Røyk: CT spawn",
-          "labelEn": "Smoke: CT spawn",
+          "label": "Smoke: CT spawn",
           "url": "https://csnades.gg/dust2/smokes/ct-spawn-from-xbox"
         },
         {
-          "label": "Røyk: A cross",
-          "labelEn": "Smoke: A cross",
+          "label": "Smoke: A cross",
           "url": "https://csnades.gg/dust2/smokes/a-cross-from-a-long"
         }
       ],
@@ -839,15 +845,8 @@
       "side": "T",
       "site": "a",
       "callout": "Split A",
-      "calloutEn": "Split A",
-      "description": "Long + short samtidig.",
-      "descriptionEn": "Long + short at the same time.",
+      "description": "Long + short at the same time.",
       "tasks": [
-        "2–3 long, 2 short",
-        "Røyk CT cross",
-        "Touch site samme tick"
-      ],
-      "tasksEn": [
         "2–3 long, 2 short",
         "Smoke CT cross",
         "Touch site same tick"
@@ -862,8 +861,7 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Long corner",
-          "labelEn": "Smoke: Long corner",
+          "label": "Smoke: Long corner",
           "url": "https://csnades.gg/dust2/smokes/long-corner-from-t-spawn"
         }
       ],
@@ -871,15 +869,8 @@
       "side": "T",
       "site": "a",
       "callout": "Fast long",
-      "calloutEn": "Fast long",
-      "description": "Pistol/eco long rush uten tung utility.",
-      "descriptionEn": "Pistol/eco long rush without heavy utility.",
+      "description": "Pistol/eco long rush without heavy utility.",
       "tasks": [
-        "Fem long umiddelbart",
-        "Flash doors, spray through",
-        "Plant nær long"
-      ],
-      "tasksEn": [
         "Five long immediately",
         "Flash doors, spray through",
         "Plant near long"
@@ -892,18 +883,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: B doors",
-          "labelEn": "Smoke: B doors",
+          "label": "Smoke: B doors",
           "url": "https://csnades.gg/dust2/smokes/b-doors-from-upper-tunnels-a"
         },
         {
-          "label": "Røyk: B window",
-          "labelEn": "Smoke: B window",
+          "label": "Smoke: B window",
           "url": "https://csnades.gg/dust2/smokes/b-window-from-outside-b-tunnels"
         },
         {
-          "label": "Røyk: B plat",
-          "labelEn": "Smoke: B plat",
+          "label": "Smoke: B plat",
           "url": "https://csnades.gg/dust2/smokes/b-plat-from-upper-tunnels"
         }
       ],
@@ -911,16 +899,8 @@
       "side": "T",
       "site": "b",
       "callout": "B doors",
-      "calloutEn": "B doors",
-      "description": "Standard B: røyk doors/window, entry tunnels.",
-      "descriptionEn": "Standard B: smoke doors/window, entry tunnels.",
+      "description": "Standard B: smoke doors/window, entry tunnels.",
       "tasks": [
-        "Røyk B doors",
-        "Røyk B window",
-        "Flash tunnels, entry",
-        "Clear car / plat"
-      ],
-      "tasksEn": [
         "Smoke B doors",
         "Smoke B window",
         "Flash tunnels, entry",
@@ -936,8 +916,7 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: B doors",
-          "labelEn": "Smoke: B doors",
+          "label": "Smoke: B doors",
           "url": "https://csnades.gg/dust2/smokes/b-doors-from-t-spawn"
         }
       ],
@@ -945,15 +924,8 @@
       "side": "T",
       "site": "b",
       "callout": "Rush B",
-      "calloutEn": "Rush B",
-      "description": "Rett tunnels — klassisk pistol/eco.",
-      "descriptionEn": "Straight tunnels — classic pistol/eco.",
+      "description": "Straight tunnels — classic pistol/eco.",
       "tasks": [
-        "Fem upper tunnels",
-        "Flash B, spray doors",
-        "Plant default B"
-      ],
-      "tasksEn": [
         "Five upper tunnels",
         "Flash B, spray doors",
         "Plant default B"
@@ -966,18 +938,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
+          "label": "Smoke: Xbox",
           "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
         },
         {
-          "label": "Røyk: Mid doors",
-          "labelEn": "Smoke: Mid doors",
+          "label": "Smoke: Mid doors",
           "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn"
         },
         {
-          "label": "Røyk: B doors",
-          "labelEn": "Smoke: B doors",
+          "label": "Smoke: B doors",
           "url": "https://csnades.gg/dust2/smokes/b-doors-from-catwalk"
         }
       ],
@@ -985,15 +954,8 @@
       "side": "T",
       "site": "b",
       "callout": "Mid to B",
-      "calloutEn": "Mid to B",
-      "description": "Xbox/mid doors, deretter B via CT eller tunnels.",
-      "descriptionEn": "Xbox/mid doors, then B via CT or tunnels.",
+      "description": "Xbox/mid doors, then B via CT or tunnels.",
       "tasks": [
-        "Røyk xbox + mid doors",
-        "Ta mid control",
-        "Hit B doors eller CT rotate"
-      ],
-      "tasksEn": [
         "Smoke xbox + mid doors",
         "Take mid control",
         "Hit B doors or CT rotate"
@@ -1006,18 +968,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Xbox",
-          "labelEn": "Smoke: Xbox",
+          "label": "Smoke: Xbox",
           "url": "https://csnades.gg/dust2/smokes/xbox-from-t-spawn"
         },
         {
-          "label": "Røyk: Mid doors",
-          "labelEn": "Smoke: Mid doors",
+          "label": "Smoke: Mid doors",
           "url": "https://csnades.gg/dust2/smokes/mid-doors-from-t-spawn"
         },
         {
           "label": "Flash: Mid doors",
-          "labelEn": "Flash: Mid doors",
           "url": "https://csnades.gg/dust2/flashbangs/mid-doors-from-xbox"
         }
       ],
@@ -1025,15 +984,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Xbox mid",
-      "calloutEn": "Xbox mid",
-      "description": "Røyk xbox, press mid for picks.",
-      "descriptionEn": "Smoke xbox, press mid for picks.",
+      "description": "Smoke xbox, press mid for picks.",
       "tasks": [
-        "Røyk xbox fra spawn",
-        "Flash mid doors",
-        "Spill short eller B etter info"
-      ],
-      "tasksEn": [
         "Smoke xbox from spawn",
         "Flash mid doors",
         "Hit short or B after info"
@@ -1047,15 +999,8 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "calloutEn": "A hold",
-      "description": "Sterk A (long + short), soft B.",
-      "descriptionEn": "Strong A (long + short), soft B.",
+      "description": "Strong A (long + short), soft B.",
       "tasks": [
-        "2 long/pit, 1 short, 1 mid, 1 B",
-        "Hold close long angles",
-        "Rotate early på B sound"
-      ],
-      "tasksEn": [
         "2 long/pit, 1 short, 1 mid, 1 B",
         "Hold close long angles",
         "Rotate early on B sound"
@@ -1069,15 +1014,8 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "calloutEn": "B hold",
-      "description": "Dobbel B, straff tunnels.",
-      "descriptionEn": "Double B, punish tunnels.",
+      "description": "Double B, punish tunnels.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Molly tunnels entry",
-        "Ikke over-rotate A"
-      ],
-      "tasksEn": [
         "2 B, 1 mid, 2 A",
         "Molly tunnels entry",
         "Don't over-rotate A"
@@ -1094,15 +1032,8 @@
       "side": "CT",
       "site": null,
       "callout": "Mid push",
-      "calloutEn": "Mid push",
-      "description": "Aggression mid doors for info.",
-      "descriptionEn": "Aggression through mid doors for info.",
+      "description": "Aggression through mid doors for info.",
       "tasks": [
-        "2 mid, flash doors",
-        "Ta xbox space kort",
-        "Fall tilbake før execute"
-      ],
-      "tasksEn": [
         "2 mid, flash doors",
         "Take xbox space briefly",
         "Fall back before execute"
@@ -1115,18 +1046,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/inferno/smokes/ct-from-banana"
         },
         {
-          "label": "Røyk: Coffins",
-          "labelEn": "Smoke: Coffins",
+          "label": "Smoke: Coffins",
           "url": "https://csnades.gg/inferno/smokes/coffins-from-banana"
         },
         {
-          "label": "Røyk: CT boost",
-          "labelEn": "Smoke: CT boost",
+          "label": "Smoke: CT boost",
           "url": "https://csnades.gg/inferno/smokes/ct-boost-from-banana"
         }
       ],
@@ -1134,16 +1062,8 @@
       "side": "T",
       "site": "b",
       "callout": "Banana B",
-      "calloutEn": "Banana B",
-      "description": "BLAST standard: CT + coffins røyk, entry banana.",
-      "descriptionEn": "BLAST standard: CT + coffins smoke, entry banana.",
+      "description": "BLAST standard: CT + coffins smoke, entry banana.",
       "tasks": [
-        "Ta banana control",
-        "Røyk CT (cover boost)",
-        "Røyk coffins",
-        "Molly new box, flash inn"
-      ],
-      "tasksEn": [
         "Take banana control",
         "Smoke CT (cover boost)",
         "Smoke coffins",
@@ -1159,8 +1079,7 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/inferno/smokes/ct-from-banana-b"
         }
       ],
@@ -1168,15 +1087,8 @@
       "side": "T",
       "site": "b",
       "callout": "Fast banana",
-      "calloutEn": "Fast banana",
-      "description": "Tidlig banana for map-kontroll eller rush.",
-      "descriptionEn": "Early banana for map control or rush.",
+      "description": "Early banana for map control or rush.",
       "tasks": [
-        "Utility banana first 10s",
-        "Flash deep, ta car/logs",
-        "Hold eller hit B"
-      ],
-      "tasksEn": [
         "Utility banana first 10s",
         "Flash deep, take car/logs",
         "Hold or hit B"
@@ -1189,13 +1101,11 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Hay",
-          "labelEn": "Smoke: Hay",
+          "label": "Smoke: Hay",
           "url": "https://csnades.gg/inferno/smokes/hay-from-apts-a"
         },
         {
-          "label": "Røyk: Pit",
-          "labelEn": "Smoke: Pit",
+          "label": "Smoke: Pit",
           "url": "https://csnades.gg/inferno/smokes/pit-from-mid"
         }
       ],
@@ -1203,16 +1113,8 @@
       "side": "T",
       "site": "a",
       "callout": "Apps A",
-      "calloutEn": "Apps A",
-      "description": "A via apartments / balcony.",
-      "descriptionEn": "A through apartments / balcony.",
+      "description": "A through apartments / balcony.",
       "tasks": [
-        "Kontroller apps",
-        "Røyk/molly balcony fights",
-        "Entry balcony → site",
-        "Clear pit og library"
-      ],
-      "tasksEn": [
         "Control apps",
         "Smoke/molly balcony fights",
         "Entry balcony → site",
@@ -1226,23 +1128,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Arch",
-          "labelEn": "Smoke: Arch",
+          "label": "Smoke: Arch",
           "url": "https://csnades.gg/inferno/smokes/arch-from-alt-mid"
         },
         {
-          "label": "Røyk: Library",
-          "labelEn": "Smoke: Library",
+          "label": "Smoke: Library",
           "url": "https://csnades.gg/inferno/smokes/library-from-alt-mid"
         },
         {
-          "label": "Røyk: Moto",
-          "labelEn": "Smoke: Moto",
+          "label": "Smoke: Moto",
           "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
         },
         {
-          "label": "Røyk: Arches",
-          "labelEn": "Smoke: Arches",
+          "label": "Smoke: Arches",
           "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid"
         }
       ],
@@ -1250,16 +1148,8 @@
       "side": "T",
       "site": "a",
       "callout": "Arch A",
-      "calloutEn": "Arch A",
       "description": "BLAST A wrap: arch + library + moto.",
-      "descriptionEn": "BLAST A wrap: arch + library + moto.",
       "tasks": [
-        "Røyk arch",
-        "Røyk library",
-        "Røyk moto",
-        "Entry short/long sammen"
-      ],
-      "tasksEn": [
         "Smoke arch",
         "Smoke library",
         "Smoke moto",
@@ -1273,18 +1163,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Moto",
-          "labelEn": "Smoke: Moto",
+          "label": "Smoke: Moto",
           "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
         },
         {
-          "label": "Røyk: Pit",
-          "labelEn": "Smoke: Pit",
+          "label": "Smoke: Pit",
           "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid"
         },
         {
-          "label": "Røyk: Library",
-          "labelEn": "Smoke: Library",
+          "label": "Smoke: Library",
           "url": "https://csnades.gg/inferno/smokes/library-from-bottom-mid"
         }
       ],
@@ -1292,15 +1179,8 @@
       "side": "T",
       "site": "a",
       "callout": "Short A",
-      "calloutEn": "Short A",
-      "description": "Mid → short med moto-røyk.",
-      "descriptionEn": "Mid → short with moto smoke.",
+      "description": "Mid → short with moto smoke.",
       "tasks": [
-        "Ta mid/alt-mid",
-        "Røyk moto (AWP library)",
-        "Flash short, entry"
-      ],
-      "tasksEn": [
         "Take mid/alt-mid",
         "Smoke moto (AWP library)",
         "Flash short, entry"
@@ -1313,13 +1193,11 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Boiler",
-          "labelEn": "Smoke: Boiler",
+          "label": "Smoke: Boiler",
           "url": "https://csnades.gg/inferno/smokes/boiler-from-t-spawn"
         },
         {
-          "label": "Røyk: Arch",
-          "labelEn": "Smoke: Arch",
+          "label": "Smoke: Arch",
           "url": "https://csnades.gg/inferno/smokes/arch-from-bottom-mid"
         }
       ],
@@ -1327,15 +1205,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid control",
-      "calloutEn": "Mid control",
-      "description": "Ta mid for A-short eller info.",
-      "descriptionEn": "Take mid for A-short or info.",
+      "description": "Take mid for A-short or info.",
       "tasks": [
-        "Utility top mid",
-        "Clear boiler / alt",
-        "Hit short eller hold"
-      ],
-      "tasksEn": [
         "Utility top mid",
         "Clear boiler / alt",
         "Hit short or hold"
@@ -1349,15 +1220,8 @@
       "side": "CT",
       "site": null,
       "callout": "Banana hold",
-      "calloutEn": "Banana hold",
-      "description": "Dobbel banana, nekt early control.",
-      "descriptionEn": "Double banana, deny early control.",
+      "description": "Double banana, deny early control.",
       "tasks": [
-        "2 banana, 2 A, 1 mid",
-        "Molly/HE deep banana",
-        "Fall til coffins på execute"
-      ],
-      "tasksEn": [
         "2 banana, 2 A, 1 mid",
         "Molly/HE deep banana",
         "Fall to coffins on execute"
@@ -1371,15 +1235,8 @@
       "side": "CT",
       "site": null,
       "callout": "A stack",
-      "calloutEn": "A stack",
-      "description": "Sterk A, soft banana.",
-      "descriptionEn": "Strong A, soft banana.",
+      "description": "Strong A, soft banana.",
       "tasks": [
-        "3 A (pit/site/library), 1 mid, 1 banana",
-        "Straff apps",
-        "Tidlig call på banana loss"
-      ],
-      "tasksEn": [
         "3 A (pit/site/library), 1 mid, 1 banana",
         "Punish apps",
         "Early call on banana loss"
@@ -1397,15 +1254,8 @@
       "side": "CT",
       "site": null,
       "callout": "Retake B",
-      "calloutEn": "Retake B",
-      "description": "Retake fra CT + apps/banana.",
-      "descriptionEn": "Retake from CT + apps/banana.",
+      "description": "Retake from CT + apps/banana.",
       "tasks": [
-        "Samle før peeker",
-        "Utility site/newbox",
-        "Samtidig CT + banana"
-      ],
-      "tasksEn": [
         "Group before peeks",
         "Utility site/newbox",
         "Swing CT + banana together"
@@ -1418,39 +1268,28 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Outside main",
-          "labelEn": "Smoke: Outside main",
+          "label": "Smoke: Outside main",
           "url": "https://csnades.gg/nuke/smokes/outside-main-from-t-spawn"
         },
         {
-          "label": "Røyk: Garage",
-          "labelEn": "Smoke: Garage",
+          "label": "Smoke: Garage",
           "url": "https://csnades.gg/nuke/smokes/front-garage-from-t-spawn"
         },
         {
-          "label": "Røyk: Secret close",
-          "labelEn": "Smoke: Secret close",
+          "label": "Smoke: Secret close",
           "url": "https://csnades.gg/nuke/smokes/secret-close-from-t-spawn"
         },
         {
-          "label": "Røyk: Secret far",
-          "labelEn": "Smoke: Secret far",
+          "label": "Smoke: Secret far",
           "url": "https://csnades.gg/nuke/smokes/secret-far-from-t-spawn"
         }
       ],
       "map": "Nuke",
       "side": "T",
-      "site": "a",
+      "site": "outside",
       "callout": "Outside A",
-      "calloutEn": "Outside A",
-      "description": "Outside smokes → secret/ramp eller heaven pressure.",
-      "descriptionEn": "Outside smokes → secret/ramp or heaven pressure.",
+      "description": "Outside smokes → secret/ramp or heaven pressure.",
       "tasks": [
-        "Røyk outside main / garage",
-        "Røyk secret close/far",
-        "Ta outside, hit A main eller heaven"
-      ],
-      "tasksEn": [
         "Smoke outside main / garage",
         "Smoke secret close/far",
         "Take outside, hit A main or heaven"
@@ -1463,18 +1302,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Heaven",
-          "labelEn": "Smoke: Heaven",
+          "label": "Smoke: Heaven",
           "url": "https://csnades.gg/nuke/smokes/heaven-from-silo"
         },
         {
-          "label": "Røyk: A main",
-          "labelEn": "Smoke: A main",
+          "label": "Smoke: A main",
           "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof"
         },
         {
-          "label": "Røyk: Lockers",
-          "labelEn": "Smoke: Lockers",
+          "label": "Smoke: Lockers",
           "url": "https://csnades.gg/nuke/smokes/lockers-from-t-spawn-a"
         }
       ],
@@ -1482,15 +1318,8 @@
       "side": "T",
       "site": "a",
       "callout": "Heaven A",
-      "calloutEn": "Heaven A",
-      "description": "Silo/heaven smoke, entry A ovenfra.",
-      "descriptionEn": "Silo/heaven smoke, enter A from above.",
+      "description": "Silo/heaven smoke, enter A from above.",
       "tasks": [
-        "Røyk heaven fra silo",
-        "Kontroller hut/silo",
-        "Drop A, clear rafters"
-      ],
-      "tasksEn": [
         "Smoke heaven from silo",
         "Control hut/silo",
         "Drop A, clear rafters"
@@ -1503,29 +1332,20 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Ramp",
-          "labelEn": "Smoke: Ramp",
+          "label": "Smoke: Ramp",
           "url": "https://csnades.gg/nuke/smokes/ramp-from-trophy-a"
         },
         {
           "label": "Flash: Ramp",
-          "labelEn": "Flash: Ramp",
           "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy"
         }
       ],
       "map": "Nuke",
       "side": "T",
-      "site": "a",
-      "callout": "Ramp A",
-      "calloutEn": "Ramp A",
-      "description": "Trophy/ramp trykk inn A lower.",
-      "descriptionEn": "Trophy/ramp pressure into lower A.",
+      "site": "ramp",
+      "callout": "Ramp",
+      "description": "Trophy/ramp pressure down toward B/lower.",
       "tasks": [
-        "Kontroller ramp/trophy",
-        "Flash ramp, entry",
-        "Clear dark / hut support"
-      ],
-      "tasksEn": [
         "Control ramp/trophy",
         "Flash ramp, entry",
         "Clear dark / hut support"
@@ -1538,18 +1358,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Outside main",
-          "labelEn": "Smoke: Outside main",
+          "label": "Smoke: Outside main",
           "url": "https://csnades.gg/nuke/smokes/outside-main-from-outside-t-spawn"
         },
         {
-          "label": "Røyk: Secret far",
-          "labelEn": "Smoke: Secret far",
+          "label": "Smoke: Secret far",
           "url": "https://csnades.gg/nuke/smokes/secret-far-from-outside-t-spawn"
         },
         {
           "label": "Molly: Secret",
-          "labelEn": "Molly: Secret",
           "url": "https://csnades.gg/nuke/molotovs/secret-entry-from-mini"
         }
       ],
@@ -1557,15 +1374,8 @@
       "side": "T",
       "site": "b",
       "callout": "Secret B",
-      "calloutEn": "Secret B",
       "description": "Outside → secret → B.",
-      "descriptionEn": "Outside → secret → B.",
       "tasks": [
-        "Outside smokes",
-        "Secret entry",
-        "Hit B dark / site"
-      ],
-      "tasksEn": [
         "Outside smokes",
         "Secret entry",
         "Hit B dark / site"
@@ -1578,13 +1388,11 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Vent",
-          "labelEn": "Smoke: Vent",
+          "label": "Smoke: Vent",
           "url": "https://csnades.gg/nuke/smokes/vent-from-t-spawn-a"
         },
         {
           "label": "Molly: Back vent",
-          "labelEn": "Molly: Back vent",
           "url": "https://csnades.gg/nuke/molotovs/back-vent-from-t-roof"
         }
       ],
@@ -1592,15 +1400,8 @@
       "side": "T",
       "site": "b",
       "callout": "Vent B",
-      "calloutEn": "Vent B",
-      "description": "Vent drop til B/lower.",
-      "descriptionEn": "Vent drop into B/lower.",
+      "description": "Vent drop into B/lower.",
       "tasks": [
-        "Kontroller vent area",
-        "Røyk/flash vent",
-        "Drop B, trade dark"
-      ],
-      "tasksEn": [
         "Control vent area",
         "Smoke/flash vent",
         "Drop B, trade dark"
@@ -1614,15 +1415,8 @@
       "side": "CT",
       "site": null,
       "callout": "Outside hold",
-      "calloutEn": "Outside hold",
-      "description": "Nekt outside, soft ramp.",
-      "descriptionEn": "Deny outside, soft ramp.",
+      "description": "Deny outside, soft ramp.",
       "tasks": [
-        "2 outside, 1 ramp, 1 heaven, 1 hut",
-        "Utility secret entry",
-        "Fall silent på A hit"
-      ],
-      "tasksEn": [
         "2 outside, 1 ramp, 1 heaven, 1 hut",
         "Utility secret entry",
         "Fall silent on A hit"
@@ -1636,15 +1430,8 @@
       "side": "CT",
       "site": null,
       "callout": "Ramp stack",
-      "calloutEn": "Ramp stack",
-      "description": "Sterk ramp/lower, straff ramp rushes.",
-      "descriptionEn": "Strong ramp/lower, punish ramp rushes.",
+      "description": "Strong ramp/lower, punish ramp rushes.",
       "tasks": [
-        "2–3 ramp/lower, 1 outside, 1 heaven",
-        "HE/molly trophy",
-        "Ikke overcommit outside"
-      ],
-      "tasksEn": [
         "2–3 ramp/lower, 1 outside, 1 heaven",
         "HE/molly trophy",
         "Don't overcommit outside"
@@ -1657,23 +1444,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Donut",
-          "labelEn": "Smoke: Donut",
+          "label": "Smoke: Donut",
           "url": "https://csnades.gg/ancient/smokes/donut-from-t-spawn"
         },
         {
-          "label": "Røyk: Temple",
-          "labelEn": "Smoke: Temple",
+          "label": "Smoke: Temple",
           "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a"
         },
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/ancient/smokes/ct-from-t-spawn"
         },
         {
-          "label": "Røyk: Plat",
-          "labelEn": "Smoke: Plat",
+          "label": "Smoke: Plat",
           "url": "https://csnades.gg/ancient/smokes/plat-from-outside-a"
         }
       ],
@@ -1681,15 +1464,8 @@
       "side": "T",
       "site": "a",
       "callout": "Donut A",
-      "calloutEn": "Donut A",
       "description": "Donut/temple smokes, entry A.",
-      "descriptionEn": "Donut/temple smokes, entry A.",
       "tasks": [
-        "Røyk donut",
-        "Røyk temple / CT",
-        "Entry A main eller cave"
-      ],
-      "tasksEn": [
         "Smoke donut",
         "Smoke temple / CT",
         "Entry A main or cave"
@@ -1702,18 +1478,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Cave",
-          "labelEn": "Smoke: Cave",
+          "label": "Smoke: Cave",
           "url": "https://csnades.gg/ancient/smokes/cave-from-ruins"
         },
         {
-          "label": "Røyk: Temple",
-          "labelEn": "Smoke: Temple",
+          "label": "Smoke: Temple",
           "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a-b"
         },
         {
-          "label": "Røyk: Deep donut",
-          "labelEn": "Smoke: Deep donut",
+          "label": "Smoke: Deep donut",
           "url": "https://csnades.gg/ancient/smokes/deep-donut-from-outside-a-main"
         }
       ],
@@ -1721,15 +1494,8 @@
       "side": "T",
       "site": "a",
       "callout": "Cave split",
-      "calloutEn": "Cave split",
       "description": "Cave + A main split.",
-      "descriptionEn": "Cave + A main split.",
       "tasks": [
-        "Røyk cave lane",
-        "2 cave, 3 main",
-        "Samtidig site"
-      ],
-      "tasksEn": [
         "Smoke cave lane",
         "2 cave, 3 main",
         "Touch site together"
@@ -1742,18 +1508,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: CT alley",
-          "labelEn": "Smoke: CT alley",
+          "label": "Smoke: CT alley",
           "url": "https://csnades.gg/ancient/smokes/ct-alley-from-ruins"
         },
         {
-          "label": "Røyk: B alley",
-          "labelEn": "Smoke: B alley",
+          "label": "Smoke: B alley",
           "url": "https://csnades.gg/ancient/smokes/b-alley-from-ruins"
         },
         {
-          "label": "Røyk: Back alley",
-          "labelEn": "Smoke: Back alley",
+          "label": "Smoke: Back alley",
           "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins"
         }
       ],
@@ -1761,15 +1524,8 @@
       "side": "T",
       "site": "b",
       "callout": "Ruins B",
-      "calloutEn": "Ruins B",
-      "description": "B via ruins / alley.",
-      "descriptionEn": "B through ruins / alley.",
+      "description": "B through ruins / alley.",
       "tasks": [
-        "Røyk CT alley / back alley",
-        "Røyk B alley",
-        "Entry ruins → B"
-      ],
-      "tasksEn": [
         "Smoke CT alley / back alley",
         "Smoke B alley",
         "Entry ruins → B"
@@ -1782,18 +1538,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Top mid",
-          "labelEn": "Smoke: Top mid",
+          "label": "Smoke: Top mid",
           "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn"
         },
         {
-          "label": "Røyk: Donut",
-          "labelEn": "Smoke: Donut",
+          "label": "Smoke: Donut",
           "url": "https://csnades.gg/ancient/smokes/donut-from-t-mid"
         },
         {
-          "label": "Røyk: Cat",
-          "labelEn": "Smoke: Cat",
+          "label": "Smoke: Cat",
           "url": "https://csnades.gg/ancient/smokes/cat-from-t-spawn"
         }
       ],
@@ -1801,15 +1554,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid control",
-      "calloutEn": "Mid control",
       "description": "Top mid smokes for elbow/donut access.",
-      "descriptionEn": "Top mid smokes for elbow/donut access.",
       "tasks": [
-        "Røyk top mid",
-        "Ta elbow space",
-        "Hit A donut eller B"
-      ],
-      "tasksEn": [
         "Smoke top mid",
         "Take elbow space",
         "Hit A donut or B"
@@ -1823,15 +1569,8 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "calloutEn": "A hold",
-      "description": "Sterk A/donut.",
-      "descriptionEn": "Strong A/donut.",
+      "description": "Strong A/donut.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Nekt donut early",
-        "Rotate på ruins sound"
-      ],
-      "tasksEn": [
         "2–3 A, 1 mid, 1 B",
         "Deny donut early",
         "Rotate on ruins sound"
@@ -1845,15 +1584,8 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "calloutEn": "B hold",
-      "description": "Sterk ruins/B.",
-      "descriptionEn": "Strong ruins/B.",
+      "description": "Strong ruins/B.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Utility ruins entry",
-        "Hold cave close"
-      ],
-      "tasksEn": [
         "2 B, 1 mid, 2 A",
         "Utility ruins entry",
         "Hold cave close"
@@ -1866,23 +1598,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Heaven",
-          "labelEn": "Smoke: Heaven",
+          "label": "Smoke: Heaven",
           "url": "https://csnades.gg/anubis/smokes/heaven-from-water"
         },
         {
-          "label": "Røyk: Temple",
-          "labelEn": "Smoke: Temple",
+          "label": "Smoke: Temple",
           "url": "https://csnades.gg/anubis/smokes/temple-from-canals"
         },
         {
           "label": "Molly: Heaven",
-          "labelEn": "Molly: Heaven",
           "url": "https://csnades.gg/anubis/molotovs/heaven-from-water"
         },
         {
-          "label": "Røyk: Platform",
-          "labelEn": "Smoke: Platform",
+          "label": "Smoke: Platform",
           "url": "https://csnades.gg/anubis/smokes/platform-from-water"
         }
       ],
@@ -1890,15 +1618,8 @@
       "side": "T",
       "site": "a",
       "callout": "Water A",
-      "calloutEn": "Water A",
-      "description": "Heaven/camals smokes, entry water/A.",
-      "descriptionEn": "Heaven/canal smokes, entry water/A.",
+      "description": "Heaven/canal smokes, entry water/A.",
       "tasks": [
-        "Røyk heaven",
-        "Røyk temple / connector",
-        "Entry water → A"
-      ],
-      "tasksEn": [
         "Smoke heaven",
         "Smoke temple / connector",
         "Entry water → A"
@@ -1911,18 +1632,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Connector",
-          "labelEn": "Smoke: Connector",
+          "label": "Smoke: Connector",
           "url": "https://csnades.gg/anubis/smokes/connector-from-mid-doors"
         },
         {
-          "label": "Røyk: Heaven",
-          "labelEn": "Smoke: Heaven",
+          "label": "Smoke: Heaven",
           "url": "https://csnades.gg/anubis/smokes/heaven-from-t-upper"
         },
         {
-          "label": "Røyk: Mid",
-          "labelEn": "Smoke: Mid",
+          "label": "Smoke: Mid",
           "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn"
         }
       ],
@@ -1930,15 +1648,8 @@
       "side": "T",
       "site": "a",
       "callout": "Connector A",
-      "calloutEn": "Connector A",
       "description": "Mid/connector into A.",
-      "descriptionEn": "Mid/connector into A.",
       "tasks": [
-        "Ta mid doors",
-        "Røyk connector",
-        "Split A main + water"
-      ],
-      "tasksEn": [
         "Take mid doors",
         "Smoke connector",
         "Split A main + water"
@@ -1951,23 +1662,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: EBox",
-          "labelEn": "Smoke: EBox",
+          "label": "Smoke: EBox",
           "url": "https://csnades.gg/anubis/smokes/ebox-from-ruins"
         },
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/anubis/smokes/ct-from-ruins"
         },
         {
-          "label": "Røyk: B site",
-          "labelEn": "Smoke: B site",
+          "label": "Smoke: B site",
           "url": "https://csnades.gg/anubis/smokes/b-site-from-ruins"
         },
         {
           "label": "Flash: B site",
-          "labelEn": "Flash: B site",
           "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins"
         }
       ],
@@ -1975,16 +1682,8 @@
       "side": "T",
       "site": "b",
       "callout": "Ruins B",
-      "calloutEn": "Ruins B",
-      "description": "B via ruins med ebox/CT smokes.",
-      "descriptionEn": "B through ruins with ebox/CT smokes.",
+      "description": "B through ruins with ebox/CT smokes.",
       "tasks": [
-        "Røyk ebox / canals",
-        "Røyk CT",
-        "Røyk B site lane",
-        "Entry ruins"
-      ],
-      "tasksEn": [
         "Smoke ebox / canals",
         "Smoke CT",
         "Smoke B site lane",
@@ -1998,18 +1697,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Mid B door",
-          "labelEn": "Smoke: Mid B door",
+          "label": "Smoke: Mid B door",
           "url": "https://csnades.gg/anubis/smokes/mid-b-door-from-street"
         },
         {
-          "label": "Røyk: Top mid",
-          "labelEn": "Smoke: Top mid",
+          "label": "Smoke: Top mid",
           "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn"
         },
         {
-          "label": "Røyk: B site",
-          "labelEn": "Smoke: B site",
+          "label": "Smoke: B site",
           "url": "https://csnades.gg/anubis/smokes/b-site-from-t-spawn"
         }
       ],
@@ -2017,15 +1713,8 @@
       "side": "T",
       "site": "b",
       "callout": "Street B",
-      "calloutEn": "Street B",
       "description": "Mid street → B door.",
-      "descriptionEn": "Mid street → B door.",
       "tasks": [
-        "Kontroller street/mid",
-        "Røyk mid B door",
-        "Hit B med ruins support"
-      ],
-      "tasksEn": [
         "Control street/mid",
         "Smoke mid B door",
         "Hit B with ruins support"
@@ -2038,18 +1727,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Top mid",
-          "labelEn": "Smoke: Top mid",
+          "label": "Smoke: Top mid",
           "url": "https://csnades.gg/anubis/smokes/top-mid-from-t-spawn"
         },
         {
-          "label": "Røyk: Mid",
-          "labelEn": "Smoke: Mid",
+          "label": "Smoke: Mid",
           "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn"
         },
         {
-          "label": "Røyk: Connector",
-          "labelEn": "Smoke: Connector",
+          "label": "Smoke: Connector",
           "url": "https://csnades.gg/anubis/smokes/connector-from-t-upper"
         }
       ],
@@ -2057,15 +1743,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid control",
-      "calloutEn": "Mid control",
-      "description": "Top mid for begge sites.",
-      "descriptionEn": "Top mid for both sites.",
+      "description": "Top mid for both sites.",
       "tasks": [
-        "Røyk top mid",
-        "Ta mid doors",
-        "Hit A con eller B street"
-      ],
-      "tasksEn": [
         "Smoke top mid",
         "Take mid doors",
         "Hit A con or B street"
@@ -2079,15 +1758,8 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "calloutEn": "A hold",
-      "description": "Heaven/water sterk.",
-      "descriptionEn": "Strong heaven/water.",
+      "description": "Strong heaven/water.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Nekt water early",
-        "Rotate på ruins"
-      ],
-      "tasksEn": [
         "2–3 A, 1 mid, 1 B",
         "Deny water early",
         "Rotate on ruins"
@@ -2101,15 +1773,8 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "calloutEn": "B hold",
-      "description": "Ruins/ebox sterk.",
-      "descriptionEn": "Strong ruins/ebox.",
+      "description": "Strong ruins/ebox.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Utility ruins",
-        "Hold ebox close"
-      ],
-      "tasksEn": [
         "2 B, 1 mid, 2 A",
         "Utility ruins",
         "Hold ebox close"
@@ -2122,18 +1787,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Forklift",
-          "labelEn": "Smoke: Forklift",
+          "label": "Smoke: Forklift",
           "url": "https://csnades.gg/cache/smokes/forklift-from-outside-squeaky"
         },
         {
-          "label": "Røyk: Back A",
-          "labelEn": "Smoke: Back A",
+          "label": "Smoke: Back A",
           "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-squeaky"
         },
         {
           "label": "Molly: Forklift",
-          "labelEn": "Molly: Forklift",
           "url": "https://csnades.gg/cache/molotovs/forklift-from-a-main"
         }
       ],
@@ -2141,15 +1803,8 @@
       "side": "T",
       "site": "a",
       "callout": "Squeaky A",
-      "calloutEn": "Squeaky A",
-      "description": "Squeaky/forklift smokes inn A.",
-      "descriptionEn": "Squeaky/forklift smokes into A.",
+      "description": "Squeaky/forklift smokes into A.",
       "tasks": [
-        "Røyk forklift",
-        "Røyk back site",
-        "Entry squeaky / main"
-      ],
-      "tasksEn": [
         "Smoke forklift",
         "Smoke back site",
         "Entry squeaky / main"
@@ -2162,18 +1817,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Forklift",
-          "labelEn": "Smoke: Forklift",
+          "label": "Smoke: Forklift",
           "url": "https://csnades.gg/cache/smokes/forklift-from-a-main"
         },
         {
-          "label": "Røyk: NBK",
-          "labelEn": "Smoke: NBK",
+          "label": "Smoke: NBK",
           "url": "https://csnades.gg/cache/smokes/nbk-from-outside-a-main"
         },
         {
-          "label": "Røyk: Back A",
-          "labelEn": "Smoke: Back A",
+          "label": "Smoke: Back A",
           "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-garage"
         }
       ],
@@ -2181,15 +1833,8 @@
       "side": "T",
       "site": "a",
       "callout": "Main A",
-      "calloutEn": "Main A",
-      "description": "A main med forklift smoke.",
-      "descriptionEn": "A main with forklift smoke.",
+      "description": "A main with forklift smoke.",
       "tasks": [
-        "Røyk forklift fra main",
-        "Flash site",
-        "Clear checker / NBK"
-      ],
-      "tasksEn": [
         "Smoke forklift from main",
         "Flash site",
         "Clear checker / NBK"
@@ -2202,23 +1847,19 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Heaven",
-          "labelEn": "Smoke: Heaven",
+          "label": "Smoke: Heaven",
           "url": "https://csnades.gg/cache/smokes/heaven-from-b-main"
         },
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/cache/smokes/ct-from-b-main"
         },
         {
-          "label": "Røyk: B main",
-          "labelEn": "Smoke: B main",
+          "label": "Smoke: B main",
           "url": "https://csnades.gg/cache/smokes/b-main-from-b-halls"
         },
         {
-          "label": "Røyk: Front B",
-          "labelEn": "Smoke: Front B",
+          "label": "Smoke: Front B",
           "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room"
         }
       ],
@@ -2226,15 +1867,8 @@
       "side": "T",
       "site": "b",
       "callout": "B main",
-      "calloutEn": "B main",
       "description": "Heaven/CT smokes, entry B.",
-      "descriptionEn": "Heaven/CT smokes, entry B.",
       "tasks": [
-        "Røyk heaven",
-        "Røyk CT",
-        "Entry B main / sun room"
-      ],
-      "tasksEn": [
         "Smoke heaven",
         "Smoke CT",
         "Entry B main / sun room"
@@ -2247,18 +1881,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Highway",
-          "labelEn": "Smoke: Highway",
+          "label": "Smoke: Highway",
           "url": "https://csnades.gg/cache/smokes/highway-from-truck"
         },
         {
-          "label": "Røyk: Heaven",
-          "labelEn": "Smoke: Heaven",
+          "label": "Smoke: Heaven",
           "url": "https://csnades.gg/cache/smokes/heaven-from-garbage"
         },
         {
-          "label": "Røyk: CT",
-          "labelEn": "Smoke: CT",
+          "label": "Smoke: CT",
           "url": "https://csnades.gg/cache/smokes/ct-from-sun-room"
         }
       ],
@@ -2266,15 +1897,8 @@
       "side": "T",
       "site": "b",
       "callout": "Highway B",
-      "calloutEn": "Highway B",
-      "description": "Highway/truck path til B.",
-      "descriptionEn": "Highway/truck path to B.",
+      "description": "Highway/truck path to B.",
       "tasks": [
-        "Røyk highway",
-        "Support B main",
-        "Trade heaven"
-      ],
-      "tasksEn": [
         "Smoke highway",
         "Support B main",
         "Trade heaven"
@@ -2287,18 +1911,15 @@
       "status": "ready",
       "links": [
         {
-          "label": "Røyk: Left mid",
-          "labelEn": "Smoke: Left mid",
+          "label": "Smoke: Left mid",
           "url": "https://csnades.gg/cache/smokes/left-mid-from-garage"
         },
         {
-          "label": "Røyk: Right mid",
-          "labelEn": "Smoke: Right mid",
+          "label": "Smoke: Right mid",
           "url": "https://csnades.gg/cache/smokes/right-mid-from-garage"
         },
         {
-          "label": "Røyk: Connector",
-          "labelEn": "Smoke: Connector",
+          "label": "Smoke: Connector",
           "url": "https://csnades.gg/cache/smokes/connector-from-t-spawn"
         }
       ],
@@ -2306,15 +1927,8 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid split",
-      "calloutEn": "Mid split",
       "description": "Mid smokes for connector split.",
-      "descriptionEn": "Mid smokes for connector split.",
       "tasks": [
-        "Røyk left/right mid",
-        "Røyk connector",
-        "Split A eller B"
-      ],
-      "tasksEn": [
         "Smoke left/right mid",
         "Smoke connector",
         "Split A or B"
@@ -2328,15 +1942,8 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "calloutEn": "A hold",
-      "description": "Sterk A (forklift/checker).",
-      "descriptionEn": "Strong A (forklift/checker).",
+      "description": "Strong A (forklift/checker).",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Nekt squeaky",
-        "Rotate B på heaven sound"
-      ],
-      "tasksEn": [
         "2–3 A, 1 mid, 1 B",
         "Deny squeaky",
         "Rotate B on heaven sound"
@@ -2350,15 +1957,8 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "calloutEn": "B hold",
-      "description": "Heaven/B main sterk.",
-      "descriptionEn": "Strong heaven/B main.",
+      "description": "Strong heaven/B main.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Hold heaven close",
-        "Utility B halls"
-      ],
-      "tasksEn": [
         "2 B, 1 mid, 2 A",
         "Hold heaven close",
         "Utility B halls"

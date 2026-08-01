@@ -9,9 +9,9 @@ const starter = JSON.parse(readFileSync("src/cs2-startbibliotek.json", "utf8"));
 const uid = () => randomUUID();
 
 function estimateLevel(s, tier) {
-  const callout = String(s.calloutEn || s.callout || "").toLowerCase();
-  const desc = String(s.descriptionEn || s.description || "").toLowerCase();
-  const tasks = (s.tasksEn?.length ? s.tasksEn : s.tasks || []).map((t) => String(t).toLowerCase());
+  const callout = String(s.callout || "").toLowerCase();
+  const desc = String(s.description || "").toLowerCase();
+  const tasks = (s.tasks || []).map((t) => String(t).toLowerCase());
   const blob = `${callout} ${desc} ${tasks.join(" ")}`;
   const rounds = s.rounds || [];
   const links = (s.links || []).length;
@@ -28,18 +28,18 @@ function estimateLevel(s, tier) {
   return Math.max(1, Math.min(10, Math.round(level)));
 }
 
-function enStrat(s, tier = "five_stack") {
+function toStrat(s, tier = "five_stack") {
   const links = (s.links || [])
-    .map((l) => ({ label: l.labelEn || l.label || "", url: l.url }))
+    .map((l) => ({ label: l.label || "", url: l.url }))
     .filter((l) => l.url);
-  const tasks = (s.tasksEn?.length ? s.tasksEn : s.tasks || []).map((t) => String(t).trim()).filter(Boolean);
+  const tasks = (s.tasks || []).map((t) => String(t).trim()).filter(Boolean);
   const strat = {
     id: uid(),
     map: s.map,
     side: s.side,
     site: s.site ?? null,
-    callout: (s.calloutEn || s.callout || "").trim(),
-    description: (s.descriptionEn || s.description || "").trim(),
+    callout: (s.callout || "").trim(),
+    description: (s.description || "").trim(),
     tasks,
     rounds: Array.isArray(s.rounds) ? s.rounds : [],
     status: s.status || "ready",
@@ -54,11 +54,11 @@ function enStrat(s, tier = "five_stack") {
 }
 
 function tierOf(s) {
-  const blob = `${s.calloutEn || ""} ${s.callout || ""} ${(s.tasksEn || s.tasks || []).join(" ")}`.toLowerCase();
+  const blob = `${s.callout || ""} ${(s.tasks || []).join(" ")}`.toLowerCase();
   const rounds = s.rounds || [];
   if (/fake|split|retake|under split|four in market|pro/.test(blob)) return "pro";
   if (rounds.some((r) => ["pistol", "eco", "force"].includes(r)) || /rush|fast |pop|palace pop/.test(blob)) return "pug";
-  if ((s.tasksEn || s.tasks || []).length <= 3 && s.side === "CT") return "pug";
+  if ((s.tasks || []).length <= 3 && s.side === "CT") return "pug";
   return "five_stack";
 }
 
@@ -97,26 +97,26 @@ const packs = {
 
 for (const raw of starter.strats) {
   const t = tierOf(raw);
-  const strat = enStrat(raw, t);
+  const strat = toStrat(raw, t);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
 }
 
 const extraCT = [
-  { map: "Nuke", side: "CT", site: null, callout: "Heaven hold", calloutEn: "Heaven hold", descriptionEn: "Strong heaven/hut, soft outside.", tasksEn: ["2 heaven/hut", "1 ramp", "1 outside", "1 secret watch"], rounds: [], status: "ready", links: [] },
-  { map: "Nuke", side: "CT", site: null, callout: "Anti-eco stack", calloutEn: "Anti-eco stack", descriptionEn: "Stack likely hit site on their eco.", tasksEn: ["Stack predicted site", "Save util for entry", "Don't overpeek"], rounds: ["anti", "eco"], status: "ready", links: [] },
-  { map: "Nuke", side: "CT", site: null, callout: "Retake A", calloutEn: "Retake A", descriptionEn: "Group before swinging lower/heaven.", tasksEn: ["Stack 3+", "Util dark/site", "Swing heaven + ramp together"], rounds: ["full", "force", "anti"], status: "ready", links: [] },
-  { map: "Mirage", side: "CT", site: null, callout: "Apps nade", calloutEn: "Apps nade", descriptionEn: "Deny early apps with utility.", tasksEn: ["Molly/HE apps early", "1 short 1 market", "Info mid"], rounds: ["full", "force"], status: "ready", links: [{ labelEn: "Molly: Apps", url: "https://csnades.gg/mirage/molotovs/b-apts-from-b-site" }] },
-  { map: "Dust II", side: "CT", site: null, callout: "Long nade", calloutEn: "Long nade", descriptionEn: "Delay long with early util.", tasksEn: ["HE/molly long doors", "2 A long/pit", "Rotate on B sound"], rounds: ["full"], status: "ready", links: [] },
-  { map: "Inferno", side: "CT", site: null, callout: "Apps watch", calloutEn: "Apps watch", descriptionEn: "Hold balcony/apps, soft banana.", tasksEn: ["2 A apps/balcony", "1 pit", "1 mid", "1 banana"], rounds: [], status: "ready", links: [] },
-  { map: "Ancient", side: "CT", site: null, callout: "Donut stack", calloutEn: "Donut stack", descriptionEn: "Deny donut, punish A hits.", tasksEn: ["2–3 A/donut", "1 mid", "1 B", "Util donut early"], rounds: ["full"], status: "ready", links: [] },
-  { map: "Anubis", side: "CT", site: null, callout: "Water deny", calloutEn: "Water deny", descriptionEn: "Nade water, hold heaven.", tasksEn: ["Utility water early", "2 A", "1 mid", "1 B"], rounds: ["full", "force"], status: "ready", links: [] },
-  { map: "Cache", side: "CT", site: null, callout: "Mid control", calloutEn: "Mid control", descriptionEn: "Press mid for info, soft sites.", tasksEn: ["2 mid", "1 A", "2 B soft", "Fall on execute"], rounds: ["full"], status: "ready", links: [] },
+  { map: "Nuke", side: "CT", site: null, callout: "Heaven hold", description: "Strong heaven/hut, soft outside.", tasks: ["2 heaven/hut", "1 ramp", "1 outside", "1 secret watch"], rounds: [], status: "ready", links: [] },
+  { map: "Nuke", side: "CT", site: null, callout: "Anti-eco stack", description: "Stack likely hit site on their eco.", tasks: ["Stack predicted site", "Save util for entry", "Don't overpeek"], rounds: ["anti", "eco"], status: "ready", links: [] },
+  { map: "Nuke", side: "CT", site: null, callout: "Retake A", description: "Group before swinging lower/heaven.", tasks: ["Stack 3+", "Util dark/site", "Swing heaven + ramp together"], rounds: ["full", "force", "anti"], status: "ready", links: [] },
+  { map: "Mirage", side: "CT", site: null, callout: "Apps nade", description: "Deny early apps with utility.", tasks: ["Molly/HE apps early", "1 short 1 market", "Info mid"], rounds: ["full", "force"], status: "ready", links: [{ label: "Molly: Apps", url: "https://csnades.gg/mirage/molotovs/b-apts-from-b-site" }] },
+  { map: "Dust II", side: "CT", site: null, callout: "Long nade", description: "Delay long with early util.", tasks: ["HE/molly long doors", "2 A long/pit", "Rotate on B sound"], rounds: ["full"], status: "ready", links: [] },
+  { map: "Inferno", side: "CT", site: null, callout: "Apps watch", description: "Hold balcony/apps, soft banana.", tasks: ["2 A apps/balcony", "1 pit", "1 mid", "1 banana"], rounds: [], status: "ready", links: [] },
+  { map: "Ancient", side: "CT", site: null, callout: "Donut stack", description: "Deny donut, punish A hits.", tasks: ["2–3 A/donut", "1 mid", "1 B", "Util donut early"], rounds: ["full"], status: "ready", links: [] },
+  { map: "Anubis", side: "CT", site: null, callout: "Water deny", description: "Nade water, hold heaven.", tasks: ["Utility water early", "2 A", "1 mid", "1 B"], rounds: ["full", "force"], status: "ready", links: [] },
+  { map: "Cache", side: "CT", site: null, callout: "Mid control", description: "Press mid for info, soft sites.", tasks: ["2 mid", "1 A", "2 B soft", "Fall on execute"], rounds: ["full"], status: "ready", links: [] },
 ];
 
 for (const raw of extraCT) {
   const t = tierOf(raw);
-  const strat = enStrat(raw, t);
+  const strat = toStrat(raw, t);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
 }
