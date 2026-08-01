@@ -38,9 +38,9 @@ Kartnavn i appen → slug: `Dust II` → `dust2`.
 
 ## Lokal katalog
 
-`src/csnades-catalog.json` er et **manuelt snapshot** av offentlige CSNADES-sider (~566 nades for våre sju kart). Landing-/type-aliaser for auto-forslag ligger i `src/lineupMatch.js` (ikke i katalog-JSON).
+`src/csnades-catalog.json` is a **manual snapshot** of public CSNADES pages (~566 nades for our seven maps). Landing/type aliases for auto-suggest live in `src/lib/lineupMatch.ts`.
 
-`src/lineupMatch.js` foreslår lenker ut fra callout + tasks (norsk/engelsk).
+`suggestLineupLinks` only reads lines that mention utility, matches throw *destinations*, and **hard-filters by side** (`team` t/ct) so CT holds never get T execute smokes.
 
 ## When Claude / ChatGPT lager nye strats
 
