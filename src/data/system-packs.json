@@ -12,30 +12,30 @@
     {
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "slug": "essentials-pug",
-      "title": "Essentials (PUG)",
-      "description": "Short callouts, light utility — ranked and pickup friendly.",
+      "title": "Fundamentals",
+      "description": "Defaults, rushes, simple executes — easy to call in freeze time.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 24
+      "strat_count": 33
     },
     {
       "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "slug": "stack-standard",
-      "title": "Stack Standard",
-      "description": "Full executes, defaults, and CT holds for a coordinated five.",
+      "title": "Stack",
+      "description": "Standard smokes and mid control for a coordinated five.",
       "tier": "five_stack",
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 46
+      "strat_count": 50
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "slug": "pro-structure",
-      "title": "Pro Structure",
-      "description": "Fakes, splits, retakes — tighter roles and timing.",
+      "title": "Advanced",
+      "description": "Fakes, timings, denser utility — premium / locked for now.",
       "tier": "pro",
       "visibility": "system",
       "owner_user_id": null,
@@ -2782,6 +2782,369 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
+    },
+    {
+      "id": "9e607e94-db8d-4ddb-9814-e382f1cf789f",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Jungle hold",
+      "description": "Anchor jungle/connector, soft A site.",
+      "tasks": [
+        "1 jungle",
+        "1 stairs/site",
+        "Info mid",
+        "Fall together on execute"
+      ]
+    },
+    {
+      "id": "c4a805e2-cb5f-4514-8bac-ca53f87071d1",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full"
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Underpass deny",
+      "description": "Nade underpass early, hold short/mid.",
+      "tasks": [
+        "HE/molly underpass",
+        "1 short",
+        "1 mid window",
+        "Rotate on B sound"
+      ]
+    },
+    {
+      "id": "90c7a691-a735-4aef-ba76-477cd8506e0d",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "anti"
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Connector stack",
+      "description": "Stack con/jungle to punish A hits.",
+      "tasks": [
+        "2–3 A/con",
+        "1 mid",
+        "1 B soft",
+        "Util ticket early"
+      ]
+    },
+    {
+      "id": "7cdb7e74-41be-480b-9ac3-45a94b8a9a96",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full"
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Window hold",
+      "description": "Smoke/fight for mid window control.",
+      "tasks": [
+        "Contest window",
+        "1 short",
+        "1 market",
+        "Fall on A/B execute"
+      ]
+    },
+    {
+      "id": "0ae1f17a-151c-4a53-919e-4cc87d7da209",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Group market/apps before swinging site.",
+      "tasks": [
+        "Stack 3+ market",
+        "Util bench/site",
+        "Swing together"
+      ]
+    },
+    {
+      "id": "71eca630-bfc5-437c-86b2-62813c0de5c1",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "pistol",
+        "eco",
+        "force"
+      ],
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Apps rush",
+      "description": "Fast apartments — pistol/eco when A is soft.",
+      "tasks": [
+        "Five apps immediately",
+        "Flash balcony",
+        "Plant default or library"
+      ]
+    },
+    {
+      "id": "6bf3bae9-bfef-44b4-8346-a059f7e2add3",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "map": "Inferno",
+      "side": "T",
+      "site": "mid",
+      "callout": "Second mid",
+      "description": "Take second mid for info and splits.",
+      "tasks": [
+        "Smoke Arch/library lane",
+        "2–3 mid",
+        "Support banana soft",
+        "Decide A or B"
+      ]
+    },
+    {
+      "id": "ad7d49af-7875-4d9d-8945-5cd5993937e2",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Banana pop",
+      "description": "Short banana take with flash — plant money rounds.",
+      "tasks": [
+        "Flash deep banana",
+        "2–3 entry",
+        "Rest mid/apps fake",
+        "Plant coffin or log"
+      ]
+    },
+    {
+      "id": "18c1aa88-74e0-4fd8-bb4b-1a9a87bb64be",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full"
+      ],
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Pit control",
+      "description": "Clear pit before A site hit.",
+      "tasks": [
+        "Molly/HE pit",
+        "Smoke arch",
+        "Entry balcony + pit",
+        "Plant default"
+      ]
+    },
+    {
+      "id": "c77e9ee8-cd10-4ad1-9c6b-d370685fd110",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Pit hold",
+      "description": "Anchor pit/library, soft banana.",
+      "tasks": [
+        "1–2 pit/library",
+        "1 mid",
+        "2 banana soft",
+        "Util on banana push"
+      ]
+    },
+    {
+      "id": "b6c37f6d-5377-4c4f-8e2a-fb815343b2cc",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "eco",
+        "anti",
+        "pistol"
+      ],
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Coffin stack",
+      "description": "Stack B on eco — punish banana rushes.",
+      "tasks": [
+        "3 B coffin/new box",
+        "1 mid",
+        "1 A soft",
+        "Save util for entry"
+      ]
+    },
+    {
+      "id": "615e4087-05c5-4124-acec-5e4903928e31",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full"
+      ],
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Arch watch",
+      "description": "Hold arch/mid, deny second mid.",
+      "tasks": [
+        "Smoke/HE mid early",
+        "1 arch",
+        "1 A",
+        "2 banana"
+      ]
+    },
+    {
+      "id": "658f18ed-0b5a-4880-922e-abdb4edef744",
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "source": "system-seed",
+      "status": "ready",
+      "links": [],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Banana nades",
+      "description": "Deep banana util to delay executes.",
+      "tasks": [
+        "Molly/HE deep banana",
+        "2 B",
+        "1 mid",
+        "1 A",
+        "Fall together"
+      ]
     }
   ]
 }

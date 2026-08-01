@@ -12,17 +12,25 @@ type PlaybookState = {
   favorites: Set<string>;
   subscriptions: Record<string, boolean>;
   session: UserSession;
+  /** Signed-in cloud users shop into a personal pool; guests use pack toggles. */
+  usePersonalPool: boolean;
+  catalogStrats: Strat[];
+  myPoolStrats: Strat[];
   refresh: () => Promise<void>;
   setSession: (patch: Partial<UserSession>) => Promise<void>;
   setPackEnabled: (packId: string, enabled: boolean) => Promise<void>;
   toggleFavorite: (stratId: string) => Promise<void>;
+  addToPool: (catalogStrat: Strat) => Promise<void>;
+  removeFromPool: (poolStratId: string) => Promise<void>;
+  addFundamentalsStarter: (map: string) => Promise<number>;
   enabledStrats: Strat[];
 };
 
 const Ctx = createContext<PlaybookState | null>(null);
 
 export function PlaybookProvider({ children }: { children: ReactNode }) {
-  const { userId, loading: authLoading } = useAuth();
+  const { userId, loading: authLoading, user, mode } = useAuth();
+  const usePersonalPool = mode === "cloud" && !!user;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [packs, setPacks] = useState<Pack[]>([]);
@@ -57,7 +65,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       setStrats(s);
       setFavorites(new Set(fav));
       const nextSubs = { ...subs };
-      // default: free system packs on; Pro stays off (locked until premium)
       if (!Object.keys(nextSubs).length) {
         for (const pack of p.filter((x) => x.visibility === "system")) {
           nextSubs[pack.id] = pack.tier !== "pro";
@@ -75,7 +82,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (authLoading) return;
     setLoading(true);
-    refresh();
+    void refresh();
   }, [authLoading, refresh]);
 
   const setSession = useCallback(
@@ -112,9 +119,49 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     [userId]
   );
 
+  const catalogStrats = useMemo(() => {
+    return strats.filter((s) => {
+      const pack = packs.find((p) => p.id === s.pack_id);
+      return pack?.visibility === "system" && !s.owner_user_id;
+    });
+  }, [strats, packs]);
+
+  const myPoolStrats = useMemo(() => {
+    return strats.filter((s) => {
+      const pack = packs.find((p) => p.id === s.pack_id);
+      return s.owner_user_id === userId && pack?.visibility === "private";
+    });
+  }, [strats, packs, userId]);
+
   const enabledStrats = useMemo(() => {
+    if (usePersonalPool) return myPoolStrats;
     return strats.filter((s) => isPackInMatchPool(s.pack_id, subscriptions, packs));
-  }, [strats, subscriptions, packs]);
+  }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs]);
+
+  const addToPool = useCallback(
+    async (catalogStrat: Strat) => {
+      await api.addCatalogStratToPool(userId, catalogStrat, packs);
+      await refresh();
+    },
+    [userId, packs, refresh]
+  );
+
+  const removeFromPool = useCallback(
+    async (poolStratId: string) => {
+      await api.deleteStrat(userId, poolStratId);
+      await refresh();
+    },
+    [userId, refresh]
+  );
+
+  const addFundamentalsStarter = useCallback(
+    async (map: string) => {
+      const n = await api.addFundamentalsForMap(userId, map, packs);
+      await refresh();
+      return n;
+    },
+    [userId, packs, refresh]
+  );
 
   const value: PlaybookState = {
     loading,
@@ -124,10 +171,16 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     favorites,
     subscriptions,
     session,
+    usePersonalPool,
+    catalogStrats,
+    myPoolStrats,
     refresh,
     setSession,
     setPackEnabled,
     toggleFavorite,
+    addToPool,
+    removeFromPool,
+    addFundamentalsStarter,
     enabledStrats,
   };
 
