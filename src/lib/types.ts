@@ -81,5 +81,25 @@ export const TIER_LABEL: Record<PackTier, string> = {
   pro: "Pro",
 };
 
+/** Pro packs stay out of the Match pool until premium is wired up. */
+export const PREMIUM_UNLOCKED = false;
+
+export function isPackLocked(pack: Pick<Pack, "tier"> | undefined | null): boolean {
+  if (!pack) return false;
+  return pack.tier === "pro" && !PREMIUM_UNLOCKED;
+}
+
+/** Whether a pack contributes to the Match pool. Missing subscription key defaults to on (except locked). */
+export function isPackInMatchPool(
+  packId: string,
+  subscriptions: Record<string, boolean>,
+  packs: Pack[]
+): boolean {
+  const pack = packs.find((p) => p.id === packId);
+  if (!pack) return false;
+  if (isPackLocked(pack)) return false;
+  return subscriptions[packId] !== false;
+}
+
 export const FREEZE_SECONDS = 15;
 export const SCHEMA_VERSION = 3;

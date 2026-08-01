@@ -34,7 +34,7 @@ function seedStore(): Store {
   const packs = (systemSeed.packs as Pack[]).map((p) => ({ ...p, team_id: p.team_id ?? null }));
   const strats = systemSeed.strats as Strat[];
   const subscriptions: Record<string, boolean> = {};
-  for (const p of packs) subscriptions[p.id] = true;
+  for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
   return {
     profile: { id: LOCAL_USER, display_name: "IGL", default_tier_filter: "all" },
     packs,
