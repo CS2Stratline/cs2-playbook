@@ -1,8 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
-import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
+import {
+  bumpStratUsage,
+  ensureUserPrivatePack,
+  findPoolCopy as findCopy,
+  sharedStratTargetId,
+  upsertPrivateStrat,
+  upsertSharedStrat,
+} from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { MAPS, TIER_LABEL, isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
@@ -13,13 +20,13 @@ import { StratTasks } from "../components/StratTasks";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
-import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
 
 type Tab = "catalog" | "pool";
 
 export function BookScreen() {
   const navigate = useNavigate();
-  const { userId, user, supabaseReady } = useAuth();
+  const location = useLocation();
+  const { userId, user, supabaseReady, canEditShared } = useAuth();
   const {
     packs,
     favorites,
@@ -37,6 +44,7 @@ export function BookScreen() {
     addToPool,
     removeFromPool,
     addFundamentalsStarter,
+    strats,
   } = usePlaybook();
   const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
@@ -49,6 +57,7 @@ export function BookScreen() {
   const [editing, setEditing] = useState<Strat | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [starterMsg, setStarterMsg] = useState("");
+  const [saveError, setSaveError] = useState("");
   const [form, setForm] = useState({
     map: "Mirage",
     callout: "",
@@ -57,8 +66,36 @@ export function BookScreen() {
     site: "default",
     rounds: "" as string,
     status: "ready" as "ready" | "practice",
+    level: "" as string,
   });
   const allMaps = isAllMaps(session.selected_map);
+
+  function openEdit(s: Strat) {
+    setEditing(s);
+    setForm({
+      map: s.map,
+      callout: s.callout,
+      description: s.description,
+      tasks: s.tasks.join("\n"),
+      site: s.site || "default",
+      rounds: s.rounds.join(","),
+      status: s.status,
+      level: String(s.level || ""),
+    });
+    setSaveError("");
+    setShowForm(true);
+    setExpanded(s.id);
+  }
+
+  useEffect(() => {
+    const editId = (location.state as { editStratId?: string } | null)?.editStratId;
+    if (!editId || loading) return;
+    const s = strats.find((row) => row.id === editId);
+    if (s) openEdit(s);
+    // clear one-shot navigation state
+    navigate(location.pathname, { replace: true, state: {} });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, location.state, strats]);
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
@@ -129,46 +166,73 @@ export function BookScreen() {
     return ensureUserPrivatePack(userId);
   }
 
+  function canEditStrat(s: Strat) {
+    if (s.owner_user_id === userId) return true;
+    return canEditShared && !!sharedStratTargetId(s);
+  }
+
   async function saveForm() {
-    const packId = editing?.pack_id || (await ensurePrivatePack());
+    setSaveError("");
     const tasks = form.tasks
       .split("\n")
       .map((t) => t.trim())
       .filter(Boolean)
       .slice(0, 5);
-    const map = isAllMaps(session.selected_map) ? form.map : session.selected_map;
+    const map = isAllMaps(session.selected_map) ? form.map : editing?.map || session.selected_map;
     if (!map || isAllMaps(map)) return;
+    const side = editing?.side || session.selected_side;
     const draft = {
       map,
-      side: session.selected_side,
+      side,
       callout: form.callout.trim(),
       description: form.description.trim(),
       tasks,
     };
     const lanes = lanesForMap(map);
     const site: Strat["site"] =
-      session.selected_side === "T"
+      side === "T"
         ? lanes.some((l) => l.id === form.site)
           ? (form.site as Strat["site"])
           : "default"
         : null;
     let links = editing?.links || [];
     if (!links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
-    await upsertPrivateStrat(userId, packId, {
-      id: editing?.id,
-      ...draft,
-      site,
-      rounds: form.rounds
-        .split(",")
-        .map((r) => r.trim())
-        .filter(Boolean),
-      status: form.status,
-      links,
-    });
-    setShowForm(false);
-    setEditing(null);
-    setTab("pool");
-    await refresh();
+    const rounds = form.rounds
+      .split(",")
+      .map((r) => r.trim())
+      .filter(Boolean);
+    const levelNum = form.level.trim() ? Number(form.level) : undefined;
+
+    try {
+      const sharedId = editing ? sharedStratTargetId(editing) : null;
+      if (editing && sharedId && canEditShared) {
+        await upsertSharedStrat(sharedId, {
+          ...draft,
+          site,
+          rounds,
+          status: form.status,
+          links,
+          level: Number.isFinite(levelNum) ? levelNum : editing.level,
+        });
+      } else {
+        const packId = editing?.pack_id || (await ensurePrivatePack());
+        await upsertPrivateStrat(userId, packId, {
+          id: editing?.id,
+          ...draft,
+          site,
+          rounds,
+          status: form.status,
+          links,
+          level: Number.isFinite(levelNum) ? levelNum : undefined,
+        });
+        setTab("pool");
+      }
+      setShowForm(false);
+      setEditing(null);
+      await refresh();
+    } catch (e) {
+      setSaveError(e instanceof Error ? e.message : "Could not save strat");
+    }
   }
 
   async function useInMatch(s: Strat) {
@@ -311,6 +375,7 @@ export function BookScreen() {
                   site: "default",
                   rounds: "",
                   status: "ready",
+                  level: "",
                 });
                 setShowForm(true);
               }}
@@ -329,7 +394,18 @@ export function BookScreen() {
 
       {showForm && (
         <div className="panel">
-          <p className="eyebrow">{editing ? "Edit strat" : "New strat"}</p>
+          <p className="eyebrow">
+            {editing
+              ? canEditShared && sharedStratTargetId(editing)
+                ? "Edit shared strat"
+                : "Edit strat"
+              : "New strat"}
+          </p>
+          {editing && canEditShared && sharedStratTargetId(editing) && (
+            <p className="banner" style={{ marginBottom: 10 }}>
+              Saves for everyone on Fundamentals / Stack (and updates pool copies).
+            </p>
+          )}
           {(allMaps || editing) && (
             <select className="input" value={form.map} onChange={(e) => setForm({ ...form, map: e.target.value })}>
               {MAPS.map((m) => (
@@ -348,7 +424,7 @@ export function BookScreen() {
             value={form.tasks}
             onChange={(e) => setForm({ ...form, tasks: e.target.value })}
           />
-          {session.selected_side === "T" && (
+          {(editing?.side || session.selected_side) === "T" && (
             <select
               className="input"
               value={formLanes.some((l) => l.id === form.site) ? form.site : formLanes[0]?.id || "default"}
@@ -362,11 +438,27 @@ export function BookScreen() {
             </select>
           )}
           <input className="input" placeholder="Rounds (full,force,eco — blank = all)" value={form.rounds} onChange={(e) => setForm({ ...form, rounds: e.target.value })} />
+          <input
+            className="input"
+            placeholder="Level 1–10"
+            inputMode="numeric"
+            value={form.level}
+            onChange={(e) => setForm({ ...form, level: e.target.value })}
+          />
+          {saveError && <p className="banner" style={{ color: "var(--warn)" }}>{saveError}</p>}
           <div className="row">
             <button type="button" className="btn btn-primary" style={{ flex: 1 }} onClick={() => void saveForm()}>
               Save
             </button>
-            <button type="button" className="btn-ghost" onClick={() => setShowForm(false)}>
+            <button
+              type="button"
+              className="btn-ghost"
+              onClick={() => {
+                setShowForm(false);
+                setEditing(null);
+                setSaveError("");
+              }}
+            >
               Cancel
             </button>
           </div>
@@ -462,38 +554,22 @@ export function BookScreen() {
                             Use in Match
                           </button>
                         )}
+                        {canEditStrat(s) && (
+                          <button type="button" className="btn-ghost" onClick={() => openEdit(s)}>
+                            Edit
+                          </button>
+                        )}
                         {tab === "pool" && usePersonalPool && s.owner_user_id === userId && (
-                          <>
-                            <button
-                              type="button"
-                              className="btn-ghost"
-                              onClick={() => {
-                                setEditing(s);
-                                setForm({
-                                  map: s.map,
-                                  callout: s.callout,
-                                  description: s.description,
-                                  tasks: s.tasks.join("\n"),
-                                  site: s.site || "default",
-                                  rounds: s.rounds.join(","),
-                                  status: s.status,
-                                });
-                                setShowForm(true);
-                              }}
-                            >
-                              Edit
-                            </button>
-                            <button
-                              type="button"
-                              className="btn-ghost"
-                              style={{ color: "var(--warn)" }}
-                              onClick={async () => {
-                                await removeFromPool(s.id);
-                              }}
-                            >
-                              Remove
-                            </button>
-                          </>
+                          <button
+                            type="button"
+                            className="btn-ghost"
+                            style={{ color: "var(--warn)" }}
+                            onClick={async () => {
+                              await removeFromPool(s.id);
+                            }}
+                          >
+                            Remove
+                          </button>
                         )}
                         {!usePersonalPool && s.owner_user_id === userId && (
                           <button

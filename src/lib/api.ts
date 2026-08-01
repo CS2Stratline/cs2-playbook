@@ -1,11 +1,40 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { Pack, Strat, UserSession, Profile, Side } from "./types";
-import { MAPS, catalogSourceKey, isPackLocked } from "./types";
+import { MAPS, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
+
+/** Comma-separated emails that may edit shared strats once `profiles.is_admin` is set (see DEPLOY.md). */
+function adminEmailAllowlist() {
+  return String(import.meta.env.VITE_ADMIN_EMAILS || "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+/** Shared catalog row id to edit, or null if this is a private-only strat. */
+export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
+  const fromCopy = catalogIdFromSource(strat.source);
+  if (fromCopy) return fromCopy;
+  if (!strat.owner_user_id) return strat.id;
+  return null;
+}
+
+export function canEditSharedStrats(opts: {
+  profile?: Pick<Profile, "is_admin"> | null;
+}): boolean {
+  // Local demo (no Supabase): edit shared strats on this device.
+  if (!supabaseConfigured) return true;
+  return Boolean(opts.profile?.is_admin);
+}
+
+export function isAdminEmailAllowlisted(email: string | null | undefined): boolean {
+  const e = (email || "").toLowerCase();
+  return Boolean(e && adminEmailAllowlist().includes(e));
+}
 
 type Store = {
   profile: Profile;
@@ -40,7 +69,7 @@ function seedStore(): Store {
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
   return {
-    profile: { id: LOCAL_USER, display_name: "IGL", default_tier_filter: "all" },
+    profile: { id: LOCAL_USER, display_name: "IGL", default_tier_filter: "all", is_admin: true },
     packs,
     strats,
     favorites: [],
@@ -108,13 +137,20 @@ export async function ensureBootstrap(): Promise<void> {
 export async function getProfile(userId: string): Promise<Profile> {
   if (!isCloudMode()) return memory.profile;
   const { data } = await supabase!.from("profiles").select("*").eq("id", userId).maybeSingle();
-  return (
-    data || {
+  if (!data) {
+    return {
       id: userId,
       display_name: "IGL",
       default_tier_filter: "all",
-    }
-  );
+      is_admin: false,
+    };
+  }
+  return {
+    id: String(data.id),
+    display_name: (data.display_name as string) || null,
+    default_tier_filter: String(data.default_tier_filter || "all"),
+    is_admin: Boolean(data.is_admin),
+  };
 }
 
 export async function listPacks(): Promise<Pack[]> {
@@ -257,9 +293,78 @@ export async function bumpStratUsage(stratId: string) {
     saveLocal(memory);
     return;
   }
-  const { data } = await supabase!.from("strats").select("times_used").eq("id", stratId).single();
-  const times = Number((data as { times_used?: number })?.times_used || 0) + 1;
-  await supabase!.from("strats").update({ times_used: times, last_used: now }).eq("id", stratId);
+  const { error } = await supabase!.rpc("bump_strat_usage", { p_strat_id: stratId });
+  if (error) {
+    // Fallback before migration 007 is applied
+    const { data } = await supabase!.from("strats").select("times_used").eq("id", stratId).single();
+    const times = Number((data as { times_used?: number })?.times_used || 0) + 1;
+    await supabase!.from("strats").update({ times_used: times, last_used: now }).eq("id", stratId);
+  }
+}
+
+export type SharedStratPatch = {
+  callout: string;
+  description: string;
+  tasks: string[];
+  rounds: string[];
+  site: Strat["site"];
+  status: Strat["status"];
+  links: Strat["links"];
+  level?: number;
+  map?: string;
+  side?: Side;
+};
+
+/** Update a system strat for everyone. Syncs personal pool copies (`catalog:<id>`). */
+export async function upsertSharedStrat(systemStratId: string, patch: SharedStratPatch) {
+  const level =
+    patch.level ??
+    estimateStratLevel({
+      callout: patch.callout,
+      description: patch.description,
+      tasks: patch.tasks,
+      links: patch.links,
+      rounds: patch.rounds,
+      side: patch.side,
+    });
+
+  if (!isCloudMode()) {
+    const apply = (s: Strat): Strat => {
+      const isTarget = s.id === systemStratId || catalogIdFromSource(s.source) === systemStratId;
+      if (!isTarget) return s;
+      return {
+        ...s,
+        callout: patch.callout,
+        description: patch.description,
+        tasks: patch.tasks,
+        rounds: patch.rounds,
+        site: patch.site,
+        status: patch.status,
+        links: patch.links,
+        level,
+        ...(patch.map ? { map: patch.map } : {}),
+        ...(patch.side ? { side: patch.side } : {}),
+      };
+    };
+    memory.strats = memory.strats.map(apply);
+    saveLocal(memory);
+    return;
+  }
+
+  const { error } = await supabase!.rpc("admin_update_shared_strat", {
+    p_id: systemStratId,
+    p_callout: patch.callout,
+    p_description: patch.description,
+    p_tasks: patch.tasks,
+    p_rounds: patch.rounds,
+    p_site: patch.site,
+    p_status: patch.status,
+    p_links: patch.links,
+    p_level: level,
+    p_map: patch.map ?? null,
+    p_side: patch.side ?? null,
+  });
+  if (error) throw error;
 }
 
 export async function upsertPrivateStrat(userId: string, packId: string, strat: Partial<Strat> & { id?: string }) {

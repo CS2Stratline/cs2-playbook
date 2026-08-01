@@ -16,7 +16,7 @@ import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
-  const { mode, user, signOut, userId, supabaseReady } = useAuth();
+  const { mode, user, signOut, userId, supabaseReady, canEditShared, profile } = useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
   const [liveToken, setLiveToken] = useState<string | null>(null);
@@ -130,6 +130,25 @@ export function SettingsScreen() {
           Each strat has a FACEIT-style execution level (1–10): how hard the call is to run in freeze time — not your personal Elo.
         </p>
         <LevelLegend />
+      </div>
+
+      <div className="panel">
+        <p className="eyebrow">Shared edits</p>
+        {canEditShared ? (
+          <p className="muted">
+            You can edit Fundamentals / Stack strats from Match or Playbook. Changes save for everyone
+            {mode === "local" ? " on this device (local demo)." : " (admin)."}
+          </p>
+        ) : (
+          <p className="muted">
+            Shared library edits are admin-only. Sign in, then in Supabase SQL:
+            <code style={{ display: "block", marginTop: 8, fontSize: 12 }}>
+              update profiles set is_admin = true where id = &apos;{userId}&apos;;
+            </code>
+            Run migration <code>007_admin_strat_edits.sql</code> first.
+          </p>
+        )}
+        {profile?.is_admin && <p className="banner" style={{ marginTop: 8 }}>Admin · shared edit enabled</p>}
       </div>
 
       <div className="panel">

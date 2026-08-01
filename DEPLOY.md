@@ -41,6 +41,14 @@ npm run seed:supabase
 6. SQL editor: run [`003_live_share.sql`](supabase/migrations/003_live_share.sql) then [`004_fix_live_share_pgcrypto.sql`](supabase/migrations/004_fix_live_share_pgcrypto.sql) for private live-call links (Settings → Live call link when signed in).
 7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.
 
+8. **In-app shared edits (admin):** run [`007_admin_strat_edits.sql`](supabase/migrations/007_admin_strat_edits.sql), sign in, then grant yourself admin:
+
+```sql
+update profiles set is_admin = true where id = '<your-auth-user-uuid>';
+```
+
+Admins see **Edit** on Match / Playbook for Fundamentals & Stack. Saves update the shared catalog (and personal pool copies). Without Supabase, local demo can edit shared strats on that device only.
+
 ## Vercel (optional)
 
 1. Import `JonasLundervold/cs2-playbook`.
