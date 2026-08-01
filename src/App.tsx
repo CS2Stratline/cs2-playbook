@@ -2,6 +2,7 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { AuthProvider, useAuth } from "./lib/auth";
 import { PlaybookProvider } from "./lib/playbook";
 import { MapSideChrome } from "./components/MapSideChrome";
+import { BookOpen, Crosshair, Gear } from "./components/icons";
 import { MatchScreen } from "./screens/MatchScreen";
 import { BookScreen } from "./screens/BookScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
@@ -59,13 +60,16 @@ function Shell() {
         <nav className="nav">
           <div className="nav-inner">
             <NavLink to="/match" className={({ isActive }) => (isActive ? "active" : "")}>
-              Match
+              <Crosshair size={16} />
+              <span>Match</span>
             </NavLink>
             <NavLink to="/playbook" className={({ isActive }) => (isActive ? "active" : "")}>
-              Playbook
+              <BookOpen size={16} />
+              <span>Playbook</span>
             </NavLink>
             <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
-              Settings
+              <Gear size={16} />
+              <span>Settings</span>
             </NavLink>
           </div>
         </nav>
