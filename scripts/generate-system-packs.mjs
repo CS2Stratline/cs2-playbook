@@ -43,8 +43,8 @@ const packs = {
   pug: {
     id: uid(),
     slug: "essentials-pug",
-    title: "Essentials (PUG)",
-    description: "Short callouts, light utility — ranked and pickup friendly.",
+    title: "Fundamentals",
+    description: "Defaults, rushes, simple executes — easy to call in freeze time.",
     tier: "pug",
     visibility: "system",
     owner_user_id: null,
@@ -53,8 +53,8 @@ const packs = {
   five_stack: {
     id: uid(),
     slug: "stack-standard",
-    title: "Stack Standard",
-    description: "Full executes, defaults, and CT holds for a coordinated five.",
+    title: "Stack",
+    description: "Standard smokes and mid control for a coordinated five.",
     tier: "five_stack",
     visibility: "system",
     owner_user_id: null,
@@ -63,8 +63,8 @@ const packs = {
   pro: {
     id: uid(),
     slug: "pro-structure",
-    title: "Pro Structure",
-    description: "Fakes, splits, retakes — tighter roles and timing.",
+    title: "Advanced",
+    description: "Fakes, timings, denser utility — premium / locked for now.",
     tier: "pro",
     visibility: "system",
     owner_user_id: null,

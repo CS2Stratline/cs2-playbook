@@ -1,19 +1,21 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
-import { bumpStratUsage, createPrivatePack, deleteStrat, upsertPrivateStrat } from "../lib/api";
+import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { ExternalLink, Pack, Plus, Star } from "../components/icons";
 import { NADE_CATALOG } from "../lib/catalog";
 import { suggestLineupLinks } from "../lib/lineupMatch";
+import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
+
+type Tab = "catalog" | "pool";
 
 export function BookScreen() {
   const navigate = useNavigate();
-  const { userId } = useAuth();
+  const { userId, user, supabaseReady } = useAuth();
   const {
-    strats,
     packs,
     favorites,
     toggleFavorite,
@@ -24,11 +26,24 @@ export function BookScreen() {
     subscriptions,
     setPackEnabled,
     enabledStrats,
+    usePersonalPool,
+    catalogStrats,
+    myPoolStrats,
+    addToPool,
+    removeFromPool,
+    addFundamentalsStarter,
   } = usePlaybook();
+  const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (usePersonalPool) setTab("pool");
+  }, [usePersonalPool]);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Strat | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const [starterMsg, setStarterMsg] = useState("");
   const [form, setForm] = useState({
     callout: "",
     description: "",
@@ -40,37 +55,45 @@ export function BookScreen() {
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
-  const byTier = (["pug", "five_stack", "pro"] as PackTier[]).map((tier) => ({
-    tier,
-    items: packs.filter((p) => p.tier === tier),
-  }));
+  const systemPacks = useMemo(
+    () =>
+      (["pug", "five_stack", "pro"] as PackTier[]).map((tier) => ({
+        tier,
+        items: packs.filter((p) => p.tier === tier && p.visibility === "system"),
+      })),
+    [packs]
+  );
 
-  const list = useMemo(() => {
+  const catalogList = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const poolIds = new Set(enabledStrats.map((s) => s.id));
-    return strats
-      .filter((s) => poolIds.has(s.id))
+    return catalogStrats
       .filter((s) => s.map === session.selected_map && s.side === session.selected_side)
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
-  }, [strats, enabledStrats, session.selected_map, session.selected_side, query]);
+  }, [catalogStrats, session.selected_map, session.selected_side, query]);
+
+  const poolList = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const base = usePersonalPool ? myPoolStrats : enabledStrats;
+    return base
+      .filter((s) => s.map === session.selected_map && s.side === session.selected_side)
+      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")}`.toLowerCase().includes(q));
+  }, [usePersonalPool, myPoolStrats, enabledStrats, session.selected_map, session.selected_side, query]);
+
+  const displayList = usePersonalPool && tab === "catalog" ? catalogList : poolList;
 
   const groups = useMemo(() => {
-    if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", items: list }];
+    if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", items: displayList }];
     return [
-      { id: "a", label: "A site", items: list.filter((s) => s.site === "a") },
-      { id: "b", label: "B site", items: list.filter((s) => s.site === "b") },
-      { id: "mid", label: "Mid", items: list.filter((s) => s.site === "mid") },
-      { id: "default", label: "Default / other", items: list.filter((s) => !s.site || s.site === "default") },
+      { id: "a", label: "A site", items: displayList.filter((s) => s.site === "a") },
+      { id: "b", label: "B site", items: displayList.filter((s) => s.site === "b") },
+      { id: "mid", label: "Mid", items: displayList.filter((s) => s.site === "mid") },
+      { id: "default", label: "Default / other", items: displayList.filter((s) => !s.site || s.site === "default") },
     ].filter((g) => g.items.length);
-  }, [list, session.selected_side]);
+  }, [displayList, session.selected_side]);
 
   async function ensurePrivatePack() {
     if (privatePack) return privatePack.id;
-    return createPrivatePack(userId, {
-      title: "My pack",
-      description: "Private strats",
-      tier: "five_stack",
-    });
+    return ensureUserPrivatePack(userId);
   }
 
   async function saveForm() {
@@ -102,13 +125,14 @@ export function BookScreen() {
     });
     setShowForm(false);
     setEditing(null);
+    setTab("pool");
     await refresh();
   }
 
   async function useInMatch(s: Strat) {
     const pack = packs.find((p) => p.id === s.pack_id);
     if (isPackLocked(pack)) return;
-    if (!isPackInMatchPool(s.pack_id, subscriptions, packs)) {
+    if (!usePersonalPool && !isPackInMatchPool(s.pack_id, subscriptions, packs)) {
       await setPackEnabled(s.pack_id, true);
     }
     const end = Date.now() + FREEZE_SECONDS * 1000;
@@ -130,76 +154,147 @@ export function BookScreen() {
 
   return (
     <div>
-      <div className="panel">
-        <p className="eyebrow">Packs</p>
-        <p className="muted" style={{ marginBottom: 8 }}>
-          Toggle which packs feed Match. {enabledStrats.length} strats in the pool right now.
-        </p>
-        {byTier.map(({ tier, items }) =>
-          items.length ? (
-            <div key={tier} style={{ marginTop: 8 }}>
-              <p className="eyebrow">{TIER_LABEL[tier]}</p>
-              {items.map((p) => {
-                const locked = isPackLocked(p);
-                const on = !locked && isPackInMatchPool(p.id, subscriptions, packs);
-                return (
-                  <div
-                    key={p.id}
-                    style={{
-                      display: "flex",
-                      gap: 10,
-                      alignItems: "flex-start",
-                      padding: "8px 0",
-                      borderBottom: "1px solid var(--line)",
-                      opacity: locked ? 0.72 : 1,
-                    }}
-                  >
-                    <Pack size={16} />
-                    <div style={{ flex: 1 }}>
-                      <strong style={{ fontSize: 13 }}>{p.title}</strong>
-                      <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                        {p.strat_count ?? "—"} strats · {p.visibility === "system" ? "System" : "Yours"}
-                        {locked ? " · Premium soon" : ""}
-                      </p>
-                    </div>
-                    {locked ? (
-                      <span className="badge pro">Locked</span>
-                    ) : (
-                      <button
-                        className={`pill ${on ? "active" : ""}`}
-                        onClick={() => void setPackEnabled(p.id, !on)}
-                        type="button"
-                      >
-                        {on ? "On" : "Off"}
-                      </button>
-                    )}
-                  </div>
-                );
-              })}
+      {usePersonalPool ? (
+        <div className="panel" style={{ paddingBottom: 10 }}>
+          <p className="eyebrow">Playbook</p>
+          <div className="row" style={{ marginBottom: 8 }}>
+            <button type="button" className={`pill ${tab === "pool" ? "active" : ""}`} onClick={() => setTab("pool")}>
+              My pool · {myPoolStrats.length}
+            </button>
+            <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
+              Catalog
+            </button>
+          </div>
+          <p className="muted">
+            {tab === "pool"
+              ? "Match uses only strats in My pool. Shop from Catalog or create your own."
+              : "Browse levels and add strats to My pool. Advanced stays locked for now."}
+          </p>
+          {tab === "pool" && (
+            <div className="row" style={{ marginTop: 10 }}>
+              <button
+                type="button"
+                className="btn-ghost"
+                disabled={!!busyId}
+                onClick={async () => {
+                  setBusyId("starter");
+                  setStarterMsg("");
+                  try {
+                    const n = await addFundamentalsStarter(session.selected_map);
+                    setStarterMsg(n ? `Added ${n} Fundamentals for ${session.selected_map}` : `Fundamentals for ${session.selected_map} already in your pool`);
+                  } catch (e) {
+                    setStarterMsg(e instanceof Error ? e.message : "Could not add starter kit");
+                  } finally {
+                    setBusyId(null);
+                  }
+                }}
+              >
+                Add Fundamentals for {session.selected_map}
+              </button>
+              <button
+                type="button"
+                className="btn-ghost"
+                onClick={() => {
+                  setEditing(null);
+                  setForm({ callout: "", description: "", tasks: "", site: "default", rounds: "", status: "ready" });
+                  setShowForm(true);
+                }}
+              >
+                <Plus size={14} /> New
+              </button>
             </div>
-          ) : null
-        )}
-      </div>
+          )}
+          {starterMsg && <p className="banner">{starterMsg}</p>}
+        </div>
+      ) : (
+        <div className="panel">
+          <p className="eyebrow">Packs</p>
+          <p className="muted" style={{ marginBottom: 8 }}>
+            Guest mode: toggle packs for Match. Sign in to shop individual strats into your own pool.
+            {supabaseReady && !user ? " (Discord in Settings)" : ""}
+          </p>
+          <p className="muted" style={{ marginBottom: 8 }}>{enabledStrats.length} strats in the pool right now.</p>
+          {systemPacks.map(({ tier, items }) =>
+            items.length ? (
+              <div key={tier} style={{ marginTop: 8 }}>
+                <p className="eyebrow">{TIER_LABEL[tier]}</p>
+                {items.map((p) => {
+                  const locked = isPackLocked(p);
+                  const on = !locked && isPackInMatchPool(p.id, subscriptions, packs);
+                  return (
+                    <div
+                      key={p.id}
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                        alignItems: "flex-start",
+                        padding: "8px 0",
+                        borderBottom: "1px solid var(--line)",
+                        opacity: locked ? 0.72 : 1,
+                      }}
+                    >
+                      <Pack size={16} />
+                      <div style={{ flex: 1 }}>
+                        <strong style={{ fontSize: 13 }}>{p.title}</strong>
+                        <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
+                          {p.strat_count ?? "—"} strats
+                          {locked ? " · Premium soon" : ""}
+                        </p>
+                      </div>
+                      {locked ? (
+                        <span className="badge pro">Locked</span>
+                      ) : (
+                        <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
+                          {on ? "On" : "Off"}
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            ) : null
+          )}
+        </div>
+      )}
+
+      {usePersonalPool && tab === "catalog" && (
+        <div className="panel">
+          <p className="eyebrow">Levels</p>
+          {systemPacks.map(({ tier, items }) =>
+            items.map((p) => (
+              <div key={p.id} className="row" style={{ marginBottom: 6 }}>
+                <span className={`badge ${p.tier}`}>{TIER_LABEL[p.tier]}</span>
+                <span className="muted" style={{ fontSize: 12 }}>
+                  {p.title}
+                  {isPackLocked(p) ? " · Locked" : ""}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+      )}
 
       <div className="panel">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <p className="eyebrow">Playbook</p>
+            <p className="eyebrow">{tab === "catalog" || !usePersonalPool ? "Browse" : "My pool"}</p>
             <h2 className="h2" style={{ fontSize: 24 }}>
               {session.selected_map} {session.selected_side}
             </h2>
           </div>
-          <button
-            type="button"
-            className="btn-ghost"
-            onClick={() => {
-              setEditing(null);
-              setForm({ callout: "", description: "", tasks: "", site: "default", rounds: "", status: "ready" });
-              setShowForm(true);
-            }}
-          >
-            <Plus size={14} /> New
-          </button>
+          {!usePersonalPool && (
+            <button
+              type="button"
+              className="btn-ghost"
+              onClick={() => {
+                setEditing(null);
+                setForm({ callout: "", description: "", tasks: "", site: "default", rounds: "", status: "ready" });
+                setShowForm(true);
+              }}
+            >
+              <Plus size={14} /> New
+            </button>
+          )}
         </div>
         <input className="input" placeholder="Search callouts and tasks…" value={query} onChange={(e) => setQuery(e.target.value)} />
       </div>
@@ -237,7 +332,11 @@ export function BookScreen() {
       )}
 
       {groups.length === 0 ? (
-        <div className="empty">Nothing in the Match pool for this map/side. Turn a pack On above, or add a strat.</div>
+        <div className="empty">
+          {tab === "pool" && usePersonalPool
+            ? `My pool is empty for ${session.selected_map} ${session.selected_side}. Add Fundamentals above or shop the Catalog.`
+            : "Nothing here for this map/side."}
+        </div>
       ) : (
         groups.map((g) => (
           <div key={g.id} className="panel">
@@ -245,8 +344,11 @@ export function BookScreen() {
             {g.items.map((s) => {
               const open = expanded === s.id;
               const pack = packs.find((p) => p.id === s.pack_id);
+              const locked = isPackLocked(pack);
+              const inPool = usePersonalPool ? !!findCopy(myPoolStrats, s.id) : false;
+              const showingCatalog = tab === "catalog" && (usePersonalPool || !usePersonalPool);
               return (
-                <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0" }}>
+                <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && showingCatalog ? 0.75 : 1 }}>
                   <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
@@ -257,9 +359,10 @@ export function BookScreen() {
                       </span>
                     </div>
                     <div className="meta">
-                      {pack ? `${pack.title} · ${TIER_LABEL[pack.tier as PackTier]}` : ""}
+                      {pack ? `${TIER_LABEL[pack.tier as PackTier]}` : ""}
                       {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
-                      {s.links.length ? ` · ${s.links.length} lineups` : ""}
+                      {locked ? " · Locked" : ""}
+                      {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
                       {!open ? " · Tap for details" : ""}
                     </div>
                   </button>
@@ -279,10 +382,29 @@ export function BookScreen() {
                         ))}
                       </div>
                       <div className="row" style={{ marginTop: 8 }}>
-                        <button type="button" className="btn-ghost" onClick={() => void useInMatch(s)}>
-                          Use in Match
-                        </button>
-                        {s.owner_user_id === userId && (
+                        {usePersonalPool && tab === "catalog" && (
+                          <button
+                            type="button"
+                            className="btn-ghost"
+                            disabled={locked || busyId === s.id || inPool}
+                            onClick={async () => {
+                              setBusyId(s.id);
+                              try {
+                                await addToPool(s);
+                              } finally {
+                                setBusyId(null);
+                              }
+                            }}
+                          >
+                            {locked ? "Locked" : inPool ? "In pool" : "Add to pool"}
+                          </button>
+                        )}
+                        {(tab === "pool" || !usePersonalPool) && (
+                          <button type="button" className="btn-ghost" onClick={() => void useInMatch(s)}>
+                            Use in Match
+                          </button>
+                        )}
+                        {tab === "pool" && usePersonalPool && s.owner_user_id === userId && (
                           <>
                             <button
                               type="button"
@@ -307,13 +429,24 @@ export function BookScreen() {
                               className="btn-ghost"
                               style={{ color: "var(--warn)" }}
                               onClick={async () => {
-                                await deleteStrat(userId, s.id);
-                                await refresh();
+                                await removeFromPool(s.id);
                               }}
                             >
-                              Delete
+                              Remove
                             </button>
                           </>
+                        )}
+                        {!usePersonalPool && s.owner_user_id === userId && (
+                          <button
+                            type="button"
+                            className="btn-ghost"
+                            style={{ color: "var(--warn)" }}
+                            onClick={async () => {
+                              await removeFromPool(s.id);
+                            }}
+                          >
+                            Delete
+                          </button>
                         )}
                       </div>
                     </div>

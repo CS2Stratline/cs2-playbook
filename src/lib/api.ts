@@ -1,7 +1,7 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { Pack, Strat, UserSession, Profile, Side } from "./types";
-import { MAPS } from "./types";
+import { MAPS, catalogSourceKey, isPackLocked } from "./types";
 
 const LOCAL_KEY = "cs2-playbook-cloud-v1";
 const LOCAL_USER = "local-demo-user";
@@ -346,6 +346,100 @@ export async function createPrivatePack(userId: string, input: { title: string; 
   if (error) throw error;
   await supabase!.from("user_pack_subscriptions").upsert({ user_id: userId, pack_id: data.id, enabled: true });
   return data.id as string;
+}
+
+/** One private pack per user — My pool. */
+export async function ensureUserPrivatePack(userId: string): Promise<string> {
+  const packs = await listPacks();
+  const existing = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
+  if (existing) return existing.id;
+  return createPrivatePack(userId, {
+    title: "My pool",
+    description: "Strats you shopped or created",
+    tier: "five_stack",
+  });
+}
+
+export function findPoolCopy(poolStrats: Strat[], catalogStratId: string): Strat | undefined {
+  const key = catalogSourceKey(catalogStratId);
+  return poolStrats.find((s) => s.source === key);
+}
+
+/** Copy a catalog strat into the user's private pack (idempotent). */
+export async function addCatalogStratToPool(userId: string, catalog: Strat, packs: Pack[]): Promise<string> {
+  const packMeta = packs.find((p) => p.id === catalog.pack_id);
+  if (isPackLocked(packMeta)) throw new Error("This level is locked.");
+  const packId = await ensureUserPrivatePack(userId);
+  const all = await listStrats();
+  const mine = all.filter((s) => s.owner_user_id === userId);
+  const existing = findPoolCopy(mine, catalog.id);
+  if (existing) return existing.id;
+
+  const source = catalogSourceKey(catalog.id);
+  if (!isCloudMode()) {
+    const id = crypto.randomUUID();
+    memory.strats.push({
+      id,
+      pack_id: packId,
+      owner_user_id: userId,
+      team_id: null,
+      map: catalog.map,
+      side: catalog.side,
+      site: catalog.site,
+      callout: catalog.callout,
+      description: catalog.description,
+      tasks: [...catalog.tasks],
+      rounds: [...catalog.rounds],
+      status: catalog.status,
+      links: catalog.links.map((l) => ({ ...l })),
+      wins: 0,
+      losses: 0,
+      times_used: 0,
+      last_used: null,
+      source,
+    });
+    saveLocal(memory);
+    return id;
+  }
+
+  const { data, error } = await supabase!
+    .from("strats")
+    .insert({
+      pack_id: packId,
+      owner_user_id: userId,
+      map: catalog.map,
+      side: catalog.side,
+      site: catalog.site,
+      callout: catalog.callout,
+      description: catalog.description,
+      tasks: catalog.tasks,
+      rounds: catalog.rounds,
+      status: catalog.status,
+      links: catalog.links,
+      source,
+    })
+    .select("id")
+    .single();
+  if (error) throw error;
+  return String(data.id);
+}
+
+/** Add all Fundamentals (pug) catalog strats for a map into My pool. */
+export async function addFundamentalsForMap(userId: string, map: string, packs: Pack[]): Promise<number> {
+  const all = await listStrats();
+  const mine = all.filter((s) => s.owner_user_id === userId);
+  const fundamentals = all.filter((s) => {
+    const pack = packs.find((p) => p.id === s.pack_id);
+    return pack?.visibility === "system" && pack.tier === "pug" && s.map === map && !s.owner_user_id;
+  });
+  let added = 0;
+  for (const s of fundamentals) {
+    if (findPoolCopy(mine, s.id)) continue;
+    await addCatalogStratToPool(userId, s, packs);
+    mine.push({ ...s, id: "pending", owner_user_id: userId, source: catalogSourceKey(s.id) });
+    added += 1;
+  }
+  return added;
 }
 
 export async function deleteStrat(userId: string, stratId: string) {
