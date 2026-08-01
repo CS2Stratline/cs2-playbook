@@ -365,9 +365,9 @@
       "side": "CT",
       "site": null,
       "callout": "Banana hold",
-      "description": "Double banana, deny early control.",
+      "description": "Triple banana, deny early control.",
       "tasks": [
-        "2 banana, 2 A, 1 mid",
+        "3 banana, 2 A",
         "Molly/HE deep banana",
         "Fall to coffins on execute"
       ],

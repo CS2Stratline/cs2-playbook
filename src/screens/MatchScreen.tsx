@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
+import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
 import { isAllMaps } from "../lib/types";
-import { bumpStratUsage } from "../lib/api";
+import { bumpStratUsage, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -21,6 +23,8 @@ const ROUNDS = [
 ] as const;
 
 export function MatchScreen() {
+  const navigate = useNavigate();
+  const { userId, canEditShared } = useAuth();
   const {
     enabledStrats,
     strats,
@@ -32,9 +36,14 @@ export function MatchScreen() {
     loading,
     usePersonalPool,
     addFundamentalsStarter,
+    refresh,
   } = usePlaybook();
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [seedBusy, setSeedBusy] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saveBusy, setSaveBusy] = useState(false);
+  const [form, setForm] = useState({ callout: "", description: "", tasks: "" });
   const filterKeyRef = useRef<string | null>(null);
 
   const side = session.selected_side;
@@ -137,6 +146,60 @@ export function MatchScreen() {
   );
 
   const filterActive = session.round_filter !== "all" || session.include_practice;
+
+  const canEditCurrent =
+    !!currentPick &&
+    (currentPick.owner_user_id === userId || (canEditShared && !!sharedStratTargetId(currentPick)));
+
+  function startEdit() {
+    if (!currentPick) return;
+    setForm({
+      callout: currentPick.callout,
+      description: currentPick.description,
+      tasks: currentPick.tasks.join("\n"),
+    });
+    setSaveError("");
+    setEditing(true);
+  }
+
+  async function saveEdit() {
+    if (!currentPick) return;
+    setSaveBusy(true);
+    setSaveError("");
+    const tasks = form.tasks
+      .split("\n")
+      .map((t) => t.trim())
+      .filter(Boolean)
+      .slice(0, 5);
+    const patch = {
+      callout: form.callout.trim(),
+      description: form.description.trim(),
+      tasks,
+      rounds: currentPick.rounds,
+      site: currentPick.site,
+      status: currentPick.status,
+      links: currentPick.links,
+      level: currentPick.level,
+      map: currentPick.map,
+      side: currentPick.side,
+    };
+    try {
+      const sharedId = sharedStratTargetId(currentPick);
+      if (sharedId && canEditShared) {
+        await upsertSharedStrat(sharedId, patch);
+      } else if (currentPick.owner_user_id === userId) {
+        await upsertPrivateStrat(userId, currentPick.pack_id, { id: currentPick.id, ...patch });
+      } else {
+        throw new Error("You cannot edit this strat");
+      }
+      setEditing(false);
+      await refresh();
+    } catch (e) {
+      setSaveError(e instanceof Error ? e.message : "Could not save");
+    } finally {
+      setSaveBusy(false);
+    }
+  }
 
   if (loading) return <div className="empty">Loading Match…</div>;
 
@@ -286,18 +349,81 @@ export function MatchScreen() {
                 </button>
               </div>
             </div>
-            <div className="callout-hero">{currentPick.callout}</div>
-            {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
-            <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
+            {editing ? (
+              <>
+                <p className="eyebrow">Edit call</p>
+                {canEditShared && sharedStratTargetId(currentPick) && (
+                  <p className="banner" style={{ marginBottom: 10 }}>
+                    Saves for everyone — Fundamentals / Stack shared library.
+                  </p>
+                )}
+                <input
+                  className="input"
+                  placeholder="Callout"
+                  value={form.callout}
+                  onChange={(e) => setForm({ ...form, callout: e.target.value })}
+                />
+                <input
+                  className="input"
+                  placeholder="Short explanation"
+                  value={form.description}
+                  onChange={(e) => setForm({ ...form, description: e.target.value })}
+                />
+                <textarea
+                  className="input"
+                  rows={5}
+                  placeholder="Tasks (one per line, max 5)"
+                  value={form.tasks}
+                  onChange={(e) => setForm({ ...form, tasks: e.target.value })}
+                />
+                {saveError && (
+                  <p className="banner" style={{ color: "var(--warn)" }}>
+                    {saveError}
+                  </p>
+                )}
+                <div className="row" style={{ marginTop: 8 }}>
+                  <button
+                    type="button"
+                    className={`btn btn-primary ${accent}`}
+                    style={{ flex: 1 }}
+                    disabled={saveBusy}
+                    onClick={() => void saveEdit()}
+                  >
+                    {saveBusy ? "Saving…" : "Save"}
+                  </button>
+                  <button type="button" className="btn-ghost" disabled={saveBusy} onClick={() => setEditing(false)}>
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-ghost"
+                    onClick={() => navigate("/playbook", { state: { editStratId: currentPick.id } })}
+                  >
+                    More fields
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="callout-hero">{currentPick.callout}</div>
+                {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
+                <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
 
-            <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10, marginTop: 4 }}>
-              <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
-                Change strat
-              </button>
-              <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!eligible.length}>
-                <Shuffle size={14} /> Surprise me
-              </button>
-            </div>
+                <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10, marginTop: 4 }}>
+                  <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
+                    Change strat
+                  </button>
+                  <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!eligible.length}>
+                    <Shuffle size={14} /> Surprise me
+                  </button>
+                  {canEditCurrent && (
+                    <button type="button" className="btn-ghost" onClick={startEdit}>
+                      Edit
+                    </button>
+                  )}
+                </div>
+              </>
+            )}
           </>
         )}
       </div>

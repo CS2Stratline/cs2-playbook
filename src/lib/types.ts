@@ -74,6 +74,18 @@ export type Profile = {
   id: string;
   display_name: string | null;
   default_tier_filter: string;
+  /** Can edit shared system strats for everyone (Supabase). */
+  is_admin?: boolean;
+  /** Can grant/revoke admins in Settings. Implies admin. */
+  is_super_admin?: boolean;
+};
+
+export type AdminProfile = {
+  id: string;
+  display_name: string | null;
+  email: string | null;
+  is_admin: boolean;
+  is_super_admin: boolean;
 };
 
 export const MAPS = ["Dust II", "Mirage", "Inferno", "Nuke", "Ancient", "Anubis", "Cache"] as const;
