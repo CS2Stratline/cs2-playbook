@@ -340,12 +340,14 @@ export async function bumpStratUsage(stratId: string) {
     return;
   }
   const { error } = await supabase!.rpc("bump_strat_usage", { p_strat_id: stratId });
-  if (error) {
-    // Fallback before migration 007 is applied
-    const { data } = await supabase!.from("strats").select("times_used").eq("id", stratId).single();
-    const times = Number((data as { times_used?: number })?.times_used || 0) + 1;
-    await supabase!.from("strats").update({ times_used: times, last_used: now }).eq("id", stratId);
-  }
+  if (error) throw error;
+}
+
+/** One-time: become the first super admin (fails if one already exists). */
+export async function claimFirstSuperAdmin(): Promise<void> {
+  if (!isCloudMode()) throw new Error("Cloud sign-in required");
+  const { error } = await supabase!.rpc("claim_first_super_admin");
+  if (error) throw error;
 }
 
 export type SharedStratPatch = {
