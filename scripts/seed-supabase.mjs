@@ -68,3 +68,21 @@ for (let i = 0; i < rows.length; i += chunk) {
   if (error) throw error;
 }
 console.log("strats", rows.length);
+
+const catalog = JSON.parse(readFileSync("src/csnades-catalog.json", "utf8"));
+const nades = (catalog.nades || []).map((n) => ({
+  map: n.map,
+  type: n.type,
+  title_to: n.to || "",
+  title_from: n.from || "",
+  slug: n.slug,
+  url: n.url,
+  team: n.team || null,
+  label: n.label || "",
+  label_en: n.labelEn || n.label || "",
+}));
+for (let i = 0; i < nades.length; i += chunk) {
+  const { error } = await sb.from("nade_catalog").upsert(nades.slice(i, i + chunk), { onConflict: "url" });
+  if (error) throw error;
+}
+console.log("nades", nades.length);
