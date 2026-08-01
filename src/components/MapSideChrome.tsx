@@ -1,5 +1,6 @@
 import { usePlaybook } from "../lib/playbook";
 import { ALL_MAPS, MAPS, type Side } from "../lib/types";
+import { CsIcon } from "./CsIcon";
 import { MapLogo } from "./MapLogo";
 import { SideCT, SideT } from "./icons";
 
@@ -27,6 +28,7 @@ export function MapSideChrome() {
           title="All maps"
           aria-label="All maps"
         >
+          <CsIcon name="all" size={14} />
           <span>All</span>
         </button>
         {MAPS.map((m) => (
