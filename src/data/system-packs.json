@@ -1695,8 +1695,8 @@
       "map": "Nuke",
       "side": "T",
       "site": "ramp",
-      "callout": "Ramp A",
-      "description": "Trophy/ramp pressure into lower A.",
+      "callout": "Ramp",
+      "description": "Trophy/ramp pressure down toward B/lower.",
       "tasks": [
         "Control ramp/trophy",
         "Flash ramp, entry",
