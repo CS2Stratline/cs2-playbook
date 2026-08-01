@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
-import { FREEZE_SECONDS, MAPS, type Side, type Strat } from "../lib/types";
+import { FREEZE_SECONDS, type Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
 import { ExternalLink, Shuffle, Star } from "../components/icons";
 import { NADE_CATALOG } from "../lib/catalog";
@@ -25,6 +25,7 @@ const ROUNDS = [
 export function MatchScreen() {
   const { enabledStrats, favorites, session, setSession, toggleFavorite, packs, loading } = usePlaybook();
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const timerRef = useRef<number | null>(null);
   const suppressRef = useRef(true);
 
@@ -84,7 +85,6 @@ export function MatchScreen() {
       suppressRef.current = false;
     });
     return () => clearTimer();
-    // restore once when session first loads pick
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
@@ -125,6 +125,11 @@ export function MatchScreen() {
     void commitCall(pool[pool.length - 1]);
   }
 
+  async function changeStrat() {
+    clearTimer();
+    await setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
+  }
+
   async function onLog(result: "win" | "loss") {
     if (!currentPick || session.logged) return;
     await logStratResult(currentPick.id, result);
@@ -137,36 +142,13 @@ export function MatchScreen() {
     return mergeSuggested(currentPick.links || [], suggested, 5);
   }, [currentPick]);
 
+  const filterActive = session.round_filter !== "all" || session.include_practice;
+
   if (loading) return <div className="empty">Loading Match…</div>;
 
   return (
     <div>
-      <div className="panel">
-        <p className="eyebrow">Where are we going</p>
-        <div className="row" style={{ marginBottom: 8 }}>
-          {MAPS.map((m) => (
-            <button
-              key={m}
-              type="button"
-              className={`pill ${session.selected_map === m ? `active ${accent}` : ""}`}
-              onClick={() => setSession({ selected_map: m })}
-            >
-              {m}
-            </button>
-          ))}
-        </div>
-        <div className="row" style={{ marginBottom: 8 }}>
-          {(["T", "CT"] as Side[]).map((s) => (
-            <button
-              key={s}
-              type="button"
-              className={`pill ${session.selected_side === s ? `active ${s === "CT" ? "ct" : ""}` : ""}`}
-              onClick={() => setSession({ selected_side: s, site_filter: "all" })}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+      <div className="panel" style={{ paddingTop: 10, paddingBottom: 10 }}>
         {isT && (
           <div className="row" style={{ marginBottom: 8 }}>
             {SITES.map((s) => (
@@ -174,84 +156,88 @@ export function MatchScreen() {
                 key={s.id}
                 type="button"
                 className={`pill ${session.site_filter === s.id ? `active ${accent}` : ""}`}
-                onClick={() => setSession({ site_filter: s.id })}
+                onClick={() => void setSession({ site_filter: s.id })}
               >
                 {s.label}
               </button>
             ))}
           </div>
         )}
-        <p className="eyebrow">Round</p>
-        <div className="row">
-          {ROUNDS.map((r) => (
-            <button
-              key={r.id}
-              type="button"
-              className={`pill ${session.round_filter === r.id ? `active ${accent}` : ""}`}
-              onClick={() => setSession({ round_filter: r.id })}
-            >
-              {r.label}
-            </button>
-          ))}
-        </div>
-        <label className="muted" style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "center" }}>
-          <input
-            type="checkbox"
-            checked={session.include_practice}
-            onChange={(e) => setSession({ include_practice: e.target.checked })}
-          />
-          Include practice strats
-        </label>
+        <button type="button" className="btn-ghost" style={{ width: "100%" }} onClick={() => setFiltersOpen((v) => !v)}>
+          Filters{filterActive ? " · on" : ""} {filtersOpen ? "▴" : "▾"}
+        </button>
+        {filtersOpen && (
+          <div style={{ marginTop: 10 }}>
+            <p className="eyebrow">Round</p>
+            <div className="row">
+              {ROUNDS.map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  className={`pill ${session.round_filter === r.id ? `active ${accent}` : ""}`}
+                  onClick={() => void setSession({ round_filter: r.id })}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <label className="muted" style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "center" }}>
+              <input
+                type="checkbox"
+                checked={session.include_practice}
+                onChange={(e) => void setSession({ include_practice: e.target.checked })}
+              />
+              Include practice strats
+            </label>
+          </div>
+        )}
       </div>
 
       <div className="panel">
         {!currentPick ? (
           <>
+            <p className="eyebrow">Choose a strat</p>
             <p className="muted" style={{ marginBottom: 12 }}>
               {eligible.length === 0
-                ? `No strats match this selection on ${session.selected_map}. Enable more packs in Lobby.`
-                : `${eligible.length} strat${eligible.length === 1 ? "" : "s"} ready in the pool.`}
+                ? `No strats match this selection on ${session.selected_map}. Enable more packs in Book.`
+                : `${eligible.length} strat${eligible.length === 1 ? "" : "s"} ready · tap one to call`}
             </p>
-            <button type="button" className={`btn btn-primary ${accent}`} onClick={pickRandom} disabled={!eligible.length}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 8, justifyContent: "center" }}>
-                <Shuffle size={18} /> Give me a call
-              </span>
-            </button>
 
-            {pickList.length > 0 && (
-              <>
-                <p className="eyebrow" style={{ marginTop: 16 }}>
-                  Or pick one
-                </p>
-                {pickList.slice(0, 12).map((s) => {
-                  const pack = packs.find((p) => p.id === s.pack_id);
-                  return (
-                    <button key={s.id} type="button" className="list-item" onClick={() => commitCall(s)}>
-                      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-                        <strong>{s.callout}</strong>
-                        <button
-                          type="button"
-                          className="btn-ghost"
-                          style={{ padding: 4 }}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            void toggleFavorite(s.id);
-                          }}
-                          aria-label="Favorite"
-                        >
-                          <Star size={14} filled={favorites.has(s.id)} />
-                        </button>
-                      </div>
-                      <div className="meta">
-                        {s.description.slice(0, 80)}
-                        {s.description.length > 80 ? "…" : ""}
-                        {pack ? ` · ${pack.title}` : ""}
-                        {favorites.has(s.id) ? " · Favorite" : ""}
-                      </div>
+            {pickList.map((s) => {
+              const pack = packs.find((p) => p.id === s.pack_id);
+              return (
+                <button key={s.id} type="button" className="list-item" onClick={() => void commitCall(s)}>
+                  <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+                    <strong>{s.callout}</strong>
+                    <button
+                      type="button"
+                      className="btn-ghost"
+                      style={{ padding: 4 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        void toggleFavorite(s.id);
+                      }}
+                      aria-label="Favorite"
+                    >
+                      <Star size={14} filled={favorites.has(s.id)} />
                     </button>
-                  );
-                })}
-              </>
+                  </div>
+                  <div className="meta">
+                    {s.description.slice(0, 80)}
+                    {s.description.length > 80 ? "…" : ""}
+                    {pack ? ` · ${pack.title}` : ""}
+                    {favorites.has(s.id) ? " · Favorite" : ""}
+                  </div>
+                </button>
+              );
+            })}
+
+            {eligible.length > 0 && (
+              <button type="button" className="btn-ghost" style={{ width: "100%", marginTop: 8 }} onClick={pickRandom}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, justifyContent: "center" }}>
+                  <Shuffle size={14} /> Surprise me
+                </span>
+              </button>
             )}
           </>
         ) : (
@@ -261,7 +247,7 @@ export function MatchScreen() {
                 {currentPick.site ? `${session.selected_map} · ${String(currentPick.site).toUpperCase()}` : session.selected_map}
               </span>
               <div className="row">
-                <button type="button" className="btn-ghost" onClick={() => toggleFavorite(currentPick.id)}>
+                <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
                   <Star size={14} filled={favorites.has(currentPick.id)} />
                 </button>
                 {secondsLeft !== null && (
@@ -305,16 +291,21 @@ export function MatchScreen() {
                 </span>
               ) : (
                 <>
-                  <button type="button" className="pill" style={{ color: "var(--good)" }} onClick={() => onLog("win")}>
+                  <button type="button" className="pill" style={{ color: "var(--good)" }} onClick={() => void onLog("win")}>
                     Won
                   </button>
-                  <button type="button" className="pill" style={{ color: "var(--warn)" }} onClick={() => onLog("loss")}>
+                  <button type="button" className="pill" style={{ color: "var(--warn)" }} onClick={() => void onLog("loss")}>
                     Lost
                   </button>
                 </>
               )}
-              <button type="button" className="btn-ghost" style={{ marginLeft: "auto" }} onClick={pickRandom}>
-                New call
+            </div>
+            <div className="row" style={{ marginTop: 10 }}>
+              <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
+                Change strat
+              </button>
+              <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!eligible.length}>
+                <Shuffle size={14} /> Surprise me
               </button>
             </div>
           </>

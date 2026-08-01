@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
-import { exportBookJson, isCloudMode, isSupabaseConfigured, resetLocalDemo } from "../lib/api";
+import {
+  ensureLiveShareToken,
+  exportBookJson,
+  isCloudMode,
+  isSupabaseConfigured,
+  regenerateLiveShareToken,
+  resetLocalDemo,
+} from "../lib/api";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
@@ -10,6 +18,30 @@ export function SettingsScreen() {
   const { mode, user, signOut, userId, supabaseReady } = useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const shareUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
+  const [liveToken, setLiveToken] = useState<string | null>(null);
+  const [liveMsg, setLiveMsg] = useState("");
+  const [liveBusy, setLiveBusy] = useState(false);
+
+  const liveUrl = liveToken && shareUrl ? `${shareUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
+
+  useEffect(() => {
+    if (!user || !supabaseReady) {
+      setLiveToken(null);
+      return;
+    }
+    let cancelled = false;
+    void (async () => {
+      try {
+        const token = await ensureLiveShareToken();
+        if (!cancelled) setLiveToken(token);
+      } catch (e) {
+        if (!cancelled) setLiveMsg(e instanceof Error ? e.message : "Could not create live link");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user, supabaseReady]);
 
   return (
     <div>
@@ -25,10 +57,10 @@ export function SettingsScreen() {
             : " · guest (this device only)"}
         </p>
         <p className="banner">
-          Login is optional. Guests get full Match + system packs on this phone. Sign in to sync across devices. Share the app link below so teammates can open it without an account.
+          Login is optional. Guests get full Match + packs on this phone. Sign in to sync and share a live call link with the team.
         </p>
         {user && (
-          <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => signOut()}>
+          <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>
             <LogOut size={14} /> Sign out
           </button>
         )}
@@ -41,8 +73,8 @@ export function SettingsScreen() {
       )}
 
       <div className="panel">
-        <p className="eyebrow">Share (no login required)</p>
-        <p className="muted">Send this link to the team. They can use packs and Match as guests.</p>
+        <p className="eyebrow">App link (no login)</p>
+        <p className="muted">Send this so teammates can open the app as guests.</p>
         <input className="input" readOnly value={shareUrl} onFocus={(e) => e.target.select()} />
         <button
           type="button"
@@ -55,9 +87,57 @@ export function SettingsScreen() {
             }
           }}
         >
-          Copy link
+          Copy app link
         </button>
       </div>
+
+      {user && (
+        <div className="panel">
+          <p className="eyebrow">Live call link (private)</p>
+          <p className="muted">
+            Teammates open this without logging in and see your current Match call. It updates while you pick strats.
+          </p>
+          <input className="input" readOnly value={liveUrl || "Creating link…"} onFocus={(e) => e.target.select()} />
+          <div className="row">
+            <button
+              type="button"
+              className="btn-ghost"
+              disabled={!liveUrl}
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(liveUrl);
+                  setLiveMsg("Copied live link");
+                } catch {
+                  setLiveMsg("Could not copy");
+                }
+              }}
+            >
+              Copy live link
+            </button>
+            <button
+              type="button"
+              className="btn-ghost"
+              disabled={liveBusy}
+              onClick={async () => {
+                setLiveBusy(true);
+                setLiveMsg("");
+                try {
+                  const token = await regenerateLiveShareToken();
+                  setLiveToken(token);
+                  setLiveMsg("New live link created (old one revoked)");
+                } catch (e) {
+                  setLiveMsg(e instanceof Error ? e.message : "Failed to regenerate");
+                } finally {
+                  setLiveBusy(false);
+                }
+              }}
+            >
+              Regenerate
+            </button>
+          </div>
+          {liveMsg && <p className="banner">{liveMsg}</p>}
+        </div>
+      )}
 
       <div className="panel">
         <p className="eyebrow">Library</p>

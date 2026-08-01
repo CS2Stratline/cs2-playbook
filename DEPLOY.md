@@ -38,6 +38,7 @@ npm run seed:supabase
 ```
 
 5. Add the same URL/anon key as GitHub Actions secrets (or `.env.local` for `npm run dev`).
+6. SQL editor: also run [`supabase/migrations/003_live_share.sql`](supabase/migrations/003_live_share.sql) for private live-call links (Settings → Live call link when signed in).
 
 ## Vercel (optional)
 
