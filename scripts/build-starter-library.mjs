@@ -657,7 +657,7 @@ const out = {
   strats,
 };
 
-const dest = join(root, "src/cs2-startbibliotek.json");
+const dest = join(root, "src/starter-library.json");
 writeFileSync(dest, JSON.stringify(out, null, 2) + "\n");
 
 const by = {};

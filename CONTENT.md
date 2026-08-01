@@ -47,16 +47,17 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 - Prefer well-known executes (BLAST / standard meta) with CSNADES URLs that exist in `csnades-catalog.json`
 - Inspiration (adapt to freeze-time tasks — do not copy role boards / demo titles): [cs2tactics](https://cs2tactics.vercel.app/tactics), [cs2strats.net](https://cs2strats.net), [cs2strat.com Mirage](https://www.cs2strat.com/en/maps/mirage)
 
-## Regenerating the starter file
+## Regenerating the starter + cloud seed
 
 ```bash
-npm run starter
+npm run starter          # writes src/starter-library.json (fails if a lineup URL is missing)
+npm run seed:packs       # rebuilds src/data/system-packs.json
+npm run seed:supabase    # upserts packs/strats/nades (needs SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY)
 ```
 
-Writes `src/cs2-startbibliotek.json` and **fails** if any lineup URL is missing from the catalog.
-Existing installs: Book → settings → **Replace book with starter library** (or add missing only).
+Guests pick up catalog fixes via the app seed revision. Signed-in users need `seed:supabase` (and a hard refresh).
 
-## Storage schema
+## Local export schema
 
-Persisted and full-backup JSON uses `version: 2` with `{ version, maps, strats, history, session }`.
-Team share export is `{ version, maps, strats }` only.
+Settings → **Export JSON** writes `{ version: 3, maps, packs, strats }` (`SCHEMA_VERSION` in `src/lib/types.ts`).
+There is no in-app “restore backup” — use Reset local data (guest) or re-seed Supabase for cloud.

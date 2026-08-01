@@ -11,7 +11,6 @@ type CatalogFile = {
     url: string;
     team?: string;
     label?: string;
-    labelEn?: string;
   }>;
 };
 
@@ -26,7 +25,6 @@ export const NADE_CATALOG: Nade[] = (file.nades || []).map((n) => ({
   url: n.url,
   team: n.team,
   label: n.label || "",
-  labelEn: n.labelEn || n.label || "",
 }));
 
 export const CATALOG_SIZE = NADE_CATALOG.length;

@@ -80,7 +80,7 @@ const nades = (catalog.nades || []).map((n) => ({
   url: n.url,
   team: n.team || null,
   label: n.label || "",
-  label_en: n.labelEn || n.label || "",
+  label_en: n.label || "",
 }));
 for (let i = 0; i < nades.length; i += chunk) {
   const { error } = await sb.from("nade_catalog").upsert(nades.slice(i, i + chunk), { onConflict: "url" });

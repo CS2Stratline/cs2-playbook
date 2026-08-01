@@ -1,11 +1,11 @@
 /**
- * Regenerate src/data/system-packs.json from cs2-startbibliotek.json (+ extra CT coverage).
+ * Regenerate src/data/system-packs.json from starter-library.json (+ extra CT coverage).
  * Run: npm run seed:packs
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 
-const starter = JSON.parse(readFileSync("src/cs2-startbibliotek.json", "utf8"));
+const starter = JSON.parse(readFileSync("src/starter-library.json", "utf8"));
 const uid = () => randomUUID();
 
 function estimateLevel(s, tier) {
