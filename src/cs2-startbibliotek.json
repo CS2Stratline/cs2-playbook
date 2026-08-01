@@ -152,10 +152,6 @@
           "url": "https://csnades.gg/mirage/smokes/stairs-from-a-ramp"
         },
         {
-          "label": "Molly: Firebox",
-          "url": "https://csnades.gg/mirage/molotovs/firebox-from-stairs"
-        },
-        {
           "label": "Flash: Ramp",
           "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
         }
@@ -280,14 +276,6 @@
         {
           "label": "Smoke: Jungle",
           "url": "https://csnades.gg/mirage/smokes/jungle-from-tetris"
-        },
-        {
-          "label": "Smoke: Jungle+con",
-          "url": "https://csnades.gg/mirage/smokes/jungle-and-connector-from-underpass"
-        },
-        {
-          "label": "Molly: Underpass",
-          "url": "https://csnades.gg/mirage/molotovs/underpass-from-jungle"
         }
       ],
       "map": "Mirage",
@@ -486,8 +474,8 @@
           "url": "https://csnades.gg/mirage/smokes/connector-from-t-spawn"
         },
         {
-          "label": "Flash: Top mid",
-          "url": "https://csnades.gg/mirage/flashbangs/top-mid-from-triple"
+          "label": "Flash: Window",
+          "url": "https://csnades.gg/mirage/flashbangs/window-from-top-mid-boxes"
         }
       ],
       "map": "Mirage",
@@ -497,7 +485,7 @@
       "description": "Smoke mid window, take top mid for info and splits.",
       "tasks": [
         "Smoke mid window from spawn",
-        "Flash top mid, take control",
+        "Flash window / take top mid",
         "Decide A-con or B-short"
       ]
     },
@@ -646,22 +634,18 @@
       "status": "ready",
       "links": [
         {
-          "label": "Molly: Bench",
-          "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
-        },
-        {
-          "label": "Molly: Van",
-          "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
+          "label": "Molly: Apps",
+          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
         }
       ],
       "map": "Mirage",
       "side": "CT",
       "site": null,
       "callout": "Anti apps",
-      "description": "When apps push: let them exit, molly floor/bench, trade from site + short.",
+      "description": "When apps push: let them exit, molly apps from site, trade from site + short.",
       "tasks": [
         "1 short, 1 site/van",
-        "Molly bench/site — not deep apps",
+        "Molly apps from site — not deep into apps",
         "Trade exit, hold market"
       ]
     },
@@ -1758,11 +1742,11 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "description": "Strong heaven/water.",
+      "description": "Strong A (heaven/water), soft B.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
+        "2–3 A (heaven/water), 1 mid, 1 B",
         "Deny water early",
-        "Rotate on ruins"
+        "Rotate B only on clear ruins / mid info"
       ]
     },
     {
@@ -1942,26 +1926,31 @@
       "side": "CT",
       "site": null,
       "callout": "A hold",
-      "description": "Strong A (forklift/checker).",
+      "description": "Strong A (forklift/checker), soft B.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
-        "Deny squeaky",
-        "Rotate B on heaven sound"
+        "2–3 A (forklift/checker/site), 1 mid, 1 B",
+        "Deny squeaky / A main entry",
+        "Rotate B only on clear mid or B info"
       ]
     },
     {
       "rounds": [],
       "status": "ready",
-      "links": [],
+      "links": [
+        {
+          "label": "Smoke: B Main",
+          "url": "https://csnades.gg/cache/smokes/b-main-from-heaven"
+        }
+      ],
       "map": "Cache",
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Strong heaven/B main.",
+      "description": "Strong heaven / B main — punish halls commits.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Hold heaven close",
-        "Utility B halls"
+        "2 B (heaven + site), 1 mid, 2 A soft",
+        "Hold heaven — watch B main / garbage",
+        "Smoke B main from heaven when they commit halls"
       ]
     }
   ]

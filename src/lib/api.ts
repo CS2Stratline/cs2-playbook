@@ -6,6 +6,8 @@ import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
+/** Bump when `system-packs.json` content changes so guests pick up fixes. */
+const SEED_REVISION = 4;
 
 type Store = {
   profile: Profile;
@@ -14,6 +16,7 @@ type Store = {
   favorites: string[];
   subscriptions: Record<string, boolean>;
   session: UserSession;
+  seedRevision?: number;
 };
 
 function defaultSession(): UserSession {
@@ -46,6 +49,24 @@ function seedStore(): Store {
     favorites: [],
     subscriptions,
     session: defaultSession(),
+    seedRevision: SEED_REVISION,
+  };
+}
+
+/** Replace system packs/strats from the bundled seed; keep favorites, session, custom strats. */
+function refreshSystemSeed(store: Store): Store {
+  const fresh = seedStore();
+  const customStrats = store.strats.filter((s) => s.source !== "system-seed");
+  const subscriptions = { ...fresh.subscriptions, ...store.subscriptions };
+  for (const p of fresh.packs) {
+    if (subscriptions[p.id] === undefined) subscriptions[p.id] = p.tier !== "pro";
+  }
+  return {
+    ...store,
+    packs: fresh.packs,
+    strats: [...fresh.strats, ...customStrats],
+    subscriptions,
+    seedRevision: SEED_REVISION,
   };
 }
 
@@ -55,13 +76,16 @@ function loadLocal(): Store {
     if (raw) {
       const parsed = JSON.parse(raw) as Store;
       if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats) && parsed.packs.length > 0) {
-        parsed.strats = parsed.strats.map((s) => ({
+        const store =
+          parsed.seedRevision === SEED_REVISION ? parsed : refreshSystemSeed(parsed);
+        store.strats = store.strats.map((s) => ({
           ...s,
           level:
             s.level ||
-            estimateStratLevel({ ...s, tier: parsed.packs.find((p) => p.id === s.pack_id)?.tier }),
+            estimateStratLevel({ ...s, tier: store.packs.find((p) => p.id === s.pack_id)?.tier }),
         }));
-        return parsed;
+        if (store.seedRevision !== parsed.seedRevision) saveLocal(store);
+        return store;
       }
     }
   } catch {
