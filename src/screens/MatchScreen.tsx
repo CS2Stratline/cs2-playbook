@@ -2,10 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
 import { FREEZE_SECONDS, type Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
-import { MapIcon, RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
+import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { FreezeTimer } from "../components/FreezeTimer";
 import { LevelBadge } from "../components/LevelBadge";
-import { LineupChip } from "../components/LineupChip";
+import { MapLogo } from "../components/MapLogo";
+import { StratTasks } from "../components/StratTasks";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
@@ -169,6 +170,14 @@ export function MatchScreen() {
     return mergeSuggested(currentPick.links || [], suggested, 5);
   }, [currentPick]);
 
+  const callLinks = useMemo(
+    () => [
+      ...linkGroups.pinned.map((l) => ({ ...l, suggested: false as const })),
+      ...linkGroups.suggested.map((l) => ({ ...l, suggested: true as const })),
+    ],
+    [linkGroups]
+  );
+
   const filterActive = session.round_filter !== "all" || session.include_practice;
 
   if (loading) return <div className="empty">Loading Match…</div>;
@@ -301,7 +310,7 @@ export function MatchScreen() {
           <>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
               <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
-                <MapIcon map={session.selected_map} size={12} />
+                <MapLogo map={session.selected_map} size={16} />
                 {currentPick.site ? (
                   <>
                     {session.selected_map}
@@ -322,26 +331,7 @@ export function MatchScreen() {
             </div>
             <div className="callout-hero">{currentPick.callout}</div>
             {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
-            {currentPick.tasks.length > 0 && (
-              <div className={`task-rail ${accent}`} style={{ marginBottom: 12 }}>
-                {currentPick.tasks.map((t, i) => (
-                  <p key={i} className="task-line">
-                    {t}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            {(linkGroups.pinned.length > 0 || linkGroups.suggested.length > 0) && (
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-                {linkGroups.pinned.map((l, i) => (
-                  <LineupChip key={`p-${i}`} label={l.label} url={l.url} />
-                ))}
-                {linkGroups.suggested.map((l, i) => (
-                  <LineupChip key={`s-${i}`} label={l.label} url={l.url} suggested title="Suggested from catalog" />
-                ))}
-              </div>
-            )}
+            <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
 
             <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10 }}>
               {session.logged ? (

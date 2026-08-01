@@ -1,6 +1,7 @@
 import { usePlaybook } from "../lib/playbook";
 import { MAPS, type Side } from "../lib/types";
-import { MapIcon, SideCT, SideT } from "./icons";
+import { MapLogo } from "./MapLogo";
+import { SideCT, SideT } from "./icons";
 
 const MAP_SHORT: Record<string, string> = {
   "Dust II": "D2",
@@ -28,7 +29,7 @@ export function MapSideChrome() {
             title={m}
             aria-label={m}
           >
-            <MapIcon map={m} size={13} />
+            <MapLogo map={m} size={16} />
             <span>{MAP_SHORT[m] || m}</span>
           </button>
         ))}

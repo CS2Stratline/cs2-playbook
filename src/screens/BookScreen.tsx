@@ -5,12 +5,13 @@ import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
 import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
-import { MapIcon, Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
+import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
-import { LineupChip } from "../components/LineupChip";
+import { MapLogo } from "../components/MapLogo";
+import { StratTasks } from "../components/StratTasks";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
-import { suggestLineupLinks } from "../lib/lineupMatch";
+import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 import { ensureUserPrivatePack, findPoolCopy as findCopy } from "../lib/api";
 
 type Tab = "catalog" | "pool";
@@ -256,7 +257,7 @@ export function BookScreen() {
           <div>
             <p className="eyebrow">{usePersonalPool ? (tab === "catalog" ? "Add more" : "My pool") : "Browse"}</p>
             <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
-              <MapIcon map={session.selected_map} size={22} />
+              <MapLogo map={session.selected_map} size={26} />
               {session.selected_map}
               <span className={`side-tag ${session.selected_side === "CT" ? "ct" : ""}`}>
                 {session.selected_side === "CT" ? <SideCT size={14} /> : <SideT size={14} />}
@@ -363,17 +364,19 @@ export function BookScreen() {
                   </button>
                   {open && (
                     <div style={{ padding: "8px 4px 0" }}>
-                      {s.description && <p className="muted">{s.description}</p>}
-                      {s.tasks.map((t, i) => (
-                        <p key={i} style={{ margin: "4px 0", fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--dim)" }}>
-                          {t}
-                        </p>
-                      ))}
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
-                        {s.links.map((l, i) => (
-                          <LineupChip key={i} label={l.label} url={l.url} />
-                        ))}
-                      </div>
+                      {s.description && <p className="muted" style={{ marginBottom: 8 }}>{s.description}</p>}
+                      <StratTasks
+                        tasks={s.tasks}
+                        links={(() => {
+                          const sug = suggestLineupLinks(s, NADE_CATALOG, { limit: 4 });
+                          const merged = mergeSuggested(s.links || [], sug, 4);
+                          return [
+                            ...merged.pinned.map((l) => ({ ...l, suggested: false as const })),
+                            ...merged.suggested.map((l) => ({ ...l, suggested: true as const })),
+                          ];
+                        })()}
+                        accent={session.selected_side === "CT" ? "ct" : ""}
+                      />
                       <div className="row" style={{ marginTop: 8 }}>
                         {usePersonalPool && tab === "catalog" && (
                           <button
