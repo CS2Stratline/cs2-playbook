@@ -1,5 +1,8 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { ALL_MAPS, MAPS, type Side } from "../lib/types";
+import { isAllMaps } from "../lib/types";
 import { CsIcon } from "./CsIcon";
 import { MapLogo } from "./MapLogo";
 import { SideCT, SideT } from "./icons";
@@ -16,21 +19,35 @@ const MAP_SHORT: Record<string, string> = {
 
 export function MapSideChrome() {
   const { session, setSession } = usePlaybook();
+  const location = useLocation();
   const accent = session.selected_side === "CT" ? "ct" : "";
+  const onPlaybook = location.pathname.startsWith("/playbook");
+
+  // Match needs a real map — All is Playbook-only.
+  useEffect(() => {
+    if (!onPlaybook && isAllMaps(session.selected_map)) {
+      void setSession({ selected_map: "Mirage", current_pick_id: null, timer_ends_at: null, called_at: null });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onPlaybook, session.selected_map]);
 
   return (
     <div className="map-side-chrome">
       <div className="row map-pills" style={{ marginBottom: 6 }}>
-        <button
-          type="button"
-          className={`pill pill-icon ${session.selected_map === ALL_MAPS ? `active ${accent}` : ""}`}
-          onClick={() => void setSession({ selected_map: ALL_MAPS, current_pick_id: null, timer_ends_at: null, called_at: null })}
-          title="All maps"
-          aria-label="All maps"
-        >
-          <CsIcon name="all" size={14} />
-          <span>All</span>
-        </button>
+        {onPlaybook && (
+          <button
+            type="button"
+            className={`pill pill-icon ${session.selected_map === ALL_MAPS ? `active ${accent}` : ""}`}
+            onClick={() =>
+              void setSession({ selected_map: ALL_MAPS, current_pick_id: null, timer_ends_at: null, called_at: null })
+            }
+            title="All maps"
+            aria-label="All maps"
+          >
+            <CsIcon name="all" size={14} />
+            <span>All</span>
+          </button>
+        )}
         {MAPS.map((m) => (
           <button
             key={m}
