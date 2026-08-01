@@ -12,10 +12,10 @@ Run on a phone (or narrow browser) during casual/scrim freeze. Goal: readable ca
 
 | # | Action | Pass if |
 |---|---|---|
-| 1 | Surprise: tap **Give me a call** | Callout + tasks readable; timer runs |
-| 2 | Pick: tap a row under **Or pick one** | Same call card; intended strat shown |
-| 3 | Book → expand → **Use in match** | Switches to Match with that strat + timer |
-| 4 | Refresh mid-timer | Filters restored; call still visible while timer alive |
+| 1 | Surprise: tap **Give me a call** / **Surprise me** | Callout + tasks readable; lineup pills beside matching lines |
+| 2 | Pick: tap a strat row | Same call card; intended strat shown |
+| 3 | Book → expand → **Use in match** | Switches to Match with that strat |
+| 4 | Refresh with an active call | Filters restored; call still visible |
 | 5 | Change site filter | Active call clears; pool updates |
 | 6 | Log Won/Lost | History strip updates; no double-log |
 | 7 | Full backup → clear site data → restore | Book + filters come back |

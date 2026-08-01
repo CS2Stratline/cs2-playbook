@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchLiveCall, type LiveCallView } from "../lib/api";
 import { SiteIcon } from "../components/icons";
-import { FreezeTimer } from "../components/FreezeTimer";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
 
@@ -10,7 +9,6 @@ export function LiveScreen() {
   const { token = "" } = useParams();
   const [data, setData] = useState<LiveCallView | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -32,18 +30,6 @@ export function LiveScreen() {
       window.clearInterval(id);
     };
   }, [token]);
-
-  useEffect(() => {
-    if (!data?.timer_ends_at) {
-      setSecondsLeft(null);
-      return;
-    }
-    const end = Date.parse(data.timer_ends_at);
-    const tick = () => setSecondsLeft(Math.max(0, Math.ceil((end - Date.now()) / 1000)));
-    tick();
-    const id = window.setInterval(tick, 200);
-    return () => window.clearInterval(id);
-  }, [data?.timer_ends_at]);
 
   const side = data?.selected_side === "CT" ? "CT" : "T";
   const accent = side === "CT" ? "ct" : "";
@@ -86,7 +72,6 @@ export function LiveScreen() {
                 data.selected_map
               )}
             </span>
-            {secondsLeft !== null && <FreezeTimer secondsLeft={secondsLeft} ct={side === "CT"} />}
           </div>
           <div className="callout-hero">{data.callout}</div>
           {data.description && <p className="muted" style={{ marginBottom: 10 }}>{data.description}</p>}

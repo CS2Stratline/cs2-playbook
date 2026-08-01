@@ -112,5 +112,4 @@ export function catalogIdFromSource(source: string | null | undefined): string |
   return source.slice("catalog:".length);
 }
 
-export const FREEZE_SECONDS = 15;
 export const SCHEMA_VERSION = 3;

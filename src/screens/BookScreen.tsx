@@ -4,7 +4,7 @@ import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import { bumpStratUsage, upsertPrivateStrat } from "../lib/api";
 import type { PackTier, Strat } from "../lib/types";
-import { FREEZE_SECONDS, TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { TIER_LABEL, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -144,7 +144,6 @@ export function BookScreen() {
     if (!usePersonalPool && !isPackInMatchPool(s.pack_id, subscriptions, packs)) {
       await setPackEnabled(s.pack_id, true);
     }
-    const end = Date.now() + FREEZE_SECONDS * 1000;
     await bumpStratUsage(s.id);
     await setSession({
       selected_map: s.map,
@@ -152,7 +151,7 @@ export function BookScreen() {
       site_filter: s.site || "all",
       current_pick_id: s.id,
       logged: null,
-      timer_ends_at: end,
+      timer_ends_at: null,
       called_at: Date.now(),
       tab: "match",
     });

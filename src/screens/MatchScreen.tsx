@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePlaybook } from "../lib/playbook";
-import { FREEZE_SECONDS, type Strat } from "../lib/types";
+import type { Strat } from "../lib/types";
 import { bumpStratUsage, logStratResult } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
-import { FreezeTimer } from "../components/FreezeTimer";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
@@ -40,10 +39,8 @@ export function MatchScreen() {
     usePersonalPool,
     addFundamentalsStarter,
   } = usePlaybook();
-  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [seedBusy, setSeedBusy] = useState(false);
-  const timerRef = useRef<number | null>(null);
   const filterKeyRef = useRef<string | null>(null);
 
   const side = session.selected_side;
@@ -75,39 +72,6 @@ export function MatchScreen() {
     return [...fav, ...rest];
   }, [eligible, favorites]);
 
-  function clearTimer() {
-    if (timerRef.current) window.clearInterval(timerRef.current);
-    timerRef.current = null;
-    setSecondsLeft(null);
-  }
-
-  function startTimer(endMs?: number) {
-    clearTimer();
-    const end = endMs || Date.now() + FREEZE_SECONDS * 1000;
-    const tick = () => {
-      const left = Math.max(0, Math.ceil((end - Date.now()) / 1000));
-      setSecondsLeft(left);
-      if (left <= 0 && timerRef.current) {
-        window.clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-    };
-    tick();
-    timerRef.current = window.setInterval(tick, 200);
-    return end;
-  }
-
-  useEffect(() => {
-    if (session.timer_ends_at && session.timer_ends_at > Date.now() && session.current_pick_id) {
-      startTimer(session.timer_ends_at);
-    } else if (!session.current_pick_id) {
-      clearTimer();
-    }
-    return () => clearTimer();
-    // restore / sync timer when pick or ends-at changes (e.g. Use in Match)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, session.current_pick_id, session.timer_ends_at]);
-
   const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${session.include_practice}`;
 
   useEffect(() => {
@@ -118,19 +82,17 @@ export function MatchScreen() {
     }
     if (filterKeyRef.current === filterKey) return;
     filterKeyRef.current = filterKey;
-    clearTimer();
     void setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey]);
 
   async function commitCall(strat: Strat) {
-    const end = startTimer();
     const calledAt = Date.now();
     await bumpStratUsage(strat.id);
     await setSession({
       current_pick_id: strat.id,
       logged: null,
-      timer_ends_at: end,
+      timer_ends_at: null,
       called_at: calledAt,
       tab: "match",
     });
@@ -154,7 +116,6 @@ export function MatchScreen() {
   }
 
   async function changeStrat() {
-    clearTimer();
     await setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
   }
 
@@ -326,7 +287,6 @@ export function MatchScreen() {
                 <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
                   <Star size={14} filled={favorites.has(currentPick.id)} />
                 </button>
-                {secondsLeft !== null && <FreezeTimer secondsLeft={secondsLeft} ct={side === "CT"} />}
               </div>
             </div>
             <div className="callout-hero">{currentPick.callout}</div>
