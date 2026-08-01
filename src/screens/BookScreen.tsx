@@ -215,10 +215,6 @@ export function BookScreen() {
           {systemPacks.map(({ tier, items }) =>
             items.length ? (
               <div key={tier} style={{ marginTop: 8 }}>
-                <p className="eyebrow eyebrow-site">
-                  <LevelBadge level={tierToFaceitLevel(tier)} size={16} />
-                  {TIER_LABEL[tier]}
-                </p>
                 {items.map((p) => {
                   const on = isPackInMatchPool(p.id, subscriptions, packs);
                   return (
@@ -232,11 +228,10 @@ export function BookScreen() {
                         borderBottom: "1px solid var(--line)",
                       }}
                     >
-                      <LevelBadge level={tierToFaceitLevel(p.tier)} size={22} title={`${TIER_LABEL[p.tier]} · FACEIT-style Lv ${tierToFaceitLevel(p.tier)}`} />
                       <div style={{ flex: 1 }}>
                         <strong style={{ fontSize: 13 }}>{p.title}</strong>
                         <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                          {p.strat_count ?? "—"} strats · {TIER_LABEL[p.tier]}
+                          {p.description || `${p.strat_count ?? "—"} strats`}
                         </p>
                       </div>
                       <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
