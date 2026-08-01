@@ -62,15 +62,8 @@ export function LiveScreen() {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
             <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
               <MapLogo map={data.selected_map} size={16} />
-              {data.site ? (
-                <>
-                  {data.selected_map}
-                  <SiteIcon site={String(data.site)} size={12} />
-                  {String(data.site).toUpperCase()}
-                </>
-              ) : (
-                data.selected_map
-              )}
+              {data.selected_map}
+              {data.site ? <SiteIcon site={String(data.site)} size={12} /> : null}
             </span>
           </div>
           <div className="callout-hero">{data.callout}</div>
