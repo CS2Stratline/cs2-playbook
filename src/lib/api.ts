@@ -442,6 +442,42 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
   return added;
 }
 
+function fundamentalsSeedKey(userId: string) {
+  return `cs2-playbook-fundamentals-seeded:${userId}`;
+}
+
+/** True after we have auto-seeded (or user already has pool strats). */
+export function hasAutoSeededFundamentals(userId: string) {
+  try {
+    return localStorage.getItem(fundamentalsSeedKey(userId)) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markAutoSeededFundamentals(userId: string) {
+  try {
+    localStorage.setItem(fundamentalsSeedKey(userId), "1");
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * First-login bootstrap: copy Fundamentals for every map into My pool.
+ * Idempotent — skips strats already in the pool. Marks a local flag so we
+ * don't re-run after the user intentionally clears their pool.
+ */
+export async function ensureFundamentalsSeeded(userId: string, packs: Pack[]): Promise<number> {
+  if (hasAutoSeededFundamentals(userId)) return 0;
+  let total = 0;
+  for (const map of MAPS) {
+    total += await addFundamentalsForMap(userId, map, packs);
+  }
+  markAutoSeededFundamentals(userId);
+  return total;
+}
+
 export async function deleteStrat(userId: string, stratId: string) {
   if (!isCloudMode()) {
     memory.strats = memory.strats.filter((s) => !(s.id === stratId && s.owner_user_id === userId));
