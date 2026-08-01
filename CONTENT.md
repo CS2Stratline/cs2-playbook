@@ -13,14 +13,11 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
   "map": "Mirage",
   "side": "T",
   "site": "a",
-  "callout": "Trippel A",
-  "calloutEn": "Triple A",
-  "description": "…",
-  "descriptionEn": "…",
+  "callout": "Triple A",
+  "description": "Classic A execute: ticket, jungle and stairs together, then enter as five.",
   "rounds": ["full"],
   "status": "ready",
-  "tasks": ["…"],
-  "tasksEn": ["…"],
+  "tasks": ["Smoke ticket booth / CT", "Smoke jungle", "Smoke stairs", "Flash in, entry ramp + palace", "Hold con after plant"],
   "links": []
 }
 ```
@@ -38,7 +35,7 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 2. **Description:** one sentence — the idea, not a novel.
 3. **Tasks:** max 5, one per player / job; concrete verbs.
 4. **Landings:** name real spots (`ticket booth`, `xbox`, `banana`, `heaven`) so CSNADES matching works.
-5. **Bilingual:** fill both `*` and `*En` when possible; UI falls back if one is blank.
+5. **English only** — no bilingual `*En` fields or Norwegian copy.
 6. **No boards / demos / role sheets** in this JSON — that belongs in heavier tools (Stratbase etc.).
 
 ## Coverage goals
@@ -61,5 +58,5 @@ Existing installs: Book → settings → **Replace book with starter library** (
 
 ## Storage schema
 
-Persisted and full-backup JSON uses `version: 2` with `{ version, maps, strats, history, lang, session }`.
+Persisted and full-backup JSON uses `version: 2` with `{ version, maps, strats, history, session }`.
 Team share export is `{ version, maps, strats }` only.
