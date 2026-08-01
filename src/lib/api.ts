@@ -66,7 +66,18 @@ function saveLocal(store: Store) {
 
 let memory = typeof window !== "undefined" ? loadLocal() : seedStore();
 
+/** True only when Supabase is configured AND the user is signed in. Guests always use local data. */
+let signedInUserId: string | null = null;
+
+export function setCloudSignedInUser(userId: string | null) {
+  signedInUserId = userId;
+}
+
 export function isCloudMode() {
+  return supabaseConfigured && !!supabase && !!signedInUserId;
+}
+
+export function isSupabaseConfigured() {
   return supabaseConfigured && !!supabase;
 }
 

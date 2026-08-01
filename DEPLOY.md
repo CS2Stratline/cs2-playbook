@@ -22,6 +22,13 @@ Optional repo secrets for cloud builds:
    - `http://localhost:5173/`
 
    Site URL must be the **playbook** path, not bare `https://jonaslundervold.github.io/` (that causes a 404 after magic link).
+
+3b. (Recommended) Authentication → Providers → **Discord** → enable.  
+    Create an app at [discord.com/developers](https://discord.com/developers/applications):  
+    - OAuth2 redirect: `https://xlevljkrjlyfrqkowdmg.supabase.co/auth/v1/callback`  
+    - Paste Client ID + Secret into Supabase Discord provider.  
+    Login is **optional** — guests use the app without an account. Share `https://jonaslundervold.github.io/cs2-playbook/`.
+
 4. Seed packs + nades:
 
 ```bash

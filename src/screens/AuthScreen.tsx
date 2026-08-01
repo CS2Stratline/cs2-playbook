@@ -1,31 +1,55 @@
 import { useState } from "react";
 import { useAuth } from "../lib/auth";
-import { isCloudMode } from "../lib/api";
+import { isSupabaseConfigured } from "../lib/api";
 
-export function AuthScreen() {
-  const { signInWithEmail, mode } = useAuth();
+export function AuthScreen({ compact = false }: { compact?: boolean }) {
+  const { signInWithEmail, signInWithDiscord, supabaseReady } = useAuth();
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
 
-  if (!isCloudMode()) {
+  if (!isSupabaseConfigured() && !supabaseReady) {
     return (
       <div className="panel">
-        <p className="eyebrow">Local demo</p>
-        <h2 className="h2">Cloud Playbook</h2>
-        <p className="muted">
-          Supabase env vars are not set. You are running a full local demo with system packs (PUG / 5-stack / Pro), favorites, and Match — data stays in this browser.
-        </p>
-        <p className="banner">Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to enable magic-link login and cloud sync.</p>
+        <p className="eyebrow">Local only</p>
+        <p className="muted">Supabase is not configured. Everything stays in this browser.</p>
       </div>
     );
   }
 
   return (
-    <div className="panel">
-      <p className="eyebrow">Sign in</p>
-      <h2 className="h2">Cloud Playbook</h2>
-      <p className="muted">Email a magic link to sync packs and session across devices. Mode: {mode}.</p>
+    <div className={compact ? undefined : "panel"}>
+      {!compact && (
+        <>
+          <p className="eyebrow">Optional sign-in</p>
+          <h2 className="h2" style={{ fontSize: 22 }}>
+            Sync this device
+          </h2>
+          <p className="muted">
+            You can use Match and packs as a guest. Sign in to sync favorites and session across devices. Discord is recommended (avoids email rate limits).
+          </p>
+        </>
+      )}
+
+      <button
+        type="button"
+        className="btn btn-primary"
+        style={{ marginBottom: 10 }}
+        disabled={busy}
+        onClick={async () => {
+          setBusy(true);
+          setMsg("");
+          const res = await signInWithDiscord();
+          setBusy(false);
+          if (res.error) setMsg(res.error);
+        }}
+      >
+        Continue with Discord
+      </button>
+
+      <p className="eyebrow" style={{ marginTop: 8 }}>
+        Or email magic link
+      </p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -33,7 +57,7 @@ export function AuthScreen() {
           setMsg("");
           const res = await signInWithEmail(email.trim());
           setBusy(false);
-          setMsg(res.error || "Check your email for the login link.");
+          setMsg(res.error || "Check your email for the login link. If you hit rate limits, use Discord instead.");
         }}
       >
         <input
@@ -44,7 +68,7 @@ export function AuthScreen() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className="btn btn-primary" type="submit" disabled={busy}>
+        <button className="btn-ghost" type="submit" disabled={busy} style={{ width: "100%", padding: 12 }}>
           {busy ? "Sending…" : "Send magic link"}
         </button>
       </form>
