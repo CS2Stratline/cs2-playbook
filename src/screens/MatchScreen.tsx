@@ -23,19 +23,23 @@ const ROUNDS = [
 ];
 
 export function MatchScreen() {
-  const { enabledStrats, favorites, session, setSession, toggleFavorite, packs, loading } = usePlaybook();
+  const { enabledStrats, strats, favorites, session, setSession, toggleFavorite, packs, loading } = usePlaybook();
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const timerRef = useRef<number | null>(null);
-  const suppressRef = useRef(true);
+  const filterKeyRef = useRef<string | null>(null);
 
   const side = session.selected_side;
   const isT = side === "T";
   const accent = side === "CT" ? "ct" : "";
 
+  // Resolve from full library — Use in Match / live share can set a pick outside the enabled pool.
   const currentPick = useMemo(
-    () => enabledStrats.find((s) => s.id === session.current_pick_id) || null,
-    [enabledStrats, session.current_pick_id]
+    () =>
+      strats.find((s) => s.id === session.current_pick_id) ||
+      enabledStrats.find((s) => s.id === session.current_pick_id) ||
+      null,
+    [strats, enabledStrats, session.current_pick_id]
   );
 
   const eligible = useMemo(() => {
@@ -77,23 +81,30 @@ export function MatchScreen() {
   }
 
   useEffect(() => {
-    suppressRef.current = true;
     if (session.timer_ends_at && session.timer_ends_at > Date.now() && session.current_pick_id) {
       startTimer(session.timer_ends_at);
+    } else if (!session.current_pick_id) {
+      clearTimer();
     }
-    queueMicrotask(() => {
-      suppressRef.current = false;
-    });
     return () => clearTimer();
+    // restore / sync timer when pick or ends-at changes (e.g. Use in Match)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [loading, session.current_pick_id, session.timer_ends_at]);
+
+  const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${session.include_practice}`;
 
   useEffect(() => {
-    if (suppressRef.current) return;
+    // Skip first run so Use in Match (map/side/site + pick together) is not wiped on Match mount.
+    if (filterKeyRef.current === null) {
+      filterKeyRef.current = filterKey;
+      return;
+    }
+    if (filterKeyRef.current === filterKey) return;
+    filterKeyRef.current = filterKey;
     clearTimer();
     void setSession({ current_pick_id: null, logged: null, timer_ends_at: null, called_at: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session.selected_map, session.selected_side, session.site_filter, session.round_filter, session.include_practice]);
+  }, [filterKey]);
 
   async function commitCall(strat: Strat) {
     const end = startTimer();

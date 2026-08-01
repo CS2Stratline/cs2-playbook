@@ -104,6 +104,9 @@ export function BookScreen() {
   }
 
   async function useInMatch(s: Strat) {
+    if (subscriptions[s.pack_id] === false) {
+      await setPackEnabled(s.pack_id, true);
+    }
     const end = Date.now() + FREEZE_SECONDS * 1000;
     await bumpStratUsage(s.id);
     await setSession({
