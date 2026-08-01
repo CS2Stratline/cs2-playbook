@@ -1007,7 +1007,7 @@ const strats = [
   S({
     map: "Nuke",
     side: "T",
-    site: "a",
+    site: "outside",
     callout: "Outside A",
     calloutEn: "Outside A",
     description: "Outside smokes → secret/ramp eller heaven pressure.",
@@ -1056,11 +1056,11 @@ const strats = [
   S({
     map: "Nuke",
     side: "T",
-    site: "a",
-    callout: "Ramp A",
-    calloutEn: "Ramp A",
-    description: "Trophy/ramp trykk inn A lower.",
-    descriptionEn: "Trophy/ramp pressure into lower A.",
+    site: "ramp",
+    callout: "Ramp",
+    calloutEn: "Ramp",
+    description: "Trophy/ramp trykk ned mot B/lower.",
+    descriptionEn: "Trophy/ramp pressure down toward B/lower.",
     tasks: [
       "Kontroller ramp/trophy",
       "Flash ramp, entry",
@@ -1126,7 +1126,7 @@ const strats = [
   S({
     map: "Nuke",
     side: "T",
-    site: "default",
+    site: "outside",
     callout: "Outside default",
     calloutEn: "Outside default",
     description: "Outside control, spill picks før hit.",
