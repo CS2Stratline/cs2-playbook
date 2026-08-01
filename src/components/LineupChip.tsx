@@ -1,5 +1,6 @@
 import { shortLinkLabel } from "../lib/taskLinks";
 import { nadeChipClass, nadeTypeFromLink } from "../lib/nadeType";
+import { safeHttpUrl } from "../lib/safeUrl";
 import { NadeIcon } from "./icons";
 
 type Props = {
@@ -12,13 +13,15 @@ type Props = {
 };
 
 export function LineupChip({ label, url, suggested, title, compact }: Props) {
-  const type = nadeTypeFromLink({ label, url });
+  const href = safeHttpUrl(url);
+  if (!href) return null;
+  const type = nadeTypeFromLink({ label, url: href });
   const nadeClass = nadeChipClass(type);
   const text = compact ? shortLinkLabel(label) : label;
   return (
     <a
       className={`chip-link ${nadeClass}${suggested ? " suggested" : ""}${compact ? " compact" : ""}`}
-      href={url}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       title={title || label}
