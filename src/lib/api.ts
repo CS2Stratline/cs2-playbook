@@ -379,13 +379,6 @@ export async function bumpStratUsage(stratId: string) {
   if (error) throw error;
 }
 
-/** One-time: become the first super admin (fails if one already exists). */
-export async function claimFirstSuperAdmin(): Promise<void> {
-  if (!isCloudMode()) throw new Error("Cloud sign-in required");
-  const { error } = await supabase!.rpc("claim_first_super_admin");
-  if (error) throw error;
-}
-
 export type SharedStratPatch = {
   callout: string;
   description: string;
