@@ -53,7 +53,6 @@ export function LiveScreen() {
           <h2 className="h2" style={{ fontSize: 22 }}>
             Waiting for a call
           </h2>
-          <p className="muted">The IGL has not picked a strat yet. This view updates automatically.</p>
         </div>
       )}
 
