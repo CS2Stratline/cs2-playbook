@@ -163,8 +163,9 @@ export function getLocalUserId() {
 }
 
 export async function ensureBootstrap(): Promise<void> {
+  // Local mode already holds live memory; only seed when empty (SSR / fresh tab).
   if (!isCloudMode()) {
-    memory = loadLocal();
+    if (!memory?.packs?.length) memory = loadLocal();
     return;
   }
   // Cloud: system packs must be seeded via SQL/admin; client loads visible rows.

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, UserSession } from "./types";
@@ -55,6 +55,11 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     timer_ends_at: null,
     called_at: null,
   });
+  /** Keep latest session for atomic patches (fast map taps) without stale closures. */
+  const sessionRef = useRef(session);
+  sessionRef.current = session;
+  /** Drop out-of-order cloud session upserts when the user taps maps quickly. */
+  const sessionSaveGen = useRef(0);
 
   const refresh = useCallback(async () => {
     setError(null);
@@ -121,7 +126,34 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         }
       }
       setSubscriptions(nextSubs);
-      setSessionState(sess);
+      // Don't clobber a newer in-UI session with a slower getSession response.
+      const incoming = sess;
+      setSessionState((prev) => {
+        const uiNewer =
+          prev.selected_map !== incoming.selected_map ||
+          prev.selected_side !== incoming.selected_side ||
+          prev.site_filter !== incoming.site_filter ||
+          prev.round_filter !== incoming.round_filter ||
+          prev.current_pick_id !== incoming.current_pick_id;
+        // On first load session matches defaults; always take server/local snapshot.
+        // After the user has interacted, prefer the fresher UI patch fields for map/side/filters/pick.
+        if (sessionSaveGen.current > 0 && uiNewer) {
+          const merged = {
+            ...incoming,
+            selected_map: prev.selected_map,
+            selected_side: prev.selected_side,
+            site_filter: prev.site_filter,
+            round_filter: prev.round_filter,
+            current_pick_id: prev.current_pick_id,
+            timer_ends_at: prev.timer_ends_at,
+            called_at: prev.called_at,
+          };
+          sessionRef.current = merged;
+          return merged;
+        }
+        sessionRef.current = incoming;
+        return incoming;
+      });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load playbook");
     } finally {
@@ -137,11 +169,15 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const setSession = useCallback(
     async (patch: Partial<UserSession>) => {
-      setSessionState((prev) => {
-        const next = { ...prev, ...patch };
-        void api.saveSession(userId, next);
-        return next;
-      });
+      const gen = ++sessionSaveGen.current;
+      const next = { ...sessionRef.current, ...patch };
+      sessionRef.current = next;
+      setSessionState(next);
+      await api.saveSession(userId, next);
+      // A newer tap already saved — don't let an older await leave stale DB state without a follow-up.
+      if (gen !== sessionSaveGen.current) {
+        await api.saveSession(userId, sessionRef.current);
+      }
     },
     [userId]
   );
