@@ -67,6 +67,7 @@ export function MatchScreen() {
   }, [packs, usePersonalPool, userId]);
 
   // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
+  // Map pills already reset this atomically; keep as a safety net for other session writers.
   useEffect(() => {
     if (!isValidLane(session.selected_map, session.site_filter)) {
       void setSession({ site_filter: "all" });
@@ -74,14 +75,17 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.selected_map]);
 
-  // Resolve from full library — live share can set a pick outside the enabled pool.
-  const currentPick = useMemo(
-    () =>
+  // Resolve from full library. Ignore picks that don't match the active map/side
+  // (fast map taps used to leave a stale call on screen).
+  const currentPick = useMemo(() => {
+    const pick =
       strats.find((s) => s.id === session.current_pick_id) ||
       enabledStrats.find((s) => s.id === session.current_pick_id) ||
-      null,
-    [strats, enabledStrats, session.current_pick_id]
-  );
+      null;
+    if (!pick) return null;
+    if (pick.map !== session.selected_map || pick.side !== session.selected_side) return null;
+    return pick;
+  }, [strats, enabledStrats, session.current_pick_id, session.selected_map, session.selected_side]);
 
   const eligible = useMemo(() => {
     return enabledStrats.filter((s) => {
@@ -90,13 +94,20 @@ export function MatchScreen() {
       if (session.round_filter !== "all" && s.rounds.length && !s.rounds.includes(session.round_filter)) return false;
       return true;
     });
-  }, [enabledStrats, session, isT]);
+  }, [enabledStrats, session.selected_map, session.selected_side, session.site_filter, session.round_filter, isT]);
 
   const pickList = useMemo(() => {
     const pool = favoritesOnly && usePersonalPool ? eligible.filter((s) => isFavorite(s.id)) : eligible;
-    if (!usePersonalPool) return pool;
-    const fav = pool.filter((s) => isFavorite(s.id));
-    const rest = pool.filter((s) => !isFavorite(s.id));
+    // Dedupe by id so React keys stay stable if catalog + pool ever overlap.
+    const seen = new Set<string>();
+    const unique = pool.filter((s) => {
+      if (seen.has(s.id)) return false;
+      seen.add(s.id);
+      return true;
+    });
+    if (!usePersonalPool) return unique;
+    const fav = unique.filter((s) => isFavorite(s.id));
+    const rest = unique.filter((s) => !isFavorite(s.id));
     return [...fav, ...rest];
   }, [eligible, isFavorite, favoritesOnly, usePersonalPool]);
 
@@ -109,7 +120,9 @@ export function MatchScreen() {
     }
     if (filterKeyRef.current === filterKey) return;
     filterKeyRef.current = filterKey;
-    void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+    if (session.current_pick_id || session.timer_ends_at || session.called_at) {
+      void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey]);
 
@@ -392,7 +405,12 @@ export function MatchScreen() {
             {pickList.map((s) => {
               const pack = packs.find((p) => p.id === s.pack_id);
               return (
-                <button key={s.id} type="button" className="list-item" onClick={() => void commitCall(s)}>
+                <button
+                  key={`${session.selected_map}:${session.selected_side}:${s.id}`}
+                  type="button"
+                  className="list-item"
+                  onClick={() => void commitCall(s)}
+                >
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
                     <strong className="list-callout">
                       <LevelBadge level={clampFaceitLevel(s.level || 5)} size={20} />
