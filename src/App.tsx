@@ -61,13 +61,6 @@ function Shell() {
         </Routes>
         <nav className="nav">
           <div className="nav-inner nav-inner-4">
-            <NavLink
-              to="/roulette"
-              className={({ isActive }) => (isActive ? "active nav-meme" : "nav-meme")}
-            >
-              <Dice size={16} />
-              <span>Roulette</span>
-            </NavLink>
             <NavLink to="/match" className={({ isActive }) => (isActive ? "active" : "")}>
               <Crosshair size={16} />
               <span>Match</span>
@@ -79,6 +72,13 @@ function Shell() {
             <NavLink to="/settings" className={({ isActive }) => (isActive ? "active" : "")}>
               <Gear size={16} />
               <span>Settings</span>
+            </NavLink>
+            <NavLink
+              to="/roulette"
+              className={({ isActive }) => (isActive ? "active nav-meme" : "nav-meme")}
+            >
+              <Dice size={16} />
+              <span>Roulette</span>
             </NavLink>
           </div>
         </nav>
