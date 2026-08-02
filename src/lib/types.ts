@@ -110,7 +110,7 @@ export function isPackLocked(pack: Pick<Pack, "tier"> | undefined | null): boole
   return pack.tier === "pro" && !PREMIUM_UNLOCKED;
 }
 
-/** Guest Match pool: pack toggles. Missing subscription key defaults to on (except locked). */
+/** Match pack toggles (guest + signed-in). Missing subscription key defaults to on (except locked). */
 export function isPackInMatchPool(
   packId: string,
   subscriptions: Record<string, boolean>,

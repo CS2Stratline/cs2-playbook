@@ -42,7 +42,6 @@ export function BookScreen() {
     myPoolStrats,
     addToPool,
     removeFromPool,
-    addFundamentalsStarter,
     strats,
   } = usePlaybook();
   const [tab, setTab] = useState<Tab>("pool");
@@ -55,7 +54,6 @@ export function BookScreen() {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Strat | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [starterMsg, setStarterMsg] = useState("");
   const [saveError, setSaveError] = useState("");
   const [form, setForm] = useState({
     map: "Mirage",
@@ -267,90 +265,61 @@ export function BookScreen() {
 
   return (
     <div>
-      {usePersonalPool ? (
+      <div className="panel">
+        <p className="eyebrow">Packs</p>
+        {systemPacks.map(({ tier, items }) =>
+          items.length ? (
+            <div key={tier} style={{ marginTop: 8 }}>
+              {items.map((p) => {
+                const on = isPackInMatchPool(p.id, subscriptions, packs);
+                return (
+                  <div
+                    key={p.id}
+                    style={{
+                      display: "flex",
+                      gap: 10,
+                      alignItems: "flex-start",
+                      padding: "8px 0",
+                      borderBottom: "1px solid var(--line)",
+                    }}
+                  >
+                    <div style={{ flex: 1 }}>
+                      <strong style={{ fontSize: 13 }}>{p.title}</strong>
+                      <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
+                        {p.description || `${p.strat_count ?? "—"} strats`}
+                      </p>
+                    </div>
+                    <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
+                      {on ? "On" : "Off"}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : null
+        )}
+      </div>
+
+      {usePersonalPool && (
         <div className="panel" style={{ paddingBottom: 10 }}>
-          <p className="eyebrow">Playbook</p>
-          <div className="row" style={{ marginBottom: 8 }}>
+          <p className="eyebrow">My pool</p>
+          <div className="row">
             <button type="button" className={`pill ${tab === "pool" ? "active" : ""}`} onClick={() => setTab("pool")}>
-              My pool · {myPoolStrats.length}
+              Saved · {myPoolStrats.length}
             </button>
             <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
               Add more
             </button>
           </div>
-          {tab === "pool" && myPoolStrats.length === 0 && (
-            <div className="row" style={{ marginTop: 10 }}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                style={{ flex: 1 }}
-                disabled={!!busyId}
-                onClick={async () => {
-                  setBusyId("starter");
-                  setStarterMsg("");
-                  try {
-                    const n = await addFundamentalsStarter(session.selected_map);
-                    setStarterMsg(
-                      n
-                        ? `Added ${n} strat${n === 1 ? "" : "s"}${allMaps ? " across all maps" : ` for ${session.selected_map}`}`
-                        : allMaps
-                          ? "Fundamentals already in your pool"
-                          : `Already in your pool for ${session.selected_map}`
-                    );
-                  } catch (e) {
-                    setStarterMsg(e instanceof Error ? e.message : "Could not add starter kit");
-                  } finally {
-                    setBusyId(null);
-                  }
-                }}
-              >
-                {allMaps ? "Add Fundamentals (all maps)" : `Add Fundamentals for ${session.selected_map}`}
-              </button>
-            </div>
-          )}
-          {starterMsg && <p className="banner">{starterMsg}</p>}
-        </div>
-      ) : (
-        <div className="panel">
-          <p className="eyebrow">Packs</p>
-          {systemPacks.map(({ tier, items }) =>
-            items.length ? (
-              <div key={tier} style={{ marginTop: 8 }}>
-                {items.map((p) => {
-                  const on = isPackInMatchPool(p.id, subscriptions, packs);
-                  return (
-                    <div
-                      key={p.id}
-                      style={{
-                        display: "flex",
-                        gap: 10,
-                        alignItems: "flex-start",
-                        padding: "8px 0",
-                        borderBottom: "1px solid var(--line)",
-                      }}
-                    >
-                      <div style={{ flex: 1 }}>
-                        <strong style={{ fontSize: 13 }}>{p.title}</strong>
-                        <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                          {p.description || `${p.strat_count ?? "—"} strats`}
-                        </p>
-                      </div>
-                      <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
-                        {on ? "On" : "Off"}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : null
-          )}
         </div>
       )}
 
       <div className="panel">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <p className="eyebrow">{usePersonalPool ? (tab === "catalog" ? "Add more" : "My pool") : "Browse"}</p>
+            <p className="eyebrow">
+              {usePersonalPool ? (tab === "catalog" ? "Add more" : "Saved") : "Browse"}
+            </p>
             <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
               {!allMaps && <MapLogo map={session.selected_map} size={26} />}
               {allMaps ? "All maps" : session.selected_map}
