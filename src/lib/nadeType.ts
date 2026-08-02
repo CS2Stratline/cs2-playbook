@@ -21,3 +21,19 @@ export function nadeChipClass(type: NadeKind | null): string {
   if (!type) return "";
   return `nade-${type === "hegrenade" ? "he" : type === "flashbang" ? "flash" : type === "combination" ? "combo" : type}`;
 }
+
+const TASK_UTIL: { kind: NadeKind; label: string; words: string[] }[] = [
+  { kind: "smoke", label: "Smoke", words: ["smoke", "smokes"] },
+  { kind: "flashbang", label: "Flash", words: ["flash", "flashbang", "popflash", "pop-flash"] },
+  { kind: "molotov", label: "Molly", words: ["molly", "molotov", "incendiary"] },
+  { kind: "hegrenade", label: "HE", words: ["hegrenade", "grenade", " he "] },
+];
+
+/** First utility type mentioned in a task line (for freeze-time scan pills). */
+export function utilTagFromTask(task: string): { kind: NadeKind; label: string } | null {
+  const n = ` ${String(task || "").toLowerCase()} `;
+  for (const row of TASK_UTIL) {
+    if (row.words.some((w) => n.includes(w))) return { kind: row.kind, label: row.label };
+  }
+  return null;
+}
