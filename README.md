@@ -3,7 +3,7 @@
 Match-first **IGL freeze-time** webapp with strat packs, favorites (signed-in: add to My pool + pin), and optional Supabase auth/sync.
 
 **Live:** https://cs2startline.github.io/cs2-playbook/  
-English-only UI for v1. Sibling lightweight app (no login): [cs2-callout-app](https://github.com/JonasLundervold/cs2-callout-app).
+English-only UI for v1.
 
 ## Product
 
