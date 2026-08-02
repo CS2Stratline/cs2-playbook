@@ -15,3 +15,4 @@ Standard commands live in `package.json` (`dev`, `build`, `preview`, `seed:packs
 - Content pipeline: `npm run starter` → `src/starter-library.json` → `npm run seed:packs` → `src/data/system-packs.json` → `npm run seed:supabase`.
 - Routing uses `HashRouter` (URLs look like `/#/...`) because the production target is GitHub Pages under `/cs2-playbook/`. For a custom domain at site root, set `VITE_BASE_PATH=/` in the deploy workflow and update Supabase Auth redirect URLs (see `DEPLOY.md`).
 - Live cloud project is already wired via GitHub Actions `VITE_SUPABASE_*` secrets. Service role is for seed/admin only — never `VITE_*`.
+- Pre-domain readiness: Pages host + Supabase auth/Discord + super admin + migrations through `010` + catalog seed are in place. Remaining cutover work is only custom-domain DNS / `VITE_BASE_PATH=/` / Auth allowlist (see `DEPLOY.md`).

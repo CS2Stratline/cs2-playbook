@@ -70,13 +70,14 @@ Without Supabase, local demo can edit shared strats on that device only.
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
 - [x] Super admin bootstrapped via SQL (not open signup claim)
-- [ ] Non-admin JWT cannot `update profiles set is_admin = true` (spot-check once)
-- [ ] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
-- [ ] Live share: setting `current_pick_id` to another user’s private strat UUID does not leak content via `get_live_call`
+- [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
+- [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
+- [x] Open `claim_first_super_admin` denied for authenticated/anon (`permission denied`)
+- [ ] Live share: setting `current_pick_id` to another user’s private strat UUID does not leak content via `get_live_call` (spot-check optional; guarded in `010`)
 - [x] Service role key never in client env or GitHub Actions `VITE_*` secrets
-- [ ] Supabase Auth redirect URLs match the real domain (Pages + localhost; add custom domain later)
+- [x] Supabase Auth redirect URLs match Pages + localhost; Discord login verified
 - [ ] Custom domain: set `VITE_BASE_PATH=/` in deploy workflow, attach DNS, update Auth allowlist
-- [ ] Soft Reddit launch: prefer guest mode first, or invite-only Discord until checklist is green
+- [ ] Soft Reddit launch: prefer guest mode first, or invite-only Discord until you’re ready for open signup
 - [x] Cloud catalog re-seeded from `system-packs.json` (`npm run seed:supabase`)
 
 ## Custom domain (when ready)
