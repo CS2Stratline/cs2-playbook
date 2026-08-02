@@ -18,7 +18,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 37
+      "strat_count": 29
     },
     {
       "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
@@ -29,7 +29,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 48
+      "strat_count": 40
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
@@ -40,7 +40,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 10
+      "strat_count": 13
     },
     {
       "id": "92eba09f-84c7-4820-8b55-44a42e2579af",
@@ -51,10 +51,83 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 42
+      "strat_count": 184
     }
   ],
   "strats": [
+    {
+      "id": "168a3c41-48ac-4268-bca7-98579bba9eb3",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Contact A",
+      "description": "Fast A contact: light util, trade ramp together. No full triple setup.",
+      "tasks": [
+        "One stairs or jungle smoke if you have it",
+        "Flash ramp, five contact together",
+        "Plant default, hold con soft"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3f37d63c-a0c7-43a2-85bf-dbc10d431532",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol stairs",
+      "description": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
+      "tasks": [
+        "Smoke stairs from spawn",
+        "Flash ramp / palace exit",
+        "Plant default, save util"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Stairs",
+          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
+        }
+      ],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
     {
       "id": "15409a8b-af6d-4aca-aa38-d58ef10ad290",
       "map": "Mirage",
@@ -63,7 +136,7 @@
       "callout": "Palace pop",
       "description": "Fast palace exit with flash. Works on eco/force for plant money.",
       "tasks": [
-        "1. 2 in palace, rest default mid/ramp",
+        "1–2 in palace, rest default mid/ramp",
         "Flash balcony, pop out",
         "Plant default or fall back"
       ],
@@ -83,6 +156,7 @@
           "url": "https://csnades.gg/mirage/molotovs/dark-from-palace-safe"
         }
       ],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -90,8 +164,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "cbe40f3a-7f48-4fbc-916e-dffc760a60dc",
@@ -117,6 +190,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/b-site-from-back-alley"
         }
       ],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -124,8 +198,102 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 1
+      "source": "system-seed"
+    },
+    {
+      "id": "33393970-09f5-4bd0-8485-fa3836e49432",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Eco window",
+      "description": "Eco: stack window/top mid for info, fall to sites on execute.",
+      "tasks": [
+        "3–4 window / top mid",
+        "1 soft A or B",
+        "Fall on smoke execute"
+      ],
+      "rounds": [
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e3336b9b-2a68-465a-b288-3b03cb057783",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Short mid push",
+      "description": "Push mid with short support to break T mid control.",
+      "tasks": [
+        "1 short ready to swing",
+        "2 mid (window + under)",
+        "1 A, 1 B anchors",
+        "Flash mid, take space, fall on rotate"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Mid window",
+          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
+        }
+      ],
+      "level": 3,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8cc47b91-724a-4efd-bbd1-1011944f8d6c",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti apps",
+      "description": "When apps push: let them exit, molly apps from site, trade from site + short.",
+      "tasks": [
+        "1 short, 1 site/van",
+        "Molly apps from site, not deep into apps",
+        "Trade exit, hold market"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Apps",
+          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
+        }
+      ],
+      "level": 3,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
     },
     {
       "id": "2f8d986d-2f80-4e5f-b3b5-db83b9a073a9",
@@ -147,6 +315,7 @@
           "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
         }
       ],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -154,8 +323,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "893594e0-82a1-494c-b805-66256340c693",
@@ -180,6 +348,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
         }
       ],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -187,8 +356,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "e531f31e-354b-4caf-999c-81dc8207e3d7",
@@ -214,6 +382,7 @@
           "url": "https://csnades.gg/dust2/smokes/long-corner-from-t-spawn"
         }
       ],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -221,8 +390,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 2
+      "source": "system-seed"
     },
     {
       "id": "4cccfec2-6b1b-4733-8d7b-06d2e7740e87",
@@ -248,6 +416,7 @@
           "url": "https://csnades.gg/dust2/smokes/b-doors-from-t-spawn"
         }
       ],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -255,8 +424,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 1
+      "source": "system-seed"
     },
     {
       "id": "f5e5fec9-9d66-4e9c-9bb4-35855073d728",
@@ -273,6 +441,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -280,8 +449,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "075b4f5a-3189-47e1-9db5-ffcd78af3b64",
@@ -298,6 +466,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -305,8 +474,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "79df8e28-cc1a-4cb0-bfda-b19e439334ad",
@@ -326,6 +494,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -333,8 +502,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "b87e9392-1a0c-45b7-93b0-9598b8daccd9",
@@ -360,6 +528,7 @@
           "url": "https://csnades.gg/inferno/smokes/ct-from-banana-b"
         }
       ],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -367,8 +536,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 2
+      "source": "system-seed"
     },
     {
       "id": "0fe5e709-0c5d-4e18-8986-58aa06fd28e1",
@@ -385,6 +553,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -392,8 +561,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "e8f7cb4d-12b0-41da-856c-fde5089180ce",
@@ -410,6 +578,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -417,8 +586,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "f3784c44-ea8e-401a-888d-b4b65b7f6273",
@@ -435,6 +603,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -442,8 +611,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "58dc0672-d78a-4766-b18e-09f02ee341e4",
@@ -453,13 +621,14 @@
       "callout": "Ramp stack",
       "description": "Strong ramp/lower, punish ramp rushes.",
       "tasks": [
-        "2. 3 ramp/lower, 1 outside, 1 heaven",
+        "2–3 ramp/lower, 1 outside, 1 heaven",
         "HE/molly trophy",
         "Don't overcommit outside"
       ],
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -467,8 +636,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "73bc158c-2fab-43dd-a761-79d6957a1c87",
@@ -478,13 +646,14 @@
       "callout": "A hold",
       "description": "Strong A/donut.",
       "tasks": [
-        "2. 3 A, 1 mid, 1 B",
+        "2–3 A, 1 mid, 1 B",
         "Deny donut early",
         "Rotate on ruins sound"
       ],
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -492,8 +661,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "8d16606f-5593-43b7-8914-3295f29e5bdc",
@@ -510,6 +678,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -517,8 +686,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "0b7601ae-a863-4dfe-8dfe-8a15012ad7cc",
@@ -528,13 +696,14 @@
       "callout": "A hold",
       "description": "Strong A (heaven/water), soft B.",
       "tasks": [
-        "2. 3 A (heaven/water), 1 mid, 1 B",
+        "2–3 A (heaven/water), 1 mid, 1 B",
         "Deny water early",
         "Rotate B only on clear ruins / mid info"
       ],
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -542,8 +711,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "672db4a8-add3-43bf-a099-4075cb1f780f",
@@ -560,6 +728,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -567,8 +736,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "0893ae70-6975-4c91-8664-293d44358ef4",
@@ -578,13 +746,14 @@
       "callout": "A hold",
       "description": "Strong A (forklift/checker), soft B.",
       "tasks": [
-        "2. 3 A (forklift/checker/site), 1 mid, 1 B",
+        "2–3 A (forklift/checker/site), 1 mid, 1 B",
         "Deny squeaky / A main entry",
         "Rotate B only on clear mid or B info"
       ],
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -592,8 +761,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "4ea926ff-4f63-4930-838d-62d7870bcfc8",
@@ -604,7 +772,7 @@
       "description": "Strong heaven / B main. Punish halls commits.",
       "tasks": [
         "2 B (heaven + site), 1 mid, 2 A soft",
-        "Hold heaven. Watch B main / garbage",
+        "Hold heaven, watch B main / garbage",
         "Smoke B main from heaven when they commit halls"
       ],
       "rounds": [],
@@ -615,6 +783,7 @@
           "url": "https://csnades.gg/cache/smokes/b-main-from-heaven"
         }
       ],
+      "level": 2,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -622,8 +791,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 3
+      "source": "system-seed"
     },
     {
       "id": "9c30bbce-e8b8-480f-8837-72104bce2af5",
@@ -643,6 +811,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -650,8 +819,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 2
+      "source": "system-seed"
     },
     {
       "id": "91024bc4-42b7-4cd8-a522-4024e20e3c92",
@@ -676,6 +844,7 @@
           "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
         }
       ],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -683,8 +852,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "8930eb46-7e8e-4a76-8226-947d930e18d2",
@@ -703,6 +871,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -710,8 +879,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "fcfd250e-03b4-4cf8-86ce-a75bb9ccc879",
@@ -732,6 +900,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -739,8 +908,7 @@
       "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "0e3a6aa8-d2b1-41dd-889c-1fc0b2461ff5",
@@ -778,6 +946,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
         }
       ],
+      "level": 8,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -785,8 +954,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "efefd862-6ee0-47a4-b94f-ec07671d8e4b",
@@ -823,6 +991,7 @@
           "url": "https://csnades.gg/mirage/smokes/deep-stairs-from-t-spawn"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -830,8 +999,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "706f0c82-c4b6-4282-a3ff-e58f2686e594",
@@ -868,6 +1036,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-a-ramp"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -875,8 +1044,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "b8af459c-ed43-4039-a723-0b9c5f26c6e4",
@@ -918,6 +1086,7 @@
           "url": "https://csnades.gg/mirage/molotovs/bench-from-b-apts"
         }
       ],
+      "level": 9,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -925,8 +1094,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "25ffe5a6-8ff9-41da-b6d3-e0500cfe0a4f",
@@ -938,7 +1106,7 @@
       "tasks": [
         "Take window / top mid",
         "Smoke market door or window",
-        "Flash short, go cat \u2192 B",
+        "Flash short, go cat → B",
         "Trade bench and van"
       ],
       "rounds": [
@@ -963,6 +1131,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/b-short-from-catwalk"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -970,8 +1139,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "62346834-41a9-4a16-b99d-554762fe2c87",
@@ -1003,6 +1171,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/window-from-top-mid-boxes"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1010,8 +1179,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 4
+      "source": "system-seed"
     },
     {
       "id": "0cf589f1-2f05-4280-8527-cc08cc1a57e2",
@@ -1019,7 +1187,7 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid to B",
-      "description": "Window \u2192 short \u2192 B after mid control.",
+      "description": "Window → short → B after mid control.",
       "tasks": [
         "Smoke window, win mid",
         "Catwalk smoke if needed",
@@ -1043,6 +1211,7 @@
           "url": "https://csnades.gg/mirage/smokes/market-window-from-default-b"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1050,8 +1219,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "3658f1fc-47d7-4d2a-835d-c9e90cbaf408",
@@ -1063,7 +1231,7 @@
       "tasks": [
         "Smoke window",
         "Smoke or clear connector",
-        "2. 3 out con, 2 ramp support"
+        "2–3 out con, 2 ramp support"
       ],
       "rounds": [
         "full"
@@ -1083,6 +1251,7 @@
           "url": "https://csnades.gg/mirage/smokes/jungle-from-t-spawn"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1090,8 +1259,33 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
+    },
+    {
+      "id": "c67cf2f3-abaf-48b5-bbb7-a40b74d939ed",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ramp hold",
+      "description": "Strong ramp/palace A. Soft B, punish fast A contact.",
+      "tasks": [
+        "2 ramp / tetris",
+        "1 palace or ticket",
+        "1 mid, 1 B soft",
+        "Fall con only on clear B info"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 3,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
     },
     {
       "id": "aedf8eb5-fa9c-4a02-a7bd-1020276fe740",
@@ -1109,6 +1303,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 5,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1116,8 +1311,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "a3b63e78-f484-4111-bea6-91f9b4f66e96",
@@ -1154,6 +1348,7 @@
           "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors"
         }
       ],
+      "level": 8,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1161,8 +1356,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "7ae8ad17-4db8-4f63-89fa-07c4ecb594ee",
@@ -1199,6 +1393,7 @@
           "url": "https://csnades.gg/dust2/smokes/short-from-short"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1206,8 +1401,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "06ff34a6-0606-49b9-81de-5f45873d947a",
@@ -1240,6 +1434,7 @@
           "url": "https://csnades.gg/dust2/smokes/b-plat-from-upper-tunnels"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1247,8 +1442,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "c7b4d01f-d7d5-4e2e-b3df-05624f7912c1",
@@ -1280,6 +1474,7 @@
           "url": "https://csnades.gg/dust2/smokes/b-doors-from-catwalk"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1287,8 +1482,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "aeacada5-a957-4e22-b6ec-f3100299d6dc",
@@ -1320,6 +1514,7 @@
           "url": "https://csnades.gg/dust2/flashbangs/mid-doors-from-xbox"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1327,8 +1522,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "398bbde5-24cf-41cb-968f-c7f82b1d73d0",
@@ -1361,6 +1555,7 @@
           "url": "https://csnades.gg/inferno/smokes/ct-boost-from-banana"
         }
       ],
+      "level": 8,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1368,8 +1563,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "a01ab160-f4b8-4b27-963d-ab9ece2fc033",
@@ -1381,7 +1575,7 @@
       "tasks": [
         "Control apps",
         "Smoke/molly balcony fights",
-        "Entry balcony \u2192 site",
+        "Entry balcony → site",
         "Clear pit and library"
       ],
       "rounds": [
@@ -1398,6 +1592,7 @@
           "url": "https://csnades.gg/inferno/smokes/pit-from-mid"
         }
       ],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1405,8 +1600,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "7f85ca90-1a8f-4761-8f1a-e8b17ce2195d",
@@ -1443,6 +1637,7 @@
           "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1450,8 +1645,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "0b975a4e-bf53-4d5b-a505-fbc2cece2783",
@@ -1459,7 +1653,7 @@
       "side": "T",
       "site": "a",
       "callout": "Short A",
-      "description": "Mid \u2192 short with moto smoke.",
+      "description": "Mid → short with moto smoke.",
       "tasks": [
         "Take mid/alt-mid",
         "Smoke moto (AWP library)",
@@ -1483,6 +1677,7 @@
           "url": "https://csnades.gg/inferno/smokes/library-from-bottom-mid"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1490,8 +1685,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "bf2f392f-805c-43c0-8f3a-1f1d62924a8f",
@@ -1519,6 +1713,7 @@
           "url": "https://csnades.gg/inferno/smokes/arch-from-bottom-mid"
         }
       ],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1526,8 +1721,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "98ea6198-d34a-49c6-aa30-353bcb60e2fb",
@@ -1535,7 +1729,7 @@
       "side": "T",
       "site": "outside",
       "callout": "Outside A",
-      "description": "Outside smokes \u2192 secret/ramp or heaven pressure.",
+      "description": "Outside smokes → secret/ramp or heaven pressure.",
       "tasks": [
         "Smoke outside main / garage",
         "Smoke secret close/far",
@@ -1563,6 +1757,7 @@
           "url": "https://csnades.gg/nuke/smokes/secret-far-from-t-spawn"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1570,8 +1765,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "b9953ea2-0bd6-49d9-8824-4278f3fdeeed",
@@ -1603,6 +1797,7 @@
           "url": "https://csnades.gg/nuke/smokes/lockers-from-t-spawn-a"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1610,8 +1805,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "731f2589-6b3c-4cd2-85e5-744ce3fc3fda",
@@ -1639,6 +1833,7 @@
           "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy"
         }
       ],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1646,8 +1841,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "049ff2b7-f86b-4f0a-9583-3d62cde4df45",
@@ -1655,7 +1849,7 @@
       "side": "T",
       "site": "b",
       "callout": "Secret B",
-      "description": "Outside \u2192 secret \u2192 B.",
+      "description": "Outside → secret → B.",
       "tasks": [
         "Outside smokes",
         "Secret entry",
@@ -1679,6 +1873,7 @@
           "url": "https://csnades.gg/nuke/molotovs/secret-entry-from-mini"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1686,8 +1881,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "d8296198-5ff8-4c14-bc35-ab3d5ab1f7db",
@@ -1715,6 +1909,7 @@
           "url": "https://csnades.gg/nuke/molotovs/back-vent-from-t-roof"
         }
       ],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1722,8 +1917,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "ac0c3a5d-e8c5-4040-8655-b569f5a7016c",
@@ -1759,6 +1953,7 @@
           "url": "https://csnades.gg/ancient/smokes/plat-from-outside-a"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1766,8 +1961,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "401bf440-f287-4793-99e1-de8dc06066c5",
@@ -1779,7 +1973,7 @@
       "tasks": [
         "Smoke CT alley / back alley",
         "Smoke B alley",
-        "Entry ruins \u2192 B"
+        "Entry ruins → B"
       ],
       "rounds": [
         "full"
@@ -1799,6 +1993,7 @@
           "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1806,8 +2001,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "59fe3c2c-41b7-476e-998a-151d1612ade0",
@@ -1839,6 +2033,7 @@
           "url": "https://csnades.gg/ancient/smokes/cat-from-t-spawn"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1846,8 +2041,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "33a72758-4148-4435-9c33-e57dc6d8aaf9",
@@ -1859,7 +2053,7 @@
       "tasks": [
         "Smoke heaven",
         "Smoke temple / connector",
-        "Entry water \u2192 A"
+        "Entry water → A"
       ],
       "rounds": [
         "full"
@@ -1883,6 +2077,7 @@
           "url": "https://csnades.gg/anubis/smokes/platform-from-water"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1890,8 +2085,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "f63f3cc2-3017-4ce4-94d1-1300516a8d55",
@@ -1928,6 +2122,7 @@
           "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1935,8 +2130,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "57861f52-1464-48a8-8363-0a23354d2c81",
@@ -1944,7 +2138,7 @@
       "side": "T",
       "site": "b",
       "callout": "Street B",
-      "description": "Mid street \u2192 B door.",
+      "description": "Mid street → B door.",
       "tasks": [
         "Control street/mid",
         "Smoke mid B door",
@@ -1968,6 +2162,7 @@
           "url": "https://csnades.gg/anubis/smokes/b-site-from-t-spawn"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -1975,8 +2170,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "4886e36b-e4b7-4682-93c3-f81ae0f44db3",
@@ -2008,6 +2202,7 @@
           "url": "https://csnades.gg/anubis/smokes/connector-from-t-upper"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2015,8 +2210,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "c49a16ed-7f88-44d8-af9e-9b9886178ff3",
@@ -2048,6 +2242,7 @@
           "url": "https://csnades.gg/cache/molotovs/forklift-from-a-main"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2055,8 +2250,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 6
+      "source": "system-seed"
     },
     {
       "id": "f34e21ab-bcc0-4561-9493-276be31f611f",
@@ -2088,6 +2282,7 @@
           "url": "https://csnades.gg/cache/smokes/back-a-site-from-outside-garage"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2095,8 +2290,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "04350f90-5e68-4e04-aa70-3cd05c8d6e98",
@@ -2132,6 +2326,7 @@
           "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2139,8 +2334,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "139e8603-a6d2-4e87-9fd0-65fe1202e461",
@@ -2172,6 +2366,7 @@
           "url": "https://csnades.gg/cache/smokes/ct-from-sun-room"
         }
       ],
+      "level": 7,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2179,8 +2374,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "0aca27d8-4f13-457b-b5f1-689f4b4f16ce",
@@ -2198,6 +2392,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 5,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2205,8 +2400,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "6464afb6-0fd5-4e24-a689-8be5e211cbc1",
@@ -2224,6 +2418,7 @@
       "rounds": [],
       "status": "ready",
       "links": [],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2231,8 +2426,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "ffc6ad5e-035a-41c3-9ff7-29bfaace434e",
@@ -2242,7 +2436,7 @@
       "callout": "Donut stack",
       "description": "Deny donut, punish A hits.",
       "tasks": [
-        "2. 3 A/donut",
+        "2–3 A/donut",
         "1 mid",
         "1 B",
         "Util donut early"
@@ -2252,6 +2446,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 5,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2259,8 +2454,7 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
     },
     {
       "id": "eeed3c02-c761-48e8-917d-18698fedd1ba",
@@ -2280,6 +2474,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 6,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2287,8 +2482,89 @@
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 5
+      "source": "system-seed"
+    },
+    {
+      "id": "c566c350-f094-4055-99b9-36464b934883",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Fast B",
+      "description": "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
+      "tasks": [
+        "Smoke market window",
+        "Flash site from apps",
+        "Plant for retake, hold apps/short"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3ab6f871-d5c8-45e1-b0f5-f1d54c1736f8",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps split",
+      "description": "Mid window + apps hit together. Split B instead of five apps.",
+      "tasks": [
+        "Smoke mid window, take short",
+        "Two through apps with market smokes",
+        "Trade site together"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Mid window",
+          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
+        },
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Smoke: Market door",
+          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
     },
     {
       "id": "a604e78a-fcec-40d9-a245-c5a5a8553cc2",
@@ -2300,7 +2576,7 @@
       "tasks": [
         "Win underpass / short",
         "Smoke jungle from under or tetris",
-        "2. 3 out con, 2 ramp",
+        "2–3 out con, 2 ramp",
         "Touch site together"
       ],
       "rounds": [
@@ -2313,6 +2589,7 @@
           "url": "https://csnades.gg/mirage/smokes/jungle-from-tetris"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2320,8 +2597,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 9
+      "source": "system-seed"
     },
     {
       "id": "ecf65429-8952-49b0-bf81-e49f1159a1bf",
@@ -2331,9 +2607,9 @@
       "callout": "A fake to B",
       "description": "Show A smokes, rotate fast to B apps while CTs fall A.",
       "tasks": [
-        "Throw 1. 2 A smokes (jungle/stairs)",
-        "Make A noise/util for 3. 4s",
-        "Full team apps \u2192 B",
+        "Throw 1–2 A smokes (jungle/stairs)",
+        "Make A noise/util for 3–4s",
+        "Full team apps → B",
         "Smoke market window + door on entry"
       ],
       "rounds": [
@@ -2354,6 +2630,7 @@
           "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
         }
       ],
+      "level": 9,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2361,8 +2638,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 9
+      "source": "system-seed"
     },
     {
       "id": "3e7ea6bb-09b8-45af-b490-d3c9659b158d",
@@ -2403,6 +2679,7 @@
           "url": "https://csnades.gg/mirage/molotovs/van-from-b-apts"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2410,8 +2687,36 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 10
+      "source": "system-seed"
+    },
+    {
+      "id": "5b953703-83ab-40d9-9230-cbe7d0226291",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid give",
+      "description": "Give mid space on purpose. Play for retake / late rotate, save util.",
+      "tasks": [
+        "Soft window, do not die mid",
+        "2 A, 2 B anchors",
+        "Util ready for retake, not mid duel"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 8,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
     },
     {
       "id": "3eed368f-569a-4397-a486-2968b3b83a21",
@@ -2441,6 +2746,7 @@
           "url": "https://csnades.gg/mirage/flashbangs/stairs-from-stairs"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2448,8 +2754,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 7
+      "source": "system-seed"
     },
     {
       "id": "bbdedc3d-3058-4dd4-91fd-3247d12d52e0",
@@ -2459,7 +2764,7 @@
       "callout": "Split A",
       "description": "Long + short at the same time.",
       "tasks": [
-        "2. 3 long, 2 short",
+        "2–3 long, 2 short",
         "Smoke CT cross",
         "Touch site same tick"
       ],
@@ -2481,6 +2786,7 @@
           "url": "https://csnades.gg/dust2/smokes/a-cross-from-a-long"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2488,8 +2794,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "c9d9b7f7-4c15-4297-ac5c-1d494a73e5cd",
@@ -2510,6 +2815,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2517,8 +2823,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "634de9c2-b682-41b8-9d70-655033e046f2",
@@ -2550,6 +2855,7 @@
           "url": "https://csnades.gg/ancient/smokes/deep-donut-from-outside-a-main"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2557,8 +2863,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "f4ef1f9a-ded7-4615-b1f5-198dca241ce0",
@@ -2590,6 +2895,7 @@
           "url": "https://csnades.gg/anubis/smokes/mid-from-t-spawn"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2597,8 +2903,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "3f073c92-3da5-4174-8763-e58fbbcfb5cc",
@@ -2630,6 +2935,7 @@
           "url": "https://csnades.gg/cache/smokes/connector-from-t-spawn"
         }
       ],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2637,8 +2943,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 8
+      "source": "system-seed"
     },
     {
       "id": "22d3fd63-a1b2-4a40-be33-e8846d0f545a",
@@ -2659,6 +2964,7 @@
       ],
       "status": "ready",
       "links": [],
+      "level": 10,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -2666,689 +2972,7 @@
       "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
-      "source": "system-seed",
-      "level": 9
-    },
-    {
-      "id": "9e607e94-db8d-4ddb-9814-e382f1cf789f",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Jungle hold",
-      "description": "Anchor jungle/connector, soft A site.",
-      "tasks": [
-        "1 jungle",
-        "1 stairs/site",
-        "Info mid",
-        "Fall together on execute"
-      ],
-      "level": 3
-    },
-    {
-      "id": "c4a805e2-cb5f-4514-8bac-ca53f87071d1",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full"
-      ],
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Underpass deny",
-      "description": "Nade underpass early, hold short/mid.",
-      "tasks": [
-        "HE/molly underpass",
-        "1 short",
-        "1 mid window",
-        "Rotate on B sound"
-      ],
-      "level": 4
-    },
-    {
-      "id": "90c7a691-a735-4aef-ba76-477cd8506e0d",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "anti"
-      ],
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Connector stack",
-      "description": "Stack con/jungle to punish A hits.",
-      "tasks": [
-        "2. 3 A/con",
-        "1 mid",
-        "1 B soft",
-        "Util ticket early"
-      ],
-      "level": 4
-    },
-    {
-      "id": "7cdb7e74-41be-480b-9ac3-45a94b8a9a96",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full"
-      ],
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Window hold",
-      "description": "Smoke/fight for mid window control.",
-      "tasks": [
-        "Contest window",
-        "1 short",
-        "1 market",
-        "Fall on A/B execute"
-      ],
-      "level": 5
-    },
-    {
-      "id": "0ae1f17a-151c-4a53-919e-4cc87d7da209",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force",
-        "anti"
-      ],
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Retake B",
-      "description": "Group market/apps before swinging site.",
-      "tasks": [
-        "Stack 3+ market",
-        "Util bench/site",
-        "Swing together"
-      ],
-      "level": 6
-    },
-    {
-      "id": "71eca630-bfc5-437c-86b2-62813c0de5c1",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "pistol",
-        "eco",
-        "force"
-      ],
-      "map": "Inferno",
-      "side": "T",
-      "site": "a",
-      "callout": "Apps rush",
-      "description": "Fast apartments. Pistol/eco when A is soft.",
-      "tasks": [
-        "Five apps immediately",
-        "Flash balcony",
-        "Plant default or library"
-      ],
-      "level": 2
-    },
-    {
-      "id": "6bf3bae9-bfef-44b4-8346-a059f7e2add3",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "map": "Inferno",
-      "side": "T",
-      "site": "mid",
-      "callout": "Second mid",
-      "description": "Take second mid for info and splits.",
-      "tasks": [
-        "Smoke Arch/library lane",
-        "2. 3 mid",
-        "Support banana soft",
-        "Decide A or B"
-      ],
-      "level": 4
-    },
-    {
-      "id": "ad7d49af-7875-4d9d-8945-5cd5993937e2",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force",
-        "eco"
-      ],
-      "map": "Inferno",
-      "side": "T",
-      "site": "b",
-      "callout": "Banana pop",
-      "description": "Short banana take with flash. Plant money rounds.",
-      "tasks": [
-        "Flash deep banana",
-        "2. 3 entry",
-        "Rest mid/apps fake",
-        "Plant coffin or log"
-      ],
-      "level": 3
-    },
-    {
-      "id": "18c1aa88-74e0-4fd8-bb4b-1a9a87bb64be",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full"
-      ],
-      "map": "Inferno",
-      "side": "T",
-      "site": "a",
-      "callout": "Pit control",
-      "description": "Clear pit before A site hit.",
-      "tasks": [
-        "Molly/HE pit",
-        "Smoke arch",
-        "Entry balcony + pit",
-        "Plant default"
-      ],
-      "level": 7
-    },
-    {
-      "id": "c77e9ee8-cd10-4ad1-9c6b-d370685fd110",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "map": "Inferno",
-      "side": "CT",
-      "site": null,
-      "callout": "Pit hold",
-      "description": "Anchor pit/library, soft banana.",
-      "tasks": [
-        "1. 2 pit/library",
-        "1 mid",
-        "2 banana soft",
-        "Util on banana push"
-      ],
-      "level": 3
-    },
-    {
-      "id": "b6c37f6d-5377-4c4f-8e2a-fb815343b2cc",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "eco",
-        "anti",
-        "pistol"
-      ],
-      "map": "Inferno",
-      "side": "CT",
-      "site": null,
-      "callout": "Coffin stack",
-      "description": "Stack B on eco. Punish banana rushes.",
-      "tasks": [
-        "3 B coffin/new box",
-        "1 mid",
-        "1 A soft",
-        "Save util for entry"
-      ],
-      "level": 4
-    },
-    {
-      "id": "615e4087-05c5-4124-acec-5e4903928e31",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full"
-      ],
-      "map": "Inferno",
-      "side": "CT",
-      "site": null,
-      "callout": "Arch watch",
-      "description": "Hold arch/mid, deny second mid.",
-      "tasks": [
-        "Smoke/HE mid early",
-        "1 arch",
-        "1 A",
-        "2 banana"
-      ],
-      "level": 4
-    },
-    {
-      "id": "658f18ed-0b5a-4880-922e-abdb4edef744",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "system-seed",
-      "status": "ready",
-      "links": [],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "map": "Inferno",
-      "side": "CT",
-      "site": null,
-      "callout": "Banana nades",
-      "description": "Deep banana util to delay executes.",
-      "tasks": [
-        "Molly/HE deep banana",
-        "2 B",
-        "1 mid",
-        "1 A",
-        "Fall together"
-      ],
-      "level": 7
-    },
-    {
-      "id": "3f37d63c-a0c7-43a2-85bf-dbc10d431532",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2tactics+cs2strats",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "map": "Mirage",
-      "side": "T",
-      "site": "a",
-      "callout": "Pistol stairs",
-      "level": 2,
-      "description": "Pistol A: one stairs smoke, flash ramp, plant for armor next.",
-      "tasks": [
-        "Smoke stairs from spawn",
-        "Flash ramp / palace exit",
-        "Plant default, save util"
-      ],
-      "rounds": [
-        "pistol"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Stairs",
-          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
-        },
-        {
-          "label": "Flash: Ramp",
-          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
-        }
-      ]
-    },
-    {
-      "id": "b6cbb462-5f5e-4670-b43f-e4ca94fe4587",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2tactics+cs2strats",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "map": "Mirage",
-      "side": "T",
-      "site": "b",
-      "callout": "Apps split",
-      "level": 5,
-      "description": "Mid window + apps hit together. Split B instead of five apps.",
-      "tasks": [
-        "Smoke mid window, take short",
-        "Two through apps with market smokes",
-        "Trade site together"
-      ],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Mid window",
-          "url": "https://csnades.gg/mirage/smokes/mid-window-from-t-spawn-a"
-        },
-        {
-          "label": "Smoke: Market window",
-          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
-        },
-        {
-          "label": "Smoke: Market door",
-          "url": "https://csnades.gg/mirage/smokes/market-door-from-back-alley"
-        },
-        {
-          "label": "Flash: B site",
-          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
-        }
-      ]
-    },
-    {
-      "id": "33393970-09f5-4bd0-8485-fa3836e49432",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2tactics+cs2strats",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Eco window",
-      "level": 2,
-      "description": "Eco: stack window/top mid for info. Fall to sites on execute.",
-      "tasks": [
-        "3. 4 window / top mid",
-        "1 soft A or B",
-        "Fall on smoke execute"
-      ],
-      "rounds": [
-        "eco"
-      ],
-      "status": "ready",
-      "links": []
-    },
-    {
-      "id": "793e5ed1-7fa4-4c31-9255-d0271d87c5bf",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2tactics+cs2strats",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Short mid push",
-      "level": 5,
-      "description": "Push mid with short support to break T mid control.",
-      "tasks": [
-        "1 short ready to swing",
-        "2 mid (window + under)",
-        "1 A, 1 B anchors",
-        "Flash mid, take space, fall on rotate"
-      ],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Flash: Mid window",
-          "url": "https://csnades.gg/mirage/flashbangs/mid-window-from-jungle"
-        }
-      ]
-    },
-    {
-      "id": "5a55dece-1c34-42b1-ad77-6cdf8827f214",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2tactics+cs2strats",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Anti apps",
-      "level": 4,
-      "description": "When apps push: let them exit, molly apps from site, trade from site + short.",
-      "tasks": [
-        "1 short, 1 site/van",
-        "Molly apps from site. Not deep into apps",
-        "Trade exit, hold market"
-      ],
-      "rounds": [
-        "full",
-        "force",
-        "anti"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Molly: Apps",
-          "url": "https://csnades.gg/mirage/molotovs/b-apts-from-b-site"
-        }
-      ]
-    },
-    {
-      "id": "61deb4ba-2ae8-4835-b30c-17f0e01d73ff",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2strat.com",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "map": "Mirage",
-      "side": "T",
-      "site": "a",
-      "level": 4,
-      "callout": "Contact A",
-      "description": "Fast A contact: light util, trade ramp together. No full triple setup.",
-      "tasks": [
-        "One stairs or jungle smoke if you have it",
-        "Flash ramp, five contact together",
-        "Plant default, hold con soft"
-      ],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Stairs",
-          "url": "https://csnades.gg/mirage/smokes/stairs-from-t-spawn"
-        },
-        {
-          "label": "Flash: Ramp",
-          "url": "https://csnades.gg/mirage/flashbangs/a-ramp-from-t-spawn"
-        }
-      ]
-    },
-    {
-      "id": "5efb5f7f-b758-4e24-a713-ff1c8a67f05d",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2strat.com",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "map": "Mirage",
-      "side": "T",
-      "site": "b",
-      "level": 3,
-      "callout": "Fast B",
-      "description": "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
-      "tasks": [
-        "Smoke market window",
-        "Flash site from apps",
-        "Plant for retake, hold apps/short"
-      ],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Market window",
-          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
-        },
-        {
-          "label": "Flash: B site",
-          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
-        }
-      ]
-    },
-    {
-      "id": "44f8aadd-3c1b-4282-a115-392f60c0d1e3",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2strat.com",
-      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "level": 3,
-      "callout": "Ramp hold",
-      "description": "Strong ramp/palace A. Soft B, punish fast A contact.",
-      "tasks": [
-        "2 ramp / tetris",
-        "1 palace or ticket",
-        "1 mid, 1 B soft",
-        "Fall con only on clear B info"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": []
-    },
-    {
-      "id": "3c23c7f1-1cc9-46f6-9a76-a3619b797826",
-      "owner_user_id": null,
-      "team_id": null,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "source": "inspiration:cs2strat.com",
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "level": 4,
-      "callout": "Mid give",
-      "description": "Give mid space on purpose. Play for retake / late rotate, save util.",
-      "tasks": [
-        "Soft window. Do not die mid",
-        "2 A, 2 B anchors",
-        "Util ready for retake, not mid duel"
-      ],
-      "rounds": [
-        "full",
-        "force",
-        "eco"
-      ],
-      "status": "ready",
-      "links": []
+      "source": "system-seed"
     },
     {
       "id": "8e3b4893-c40b-44cc-bd31-fb339e238df5",
@@ -4587,6 +4211,3993 @@
         "Walk highway single file",
         "Front flashes site, snake enters",
         "Plant for checkers"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "45047c47-17de-47b6-8b39-dd66c149d40b",
+      "map": "Dust II",
+      "side": "CT",
+      "site": "mid",
+      "callout": "Mid Rush",
+      "description": "Everyone run up mid to T spawn, once you reach T spawn you may play as normal.",
+      "tasks": [
+        "Everyone run up mid to T spawn, once you reach T spawn you may play as normal."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e0dcbad9-94ea-4a08-a95e-77fecbb85ca0",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Spawn Killer",
+      "description": "Don't leave CT Spawn until someone one your team gets a kill.",
+      "tasks": [
+        "Don't leave CT Spawn until someone one your team gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c107c738-f5bc-42c7-ad3b-5da9065db81e",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Home of the Silvers",
+      "description": "The person with the lowest competitive rank has to buy guns for the entire team, and craft the strategy.",
+      "tasks": [
+        "The person with the lowest competitive rank has to buy guns for the entire team, and craft the strategy."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c307d831-2fc1-4ae8-8464-2a1413c5947b",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Are we Russian In?",
+      "description": "Everyone buy a P90 speak in a Russian accent and RUSH B, CYKA BLYAT.",
+      "tasks": [
+        "Everyone buy a P90 speak in a Russian accent and RUSH B, CYKA BLYAT."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "13239376-3433-456c-95c7-c2eee6fe175a",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #1",
+      "description": "Suicide -> Cat -> A -> CT Spawn -> B",
+      "tasks": [
+        "Suicide -> Cat -> A -> CT Spawn -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "19018753-5380-4d1d-b290-3d8f723662f2",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Plan #2",
+      "description": "Long -> A -> CT Spawn -> Mid -> Cat -> A",
+      "tasks": [
+        "Long -> A -> CT Spawn -> Mid -> Cat -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "864bc8bb-615b-4a66-839f-d2520654cdf6",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "5 Man Sniper",
+      "description": "Everyone needs to sit at snipers nest, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone needs to sit at snipers nest, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "5dd2b4a7-464c-437f-9fb9-bcc04be78af7",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "5 Man Truck",
+      "description": "Everyone buy a MAG-7 and hide at the truck under appartments on B, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone buy a MAG-7 and hide at the truck under appartments on B, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4f9d37ec-1ee1-40f3-a3ac-1ef885e3cf5e",
+      "map": "Mirage",
+      "side": "CT",
+      "site": "a",
+      "callout": "5 Man Palace",
+      "description": "Everyone buy a Nova and hide under palace, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone buy a Nova and hide under palace, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9c57b11e-0615-4ece-95f3-882ecd9f0229",
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Leeroy Jenkins",
+      "description": "Have the bomb carrier wait at A main, everyone else goes palace, the bomb must run in first and yell 'LEEROY JENKINS'.",
+      "tasks": [
+        "Have the bomb carrier wait at A main, everyone else goes palace, the bomb must run in first and yell 'LEEROY JENKINS'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9c25350d-7603-4dd4-a1b3-5d6723ba59e5",
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Boosted",
+      "description": "Mid -> Boost into Snipers -> Market -> B",
+      "tasks": [
+        "Mid -> Boost into Snipers -> Market -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1f8e80d8-c3d8-49c9-b180-40e04688f6c9",
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Plan #1",
+      "description": "Mid -> Cat -> B -> Apartments -> Underpass -> Connector -> A",
+      "tasks": [
+        "Mid -> Cat -> B -> Apartments -> Underpass -> Connector -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "83e43d52-ff9c-4bbb-92c7-6e1e8d358319",
+      "map": "Inferno",
+      "side": "CT",
+      "site": "b",
+      "callout": "Banana Bomb",
+      "description": "Everyone must buy an incendiary, HE, smoke, and a flashbang. Once you throw all of the nades down banana you may use your guns.",
+      "tasks": [
+        "Everyone must buy an incendiary, HE, smoke, and a flashbang.",
+        "Once you throw all of the nades down banana you may use your guns."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "49b95f8a-1d0c-4e99-8e85-071e0b9de1f0",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Party Pit",
+      "description": "Have everyone hide in smoke on pit.",
+      "tasks": [
+        "Have everyone hide in smoke on pit."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "bfaa09b6-a8fc-47e2-a888-446efa27acf5",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Chapel Time",
+      "description": "Have everyone go chapel near B, have one of your team lead you all in prayer.",
+      "tasks": [
+        "Have everyone go chapel near B, have one of your team lead you all in prayer."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "dc1b2dd8-4ff8-4c77-83b1-b95d3ed854fe",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Bomb and a Dream",
+      "description": "Have the bomb carrier close his eyes and run up banana, try your best to not let them die.",
+      "tasks": [
+        "Have the bomb carrier close his eyes and run up banana, try your best to not let them die."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e1f2087c-8b48-498d-a432-a7240868f4dc",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Plan #1",
+      "description": "Alt Mid -> Apartments -> Boiler -> Mid -> Banana -> B",
+      "tasks": [
+        "Alt Mid -> Apartments -> Boiler -> Mid -> Banana -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0d7dae44-d2d2-4510-be1a-845c94409f35",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "4,000,000 IQ",
+      "description": "Everyone silently hide at the base of mid (near the stairs of one of the buildings), wait there until some gets a kill. Once someone gets a kill throw smokes top mid and RUSH B.",
+      "tasks": [
+        "Everyone silently hide at the base of mid (near the stairs of one of the buildings), wait there until some gets a kill.",
+        "Once someone gets a kill throw smokes top mid and RUSH B."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "13570be4-53f7-406b-a23a-e58f43efbbae",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Boosted",
+      "description": "Boost 4 people onto the boxes in ramp room, the last person tries to bait the people into ramp room.",
+      "tasks": [
+        "Boost 4 people onto the boxes in ramp room, the last person tries to bait the people into ramp room."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d3a97e4d-eab4-4ef7-843f-9cea36e0aa18",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Heaven Sent",
+      "description": "Have everyone wait in smoke at heaven, when the bomb is planted jump down.",
+      "tasks": [
+        "Have everyone wait in smoke at heaven, when the bomb is planted jump down."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9d786d5a-d1f8-4e71-b4cc-a72cfb63af97",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Vent Repair",
+      "description": "Everyone go either ramp room or squeaky to the vents, hide in them until one person gets a kill.",
+      "tasks": [
+        "Everyone go either ramp room or squeaky to the vents, hide in them until one person gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ef51e2b0-449b-4c50-a388-170a56745f2e",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Lobby",
+      "description": "Everyone stay on the rafters in lobby until the timer hits 20 seconds, then run into A quickly.",
+      "tasks": [
+        "Everyone stay on the rafters in lobby until the timer hits 20 seconds, then run into A quickly."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7fa35629-776a-4fc6-9b21-9ca71ae29313",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #1",
+      "description": "Outside -> Secret -> Vents -> A -> Squeaky -> Ramp -> Heaven -> A",
+      "tasks": [
+        "Outside -> Secret -> Vents -> A -> Squeaky -> Ramp -> Heaven -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a3bb17c7-9fa4-42f6-b62d-5f7413d63a4c",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #2",
+      "description": "Ramp -> Heaven -> A -> Vents -> B",
+      "tasks": [
+        "Ramp -> Heaven -> A -> Vents -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3f28b3d4-1bf5-44b9-be97-bcccd78f92c5",
+      "map": "Cache",
+      "side": "CT",
+      "site": "mid",
+      "callout": "5 Man Mid",
+      "description": "Have 5 people watch mid, 3 on the window, 2 on the door.",
+      "tasks": [
+        "Have 5 people watch mid, 3 on the window, 2 on the door."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c8458842-1264-480a-8ad1-7a0968567de1",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Operation Angels",
+      "description": "Everyone sit perfectly silently heaven, when they start planting jump out at them.",
+      "tasks": [
+        "Everyone sit perfectly silently heaven, when they start planting jump out at them."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b687b971-97df-4f8c-845f-566963685a56",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Sneaky Squeaky",
+      "description": "Everyone stand on eachothers heads behind squeaky door, when the enemys turn the corner they should see 5 people on each others heads.",
+      "tasks": [
+        "Everyone stand on eachothers heads behind squeaky door, when the enemys turn the corner they should see 5 people on each others heads."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2beec548-4fc8-45ed-867b-319c5bc353ef",
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Boosted",
+      "description": "B Main -> Boost into Vents -> Mid -> Mid Room -> A.",
+      "tasks": [
+        "B Main -> Boost into Vents -> Mid -> Mid Room -> A."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0685ca15-8b3c-4c86-9aa2-a917a83d654c",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Squeaky",
+      "description": "Have 1 person go A, sit in smoke and just open and close squeaky until they die. As soon as they die, rush B.",
+      "tasks": [
+        "Have 1 person go A, sit in smoke and just open and close squeaky until they die.",
+        "As soon as they die, rush B."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9b3b936f-37d8-4528-8163-56e2da3be6ca",
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Vent Repair",
+      "description": "Go mid to vent, but have 5 people sit in the vent until you get a kill. Once somebody gets a kill you may leave.",
+      "tasks": [
+        "Go mid to vent, but have 5 people sit in the vent until you get a kill.",
+        "Once somebody gets a kill you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "36f37755-17d4-412d-b465-6d3a65c46a1e",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "92fe803c-8263-4041-a50a-ae94944c5d6f",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "66580cdc-b230-435c-bca2-2ef9a441906b",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1cc9f5bd-7ef5-4abf-b07f-e00ebbad1417",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "da4d1673-e175-41fb-965d-80872c14353e",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "5ac95a6d-8a67-418e-985d-6c52b683bc2a",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "04e6d84c-e571-40eb-9797-be2d6a99fb58",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a8519f42-22a1-4ce7-8158-e82f8190abfe",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2cf9252d-79fd-4eb5-9777-d79ed4f7de0e",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "dff649a7-32fd-415f-b71c-72371f94bcf8",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "fd9230b7-db1f-4805-95b0-918b86203fa4",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "774d3449-5e4f-4035-a218-e878171edcd6",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f7c14912-0308-4d23-bdc9-1c921dbc1e4b",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d4448b3f-cebc-4316-9e7b-a8774eff4160",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0d85697f-0f99-4675-98e5-23bf92961681",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "58c80cb1-7227-4c74-b051-64766df83c72",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e63f6083-9fba-4f80-bfc4-cd6d0862022b",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "701b5472-ef4e-47be-9491-e339d5d2b06d",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a20a0bcc-6b45-4363-a06d-681ef0a4960b",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1d28f785-bf34-48b6-8b5e-ebff0d8d0559",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0b5b59b8-0cf6-4b6f-8ebe-34871b327f62",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e14d12a4-26c1-4826-9ece-37ec546fe3be",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c2445214-c254-4d87-bc69-b3388466a0be",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "000d4924-9634-4271-b6f0-f7754fd71fae",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1275df89-8465-49c2-aa70-a95d1a1a1d1e",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "89d2233b-cc6f-4e05-af1a-d700c3a031d1",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "36ca6849-371c-4b1e-b10d-9c8adc0abf5c",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "6b162b74-8b6c-4b05-ab54-d1f6be7cfe5a",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "83b80446-236d-41a4-84bf-564c5354c8ee",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c124d00d-e79e-46fe-84bb-849a922588be",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0ece7734-e7ce-4694-9145-91d16f123d6b",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "fef4a28c-6644-4e56-9df9-120885bb833f",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b23360ac-e2b8-40c9-9627-2a30fac5d2bd",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f7fbda8d-f402-453e-a1ae-3bba20a1bce6",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "89d2b4df-59f5-4c62-b95d-3b7f1ba3e1ee",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "b229eb77-2cf9-4f16-9e3f-6d3210d8d51c",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "017049fc-94ad-4314-a0ff-e18b31c49b15",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "65a4b4fc-6700-4504-aa17-1373e7b4d09c",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7680cac6-1592-4ee7-afb1-ef3efd05ce63",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "de1eaa2b-f4d5-4ee4-9a95-45806732cb9b",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "9f5fd7ab-25b6-4e51-9d5d-2086e290a3f3",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2e0ea031-a36b-4b00-a12c-ce8fe6c5a2c4",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "bc35dbcb-346f-4918-8e17-3c7a3f038e49",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "396f0b04-4803-4010-9bd7-4211ab69d135",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack B and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack B and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "929ab57a-4430-4092-ab47-8928bff82568",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e30bd64d-1e31-480c-a26a-70a9795fa701",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ac54b7a0-ac1f-4726-bed7-2a7dab004c0d",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "dd4f64cb-3b38-459f-b78e-f5d613db76e7",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "17d8c1fb-e732-44de-ba2c-06e4a943f195",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "09730cd0-fdd8-480f-b982-256a99d133ce",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0724fefe-7b6b-4fdd-a990-891bd0faad35",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7be105c2-e708-4e6d-9dda-18c741dd9285",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f3f9c6c5-8dc3-4ebb-8b33-895bbe86f943",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d2b2b8e3-f722-46c6-ad78-2bf2a635f697",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "69ae9cbb-6f7e-4a65-807e-f2a5a215a96a",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2f632793-e4a4-4a10-ae74-f916bc2ab834",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c1c0cf6a-e87a-4acd-93d9-9d232ef6c5b6",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c360aaae-56ad-4f1b-9969-0534c8d0f296",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d71b4f16-1198-46a6-bc3f-f72f60030d27",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "cace745f-2984-4e08-b0cf-ada498ab4a56",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4ef4172b-bdac-41ba-a871-67943286c69f",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "6bf30c0b-062f-49db-82ae-c4b0ce5539b5",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "d91a82ca-e943-42ef-b38a-30d9ef58aa7a",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a9800749-3033-4617-8995-b1b29a701aff",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "271e693d-2370-4747-9a54-28a1fb6e4252",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "44873589-1f6c-4d80-987e-8a77dd7ffb6e",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0a629deb-d740-40e1-adf9-1ca7729adb68",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "47252502-3b46-460c-a28c-54d1c540625e",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "38c3f41d-311c-42d0-8cd9-343d0091b0c6",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f721299b-a599-40be-a1a2-1552feece89a",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c167fd83-f2ac-42bf-96ef-a8789d256536",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "91fb2f70-edb8-4e7e-bcf0-09836be7709c",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "fe5165a6-4617-491d-a016-44c527fb98f3",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "675890ad-f5ee-4423-8339-a08ca234d8f2",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a265eb72-965b-4f45-add5-39b289666481",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1b04657e-2988-4535-a477-bb69f2e33c6d",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "866ab298-e97e-4c9c-8f39-608dd56e797a",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3c1dee9d-e1cc-43b9-b4c7-5736941195a9",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "00872000-4d52-4198-9cb5-25b717cfeb25",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "29abdc51-e709-4897-9260-b4fc5ef3e6f2",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "adbd12d8-9e06-48e9-af7c-48a1a7a72f9c",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e8526811-8d32-46fa-99ac-07d8f9623df6",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "3079aa58-e67b-4624-a9f6-48bb1bf642fc",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "66977ffc-40a0-4365-bc5a-48d91569717a",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2ceb399f-be9f-4e5b-a115-716270ccbadb",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4fefbd08-da83-498e-b9af-59b1bcc95c05",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8f24d1b2-e2db-4889-86a9-dd55597fe14f",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ea57af25-561a-4ec9-a5da-efa23b31c791",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "355321e5-16ff-4ae2-9f11-9cb70781d9cd",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "367ba559-3a79-4327-a21c-f84478c12296",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "830989d6-94d5-4a40-a19f-e207c4ab1b83",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "a9dd854d-722d-4144-8993-9a48789f9b1b",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "782fb98a-dd32-49fe-bea5-8796ab96dc8a",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8d86afdd-4fa2-40ea-976e-1c241cc33e0b",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "cf92760e-06fe-4841-bc2a-7e5f96a0a6ae",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "787bb1c0-5904-4f20-af44-35579d75c8e8",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "0aee2eaa-faf2-436f-b82b-58c660821079",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "72a6a53b-2a69-4265-807f-956c3d5e93ff",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "853b0880-e9a9-4389-b87b-78dc19825881",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "6d9a76aa-8af7-4ad4-a10c-b3770e1f6ee6",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e5bd64b3-5018-49c8-a4cc-4d6ac509a225",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8f9062bf-9dc6-4639-a6a5-fa6e7ba30600",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "7b2b6222-b06b-4827-8f49-cffa566dae34",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8a6736b2-8c1f-48df-baad-d56bc6950df3",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "5689f911-922a-46ab-a6e0-ddd67ada8d3c",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "8a3efc05-fd19-49ce-898b-95199e798fa9",
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "2b0ad353-3cd3-4994-8b57-9ffb52cadf8f",
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "e921e705-eb7d-4a75-867f-d6955930ec8c",
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "284831b3-25d0-4214-92b6-2bfe02aaa242",
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "ecd605c9-ed4f-40e1-bc45-c2103a2f94be",
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1ed3ff68-92f3-4d65-ae0e-c859836f4a0a",
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "88c0e127-c460-4a71-99d9-25c95860fcb9",
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
       ],
       "rounds": [
         "full",

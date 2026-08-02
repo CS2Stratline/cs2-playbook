@@ -1,7 +1,7 @@
 {
   "name": "Meme strats",
   "version": 1,
-  "note": "Funny chaos calls from CS meme culture and Strat Roulette. Freeze-time shoutable, not serious meta.",
+  "note": "Funny chaos calls from CS meme culture and Strat Roulette. Full classic catalog lives in Roulette mode.",
   "sources": [
     "https://knowyourmeme.com/memes/rush-b",
     "https://www.hotspawn.com/counter-strike/news/strat-roulette-cs2-what-is-it",
@@ -887,6 +887,2715 @@
       "level": 1,
       "status": "ready",
       "links": []
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": "mid",
+      "callout": "Mid Rush",
+      "description": "Everyone run up mid to T spawn, once you reach T spawn you may play as normal.",
+      "tasks": [
+        "Everyone run up mid to T spawn, once you reach T spawn you may play as normal."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Spawn Killer",
+      "description": "Don't leave CT Spawn until someone one your team gets a kill.",
+      "tasks": [
+        "Don't leave CT Spawn until someone one your team gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Home of the Silvers",
+      "description": "The person with the lowest competitive rank has to buy guns for the entire team, and craft the strategy.",
+      "tasks": [
+        "The person with the lowest competitive rank has to buy guns for the entire team, and craft the strategy."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Are we Russian In?",
+      "description": "Everyone buy a P90 speak in a Russian accent and RUSH B, CYKA BLYAT.",
+      "tasks": [
+        "Everyone buy a P90 speak in a Russian accent and RUSH B, CYKA BLYAT."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #1",
+      "description": "Suicide -> Cat -> A -> CT Spawn -> B",
+      "tasks": [
+        "Suicide -> Cat -> A -> CT Spawn -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Plan #2",
+      "description": "Long -> A -> CT Spawn -> Mid -> Cat -> A",
+      "tasks": [
+        "Long -> A -> CT Spawn -> Mid -> Cat -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "5 Man Sniper",
+      "description": "Everyone needs to sit at snipers nest, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone needs to sit at snipers nest, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "5 Man Truck",
+      "description": "Everyone buy a MAG-7 and hide at the truck under appartments on B, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone buy a MAG-7 and hide at the truck under appartments on B, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": "a",
+      "callout": "5 Man Palace",
+      "description": "Everyone buy a Nova and hide under palace, nobody can leave until one of you gets a kill.",
+      "tasks": [
+        "Everyone buy a Nova and hide under palace, nobody can leave until one of you gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Leeroy Jenkins",
+      "description": "Have the bomb carrier wait at A main, everyone else goes palace, the bomb must run in first and yell 'LEEROY JENKINS'.",
+      "tasks": [
+        "Have the bomb carrier wait at A main, everyone else goes palace, the bomb must run in first and yell 'LEEROY JENKINS'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Boosted",
+      "description": "Mid -> Boost into Snipers -> Market -> B",
+      "tasks": [
+        "Mid -> Boost into Snipers -> Market -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "Plan #1",
+      "description": "Mid -> Cat -> B -> Apartments -> Underpass -> Connector -> A",
+      "tasks": [
+        "Mid -> Cat -> B -> Apartments -> Underpass -> Connector -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": "b",
+      "callout": "Banana Bomb",
+      "description": "Everyone must buy an incendiary, HE, smoke, and a flashbang. Once you throw all of the nades down banana you may use your guns.",
+      "tasks": [
+        "Everyone must buy an incendiary, HE, smoke, and a flashbang.",
+        "Once you throw all of the nades down banana you may use your guns."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Party Pit",
+      "description": "Have everyone hide in smoke on pit.",
+      "tasks": [
+        "Have everyone hide in smoke on pit."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Chapel Time",
+      "description": "Have everyone go chapel near B, have one of your team lead you all in prayer.",
+      "tasks": [
+        "Have everyone go chapel near B, have one of your team lead you all in prayer."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Bomb and a Dream",
+      "description": "Have the bomb carrier close his eyes and run up banana, try your best to not let them die.",
+      "tasks": [
+        "Have the bomb carrier close his eyes and run up banana, try your best to not let them die."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Plan #1",
+      "description": "Alt Mid -> Apartments -> Boiler -> Mid -> Banana -> B",
+      "tasks": [
+        "Alt Mid -> Apartments -> Boiler -> Mid -> Banana -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "4,000,000 IQ",
+      "description": "Everyone silently hide at the base of mid (near the stairs of one of the buildings), wait there until some gets a kill. Once someone gets a kill throw smokes top mid and RUSH B.",
+      "tasks": [
+        "Everyone silently hide at the base of mid (near the stairs of one of the buildings), wait there until some gets a kill.",
+        "Once someone gets a kill throw smokes top mid and RUSH B."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Boosted",
+      "description": "Boost 4 people onto the boxes in ramp room, the last person tries to bait the people into ramp room.",
+      "tasks": [
+        "Boost 4 people onto the boxes in ramp room, the last person tries to bait the people into ramp room."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Heaven Sent",
+      "description": "Have everyone wait in smoke at heaven, when the bomb is planted jump down.",
+      "tasks": [
+        "Have everyone wait in smoke at heaven, when the bomb is planted jump down."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Vent Repair",
+      "description": "Everyone go either ramp room or squeaky to the vents, hide in them until one person gets a kill.",
+      "tasks": [
+        "Everyone go either ramp room or squeaky to the vents, hide in them until one person gets a kill."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Lobby",
+      "description": "Everyone stay on the rafters in lobby until the timer hits 20 seconds, then run into A quickly.",
+      "tasks": [
+        "Everyone stay on the rafters in lobby until the timer hits 20 seconds, then run into A quickly."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #1",
+      "description": "Outside -> Secret -> Vents -> A -> Squeaky -> Ramp -> Heaven -> A",
+      "tasks": [
+        "Outside -> Secret -> Vents -> A -> Squeaky -> Ramp -> Heaven -> A"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Plan #2",
+      "description": "Ramp -> Heaven -> A -> Vents -> B",
+      "tasks": [
+        "Ramp -> Heaven -> A -> Vents -> B"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": "mid",
+      "callout": "5 Man Mid",
+      "description": "Have 5 people watch mid, 3 on the window, 2 on the door.",
+      "tasks": [
+        "Have 5 people watch mid, 3 on the window, 2 on the door."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Operation Angels",
+      "description": "Everyone sit perfectly silently heaven, when they start planting jump out at them.",
+      "tasks": [
+        "Everyone sit perfectly silently heaven, when they start planting jump out at them."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Sneaky Squeaky",
+      "description": "Everyone stand on eachothers heads behind squeaky door, when the enemys turn the corner they should see 5 people on each others heads.",
+      "tasks": [
+        "Everyone stand on eachothers heads behind squeaky door, when the enemys turn the corner they should see 5 people on each others heads."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Boosted",
+      "description": "B Main -> Boost into Vents -> Mid -> Mid Room -> A.",
+      "tasks": [
+        "B Main -> Boost into Vents -> Mid -> Mid Room -> A."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Squeaky",
+      "description": "Have 1 person go A, sit in smoke and just open and close squeaky until they die. As soon as they die, rush B.",
+      "tasks": [
+        "Have 1 person go A, sit in smoke and just open and close squeaky until they die.",
+        "As soon as they die, rush B."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Vent Repair",
+      "description": "Go mid to vent, but have 5 people sit in the vent until you get a kill. Once somebody gets a kill you may leave.",
+      "tasks": [
+        "Go mid to vent, but have 5 people sit in the vent until you get a kill.",
+        "Once somebody gets a kill you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "tasks": [
+        "Use only CT specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "tasks": [
+        "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "tasks": [
+        "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "tasks": [
+        "Hide in spawn until the bomb is planted, then you may leave."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "tasks": [
+        "Nobody can use guns until one member of your team makes it to the enemy spawn."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "tasks": [
+        "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team)."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack B and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack B and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Hide and Bide",
+      "description": "Everyone stack A and hide in smoke until the bomb is planted.",
+      "tasks": [
+        "Everyone stack A and hide in smoke until the bomb is planted."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a Negev or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a Negev or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or MAG-7 (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Juggernaut",
+      "description": "One person buys a M249 or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "tasks": [
+        "One person buys a M249 or Nova (your choice) and armour, while everyone else ONLY buys a defuse kit.",
+        "Only when the juggernaut dies can anybody else attack."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "tasks": [
+        "Use only T specific guns, no rifles."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush B with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush B with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "T Crickets",
+      "description": "Rush A with only the Glock while holding down the 'scope button'.",
+      "tasks": [
+        "Rush A with only the Glock while holding down the 'scope button'."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "tasks": [
+        "Once the bomb is planted you can no longer move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "tasks": [
+        "While you are holding the bomb you cannot move."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "tasks": [
+        "The bomb carrier must throw away all their weapons and can only crouch walk."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush A with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush A with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush B with no regard for flashing your teammates.",
+      "tasks": [
+        "Use 10 flashes to rush B with no regard for flashing your teammates."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "tasks": [
+        "Make a 'smoke train' to silently enter the bomb site."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush B and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": null,
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "tasks": [
+        "Have the bomb carrier rush A and (probably) die, everyone else must first go to the other site before retrieving the bomb."
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1
     }
   ]
 }
