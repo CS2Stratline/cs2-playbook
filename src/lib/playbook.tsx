@@ -256,6 +256,11 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const removeFromPool = useCallback(
     async (poolStratId: string) => {
+      setFavorites((prev) => {
+        const next = new Set(prev);
+        next.delete(poolStratId);
+        return next;
+      });
       await api.deleteStrat(userId, poolStratId);
       await refresh();
     },
