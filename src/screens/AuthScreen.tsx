@@ -12,21 +12,17 @@ export function AuthScreen() {
     return (
       <div className="panel">
         <p className="eyebrow">Local only</p>
-        <p className="muted">Supabase is not configured. Everything stays in this browser.</p>
+        <p className="muted">Supabase is not configured.</p>
       </div>
     );
   }
 
   return (
     <div className="panel">
-      <p className="eyebrow">Optional sign-in</p>
+      <p className="eyebrow">Sign in</p>
       <h2 className="h2" style={{ fontSize: 22 }}>
-        Sync this device
+        Sync across devices
       </h2>
-      <p className="muted">
-        Match works as a guest. Sign in to sync your pool across devices (Fundamentals are filled in automatically).
-        Discord is recommended.
-      </p>
 
       <button
         type="button"
@@ -45,7 +41,7 @@ export function AuthScreen() {
       </button>
 
       <p className="eyebrow" style={{ marginTop: 8 }}>
-        Or email magic link
+        Or email
       </p>
       <form
         onSubmit={async (e) => {
@@ -54,7 +50,7 @@ export function AuthScreen() {
           setMsg("");
           const res = await signInWithEmail(email.trim());
           setBusy(false);
-          setMsg(res.error || "Check your email for the login link. If you hit rate limits, use Discord instead.");
+          setMsg(res.error || "Check your email for the login link.");
         }}
       >
         <input
