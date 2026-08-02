@@ -135,6 +135,82 @@ select {
   gap: 4px;
 }
 
+.nav-inner-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.nav a.nav-meme {
+  color: #c4a35a;
+}
+
+.nav a.nav-meme.active {
+  background: rgba(232, 196, 74, 0.14);
+  color: #f0d060;
+}
+
+.roulette-eyebrow {
+  color: #e8c44a;
+  letter-spacing: 0.14em;
+}
+
+.roulette-panel {
+  border-color: rgba(232, 196, 74, 0.28);
+}
+
+.roulette-stage {
+  min-height: 200px;
+  padding: 14px 12px;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232, 196, 74, 0.1), transparent),
+    var(--panel-hi);
+  border: 1px dashed rgba(232, 196, 74, 0.35);
+  margin-bottom: 14px;
+}
+
+.roulette-hero {
+  font-size: clamp(28px, 8vw, 40px);
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.roulette-desc {
+  margin: 0;
+  color: var(--chalk);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.roulette-empty {
+  text-align: center;
+  padding: 28px 8px;
+}
+
+.roulette-roll {
+  width: 100%;
+  min-height: 52px;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pill.active.roulette-pill {
+  background: rgba(232, 196, 74, 0.18);
+  color: #f0d060;
+  border-color: rgba(232, 196, 74, 0.45);
+}
+
+.roulette-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c4a35a;
+  font-weight: 600;
+}
+
 .map-side-chrome {
   margin-top: 10px;
 }

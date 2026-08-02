@@ -1,0 +1,1088 @@
+{
+  "source": "https://strat-roulette.github.io/",
+  "note": "Classic CSGO Strat Roulette catalog. Tokens: @DIR @RIFLE @PISTOL @SITE @SHOTGUN @SMG @LMG @SPECIAL",
+  "reg": [
+    {
+      "callout": "Kill-anthropist",
+      "description": "The player with the most cash must buy for everyone on the team, nobody else can purchase anything (not even armour).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Stand Still",
+      "description": "If someone on your team kills the enemy teams top or bottom frag, the player who killed them cannot do anything until the round ends.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Limit One",
+      "description": "You can only buy 1 item this round.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Duplicator",
+      "description": "You can only buy duplicates of things your team already owns (somebody carried over a @RIFLE from the previous round? you can buy that gun again).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Unique",
+      "description": "Buy a weapon you haven't used this game.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Limited Communication",
+      "description": "You can only say swear words, the word 'A', and the word 'B'.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Limited Time",
+      "description": "When the timer hits 1:00 everyone must stop moving and shooting.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Evenly Matched",
+      "description": "If you kill the person parallel to you on the scoreboard (top frag kills top frag) then the player who killed them cannot do anything until the round ends.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "The Opener",
+      "description": "Guns cannot be used until a knife, zeus, or grenade kill is achieved by anyone on the team.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Gungame",
+      "description": "You cannot use your primary, until you get a kill by other means (pistols, knife, etc.).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "CRABS",
+      "description": "Only crouch walking and Duel Berrettas.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Artillery",
+      "description": "Move slowly as a group and throw ALL of your nades at the first enemy you see.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Is that a Jet Engine?",
+      "description": "If anyone on the team dies, they must blow into their mics until the round ends.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "One in the Chamber",
+      "description": "You only have 1 shot, however if you get a kill you may shoot again.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "What is this garbage?",
+      "description": "You have to copy the crosshair of the enemy's bottom frag.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "How does he play with this?",
+      "description": "You have to copy the crosshair of the enemy's top frag.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Invisible Aiming",
+      "description": "Set your crosshair's alpha value to 0.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Decoy",
+      "description": "Everyone buy a decoy grenade and throw it @SITE, then stack @SITE.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Point me the Way",
+      "description": "Everyone must group up, then upon coming to an intersection must draw an arrow with bullets indicating where they are going, take turns drawing arrows.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "SMG Jumpshot",
+      "description": "You can only get kills with @SMG in the air.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Big PP",
+      "description": "@SPECIAL must use an M249 (or negev if too expensive) and armour, everyone else must use a PP-Bizon and no armour.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Merry-Go-Round",
+      "description": "Everyone must play with +@DIR typed into the console (after the round you can stop it by replacing the + with a -).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Grave Robbery",
+      "description": "Upon getting a kill you MUST use the weapon your victim dropped, no getting attacking before you pick up their weapon.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "MR. PRESIDENT",
+      "description": "@SPECIAL is the president, they must get rid of all their weapons. The rest of the team has to protect them at all costs while yelling secret service quotes ('GET DOWN MR.PRESIDENT', 'BREACH BREACH BREACH', etc.).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Autobuy",
+      "description": "You must use whatever the F3 autobuy gives you.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "RETREAT!!!",
+      "description": "The only movement key you can use is S.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Strafing is all I Know",
+      "description": "The only movement keys you can use are A and D.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Swapped Hands",
+      "description": "Switch your mouse hand and your keyboard hand.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Double or Nothing",
+      "description": "Do 2 random Strats and do your best to complete both of them at once.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "BULLET HELL",
+      "description": "Everyone buy a @LMG (or a PP-Bizon ONLY if you are too poor), once you start firing you cannot stop, when you run out of ammo you cannot attack.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Da Hood",
+      "description": "Before the round starts everyone type 'finna shoot you up' then buy an @SMG and preform 'drive-bys' on the enemy, never stopping.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Even or Odd?",
+      "description": "If your score on the leaderboard is even, you can use a @RIFLE and armour, if it is odd then you can only use a @SHOTGUN and @PISTOL with no armour.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "So no head?",
+      "description": "If you get a headshot you cannot do anything until the round ends, aim for the body!",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Pistol -> Primary",
+      "description": "To kill an enemy you must first hit them once with your pistol, then you must finish them off with your primary.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Full Composition",
+      "description": "Each person must pick one of these weapons: @SMG, @RIFLE, @SHOTGUN, @LMG, and @PISTOL. No weapon can be repeated.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Wealth Imbalance",
+      "description": "If you have over $4000 buy a @SHOTGUN, otherwise use whatever guns you can find from dead enemies.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Family Heirloom",
+      "description": "Have your team drop all their weapons. Have 2 members buy either a @RIFLE or @LMG, those are the only guns that can be used, when those people die pick up their gun.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "NEGEV NEGEV NEGEV",
+      "description": "Buy a Negev and a decoy grenade and ruin your enemies ears.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Dog Tags",
+      "description": "When you kill an enemy you must drop everything and type the enemys name into chat.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Gun Flex",
+      "description": "When you kill an enemy you must drop everything and type the name of the gun you killed them with into chat.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Rich get Richer",
+      "description": "The person with the most money must get the first kill before anyone else can attack, if they die before they get a kill then the next highest person takes their place.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "One Handed",
+      "description": "You may only use your @DIR hand to play.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "One Clip to Rule Them All",
+      "description": "Buy a @RIFLE or @SMG (your choice) and win the round without ever reloading.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Split",
+      "description": "3 people go @SITE with @SMG, the remaining 2 go to the other site with @RIFLE, once you reach your assigned site you cannot leave it.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Soundcloud 'Artist'",
+      "description": "All callouts need to be rapped.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Making Enemies of Friends",
+      "description": "Every player buys their most hated gun and gives it to a teammate.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Making Enemies of Friends",
+      "description": "Every player buys their most hated gun and gives it to a teammate.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Charge your gun",
+      "description": "Before shooting your primary you must first get a kill with a zeus, if you miss with your zeus you can only use your knife.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Stay Low",
+      "description": "You must crouch the whole round (use +duck if you would like).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Back to the Basics",
+      "description": "No jumping, crouching, walking, or aiming down sights.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Wounded",
+      "description": "You cannot attack until you lose health because of an enemy.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Don't Scratch the Guns",
+      "description": "You can only use guns while at 100 health.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "I've Got You in My Sights",
+      "description": "Scope for the whole round, never unscope.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Asleep at the Mouse",
+      "description": "You cannot touch your mouse until the timer hits 1:15, however you can use your keyboard.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Bro You Deaf?",
+      "description": "Set CS:GO's 'master volume' to zero.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Guide the blind",
+      "description": "@SPECIAL and the top frag must play with their eyes closed.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Full Speed ahead",
+      "description": "You must hold the W key, no other movement keys can be pressed.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Bunny Hops",
+      "description": "Spam Jump for the whole round, mouse wheel is your friend here.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Gladiator",
+      "description": "Only two people can leave spawn at one time, upon one of them getting killed one more person can leave spawn.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Gladiator",
+      "description": "Only two people can leave spawn at one time, upon one of them getting killed one more person can leave spawn.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Rich Kids",
+      "description": "You can only use weapons that have skins with qualities purple or above (zeus is also allowed).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Poor Kids",
+      "description": "You can only use weapons that don't have skins (zeus is also allowed).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Give them a Chance",
+      "description": "You can only buy this round if you didn't get a kill last round.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Round Robin Rifle",
+      "description": "Your team must compose of one of each rifle (ex. one Scout, one awp, etc.).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Round Robin SMG",
+      "description": "Your team must compose of one of each SMG (ex. one UMP, one P90, etc.).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Helper",
+      "description": "The person with the most assists is the only one allowed a mic, everyone else must mute themselves.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Shotgun RUSHER",
+      "description": "Rush into the enemy spawn with a @SHOTGUN or @SMG, once you reach there you can return to the regular game.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "PUULLLLLLLL",
+      "description": "Buy a Shotgun or a Sniper and everytime you fire you have to yell 'PUUULLLLLL!' as if you were on a shooting range.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Bad Habits",
+      "description": "You can only fire a single bullet before you have to reload your gun.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Resolute",
+      "description": "Turn down your resolution to the lowest it will go (take a timeout if nessessary).",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Discharge",
+      "description": "You must buy 4 grenades and throw them all before shooting your gun.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Special Snowflake",
+      "description": "Nobody on your team can be using the same gun, pistols included.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Social Distancing",
+      "description": "Nobody can be in the same room as another person.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Habenero Taco Mexicano",
+      "description": "Refer to everything as 'amigo' and speak in an awful Spanish/Mexican accent.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Nuke",
+      "description": "Buy grenades first, throw ALL of them @SITE, then run back to the other site.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "GOGlobal.cheat",
+      "description": "Promote the fake cheat GOGlobal.cheat by typing things into chat like 'subscribe to GOGlobal.cheat for free aim haks'.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Incorrect Callouts",
+      "description": "You must incorrectly callout everything.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Stockpile",
+      "description": "If you kill an enemy you must take their gun back to spawn and place it in a pile.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "The Decider",
+      "description": "@SPECIAL must pick which team mates get each of these weapons, each weapon can only be used by 1 person. @RIFLE, @SMG, @LMG, @SHOTGUN, @PISTOL.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "The Decision",
+      "description": "@SPECIAL must pick between one of these options. <br>1. No armour, if you carried it over from previous rounds you must stay in spawn the whole round. <br>2. Everyone must use a @SMG.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "One of two",
+      "description": "@SPECIAL must pick between one of these options. <br>1. Everyone must use a @SMG and @PISTOL without armour. <br>2. Everyone must use a @SHOTGUN and no pistol with armour.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Top Frag decides",
+      "description": "The top frag must pick between one of these options. <br>1. Everyone stack @SITE site with @LMG. <br>2. @PISTOLs only.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Middle Frag decides",
+      "description": "The middle frag must pick between one of these options. <br>1. Only @SMG and @PISTOL with no armour or grenades. <br>2. @SHOTGUN and no pistol with armour and grenades.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Bottom Frag decides",
+      "description": "The bottom frag must pick between one of these options. <br>1. The bottom frag is the only one allowed to have armour. <br>2. Everyone but the bottom frag can have armour.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Site Specific",
+      "description": "If you go @SITE you have to use an @SMG or @SHOTGUN, if you go to the other site you have to use a @RIFLE.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Armour Specific",
+      "description": "If you use armour you have to use a shotgun, if you don't have armour you can use anything other than a shotgun.",
+      "side": null,
+      "site": null
+    },
+    {
+      "callout": "Nascar",
+      "description": "Everytime you are running you have to make car noises.",
+      "side": null,
+      "site": null
+    }
+  ],
+  "ct": [
+    {
+      "callout": "CT Specific",
+      "description": "Use only CT specific guns, no rifles.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "CT Crickets",
+      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "SpecOps",
+      "description": "Only silenced weapons are allowed, you must walk constantly, and you can only whisper into the mic.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Ready to Strike",
+      "description": "Hide in spawn until the bomb is planted, then you may leave.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Behind enemy lines",
+      "description": "Nobody can use guns until one member of your team makes it to the enemy spawn.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Ninja Clan",
+      "description": "Everyone tries to Ninja Defuse (defuse in smoke infront of the enemy team).",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Hide and Bide",
+      "description": "Everyone stack @SITE and hide in smoke until the bomb is planted.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Juggernaut",
+      "description": "One person buys a @LMG or @SHOTGUN (your choice) and armour, while everyone else ONLY buys a defuse kit. Only when the juggernaut dies can anybody else attack.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Always Rotating",
+      "description": "Constantly run between A and B until the bomb is planted.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Turrets",
+      "description": "Make a 2 man tower on each bomb site, the person on top has to use a @LMG or @RIFLE (your choice), the person on bottom has to use a @SMG.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "No Losses",
+      "description": "You cannot defuse the bomb, you better rotate quick.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "The Ultimate Trick",
+      "description": "Buy smokes and decoys, throw all of your decoys at @SITE then hide in smoke on the other site.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "The Ultimate Trick",
+      "description": "Buy smokes and decoys, throw all of your decoys at @SITE then hide in smoke on the other site.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Hard Carry",
+      "description": "The 3 top frags try their absolute best to win the round, the others try to stop them without directly hurting them (ex. you can flash, body block, etc.).",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Bottom Carry",
+      "description": "The 4 bottom frags try their absolute best to win the round, the top frag trys to stop them without directly hurting them (ex. you can flash, body block, etc.).",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "An Even Carry",
+      "description": "Every one with an even score on the scoreboard trys their absolute best to win the round, the others try to stop them without directly hurting them (ex. you can flash, body block, etc.).",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Harrassment",
+      "description": "You must follow the plan layed out by your teams bottom frag, you also must insult the plan for its every possible failure.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Bottom Hold",
+      "description": "The bottom frag camps on @SITE, everyone else goes to the other site, you can only rotate if the bottom frag dies.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Highly Funded Government Operation",
+      "description": "You can only buy if you have over $5000.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Let them Grow",
+      "description": "Kill 4 enemies, then let the last plant the bomb, then kill them.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "SWAG-7",
+      "description": "Everyone buy a MAG-7, when you get a kill with it drop everything and type in chat 'swag-7 :)'.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Take Their Base",
+      "description": "Grab a shotgun and run back and forth between CT spawn and T spawn until the bomb is planted.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Highway Robbery",
+      "description": "Everyone hide in bank and argue about the economy until the bomb is planted.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "From the Heavens",
+      "description": "Have everyone hide in heaven, when the bomb is planted smoke off the entrance to heaven and jump down.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Take a Bath",
+      "description": "Before anybody can shoot their guns they have to jump into the fountain.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Ladder Huddle",
+      "description": "Everyone hide in ladder room until one of you gets a kill, then you may leave.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "OIIILLLLL!",
+      "description": "Have everyone hide behind the oil tanker until bomb is planted.",
+      "side": "CT",
+      "site": null
+    },
+    {
+      "callout": "Aggresive Government",
+      "description": "Everyone buy a @SHOTGUN and decoy grenades and rush up B ramp. Then down ladder if they go A.",
+      "side": "CT",
+      "site": null
+    }
+  ],
+  "t": [
+    {
+      "callout": "T Specific",
+      "description": "Use only T specific guns, no rifles.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "T Crickets",
+      "description": "Rush @SITE with only the Glock while holding down the 'scope button'.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Afterplant",
+      "description": "Once the bomb is planted you can no longer move.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Frozen Bomb",
+      "description": "While you are holding the bomb you cannot move.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Fragile Cargo",
+      "description": "The bomb carrier must throw away all their weapons and can only crouch walk.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Surprise",
+      "description": "Use 10 flashes to rush @SITE with no regard for flashing your teammates.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Sssneaky Sssnake",
+      "description": "Make a 'smoke train' to silently enter the bomb site.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Special Delivery",
+      "description": "Have the bomb carrier rush @SITE and (probably) die, everyone else must first go to the other site before retrieving the bomb.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Even Split",
+      "description": "If your score on the scoreboard is even then go @SITE, otherwise go to the other site. You cannot leave your site until the bomb is planted.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Moral Support",
+      "description": "4 players rush while the other stays behind 'inspiring' them.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Boomerang",
+      "description": "Rush @SITE, then T spawn, then back to the site, then plant.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Never Out Of My Sight",
+      "description": "The bomb carrier buys a @SMG and does whatever they want, the remaining people pair up and must face their partner.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "The Supplier",
+      "description": "The bomb carrier is the only one on the team who can buy weapons for the whole team.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Like Chickens to a...",
+      "description": "Rush the tighest chokepoint on the map one by one.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Lie in Wait",
+      "description": "You can't enter a bomb site until there is 30 seconds remaining.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Campers",
+      "description": "Nobody can leave spawn until one of your teammates gets a kill.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Strike Fear",
+      "description": "Plant the bomb using only grenades, once the bomb is planted you can use your guns.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "The Greatest Plan",
+      "description": "Follow this plan: Mid -> @SITE -> CT Spawn -> Then plant on @SITE.",
+      "side": "T",
+      "site": "mid"
+    },
+    {
+      "callout": "The Fake Plan",
+      "description": "Follow this plan: Mid -> @SITE -> Fake a plant on @SITE -> Fake a plant on @SITE -> Then plant on @SITE.",
+      "side": "T",
+      "site": "mid"
+    },
+    {
+      "callout": "A Traitor",
+      "description": "The bottom frag trys their absolute best to lose the round by flashing their team, body blocking, stealing the bomb, etc.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Underfunded Cave Dwellers",
+      "description": "You can spend a max of $1500 this round.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "McDonalds",
+      "description": "Everyone buy a MAC-10, when you get a kill with it drop everything and type in chat 'big mac?'.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Plan #1",
+      "description": "Playground -> Long -> Bathrooms -> Connector -> Water -> B",
+      "side": "T",
+      "site": "a"
+    },
+    {
+      "callout": "Plan #2",
+      "description": "Monster -> Water -> Connector -> Bathrooms -> Long -> A",
+      "side": "T",
+      "site": "a"
+    },
+    {
+      "callout": "Short Death",
+      "description": "Rush long making as much noise as possible, what could go wrong?",
+      "side": "T",
+      "site": "a"
+    },
+    {
+      "callout": "Training Time",
+      "description": "Before leaving spawn have the bomb carrier lead you in some exercises.",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Plan #1",
+      "description": "A Main -> Ladder -> T Spawn -> Ivy -> A",
+      "side": "T",
+      "site": null
+    },
+    {
+      "callout": "Plan #2",
+      "description": "Ivy -> A -> Ladder -> B",
+      "side": "T",
+      "site": null
+    }
+  ],
+  "maps": {
+    "Dust II": {
+      "ct": [
+        {
+          "callout": "Mid Rush",
+          "description": "Everyone run up mid to T spawn, once you reach T spawn you may play as normal.",
+          "side": "CT",
+          "site": "mid"
+        },
+        {
+          "callout": "Spawn Killer",
+          "description": "Don't leave CT Spawn until someone one your team gets a kill.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "Home of the Silvers",
+          "description": "The person with the lowest competitive rank has to buy guns for the entire team, and craft the strategy.",
+          "side": "CT",
+          "site": null
+        }
+      ],
+      "t": [
+        {
+          "callout": "Are we Russian In?",
+          "description": "Everyone buy a P90 speak in a Russian accent and RUSH B, CYKA BLYAT.",
+          "side": "T",
+          "site": "b"
+        },
+        {
+          "callout": "Plan #1",
+          "description": "Suicide -> Cat -> A -> CT Spawn -> B",
+          "side": "T",
+          "site": null
+        },
+        {
+          "callout": "Plan #2",
+          "description": "Long -> A -> CT Spawn -> Mid -> Cat -> A",
+          "side": "T",
+          "site": "a"
+        }
+      ]
+    },
+    "Mirage": {
+      "ct": [
+        {
+          "callout": "5 Man Sniper",
+          "description": "Everyone needs to sit at snipers nest, nobody can leave until one of you gets a kill.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "5 Man Truck",
+          "description": "Everyone buy a @SHOTGUN and hide at the truck under appartments on B, nobody can leave until one of you gets a kill.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "5 Man Palace",
+          "description": "Everyone buy a @SHOTGUN and hide under palace, nobody can leave until one of you gets a kill.",
+          "side": "CT",
+          "site": "a"
+        }
+      ],
+      "t": [
+        {
+          "callout": "Leeroy Jenkins",
+          "description": "Have the bomb carrier wait at A main, everyone else goes palace, the bomb must run in first and yell 'LEEROY JENKINS'.",
+          "side": "T",
+          "site": "a"
+        },
+        {
+          "callout": "Boosted",
+          "description": "Mid -> Boost into Snipers -> Market -> B",
+          "side": "T",
+          "site": "mid"
+        },
+        {
+          "callout": "Plan #1",
+          "description": "Mid -> Cat -> B -> Apartments -> Underpass -> Connector -> A",
+          "side": "T",
+          "site": "mid"
+        }
+      ]
+    },
+    "Inferno": {
+      "ct": [
+        {
+          "callout": "Banana Bomb",
+          "description": "Everyone must buy an incendiary, HE, smoke, and a flashbang. Once you throw all of the nades down banana you may use your guns.",
+          "side": "CT",
+          "site": "b"
+        },
+        {
+          "callout": "Party Pit",
+          "description": "Have everyone hide in smoke on pit.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "Chapel Time",
+          "description": "Have everyone go chapel near B, have one of your team lead you all in prayer.",
+          "side": "CT",
+          "site": null
+        }
+      ],
+      "t": [
+        {
+          "callout": "Bomb and a Dream",
+          "description": "Have the bomb carrier close his eyes and run up banana, try your best to not let them die.",
+          "side": "T",
+          "site": "b"
+        },
+        {
+          "callout": "Plan #1",
+          "description": "Alt Mid -> Apartments -> Boiler -> Mid -> Banana -> B",
+          "side": "T",
+          "site": "b"
+        },
+        {
+          "callout": "4,000,000 IQ",
+          "description": "Everyone silently hide at the base of mid (near the stairs of one of the buildings), wait there until some gets a kill. Once someone gets a kill throw smokes top mid and RUSH B.",
+          "side": "T",
+          "site": "b"
+        }
+      ]
+    },
+    "Nuke": {
+      "ct": [
+        {
+          "callout": "Boosted",
+          "description": "Boost 4 people onto the boxes in ramp room, the last person tries to bait the people into ramp room.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "Heaven Sent",
+          "description": "Have everyone wait in smoke at heaven, when the bomb is planted jump down.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "Vent Repair",
+          "description": "Everyone go either ramp room or squeaky to the vents, hide in them until one person gets a kill.",
+          "side": "CT",
+          "site": null
+        }
+      ],
+      "t": [
+        {
+          "callout": "Lobby",
+          "description": "Everyone stay on the rafters in lobby until the timer hits 20 seconds, then run into A quickly.",
+          "side": "T",
+          "site": null
+        },
+        {
+          "callout": "Plan #1",
+          "description": "Outside -> Secret -> Vents -> A -> Squeaky -> Ramp -> Heaven -> A",
+          "side": "T",
+          "site": null
+        },
+        {
+          "callout": "Plan #2",
+          "description": "Ramp -> Heaven -> A -> Vents -> B",
+          "side": "T",
+          "site": null
+        }
+      ]
+    },
+    "Cache": {
+      "ct": [
+        {
+          "callout": "5 Man Mid",
+          "description": "Have 5 people watch mid, 3 on the window, 2 on the door.",
+          "side": "CT",
+          "site": "mid"
+        },
+        {
+          "callout": "Operation Angels",
+          "description": "Everyone sit perfectly silently heaven, when they start planting jump out at them.",
+          "side": "CT",
+          "site": null
+        },
+        {
+          "callout": "Sneaky Squeaky",
+          "description": "Everyone stand on eachothers heads behind squeaky door, when the enemys turn the corner they should see 5 people on each others heads.",
+          "side": "CT",
+          "site": null
+        }
+      ],
+      "t": [
+        {
+          "callout": "Boosted",
+          "description": "B Main -> Boost into Vents -> Mid -> Mid Room -> A.",
+          "side": "T",
+          "site": "mid"
+        },
+        {
+          "callout": "Squeaky",
+          "description": "Have 1 person go A, sit in smoke and just open and close squeaky until they die. As soon as they die, rush B.",
+          "side": "T",
+          "site": "b"
+        },
+        {
+          "callout": "Vent Repair",
+          "description": "Go mid to vent, but have 5 people sit in the vent until you get a kill. Once somebody gets a kill you may leave.",
+          "side": "T",
+          "site": "mid"
+        }
+      ]
+    },
+    "Ancient": {
+      "ct": [],
+      "t": []
+    },
+    "Anubis": {
+      "ct": [],
+      "t": []
+    }
+  }
+}

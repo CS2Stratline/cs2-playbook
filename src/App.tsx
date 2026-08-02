@@ -2,9 +2,10 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { AuthProvider, useAuth } from "./lib/auth";
 import { PlaybookProvider } from "./lib/playbook";
 import { MapSideChrome } from "./components/MapSideChrome";
-import { BookOpen, Crosshair, Gear } from "./components/icons";
+import { BookOpen, Crosshair, Dice, Gear } from "./components/icons";
 import { MatchScreen } from "./screens/MatchScreen";
 import { BookScreen } from "./screens/BookScreen";
+import { RouletteScreen } from "./screens/RouletteScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
 import { LiveScreen } from "./screens/LiveScreen";
 
@@ -52,13 +53,21 @@ function Shell() {
           <Route path="/" element={<Navigate to="/match" replace />} />
           <Route path="/lobby" element={<Navigate to="/playbook" replace />} />
           <Route path="/book" element={<Navigate to="/playbook" replace />} />
+          <Route path="/roulette" element={<RouletteScreen />} />
           <Route path="/match" element={<MatchScreen />} />
           <Route path="/playbook" element={<BookScreen />} />
           <Route path="/settings" element={<SettingsScreen />} />
           <Route path="*" element={<Navigate to="/match" replace />} />
         </Routes>
         <nav className="nav">
-          <div className="nav-inner">
+          <div className="nav-inner nav-inner-4">
+            <NavLink
+              to="/roulette"
+              className={({ isActive }) => (isActive ? "active nav-meme" : "nav-meme")}
+            >
+              <Dice size={16} />
+              <span>Roulette</span>
+            </NavLink>
             <NavLink to="/match" className={({ isActive }) => (isActive ? "active" : "")}>
               <Crosshair size={16} />
               <span>Match</span>
