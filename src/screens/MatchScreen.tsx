@@ -75,8 +75,8 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.selected_map]);
 
-  // Resolve from full library. Ignore picks that don't match the active map/side
-  // (fast map taps used to leave a stale call on screen).
+  // Resolve from full library. Ignore picks that don't match the active filters
+  // (fast map/side/site/round taps used to leave a stale call on screen).
   const currentPick = useMemo(() => {
     const pick =
       strats.find((s) => s.id === session.current_pick_id) ||
@@ -84,8 +84,21 @@ export function MatchScreen() {
       null;
     if (!pick) return null;
     if (pick.map !== session.selected_map || pick.side !== session.selected_side) return null;
+    if (isT && session.site_filter !== "all" && pick.site !== session.site_filter) return null;
+    if (session.round_filter !== "all" && pick.rounds.length && !pick.rounds.includes(session.round_filter)) {
+      return null;
+    }
     return pick;
-  }, [strats, enabledStrats, session.current_pick_id, session.selected_map, session.selected_side]);
+  }, [
+    strats,
+    enabledStrats,
+    session.current_pick_id,
+    session.selected_map,
+    session.selected_side,
+    session.site_filter,
+    session.round_filter,
+    isT,
+  ]);
 
   const eligible = useMemo(() => {
     return enabledStrats.filter((s) => {
@@ -144,14 +157,26 @@ export function MatchScreen() {
       chips.push({
         key: "site",
         label: lane?.label || session.site_filter,
-        clear: () => void setSession({ site_filter: "all" }),
+        clear: () =>
+          void setSession({
+            site_filter: "all",
+            current_pick_id: null,
+            timer_ends_at: null,
+            called_at: null,
+          }),
       });
     }
     if (session.round_filter !== "all") {
       chips.push({
         key: "round",
         label: session.round_filter,
-        clear: () => void setSession({ round_filter: "all" }),
+        clear: () =>
+          void setSession({
+            round_filter: "all",
+            current_pick_id: null,
+            timer_ends_at: null,
+            called_at: null,
+          }),
       });
     }
     if (favoritesOnly && usePersonalPool) {
@@ -279,7 +304,18 @@ export function MatchScreen() {
                   key={p.id}
                   type="button"
                   className={`pill ${on ? `active ${accent}` : ""}`}
-                  onClick={() => void setPackEnabled(p.id, !on)}
+                  onClick={() => {
+                    void setPackEnabled(p.id, !on);
+                    // If the open call belongs to this pack, drop it so the list can refresh.
+                    if (session.current_pick_id) {
+                      const pick =
+                        strats.find((s) => s.id === session.current_pick_id) ||
+                        enabledStrats.find((s) => s.id === session.current_pick_id);
+                      if (pick?.pack_id === p.id) {
+                        void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+                      }
+                    }
+                  }}
                   aria-pressed={on}
                   title={p.description || p.title}
                 >
@@ -296,7 +332,14 @@ export function MatchScreen() {
                 key={s.id}
                 type="button"
                 className={`pill pill-icon ${session.site_filter === s.id ? `active ${accent}` : ""}`}
-                onClick={() => void setSession({ site_filter: s.id })}
+                onClick={() =>
+                  void setSession({
+                    site_filter: s.id,
+                    current_pick_id: null,
+                    timer_ends_at: null,
+                    called_at: null,
+                  })
+                }
               >
                 <SiteIcon site={s.id} size={14} />
                 <span>{s.label}</span>
@@ -312,7 +355,14 @@ export function MatchScreen() {
                 key={r.id}
                 type="button"
                 className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
-                onClick={() => void setSession({ round_filter: r.id })}
+                onClick={() =>
+                  void setSession({
+                    round_filter: r.id,
+                    current_pick_id: null,
+                    timer_ends_at: null,
+                    called_at: null,
+                  })
+                }
               >
                 <RoundIcon size={13} />
                 <span>{r.label}</span>
@@ -356,7 +406,13 @@ export function MatchScreen() {
                   type="button"
                   className="chip"
                   onClick={() => {
-                    void setSession({ site_filter: "all", round_filter: "all" });
+                    void setSession({
+                      site_filter: "all",
+                      round_filter: "all",
+                      current_pick_id: null,
+                      timer_ends_at: null,
+                      called_at: null,
+                    });
                     setFavoritesOnly(false);
                   }}
                 >
@@ -378,7 +434,13 @@ export function MatchScreen() {
                     type="button"
                     className={`btn btn-primary ${accent}`}
                     onClick={() => {
-                      void setSession({ site_filter: "all", round_filter: "all" });
+                      void setSession({
+                        site_filter: "all",
+                        round_filter: "all",
+                        current_pick_id: null,
+                        timer_ends_at: null,
+                        called_at: null,
+                      });
                       setFavoritesOnly(false);
                     }}
                   >
