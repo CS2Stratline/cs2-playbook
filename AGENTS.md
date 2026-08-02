@@ -5,7 +5,7 @@
 **Canonical repo:** [CS2Stratline/cs2-playbook](https://github.com/CS2Stratline/cs2-playbook)  
 **Live:** https://cs2stratline.github.io/cs2-playbook/
 
-Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use the old personal path (`jonaslundervold/cs2-playbook`) or the typo org name `CS2Startline` — those break push / PR tooling even when GitHub redirects.
+Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use an old personal fork of this repo or the typo org name `CS2Startline` — those break push / PR tooling even when GitHub redirects.
 
 Cloud Playbook is a single-page **Vite + React 19 + TypeScript** web app (a CS2 IGL freeze-time playbook). There is no backend to run locally: `src/lib/api.ts` falls back to a `localStorage`-backed **local demo** mode whenever Supabase env vars are absent, so the app is fully usable without any secrets.
 
