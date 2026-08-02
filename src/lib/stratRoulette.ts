@@ -52,7 +52,7 @@ function entryKey(e: RouletteEntry, map: string, side: Side) {
   return `${map}|${side}|${e.callout}|${e.description}`;
 }
 
-/** Classic token replace — mirrors strat-roulette.github.io */
+/** Classic token replace for chaos rolls. */
 export function replaceRouletteTokens(desc: string, side: Side): string {
   const pistols =
     side === "CT"
@@ -74,17 +74,22 @@ export function replaceRouletteTokens(desc: string, side: Side): string {
   const direction = ["right", "left"];
 
   let out = desc;
-  // Classic site replaced tokens one-at-a-time (two @SITE possible)
+  // Strip any leftover HTML from old catalog rows.
+  out = out.replace(/<br\s*\/?>/gi, "\n");
+  out = out.replace(/<[^>]+>/g, "");
+  out = out.replace(/&nbsp;/gi, " ").replace(/&amp;/g, "&");
+
   const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)]!;
-  out = out.replace(/@PISTOL/g, () => pick(pistols));
-  out = out.replace(/@SHOTGUN/g, () => pick(shotguns));
-  out = out.replace(/@LMG/g, () => pick(lmgs));
-  out = out.replace(/@SMG/g, () => pick(smgs));
-  out = out.replace(/@RIFLE/g, () => pick(rifles));
-  out = out.replace(/@SITE/g, () => pick(site));
-  out = out.replace(/@DIR/g, () => pick(direction));
-  out = out.replace(/@SPECIAL/g, special);
-  return out;
+  // Longer tokens first so @PISTOLs does not leave a trailing "s".
+  out = out.replace(/@PISTOLs?\b/g, () => pick(pistols));
+  out = out.replace(/@SHOTGUN\b/g, () => pick(shotguns));
+  out = out.replace(/@LMG\b/g, () => pick(lmgs));
+  out = out.replace(/@SMG\b/g, () => pick(smgs));
+  out = out.replace(/@RIFLE\b/g, () => pick(rifles));
+  out = out.replace(/@SITE\b/g, () => pick(site));
+  out = out.replace(/@DIR\b/g, () => pick(direction));
+  out = out.replace(/@SPECIAL\b/g, special);
+  return out.trim();
 }
 
 /**
