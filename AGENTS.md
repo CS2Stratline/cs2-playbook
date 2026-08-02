@@ -2,6 +2,11 @@
 
 ## Cursor Cloud specific instructions
 
+**Canonical repo:** [CS2Stratline/cs2-playbook](https://github.com/CS2Stratline/cs2-playbook)  
+**Live:** https://cs2stratline.github.io/cs2-playbook/
+
+Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use the old personal path (`jonaslundervold/cs2-playbook`) or the typo org name `CS2Startline` — those break push / PR tooling even when GitHub redirects.
+
 Cloud Playbook is a single-page **Vite + React 19 + TypeScript** web app (a CS2 IGL freeze-time playbook). There is no backend to run locally: `src/lib/api.ts` falls back to a `localStorage`-backed **local demo** mode whenever Supabase env vars are absent, so the app is fully usable without any secrets.
 
 Standard commands live in `package.json` (`dev`, `build`, `preview`, `seed:packs`, `seed:supabase`). Notable points:
@@ -15,4 +20,4 @@ Standard commands live in `package.json` (`dev`, `build`, `preview`, `seed:packs
 - Content pipeline: `npm run starter` → `src/starter-library.json` → `npm run seed:packs` → `src/data/system-packs.json` → `npm run seed:supabase`.
 - Routing uses `HashRouter` (URLs look like `/#/...`) because the production target is GitHub Pages under `/cs2-playbook/`. For a custom domain at site root, set `VITE_BASE_PATH=/` in the deploy workflow and update Supabase Auth redirect URLs (see `DEPLOY.md`).
 - Live cloud project is already wired via GitHub Actions `VITE_SUPABASE_*` secrets. Service role is for seed/admin only — never `VITE_*`.
-- Pre-domain readiness: Pages host + Supabase auth/Discord + super admin + migrations through `010` + catalog seed are in place. Remaining cutover work is only custom-domain DNS / `VITE_BASE_PATH=/` / Auth allowlist (see `DEPLOY.md`).
+- Org cutover done: repo lives under **CS2Stratline**, Pages deploys from `main`, docs use Stratline URLs. Confirm Supabase Auth Site URL + Redirect URLs are `https://cs2stratline.github.io/cs2-playbook/` (and Actions secrets still on the org repo). Remaining product cutover is custom-domain DNS / `VITE_BASE_PATH=/` / Auth allowlist (see `DEPLOY.md`).
