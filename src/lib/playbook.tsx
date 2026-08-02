@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, UserSession } from "./types";
-import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked } from "./types";
+import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -19,6 +19,12 @@ type PlaybookState = {
   refresh: () => Promise<void>;
   setSession: (patch: Partial<UserSession>) => Promise<void>;
   setPackEnabled: (packId: string, enabled: boolean) => Promise<void>;
+  /** True if this strat (or its My-pool copy / catalog source) is favorited. */
+  isFavorite: (stratId: string) => boolean;
+  /**
+   * Pin a strat for Match sort. When signed in, starring a catalog strat
+   * also copies it into My pool and pins the pool copy.
+   */
   toggleFavorite: (stratId: string) => Promise<void>;
   addToPool: (catalogStrat: Strat) => Promise<void>;
   removeFromPool: (poolStratId: string) => Promise<void>;
@@ -75,7 +81,31 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       }
       setPacks(p);
       setStrats(nextStrats);
-      setFavorites(new Set(fav));
+      // Signed-in favorites should key off My-pool copy ids (Match eligibility).
+      // Migrate legacy catalog-id favorites onto existing pool copies when present.
+      if (usePersonalPool) {
+        const mine = nextStrats.filter((row) => row.owner_user_id === userId);
+        const normalized = new Set<string>();
+        for (const id of fav) {
+          if (mine.some((row) => row.id === id)) {
+            normalized.add(id);
+            continue;
+          }
+          const copy = api.findPoolCopy(mine, id);
+          if (copy) {
+            normalized.add(copy.id);
+            if (copy.id !== id) {
+              void api.setFavorite(userId, copy.id, true);
+              void api.setFavorite(userId, id, false);
+            }
+            continue;
+          }
+          normalized.add(id);
+        }
+        setFavorites(normalized);
+      } else {
+        setFavorites(new Set(fav));
+      }
       const nextSubs = { ...subs };
       if (!Object.keys(nextSubs).length) {
         for (const pack of p.filter((x) => x.visibility === "system")) {
@@ -118,19 +148,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     [userId, packs]
   );
 
-  const toggleFavorite = useCallback(
-    async (stratId: string) => {
-      setFavorites((prev) => {
-        const next = new Set(prev);
-        if (next.has(stratId)) next.delete(stratId);
-        else next.add(stratId);
-        return next;
-      });
-      await api.toggleFavorite(userId, stratId);
-    },
-    [userId]
-  );
-
   const catalogStrats = useMemo(() => {
     return strats.filter((s) => {
       const pack = packs.find((p) => p.id === s.pack_id);
@@ -149,6 +166,85 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     if (usePersonalPool) return myPoolStrats;
     return strats.filter((s) => isPackInMatchPool(s.pack_id, subscriptions, packs));
   }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs]);
+
+  const isFavorite = useCallback(
+    (stratId: string) => {
+      if (favorites.has(stratId)) return true;
+      if (!usePersonalPool) return false;
+      const copy = api.findPoolCopy(myPoolStrats, stratId);
+      if (copy && favorites.has(copy.id)) return true;
+      const poolRow = myPoolStrats.find((s) => s.id === stratId);
+      const catId = poolRow ? catalogIdFromSource(poolRow.source) : null;
+      if (catId && favorites.has(catId)) return true;
+      return false;
+    },
+    [favorites, usePersonalPool, myPoolStrats]
+  );
+
+  const toggleFavorite = useCallback(
+    async (stratId: string) => {
+      // Guests: soft pin only (Match sort) — packs already gate eligibility.
+      if (!usePersonalPool) {
+        setFavorites((prev) => {
+          const next = new Set(prev);
+          if (next.has(stratId)) next.delete(stratId);
+          else next.add(stratId);
+          return next;
+        });
+        await api.toggleFavorite(userId, stratId);
+        return;
+      }
+
+      const poolRow = myPoolStrats.find((s) => s.id === stratId);
+      const catalogRow =
+        catalogStrats.find((s) => s.id === stratId) ||
+        strats.find((s) => s.id === stratId && !s.owner_user_id);
+
+      let pinId = poolRow?.id ?? api.findPoolCopy(myPoolStrats, catalogRow?.id || stratId)?.id;
+
+      // Catalog star with no pool copy yet → add to My pool, then pin the copy.
+      if (!pinId && catalogRow) {
+        const pack = packs.find((p) => p.id === catalogRow.pack_id);
+        if (isPackLocked(pack)) return;
+        try {
+          pinId = await api.addCatalogStratToPool(userId, catalogRow, packs);
+        } catch {
+          return;
+        }
+        setFavorites((prev) => {
+          const next = new Set(prev);
+          next.add(pinId!);
+          next.delete(catalogRow.id);
+          return next;
+        });
+        await api.setFavorite(userId, pinId, true);
+        if (favorites.has(catalogRow.id)) await api.setFavorite(userId, catalogRow.id, false);
+        await refresh();
+        return;
+      }
+
+      if (!pinId) pinId = stratId;
+
+      const currentlyFav =
+        favorites.has(pinId) || (!!catalogRow && favorites.has(catalogRow.id));
+
+      setFavorites((prev) => {
+        const next = new Set(prev);
+        if (currentlyFav) {
+          next.delete(pinId!);
+          if (catalogRow) next.delete(catalogRow.id);
+        } else {
+          next.add(pinId!);
+        }
+        return next;
+      });
+      await api.setFavorite(userId, pinId, !currentlyFav);
+      if (currentlyFav && catalogRow && favorites.has(catalogRow.id)) {
+        await api.setFavorite(userId, catalogRow.id, false);
+      }
+    },
+    [userId, usePersonalPool, myPoolStrats, catalogStrats, strats, packs, favorites, refresh]
+  );
 
   const addToPool = useCallback(
     async (catalogStrat: Strat) => {
@@ -194,6 +290,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     refresh,
     setSession,
     setPackEnabled,
+    isFavorite,
     toggleFavorite,
     addToPool,
     removeFromPool,

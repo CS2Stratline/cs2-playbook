@@ -28,9 +28,9 @@ export function MatchScreen() {
   const {
     enabledStrats,
     strats,
-    favorites,
     session,
     setSession,
+    isFavorite,
     toggleFavorite,
     packs,
     loading,
@@ -80,10 +80,10 @@ export function MatchScreen() {
   }, [enabledStrats, session, isT]);
 
   const pickList = useMemo(() => {
-    const fav = eligible.filter((s) => favorites.has(s.id));
-    const rest = eligible.filter((s) => !favorites.has(s.id));
+    const fav = eligible.filter((s) => isFavorite(s.id));
+    const rest = eligible.filter((s) => !isFavorite(s.id));
     return [...fav, ...rest];
-  }, [eligible, favorites]);
+  }, [eligible, isFavorite]);
 
   const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${session.include_practice}`;
 
@@ -311,16 +311,16 @@ export function MatchScreen() {
                         e.stopPropagation();
                         void toggleFavorite(s.id);
                       }}
-                      aria-label="Favorite"
+                      aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
                     >
-                      <Star size={14} filled={favorites.has(s.id)} />
+                      <Star size={14} filled={isFavorite(s.id)} />
                     </button>
                   </div>
                   <div className="meta">
                     {s.description.slice(0, 80)}
                     {s.description.length > 80 ? "…" : ""}
                     {pack ? ` · ${pack.title}` : ""}
-                    {favorites.has(s.id) ? " · Favorite" : ""}
+                    {isFavorite(s.id) ? " · Favorite" : ""}
                   </div>
                 </button>
               );
@@ -344,8 +344,13 @@ export function MatchScreen() {
               </span>
               <div className="row">
                 <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
-                <button type="button" className="btn-ghost" onClick={() => void toggleFavorite(currentPick.id)}>
-                  <Star size={14} filled={favorites.has(currentPick.id)} />
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  onClick={() => void toggleFavorite(currentPick.id)}
+                  aria-label={isFavorite(currentPick.id) ? "Unpin favorite" : "Favorite"}
+                >
+                  <Star size={14} filled={isFavorite(currentPick.id)} />
                 </button>
               </div>
             </div>

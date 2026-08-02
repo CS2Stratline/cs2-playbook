@@ -29,7 +29,7 @@ export function BookScreen() {
   const { userId, user, supabaseReady, canEditShared } = useAuth();
   const {
     packs,
-    favorites,
+    isFavorite,
     toggleFavorite,
     refresh,
     session,
@@ -495,8 +495,25 @@ export function BookScreen() {
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
                       <span onClick={(e) => e.stopPropagation()}>
-                        <button type="button" className="btn-ghost" style={{ padding: 4 }} onClick={() => void toggleFavorite(s.id)}>
-                          <Star size={14} filled={favorites.has(s.id)} />
+                        <button
+                          type="button"
+                          className="btn-ghost"
+                          style={{ padding: 4 }}
+                          onClick={() => void toggleFavorite(s.id)}
+                          aria-label={
+                            isFavorite(s.id)
+                              ? "Unpin favorite"
+                              : usePersonalPool && tab === "catalog"
+                                ? "Add to My pool and favorite"
+                                : "Favorite"
+                          }
+                          title={
+                            usePersonalPool && tab === "catalog" && !isFavorite(s.id) && !inPool
+                              ? "Adds to My pool and pins for Match"
+                              : undefined
+                          }
+                        >
+                          <Star size={14} filled={isFavorite(s.id)} />
                         </button>
                       </span>
                     </div>
