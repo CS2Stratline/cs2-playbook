@@ -13,6 +13,7 @@ import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 import { isValidLane, matchSiteFilters } from "../lib/mapLanes";
+import { linksToText, textToLinks } from "../lib/stratLinksText";
 const ROUNDS = [
   { id: "all", label: "All" },
   { id: "full", label: "Full" },
@@ -43,7 +44,7 @@ export function MatchScreen() {
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveBusy, setSaveBusy] = useState(false);
-  const [form, setForm] = useState({ callout: "", description: "", tasks: "" });
+  const [form, setForm] = useState({ callout: "", description: "", tasks: "", links: "" });
   const filterKeyRef = useRef<string | null>(null);
 
   const side = session.selected_side;
@@ -157,6 +158,7 @@ export function MatchScreen() {
       callout: currentPick.callout,
       description: currentPick.description,
       tasks: currentPick.tasks.join("\n"),
+      links: linksToText(currentPick.links || []),
     });
     setSaveError("");
     setEditing(true);
@@ -178,7 +180,7 @@ export function MatchScreen() {
       rounds: currentPick.rounds,
       site: currentPick.site,
       status: currentPick.status,
-      links: currentPick.links,
+      links: textToLinks(form.links),
       level: currentPick.level,
       map: currentPick.map,
       side: currentPick.side,
@@ -357,22 +359,29 @@ export function MatchScreen() {
                 )}
                 <input
                   className="input"
-                  placeholder="Callout"
+                  placeholder="Title — e.g. Palace pop"
                   value={form.callout}
                   onChange={(e) => setForm({ ...form, callout: e.target.value })}
                 />
                 <input
                   className="input"
-                  placeholder="Short explanation"
+                  placeholder="Short description"
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                 />
                 <textarea
                   className="input"
-                  rows={5}
-                  placeholder="Tasks (one per line, max 5)"
+                  rows={4}
+                  placeholder={"Tasks — one per line (max 5)\nSmoke jungle\nFlash CT"}
                   value={form.tasks}
                   onChange={(e) => setForm({ ...form, tasks: e.target.value })}
+                />
+                <textarea
+                  className="input"
+                  rows={3}
+                  placeholder={"Lineups — one per line\nSmoke: Jungle | https://…\nhttps://…"}
+                  value={form.links}
+                  onChange={(e) => setForm({ ...form, links: e.target.value })}
                 />
                 {saveError && (
                   <p className="banner" style={{ color: "var(--warn)" }}>
