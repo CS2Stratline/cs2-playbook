@@ -1,7 +1,7 @@
 {
   "name": "Meme strats",
   "version": 1,
-  "note": "Funny chaos calls inspired by CS meme culture (Rush B), Strat Roulette, and wild pro moments (Glock walls, flash spam). Freeze-time shoutable — not serious meta.",
+  "note": "Funny chaos calls from CS meme culture and Strat Roulette. Freeze-time shoutable, not serious meta.",
   "sources": [
     "https://knowyourmeme.com/memes/rush-b",
     "https://www.hotspawn.com/counter-strike/news/strat-roulette-cs2-what-is-it",
@@ -15,12 +15,12 @@
       "side": "T",
       "site": "b",
       "callout": "Rush B",
-      "description": "The classic: knife out, tunnel tunnel tunnel, no plan B — commit as five.",
+      "description": "Knife out, tunnels, no plan B. All five go.",
       "tasks": [
         "Knife to B tunnels immediately",
         "One flash over for CT spawn",
         "Smoke CT if anyone bought one",
-        "Plant for tunnels, never stop swinging"
+        "Plant for tunnels, keep swinging"
       ],
       "rounds": ["full", "force", "eco", "pistol"],
       "status": "ready",
@@ -32,7 +32,7 @@
       "side": "T",
       "site": "b",
       "callout": "P90 B",
-      "description": "Five P90s, zero dignity — spray down tunnels and take the site on vibes.",
+      "description": "Five P90s into tunnels. Spray and take the site.",
       "tasks": [
         "Everyone buys P90 (or closest SMG)",
         "No stopping in tunnels",
@@ -49,7 +49,7 @@
       "side": "T",
       "site": "mid",
       "callout": "Scout mid",
-      "description": "Flying Scoutsman energy without the gravity — five scouts, jump peek doors, pray.",
+      "description": "Five scouts. Jump peek mid doors and hope.",
       "tasks": [
         "Buy SSG-08 only (plus kevlar if rich)",
         "Jump peek mid doors as a pack",
@@ -66,7 +66,7 @@
       "side": "CT",
       "site": null,
       "callout": "B stack",
-      "description": "They always rush B — so stack five on B and laugh if they do.",
+      "description": "Stack five on B. They rush it every time anyway.",
       "tasks": [
         "All five hold B (platform / car / tunnels)",
         "Save util for tunnel entry",
@@ -83,7 +83,7 @@
       "side": "T",
       "site": "b",
       "callout": "Apps only",
-      "description": "Nobody is allowed on mid or A — apps tunnel vision the whole round.",
+      "description": "No mid, no A. Whole team through apps.",
       "tasks": [
         "All five through underpass / apps",
         "One market window smoke",
@@ -100,7 +100,7 @@
       "side": "T",
       "site": "mid",
       "callout": "AWP party",
-      "description": "If you can afford it, you AWP — mid becomes a sniper convention.",
+      "description": "If you can afford an AWP, buy one. Mid is a sniper fight.",
       "tasks": [
         "Buy AWP if money allows (drop if not)",
         "Stack mid window / top mid",
@@ -117,11 +117,11 @@
       "side": "T",
       "site": "a",
       "callout": "Palace jump",
-      "description": "Everyone goes palace and jump-spots ramp like it's 2016 MM.",
+      "description": "Everyone palace. Jump-spot ramp like old MM.",
       "tasks": [
         "Five to palace, no ramp contact first",
         "Jump peek ramp / connector",
-        "Flash yourself in if needed — commit",
+        "Flash in and commit",
         "Plant default, hold palace"
       ],
       "rounds": ["full", "force", "pistol"],
@@ -134,11 +134,11 @@
       "side": "CT",
       "site": null,
       "callout": "Window bait",
-      "description": "One hero peeks window mid; four hide and wait for the free trade montage.",
+      "description": "One peeks window. Four hold off-angles and trade.",
       "tasks": [
         "One designated window bait",
         "Four hold off-angles (under / market / short)",
-        "No saving the bait — trade only",
+        "Don't save the bait, just trade",
         "Rotate on first sound after the bait dies"
       ],
       "rounds": ["full", "force"],
@@ -151,7 +151,7 @@
       "side": "T",
       "site": "b",
       "callout": "Banana rush",
-      "description": "No mid, no apps — banana is life. Flash spam and take B on chaos.",
+      "description": "No mid, no apps. Banana only. Flash and take B.",
       "tasks": [
         "All five banana immediately",
         "Throw every flash you own before sandbags",
@@ -168,7 +168,7 @@
       "side": "T",
       "site": "b",
       "callout": "Flash rain",
-      "description": "G2 overtime vibes — endless flashes into B until nobody can see, then enter.",
+      "description": "Chain flashes into B until they're blind, then enter.",
       "tasks": [
         "Buy max flashes (skip rifles if needed)",
         "Chain-flash banana and site non-stop",
@@ -185,7 +185,7 @@
       "side": "T",
       "site": "a",
       "callout": "Apps train",
-      "description": "Single-file apps train — no spreading, no thinking, only vibes.",
+      "description": "Single-file through apps. Stay clumped.",
       "tasks": [
         "Line up in apps balcony order",
         "Walk in as one clump",
@@ -202,7 +202,7 @@
       "side": "CT",
       "site": null,
       "callout": "Banana stack",
-      "description": "Four banana, one A — punish the eternal banana meme rush.",
+      "description": "Four banana, one A. Punish the banana rush.",
       "tasks": [
         "Four hold banana / sandbags / new box",
         "One soft A apps",
@@ -219,7 +219,7 @@
       "side": "T",
       "site": "outside",
       "callout": "Outside yeet",
-      "description": "Everyone sprints outside like the bomb is already planted — no secret, no ramp.",
+      "description": "Sprint outside. No secret, no ramp first.",
       "tasks": [
         "Five outside on go",
         "Smoke main / garage if anyone has it",
@@ -236,7 +236,7 @@
       "side": "T",
       "site": "b",
       "callout": "Ramp slam",
-      "description": "Ignore outside entirely — ramp is the only religion this round.",
+      "description": "Ignore outside. Everyone ramp.",
       "tasks": [
         "All five ramp / silo",
         "Flash lower, trade into dark",
@@ -253,7 +253,7 @@
       "side": "CT",
       "site": null,
       "callout": "Heaven camp",
-      "description": "Stack heaven like tourists — if they don't come outside, you still had fun.",
+      "description": "Stack heaven. If they never go outside, whatever.",
       "tasks": [
         "Three heaven / hut",
         "One ramp, one secret soft",
@@ -270,7 +270,7 @@
       "side": "T",
       "site": "a",
       "callout": "Lobby knife",
-      "description": "Knife through lobby until someone gets a slash — then guns are allowed (The Opener).",
+      "description": "Knives through lobby until someone gets a slash. Then guns.",
       "tasks": [
         "Knives out through lobby / silo",
         "No shooting until a knife or Zeus kill",
@@ -287,11 +287,11 @@
       "side": "T",
       "site": "a",
       "callout": "Donut dive",
-      "description": "Skip mid control — dive donut as five and hope CT brains blue-screen.",
+      "description": "Skip mid. Dive donut as five.",
       "tasks": [
         "Rush donut together",
         "Flash cave / temple on entry",
-        "No split — all donut",
+        "No split, all donut",
         "Plant for donut, hold cave"
       ],
       "rounds": ["full", "force", "eco"],
@@ -304,7 +304,7 @@
       "side": "T",
       "site": "b",
       "callout": "Cave ape",
-      "description": "Full cave / B rush — utility optional, commitment mandatory.",
+      "description": "Full cave to B. Util optional.",
       "tasks": [
         "Five through cave / lane to B",
         "One flash for site",
@@ -321,7 +321,7 @@
       "side": "CT",
       "site": null,
       "callout": "Red stack",
-      "description": "Everyone lives on red / A — B is a myth until you hear the plant.",
+      "description": "Live on red / A. B can wait until you hear plant.",
       "tasks": [
         "Four A / red / donut",
         "One B soft only",
@@ -338,7 +338,7 @@
       "side": "T",
       "site": "mid",
       "callout": "Negev mid",
-      "description": "Negev army takes mid — spray the door, spray the dream.",
+      "description": "Negevs take mid. Hold W and spray the door.",
       "tasks": [
         "Buy Negev / M249 if possible",
         "Hold W into mid",
@@ -355,7 +355,7 @@
       "side": "T",
       "site": "b",
       "callout": "Water walk",
-      "description": "Silent crouch through water like it's a stealth game — then suddenly it's not.",
+      "description": "Crouch-walk water quiet, then hit site together.",
       "tasks": [
         "Crouch-walk water as five",
         "No running until first contact",
@@ -372,7 +372,7 @@
       "side": "T",
       "site": "a",
       "callout": "Smoke plant",
-      "description": "Steal their smoke wall — double-smoke the choke and plant behind the void.",
+      "description": "Double-smoke their choke and plant behind it.",
       "tasks": [
         "Wait for CT smoke on A entry",
         "Throw your smoke into theirs",
@@ -389,11 +389,11 @@
       "side": "T",
       "site": "mid",
       "callout": "Mid only",
-      "description": "The round ends in mid or not at all — no site hits until mid is yours.",
+      "description": "Win mid first. No site hit until you own it.",
       "tasks": [
         "All five contest mid / bridge",
         "No A or B until mid kill or space",
-        "After mid: pick a site on vibes",
+        "After mid: pick a site",
         "Bomb carrier stays mid until called"
       ],
       "rounds": ["full", "force"],
@@ -406,7 +406,7 @@
       "side": "CT",
       "site": null,
       "callout": "Heaven camp",
-      "description": "Live in heaven / camera — if they never look up, you were a genius.",
+      "description": "Play heaven / camera. Force them to look up.",
       "tasks": [
         "Two heaven / camera",
         "Two A site soft",
@@ -423,12 +423,12 @@
       "side": "T",
       "site": "b",
       "callout": "Rush B",
-      "description": "Cyka energy on Cache — checkers to B, no mid lurk, pure chaos.",
+      "description": "Checkers to B. No mid lurk.",
       "tasks": [
         "Five through checkers / highway",
         "Flash site, spray headshot",
         "Plant for checkers",
-        "Hold together — no hero peeks"
+        "Hold together, no hero peeks"
       ],
       "rounds": ["full", "force", "eco", "pistol"],
       "status": "ready",
@@ -440,7 +440,7 @@
       "side": "T",
       "site": "a",
       "callout": "Quad rush",
-      "description": "Main A as a death ball — four in, one late mid for the cinematic lurk frag.",
+      "description": "Four A main, one late mid for the flank.",
       "tasks": [
         "Four rush A main",
         "One late mid / Z for flank",
@@ -457,7 +457,7 @@
       "side": "CT",
       "site": null,
       "callout": "Mid heroes",
-      "description": "Everyone thinks they're the mid player — fight for mid control like it's ranked ego.",
+      "description": "Three mid. Fight for mid like it's your ego.",
       "tasks": [
         "Three mid / Z / garage",
         "One A, one B soft",
@@ -474,9 +474,9 @@
       "side": "T",
       "site": "a",
       "callout": "Glock wall",
-      "description": "No armor dreams — five Glocks (or USPs on CT) rush long and overwhelm on headshots.",
+      "description": "Pistols only. Five Glocks rush long together.",
       "tasks": [
-        "Pistols only — no rifles",
+        "Pistols only, no rifles",
         "Rush long doors together",
         "Flash long, spray pit / site",
         "Plant for long, swing CT"
@@ -491,12 +491,12 @@
       "side": "T",
       "site": "default",
       "callout": "Juan Deag",
-      "description": "Deagles only — one taps or bust. No rifles, no excuses.",
+      "description": "Deagles only. One-taps or you lose.",
       "tasks": [
         "Buy Deagle only (armor optional)",
         "Play for headshots, no spray rifles",
         "Default mid info then hit a site",
-        "Save if you whiff the first two shots… just kidding, commit"
+        "Commit even if the first shots miss"
       ],
       "rounds": ["full", "force", "eco"],
       "status": "ready",
@@ -508,7 +508,7 @@
       "side": "T",
       "site": "default",
       "callout": "Zeus opener",
-      "description": "Guns stay holstered until someone lands a Zeus (or knife) — then full send.",
+      "description": "No guns until someone lands a Zeus or knife. Then go.",
       "tasks": [
         "Buy Zeus if you can",
         "Close-range hunt for the opener zap",
@@ -525,11 +525,11 @@
       "side": "CT",
       "site": null,
       "callout": "Shotgun B",
-      "description": "Shotguns only on B — if they rush tunnels, it's a horror movie.",
+      "description": "Shotguns on B. Make them walk into you.",
       "tasks": [
         "B players buy shotguns",
         "Hold close tunnels / car angles",
-        "No long peeks — make them come in",
+        "No long peeks, make them come in",
         "A side plays normal soft"
       ],
       "rounds": ["full", "force", "eco", "anti"],
@@ -542,7 +542,7 @@
       "side": "CT",
       "site": null,
       "callout": "Decoy war",
-      "description": "Decoy dodgeball energy — spam decoys, fake everything, trust nothing.",
+      "description": "Spam decoys. Fake everything.",
       "tasks": [
         "Buy decoys over utility if broke",
         "Decoy mid and apps early",
@@ -559,12 +559,12 @@
       "side": "CT",
       "site": null,
       "callout": "No buy",
-      "description": "The Economy — nobody buys this round. Pistols, pride, and bad decisions.",
+      "description": "Nobody buys. Pistols only this round.",
       "tasks": [
         "No purchases (keep leftover util only)",
         "Play close angles together",
         "Stack the likely hit site",
-        "Save the ego, not the guns"
+        "Don't force a gun"
       ],
       "rounds": ["eco", "anti"],
       "status": "ready",
@@ -576,11 +576,11 @@
       "side": "T",
       "site": "b",
       "callout": "Dualies B",
-      "description": "Dual Berettas only — spray and pray into B like it's a movie scene.",
+      "description": "Dual Berettas only. Spray into B.",
       "tasks": [
         "Buy Dual Berettas",
         "Rush B / water together",
-        "Spray site entry as a wall of bullets",
+        "Spray site entry as a pack",
         "Plant for water"
       ],
       "rounds": ["eco", "force", "pistol"],
@@ -593,12 +593,12 @@
       "side": "T",
       "site": "mid",
       "callout": "Limit one",
-      "description": "Strat Roulette classic — each player may buy only one item this round.",
+      "description": "One buy each this round. Gun or util or armor.",
       "tasks": [
         "One buy each (gun OR util OR armor)",
         "Default mid for info",
         "Hit the site with the most space",
-        "Trade hard — you won't out-aim rifles"
+        "Trade hard"
       ],
       "rounds": ["full", "force", "eco"],
       "status": "ready",

@@ -38,7 +38,7 @@
       "side": "T",
       "site": "a",
       "callout": "Contact A",
-      "description": "Fast A contact: light util, trade ramp together — no full triple setup.",
+      "description": "Fast A contact: light util, trade ramp together. No full triple setup.",
       "tasks": [
         "One stairs or jungle smoke if you have it",
         "Flash ramp, five contact together",
@@ -65,7 +65,7 @@
       "side": "T",
       "site": "b",
       "callout": "Fast B",
-      "description": "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+      "description": "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
       "tasks": [
         "Smoke market window",
         "Flash site from apps",
@@ -126,7 +126,7 @@
       "side": "T",
       "site": "b",
       "callout": "Apps split",
-      "description": "Mid window + apps hit together — split B instead of five apps.",
+      "description": "Mid window + apps hit together. Split B instead of five apps.",
       "tasks": [
         "Smoke mid window, take short",
         "Two through apps with market smokes",
@@ -225,7 +225,7 @@
       "side": "T",
       "site": "a",
       "callout": "Palace pop",
-      "description": "Fast palace exit with flash — works on eco/force for plant money.",
+      "description": "Fast palace exit with flash. Works on eco/force for plant money.",
       "tasks": [
         "1–2 in palace, rest default mid/ramp",
         "Flash balcony, pop out",
@@ -452,7 +452,7 @@
       "side": "T",
       "site": "b",
       "callout": "Rush apps",
-      "description": "Straight apps, no smokes — pistol/eco when CTs are passive.",
+      "description": "Straight apps, no smokes. Pistol/eco when CTs are passive.",
       "tasks": [
         "Five apps immediately",
         "Flash site from back alley",
@@ -557,7 +557,7 @@
       "side": "CT",
       "site": null,
       "callout": "Ramp hold",
-      "description": "Strong ramp/palace A — soft B, punish fast A contact.",
+      "description": "Strong ramp/palace A. Soft B, punish fast A contact.",
       "tasks": [
         "2 ramp / tetris",
         "1 palace or ticket",
@@ -577,9 +577,9 @@
       "side": "CT",
       "site": null,
       "callout": "Mid give",
-      "description": "Give mid space on purpose — play for retake / late rotate, save util.",
+      "description": "Give mid space on purpose. Play for retake / late rotate, save util.",
       "tasks": [
-        "Soft window — do not die mid",
+        "Soft window, do not die mid",
         "2 A, 2 B anchors",
         "Util ready for retake, not mid duel"
       ]
@@ -594,7 +594,7 @@
       "side": "CT",
       "site": null,
       "callout": "Eco window",
-      "description": "Eco: stack window/top mid for info — fall to sites on execute.",
+      "description": "Eco: stack window/top mid for info, fall to sites on execute.",
       "tasks": [
         "3–4 window / top mid",
         "1 soft A or B",
@@ -645,7 +645,7 @@
       "description": "When apps push: let them exit, molly apps from site, trade from site + short.",
       "tasks": [
         "1 short, 1 site/van",
-        "Molly apps from site — not deep into apps",
+        "Molly apps from site, not deep into apps",
         "Trade exit, hold market"
       ]
     },
@@ -657,7 +657,7 @@
       "side": "CT",
       "site": null,
       "callout": "A stack",
-      "description": "Three A, one mid, one B — punish A takes.",
+      "description": "Three A, one mid, one B. Punish A takes.",
       "tasks": [
         "3 A (ramp/palace/ticket)",
         "1 window or con",
@@ -908,7 +908,7 @@
       "side": "T",
       "site": "b",
       "callout": "Rush B",
-      "description": "Straight tunnels — classic pistol/eco.",
+      "description": "Straight tunnels. Classic pistol/eco.",
       "tasks": [
         "Five upper tunnels",
         "Flash B, spray doors",
@@ -1946,10 +1946,10 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Strong heaven / B main — punish halls commits.",
+      "description": "Strong heaven / B main. Punish halls commits.",
       "tasks": [
         "2 B (heaven + site), 1 mid, 2 A soft",
-        "Hold heaven — watch B main / garbage",
+        "Hold heaven, watch B main / garbage",
         "Smoke B main from heaven when they commit halls"
       ]
     }

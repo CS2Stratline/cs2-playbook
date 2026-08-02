@@ -31,7 +31,7 @@ const strats = [
     side: "T",
     site: "a",
     callout: "Contact A",
-    description: "Fast A contact: light util, trade ramp together — no full triple setup.",
+    description: "Fast A contact: light util, trade ramp together. No full triple setup.",
     rounds: ["full","force"],
     tasks: [
       "One stairs or jungle smoke if you have it",
@@ -48,7 +48,7 @@ const strats = [
     side: "T",
     site: "b",
     callout: "Fast B",
-    description: "Quick B: market window smoke + apps entry — lighter than full Apps B.",
+    description: "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
     rounds: ["full","force"],
     tasks: [
       "Smoke market window",
@@ -82,7 +82,7 @@ const strats = [
     side: "T",
     site: "b",
     callout: "Apps split",
-    description: "Mid window + apps hit together — split B instead of five apps.",
+    description: "Mid window + apps hit together. Split B instead of five apps.",
     rounds: ["full","force"],
     tasks: [
       "Smoke mid window, take short",
@@ -141,7 +141,7 @@ const strats = [
     side: "T",
     site: "a",
     callout: "Palace pop",
-    description: "Fast palace exit with flash — works on eco/force for plant money.",
+    description: "Fast palace exit with flash. Works on eco/force for plant money.",
     rounds: ["full","force","eco"],
     tasks: [
       "1–2 in palace, rest default mid/ramp",
@@ -273,7 +273,7 @@ const strats = [
     side: "T",
     site: "b",
     callout: "Rush apps",
-    description: "Straight apps, no smokes — pistol/eco when CTs are passive.",
+    description: "Straight apps, no smokes. Pistol/eco when CTs are passive.",
     rounds: ["pistol","eco","force"],
     tasks: [
       "Five apps immediately",
@@ -340,7 +340,7 @@ const strats = [
     side: "CT",
     site: null,
     callout: "Ramp hold",
-    description: "Strong ramp/palace A — soft B, punish fast A contact.",
+    description: "Strong ramp/palace A. Soft B, punish fast A contact.",
     rounds: [],
     tasks: [
       "2 ramp / tetris",
@@ -354,10 +354,10 @@ const strats = [
     side: "CT",
     site: null,
     callout: "Mid give",
-    description: "Give mid space on purpose — play for retake / late rotate, save util.",
+    description: "Give mid space on purpose. Play for retake / late rotate, save util.",
     rounds: ["full","force","eco"],
     tasks: [
-      "Soft window — do not die mid",
+      "Soft window, do not die mid",
       "2 A, 2 B anchors",
       "Util ready for retake, not mid duel",
     ],
@@ -367,7 +367,7 @@ const strats = [
     side: "CT",
     site: null,
     callout: "Eco window",
-    description: "Eco: stack window/top mid for info — fall to sites on execute.",
+    description: "Eco: stack window/top mid for info, fall to sites on execute.",
     rounds: ["eco"],
     tasks: [
       "3–4 window / top mid",
@@ -401,7 +401,7 @@ const strats = [
     rounds: ["full","force","anti"],
     tasks: [
       "1 short, 1 site/van",
-      "Molly bench/site — not deep apps",
+      "Molly bench/site, not deep apps",
       "Trade exit, hold market",
     ],
     links: [
@@ -414,7 +414,7 @@ const strats = [
     side: "CT",
     site: null,
     callout: "A stack",
-    description: "Three A, one mid, one B — punish A takes.",
+    description: "Three A, one mid, one B. Punish A takes.",
     rounds: [],
     tasks: [
       "3 A (ramp/palace/ticket)",
@@ -566,7 +566,7 @@ const strats = [
     side: "T",
     site: "b",
     callout: "Rush B",
-    description: "Straight tunnels — classic pistol/eco.",
+    description: "Straight tunnels. Classic pistol/eco.",
     rounds: ["pistol","eco","force"],
     tasks: [
       "Five upper tunnels",
