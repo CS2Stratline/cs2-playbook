@@ -1,6 +1,6 @@
 {
   "source": "https://strat-roulette.github.io/",
-  "note": "Classic CSGO Strat Roulette catalog. Tokens: @DIR @RIFLE @PISTOL @SITE @SHOTGUN @SMG @LMG @SPECIAL",
+  "note": "Chaos strat catalog for Roulette. Tokens: @DIR @RIFLE @PISTOL @SITE @SHOTGUN @SMG @LMG @SPECIAL. No HTML.",
   "reg": [
     {
       "callout": "Kill-anthropist",
@@ -64,7 +64,7 @@
     },
     {
       "callout": "CRABS",
-      "description": "Only crouch walking and Duel Berrettas.",
+      "description": "Only crouch walking and Dual Berettas.",
       "side": null,
       "site": null
     },
@@ -478,31 +478,31 @@
     },
     {
       "callout": "The Decision",
-      "description": "@SPECIAL must pick between one of these options. <br>1. No armour, if you carried it over from previous rounds you must stay in spawn the whole round. <br>2. Everyone must use a @SMG.",
+      "description": "@SPECIAL must pick one of these options:\n\n1. No armour, if you carried it over from previous rounds you must stay in spawn the whole round.\n\n2. Everyone must use a @SMG.",
       "side": null,
       "site": null
     },
     {
       "callout": "One of two",
-      "description": "@SPECIAL must pick between one of these options. <br>1. Everyone must use a @SMG and @PISTOL without armour. <br>2. Everyone must use a @SHOTGUN and no pistol with armour.",
+      "description": "@SPECIAL must pick one of these options:\n\n1. Everyone must use a @SMG and @PISTOL without armour.\n\n2. Everyone must use a @SHOTGUN and no pistol with armour.",
       "side": null,
       "site": null
     },
     {
       "callout": "Top Frag decides",
-      "description": "The top frag must pick between one of these options. <br>1. Everyone stack @SITE site with @LMG. <br>2. @PISTOLs only.",
+      "description": "The top frag must pick one of these options:\n\n1. Everyone stack @SITE site with @LMG.\n\n2. @PISTOL only.",
       "side": null,
       "site": null
     },
     {
       "callout": "Middle Frag decides",
-      "description": "The middle frag must pick between one of these options. <br>1. Only @SMG and @PISTOL with no armour or grenades. <br>2. @SHOTGUN and no pistol with armour and grenades.",
+      "description": "The middle frag must pick one of these options:\n\n1. Only @SMG and @PISTOL with no armour or grenades.\n\n2. @SHOTGUN and no pistol with armour and grenades.",
       "side": null,
       "site": null
     },
     {
       "callout": "Bottom Frag decides",
-      "description": "The bottom frag must pick between one of these options. <br>1. The bottom frag is the only one allowed to have armour. <br>2. Everyone but the bottom frag can have armour.",
+      "description": "The bottom frag must pick one of these options:\n\n1. The bottom frag is the only one allowed to have armour.\n\n2. Everyone but the bottom frag can have armour.",
       "side": null,
       "site": null
     },
@@ -534,7 +534,7 @@
     },
     {
       "callout": "CT Crickets",
-      "description": "Buy a FAMAS and whenever you arn't shooting, hold down the 'scope button'.",
+      "description": "Buy a FAMAS and whenever you aren't shooting, hold down the 'scope button'.",
       "side": "CT",
       "site": null
     },
