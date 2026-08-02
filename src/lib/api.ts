@@ -312,6 +312,22 @@ export async function getFavorites(userId: string): Promise<string[]> {
   return (data || []).map((r) => (r as { strat_id: string }).strat_id);
 }
 
+/** Explicitly set favorite on/off (used when starring also copies into My pool). */
+export async function setFavorite(userId: string, stratId: string, on: boolean) {
+  if (!isCloudMode()) {
+    const i = memory.favorites.indexOf(stratId);
+    if (on && i < 0) memory.favorites.push(stratId);
+    if (!on && i >= 0) memory.favorites.splice(i, 1);
+    saveLocal(memory);
+    return;
+  }
+  if (on) {
+    await supabase!.from("user_favorites").upsert({ user_id: userId, strat_id: stratId });
+  } else {
+    await supabase!.from("user_favorites").delete().eq("user_id", userId).eq("strat_id", stratId);
+  }
+}
+
 export async function toggleFavorite(userId: string, stratId: string) {
   if (!isCloudMode()) {
     const i = memory.favorites.indexOf(stratId);
