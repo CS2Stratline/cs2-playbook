@@ -21,7 +21,7 @@ const STANDARD_LANES: LaneDef[] = [
 const NUKE_LANES: LaneDef[] = [
   { id: "a", label: "A site", short: "A" },
   { id: "b", label: "B site", short: "B" },
-  { id: "outside", label: "Outside", short: "Out" },
+  { id: "outside", label: "Outside", short: "Outside" },
   { id: "ramp", label: "Ramp", short: "Ramp" },
   { id: "default", label: "Default / other", short: "Def" },
 ];
