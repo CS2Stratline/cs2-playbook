@@ -54,14 +54,17 @@ export function MatchScreen() {
 
   /** Compact Match pool switches — same toggles as Playbook, no descriptions. */
   const matchPacks = useMemo(() => {
-    const items = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
+    const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
     const order = ["essentials-pug", "stack-standard", "meme-strats"];
-    return items.sort((a, b) => {
+    system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
       const bi = order.indexOf(b.slug);
       return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
     });
-  }, [packs]);
+    if (!usePersonalPool) return system;
+    const mine = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
+    return mine ? [mine, ...system] : system;
+  }, [packs, usePersonalPool, userId]);
 
   // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
   useEffect(() => {
