@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { isAllMaps } from "../lib/types";
+import { isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { bumpStratUsage, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -33,6 +33,8 @@ export function MatchScreen() {
     isFavorite,
     toggleFavorite,
     packs,
+    subscriptions,
+    setPackEnabled,
     loading,
     usePersonalPool,
     refresh,
@@ -49,6 +51,17 @@ export function MatchScreen() {
   const accent = side === "CT" ? "ct" : "";
   const needsMap = isAllMaps(session.selected_map);
   const siteFilters = useMemo(() => matchSiteFilters(session.selected_map), [session.selected_map]);
+
+  /** Compact Match pool switches — same toggles as Playbook, no descriptions. */
+  const matchPacks = useMemo(() => {
+    const items = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
+    const order = ["essentials-pug", "stack-standard", "meme-strats"];
+    return items.sort((a, b) => {
+      const ai = order.indexOf(a.slug);
+      const bi = order.indexOf(b.slug);
+      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+    });
+  }, [packs]);
 
   // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
   useEffect(() => {
@@ -241,6 +254,25 @@ export function MatchScreen() {
   return (
     <div>
       <div className="panel" style={{ paddingTop: 10, paddingBottom: 10 }}>
+        {matchPacks.length > 0 && (
+          <div className="row" style={{ marginBottom: 8 }}>
+            {matchPacks.map((p) => {
+              const on = isPackInMatchPool(p.id, subscriptions, packs);
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`pill ${on ? `active ${accent}` : ""}`}
+                  onClick={() => void setPackEnabled(p.id, !on)}
+                  aria-pressed={on}
+                  title={p.description || p.title}
+                >
+                  {p.title}
+                </button>
+              );
+            })}
+          </div>
+        )}
         {isT && (
           <div className="row" style={{ marginBottom: 8 }}>
             {siteFilters.map((s) => (

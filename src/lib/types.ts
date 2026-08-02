@@ -22,6 +22,18 @@ export type Pack = {
   strat_count?: number;
 };
 
+/** Serious match packs start on; Advanced (locked) + Meme stay off until toggled. */
+export function isPackDefaultEnabled(pack: Pick<Pack, "tier" | "slug"> | undefined | null): boolean {
+  if (!pack) return false;
+  if (pack.tier === "pro") return false;
+  if (pack.slug === "meme-strats") return false;
+  return true;
+}
+
+export function isMemePack(pack: Pick<Pack, "slug"> | undefined | null): boolean {
+  return pack?.slug === "meme-strats";
+}
+
 export type Strat = {
   id: string;
   pack_id: string;
