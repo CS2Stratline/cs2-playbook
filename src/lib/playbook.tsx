@@ -162,9 +162,22 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     });
   }, [strats, packs, userId]);
 
+  /** Match feed: enabled system packs for everyone; signed-in also adds My pool (no catalog dupes). */
   const enabledStrats = useMemo(() => {
-    if (usePersonalPool) return myPoolStrats;
-    return strats.filter((s) => isPackInMatchPool(s.pack_id, subscriptions, packs));
+    const fromPacks = strats.filter((s) => {
+      if (s.owner_user_id) return false;
+      return isPackInMatchPool(s.pack_id, subscriptions, packs);
+    });
+    if (!usePersonalPool) return fromPacks;
+
+    const coveredCatalogIds = new Set(
+      myPoolStrats
+        .map((s) => catalogIdFromSource(s.source))
+        .filter((id): id is string => !!id)
+    );
+    // Prefer personal copies when the same catalog strat is also toggled on via packs.
+    const packsWithoutDupes = fromPacks.filter((s) => !coveredCatalogIds.has(s.id));
+    return [...myPoolStrats, ...packsWithoutDupes];
   }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs]);
 
   const isFavorite = useCallback(

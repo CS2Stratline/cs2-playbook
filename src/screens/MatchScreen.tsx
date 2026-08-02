@@ -20,7 +20,6 @@ const ROUNDS = [
   { id: "force", label: "Force" },
   { id: "eco", label: "Eco" },
   { id: "pistol", label: "Pistol" },
-  { id: "anti", label: "Anti" },
 ] as const;
 
 export function MatchScreen() {
@@ -36,11 +35,9 @@ export function MatchScreen() {
     packs,
     loading,
     usePersonalPool,
-    addFundamentalsStarter,
     refresh,
   } = usePlaybook();
   const [favoritesOnly, setFavoritesOnly] = useState(false);
-  const [seedBusy, setSeedBusy] = useState(false);
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveBusy, setSaveBusy] = useState(false);
@@ -73,7 +70,6 @@ export function MatchScreen() {
   const eligible = useMemo(() => {
     return enabledStrats.filter((s) => {
       if (s.map !== session.selected_map || s.side !== session.selected_side) return false;
-      if (s.status === "practice" && !session.include_practice) return false;
       if (isT && session.site_filter !== "all" && s.site !== session.site_filter) return false;
       if (session.round_filter !== "all" && s.rounds.length && !s.rounds.includes(session.round_filter)) return false;
       return true;
@@ -88,7 +84,7 @@ export function MatchScreen() {
     return [...fav, ...rest];
   }, [eligible, isFavorite, favoritesOnly, usePersonalPool]);
 
-  const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${session.include_practice}`;
+  const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}`;
 
   useEffect(() => {
     if (filterKeyRef.current === null) {
@@ -105,6 +101,12 @@ export function MatchScreen() {
   useEffect(() => {
     if (!usePersonalPool) setFavoritesOnly(false);
   }, [usePersonalPool]);
+
+  // Retired round filter — normalize old sessions.
+  useEffect(() => {
+    if (session.round_filter === "anti") void setSession({ round_filter: "all" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session.round_filter]);
 
   async function commitCall(strat: Strat) {
     const calledAt = Date.now();
@@ -242,13 +244,6 @@ export function MatchScreen() {
               </button>
             );
           })}
-          <button
-            type="button"
-            className={`pill ${session.include_practice ? `active ${accent}` : ""}`}
-            onClick={() => void setSession({ include_practice: !session.include_practice })}
-          >
-            Practice
-          </button>
           {usePersonalPool && (
             <button
               type="button"
@@ -278,25 +273,6 @@ export function MatchScreen() {
               <p className="muted" style={{ marginBottom: 12 }}>
                 No favorites for this selection.
               </p>
-            )}
-
-            {eligible.length === 0 && usePersonalPool && (
-              <button
-                type="button"
-                className={`btn btn-primary ${accent}`}
-                style={{ marginBottom: 12 }}
-                disabled={seedBusy}
-                onClick={async () => {
-                  setSeedBusy(true);
-                  try {
-                    await addFundamentalsStarter(session.selected_map);
-                  } finally {
-                    setSeedBusy(false);
-                  }
-                }}
-              >
-                {seedBusy ? "Adding…" : `Add Fundamentals for ${session.selected_map}`}
-              </button>
             )}
 
             {pickList.map((s) => {
