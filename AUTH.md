@@ -4,7 +4,7 @@ v1 uses **Supabase Auth**: Discord (recommended) and email magic link. Guest / l
 
 Redirect URL is computed at runtime as `origin + import.meta.env.BASE_URL` (`authRedirectTo()` in `src/lib/supabase.ts`). With HashRouter on GitHub Pages that is typically:
 
-- `https://cs2startline.github.io/cs2-playbook/`
+- `https://cs2stratline.github.io/cs2-playbook/`
 - `http://localhost:5173/` (local Vite)
 
 Add those (and any custom domain) under Supabase → Authentication → URL configuration. Discord’s OAuth callback stays on the Supabase project (`https://YOUR.supabase.co/auth/v1/callback`).
