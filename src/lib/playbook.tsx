@@ -60,6 +60,10 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       await api.ensureBootstrap();
+      if (usePersonalPool) {
+        // Ensure My pool pack exists so Match can toggle it like other packs.
+        await api.ensureUserPrivatePack(userId);
+      }
       const [p, s, fav, subs, sess] = await Promise.all([
         api.listPacks(),
         api.listStrats(),
@@ -107,9 +111,13 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         setFavorites(new Set(fav));
       }
       const nextSubs = { ...subs };
-      for (const pack of p.filter((x) => x.visibility === "system")) {
+      for (const pack of p) {
+        const isMine = pack.visibility === "private" && pack.owner_user_id === userId;
+        const isSystem = pack.visibility === "system";
+        if (!isMine && !isSystem) continue;
         if (nextSubs[pack.id] === undefined) {
-          nextSubs[pack.id] = isPackDefaultEnabled(pack);
+          // My pool defaults on; system packs use pack defaults (Meme/Advanced off).
+          nextSubs[pack.id] = isMine ? true : isPackDefaultEnabled(pack);
         }
       }
       setSubscriptions(nextSubs);
@@ -162,13 +170,17 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     });
   }, [strats, packs, userId]);
 
-  /** Match feed: enabled system packs for everyone; signed-in also adds My pool (no catalog dupes). */
+  /** Match feed: enabled system packs; signed-in may also include My pool when that pack is on. */
   const enabledStrats = useMemo(() => {
     const fromPacks = strats.filter((s) => {
       if (s.owner_user_id) return false;
       return isPackInMatchPool(s.pack_id, subscriptions, packs);
     });
     if (!usePersonalPool) return fromPacks;
+
+    const myPack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
+    const myPoolOn = myPack ? isPackInMatchPool(myPack.id, subscriptions, packs) : false;
+    if (!myPoolOn) return fromPacks;
 
     const coveredCatalogIds = new Set(
       myPoolStrats
@@ -178,7 +190,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     // Prefer personal copies when the same catalog strat is also toggled on via packs.
     const packsWithoutDupes = fromPacks.filter((s) => !coveredCatalogIds.has(s.id));
     return [...myPoolStrats, ...packsWithoutDupes];
-  }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs]);
+  }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs, userId]);
 
   const isFavorite = useCallback(
     (stratId: string) => {

@@ -104,7 +104,7 @@ export function BookScreen() {
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
-  /** System packs guests can toggle (hide locked Advanced). */
+  /** Packs you can put in Match (My pool when signed in + unlocked system packs). */
   const systemPacks = useMemo(() => {
     const items = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
     const order = ["essentials-pug", "stack-standard", "meme-strats"];
@@ -113,8 +113,12 @@ export function BookScreen() {
       const bi = order.indexOf(b.slug);
       return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
     });
-    return [{ tier: "visible" as const, items }];
-  }, [packs]);
+    const mine =
+      usePersonalPool && privatePack
+        ? [{ ...privatePack, description: privatePack.description || "Your saved strats for Match" }]
+        : [];
+    return [{ tier: "visible" as const, items: [...mine, ...items] }];
+  }, [packs, usePersonalPool, privatePack]);
 
   const catalogList = useMemo(() => {
     const q = query.trim().toLowerCase();
