@@ -301,10 +301,107 @@ select {
   font-stretch: condensed;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 0.95;
+  font-size: clamp(44px, 11vw, 56px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
   margin: 0 0 12px;
   word-break: break-word;
+  color: var(--accent-t);
+}
+
+.callout-hero.ct {
+  color: var(--accent-ct);
+}
+
+.task-util {
+  flex: 0 0 auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  background: var(--panel-hi);
+}
+
+.task-util.nade-smoke {
+  border-color: rgba(120, 170, 220, 0.45);
+  color: #9ec4e8;
+}
+
+.task-util.nade-flash {
+  border-color: rgba(230, 200, 80, 0.45);
+  color: #e8d48a;
+}
+
+.task-util.nade-molotov {
+  border-color: rgba(230, 120, 70, 0.45);
+  color: #e8a070;
+}
+
+.task-util.nade-he {
+  border-color: rgba(180, 180, 180, 0.4);
+  color: #c0c4ca;
+}
+
+.filter-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.filter-summary .chip {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: var(--panel-hi);
+}
+
+.filter-summary .chip.active {
+  border-color: var(--accent-t);
+  color: var(--accent-t);
+  background: var(--accent-t-soft);
+}
+
+.filter-summary .chip.active.ct {
+  border-color: var(--accent-ct);
+  color: var(--accent-ct);
+  background: var(--accent-ct-soft);
+}
+
+.live-wait {
+  text-align: center;
+  padding: 28px 12px 20px;
+}
+
+.live-wait .callout-hero {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.live-dots::after {
+  content: "…";
+  display: inline-block;
+  margin-left: 2px;
+  animation: live-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .chip-link {

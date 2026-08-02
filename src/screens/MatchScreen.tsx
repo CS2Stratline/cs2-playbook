@@ -108,6 +108,33 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.round_filter]);
 
+  const activeFilters = useMemo(() => {
+    const chips: { key: string; label: string; clear: () => void }[] = [];
+    if (isT && session.site_filter !== "all") {
+      const lane = siteFilters.find((s) => s.id === session.site_filter);
+      chips.push({
+        key: "site",
+        label: lane?.label || session.site_filter,
+        clear: () => void setSession({ site_filter: "all" }),
+      });
+    }
+    if (session.round_filter !== "all") {
+      chips.push({
+        key: "round",
+        label: session.round_filter,
+        clear: () => void setSession({ round_filter: "all" }),
+      });
+    }
+    if (favoritesOnly && usePersonalPool) {
+      chips.push({
+        key: "fav",
+        label: "Favorites",
+        clear: () => setFavoritesOnly(false),
+      });
+    }
+    return chips;
+  }, [isT, session.site_filter, session.round_filter, favoritesOnly, usePersonalPool, siteFilters, setSession]);
+
   async function commitCall(strat: Strat) {
     const calledAt = Date.now();
     await bumpStratUsage(strat.id);
@@ -264,15 +291,67 @@ export function MatchScreen() {
         ) : !currentPick ? (
           <>
             <p className="eyebrow">Choose a strat</p>
+            {activeFilters.length > 0 && (
+              <div className="filter-summary">
+                {activeFilters.map((c) => (
+                  <button
+                    key={c.key}
+                    type="button"
+                    className={`chip active ${accent}`}
+                    onClick={c.clear}
+                    aria-label={`Clear ${c.label}`}
+                  >
+                    {c.label} ×
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className="chip"
+                  onClick={() => {
+                    void setSession({ site_filter: "all", round_filter: "all" });
+                    setFavoritesOnly(false);
+                  }}
+                >
+                  Clear
+                </button>
+              </div>
+            )}
             {eligible.length === 0 && (
-              <p className="muted" style={{ marginBottom: 12 }}>
-                No strats for {session.selected_map} {session.selected_side}.
-              </p>
+              <div className="empty" style={{ padding: "20px 8px" }}>
+                <p className="h2" style={{ fontSize: 22, marginBottom: 8 }}>
+                  No strategies
+                </p>
+                <p className="muted" style={{ marginBottom: 14 }}>
+                  Nothing for {session.selected_map} {session.selected_side}
+                  {activeFilters.length ? " with these filters" : ""}.
+                </p>
+                {activeFilters.length > 0 ? (
+                  <button
+                    type="button"
+                    className={`btn btn-primary ${accent}`}
+                    onClick={() => {
+                      void setSession({ site_filter: "all", round_filter: "all" });
+                      setFavoritesOnly(false);
+                    }}
+                  >
+                    Clear filters
+                  </button>
+                ) : (
+                  <button type="button" className={`btn btn-primary ${accent}`} onClick={() => navigate("/playbook")}>
+                    Open Playbook
+                  </button>
+                )}
+              </div>
             )}
             {eligible.length > 0 && pickList.length === 0 && favoritesOnly && (
-              <p className="muted" style={{ marginBottom: 12 }}>
-                No favorites for this selection.
-              </p>
+              <div className="empty" style={{ padding: "16px 8px" }}>
+                <p className="muted" style={{ marginBottom: 12 }}>
+                  No favorites for this selection.
+                </p>
+                <button type="button" className="btn-ghost" onClick={() => setFavoritesOnly(false)}>
+                  Show all
+                </button>
+              </div>
             )}
 
             {pickList.map((s) => {
@@ -402,7 +481,7 @@ export function MatchScreen() {
               </>
             ) : (
               <>
-                <div className="callout-hero">{currentPick.callout}</div>
+                <div className={`callout-hero ${accent}`}>{currentPick.callout}</div>
                 {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
                 <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
 
@@ -411,7 +490,7 @@ export function MatchScreen() {
                     Change strat
                   </button>
                   <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!pickList.length}>
-                    <Shuffle size={14} /> Surprise me
+                    <Shuffle size={14} /> Surprise again
                   </button>
                   {canEditCurrent && (
                     <button type="button" className="btn-ghost" onClick={startEdit}>

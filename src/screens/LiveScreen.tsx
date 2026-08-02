@@ -39,20 +39,30 @@ export function LiveScreen() {
       <header className="topbar">
         <p className="brand">
           <span>Live call</span>
-          Playbook
+          <span className="brand-mark">Playbook</span>
         </p>
       </header>
 
-      {error && <div className="panel"><p className="muted">{error}</p></div>}
+      {error && (
+        <div className="panel">
+          <p className="h2" style={{ fontSize: 22 }}>
+            Link unavailable
+          </p>
+          <p className="muted">{error}</p>
+        </div>
+      )}
 
       {!error && !data && <div className="empty">Connecting…</div>}
 
       {data && !data.has_pick && (
-        <div className="panel">
-          <p className="eyebrow">{data.selected_map} · {side}</p>
-          <h2 className="h2" style={{ fontSize: 22 }}>
-            Waiting for a call
+        <div className="panel live-wait">
+          <p className="eyebrow">
+            {data.selected_map} · {side}
+          </p>
+          <h2 className={`callout-hero ${accent}`}>
+            Waiting<span className="live-dots" aria-hidden />
           </h2>
+          <p className="muted">IGL has not called a strat yet.</p>
         </div>
       )}
 
@@ -63,9 +73,10 @@ export function LiveScreen() {
               <MapLogo map={data.selected_map} size={16} />
               {data.selected_map}
               {data.site ? <SiteIcon site={String(data.site)} size={12} /> : null}
+              <span style={{ marginLeft: 4 }}>{side}</span>
             </span>
           </div>
-          <div className="callout-hero">{data.callout}</div>
+          <div className={`callout-hero ${accent}`}>{data.callout}</div>
           {data.description && <p className="muted" style={{ marginBottom: 10 }}>{data.description}</p>}
           <StratTasks tasks={data.tasks} links={data.links} accent={accent} />
         </div>
