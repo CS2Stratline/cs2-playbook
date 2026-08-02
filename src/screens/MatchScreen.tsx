@@ -257,22 +257,15 @@ export function MatchScreen() {
 
       <div className="panel">
         {needsMap && !currentPick ? (
-          <>
-            <p className="eyebrow">Pick a map</p>
-            <p className="muted">
-              Match stays one map so the call is scannable in freeze time. Pick a map above — use All in Playbook to browse everything.
-            </p>
-          </>
+          <p className="eyebrow">Pick a map</p>
         ) : !currentPick ? (
           <>
             <p className="eyebrow">Choose a strat</p>
-            <p className="muted" style={{ marginBottom: 12 }}>
-              {eligible.length === 0
-                ? usePersonalPool
-                  ? `No strats for ${session.selected_map} ${session.selected_side} in your pool yet.`
-                  : `No strats match this selection on ${session.selected_map}. Turn on a pack in Playbook, or loosen filters.`
-                : `${eligible.length} strat${eligible.length === 1 ? "" : "s"} ready · tap one to call`}
-            </p>
+            {eligible.length === 0 && (
+              <p className="muted" style={{ marginBottom: 12 }}>
+                No strats for {session.selected_map} {session.selected_side}.
+              </p>
+            )}
 
             {eligible.length === 0 && usePersonalPool && (
               <button
@@ -354,7 +347,7 @@ export function MatchScreen() {
                 <p className="eyebrow">Edit call</p>
                 {canEditShared && sharedStratTargetId(currentPick) && (
                   <p className="banner" style={{ marginBottom: 10 }}>
-                    Saves for everyone — Fundamentals / Stack shared library.
+                    Saves for everyone
                   </p>
                 )}
                 <input

@@ -3,7 +3,6 @@ import { useAuth } from "../lib/auth";
 import {
   ensureLiveShareToken,
   exportBookJson,
-  isCloudMode,
   isSupabaseConfigured,
   listAdminProfiles,
   regenerateLiveShareToken,
@@ -14,13 +13,11 @@ import type { AdminProfile } from "../lib/types";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
-import { LevelLegend } from "../components/LevelBadge";
 import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
-  const { mode, user, signOut, userId, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile } =
-    useAuth();
+  const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile } = useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
   const [liveToken, setLiveToken] = useState<string | null>(null);
@@ -82,13 +79,11 @@ export function SettingsScreen() {
           Settings
         </h2>
         <p className="muted">
-          Mode: <strong>{mode}</strong>
+          {mode}
           {user
             ? ` · ${user.email || user.user_metadata?.full_name || user.user_metadata?.name || "signed in"}`
-            : " · guest (this device only)"}
-        </p>
-        <p className="banner">
-          Login is optional. Guests get Match with Fundamentals + Stack on this phone. Sign in to sync that pool across devices and share a live-call link — Match stays ready either way.
+            : " · guest"}
+          {user && canEditShared ? (profile?.is_super_admin ? " · super admin" : " · admin") : ""}
         </p>
         {user && (
           <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>
@@ -97,18 +92,12 @@ export function SettingsScreen() {
         )}
       </div>
 
-      {supabaseReady && !user && (
-        <div className="panel">
-          <AuthScreen />
-        </div>
-      )}
+      {supabaseReady && !user && <AuthScreen />}
 
       {user && (
         <div className="panel">
-          <p className="eyebrow">Live call link</p>
-          <p className="muted">
-            Private URL for teammates — no login. They see your current Match call and it updates as you change strats.
-          </p>
+          <p className="eyebrow">Live call</p>
+          <p className="muted">Teammates see your current Match call — no login.</p>
           <input className="input" readOnly value={liveUrl || (liveMsg ? "—" : "Creating link…")} onFocus={(e) => e.target.select()} />
           <div className="row">
             <button
@@ -124,7 +113,7 @@ export function SettingsScreen() {
                 }
               }}
             >
-              Copy live link
+              Copy link
             </button>
             <button
               type="button"
@@ -136,7 +125,7 @@ export function SettingsScreen() {
                 try {
                   const token = await regenerateLiveShareToken();
                   setLiveToken(token);
-                  setLiveMsg("New link created (old one revoked)");
+                  setLiveMsg("New link created");
                 } catch (e) {
                   setLiveMsg(e instanceof Error ? e.message : "Failed to regenerate");
                 } finally {
@@ -151,46 +140,9 @@ export function SettingsScreen() {
         </div>
       )}
 
-      <div className="panel">
-        <p className="eyebrow">Skill colors</p>
-        <p className="muted" style={{ marginBottom: 10 }}>
-          Each strat has a FACEIT-style execution level (1–10): how hard the call is to run in freeze time — not your personal Elo.
-        </p>
-        <LevelLegend />
-      </div>
-
-      <div className="panel">
-        <p className="eyebrow">Shared edits</p>
-        {canEditShared ? (
-          <p className="muted">
-            You can edit Fundamentals / Stack strats from Match or Playbook. Changes save for everyone
-            {mode === "local" ? " on this device (local demo)." : " (admin)."}
-          </p>
-        ) : (
-          <p className="muted">
-            Shared library edits are admin-only. Ask a super admin to add your email in Settings → Admins (you must
-            sign in once first).
-          </p>
-        )}
-        {profile?.is_super_admin ? (
-          <p className="banner" style={{ marginTop: 8 }}>
-            Super admin · can edit strats and manage admins
-          </p>
-        ) : profile?.is_admin ? (
-          <p className="banner" style={{ marginTop: 8 }}>
-            Admin · shared edit enabled
-          </p>
-        ) : null}
-        {adminMsg && !canManageAdmins && <p className="banner" style={{ marginTop: 8 }}>{adminMsg}</p>}
-      </div>
-
       {canManageAdmins && (
         <div className="panel">
           <p className="eyebrow">Admins</p>
-          <p className="muted" style={{ marginBottom: 10 }}>
-            Super admin only. Add someone by the email they use to sign in — they must open the app once first so a
-            profile exists. Admins can edit shared strats; only you can add or remove admins.
-          </p>
           <div className="row" style={{ marginBottom: 10 }}>
             <input
               className="input"
@@ -271,21 +223,13 @@ export function SettingsScreen() {
             ))
           )}
           {adminMsg && <p className="banner" style={{ marginTop: 8 }}>{adminMsg}</p>}
-          {mode === "cloud" && (
-            <p className="muted" style={{ marginTop: 10, fontSize: 11 }}>
-              First-time bootstrap (SQL once): set your account as super admin after migrations 007 + 008 — see DEPLOY.md.
-            </p>
-          )}
         </div>
       )}
 
       <div className="panel">
         <p className="eyebrow">Library</p>
         <p className="muted">
-          {packs.length} packs · {strats.length} strats · {CATALOG_SIZE} CSNADES lineups in catalog
-        </p>
-        <p className="muted" style={{ marginTop: 8, fontSize: 11 }}>
-          User id: {userId.slice(0, 12)}…{isCloudMode() ? " (cloud)" : " (local)"}
+          {packs.length} packs · {strats.length} strats · {CATALOG_SIZE} lineups
         </p>
         <div className="row" style={{ marginTop: 10 }}>
           <button
@@ -314,16 +258,6 @@ export function SettingsScreen() {
             </button>
           ) : null}
         </div>
-      </div>
-
-      <div className="panel">
-        <p className="eyebrow">Sibling app</p>
-        <p className="muted">
-          Lightweight freeze-time tool:{" "}
-          <a href="https://jonaslundervold.github.io/cs2-callout-app/" target="_blank" rel="noreferrer">
-            cs2-callout-app
-          </a>
-        </p>
       </div>
     </div>
   );
