@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import {
-  bumpStratUsage,
   ensureUserPrivatePack,
   findPoolCopy as findCopy,
   sharedStratTargetId,
@@ -33,7 +32,6 @@ export function BookScreen() {
     toggleFavorite,
     refresh,
     session,
-    setSession,
     loading,
     subscriptions,
     setPackEnabled,
@@ -233,25 +231,6 @@ export function BookScreen() {
     } catch (e) {
       setSaveError(e instanceof Error ? e.message : "Could not save strat");
     }
-  }
-
-  async function useInMatch(s: Strat) {
-    const pack = packs.find((p) => p.id === s.pack_id);
-    if (isPackLocked(pack)) return;
-    if (!usePersonalPool && !isPackInMatchPool(s.pack_id, subscriptions, packs)) {
-      await setPackEnabled(s.pack_id, true);
-    }
-    await bumpStratUsage(s.id);
-    await setSession({
-      selected_map: s.map,
-      selected_side: s.side,
-      site_filter: s.site || "all",
-      current_pick_id: s.id,
-      timer_ends_at: null,
-      called_at: Date.now(),
-      tab: "match",
-    });
-    navigate("/match");
   }
 
   if (loading) return <div className="empty">Loading playbook…</div>;
@@ -484,28 +463,24 @@ export function BookScreen() {
                   <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
-                      <span onClick={(e) => e.stopPropagation()}>
-                        <button
-                          type="button"
-                          className="btn-ghost"
-                          style={{ padding: 4 }}
-                          onClick={() => void toggleFavorite(s.id)}
-                          aria-label={
-                            isFavorite(s.id)
-                              ? "Unpin favorite"
-                              : usePersonalPool && tab === "catalog"
-                                ? "Add to My pool and favorite"
-                                : "Favorite"
-                          }
-                          title={
-                            usePersonalPool && tab === "catalog" && !isFavorite(s.id) && !inPool
-                              ? "Adds to My pool and pins for Match"
-                              : undefined
-                          }
-                        >
-                          <Star size={14} filled={isFavorite(s.id)} />
-                        </button>
-                      </span>
+                      {usePersonalPool && (
+                        <span onClick={(e) => e.stopPropagation()}>
+                          <button
+                            type="button"
+                            className="btn-ghost"
+                            style={{ padding: 4 }}
+                            onClick={() => void toggleFavorite(s.id)}
+                            aria-label={isFavorite(s.id) ? "Unpin favorite" : "Add to My pool"}
+                            title={
+                              tab === "catalog" && !inPool && !isFavorite(s.id)
+                                ? "Add to My pool"
+                                : undefined
+                            }
+                          >
+                            <Star size={14} filled={isFavorite(s.id)} />
+                          </button>
+                        </span>
+                      )}
                     </div>
                     <div className="meta" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                       <LevelBadge
@@ -553,11 +528,6 @@ export function BookScreen() {
                             }}
                           >
                             {locked ? "Locked" : inPool ? "In pool" : "Add to pool"}
-                          </button>
-                        )}
-                        {(tab === "pool" || !usePersonalPool) && (
-                          <button type="button" className="btn-ghost" onClick={() => void useInMatch(s)}>
-                            Use in Match
                           </button>
                         )}
                         {canEditStrat(s) && (

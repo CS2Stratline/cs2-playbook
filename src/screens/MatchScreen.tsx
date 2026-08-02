@@ -38,7 +38,7 @@ export function MatchScreen() {
     addFundamentalsStarter,
     refresh,
   } = usePlaybook();
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [seedBusy, setSeedBusy] = useState(false);
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -60,7 +60,7 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.selected_map]);
 
-  // Resolve from full library — Use in Match / live share can set a pick outside the enabled pool.
+  // Resolve from full library — live share can set a pick outside the enabled pool.
   const currentPick = useMemo(
     () =>
       strats.find((s) => s.id === session.current_pick_id) ||
@@ -80,15 +80,16 @@ export function MatchScreen() {
   }, [enabledStrats, session, isT]);
 
   const pickList = useMemo(() => {
-    const fav = eligible.filter((s) => isFavorite(s.id));
-    const rest = eligible.filter((s) => !isFavorite(s.id));
+    const pool = favoritesOnly && usePersonalPool ? eligible.filter((s) => isFavorite(s.id)) : eligible;
+    if (!usePersonalPool) return pool;
+    const fav = pool.filter((s) => isFavorite(s.id));
+    const rest = pool.filter((s) => !isFavorite(s.id));
     return [...fav, ...rest];
-  }, [eligible, isFavorite]);
+  }, [eligible, isFavorite, favoritesOnly, usePersonalPool]);
 
   const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${session.include_practice}`;
 
   useEffect(() => {
-    // Skip first run so Use in Match (map/side/site + pick together) is not wiped on Match mount.
     if (filterKeyRef.current === null) {
       filterKeyRef.current = filterKey;
       return;
@@ -98,6 +99,11 @@ export function MatchScreen() {
     void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey]);
+
+  // Guests have no favorites — clear the filter if session mode changes.
+  useEffect(() => {
+    if (!usePersonalPool) setFavoritesOnly(false);
+  }, [usePersonalPool]);
 
   async function commitCall(strat: Strat) {
     const calledAt = Date.now();
@@ -111,7 +117,7 @@ export function MatchScreen() {
   }
 
   function pickRandom() {
-    let pool = eligible;
+    let pool = pickList;
     if (currentPick && pool.length > 1) pool = pool.filter((s) => s.id !== currentPick.id);
     if (!pool.length) return;
     const weights = pool.map((s) => 1 / (s.times_used + 1));
@@ -144,8 +150,6 @@ export function MatchScreen() {
     ],
     [linkGroups]
   );
-
-  const filterActive = session.round_filter !== "all" || session.include_practice;
 
   const canEditCurrent =
     !!currentPick &&
@@ -221,38 +225,40 @@ export function MatchScreen() {
             ))}
           </div>
         )}
-        <button type="button" className="btn-ghost" style={{ width: "100%" }} onClick={() => setFiltersOpen((v) => !v)}>
-          Filters{filterActive ? " · on" : ""} {filtersOpen ? "▴" : "▾"}
-        </button>
-        {filtersOpen && (
-          <div style={{ marginTop: 10 }}>
-            <p className="eyebrow">Round</p>
-            <div className="row">
-              {ROUNDS.map((r) => {
-                const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
-                return (
-                  <button
-                    key={r.id}
-                    type="button"
-                    className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
-                    onClick={() => void setSession({ round_filter: r.id })}
-                  >
-                    <RoundIcon size={13} />
-                    <span>{r.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-            <label className="muted" style={{ display: "flex", gap: 8, marginTop: 10, alignItems: "center" }}>
-              <input
-                type="checkbox"
-                checked={session.include_practice}
-                onChange={(e) => void setSession({ include_practice: e.target.checked })}
-              />
-              Include practice strats
-            </label>
-          </div>
-        )}
+        <div className="row">
+          {ROUNDS.map((r) => {
+            const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
+            return (
+              <button
+                key={r.id}
+                type="button"
+                className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
+                onClick={() => void setSession({ round_filter: r.id })}
+              >
+                <RoundIcon size={13} />
+                <span>{r.label}</span>
+              </button>
+            );
+          })}
+          <button
+            type="button"
+            className={`pill ${session.include_practice ? `active ${accent}` : ""}`}
+            onClick={() => void setSession({ include_practice: !session.include_practice })}
+          >
+            Practice
+          </button>
+          {usePersonalPool && (
+            <button
+              type="button"
+              className={`pill pill-icon ${favoritesOnly ? `active ${accent}` : ""}`}
+              onClick={() => setFavoritesOnly((v) => !v)}
+              aria-pressed={favoritesOnly}
+            >
+              <Star size={13} filled={favoritesOnly} />
+              <span>Favorites</span>
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="panel">
@@ -264,6 +270,11 @@ export function MatchScreen() {
             {eligible.length === 0 && (
               <p className="muted" style={{ marginBottom: 12 }}>
                 No strats for {session.selected_map} {session.selected_side}.
+              </p>
+            )}
+            {eligible.length > 0 && pickList.length === 0 && favoritesOnly && (
+              <p className="muted" style={{ marginBottom: 12 }}>
+                No favorites for this selection.
               </p>
             )}
 
@@ -296,30 +307,31 @@ export function MatchScreen() {
                       {s.site && <SiteIcon site={String(s.site)} size={14} />}
                       {s.callout}
                     </strong>
-                    <button
-                      type="button"
-                      className="btn-ghost"
-                      style={{ padding: 4 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        void toggleFavorite(s.id);
-                      }}
-                      aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
-                    >
-                      <Star size={14} filled={isFavorite(s.id)} />
-                    </button>
+                    {usePersonalPool && (
+                      <button
+                        type="button"
+                        className="btn-ghost"
+                        style={{ padding: 4 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          void toggleFavorite(s.id);
+                        }}
+                        aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
+                      >
+                        <Star size={14} filled={isFavorite(s.id)} />
+                      </button>
+                    )}
                   </div>
                   <div className="meta">
                     {s.description.slice(0, 80)}
                     {s.description.length > 80 ? "…" : ""}
                     {pack ? ` · ${pack.title}` : ""}
-                    {isFavorite(s.id) ? " · Favorite" : ""}
                   </div>
                 </button>
               );
             })}
 
-            {eligible.length > 0 && (
+            {pickList.length > 0 && (
               <button type="button" className="btn-ghost" style={{ width: "100%", marginTop: 8 }} onClick={pickRandom}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8, justifyContent: "center" }}>
                   <Shuffle size={14} /> Surprise me
@@ -337,14 +349,16 @@ export function MatchScreen() {
               </span>
               <div className="row">
                 <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
-                <button
-                  type="button"
-                  className="btn-ghost"
-                  onClick={() => void toggleFavorite(currentPick.id)}
-                  aria-label={isFavorite(currentPick.id) ? "Unpin favorite" : "Favorite"}
-                >
-                  <Star size={14} filled={isFavorite(currentPick.id)} />
-                </button>
+                {usePersonalPool && (
+                  <button
+                    type="button"
+                    className="btn-ghost"
+                    onClick={() => void toggleFavorite(currentPick.id)}
+                    aria-label={isFavorite(currentPick.id) ? "Unpin favorite" : "Favorite"}
+                  >
+                    <Star size={14} filled={isFavorite(currentPick.id)} />
+                  </button>
+                )}
               </div>
             </div>
             {editing ? (
@@ -411,7 +425,7 @@ export function MatchScreen() {
                   <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
                     Change strat
                   </button>
-                  <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!eligible.length}>
+                  <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!pickList.length}>
                     <Shuffle size={14} /> Surprise me
                   </button>
                   {canEditCurrent && (

@@ -183,17 +183,8 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const toggleFavorite = useCallback(
     async (stratId: string) => {
-      // Guests: soft pin only (Match sort) — packs already gate eligibility.
-      if (!usePersonalPool) {
-        setFavorites((prev) => {
-          const next = new Set(prev);
-          if (next.has(stratId)) next.delete(stratId);
-          else next.add(stratId);
-          return next;
-        });
-        await api.toggleFavorite(userId, stratId);
-        return;
-      }
+      // Favorites are signed-in only — star adds to My pool and pins for Match.
+      if (!usePersonalPool) return;
 
       const poolRow = myPoolStrats.find((s) => s.id === stratId);
       const catalogRow =
