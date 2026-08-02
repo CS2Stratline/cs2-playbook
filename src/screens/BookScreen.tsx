@@ -26,7 +26,7 @@ type Tab = "catalog" | "pool";
 export function BookScreen() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userId, user, supabaseReady, canEditShared } = useAuth();
+  const { userId, canEditShared } = useAuth();
   const {
     packs,
     isFavorite,
@@ -269,11 +269,6 @@ export function BookScreen() {
               Add more
             </button>
           </div>
-          <p className="muted">
-            {tab === "pool"
-              ? "These feed Match. Fundamentals are added automatically when you sign in."
-              : "Optional — add Stack strats into My pool when you want more variety."}
-          </p>
           {tab === "pool" && myPoolStrats.length === 0 && (
             <div className="row" style={{ marginTop: 10 }}>
               <button
@@ -309,11 +304,6 @@ export function BookScreen() {
       ) : (
         <div className="panel">
           <p className="eyebrow">Packs</p>
-          <p className="muted" style={{ marginBottom: 8 }}>
-            Toggle what feeds Match on this device.
-            {supabaseReady && !user ? " Sign in (Settings) to sync the same pool across phones." : ""}
-          </p>
-          <p className="muted" style={{ marginBottom: 8 }}>{enabledStrats.length} strats ready for Match.</p>
           {systemPacks.map(({ tier, items }) =>
             items.length ? (
               <div key={tier} style={{ marginTop: 8 }}>
@@ -403,7 +393,7 @@ export function BookScreen() {
           </p>
           {editing && canEditShared && sharedStratTargetId(editing) && (
             <p className="banner" style={{ marginBottom: 10 }}>
-              Saves for everyone on Fundamentals / Stack (and updates pool copies).
+              Saves for everyone
             </p>
           )}
           {(allMaps || editing) && (
@@ -469,11 +459,11 @@ export function BookScreen() {
         <div className="empty">
           {tab === "pool" && usePersonalPool
             ? allMaps
-              ? `Nothing for ${session.selected_side} yet. Add Fundamentals above, or switch side.`
-              : `Nothing for ${session.selected_map} ${session.selected_side} yet. Add Fundamentals above, or switch side/map.`
+              ? `Nothing for ${session.selected_side} yet.`
+              : `Nothing for ${session.selected_map} ${session.selected_side} yet.`
             : tab === "catalog"
-              ? "No more unlocked strats for this selection."
-              : "Nothing here for this selection."}
+              ? "Nothing left for this selection."
+              : "Nothing for this selection."}
         </div>
       ) : (
         groups.map((g) => (
@@ -521,7 +511,7 @@ export function BookScreen() {
                       <LevelBadge
                         level={clampFaceitLevel(s.level || (pack ? tierToFaceitLevel(pack.tier as PackTier) : 5))}
                         size={18}
-                        title={`Execution difficulty · Level ${s.level || "?"}`}
+                        title={`Level ${s.level || "?"}`}
                       />
                       <span>
                         Lv {s.level || "?"}
@@ -529,7 +519,6 @@ export function BookScreen() {
                         {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
                         {locked ? " · Locked" : ""}
                         {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
-                        {!open ? " · Tap for details" : ""}
                       </span>
                     </div>
                   </button>
