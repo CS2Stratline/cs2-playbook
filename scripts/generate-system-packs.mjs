@@ -1,12 +1,25 @@
 /**
- * Regenerate src/data/system-packs.json from starter-library.json (+ extra CT coverage).
+ * Regenerate src/data/system-packs.json from starter-library.json (+ extra CT coverage + meme pack).
+ * Preserves existing pack/strat UUIDs when slug or (pack,map,side,callout) still match.
  * Run: npm run seed:packs
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 
 const starter = JSON.parse(readFileSync("src/starter-library.json", "utf8"));
+const memeLib = JSON.parse(readFileSync("src/data/meme-strats.json", "utf8"));
+const prevPath = "src/data/system-packs.json";
+const prev = existsSync(prevPath) ? JSON.parse(readFileSync(prevPath, "utf8")) : { packs: [], strats: [] };
+const prevPackIdBySlug = Object.fromEntries((prev.packs || []).map((p) => [p.slug, p.id]));
+const prevStratIdByKey = Object.fromEntries(
+  (prev.strats || []).map((s) => {
+    const pack = (prev.packs || []).find((p) => p.id === s.pack_id);
+    return [`${pack?.slug || ""}|${s.map}|${s.side}|${s.callout}`, s.id];
+  })
+);
 const uid = () => randomUUID();
+const packId = (slug) => prevPackIdBySlug[slug] || uid();
+const stratId = (slug, s) => prevStratIdByKey[`${slug}|${s.map}|${s.side}|${(s.callout || "").trim()}`] || uid();
 
 function estimateLevel(s, tier) {
   const callout = String(s.callout || "").toLowerCase();
@@ -16,7 +29,7 @@ function estimateLevel(s, tier) {
   const rounds = s.rounds || [];
   const links = (s.links || []).length;
   const util = (blob.match(/\b(smoke|flash|molly|molotov|nade|hegrenade|incendiary)\b/g) || []).length;
-  let level = tier === "pro" ? 8 : tier === "five_stack" ? 6 : 3;
+  let level = tier === "pro" ? 8 : tier === "five_stack" ? 6 : tier === "meme" ? 1 : 3;
   if (/\brush\b|\bfast\b/.test(blob) || rounds.some((r) => r === "pistol" || r === "eco")) level -= 2;
   if (/\bpop\b/.test(callout) && util <= 2) level -= 1;
   if (/\bhold\b|\bstack\b/.test(callout) && util <= 1 && s.side === "CT") level -= 1;
@@ -28,13 +41,13 @@ function estimateLevel(s, tier) {
   return Math.max(1, Math.min(10, Math.round(level)));
 }
 
-function toStrat(s, tier = "five_stack") {
+function toStrat(s, tier = "five_stack", packSlug = "") {
   const links = (s.links || [])
     .map((l) => ({ label: l.label || "", url: l.url }))
     .filter((l) => l.url);
   const tasks = (s.tasks || []).map((t) => String(t).trim()).filter(Boolean);
   const strat = {
-    id: uid(),
+    id: stratId(packSlug, s),
     map: s.map,
     side: s.side,
     site: s.site ?? null,
@@ -64,7 +77,7 @@ function tierOf(s) {
 
 const packs = {
   pug: {
-    id: uid(),
+    id: packId("essentials-pug"),
     slug: "essentials-pug",
     title: "Fundamentals",
     description: "Rushes, holds, and simple executes — easy to call in freeze time.",
@@ -74,7 +87,7 @@ const packs = {
     strats: [],
   },
   five_stack: {
-    id: uid(),
+    id: packId("stack-standard"),
     slug: "stack-standard",
     title: "Stack",
     description: "Standard smokes and mid control for a coordinated five.",
@@ -84,7 +97,7 @@ const packs = {
     strats: [],
   },
   pro: {
-    id: uid(),
+    id: packId("pro-structure"),
     slug: "pro-structure",
     title: "Advanced",
     description: "Fakes, timings, denser utility — premium / locked for now.",
@@ -93,11 +106,22 @@ const packs = {
     owner_user_id: null,
     strats: [],
   },
+  meme: {
+    id: packId("meme-strats"),
+    slug: "meme-strats",
+    title: "Meme",
+    description: "Funny chaos calls — Rush B, Zeus openers, flash rain. Off by default.",
+    // Use pug tier so Supabase pack_tier enum stays valid without a migration.
+    tier: "pug",
+    visibility: "system",
+    owner_user_id: null,
+    strats: [],
+  },
 };
 
 for (const raw of starter.strats) {
   const t = tierOf(raw);
-  const strat = toStrat(raw, t);
+  const strat = toStrat(raw, t, packs[t].slug);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
 }
@@ -116,9 +140,15 @@ const extraCT = [
 
 for (const raw of extraCT) {
   const t = tierOf(raw);
-  const strat = toStrat(raw, t);
+  const strat = toStrat(raw, t, packs[t].slug);
   strat.pack_id = packs[t].id;
   packs[t].strats.push(strat);
+}
+
+for (const raw of memeLib.strats || []) {
+  const strat = toStrat(raw, "meme", packs.meme.slug);
+  strat.pack_id = packs.meme.id;
+  packs.meme.strats.push(strat);
 }
 
 mkdirSync("src/data", { recursive: true });

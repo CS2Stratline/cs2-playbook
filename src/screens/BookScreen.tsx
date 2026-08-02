@@ -10,7 +10,7 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, TIER_LABEL, isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -104,15 +104,17 @@ export function BookScreen() {
 
   const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
 
-  /** v1: hide Advanced (locked) from the UI — dead end for new users. */
-  const systemPacks = useMemo(
-    () =>
-      (["pug", "five_stack"] as PackTier[]).map((tier) => ({
-        tier,
-        items: packs.filter((p) => p.tier === tier && p.visibility === "system"),
-      })),
-    [packs]
-  );
+  /** System packs guests can toggle (hide locked Advanced). */
+  const systemPacks = useMemo(() => {
+    const items = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
+    const order = ["essentials-pug", "stack-standard", "meme-strats"];
+    items.sort((a, b) => {
+      const ai = order.indexOf(a.slug);
+      const bi = order.indexOf(b.slug);
+      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+    });
+    return [{ tier: "visible" as const, items }];
+  }, [packs]);
 
   const catalogList = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -522,13 +524,20 @@ export function BookScreen() {
                     </div>
                     <div className="meta" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                       <LevelBadge
-                        level={clampFaceitLevel(s.level || (pack ? tierToFaceitLevel(pack.tier as PackTier) : 5))}
+                        level={clampFaceitLevel(
+                          s.level ||
+                            (pack
+                              ? isMemePack(pack)
+                                ? 1
+                                : tierToFaceitLevel(pack.tier as PackTier)
+                              : 5)
+                        )}
                         size={18}
                         title={`Level ${s.level || "?"}`}
                       />
                       <span>
                         Lv {s.level || "?"}
-                        {pack ? ` · ${TIER_LABEL[pack.tier as PackTier]}` : ""}
+                        {pack ? ` · ${pack.title}` : ""}
                         {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
                         {locked ? " · Locked" : ""}
                         {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
