@@ -87,3 +87,22 @@ for (let i = 0; i < nades.length; i += chunk) {
   if (error) throw error;
 }
 console.log("nades", nades.length);
+
+// Meme pack stays off until the user toggles it (avoid polluting Match by default).
+const memePackId = bySlug["meme-strats"];
+if (memePackId) {
+  const { data: profiles, error: profileErr } = await sb.from("profiles").select("id");
+  if (profileErr) throw profileErr;
+  const rows = (profiles || []).map((p) => ({
+    user_id: p.id,
+    pack_id: memePackId,
+    enabled: false,
+  }));
+  for (let i = 0; i < rows.length; i += chunk) {
+    const { error } = await sb.from("user_pack_subscriptions").upsert(rows.slice(i, i + chunk), {
+      onConflict: "user_id,pack_id",
+    });
+    if (error) throw error;
+  }
+  console.log("meme pack default-off for", rows.length, "profiles");
+}
