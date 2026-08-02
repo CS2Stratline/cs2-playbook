@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, UserSession } from "./types";
-import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked } from "./types";
+import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -107,9 +107,9 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         setFavorites(new Set(fav));
       }
       const nextSubs = { ...subs };
-      if (!Object.keys(nextSubs).length) {
-        for (const pack of p.filter((x) => x.visibility === "system")) {
-          nextSubs[pack.id] = pack.tier !== "pro";
+      for (const pack of p.filter((x) => x.visibility === "system")) {
+        if (nextSubs[pack.id] === undefined) {
+          nextSubs[pack.id] = isPackDefaultEnabled(pack);
         }
       }
       setSubscriptions(nextSubs);

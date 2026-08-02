@@ -1,0 +1,609 @@
+{
+  "name": "Meme strats",
+  "version": 1,
+  "note": "Funny chaos calls inspired by CS meme culture (Rush B), Strat Roulette, and wild pro moments (Glock walls, flash spam). Freeze-time shoutable — not serious meta.",
+  "sources": [
+    "https://knowyourmeme.com/memes/rush-b",
+    "https://www.hotspawn.com/counter-strike/news/strat-roulette-cs2-what-is-it",
+    "https://cs.money/blog/esports/the-most-mad-tactics-in-csgo/",
+    "https://strat-roulette.github.io/",
+    "https://github.com/biggestmannest/CS2StratRoulette"
+  ],
+  "strats": [
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush B",
+      "description": "The classic: knife out, tunnel tunnel tunnel, no plan B — commit as five.",
+      "tasks": [
+        "Knife to B tunnels immediately",
+        "One flash over for CT spawn",
+        "Smoke CT if anyone bought one",
+        "Plant for tunnels, never stop swinging"
+      ],
+      "rounds": ["full", "force", "eco", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "P90 B",
+      "description": "Five P90s, zero dignity — spray down tunnels and take the site on vibes.",
+      "tasks": [
+        "Everyone buys P90 (or closest SMG)",
+        "No stopping in tunnels",
+        "Spray car and platform together",
+        "Plant default, hold tunnels"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "mid",
+      "callout": "Scout mid",
+      "description": "Flying Scoutsman energy without the gravity — five scouts, jump peek doors, pray.",
+      "tasks": [
+        "Buy SSG-08 only (plus kevlar if rich)",
+        "Jump peek mid doors as a pack",
+        "First tag goes B doors or A short",
+        "No rifle upgrades mid-round"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "B stack",
+      "description": "They always rush B — so stack five on B and laugh if they do.",
+      "tasks": [
+        "All five hold B (platform / car / tunnels)",
+        "Save util for tunnel entry",
+        "No mid peek until first contact",
+        "Rotate only after plant sound elsewhere"
+      ],
+      "rounds": ["full", "force", "anti", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Apps only",
+      "description": "Nobody is allowed on mid or A — apps tunnel vision the whole round.",
+      "tasks": [
+        "All five through underpass / apps",
+        "One market window smoke",
+        "Flash site, trade into bench",
+        "Plant for apps, ignore palace"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "mid",
+      "callout": "AWP party",
+      "description": "If you can afford it, you AWP — mid becomes a sniper convention.",
+      "tasks": [
+        "Buy AWP if money allows (drop if not)",
+        "Stack mid window / top mid",
+        "First pick decides A or B hit",
+        "No rushing sites before a mid kill"
+      ],
+      "rounds": ["full"],
+      "status": "ready",
+      "links": [],
+      "level": 3
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "a",
+      "callout": "Palace jump",
+      "description": "Everyone goes palace and jump-spots ramp like it's 2016 MM.",
+      "tasks": [
+        "Five to palace, no ramp contact first",
+        "Jump peek ramp / connector",
+        "Flash yourself in if needed — commit",
+        "Plant default, hold palace"
+      ],
+      "rounds": ["full", "force", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Window bait",
+      "description": "One hero peeks window mid; four hide and wait for the free trade montage.",
+      "tasks": [
+        "One designated window bait",
+        "Four hold off-angles (under / market / short)",
+        "No saving the bait — trade only",
+        "Rotate on first sound after the bait dies"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Banana rush",
+      "description": "No mid, no apps — banana is life. Flash spam and take B on chaos.",
+      "tasks": [
+        "All five banana immediately",
+        "Throw every flash you own before sandbags",
+        "Molly / HE car if you have it",
+        "Plant for banana, swing CT together"
+      ],
+      "rounds": ["full", "force", "eco", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Flash rain",
+      "description": "G2 overtime vibes — endless flashes into B until nobody can see, then enter.",
+      "tasks": [
+        "Buy max flashes (skip rifles if needed)",
+        "Chain-flash banana and site non-stop",
+        "Enter only while flashes are popping",
+        "Plant fast, hold with whatever guns remain"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 3
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Apps train",
+      "description": "Single-file apps train — no spreading, no thinking, only vibes.",
+      "tasks": [
+        "Line up in apps balcony order",
+        "Walk in as one clump",
+        "First death: the next two swing instantly",
+        "Plant for library / pit"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Banana stack",
+      "description": "Four banana, one A — punish the eternal banana meme rush.",
+      "tasks": [
+        "Four hold banana / sandbags / new box",
+        "One soft A apps",
+        "Util dump on first banana sound",
+        "No mid peek until info"
+      ],
+      "rounds": ["full", "force", "anti", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": "outside",
+      "callout": "Outside yeet",
+      "description": "Everyone sprints outside like the bomb is already planted — no secret, no ramp.",
+      "tasks": [
+        "Five outside on go",
+        "Smoke main / garage if anyone has it",
+        "Contact heaven and hut together",
+        "Decide A roof or ramp only after first fight"
+      ],
+      "rounds": ["full", "force", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": "b",
+      "callout": "Ramp slam",
+      "description": "Ignore outside entirely — ramp is the only religion this round.",
+      "tasks": [
+        "All five ramp / silo",
+        "Flash lower, trade into dark",
+        "No one checks outside",
+        "Plant for ramp, stack lower"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Heaven camp",
+      "description": "Stack heaven like tourists — if they don't come outside, you still had fun.",
+      "tasks": [
+        "Three heaven / hut",
+        "One ramp, one secret soft",
+        "Save AWP for outside cross",
+        "Fall together only on plant"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Lobby knife",
+      "description": "Knife through lobby until someone gets a slash — then guns are allowed (The Opener).",
+      "tasks": [
+        "Knives out through lobby / silo",
+        "No shooting until a knife or Zeus kill",
+        "After opener frag: full spray go A or ramp",
+        "Plant wherever the fight broke"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": "a",
+      "callout": "Donut dive",
+      "description": "Skip mid control — dive donut as five and hope CT brains blue-screen.",
+      "tasks": [
+        "Rush donut together",
+        "Flash cave / temple on entry",
+        "No split — all donut",
+        "Plant for donut, hold cave"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Cave ape",
+      "description": "Full cave / B rush — utility optional, commitment mandatory.",
+      "tasks": [
+        "Five through cave / lane to B",
+        "One flash for site",
+        "Trade elbow and ruins together",
+        "Plant for cave"
+      ],
+      "rounds": ["full", "force", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Red stack",
+      "description": "Everyone lives on red / A — B is a myth until you hear the plant.",
+      "tasks": [
+        "Four A / red / donut",
+        "One B soft only",
+        "Util dump donut on contact",
+        "Retake B as a pack if needed"
+      ],
+      "rounds": ["full", "force", "anti"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Ancient",
+      "side": "T",
+      "site": "mid",
+      "callout": "Negev mid",
+      "description": "Negev army takes mid — spray the door, spray the dream.",
+      "tasks": [
+        "Buy Negev / M249 if possible",
+        "Hold W into mid",
+        "Spray door and elbow without stopping",
+        "After mid: hit the quieter site"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Water walk",
+      "description": "Silent crouch through water like it's a stealth game — then suddenly it's not.",
+      "tasks": [
+        "Crouch-walk water as five",
+        "No running until first contact",
+        "Flash palace / site together",
+        "Plant for water, hold connector soft"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": "a",
+      "callout": "Smoke plant",
+      "description": "Steal their smoke wall — double-smoke the choke and plant behind the void.",
+      "tasks": [
+        "Wait for CT smoke on A entry",
+        "Throw your smoke into theirs",
+        "Plant behind the smoke wall",
+        "Swing out only after plant"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 3
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": "mid",
+      "callout": "Mid only",
+      "description": "The round ends in mid or not at all — no site hits until mid is yours.",
+      "tasks": [
+        "All five contest mid / bridge",
+        "No A or B until mid kill or space",
+        "After mid: pick a site on vibes",
+        "Bomb carrier stays mid until called"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Heaven camp",
+      "description": "Live in heaven / camera — if they never look up, you were a genius.",
+      "tasks": [
+        "Two heaven / camera",
+        "Two A site soft",
+        "One B",
+        "Save util for water push"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush B",
+      "description": "Cyka energy on Cache — checkers to B, no mid lurk, pure chaos.",
+      "tasks": [
+        "Five through checkers / highway",
+        "Flash site, spray headshot",
+        "Plant for checkers",
+        "Hold together — no hero peeks"
+      ],
+      "rounds": ["full", "force", "eco", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "a",
+      "callout": "Quad rush",
+      "description": "Main A as a death ball — four in, one late mid for the cinematic lurk frag.",
+      "tasks": [
+        "Four rush A main",
+        "One late mid / Z for flank",
+        "Flash site, plant default",
+        "Lurk only peeks after plant"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Mid heroes",
+      "description": "Everyone thinks they're the mid player — fight for mid control like it's ranked ego.",
+      "tasks": [
+        "Three mid / Z / garage",
+        "One A, one B soft",
+        "First mid duel decides rotations",
+        "No site stack until mid dies"
+      ],
+      "rounds": ["full", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Glock wall",
+      "description": "No armor dreams — five Glocks (or USPs on CT) rush long and overwhelm on headshots.",
+      "tasks": [
+        "Pistols only — no rifles",
+        "Rush long doors together",
+        "Flash long, spray pit / site",
+        "Plant for long, swing CT"
+      ],
+      "rounds": ["pistol", "eco", "force"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Mirage",
+      "side": "T",
+      "site": "default",
+      "callout": "Juan Deag",
+      "description": "Deagles only — one taps or bust. No rifles, no excuses.",
+      "tasks": [
+        "Buy Deagle only (armor optional)",
+        "Play for headshots, no spray rifles",
+        "Default mid info then hit a site",
+        "Save if you whiff the first two shots… just kidding, commit"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 3
+    },
+    {
+      "map": "Inferno",
+      "side": "T",
+      "site": "default",
+      "callout": "Zeus opener",
+      "description": "Guns stay holstered until someone lands a Zeus (or knife) — then full send.",
+      "tasks": [
+        "Buy Zeus if you can",
+        "Close-range hunt for the opener zap",
+        "After first Zeus/knife kill: guns free",
+        "Hit the nearest site as five"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Shotgun B",
+      "description": "Shotguns only on B — if they rush tunnels, it's a horror movie.",
+      "tasks": [
+        "B players buy shotguns",
+        "Hold close tunnels / car angles",
+        "No long peeks — make them come in",
+        "A side plays normal soft"
+      ],
+      "rounds": ["full", "force", "eco", "anti"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Decoy war",
+      "description": "Decoy dodgeball energy — spam decoys, fake everything, trust nothing.",
+      "tasks": [
+        "Buy decoys over utility if broke",
+        "Decoy mid and apps early",
+        "Fake rotate on every decoy",
+        "Hold real angles after the third fake"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "No buy",
+      "description": "The Economy — nobody buys this round. Pistols, pride, and bad decisions.",
+      "tasks": [
+        "No purchases (keep leftover util only)",
+        "Play close angles together",
+        "Stack the likely hit site",
+        "Save the ego, not the guns"
+      ],
+      "rounds": ["eco", "anti"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Dualies B",
+      "description": "Dual Berettas only — spray and pray into B like it's a movie scene.",
+      "tasks": [
+        "Buy Dual Berettas",
+        "Rush B / water together",
+        "Spray site entry as a wall of bullets",
+        "Plant for water"
+      ],
+      "rounds": ["eco", "force", "pistol"],
+      "status": "ready",
+      "links": [],
+      "level": 1
+    },
+    {
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Limit one",
+      "description": "Strat Roulette classic — each player may buy only one item this round.",
+      "tasks": [
+        "One buy each (gun OR util OR armor)",
+        "Default mid for info",
+        "Hit the site with the most space",
+        "Trade hard — you won't out-aim rifles"
+      ],
+      "rounds": ["full", "force", "eco"],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    }
+  ]
+}

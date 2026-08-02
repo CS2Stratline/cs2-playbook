@@ -1,7 +1,7 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, isPackLocked } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
 
@@ -19,7 +19,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
-const SEED_REVISION = 4;
+const SEED_REVISION = 5;
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
@@ -76,7 +76,7 @@ function seedStore(): Store {
     level: s.level || estimateStratLevel({ ...s, tier: packs.find((p) => p.id === s.pack_id)?.tier }),
   }));
   const subscriptions: Record<string, boolean> = {};
-  for (const p of packs) subscriptions[p.id] = p.tier !== "pro";
+  for (const p of packs) subscriptions[p.id] = isPackDefaultEnabled(p);
   return {
     profile: {
       id: LOCAL_USER,
@@ -100,7 +100,7 @@ function refreshSystemSeed(store: Store): Store {
   const customStrats = store.strats.filter((s) => s.source !== "system-seed");
   const subscriptions = { ...fresh.subscriptions, ...store.subscriptions };
   for (const p of fresh.packs) {
-    if (subscriptions[p.id] === undefined) subscriptions[p.id] = p.tier !== "pro";
+    if (subscriptions[p.id] === undefined) subscriptions[p.id] = isPackDefaultEnabled(p);
   }
   return {
     ...store,
