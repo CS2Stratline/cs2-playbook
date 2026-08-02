@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { ALL_MAPS, MAPS, type Side } from "../lib/types";
 import { isAllMaps } from "../lib/types";
+import { isValidLane } from "../lib/mapLanes";
 import { CsIcon } from "./CsIcon";
 import { MapLogo } from "./MapLogo";
 import { SideCT, SideT } from "./icons";
@@ -31,6 +32,18 @@ export function MapSideChrome() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onPlaybook, session.selected_map]);
 
+  function selectMap(m: string) {
+    const site_filter = isValidLane(m, session.site_filter) ? session.site_filter : "all";
+    // One patch: map + clear call + fix lane. Avoids fast-tap races with separate effects.
+    void setSession({
+      selected_map: m,
+      site_filter,
+      current_pick_id: null,
+      timer_ends_at: null,
+      called_at: null,
+    });
+  }
+
   return (
     <div className="map-side-chrome">
       <div className="row map-pills" style={{ marginBottom: 6 }}>
@@ -53,7 +66,7 @@ export function MapSideChrome() {
             key={m}
             type="button"
             className={`pill pill-icon ${session.selected_map === m ? `active ${accent}` : ""}`}
-            onClick={() => void setSession({ selected_map: m })}
+            onClick={() => selectMap(m)}
             title={m}
             aria-label={m}
           >
@@ -68,7 +81,15 @@ export function MapSideChrome() {
             key={s}
             type="button"
             className={`pill pill-icon ${session.selected_side === s ? `active ${s === "CT" ? "ct" : ""}` : ""}`}
-            onClick={() => void setSession({ selected_side: s, site_filter: "all" })}
+            onClick={() =>
+              void setSession({
+                selected_side: s,
+                site_filter: "all",
+                current_pick_id: null,
+                timer_ends_at: null,
+                called_at: null,
+              })
+            }
           >
             {s === "T" ? <SideT size={14} /> : <SideCT size={14} />}
             <span>{s}</span>
