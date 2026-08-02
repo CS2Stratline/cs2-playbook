@@ -10,7 +10,7 @@ import {
   upsertPrivateStrat,
   upsertSharedStrat,
 } from "../lib/api";
-import type { PackTier, Strat } from "../lib/types";
+import type { PackTier, Strat, StratLink } from "../lib/types";
 import { MAPS, TIER_LABEL, isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
@@ -20,6 +20,7 @@ import { StratTasks } from "../components/StratTasks";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
+import { linksToText, textToLinks } from "../lib/stratLinksText";
 
 type Tab = "catalog" | "pool";
 
@@ -63,6 +64,7 @@ export function BookScreen() {
     callout: "",
     description: "",
     tasks: "",
+    links: "",
     site: "default",
     rounds: "" as string,
     status: "ready" as "ready" | "practice",
@@ -77,6 +79,7 @@ export function BookScreen() {
       callout: s.callout,
       description: s.description,
       tasks: s.tasks.join("\n"),
+      links: linksToText(s.links || []),
       site: s.site || "default",
       rounds: s.rounds.join(","),
       status: s.status,
@@ -85,6 +88,12 @@ export function BookScreen() {
     setSaveError("");
     setShowForm(true);
     setExpanded(s.id);
+  }
+
+  function addSuggestedLink(link: StratLink) {
+    const current = textToLinks(form.links);
+    if (current.some((l) => l.url === link.url)) return;
+    setForm({ ...form, links: linksToText([...current, link]) });
   }
 
   useEffect(() => {
@@ -138,6 +147,26 @@ export function BookScreen() {
 
   const formMap = allMaps ? form.map : session.selected_map;
   const formLanes = useMemo(() => lanesForMap(formMap), [formMap]);
+
+  const formSuggestedLinks = useMemo(() => {
+    if (!showForm) return [] as StratLink[];
+    const map = isAllMaps(session.selected_map) ? form.map : editing?.map || session.selected_map;
+    if (!map || isAllMaps(map)) return [];
+    const tasks = form.tasks
+      .split("\n")
+      .map((t) => t.trim())
+      .filter(Boolean)
+      .slice(0, 5);
+    const draft = {
+      map,
+      side: (editing?.side || session.selected_side) as Strat["side"],
+      callout: form.callout.trim(),
+      description: form.description.trim(),
+      tasks,
+    };
+    const pinned = textToLinks(form.links);
+    return mergeSuggested(pinned, suggestLineupLinks(draft, NADE_CATALOG, { limit: 6 }), 6).suggested;
+  }, [showForm, form, editing, session.selected_map, session.selected_side]);
 
   const groups = useMemo(() => {
     if (isAllMaps(session.selected_map)) {
@@ -195,8 +224,9 @@ export function BookScreen() {
           ? (form.site as Strat["site"])
           : "default"
         : null;
-    let links = editing?.links || [];
-    if (!links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
+    let links = textToLinks(form.links);
+    // New strat with empty lineups: seed suggestions from tasks (editable after).
+    if (!editing && !links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
     const rounds = form.rounds
       .split(",")
       .map((r) => r.trim())
@@ -362,6 +392,7 @@ export function BookScreen() {
                   callout: "",
                   description: "",
                   tasks: "",
+                  links: "",
                   site: "default",
                   rounds: "",
                   status: "ready",
@@ -397,7 +428,7 @@ export function BookScreen() {
             </p>
           )}
           {(allMaps || editing) && (
-            <select className="input" value={form.map} onChange={(e) => setForm({ ...form, map: e.target.value })}>
+            <select className="input" value={form.map} onChange={(e) => setForm({ ...form, map: e.target.value })} aria-label="Map">
               {MAPS.map((m) => (
                 <option key={m} value={m}>
                   {m}
@@ -405,18 +436,51 @@ export function BookScreen() {
               ))}
             </select>
           )}
-          <input className="input" placeholder="Callout" value={form.callout} onChange={(e) => setForm({ ...form, callout: e.target.value })} />
-          <input className="input" placeholder="Short explanation" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+          <input
+            className="input"
+            placeholder="Title — e.g. Palace pop"
+            value={form.callout}
+            onChange={(e) => setForm({ ...form, callout: e.target.value })}
+          />
+          <input
+            className="input"
+            placeholder="Short description"
+            value={form.description}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
+          />
           <textarea
             className="input"
             rows={4}
-            placeholder="Tasks (one per line, max 5)"
+            placeholder={"Tasks — one per line (max 5)\nSmoke jungle\nFlash CT"}
             value={form.tasks}
             onChange={(e) => setForm({ ...form, tasks: e.target.value })}
           />
+          <textarea
+            className="input"
+            rows={3}
+            placeholder={"Lineups — one per line\nSmoke: Jungle | https://…\nhttps://…"}
+            value={form.links}
+            onChange={(e) => setForm({ ...form, links: e.target.value })}
+          />
+          {formSuggestedLinks.length > 0 && (
+            <div className="row" style={{ marginBottom: 8, flexWrap: "wrap", gap: 6 }}>
+              {formSuggestedLinks.map((l) => (
+                <button
+                  key={l.url}
+                  type="button"
+                  className="btn-ghost"
+                  style={{ padding: "4px 8px", fontSize: 12 }}
+                  onClick={() => addSuggestedLink(l)}
+                >
+                  + {l.label}
+                </button>
+              ))}
+            </div>
+          )}
           {(editing?.side || session.selected_side) === "T" && (
             <select
               className="input"
+              aria-label="Site / lane"
               value={formLanes.some((l) => l.id === form.site) ? form.site : formLanes[0]?.id || "default"}
               onChange={(e) => setForm({ ...form, site: e.target.value })}
             >
@@ -427,10 +491,15 @@ export function BookScreen() {
               ))}
             </select>
           )}
-          <input className="input" placeholder="Rounds (full,force,eco — blank = all)" value={form.rounds} onChange={(e) => setForm({ ...form, rounds: e.target.value })} />
           <input
             className="input"
-            placeholder="Level 1–10"
+            placeholder="Rounds — full, force, eco (blank = all)"
+            value={form.rounds}
+            onChange={(e) => setForm({ ...form, rounds: e.target.value })}
+          />
+          <input
+            className="input"
+            placeholder="Level — 1–10 execution difficulty"
             inputMode="numeric"
             value={form.level}
             onChange={(e) => setForm({ ...form, level: e.target.value })}
