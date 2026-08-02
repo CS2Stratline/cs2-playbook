@@ -51,7 +51,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 35
+      "strat_count": 42
     }
   ],
   "strats": [
@@ -4384,6 +4384,219 @@
       "status": "ready",
       "links": [],
       "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "559c0724-d3c4-4eca-9231-936f19ce52b8",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake B",
+      "description": "Single file through tunnels. Nobody peeks off the line.",
+      "tasks": [
+        "Line up at T spawn, one behind the other",
+        "Walk tunnels as a snake, no spreading",
+        "Front player flashes, everyone follows in",
+        "Plant for tunnels, stay stacked"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "317dd252-e17e-435d-a192-8e485a0d5b0a",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake apps",
+      "description": "Conga line through underpass and apps. Follow the front guy.",
+      "tasks": [
+        "Single file into underpass",
+        "Stay glued through apps, no mid lurk",
+        "Front flashes site, train piles in",
+        "Plant for apps"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "343f9f2c-5917-4f51-9e1b-7ea913e457a5",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake banana",
+      "description": "Banana snake. One path, five bodies, zero originality.",
+      "tasks": [
+        "Line up toward banana",
+        "Walk sandbags as a single file",
+        "Front flashes, the rest trade in order",
+        "Plant for banana"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "f5e48bb4-b33a-430e-81ed-bdb427aebbe1",
+      "map": "Nuke",
+      "side": "T",
+      "site": "outside",
+      "callout": "Snake outside",
+      "description": "Outside as a conga line. No secret splits, just follow.",
+      "tasks": [
+        "Single file out of lobby to outside",
+        "Stay in line past silo / garage",
+        "Front contacts heaven, snake piles up",
+        "Hit A roof or ramp only after the stack arrives"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "4c3a5846-8698-4a69-8c7b-086f5a7aa944",
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake cave",
+      "description": "Cave snake into B. Elbow is the choke, stay in file.",
+      "tasks": [
+        "Line up into cave / lane",
+        "Walk elbow as five in a row",
+        "Front flashes site, follow and trade",
+        "Plant for cave"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "22e1af2a-2d50-4302-860e-8ae41acdae94",
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake water",
+      "description": "Water snake. Crouch-walk the line, then pile site.",
+      "tasks": [
+        "Single file into water",
+        "Crouch-walk until first contact",
+        "Flash palace / site, enter in order",
+        "Plant for water"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "92eba09f-84c7-4820-8b55-44a42e2579af",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "1d2d363c-a947-4fde-a128-a0817c5678ed",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Snake checkers",
+      "description": "Checkers snake to B. Highway is a hallway for a reason.",
+      "tasks": [
+        "Line up into checkers",
+        "Walk highway single file",
+        "Front flashes site, snake enters",
+        "Plant for checkers"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "eco",
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
