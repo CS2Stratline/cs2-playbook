@@ -1,12 +1,9 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { usePlaybook } from "../lib/playbook";
 import { isMemePack } from "../lib/types";
-import { rollClassicRoulette, rouletteCatalogStats, type RouletteCard } from "../lib/stratRoulette";
+import { rollClassicRoulette, type RouletteCard } from "../lib/stratRoulette";
 import { MapLogo } from "../components/MapLogo";
 import { SiteIcon, Shuffle } from "../components/icons";
-
-type PoolMode = "classic" | "mix";
 
 function rollMemeFromPack(
   strats: { id: string; map: string; side: string; callout: string; description: string; site: string | null; pack_id: string }[],
@@ -33,12 +30,9 @@ function rollMemeFromPack(
 
 export function RouletteScreen() {
   const { session, setSession, strats, packs } = usePlaybook();
-  const navigate = useNavigate();
   const accent = session.selected_side === "CT" ? "ct" : "";
-  const [pool, setPool] = useState<PoolMode>("classic");
   const [card, setCard] = useState<RouletteCard | null>(null);
   const [memeRecent, setMemeRecent] = useState<string[]>([]);
-  const stats = useMemo(() => rouletteCatalogStats(), []);
 
   function pushMemeRecent(id: string) {
     setMemeRecent((prev) => {
@@ -52,64 +46,35 @@ export function RouletteScreen() {
     const side = session.selected_side;
 
     let next: RouletteCard | null = null;
-    if (pool === "mix" && Math.random() < 0.35) {
+    // Occasionally pull from the meme pack; otherwise the chaos catalog.
+    if (Math.random() < 0.3) {
       next = rollMemeFromPack(strats, packs, map, side, memeRecent, pushMemeRecent);
     }
-    if (!next) {
-      next = rollClassicRoulette(map, side);
-    }
-    // Mix fallback: if classic somehow empty, try meme
-    if (!next && pool === "mix") {
-      next = rollMemeFromPack(strats, packs, map, side, memeRecent, pushMemeRecent);
-    }
-    setCard(next);
+    if (!next) next = rollClassicRoulette(map, side);
+    if (!next) next = rollMemeFromPack(strats, packs, map, side, memeRecent, pushMemeRecent);
 
+    setCard(next);
     if (next?.stratId) {
       void setSession({ current_pick_id: next.stratId, timer_ends_at: null, called_at: Date.now() });
     }
   }
 
-  function openInMatch() {
-    if (card?.stratId) {
-      void setSession({ current_pick_id: card.stratId, timer_ends_at: null, called_at: Date.now() });
-    }
-    navigate("/match");
-  }
-
   return (
     <div className="roulette-screen">
       <div className="panel roulette-panel">
-        <p className="eyebrow roulette-eyebrow">Meme · Strat roulette</p>
+        <p className="eyebrow roulette-eyebrow">Strat roulette</p>
         <p className="muted" style={{ marginTop: 0, marginBottom: 14 }}>
-          Classic chaos calls. Roll it, shout it, laugh. Not for FACEIT tryhards.
+          Roll a chaos call. Shout it in freezetime.
         </p>
 
-        <div className="row" style={{ marginBottom: 12, flexWrap: "wrap", gap: 6 }}>
-          <button
-            type="button"
-            className={`pill ${pool === "classic" ? "active roulette-pill" : ""}`}
-            onClick={() => setPool("classic")}
-          >
-            Classic
-          </button>
-          <button
-            type="button"
-            className={`pill ${pool === "mix" ? "active roulette-pill" : ""}`}
-            onClick={() => setPool("mix")}
-          >
-            Classic + our memes
-          </button>
-        </div>
-
         <div className="roulette-stage">
-          <div className="row" style={{ justifyContent: "space-between", marginBottom: 10 }}>
+          <div className="row" style={{ marginBottom: 10 }}>
             <span className={`badge badge-map ${accent === "ct" ? "five_stack" : "pro"}`}>
               <MapLogo map={session.selected_map} size={16} />
               {session.selected_map}
               {session.selected_side}
               {card?.site ? <SiteIcon site={String(card.site)} size={12} /> : null}
             </span>
-            <span className="roulette-tag">{card?.origin === "meme" ? "Our meme" : "Classic"}</span>
           </div>
 
           {card ? (
@@ -123,7 +88,7 @@ export function RouletteScreen() {
                 Hit roll
               </p>
               <p className="muted" style={{ margin: 0 }}>
-                {stats.reg + stats.ct + stats.t + stats.mapSpecific} classic strats loaded from Strat Roulette.
+                Pick map and side above, then roll.
               </p>
             </div>
           )}
@@ -133,12 +98,6 @@ export function RouletteScreen() {
           <Shuffle size={18} />
           {card ? "Roll again" : "Roll"}
         </button>
-
-        <div className="row" style={{ marginTop: 10, gap: 8 }}>
-          <button type="button" className="btn-ghost" style={{ flex: 1 }} onClick={openInMatch} disabled={!card}>
-            Open in Match
-          </button>
-        </div>
       </div>
     </div>
   );
