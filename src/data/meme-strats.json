@@ -259,6 +259,26 @@
       "level": 1
     },
     {
+      "map": "Inferno",
+      "side": "CT",
+      "site": "a",
+      "callout": "Negev apps tower",
+      "description": "Two Negevs boost in apps. The other three play normal.",
+      "tasks": [
+        "Two buy Negev",
+        "Boost into a tower in apps",
+        "Hold apps from the stack",
+        "Other three play normal CT"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 2
+    },
+    {
       "map": "Nuke",
       "side": "T",
       "site": "outside",
