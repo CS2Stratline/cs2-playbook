@@ -210,6 +210,7 @@ export function BookScreen() {
     const draft = {
       map,
       side: (editing?.side || session.selected_side) as Strat["side"],
+      site: (form.site || editing?.site || "default") as Strat["site"],
       callout: form.callout.trim(),
       description: form.description.trim(),
       tasks,
@@ -261,13 +262,6 @@ export function BookScreen() {
     const map = isAllMaps(session.selected_map) ? form.map : editing?.map || session.selected_map;
     if (!map || isAllMaps(map)) return;
     const side = editing?.side || session.selected_side;
-    const draft = {
-      map,
-      side,
-      callout: form.callout.trim(),
-      description: form.description.trim(),
-      tasks,
-    };
     const lanes = lanesForMap(map);
     const site: Strat["site"] =
       side === "T"
@@ -275,6 +269,14 @@ export function BookScreen() {
           ? (form.site as Strat["site"])
           : "default"
         : null;
+    const draft = {
+      map,
+      side,
+      site,
+      callout: form.callout.trim(),
+      description: form.description.trim(),
+      tasks,
+    };
     let links = builtLinks;
     // New strat with empty lineups: seed suggestions from tasks (editable after).
     if (!editing && !links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
