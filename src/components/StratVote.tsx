@@ -30,9 +30,7 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === 1 ? " active up" : ""}`}
-        onClick={() => {
-          if (canVote) void castVote(strat, 1);
-        }}
+        onClick={() => void castVote(strat, 1)}
         disabled={!canVote}
         aria-label={myVote === 1 ? "Remove upvote" : "Upvote"}
         aria-pressed={myVote === 1}
@@ -46,9 +44,7 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === -1 ? " active down" : ""}`}
-        onClick={() => {
-          if (canVote) void castVote(strat, -1);
-        }}
+        onClick={() => void castVote(strat, -1)}
         disabled={!canVote}
         aria-label={myVote === -1 ? "Remove downvote" : "Downvote"}
         aria-pressed={myVote === -1}
