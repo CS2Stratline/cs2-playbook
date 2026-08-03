@@ -32,6 +32,13 @@ import {
 
 type Tab = "catalog" | "pool" | "community";
 
+const ROUND_OPTIONS = [
+  { id: "full", label: "Full" },
+  { id: "force", label: "Force" },
+  { id: "eco", label: "Eco" },
+  { id: "pistol", label: "Pistol" },
+] as const;
+
 export function BookScreen() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -88,7 +95,7 @@ export function BookScreen() {
     description: "",
     build: { steps: [emptyStep()], extraLinks: [] as StratLink[] } as StratBuild,
     site: "default",
-    rounds: "" as string,
+    rounds: [] as string[],
     status: "ready" as "ready" | "practice",
     level: "" as string,
     packId: "" as string,
@@ -105,15 +112,26 @@ export function BookScreen() {
       description: s.description,
       build: buildFromTasksLinks(s.tasks, s.links || []),
       site: s.site || "default",
-      rounds: s.rounds.join(","),
+      rounds: [...(s.rounds || [])],
       status: s.status,
-      level: String(s.level || ""),
+      // Empty when unset so the field shows a placeholder, not a mystery "5".
+      level: s.level ? String(s.level) : "",
       packId: s.pack_id,
       isPrivate: s.is_private ?? true,
     });
     setSaveError("");
     setShowForm(true);
     setExpanded(s.id);
+  }
+
+  function toggleFormRound(id: string) {
+    setForm((prev) => {
+      const on = prev.rounds.includes(id);
+      return {
+        ...prev,
+        rounds: on ? prev.rounds.filter((r) => r !== id) : [...prev.rounds, id],
+      };
+    });
   }
 
   useEffect(() => {
@@ -254,10 +272,7 @@ export function BookScreen() {
     let links = builtLinks;
     // New strat with empty lineups: seed suggestions from tasks (editable after).
     if (!editing && !links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
-    const rounds = form.rounds
-      .split(",")
-      .map((r) => r.trim())
-      .filter(Boolean);
+    const rounds = form.rounds.filter((r) => ROUND_OPTIONS.some((o) => o.id === r));
     const levelNum = form.level.trim() ? Number(form.level) : undefined;
 
     try {
@@ -552,7 +567,7 @@ export function BookScreen() {
                 description: "",
                 build: applyTemplate("execute", session.selected_side),
                 site: "default",
-                rounds: "",
+                rounds: [],
                 status: "ready",
                 level: "",
                 packId: defaultPackId || myPrivatePacks[0]?.id || "",
@@ -679,21 +694,35 @@ export function BookScreen() {
               ))}
             </select>
           )}
-          <div className="strat-meta-row">
-            <input
-              className="input"
-              placeholder="Rounds — full, force, eco"
-              value={form.rounds}
-              onChange={(e) => setForm({ ...form, rounds: e.target.value })}
-            />
-            <input
-              className="input"
-              placeholder="Level 1–10"
-              inputMode="numeric"
-              value={form.level}
-              onChange={(e) => setForm({ ...form, level: e.target.value })}
-            />
+          <div style={{ marginBottom: 10 }}>
+            <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+              When to call this — leave none for any round
+            </p>
+            <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
+              {ROUND_OPTIONS.map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  className={`pill ${form.rounds.includes(r.id) ? "active" : ""}`}
+                  aria-pressed={form.rounds.includes(r.id)}
+                  onClick={() => toggleFormRound(r.id)}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
           </div>
+          <input
+            className="input"
+            placeholder="Difficulty 1–10 (optional)"
+            inputMode="numeric"
+            value={form.level}
+            onChange={(e) => setForm({ ...form, level: e.target.value.replace(/[^\d]/g, "").slice(0, 2) })}
+            aria-label="Execution difficulty 1 to 10"
+          />
+          <p className="muted" style={{ fontSize: 11, marginTop: -6, marginBottom: 10 }}>
+            How hard the call is to run in freeze time — not player Elo. Blank = auto.
+          </p>
           {saveError && <p className="banner" style={{ color: "var(--warn)" }}>{saveError}</p>}
           <div className="row">
             <button type="button" className="btn btn-primary" style={{ flex: 1 }} onClick={() => void saveForm()}>

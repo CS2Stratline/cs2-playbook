@@ -32,7 +32,7 @@ function RemoveIcon() {
 }
 
 /**
- * Build-order style strat editor: ordered steps with optional lineup attach.
+ * Ordered call steps with optional lineup attach.
  * Persists via parent as tasks[] + links[] through stratSteps helpers.
  */
 export function StratStepEditor({
@@ -55,6 +55,8 @@ export function StratStepEditor({
 
   const steps = build.steps.length ? build.steps : [emptyStep()];
   const canAdd = steps.length < MAX_STRAT_STEPS;
+  const focusedStep = steps.find((s) => s.id === focusStep) || steps[steps.length - 1];
+  const focusedIndex = focusedStep ? steps.findIndex((s) => s.id === focusedStep.id) : -1;
 
   function setSteps(next: StratStep[]) {
     onChange({ ...build, steps: next.length ? next : [emptyStep()] });
@@ -156,7 +158,7 @@ export function StratStepEditor({
     <div className="strat-builder">
       <div className="strat-builder-head">
         <p className="eyebrow" id={labelId}>
-          Build steps
+          Call steps
         </p>
         <span className="muted" style={{ fontSize: 11 }}>
           {steps.filter((s) => s.text.trim()).length}/{MAX_STRAT_STEPS}
@@ -253,7 +255,7 @@ export function StratStepEditor({
                     </span>
                   ) : (
                     <span className="muted" style={{ fontSize: 11 }}>
-                      {focused ? "Pick a lineup below →" : "Optional lineup"}
+                      {focused ? "Lineup: pick below →" : "Tap step, then attach a lineup"}
                     </span>
                   )}
                 </div>
@@ -272,10 +274,14 @@ export function StratStepEditor({
       {(unusedSuggested.length > 0 || build.extraLinks.length > 0) && (
         <div className="strat-lineups">
           <p className="eyebrow">Lineups</p>
+          <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+            Attaches to step {focusedIndex >= 0 ? focusedIndex + 1 : "…"}
+            {focusedStep?.text.trim() ? ` — ${focusedStep.text.trim().slice(0, 40)}` : ""}
+          </p>
           {unusedSuggested.length > 0 && (
             <div className="strat-suggest-row">
               <span className="muted" style={{ fontSize: 11, width: "100%" }}>
-                Suggested — tap to attach to the focused step
+                Suggested — tap to attach
               </span>
               {unusedSuggested.map((l) => {
                 const kind = nadeTypeFromLink(l);
@@ -325,7 +331,10 @@ export function StratStepEditor({
       )}
 
       <details className="strat-manual-link">
-        <summary>Add lineup URL</summary>
+        <summary>Add lineup URL to step {focusedIndex >= 0 ? focusedIndex + 1 : "…"}</summary>
+        <p className="muted" style={{ fontSize: 11, marginTop: 6 }}>
+          Click a call step first, then add a CSnades (or other) link for that instruction.
+        </p>
         <div className="row" style={{ marginTop: 8, gap: 6 }}>
           <input
             className="input"
@@ -342,7 +351,7 @@ export function StratStepEditor({
             onChange={(e) => setManualUrl(e.target.value)}
           />
           <button type="button" className="btn-ghost" onClick={addManualLink}>
-            Add
+            Attach
           </button>
         </div>
       </details>
