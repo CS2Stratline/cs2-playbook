@@ -374,13 +374,21 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px;
+  padding: 4px;
+  min-width: 28px;
+  min-height: 28px;
   border: none;
   background: transparent;
   color: var(--dim);
   border-radius: 6px;
   cursor: pointer;
   line-height: 0;
+}
+
+.strat-vote-compact .strat-vote-btn {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 3px;
 }
 
 .strat-vote-btn:hover {
