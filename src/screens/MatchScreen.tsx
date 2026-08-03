@@ -616,6 +616,7 @@ export function MatchScreen() {
                       {
                         map: currentPick.map,
                         side: currentPick.side,
+                        site: currentPick.site,
                         callout: form.callout.trim(),
                         description: form.description.trim(),
                         tasks: tasksLinksFromBuild(form.build).tasks,
