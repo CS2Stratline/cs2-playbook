@@ -91,9 +91,10 @@ Without Supabase, local demo can edit shared strats on that device only.
 
 1. Buy domain / point DNS at GitHub Pages or Vercel.
 2. In `.github/workflows/deploy.yml`, set `VITE_BASE_PATH: /` if the site is at the domain root.
-3. Supabase Auth → add `https://your.domain/` to Site URL / Redirect URLs (keep Pages URL during transition).
-4. Discord app callback stays `https://YOUR.supabase.co/auth/v1/callback` (no change).
-5. Redeploy and smoke-test Discord + magic link + live share link.
+3. Update absolute `og:url` / `og:image` / `twitter:image` in `index.html` to the custom domain.
+4. Supabase Auth → add `https://your.domain/` to Site URL / Redirect URLs (keep Pages URL during transition).
+5. Discord app callback stays `https://YOUR.supabase.co/auth/v1/callback` (no change).
+6. Redeploy and smoke-test Discord + magic link + live share link.
 
 ## Vercel (optional)
 

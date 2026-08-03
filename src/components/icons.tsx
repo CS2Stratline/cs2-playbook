@@ -101,11 +101,12 @@ export const Dice = (p: { size?: number }) => (
   </Icon>
 );
 
-/** Playbook / book */
+/** Playbook tab — open book with spine (not list→play, not pause bars). */
 export const BookOpen = (p: { size?: number }) => (
   <Icon {...p}>
-    <path d="M2 6a2 2 0 0 1 2-2h6v16H4a2 2 0 0 1-2-2Z" />
-    <path d="M22 6a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 0 2-2Z" />
+    <path d="M12 7v13" />
+    <path d="M12 7c-2.8-1.6-6.5-1.8-8.5-.4v13.2c2.5-1.2 5.7-.9 8.5.5" />
+    <path d="M12 7c2.8-1.6 6.5-1.8 8.5-.4v13.2c-2.5-1.2-5.7-.9-8.5.5" />
   </Icon>
 );
 
