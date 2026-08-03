@@ -9,6 +9,7 @@ import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
+import { StratVote } from "../components/StratVote";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
@@ -491,20 +492,23 @@ export function MatchScreen() {
                       {s.site && <SiteIcon site={String(s.site)} size={14} />}
                       {s.callout}
                     </strong>
-                    {usePersonalPool && (
-                      <button
-                        type="button"
-                        className="btn-ghost"
-                        style={{ padding: 4 }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          void toggleFavorite(s.id);
-                        }}
-                        aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
-                      >
-                        <Star size={14} filled={isFavorite(s.id)} />
-                      </button>
-                    )}
+                    <div className="row" style={{ gap: 4, flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
+                      <StratVote strat={s} compact />
+                      {usePersonalPool && (
+                        <button
+                          type="button"
+                          className="btn-ghost"
+                          style={{ padding: 4 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            void toggleFavorite(s.id);
+                          }}
+                          aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
+                        >
+                          <Star size={14} filled={isFavorite(s.id)} />
+                        </button>
+                      )}
+                    </div>
                   </div>
                   <div className="meta">
                     {s.description.slice(0, 80)}
@@ -533,6 +537,7 @@ export function MatchScreen() {
               </span>
               <div className="row">
                 <LevelBadge level={clampFaceitLevel(currentPick.level || 5)} size={28} showLabel />
+                <StratVote strat={currentPick} />
                 {usePersonalPool && (
                   <button
                     type="button"

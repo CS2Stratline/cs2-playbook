@@ -58,6 +58,8 @@ const rows = seed.strats.map((s) => {
     level: s.level || 5,
     wins: 0,
     losses: 0,
+    upvotes: 0,
+    downvotes: 0,
     times_used: 0,
     source: "system-seed",
   };

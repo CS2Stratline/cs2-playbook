@@ -363,6 +363,65 @@ select {
   cursor: pointer;
 }
 
+.strat-vote {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.strat-vote-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  min-width: 28px;
+  min-height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--dim);
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.strat-vote-compact .strat-vote-btn {
+  min-width: 26px;
+  min-height: 26px;
+  padding: 3px;
+}
+
+.strat-vote-btn:hover {
+  color: var(--chalk);
+  background: var(--panel-hi);
+}
+
+.strat-vote-btn.active.up,
+.strat-vote.up .strat-vote-score {
+  color: var(--good);
+}
+
+.strat-vote-btn.active.down,
+.strat-vote.down .strat-vote-score {
+  color: var(--warn);
+}
+
+.strat-vote-score {
+  min-width: 1.25em;
+  text-align: center;
+  font-family: var(--font-mono, var(--font-body));
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.strat-vote-compact .strat-vote-score {
+  font-size: 11px;
+  min-width: 1em;
+}
+
 .input {
   width: 100%;
   background: var(--bg);
