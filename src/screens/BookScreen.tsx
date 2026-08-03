@@ -18,6 +18,7 @@ import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
 import { StratStepEditor } from "../components/StratStepEditor";
+import { StratVote } from "../components/StratVote";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
@@ -674,8 +675,9 @@ export function BookScreen() {
                   <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
-                      {usePersonalPool && (
-                        <span onClick={(e) => e.stopPropagation()}>
+                      <span className="row" style={{ gap: 4, flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
+                        <StratVote strat={s} compact />
+                        {usePersonalPool && (
                           <button
                             type="button"
                             className="btn-ghost"
@@ -690,8 +692,8 @@ export function BookScreen() {
                           >
                             <Star size={14} filled={isFavorite(s.id)} />
                           </button>
-                        </span>
-                      )}
+                        )}
+                      </span>
                     </div>
                     <div className="meta" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                       <LevelBadge

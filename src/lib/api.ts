@@ -1,6 +1,6 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
-import type { AdminProfile, Pack, Strat, UserSession, Profile, Side, StratLink } from "./types";
+import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, Side, StratLink } from "./types";
 import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
@@ -49,6 +49,8 @@ type Store = {
   packs: Pack[];
   strats: Strat[];
   favorites: string[];
+  /** Per-user votes keyed by strat id (catalog/shared target preferred). */
+  votes: Record<string, StratVoteValue>;
   subscriptions: Record<string, boolean>;
   session: UserSession;
   seedRevision?: number;
@@ -74,6 +76,8 @@ function seedStore(): Store {
   const strats = (systemSeed.strats as Strat[]).map((s) => ({
     ...s,
     level: s.level || estimateStratLevel({ ...s, tier: packs.find((p) => p.id === s.pack_id)?.tier }),
+    upvotes: Number(s.upvotes || 0),
+    downvotes: Number(s.downvotes || 0),
   }));
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = isPackDefaultEnabled(p);
@@ -88,6 +92,7 @@ function seedStore(): Store {
     packs,
     strats,
     favorites: [],
+    votes: {},
     subscriptions,
     session: defaultSession(),
     seedRevision: SEED_REVISION,
@@ -128,7 +133,10 @@ function loadLocal(): Store {
           level:
             s.level ||
             estimateStratLevel({ ...s, tier: store.packs.find((p) => p.id === s.pack_id)?.tier }),
+          upvotes: Number(s.upvotes || 0),
+          downvotes: Number(s.downvotes || 0),
         }));
+        if (!store.votes || typeof store.votes !== "object") store.votes = {};
         if (store.seedRevision !== parsed.seedRevision) saveLocal(store);
         return store;
       }
@@ -288,9 +296,95 @@ function mapStratRow(row: Record<string, unknown>): Strat {
     level,
     wins: Number(row.wins || 0),
     losses: Number(row.losses || 0),
+    upvotes: Number(row.upvotes || 0),
+    downvotes: Number(row.downvotes || 0),
     times_used: Number(row.times_used || 0),
     last_used: (row.last_used as string) || null,
     source: (row.source as string) || null,
+  };
+}
+
+/** Vote against the shared catalog row when present so pool copies share one score. */
+export function voteTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string {
+  return sharedStratTargetId(strat) ?? strat.id;
+}
+
+export type StratVoteResult = {
+  upvotes: number;
+  downvotes: number;
+  myVote: StratVoteValue;
+};
+
+export async function getMyVotes(userId: string): Promise<Record<string, StratVoteValue>> {
+  if (!isCloudMode()) {
+    const out: Record<string, StratVoteValue> = {};
+    for (const [id, value] of Object.entries(memory.votes || {})) {
+      if (value === 1 || value === -1) out[id] = value;
+    }
+    return out;
+  }
+  const { data, error } = await supabase!
+    .from("user_strat_votes")
+    .select("strat_id, value")
+    .eq("user_id", userId);
+  if (error) throw error;
+  const out: Record<string, StratVoteValue> = {};
+  for (const row of data || []) {
+    const r = row as { strat_id: string; value: number };
+    if (r.value === 1 || r.value === -1) out[r.strat_id] = r.value;
+  }
+  return out;
+}
+
+/**
+ * Set or toggle a vote. Pass 1 (up) or -1 (down).
+ * Clicking the same value again clears the vote (server and local).
+ * Pass 0 to clear explicitly.
+ */
+export async function setStratVote(
+  userId: string,
+  stratId: string,
+  value: StratVoteValue
+): Promise<StratVoteResult> {
+  if (!isCloudMode()) {
+    const prev = memory.votes[stratId] || 0;
+    let next: StratVoteValue = value;
+    if (value === 0) next = 0;
+    else if (prev === value) next = 0;
+
+    memory.votes = { ...memory.votes };
+    if (next === 0) delete memory.votes[stratId];
+    else memory.votes[stratId] = next;
+
+    memory.strats = memory.strats.map((s) => {
+      if (s.id !== stratId) return s;
+      const upvotes = Math.max(0, s.upvotes + (next === 1 ? 1 : 0) - (prev === 1 ? 1 : 0));
+      const downvotes = Math.max(0, s.downvotes + (next === -1 ? 1 : 0) - (prev === -1 ? 1 : 0));
+      return { ...s, upvotes, downvotes };
+    });
+    saveLocal(memory);
+    const row = memory.strats.find((s) => s.id === stratId);
+    return {
+      upvotes: row?.upvotes ?? 0,
+      downvotes: row?.downvotes ?? 0,
+      myVote: next,
+    };
+  }
+
+  const { data, error } = await supabase!.rpc("set_strat_vote", {
+    p_strat_id: stratId,
+    p_value: value,
+  });
+  if (error) throw error;
+  const row = (Array.isArray(data) ? data[0] : data) as
+    | { upvotes: number; downvotes: number; my_vote: number }
+    | undefined;
+  if (!row) throw new Error("No result from set_strat_vote");
+  const myVote: StratVoteValue = row.my_vote === 1 || row.my_vote === -1 ? row.my_vote : 0;
+  return {
+    upvotes: Number(row.upvotes || 0),
+    downvotes: Number(row.downvotes || 0),
+    myVote,
   };
 }
 
@@ -510,6 +604,8 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
         level,
         wins: 0,
         losses: 0,
+        upvotes: 0,
+        downvotes: 0,
         times_used: 0,
         last_used: null,
         source: "user",
@@ -723,6 +819,8 @@ export async function addCatalogStratToPool(
       level: catalog.level || estimateStratLevel(catalog),
       wins: 0,
       losses: 0,
+      upvotes: 0,
+      downvotes: 0,
       times_used: 0,
       last_used: null,
       source,
@@ -813,6 +911,11 @@ export async function deleteStrat(userId: string, stratId: string) {
   if (!isCloudMode()) {
     memory.strats = memory.strats.filter((s) => !(s.id === stratId && s.owner_user_id === userId));
     memory.favorites = memory.favorites.filter((id) => id !== stratId);
+    if (memory.votes[stratId]) {
+      const next = { ...memory.votes };
+      delete next[stratId];
+      memory.votes = next;
+    }
     saveLocal(memory);
     return;
   }
