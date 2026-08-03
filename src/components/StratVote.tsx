@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "./icons";
 import { usePlaybook } from "../lib/playbook";
 import type { Strat } from "../lib/types";
@@ -8,12 +9,21 @@ type Props = {
   compact?: boolean;
 };
 
-/** Up / score / down control. Same click again clears the vote. */
+/** Up / score / down. Voting requires cloud sign-in; score is always shown. */
 export function StratVote({ strat, compact = false }: Props) {
-  const { getVote, getVoteScore, castVote } = usePlaybook();
-  const myVote = getVote(strat);
+  const navigate = useNavigate();
+  const { getVote, getVoteScore, castVote, canVote } = usePlaybook();
+  const myVote = canVote ? getVote(strat) : 0;
   const { score } = getVoteScore(strat);
   const size = compact ? 14 : 16;
+
+  function onVote(value: 1 | -1) {
+    if (!canVote) {
+      navigate("/settings");
+      return;
+    }
+    void castVote(strat, value);
+  }
 
   return (
     <div
@@ -26,10 +36,10 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === 1 ? " active up" : ""}`}
-        onClick={() => void castVote(strat, 1)}
-        aria-label={myVote === 1 ? "Remove upvote" : "Upvote"}
+        onClick={() => onVote(1)}
+        aria-label={canVote ? (myVote === 1 ? "Remove upvote" : "Upvote") : "Sign in to upvote"}
         aria-pressed={myVote === 1}
-        title={myVote === 1 ? "Remove upvote" : "Upvote"}
+        title={canVote ? (myVote === 1 ? "Remove upvote" : "Upvote") : "Sign in to vote"}
       >
         <ChevronUp size={size} />
       </button>
@@ -39,10 +49,10 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === -1 ? " active down" : ""}`}
-        onClick={() => void castVote(strat, -1)}
-        aria-label={myVote === -1 ? "Remove downvote" : "Downvote"}
+        onClick={() => onVote(-1)}
+        aria-label={canVote ? (myVote === -1 ? "Remove downvote" : "Downvote") : "Sign in to downvote"}
         aria-pressed={myVote === -1}
-        title={myVote === -1 ? "Remove downvote" : "Downvote"}
+        title={canVote ? (myVote === -1 ? "Remove downvote" : "Downvote") : "Sign in to vote"}
       >
         <ChevronDown size={size} />
       </button>
