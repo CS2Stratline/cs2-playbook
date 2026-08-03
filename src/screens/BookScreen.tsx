@@ -516,27 +516,37 @@ export function BookScreen() {
           </button>
         </div>
         {(tab === "catalog" || tab === "community") && usePersonalPool && myPrivatePacks.length > 0 && (
-          <select
-            className="input"
-            style={{ marginTop: 10, marginBottom: 0 }}
-            aria-label="Add strats to pack"
-            value={
-              myPrivatePacks.some((p) => p.id === catalogTargetPack)
-                ? catalogTargetPack
-                : defaultPackId || myPrivatePacks[0].id
-            }
-            onChange={(e) => setCatalogTargetPack(e.target.value)}
-          >
-            {myPrivatePacks.map((p) => (
-              <option key={p.id} value={p.id}>
-                Add into: {p.title}
-              </option>
-            ))}
-          </select>
+          <div style={{ marginTop: 10 }}>
+            <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+              {tab === "community" ? "Add Community calls into" : "Add Catalog calls into"}
+            </p>
+            <select
+              className="input"
+              style={{ marginBottom: 0 }}
+              aria-label="Pack to add into"
+              value={
+                myPrivatePacks.some((p) => p.id === catalogTargetPack)
+                  ? catalogTargetPack
+                  : defaultPackId || myPrivatePacks[0].id
+              }
+              onChange={(e) => setCatalogTargetPack(e.target.value)}
+            >
+              {myPrivatePacks.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.title}
+                </option>
+              ))}
+            </select>
+          </div>
         )}
         {tab === "community" && (
           <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
-            Player calls shared from the app. Add the ones you like into your packs.
+            Shared player calls. Expand one → Add to pack (uses the pack above).
+          </p>
+        )}
+        {tab === "catalog" && usePersonalPool && myPrivatePacks.length > 0 && (
+          <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
+            Expand a call → Add to pack (uses the pack above).
           </p>
         )}
       </div>
@@ -611,22 +621,28 @@ export function BookScreen() {
             </select>
           )}
           {usePersonalPool && myPrivatePacks.length > 0 && !(editing && canEditShared && sharedStratTargetId(editing)) && (
-            <select
-              className="input"
-              aria-label="Save to pack"
-              value={
-                myPrivatePacks.some((p) => p.id === form.packId)
-                  ? form.packId
-                  : defaultPackId || myPrivatePacks[0].id
-              }
-              onChange={(e) => setForm({ ...form, packId: e.target.value })}
-            >
-              {myPrivatePacks.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.title}
-                </option>
-              ))}
-            </select>
+            <div style={{ marginBottom: 10 }}>
+              <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+                Save into pack
+              </p>
+              <select
+                className="input"
+                style={{ marginBottom: 0 }}
+                aria-label="Save to pack"
+                value={
+                  myPrivatePacks.some((p) => p.id === form.packId)
+                    ? form.packId
+                    : defaultPackId || myPrivatePacks[0].id
+                }
+                onChange={(e) => setForm({ ...form, packId: e.target.value })}
+              >
+                {myPrivatePacks.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.title}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
           {!(editing && canEditShared && sharedStratTargetId(editing)) && (
             <div
@@ -771,6 +787,8 @@ export function BookScreen() {
                 myPrivatePacks.some((p) => p.id === catalogTargetPack)
                   ? catalogTargetPack
                   : defaultPackId || myPrivatePacks[0]?.id;
+              const targetPackTitle =
+                myPrivatePacks.find((p) => p.id === targetPack)?.title || "pack";
               const inPool = usePersonalPool
                 ? !!findCopy(myPoolStrats, s.id, tab === "catalog" || tab === "community" ? targetPack : undefined)
                 : false;
@@ -865,8 +883,8 @@ export function BookScreen() {
                               : s.owner_user_id === userId
                                 ? "Yours"
                                 : inPool
-                                  ? "In pack"
-                                  : "Add to pack"}
+                                  ? `In ${targetPackTitle}`
+                                  : `Add to ${targetPackTitle}`}
                           </button>
                         )}
                         {canEditStrat(s) && (
