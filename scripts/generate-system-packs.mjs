@@ -130,7 +130,7 @@ const packs = {
     id: prevPackIdBySlug["starter-pack"] || prevPackIdBySlug["essentials-pug"] || uid(),
     slug: "starter-pack",
     title: "Starter",
-    description: "Day-1 calls for every map — filter by level in Match.",
+    description: "Day-1 calls for every map.",
     tier: "pug",
     visibility: "system",
     owner_user_id: null,
