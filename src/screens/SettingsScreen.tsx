@@ -16,7 +16,7 @@ import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
-  const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile, isPermanent, isAnonymous } =
+  const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile, isPermanent } =
     useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
@@ -82,9 +82,7 @@ export function SettingsScreen() {
           {mode}
           {isPermanent
             ? ` · ${user?.email || user?.user_metadata?.full_name || user?.user_metadata?.name || "signed in"}`
-            : isAnonymous
-              ? " · guest (votes sync)"
-              : " · guest"}
+            : " · guest"}
           {isPermanent && canEditShared ? (profile?.is_super_admin ? " · super admin" : " · admin") : ""}
         </p>
         {isPermanent && (

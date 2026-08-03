@@ -360,7 +360,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       if (!canVote) return;
       const target = api.voteTargetId(strat);
       try {
-        const result = await api.setStratVote(userId, target, value);
+        const result = await api.setStratVote(target, value);
         setVotes((prev) => {
           const next = { ...prev };
           if (result.myVote === 0) delete next[target];
@@ -373,10 +373,10 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
           )
         );
       } catch {
-        // Keep UI stable if cloud vote fails (e.g. migration not applied yet).
+        // Keep UI stable if the vote RPC fails (network / schema lag).
       }
     },
-    [userId, canVote]
+    [canVote]
   );
 
   const addToPool = useCallback(

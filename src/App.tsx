@@ -10,7 +10,7 @@ import { SettingsScreen } from "./screens/SettingsScreen";
 import { LiveScreen } from "./screens/LiveScreen";
 
 function Shell() {
-  const { loading, mode, user, supabaseReady, isPermanent } = useAuth();
+  const { loading, mode, supabaseReady, isPermanent } = useAuth();
   const location = useLocation();
   const isLive = location.pathname.startsWith("/live");
   const showChrome = !isLive && !location.pathname.startsWith("/settings");
