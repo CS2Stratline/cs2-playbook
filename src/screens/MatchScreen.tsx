@@ -14,7 +14,14 @@ import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
 import { isValidLane, matchSiteFilters } from "../lib/mapLanes";
-import { linksToText, textToLinks } from "../lib/stratLinksText";
+import { StratStepEditor } from "../components/StratStepEditor";
+import {
+  buildFromTasksLinks,
+  emptyStep,
+  tasksLinksFromBuild,
+  type StratBuild,
+} from "../lib/stratSteps";
+import type { StratLink } from "../lib/types";
 const ROUNDS = [
   { id: "all", label: "All" },
   { id: "full", label: "Full" },
@@ -44,7 +51,11 @@ export function MatchScreen() {
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveBusy, setSaveBusy] = useState(false);
-  const [form, setForm] = useState({ callout: "", description: "", tasks: "", links: "" });
+  const [form, setForm] = useState({
+    callout: "",
+    description: "",
+    build: { steps: [emptyStep()], extraLinks: [] as StratLink[] } as StratBuild,
+  });
   const filterKeyRef = useRef<string | null>(null);
 
   const side = session.selected_side;
@@ -251,8 +262,7 @@ export function MatchScreen() {
     setForm({
       callout: currentPick.callout,
       description: currentPick.description,
-      tasks: currentPick.tasks.join("\n"),
-      links: linksToText(currentPick.links || []),
+      build: buildFromTasksLinks(currentPick.tasks, currentPick.links || []),
     });
     setSaveError("");
     setEditing(true);
@@ -262,11 +272,7 @@ export function MatchScreen() {
     if (!currentPick) return;
     setSaveBusy(true);
     setSaveError("");
-    const tasks = form.tasks
-      .split("\n")
-      .map((t) => t.trim())
-      .filter(Boolean)
-      .slice(0, 5);
+    const { tasks, links } = tasksLinksFromBuild(form.build);
     const patch = {
       callout: form.callout.trim(),
       description: form.description.trim(),
@@ -274,7 +280,7 @@ export function MatchScreen() {
       rounds: currentPick.rounds,
       site: currentPick.site,
       status: currentPick.status,
-      links: textToLinks(form.links),
+      links,
       level: currentPick.level,
       map: currentPick.map,
       side: currentPick.side,
@@ -564,19 +570,26 @@ export function MatchScreen() {
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                 />
-                <textarea
-                  className="input"
-                  rows={4}
-                  placeholder={"Tasks — one per line (max 5)\nSmoke jungle\nFlash CT"}
-                  value={form.tasks}
-                  onChange={(e) => setForm({ ...form, tasks: e.target.value })}
-                />
-                <textarea
-                  className="input"
-                  rows={3}
-                  placeholder={"Lineups — one per line\nSmoke: Jungle | https://…\nhttps://…"}
-                  value={form.links}
-                  onChange={(e) => setForm({ ...form, links: e.target.value })}
+                <StratStepEditor
+                  build={form.build}
+                  onChange={(build) => setForm({ ...form, build })}
+                  side={currentPick.side}
+                  showTemplates={false}
+                  suggestedLinks={mergeSuggested(
+                    tasksLinksFromBuild(form.build).links,
+                    suggestLineupLinks(
+                      {
+                        map: currentPick.map,
+                        side: currentPick.side,
+                        callout: form.callout.trim(),
+                        description: form.description.trim(),
+                        tasks: tasksLinksFromBuild(form.build).tasks,
+                      },
+                      NADE_CATALOG,
+                      { limit: 5 }
+                    ),
+                    5
+                  ).suggested}
                 />
                 {saveError && (
                   <p className="banner" style={{ color: "var(--warn)" }}>
