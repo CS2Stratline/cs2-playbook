@@ -18,7 +18,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 29
+      "strat_count": 32
     },
     {
       "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
@@ -29,7 +29,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 40
+      "strat_count": 39
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
@@ -40,7 +40,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 13
+      "strat_count": 12
     },
     {
       "id": "92eba09f-84c7-4820-8b55-44a42e2579af",
@@ -83,6 +83,43 @@
         }
       ],
       "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c566c350-f094-4055-99b9-36464b934883",
+      "map": "Mirage",
+      "side": "T",
+      "site": "b",
+      "callout": "Fast B",
+      "description": "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
+      "tasks": [
+        "Smoke market window",
+        "Flash site from apps",
+        "Plant for retake, hold apps/short"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Market window",
+          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
+        },
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
+        }
+      ],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -191,6 +228,32 @@
         }
       ],
       "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "c67cf2f3-abaf-48b5-bbb7-a40b74d939ed",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Ramp hold",
+      "description": "Strong ramp/palace A. Soft B, punish fast A contact.",
+      "tasks": [
+        "2 ramp / tetris",
+        "1 palace or ticket",
+        "1 mid, 1 B soft",
+        "Fall con only on clear B info"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 3,
       "wins": 0,
       "losses": 0,
       "times_used": 0,
@@ -331,11 +394,11 @@
       "side": "CT",
       "site": null,
       "callout": "Mid aggression",
-      "description": "Press mid/window for info and pace.",
+      "description": "Quick two-man window pick, then reset. No short support, no space taken.",
       "tasks": [
-        "2 mid (window + under/con)",
-        "Flash mid, take space",
-        "Fall back to site on execute"
+        "1 window, 1 under — flash together",
+        "One peek for the pick, no re-peek",
+        "Both back to sites straight after"
       ],
       "rounds": [
         "full",
@@ -797,13 +860,43 @@
       "id": "9c30bbce-e8b8-480f-8837-72104bce2af5",
       "map": "Nuke",
       "side": "CT",
-      "site": null,
-      "callout": "Anti-eco stack",
-      "description": "Stack likely hit site on their eco.",
+      "site": "a",
+      "callout": "Anti-eco A",
+      "description": "Stack A on their eco. Let them walk into you.",
       "tasks": [
-        "Stack predicted site",
-        "Save util for entry",
-        "Don't overpeek"
+        "2 heaven/hut, 2 A site",
+        "1 ramp for info",
+        "Save util for their entry",
+        "No outside peeks"
+      ],
+      "rounds": [
+        "anti",
+        "eco"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "system-seed"
+    },
+    {
+      "id": "682bdfb8-60b6-4ca6-aa23-6ec931033eec",
+      "map": "Nuke",
+      "side": "CT",
+      "site": "b",
+      "callout": "Anti-eco B",
+      "description": "Stack B on their eco. Let them walk into you.",
+      "tasks": [
+        "2 ramp/lower, 2 B site",
+        "1 heaven for info",
+        "Save util for their entry",
+        "No early ramp peeks"
       ],
       "rounds": [
         "anti",
@@ -1262,42 +1355,16 @@
       "source": "system-seed"
     },
     {
-      "id": "c67cf2f3-abaf-48b5-bbb7-a40b74d939ed",
-      "map": "Mirage",
-      "side": "CT",
-      "site": null,
-      "callout": "Ramp hold",
-      "description": "Strong ramp/palace A. Soft B, punish fast A contact.",
-      "tasks": [
-        "2 ramp / tetris",
-        "1 palace or ticket",
-        "1 mid, 1 B soft",
-        "Fall con only on clear B info"
-      ],
-      "rounds": [],
-      "status": "ready",
-      "links": [],
-      "level": 3,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed"
-    },
-    {
       "id": "aedf8eb5-fa9c-4a02-a7bd-1020276fe740",
       "map": "Mirage",
       "side": "CT",
       "site": null,
       "callout": "A stack",
-      "description": "Three A, one mid, one B. Punish A takes.",
+      "description": "Three A playing site depth, not ramp. Let them in, punish the entry.",
       "tasks": [
-        "3 A (ramp/palace/ticket)",
-        "1 window or con",
-        "1 B apps/short",
+        "3 A deep — triple, ticket, jungle",
+        "No ramp or palace peeks, give the entry",
+        "1 window or con, 1 B apps/short",
         "Rotate B only on clear info"
       ],
       "rounds": [],
@@ -1574,7 +1641,7 @@
       "description": "A through apartments / balcony.",
       "tasks": [
         "Control apps",
-        "Smoke/molly balcony fights",
+        "Smoke pit and hay before balcony",
         "Entry balcony → site",
         "Clear pit and library"
       ],
@@ -1929,7 +1996,7 @@
       "tasks": [
         "Smoke donut",
         "Smoke temple / CT",
-        "Entry A main or cave"
+        "Entry A main or short"
       ],
       "rounds": [
         "full"
@@ -2434,12 +2501,12 @@
       "side": "CT",
       "site": null,
       "callout": "Donut stack",
-      "description": "Deny donut, punish A hits.",
+      "description": "Two live inside donut. Deny the mid-to-A tunnel outright.",
       "tasks": [
-        "2–3 A/donut",
-        "1 mid",
-        "1 B",
-        "Util donut early"
+        "2 inside donut, 1 A site",
+        "1 mid, 1 B",
+        "Util donut early, don't peek out",
+        "Fall to A site together if donut breaks"
       ],
       "rounds": [
         "full"
@@ -2480,43 +2547,6 @@
       "times_used": 0,
       "last_used": null,
       "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "owner_user_id": null,
-      "team_id": null,
-      "source": "system-seed"
-    },
-    {
-      "id": "c566c350-f094-4055-99b9-36464b934883",
-      "map": "Mirage",
-      "side": "T",
-      "site": "b",
-      "callout": "Fast B",
-      "description": "Quick B: market window smoke + apps entry. Lighter than full Apps B.",
-      "tasks": [
-        "Smoke market window",
-        "Flash site from apps",
-        "Plant for retake, hold apps/short"
-      ],
-      "rounds": [
-        "full",
-        "force"
-      ],
-      "status": "ready",
-      "links": [
-        {
-          "label": "Smoke: Market window",
-          "url": "https://csnades.gg/mirage/smokes/market-window-from-back-alley"
-        },
-        {
-          "label": "Flash: B site",
-          "url": "https://csnades.gg/mirage/flashbangs/b-site-from-apts"
-        }
-      ],
-      "level": 9,
-      "wins": 0,
-      "losses": 0,
-      "times_used": 0,
-      "last_used": null,
-      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2830,11 +2860,11 @@
       "map": "Ancient",
       "side": "T",
       "site": "a",
-      "callout": "Cave split",
-      "description": "Cave + A main split.",
+      "callout": "Donut split",
+      "description": "Donut/short + A main split.",
       "tasks": [
-        "Smoke cave lane",
-        "2 cave, 3 main",
+        "Smoke temple, smoke deep donut",
+        "2 through donut, 3 A main",
         "Touch site together"
       ],
       "rounds": [
@@ -2842,10 +2872,6 @@
       ],
       "status": "ready",
       "links": [
-        {
-          "label": "Smoke: Cave",
-          "url": "https://csnades.gg/ancient/smokes/cave-from-ruins"
-        },
         {
           "label": "Smoke: Temple",
           "url": "https://csnades.gg/ancient/smokes/temple-from-outside-a-b"

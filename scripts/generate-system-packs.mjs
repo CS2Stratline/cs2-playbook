@@ -17,9 +17,35 @@ const prevStratIdByKey = Object.fromEntries(
     return [`${pack?.slug || ""}|${s.map}|${s.side}|${s.callout}`, s.id];
   })
 );
+/** Renames / splits that should keep the previous UUID when callout text changes. */
+const STRAT_ID_ALIASES = {
+  "pro-structure|Ancient|T|Donut split": "pro-structure|Ancient|T|Cave split",
+  "essentials-pug|Nuke|CT|Anti-eco A": "essentials-pug|Nuke|CT|Anti-eco stack",
+};
+/** Pin UUIDs for newly inserted catalog cards. */
+const FIXED_STRAT_IDS = {
+  "essentials-pug|Nuke|CT|Anti-eco B": "682bdfb8-60b6-4ca6-aa23-6ec931033eec",
+};
+/** Force pack tier for content-review overrides (slug of destination pack). */
+const PACK_OVERRIDES = {
+  "Mirage|T|Fast B": "pug",
+  "Mirage|CT|Ramp hold": "pug",
+};
+/** Force FACEIT level when estimateLevel would drift. */
+const LEVEL_OVERRIDES = {
+  "Mirage|T|Fast B": 3,
+  "Mirage|CT|Ramp hold": 3,
+};
 const uid = () => randomUUID();
 const packId = (slug) => prevPackIdBySlug[slug] || uid();
-const stratId = (slug, s) => prevStratIdByKey[`${slug}|${s.map}|${s.side}|${(s.callout || "").trim()}`] || uid();
+const stratId = (slug, s) => {
+  const key = `${slug}|${s.map}|${s.side}|${(s.callout || "").trim()}`;
+  if (FIXED_STRAT_IDS[key]) return FIXED_STRAT_IDS[key];
+  if (prevStratIdByKey[key]) return prevStratIdByKey[key];
+  const alias = STRAT_ID_ALIASES[key];
+  if (alias && prevStratIdByKey[alias]) return prevStratIdByKey[alias];
+  return uid();
+};
 
 function estimateLevel(s, tier) {
   const callout = String(s.callout || "").toLowerCase();
@@ -57,7 +83,11 @@ function toStrat(s, tier = "five_stack", packSlug = "") {
     rounds: Array.isArray(s.rounds) ? s.rounds : [],
     status: s.status || "ready",
     links,
-    level: typeof s.level === "number" ? s.level : estimateLevel(s, tier),
+    level: (() => {
+      const key = `${s.map}|${s.side}|${(s.callout || "").trim()}`;
+      if (LEVEL_OVERRIDES[key] != null) return LEVEL_OVERRIDES[key];
+      return typeof s.level === "number" ? s.level : estimateLevel(s, tier);
+    })(),
     wins: 0,
     losses: 0,
     upvotes: 0,
@@ -69,6 +99,8 @@ function toStrat(s, tier = "five_stack", packSlug = "") {
 }
 
 function tierOf(s) {
+  const override = PACK_OVERRIDES[`${s.map}|${s.side}|${(s.callout || "").trim()}`];
+  if (override) return override;
   const blob = `${s.callout || ""} ${(s.tasks || []).join(" ")}`.toLowerCase();
   const rounds = s.rounds || [];
   if (/fake|split|retake|under split|four in market|pro/.test(blob)) return "pro";
@@ -130,12 +162,13 @@ for (const raw of starter.strats) {
 
 const extraCT = [
   { map: "Nuke", side: "CT", site: null, callout: "Heaven hold", description: "Strong heaven/hut, soft outside.", tasks: ["2 heaven/hut", "1 ramp", "1 outside", "1 secret watch"], rounds: [], status: "ready", links: [] },
-  { map: "Nuke", side: "CT", site: null, callout: "Anti-eco stack", description: "Stack likely hit site on their eco.", tasks: ["Stack predicted site", "Save util for entry", "Don't overpeek"], rounds: ["anti", "eco"], status: "ready", links: [] },
+  { map: "Nuke", side: "CT", site: "a", callout: "Anti-eco A", description: "Stack A on their eco. Let them walk into you.", tasks: ["2 heaven/hut, 2 A site", "1 ramp for info", "Save util for their entry", "No outside peeks"], rounds: ["anti", "eco"], status: "ready", links: [] },
+  { map: "Nuke", side: "CT", site: "b", callout: "Anti-eco B", description: "Stack B on their eco. Let them walk into you.", tasks: ["2 ramp/lower, 2 B site", "1 heaven for info", "Save util for their entry", "No early ramp peeks"], rounds: ["anti", "eco"], status: "ready", links: [] },
   { map: "Nuke", side: "CT", site: null, callout: "Retake A", description: "Group before swinging lower/heaven.", tasks: ["Stack 3+", "Util dark/site", "Swing heaven + ramp together"], rounds: ["full", "force", "anti"], status: "ready", links: [] },
   { map: "Mirage", side: "CT", site: null, callout: "Apps nade", description: "Deny early apps with utility.", tasks: ["Molly/HE apps early", "1 short 1 market", "Info mid"], rounds: ["full", "force"], status: "ready", links: [{ label: "Molly: Apps", url: "https://csnades.gg/mirage/molotovs/b-apts-from-b-site" }] },
   { map: "Dust II", side: "CT", site: null, callout: "Long nade", description: "Delay long with early util.", tasks: ["HE/molly long doors", "2 A long/pit", "Rotate on B sound"], rounds: ["full"], status: "ready", links: [] },
   { map: "Inferno", side: "CT", site: null, callout: "Apps watch", description: "Hold balcony/apps, soft banana.", tasks: ["2 A apps/balcony", "1 pit", "1 mid", "1 banana"], rounds: [], status: "ready", links: [] },
-  { map: "Ancient", side: "CT", site: null, callout: "Donut stack", description: "Deny donut, punish A hits.", tasks: ["2–3 A/donut", "1 mid", "1 B", "Util donut early"], rounds: ["full"], status: "ready", links: [] },
+  { map: "Ancient", side: "CT", site: null, callout: "Donut stack", description: "Two live inside donut. Deny the mid-to-A tunnel outright.", tasks: ["2 inside donut, 1 A site", "1 mid, 1 B", "Util donut early, don't peek out", "Fall to A site together if donut breaks"], rounds: ["full"], status: "ready", links: [] },
   { map: "Anubis", side: "CT", site: null, callout: "Water deny", description: "Nade water, hold heaven.", tasks: ["Utility water early", "2 A", "1 mid", "1 B"], rounds: ["full", "force"], status: "ready", links: [] },
   { map: "Cache", side: "CT", site: null, callout: "Mid control", description: "Press mid for info, soft sites.", tasks: ["2 mid", "1 A", "2 B soft", "Fall on execute"], rounds: ["full"], status: "ready", links: [] },
 ];
