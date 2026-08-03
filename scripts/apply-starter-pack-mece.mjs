@@ -135,7 +135,7 @@ for (const s of data.strats) {
 }
 
 const starter = data.packs.find((p) => p.id === FUND);
-if (!starter) throw new Error("Missing essentials-pug pack");
+if (!starter) throw new Error("Missing Starter Pack (former essentials-pug id)");
 starter.title = "Starter Pack";
 starter.description = "The default starter pack.";
 starter.slug = "starter-pack";

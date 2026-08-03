@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, StratVoteValue, UserSession } from "./types";
-import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
+import { catalogIdFromSource, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -40,7 +40,6 @@ type PlaybookState = {
   castVote: (strat: Strat, value: 1 | -1) => Promise<void>;
   addToPool: (catalogStrat: Strat, packId?: string) => Promise<void>;
   removeFromPool: (poolStratId: string) => Promise<void>;
-  addFundamentalsStarter: (map: string) => Promise<number>;
   createPrivatePack: (title: string, description?: string) => Promise<string>;
   renamePrivatePack: (packId: string, title: string, description?: string) => Promise<void>;
   deletePrivatePack: (packId: string) => Promise<void>;
@@ -98,15 +97,15 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         api.getSession(userId),
       ]);
       let nextStrats = s;
-      // Signed-in users get Starter pack auto-copied once so Match is ready
+      // Signed-in users get Starter Pack auto-copied once so Match is ready
       // immediately (same day-1 feel as guest packs — no shop gate).
-      if (usePersonalPool && !api.hasAutoSeededFundamentals(userId)) {
+      if (usePersonalPool && !api.hasAutoSeededStarterPack(userId)) {
         const mine = s.filter((row) => row.owner_user_id === userId);
         if (mine.length === 0) {
-          await api.ensureFundamentalsSeeded(userId, p);
+          await api.ensureStarterPackSeeded(userId, p);
           nextStrats = await api.listStrats();
         } else {
-          api.markAutoSeededFundamentals(userId);
+          api.markAutoSeededStarterPack(userId);
         }
       }
       setPacks(p);
@@ -400,20 +399,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     [userId, refresh]
   );
 
-  const addFundamentalsStarter = useCallback(
-    async (map: string) => {
-      let n = 0;
-      if (isAllMaps(map)) {
-        for (const m of MAPS) n += await api.addFundamentalsForMap(userId, m, packs);
-      } else {
-        n = await api.addFundamentalsForMap(userId, map, packs);
-      }
-      await refresh();
-      return n;
-    },
-    [userId, packs, refresh]
-  );
-
   const createPrivatePack = useCallback(
     async (title: string, description?: string) => {
       const id = await api.createPrivatePack(userId, {
@@ -467,7 +452,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     castVote,
     addToPool,
     removeFromPool,
-    addFundamentalsStarter,
     createPrivatePack,
     renamePrivatePack,
     deletePrivatePack,

@@ -34,10 +34,6 @@ export function isMemePack(pack: Pick<Pack, "slug"> | undefined | null): boolean
   return pack?.slug === "meme-strats";
 }
 
-export function isStarterPack(pack: Pick<Pack, "slug"> | undefined | null): boolean {
-  return pack?.slug === "starter-pack" || pack?.slug === "essentials-pug";
-}
-
 export type Strat = {
   id: string;
   pack_id: string;
@@ -118,12 +114,6 @@ export const ALL_MAPS = "all";
 export function isAllMaps(map: string | null | undefined): boolean {
   return map === ALL_MAPS;
 }
-
-export const TIER_LABEL: Record<PackTier, string> = {
-  pug: "Starter Pack",
-  five_stack: "Starter Pack",
-  pro: "Advanced",
-};
 
 /** Advanced (pro) packs stay locked until premium is wired up. */
 export const PREMIUM_UNLOCKED = false;
