@@ -11,7 +11,7 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
+import { MAPS, isAllMaps, isCommunityStrat, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -30,12 +30,12 @@ import {
   type StratBuild,
 } from "../lib/stratSteps";
 
-type Tab = "catalog" | "pool";
+type Tab = "catalog" | "pool" | "community";
 
 export function BookScreen() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userId, canEditShared } = useAuth();
+  const { userId, canEditShared, isPermanent, mode, supabaseReady } = useAuth();
   const {
     packs,
     isFavorite,
@@ -48,6 +48,7 @@ export function BookScreen() {
     enabledStrats,
     usePersonalPool,
     catalogStrats,
+    communityStrats,
     myPoolStrats,
     myPrivatePacks,
     defaultPackId,
@@ -69,6 +70,7 @@ export function BookScreen() {
 
   useEffect(() => {
     if (usePersonalPool) setTab("pool");
+    else setTab("catalog");
   }, [usePersonalPool]);
 
   useEffect(() => {
@@ -90,6 +92,8 @@ export function BookScreen() {
     status: "ready" as "ready" | "practice",
     level: "" as string,
     packId: "" as string,
+    /** Share to Community by default; toggle on for private-only. */
+    isPrivate: false,
   });
   const allMaps = isAllMaps(session.selected_map);
 
@@ -105,6 +109,7 @@ export function BookScreen() {
       status: s.status,
       level: String(s.level || ""),
       packId: s.pack_id,
+      isPrivate: s.is_private ?? true,
     });
     setSaveError("");
     setShowForm(true);
@@ -146,6 +151,17 @@ export function BookScreen() {
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
   }, [catalogStrats, packs, session.selected_map, session.selected_side, query]);
 
+  const communityList = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return communityStrats
+      .filter((s) => {
+        if (s.side !== session.selected_side) return false;
+        if (!isAllMaps(session.selected_map) && s.map !== session.selected_map) return false;
+        return true;
+      })
+      .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
+  }, [communityStrats, session.selected_map, session.selected_side, query]);
+
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
     // Guest / local: enabledStrats already includes privately created strats.
@@ -159,7 +175,8 @@ export function BookScreen() {
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
   }, [usePersonalPool, myPoolStrats, enabledStrats, session.selected_map, session.selected_side, query]);
 
-  const displayList = usePersonalPool && tab === "catalog" ? catalogList : poolList;
+  const displayList =
+    tab === "community" ? communityList : tab === "catalog" ? catalogList : poolList;
 
   const formMap = allMaps ? form.map : session.selected_map;
   const formLanes = useMemo(() => lanesForMap(formMap), [formMap]);
@@ -258,6 +275,11 @@ export function BookScreen() {
           level: Number.isFinite(levelNum) ? levelNum : editing.level,
         });
       } else {
+        // Public Community saves need a permanent account in cloud mode.
+        if (!form.isPrivate && mode === "cloud" && supabaseReady && !isPermanent) {
+          setSaveError("Sign in to share a call with Community (or mark it Private).");
+          return;
+        }
         const packId = await resolveSavePackId();
         await upsertPrivateStrat(userId, packId, {
           id: editing?.id,
@@ -267,8 +289,9 @@ export function BookScreen() {
           status: form.status,
           links,
           level: Number.isFinite(levelNum) ? levelNum : undefined,
+          is_private: form.isPrivate,
         });
-        setTab("pool");
+        setTab(form.isPrivate ? "pool" : "community");
       }
       setShowForm(false);
       setEditing(null);
@@ -452,44 +475,56 @@ export function BookScreen() {
         )}
       </div>
 
-      {usePersonalPool && (
-        <div className="panel" style={{ paddingBottom: 10 }}>
-          <p className="eyebrow">My packs</p>
-          <div className="row">
+      <div className="panel" style={{ paddingBottom: 10 }}>
+        <p className="eyebrow">Browse</p>
+        <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
+          {usePersonalPool && (
             <button type="button" className={`pill ${tab === "pool" ? "active" : ""}`} onClick={() => setTab("pool")}>
-              Saved · {myPoolStrats.length}
+              My packs · {myPoolStrats.length}
             </button>
-            <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
-              Add more
-            </button>
-          </div>
-          {tab === "catalog" && myPrivatePacks.length > 0 && (
-            <select
-              className="input"
-              style={{ marginTop: 10, marginBottom: 0 }}
-              aria-label="Add catalog strats to pack"
-              value={
-                myPrivatePacks.some((p) => p.id === catalogTargetPack)
-                  ? catalogTargetPack
-                  : defaultPackId || myPrivatePacks[0].id
-              }
-              onChange={(e) => setCatalogTargetPack(e.target.value)}
-            >
-              {myPrivatePacks.map((p) => (
-                <option key={p.id} value={p.id}>
-                  Add into: {p.title}
-                </option>
-              ))}
-            </select>
           )}
+          <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
+            Catalog · {catalogList.length}
+          </button>
+          <button
+            type="button"
+            className={`pill ${tab === "community" ? "active" : ""}`}
+            onClick={() => setTab("community")}
+          >
+            Community · {communityList.length}
+          </button>
         </div>
-      )}
+        {(tab === "catalog" || tab === "community") && usePersonalPool && myPrivatePacks.length > 0 && (
+          <select
+            className="input"
+            style={{ marginTop: 10, marginBottom: 0 }}
+            aria-label="Add strats to pack"
+            value={
+              myPrivatePacks.some((p) => p.id === catalogTargetPack)
+                ? catalogTargetPack
+                : defaultPackId || myPrivatePacks[0].id
+            }
+            onChange={(e) => setCatalogTargetPack(e.target.value)}
+          >
+            {myPrivatePacks.map((p) => (
+              <option key={p.id} value={p.id}>
+                Add into: {p.title}
+              </option>
+            ))}
+          </select>
+        )}
+        {tab === "community" && (
+          <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
+            Player calls shared from the app. Add the ones you like into your packs.
+          </p>
+        )}
+      </div>
 
       <div className="panel">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <p className="eyebrow">
-              {usePersonalPool ? (tab === "catalog" ? "Add more" : "Saved") : "Browse"}
+              {tab === "community" ? "Community" : tab === "catalog" ? "Catalog" : usePersonalPool ? "Saved" : "Browse"}
             </p>
             <h2 className="h2 h2-map" style={{ fontSize: 24 }}>
               {!allMaps && <MapLogo map={session.selected_map} size={26} />}
@@ -500,29 +535,28 @@ export function BookScreen() {
               </span>
             </h2>
           </div>
-          {tab === "pool" && (
-            <button
-              type="button"
-              className="btn-ghost"
-              onClick={() => {
-                setEditing(null);
-                setForm({
-                  map: allMaps ? "Mirage" : session.selected_map,
-                  callout: "",
-                  description: "",
-                  build: applyTemplate("execute", session.selected_side),
-                  site: "default",
-                  rounds: "",
-                  status: "ready",
-                  level: "",
-                  packId: defaultPackId || myPrivatePacks[0]?.id || "",
-                });
-                setShowForm(true);
-              }}
-            >
-              <Plus size={14} /> New
-            </button>
-          )}
+          <button
+            type="button"
+            className="btn-ghost"
+            onClick={() => {
+              setEditing(null);
+              setForm({
+                map: allMaps ? "Mirage" : session.selected_map,
+                callout: "",
+                description: "",
+                build: applyTemplate("execute", session.selected_side),
+                site: "default",
+                rounds: "",
+                status: "ready",
+                level: "",
+                packId: defaultPackId || myPrivatePacks[0]?.id || "",
+                isPrivate: false,
+              });
+              setShowForm(true);
+            }}
+          >
+            <Plus size={14} /> New
+          </button>
         </div>
         <input
           className="input"
@@ -572,6 +606,40 @@ export function BookScreen() {
                 </option>
               ))}
             </select>
+          )}
+          {!(editing && canEditShared && sharedStratTargetId(editing)) && (
+            <div
+              className="row"
+              style={{
+                marginBottom: 10,
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 8,
+              }}
+            >
+              <div style={{ minWidth: 0 }}>
+                <strong style={{ fontSize: 13 }}>Private</strong>
+                <p className="muted" style={{ fontSize: 11, marginTop: 2 }}>
+                  {form.isPrivate ? "Only in your packs." : "Shared in Community for others to use."}
+                </p>
+              </div>
+              <button
+                type="button"
+                className={`pill ${form.isPrivate ? "active" : ""}`}
+                aria-pressed={form.isPrivate}
+                onClick={() => setForm({ ...form, isPrivate: !form.isPrivate })}
+              >
+                {form.isPrivate ? "On" : "Off"}
+              </button>
+            </div>
+          )}
+          {!form.isPrivate && mode === "cloud" && supabaseReady && !isPermanent && (
+            <p className="muted" style={{ fontSize: 11, marginBottom: 10 }}>
+              <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
+                Sign in
+              </button>{" "}
+              to share with Community — or turn Private on.
+            </p>
           )}
           <input
             className="input"
@@ -642,13 +710,15 @@ export function BookScreen() {
 
       {groups.length === 0 ? (
         <div className="empty">
-          {tab === "pool" && usePersonalPool
-            ? allMaps
-              ? `Nothing for ${session.selected_side} yet.`
-              : `Nothing for ${session.selected_map} ${session.selected_side} yet.`
-            : tab === "catalog"
-              ? "Nothing left for this selection."
-              : "Nothing for this selection."}
+          {tab === "community"
+            ? "No community calls for this selection yet — be the first."
+            : tab === "pool" && usePersonalPool
+              ? allMaps
+                ? `Nothing for ${session.selected_side} yet.`
+                : `Nothing for ${session.selected_map} ${session.selected_side} yet.`
+              : tab === "catalog"
+                ? "Nothing left for this selection."
+                : "Nothing for this selection."}
         </div>
       ) : (
         groups.map((g) => (
@@ -667,11 +737,12 @@ export function BookScreen() {
                   ? catalogTargetPack
                   : defaultPackId || myPrivatePacks[0]?.id;
               const inPool = usePersonalPool
-                ? !!findCopy(myPoolStrats, s.id, tab === "catalog" ? targetPack : undefined)
+                ? !!findCopy(myPoolStrats, s.id, tab === "catalog" || tab === "community" ? targetPack : undefined)
                 : false;
-              const showingCatalog = tab === "catalog";
+              const showingShop = tab === "catalog" || tab === "community";
+              const community = isCommunityStrat(s) || tab === "community";
               return (
-                <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && showingCatalog ? 0.75 : 1 }}>
+                <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && tab === "catalog" ? 0.75 : 1 }}>
                   <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
@@ -685,7 +756,7 @@ export function BookScreen() {
                             onClick={() => void toggleFavorite(s.id)}
                             aria-label={isFavorite(s.id) ? "Unpin favorite" : "Add to pack"}
                             title={
-                              tab === "catalog" && !inPool && !isFavorite(s.id)
+                              showingShop && !inPool && !isFavorite(s.id)
                                 ? "Add to pack"
                                 : undefined
                             }
@@ -710,10 +781,17 @@ export function BookScreen() {
                       />
                       <span>
                         Lv {s.level || "?"}
-                        {pack ? ` · ${pack.title}` : ""}
+                        {community
+                          ? s.owner_user_id === userId
+                            ? " · Community · You"
+                            : " · Community"
+                          : pack
+                            ? ` · ${pack.title}`
+                            : ""}
+                        {s.owner_user_id === userId && s.is_private ? " · Private" : ""}
                         {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
                         {locked ? " · Locked" : ""}
-                        {usePersonalPool && tab === "catalog" && inPool ? " · In pack" : ""}
+                        {usePersonalPool && showingShop && inPool ? " · In pack" : ""}
                       </span>
                     </div>
                   </button>
@@ -733,11 +811,11 @@ export function BookScreen() {
                         accent={session.selected_side === "CT" ? "ct" : ""}
                       />
                       <div className="row" style={{ marginTop: 8 }}>
-                        {usePersonalPool && tab === "catalog" && (
+                        {usePersonalPool && showingShop && (
                           <button
                             type="button"
                             className="btn-ghost"
-                            disabled={locked || busyId === s.id || inPool}
+                            disabled={locked || busyId === s.id || inPool || s.owner_user_id === userId}
                             onClick={async () => {
                               setBusyId(s.id);
                               try {
@@ -747,7 +825,13 @@ export function BookScreen() {
                               }
                             }}
                           >
-                            {locked ? "Locked" : inPool ? "In pack" : "Add to pack"}
+                            {locked
+                              ? "Locked"
+                              : s.owner_user_id === userId
+                                ? "Yours"
+                                : inPool
+                                  ? "In pack"
+                                  : "Add to pack"}
                           </button>
                         )}
                         {canEditStrat(s) && (
