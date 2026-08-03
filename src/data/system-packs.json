@@ -13,7 +13,7 @@
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "slug": "starter-pack",
       "title": "Starter Pack",
-      "description": "Day-1 calls for every map.",
+      "description": "The default starter pack.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,

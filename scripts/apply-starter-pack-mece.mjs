@@ -137,7 +137,7 @@ for (const s of data.strats) {
 const starter = data.packs.find((p) => p.id === FUND);
 if (!starter) throw new Error("Missing essentials-pug pack");
 starter.title = "Starter Pack";
-starter.description = "Day-1 calls for every map.";
+starter.description = "The default starter pack.";
 starter.slug = "starter-pack";
 // Keep same id so cloud subscriptions still resolve.
 
