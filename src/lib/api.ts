@@ -94,17 +94,21 @@ function seedStore(): Store {
   };
 }
 
-/** Replace system packs/strats from the bundled seed; keep favorites, session, custom strats. */
+/** Replace system packs/strats from the bundled seed; keep favorites, session, custom strats + private packs. */
 function refreshSystemSeed(store: Store): Store {
   const fresh = seedStore();
   const customStrats = store.strats.filter((s) => s.source !== "system-seed");
+  const privatePacks = (store.packs || []).filter((p) => p.visibility === "private");
   const subscriptions = { ...fresh.subscriptions, ...store.subscriptions };
   for (const p of fresh.packs) {
     if (subscriptions[p.id] === undefined) subscriptions[p.id] = isPackDefaultEnabled(p);
   }
+  for (const p of privatePacks) {
+    if (subscriptions[p.id] === undefined) subscriptions[p.id] = true;
+  }
   return {
     ...store,
-    packs: fresh.packs,
+    packs: [...fresh.packs, ...privatePacks],
     strats: [...fresh.strats, ...customStrats],
     subscriptions,
     seedRevision: SEED_REVISION,
@@ -474,7 +478,9 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
 
   if (!isCloudMode()) {
     if (cleaned.id) {
-      memory.strats = memory.strats.map((s) => (s.id === cleaned.id ? ({ ...s, ...cleaned } as Strat) : s));
+      memory.strats = memory.strats.map((s) =>
+        s.id === cleaned.id ? ({ ...s, ...cleaned, pack_id: packId } as Strat) : s
+      );
     } else {
       const id = crypto.randomUUID();
       const level =
@@ -541,14 +547,20 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
 }
 
 export async function createPrivatePack(userId: string, input: { title: string; description: string; tier: Pack["tier"] }) {
+  const title = String(input.title || "").trim().slice(0, 40);
+  if (!title) throw new Error("Pack needs a name");
+  const existing = (await listPacks()).filter((p) => p.visibility === "private" && p.owner_user_id === userId);
+  if (existing.length >= MAX_PRIVATE_PACKS) {
+    throw new Error(`Max ${MAX_PRIVATE_PACKS} personal packs`);
+  }
   const slug = `user-${userId.slice(0, 8)}-${Date.now()}`;
   if (!isCloudMode()) {
     const id = crypto.randomUUID();
     memory.packs.push({
       id,
       slug,
-      title: input.title,
-      description: input.description,
+      title,
+      description: String(input.description || "").trim().slice(0, 120),
       tier: input.tier,
       visibility: "private",
       owner_user_id: userId,
@@ -563,8 +575,8 @@ export async function createPrivatePack(userId: string, input: { title: string; 
     .from("packs")
     .insert({
       slug,
-      title: input.title,
-      description: input.description,
+      title,
+      description: String(input.description || "").trim().slice(0, 120),
       tier: input.tier,
       visibility: "private",
       owner_user_id: userId,
@@ -576,11 +588,37 @@ export async function createPrivatePack(userId: string, input: { title: string; 
   return data.id as string;
 }
 
-/** One private pack per user — My pool. */
-export async function ensureUserPrivatePack(userId: string): Promise<string> {
+/** Soft cap — Match toggles stay scannable. */
+export const MAX_PRIVATE_PACKS = 8;
+
+/** Private packs owned by this user, oldest first (stable default = first). */
+export async function listUserPrivatePacks(userId: string): Promise<Pack[]> {
   const packs = await listPacks();
-  const existing = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
-  if (existing) return existing.id;
+  return packs
+    .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+/** Default personal pack for catalog stars / fundamentals seed / New strat fallback. */
+export function defaultPrivatePackId(packs: Pack[], userId: string): string | null {
+  const mine = packs
+    .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
+    .sort((a, b) => {
+      // Prefer the original "My pool" label, then stable slug order.
+      if (a.title === "My pool" && b.title !== "My pool") return -1;
+      if (b.title === "My pool" && a.title !== "My pool") return 1;
+      return a.slug.localeCompare(b.slug);
+    });
+  return mine[0]?.id || null;
+}
+
+/** Ensure at least one private pack exists (bootstrap "My pool"). */
+export async function ensureUserPrivatePack(userId: string): Promise<string> {
+  const existing = await listUserPrivatePacks(userId);
+  if (existing.length) {
+    const preferred = existing.find((p) => p.title === "My pool") || existing[0];
+    return preferred.id;
+  }
   return createPrivatePack(userId, {
     title: "My pool",
     description: "Strats you shopped or created",
@@ -588,19 +626,81 @@ export async function ensureUserPrivatePack(userId: string): Promise<string> {
   });
 }
 
-export function findPoolCopy(poolStrats: Strat[], catalogStratId: string): Strat | undefined {
-  const key = catalogSourceKey(catalogStratId);
-  return poolStrats.find((s) => s.source === key);
+export async function renamePrivatePack(
+  userId: string,
+  packId: string,
+  input: { title: string; description?: string }
+): Promise<void> {
+  const title = String(input.title || "").trim().slice(0, 40);
+  if (!title) throw new Error("Pack needs a name");
+  const packs = await listPacks();
+  const pack = packs.find((p) => p.id === packId);
+  if (!pack || pack.visibility !== "private" || pack.owner_user_id !== userId) {
+    throw new Error("Pack not found");
+  }
+  const description =
+    input.description !== undefined
+      ? String(input.description || "").trim().slice(0, 120)
+      : pack.description;
+  if (!isCloudMode()) {
+    memory.packs = memory.packs.map((p) => (p.id === packId ? { ...p, title, description } : p));
+    saveLocal(memory);
+    return;
+  }
+  const { error } = await supabase!
+    .from("packs")
+    .update({ title, description })
+    .eq("id", packId)
+    .eq("owner_user_id", userId)
+    .eq("visibility", "private");
+  if (error) throw error;
 }
 
-/** Copy a catalog strat into the user's private pack (idempotent). */
-export async function addCatalogStratToPool(userId: string, catalog: Strat, packs: Pack[]): Promise<string> {
+/** Deletes a personal pack and its strats (FK cascade). Refuses to delete the last one. */
+export async function deletePrivatePack(userId: string, packId: string): Promise<void> {
+  const mine = await listUserPrivatePacks(userId);
+  if (mine.length <= 1) throw new Error("Keep at least one personal pack");
+  const pack = mine.find((p) => p.id === packId);
+  if (!pack) throw new Error("Pack not found");
+  if (!isCloudMode()) {
+    memory.strats = memory.strats.filter((s) => s.pack_id !== packId);
+    memory.packs = memory.packs.filter((p) => p.id !== packId);
+    delete memory.subscriptions[packId];
+    memory.favorites = memory.favorites.filter((id) => memory.strats.some((s) => s.id === id));
+    saveLocal(memory);
+    return;
+  }
+  const { error } = await supabase!
+    .from("packs")
+    .delete()
+    .eq("id", packId)
+    .eq("owner_user_id", userId)
+    .eq("visibility", "private");
+  if (error) throw error;
+}
+
+export function findPoolCopy(poolStrats: Strat[], catalogStratId: string, packId?: string): Strat | undefined {
+  const key = catalogSourceKey(catalogStratId);
+  return poolStrats.find((s) => s.source === key && (!packId || s.pack_id === packId));
+}
+
+/** Copy a catalog strat into a personal pack (idempotent per pack). */
+export async function addCatalogStratToPool(
+  userId: string,
+  catalog: Strat,
+  packs: Pack[],
+  targetPackId?: string
+): Promise<string> {
   const packMeta = packs.find((p) => p.id === catalog.pack_id);
   if (isPackLocked(packMeta)) throw new Error("This level is locked.");
-  const packId = await ensureUserPrivatePack(userId);
+  const packId = targetPackId || defaultPrivatePackId(packs, userId) || (await ensureUserPrivatePack(userId));
+  const target = packs.find((p) => p.id === packId);
+  if (!target || target.visibility !== "private" || target.owner_user_id !== userId) {
+    throw new Error("Pick one of your packs");
+  }
   const all = await listStrats();
   const mine = all.filter((s) => s.owner_user_id === userId);
-  const existing = findPoolCopy(mine, catalog.id);
+  const existing = findPoolCopy(mine, catalog.id, packId);
   if (existing) return existing.id;
 
   const source = catalogSourceKey(catalog.id);
@@ -654,9 +754,10 @@ export async function addCatalogStratToPool(userId: string, catalog: Strat, pack
   return String(data.id);
 }
 
-/** Add all Fundamentals (pug) catalog strats for a map into My pool. */
+/** Add all Fundamentals (pug) catalog strats for a map into the default personal pack. */
 export async function addFundamentalsForMap(userId: string, map: string, packs: Pack[]): Promise<number> {
   const all = await listStrats();
+  const packId = defaultPrivatePackId(packs, userId) || (await ensureUserPrivatePack(userId));
   const mine = all.filter((s) => s.owner_user_id === userId);
   const fundamentals = all.filter((s) => {
     const pack = packs.find((p) => p.id === s.pack_id);
@@ -664,9 +765,9 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
   });
   let added = 0;
   for (const s of fundamentals) {
-    if (findPoolCopy(mine, s.id)) continue;
-    await addCatalogStratToPool(userId, s, packs);
-    mine.push({ ...s, id: "pending", owner_user_id: userId, source: catalogSourceKey(s.id) });
+    if (findPoolCopy(mine, s.id, packId)) continue;
+    await addCatalogStratToPool(userId, s, packs, packId);
+    mine.push({ ...s, id: "pending", pack_id: packId, owner_user_id: userId, source: catalogSourceKey(s.id) });
     added += 1;
   }
   return added;
