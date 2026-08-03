@@ -34,7 +34,9 @@ type PlaybookState = {
   getVote: (strat: Strat) => StratVoteValue;
   /** Net score (up − down) for the shared vote target. */
   getVoteScore: (strat: Strat) => { upvotes: number; downvotes: number; score: number };
-  /** Toggle upvote (1) or downvote (−1); same click again clears. */
+  /** True when signed into cloud — community votes require auth. */
+  canVote: boolean;
+  /** Toggle upvote (1) or downvote (−1); same click again clears. No-op unless canVote. */
   castVote: (strat: Strat, value: 1 | -1) => Promise<void>;
   addToPool: (catalogStrat: Strat, packId?: string) => Promise<void>;
   removeFromPool: (poolStratId: string) => Promise<void>;
@@ -52,6 +54,8 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   // Local demo uses the signed-in pack UX so personal packs are testable without Supabase.
   // Cloud guests (no session) stay on system pack toggles only.
   const usePersonalPool = mode === "local" || (mode === "cloud" && !!user);
+  /** Community votes only when signed into Supabase — never localStorage. */
+  const canVote = mode === "cloud" && !!user;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [packs, setPacks] = useState<Pack[]>([]);
@@ -353,6 +357,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
 
   const castVote = useCallback(
     async (strat: Strat, value: 1 | -1) => {
+      if (!canVote) return;
       const target = api.voteTargetId(strat);
       try {
         const result = await api.setStratVote(userId, target, value);
@@ -371,7 +376,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         // Keep UI stable if cloud vote fails (e.g. migration not applied yet).
       }
     },
-    [userId]
+    [userId, canVote]
   );
 
   const addToPool = useCallback(
@@ -458,6 +463,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     toggleFavorite,
     getVote,
     getVoteScore,
+    canVote,
     castVote,
     addToPool,
     removeFromPool,
