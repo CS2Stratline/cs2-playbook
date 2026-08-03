@@ -1,9 +1,9 @@
 # Roulette catalog inventory
 
 Source: classic Strat Roulette catalog (`src/data/strat-roulette.json`).
-These calls belong in Roulette mode only — never in the Match Meme pack.
+These calls belong in Roulette mode only. Never put them in the Match Meme pack.
 
-## Generic (reg) — 87
+## Generic (reg): 87
 - Kill-anthropist
 - Stand Still
 - Limit One
@@ -92,7 +92,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - Armour Specific
 - Nascar
 
-## CT-side — 28
+## CT-side: 28
 - CT Specific
 - CT Crickets
 - SpecOps
@@ -122,7 +122,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - OIIILLLLL!
 - Aggresive Government
 
-## T-side — 28
+## T-side: 28
 - T Specific
 - T Crickets
 - Afterplant
@@ -152,7 +152,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - Plan #1
 - Plan #2
 
-## Dust II — 6
+## Dust II: 6
 - CT: Mid Rush
 - CT: Spawn Killer
 - CT: Home of the Silvers
@@ -160,7 +160,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - T: Plan #1
 - T: Plan #2
 
-## Mirage — 6
+## Mirage: 6
 - CT: 5 Man Sniper
 - CT: 5 Man Truck
 - CT: 5 Man Palace
@@ -168,7 +168,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - T: Boosted
 - T: Plan #1
 
-## Inferno — 6
+## Inferno: 6
 - CT: Banana Bomb
 - CT: Party Pit
 - CT: Chapel Time
@@ -176,7 +176,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - T: Plan #1
 - T: 4,000,000 IQ
 
-## Nuke — 6
+## Nuke: 6
 - CT: Boosted
 - CT: Heaven Sent
 - CT: Vent Repair
@@ -184,7 +184,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - T: Plan #1
 - T: Plan #2
 
-## Cache — 6
+## Cache: 6
 - CT: 5 Man Mid
 - CT: Operation Angels
 - CT: Sneaky Squeaky
@@ -192,7 +192,7 @@ These calls belong in Roulette mode only — never in the Match Meme pack.
 - T: Squeaky
 - T: Vent Repair
 
-## Ancient — 0
+## Ancient: 0
 
-## Anubis — 0
+## Anubis: 0
 

@@ -70,7 +70,7 @@ export function MatchScreen() {
   const needsMap = isAllMaps(session.selected_map);
   const siteFilters = useMemo(() => matchSiteFilters(session.selected_map), [session.selected_map]);
 
-  /** Compact Match pool switches — personal packs + unlocked system packs. Only On packs feed the call list. */
+  /** Compact Match pool switches: personal packs + unlocked system packs. Only On packs feed the call list. */
   const matchPacks = useMemo(() => {
     const system = packs
       .filter((p) => p.visibility === "system" && !isPackLocked(p))
@@ -160,12 +160,12 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterKey]);
 
-  // Guests have no favorites — clear the filter if session mode changes.
+  // Guests have no favorites. Clear the filter if session mode changes.
   useEffect(() => {
     if (!usePersonalPool) setFavoritesOnly(false);
   }, [usePersonalPool]);
 
-  // Retired round filter — normalize old sessions.
+  // Retired round filter. Normalize old sessions.
   useEffect(() => {
     if (session.round_filter === "anti") void setSession({ round_filter: "all" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -595,7 +595,7 @@ export function MatchScreen() {
                 )}
                 <input
                   className="input"
-                  placeholder="Title — e.g. Palace pop"
+                  placeholder="Title, e.g. Palace pop"
                   value={form.callout}
                   onChange={(e) => setForm({ ...form, callout: e.target.value })}
                 />

@@ -693,12 +693,12 @@ export function BookScreen() {
               <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
                 Sign in
               </button>{" "}
-              to share with Community — or turn Private on.
+              to share with Community, or turn Private on.
             </p>
           )}
           <input
             className="input"
-            placeholder="Title — e.g. Palace pop"
+            placeholder="Title, e.g. Palace pop"
             value={form.callout}
             onChange={(e) => setForm({ ...form, callout: e.target.value })}
           />
@@ -730,7 +730,7 @@ export function BookScreen() {
           )}
           <div style={{ marginBottom: 10 }}>
             <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
-              When to call this — leave none for any round
+              When to call this. Leave none for any round.
             </p>
             <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
               {ROUND_OPTIONS.map((r) => (
@@ -755,7 +755,7 @@ export function BookScreen() {
             aria-label="Execution difficulty 1 to 10"
           />
           <p className="muted" style={{ fontSize: 11, marginTop: -6, marginBottom: 10 }}>
-            How hard the call is to run in freeze time — not player Elo. Blank = auto.
+            How hard the call is to run in freeze time, not player Elo. Blank = auto.
           </p>
           {saveError && <p className="banner" style={{ color: "var(--warn)" }}>{saveError}</p>}
           <div className="row">
@@ -780,7 +780,7 @@ export function BookScreen() {
       {groups.length === 0 ? (
         <div className="empty">
           {tab === "community"
-            ? "No community calls for this selection yet — be the first."
+            ? "No community calls for this selection yet. Be the first."
             : tab === "pool" && usePersonalPool
               ? allMaps
                 ? `Nothing for ${session.selected_side} yet.`

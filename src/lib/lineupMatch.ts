@@ -210,7 +210,7 @@ function bestTypeForLanding(blob: string, landing: string, globalTypes: string[]
   return "smoke";
 }
 
-/** Only lines that mention utility — avoids matching hold callouts like "heaven" / "forklift". */
+/** Only lines that mention utility. Avoids matching hold callouts like "heaven" / "forklift". */
 function utilLines(blob: string) {
   return blob
     .split(/\n/)
@@ -267,7 +267,7 @@ export function suggestLineupLinks(
   const globalTypes = detectTypes(utilBlob);
 
   const team = (strat.side || "").toLowerCase();
-  // Hard filter by side — never suggest T execute smokes on CT holds (or vice versa).
+  // Hard filter by side. Never suggest T execute smokes on CT holds (or vice versa).
   const pool = catalog.filter((n) => {
     if (!(n.map === mapSlug || norm(n.map) === mapSlug)) return false;
     if (team !== "t" && team !== "ct") return true;

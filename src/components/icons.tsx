@@ -147,7 +147,7 @@ export function NadeIcon({ type, size = 12 }: { type: NadeKind | string | null |
   }
 }
 
-/** Compact map marks — original glyphs, not Valve art */
+/** Compact map marks: original glyphs, not Valve art */
 export function MapIcon({ map, size = 14 }: { map: string; size?: number }) {
   const common = { size, strokeWidth: 1.6 as const };
   switch (map) {
@@ -215,7 +215,7 @@ export function MapIcon({ map, size = 14 }: { map: string; size?: number }) {
   }
 }
 
-/** Bomb-site / filter icons — official CS map markers where available. */
+/** Bomb-site / filter icons: official CS map markers where available. */
 export function SiteIcon({ site, size = 12 }: { site: string; size?: number }) {
   const key =
     site === "a"
@@ -232,7 +232,7 @@ export function SiteIcon({ site, size = 12 }: { site: string; size?: number }) {
                 ? "all"
                 : null;
   if (key) return <CsIcon name={key} size={size} />;
-  // Other / uncategorized — letter badge
+  // Other / uncategorized: letter badge
   const label = site === "default" ? "O" : String(site).toUpperCase().slice(0, 1) || "?";
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" aria-hidden="true" focusable="false" className="site-icon">

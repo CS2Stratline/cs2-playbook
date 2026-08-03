@@ -97,7 +97,7 @@ export function SettingsScreen() {
       {isPermanent && (
         <div className="panel">
           <p className="eyebrow">Live call</p>
-          <p className="muted">Teammates see your current Match call — no login.</p>
+          <p className="muted">Teammates see your current Match call. No login needed.</p>
           <input className="input" readOnly value={liveUrl || (liveMsg ? "—" : "Creating link…")} onFocus={(e) => e.target.select()} />
           <div className="row">
             <button

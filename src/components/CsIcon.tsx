@@ -1,6 +1,6 @@
 import { iconUrl } from "../lib/icons";
 
-/** Valve silhouette icon — colored via `currentColor` + CSS mask. */
+/** Valve silhouette icon: colored via `currentColor` + CSS mask. */
 export function CsIcon({
   name,
   size = 16,

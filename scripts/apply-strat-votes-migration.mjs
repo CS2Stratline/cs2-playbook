@@ -3,8 +3,8 @@
  * Apply vote schema migrations + enable anonymous auth (for no-login voting).
  *
  * Requires:
- *   SUPABASE_ACCESS_TOKEN  — https://supabase.com/dashboard/account/tokens
- *   SUPABASE_PROJECT_REF   — optional; defaults from VITE_SUPABASE_URL
+ *   SUPABASE_ACCESS_TOKEN: https://supabase.com/dashboard/account/tokens
+ *   SUPABASE_PROJECT_REF: optional; defaults from VITE_SUPABASE_URL
  *
  * Usage:
  *   SUPABASE_ACCESS_TOKEN=sbp_... npm run migrate:votes
