@@ -8,7 +8,9 @@ Canonical identity for Stratline.
 |------|-----|
 | [stratline-brand-sheet.pdf](./stratline-brand-sheet.pdf) | Official brand profile (size ladder, lockup, construction, palette, type) |
 | [`/public/stratline-mark.svg`](../../public/stratline-mark.svg) | Bare list→play mark (in-app header) |
-| [`/public/favicon.svg`](../../public/favicon.svg) | Squircle favicon / apple-touch-icon |
+| [`/public/favicon.svg`](../../public/favicon.svg) | Squircle favicon (browsers) |
+| [`/public/apple-touch-icon.png`](../../public/apple-touch-icon.png) | iOS home-screen icon (180×180 PNG — iOS ignores SVG) |
+| [`/public/icon-192.png`](../../public/icon-192.png) / [`icon-512.png`](../../public/icon-512.png) | PWA / Android icons |
 
 SVGs in `public/` are the source of truth for shipping UI. The PDF is the human design reference — do not regenerate icons from a raster of the sheet; edit the SVGs.
 
@@ -38,7 +40,8 @@ Matches app CSS `--brand` / shell background.
 
 ## Usage
 
-- **Favicon / PWA:** squircle (`favicon.svg`)
+- **Favicon / browsers:** `favicon.svg` (squircle)
+- **iOS home screen:** `apple-touch-icon.png` (full-bleed PNG; Apple applies its own mask)
 - **Header lockup:** bare mark + **Stratline** (`BrandLockup`)
 - **Playbook** remains the in-app screen/tab name for the strat book — not the product wordmark
 - Do not use outline-on-white or glossy iOS-style tiles
