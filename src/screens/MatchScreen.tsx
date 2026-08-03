@@ -358,9 +358,16 @@ export function MatchScreen() {
                   type="button"
                   className={`pill ${on ? `active ${accent}` : ""}`}
                   onClick={() => {
-                    void setPackEnabled(p.id, !on);
-                    // Clearing is handled by the enabledStrats effect below when the
-                    // open call leaves the Match pool (covers catalog + pool copies).
+                    const nextOn = !on;
+                    void setPackEnabled(p.id, nextOn);
+                    // Clear immediately when turning Off a pack that owns the open call
+                    // (effect also clears when the pick leaves enabledStrats).
+                    if (!nextOn && session.current_pick_id) {
+                      const pick = enabledStrats.find((s) => s.id === session.current_pick_id);
+                      if (pick?.pack_id === p.id) {
+                        void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+                      }
+                    }
                   }}
                   aria-pressed={on}
                   title={p.description || p.title}
@@ -553,7 +560,13 @@ export function MatchScreen() {
                   <div className="meta">
                     {s.description.slice(0, 80)}
                     {s.description.length > 80 ? "…" : ""}
-                    {pack ? ` · ${pack.title}` : ""}
+                    {s.owner_user_id
+                      ? s.is_private
+                        ? " · Private"
+                        : " · Community"
+                      : pack
+                        ? ` · ${pack.title}`
+                        : ""}
                   </div>
                 </div>
               );
