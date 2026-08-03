@@ -39,6 +39,9 @@ export function StratTasks({
         const util = utilTagFromTask(row.task);
         return (
           <div key={i} className="task-row">
+            <span className="task-step-num" aria-hidden>
+              {i + 1}
+            </span>
             {util && <span className={`task-util ${nadeChipClass(util.kind)}`}>{util.label}</span>}
             <p className="task-line">{row.task}</p>
             {row.links.length > 0 && (

@@ -16,10 +16,17 @@ import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
+import { StratStepEditor } from "../components/StratStepEditor";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel, tierToFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
-import { linksToText, textToLinks } from "../lib/stratLinksText";
+import {
+  applyTemplate,
+  buildFromTasksLinks,
+  emptyStep,
+  tasksLinksFromBuild,
+  type StratBuild,
+} from "../lib/stratSteps";
 
 type Tab = "catalog" | "pool";
 
@@ -59,8 +66,7 @@ export function BookScreen() {
     map: "Mirage",
     callout: "",
     description: "",
-    tasks: "",
-    links: "",
+    build: { steps: [emptyStep()], extraLinks: [] as StratLink[] } as StratBuild,
     site: "default",
     rounds: "" as string,
     status: "ready" as "ready" | "practice",
@@ -74,8 +80,7 @@ export function BookScreen() {
       map: s.map,
       callout: s.callout,
       description: s.description,
-      tasks: s.tasks.join("\n"),
-      links: linksToText(s.links || []),
+      build: buildFromTasksLinks(s.tasks, s.links || []),
       site: s.site || "default",
       rounds: s.rounds.join(","),
       status: s.status,
@@ -84,12 +89,6 @@ export function BookScreen() {
     setSaveError("");
     setShowForm(true);
     setExpanded(s.id);
-  }
-
-  function addSuggestedLink(link: StratLink) {
-    const current = textToLinks(form.links);
-    if (current.some((l) => l.url === link.url)) return;
-    setForm({ ...form, links: linksToText([...current, link]) });
   }
 
   useEffect(() => {
@@ -154,11 +153,7 @@ export function BookScreen() {
     if (!showForm) return [] as StratLink[];
     const map = isAllMaps(session.selected_map) ? form.map : editing?.map || session.selected_map;
     if (!map || isAllMaps(map)) return [];
-    const tasks = form.tasks
-      .split("\n")
-      .map((t) => t.trim())
-      .filter(Boolean)
-      .slice(0, 5);
+    const { tasks, links: pinned } = tasksLinksFromBuild(form.build);
     const draft = {
       map,
       side: (editing?.side || session.selected_side) as Strat["side"],
@@ -166,7 +161,6 @@ export function BookScreen() {
       description: form.description.trim(),
       tasks,
     };
-    const pinned = textToLinks(form.links);
     return mergeSuggested(pinned, suggestLineupLinks(draft, NADE_CATALOG, { limit: 6 }), 6).suggested;
   }, [showForm, form, editing, session.selected_map, session.selected_side]);
 
@@ -204,11 +198,7 @@ export function BookScreen() {
 
   async function saveForm() {
     setSaveError("");
-    const tasks = form.tasks
-      .split("\n")
-      .map((t) => t.trim())
-      .filter(Boolean)
-      .slice(0, 5);
+    const { tasks, links: builtLinks } = tasksLinksFromBuild(form.build);
     const map = isAllMaps(session.selected_map) ? form.map : editing?.map || session.selected_map;
     if (!map || isAllMaps(map)) return;
     const side = editing?.side || session.selected_side;
@@ -226,7 +216,7 @@ export function BookScreen() {
           ? (form.site as Strat["site"])
           : "default"
         : null;
-    let links = textToLinks(form.links);
+    let links = builtLinks;
     // New strat with empty lineups: seed suggestions from tasks (editable after).
     if (!editing && !links.length) links = suggestLineupLinks(draft, NADE_CATALOG, { limit: 5 });
     const rounds = form.rounds
@@ -345,8 +335,7 @@ export function BookScreen() {
                   map: allMaps ? "Mirage" : session.selected_map,
                   callout: "",
                   description: "",
-                  tasks: "",
-                  links: "",
+                  build: applyTemplate("execute", session.selected_side),
                   site: "default",
                   rounds: "",
                   status: "ready",
@@ -402,35 +391,12 @@ export function BookScreen() {
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
-          <textarea
-            className="input"
-            rows={4}
-            placeholder={"Tasks — one per line (max 5)\nSmoke jungle\nFlash CT"}
-            value={form.tasks}
-            onChange={(e) => setForm({ ...form, tasks: e.target.value })}
+          <StratStepEditor
+            build={form.build}
+            onChange={(build) => setForm({ ...form, build })}
+            side={(editing?.side || session.selected_side) as "T" | "CT"}
+            suggestedLinks={formSuggestedLinks}
           />
-          <textarea
-            className="input"
-            rows={3}
-            placeholder={"Lineups — one per line\nSmoke: Jungle | https://…\nhttps://…"}
-            value={form.links}
-            onChange={(e) => setForm({ ...form, links: e.target.value })}
-          />
-          {formSuggestedLinks.length > 0 && (
-            <div className="row" style={{ marginBottom: 8, flexWrap: "wrap", gap: 6 }}>
-              {formSuggestedLinks.map((l) => (
-                <button
-                  key={l.url}
-                  type="button"
-                  className="btn-ghost"
-                  style={{ padding: "4px 8px", fontSize: 12 }}
-                  onClick={() => addSuggestedLink(l)}
-                >
-                  + {l.label}
-                </button>
-              ))}
-            </div>
-          )}
           {(editing?.side || session.selected_side) === "T" && (
             <select
               className="input"
@@ -445,19 +411,21 @@ export function BookScreen() {
               ))}
             </select>
           )}
-          <input
-            className="input"
-            placeholder="Rounds — full, force, eco (blank = all)"
-            value={form.rounds}
-            onChange={(e) => setForm({ ...form, rounds: e.target.value })}
-          />
-          <input
-            className="input"
-            placeholder="Level — 1–10 execution difficulty"
-            inputMode="numeric"
-            value={form.level}
-            onChange={(e) => setForm({ ...form, level: e.target.value })}
-          />
+          <div className="strat-meta-row">
+            <input
+              className="input"
+              placeholder="Rounds — full, force, eco"
+              value={form.rounds}
+              onChange={(e) => setForm({ ...form, rounds: e.target.value })}
+            />
+            <input
+              className="input"
+              placeholder="Level 1–10"
+              inputMode="numeric"
+              value={form.level}
+              onChange={(e) => setForm({ ...form, level: e.target.value })}
+            />
+          </div>
           {saveError && <p className="banner" style={{ color: "var(--warn)" }}>{saveError}</p>}
           <div className="row">
             <button type="button" className="btn btn-primary" style={{ flex: 1 }} onClick={() => void saveForm()}>
