@@ -327,7 +327,8 @@ export async function getMyVotes(userId: string): Promise<Record<string, StratVo
     .from("user_strat_votes")
     .select("strat_id, value")
     .eq("user_id", userId);
-  if (error) throw error;
+  // Migration may not be applied yet — don't break the whole playbook load.
+  if (error) return {};
   const out: Record<string, StratVoteValue> = {};
   for (const row of data || []) {
     const r = row as { strat_id: string; value: number };
