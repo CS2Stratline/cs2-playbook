@@ -5,6 +5,7 @@ import { useAuth } from "../lib/auth";
 import {
   ensureUserPrivatePack,
   findPoolCopy as findCopy,
+  MAX_PRIVATE_PACKS,
   sharedStratTargetId,
   upsertPrivateStrat,
   upsertSharedStrat,
@@ -47,16 +48,32 @@ export function BookScreen() {
     usePersonalPool,
     catalogStrats,
     myPoolStrats,
+    myPrivatePacks,
+    defaultPackId,
     addToPool,
     removeFromPool,
+    createPrivatePack,
+    renamePrivatePack,
+    deletePrivatePack,
     strats,
   } = usePlaybook();
   const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
+  const [catalogTargetPack, setCatalogTargetPack] = useState("");
+  const [packDraftTitle, setPackDraftTitle] = useState("");
+  const [renamingPackId, setRenamingPackId] = useState<string | null>(null);
+  const [renameTitle, setRenameTitle] = useState("");
+  const [packBusy, setPackBusy] = useState(false);
+  const [packError, setPackError] = useState("");
 
   useEffect(() => {
     if (usePersonalPool) setTab("pool");
   }, [usePersonalPool]);
+
+  useEffect(() => {
+    if (!catalogTargetPack && defaultPackId) setCatalogTargetPack(defaultPackId);
+  }, [defaultPackId, catalogTargetPack]);
+
   const [expanded, setExpanded] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<Strat | null>(null);
@@ -71,6 +88,7 @@ export function BookScreen() {
     rounds: "" as string,
     status: "ready" as "ready" | "practice",
     level: "" as string,
+    packId: "" as string,
   });
   const allMaps = isAllMaps(session.selected_map);
 
@@ -85,6 +103,7 @@ export function BookScreen() {
       rounds: s.rounds.join(","),
       status: s.status,
       level: String(s.level || ""),
+      packId: s.pack_id,
     });
     setSaveError("");
     setShowForm(true);
@@ -96,28 +115,22 @@ export function BookScreen() {
     if (!editId || loading) return;
     const s = strats.find((row) => row.id === editId);
     if (s) openEdit(s);
-    // clear one-shot navigation state
     navigate(location.pathname, { replace: true, state: {} });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, location.state, strats]);
 
-  const privatePack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
-
-  /** Packs you can put in Match (My pool when signed in + unlocked system packs). */
-  const systemPacks = useMemo(() => {
-    const items = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
+  /** Packs shown in Match toggles: personal packs first, then unlocked system packs. */
+  const togglePacks = useMemo(() => {
+    const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
     const order = ["essentials-pug", "stack-standard", "meme-strats"];
-    items.sort((a, b) => {
+    system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
       const bi = order.indexOf(b.slug);
       return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
     });
-    const mine =
-      usePersonalPool && privatePack
-        ? [{ ...privatePack, description: privatePack.description || "Your saved strats for Match" }]
-        : [];
-    return [{ tier: "visible" as const, items: [...mine, ...items] }];
-  }, [packs, usePersonalPool, privatePack]);
+    const mine = usePersonalPool ? myPrivatePacks : [];
+    return [...mine, ...system];
+  }, [packs, usePersonalPool, myPrivatePacks]);
 
   const catalogList = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -187,8 +200,14 @@ export function BookScreen() {
       .filter((g) => g.items.length);
   }, [displayList, session.selected_side, session.selected_map]);
 
-  async function ensurePrivatePack() {
-    if (privatePack) return privatePack.id;
+  async function resolveSavePackId() {
+    if (editing?.pack_id && editing.owner_user_id === userId) {
+      // Allow moving between personal packs on edit.
+      if (form.packId && myPrivatePacks.some((p) => p.id === form.packId)) return form.packId;
+      return editing.pack_id;
+    }
+    if (form.packId && myPrivatePacks.some((p) => p.id === form.packId)) return form.packId;
+    if (defaultPackId) return defaultPackId;
     return ensureUserPrivatePack(userId);
   }
 
@@ -238,7 +257,7 @@ export function BookScreen() {
           level: Number.isFinite(levelNum) ? levelNum : editing.level,
         });
       } else {
-        const packId = editing?.pack_id || (await ensurePrivatePack());
+        const packId = await resolveSavePackId();
         await upsertPrivateStrat(userId, packId, {
           id: editing?.id,
           ...draft,
@@ -258,48 +277,183 @@ export function BookScreen() {
     }
   }
 
+  async function handleCreatePack() {
+    setPackError("");
+    const title = packDraftTitle.trim();
+    if (!title) return;
+    setPackBusy(true);
+    try {
+      const id = await createPrivatePack(title);
+      setPackDraftTitle("");
+      setCatalogTargetPack(id);
+    } catch (e) {
+      setPackError(e instanceof Error ? e.message : "Could not create pack");
+    } finally {
+      setPackBusy(false);
+    }
+  }
+
+  async function handleRenamePack(packId: string) {
+    setPackError("");
+    const title = renameTitle.trim();
+    if (!title) return;
+    setPackBusy(true);
+    try {
+      await renamePrivatePack(packId, title);
+      setRenamingPackId(null);
+      setRenameTitle("");
+    } catch (e) {
+      setPackError(e instanceof Error ? e.message : "Could not rename");
+    } finally {
+      setPackBusy(false);
+    }
+  }
+
+  async function handleDeletePack(packId: string) {
+    setPackError("");
+    setPackBusy(true);
+    try {
+      await deletePrivatePack(packId);
+      if (catalogTargetPack === packId) setCatalogTargetPack(defaultPackId || "");
+    } catch (e) {
+      setPackError(e instanceof Error ? e.message : "Could not delete pack");
+    } finally {
+      setPackBusy(false);
+    }
+  }
+
   if (loading) return <div className="empty">Loading playbook…</div>;
 
   return (
     <div>
       <div className="panel">
         <p className="eyebrow">Packs</p>
-        {systemPacks.map(({ tier, items }) =>
-          items.length ? (
-            <div key={tier} style={{ marginTop: 8 }}>
-              {items.map((p) => {
-                const on = isPackInMatchPool(p.id, subscriptions, packs);
-                return (
-                  <div
-                    key={p.id}
-                    style={{
-                      display: "flex",
-                      gap: 10,
-                      alignItems: "flex-start",
-                      padding: "8px 0",
-                      borderBottom: "1px solid var(--line)",
-                    }}
-                  >
-                    <div style={{ flex: 1 }}>
-                      <strong style={{ fontSize: 13 }}>{p.title}</strong>
-                      <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
-                        {p.description || `${p.strat_count ?? "—"} strats`}
-                      </p>
-                    </div>
-                    <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
-                      {on ? "On" : "Off"}
+        <p className="muted" style={{ fontSize: 11, marginBottom: 8 }}>
+          Match only shows packs that are On.
+        </p>
+        {togglePacks.map((p) => {
+          const on = isPackInMatchPool(p.id, subscriptions, packs);
+          const isMine = p.visibility === "private" && p.owner_user_id === userId;
+          const count = isMine
+            ? myPoolStrats.filter((s) => s.pack_id === p.id).length
+            : p.strat_count;
+          return (
+            <div
+              key={p.id}
+              style={{
+                display: "flex",
+                gap: 10,
+                alignItems: "flex-start",
+                padding: "8px 0",
+                borderBottom: "1px solid var(--line)",
+              }}
+            >
+              <div style={{ flex: 1, minWidth: 0 }}>
+                {renamingPackId === p.id ? (
+                  <div className="row" style={{ gap: 6 }}>
+                    <input
+                      className="input"
+                      style={{ marginBottom: 0, flex: 1 }}
+                      value={renameTitle}
+                      onChange={(e) => setRenameTitle(e.target.value)}
+                      maxLength={40}
+                      aria-label="Pack name"
+                    />
+                    <button type="button" className="btn-ghost" disabled={packBusy} onClick={() => void handleRenamePack(p.id)}>
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-ghost"
+                      onClick={() => {
+                        setRenamingPackId(null);
+                        setRenameTitle("");
+                      }}
+                    >
+                      Cancel
                     </button>
                   </div>
-                );
-              })}
+                ) : (
+                  <>
+                    <strong style={{ fontSize: 13 }}>{p.title}</strong>
+                    <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
+                      {isMine
+                        ? `${count} strat${count === 1 ? "" : "s"} · personal`
+                        : p.description || `${count ?? "—"} strats`}
+                    </p>
+                  </>
+                )}
+                {isMine && renamingPackId !== p.id && (
+                  <div className="row" style={{ marginTop: 6, gap: 6 }}>
+                    <button
+                      type="button"
+                      className="btn-ghost"
+                      style={{ padding: "2px 8px", fontSize: 11 }}
+                      onClick={() => {
+                        setRenamingPackId(p.id);
+                        setRenameTitle(p.title);
+                      }}
+                    >
+                      Rename
+                    </button>
+                    {myPrivatePacks.length > 1 && (
+                      <button
+                        type="button"
+                        className="btn-ghost"
+                        style={{ padding: "2px 8px", fontSize: 11, color: "var(--warn)" }}
+                        disabled={packBusy}
+                        onClick={() => void handleDeletePack(p.id)}
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+              <button className={`pill ${on ? "active" : ""}`} onClick={() => void setPackEnabled(p.id, !on)} type="button">
+                {on ? "On" : "Off"}
+              </button>
             </div>
-          ) : null
+          );
+        })}
+
+        {usePersonalPool && (
+          <div style={{ marginTop: 12 }}>
+            <p className="eyebrow">New personal pack</p>
+            <div className="row" style={{ gap: 6 }}>
+              <input
+                className="input"
+                style={{ marginBottom: 0, flex: 1 }}
+                placeholder="e.g. Solo queue, 5-stack"
+                value={packDraftTitle}
+                maxLength={40}
+                onChange={(e) => setPackDraftTitle(e.target.value)}
+                disabled={packBusy || myPrivatePacks.length >= MAX_PRIVATE_PACKS}
+              />
+              <button
+                type="button"
+                className="btn-ghost"
+                disabled={packBusy || !packDraftTitle.trim() || myPrivatePacks.length >= MAX_PRIVATE_PACKS}
+                onClick={() => void handleCreatePack()}
+              >
+                <Plus size={14} /> Add
+              </button>
+            </div>
+            <p className="muted" style={{ fontSize: 11, marginTop: 6 }}>
+              {myPrivatePacks.length}/{MAX_PRIVATE_PACKS} personal packs
+            </p>
+            {packError && (
+              <p className="banner" style={{ color: "var(--warn)", marginTop: 8 }}>
+                {packError}
+              </p>
+            )}
+          </div>
         )}
       </div>
 
       {usePersonalPool && (
         <div className="panel" style={{ paddingBottom: 10 }}>
-          <p className="eyebrow">My pool</p>
+          <p className="eyebrow">My packs</p>
           <div className="row">
             <button type="button" className={`pill ${tab === "pool" ? "active" : ""}`} onClick={() => setTab("pool")}>
               Saved · {myPoolStrats.length}
@@ -308,6 +462,25 @@ export function BookScreen() {
               Add more
             </button>
           </div>
+          {tab === "catalog" && myPrivatePacks.length > 0 && (
+            <select
+              className="input"
+              style={{ marginTop: 10, marginBottom: 0 }}
+              aria-label="Add catalog strats to pack"
+              value={
+                myPrivatePacks.some((p) => p.id === catalogTargetPack)
+                  ? catalogTargetPack
+                  : defaultPackId || myPrivatePacks[0].id
+              }
+              onChange={(e) => setCatalogTargetPack(e.target.value)}
+            >
+              {myPrivatePacks.map((p) => (
+                <option key={p.id} value={p.id}>
+                  Add into: {p.title}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       )}
 
@@ -341,6 +514,7 @@ export function BookScreen() {
                   rounds: "",
                   status: "ready",
                   level: "",
+                  packId: defaultPackId || myPrivatePacks[0]?.id || "",
                 });
                 setShowForm(true);
               }}
@@ -376,6 +550,24 @@ export function BookScreen() {
               {MAPS.map((m) => (
                 <option key={m} value={m}>
                   {m}
+                </option>
+              ))}
+            </select>
+          )}
+          {usePersonalPool && myPrivatePacks.length > 0 && !(editing && canEditShared && sharedStratTargetId(editing)) && (
+            <select
+              className="input"
+              aria-label="Save to pack"
+              value={
+                myPrivatePacks.some((p) => p.id === form.packId)
+                  ? form.packId
+                  : defaultPackId || myPrivatePacks[0].id
+              }
+              onChange={(e) => setForm({ ...form, packId: e.target.value })}
+            >
+              {myPrivatePacks.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.title}
                 </option>
               ))}
             </select>
@@ -469,8 +661,14 @@ export function BookScreen() {
               const open = expanded === s.id;
               const pack = packs.find((p) => p.id === s.pack_id);
               const locked = isPackLocked(pack);
-              const inPool = usePersonalPool ? !!findCopy(myPoolStrats, s.id) : false;
-              const showingCatalog = tab === "catalog" && (usePersonalPool || !usePersonalPool);
+              const targetPack =
+                myPrivatePacks.some((p) => p.id === catalogTargetPack)
+                  ? catalogTargetPack
+                  : defaultPackId || myPrivatePacks[0]?.id;
+              const inPool = usePersonalPool
+                ? !!findCopy(myPoolStrats, s.id, tab === "catalog" ? targetPack : undefined)
+                : false;
+              const showingCatalog = tab === "catalog";
               return (
                 <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && showingCatalog ? 0.75 : 1 }}>
                   <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
@@ -483,10 +681,10 @@ export function BookScreen() {
                             className="btn-ghost"
                             style={{ padding: 4 }}
                             onClick={() => void toggleFavorite(s.id)}
-                            aria-label={isFavorite(s.id) ? "Unpin favorite" : "Add to My pool"}
+                            aria-label={isFavorite(s.id) ? "Unpin favorite" : "Add to pack"}
                             title={
                               tab === "catalog" && !inPool && !isFavorite(s.id)
-                                ? "Add to My pool"
+                                ? "Add to pack"
                                 : undefined
                             }
                           >
@@ -513,7 +711,7 @@ export function BookScreen() {
                         {pack ? ` · ${pack.title}` : ""}
                         {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
                         {locked ? " · Locked" : ""}
-                        {usePersonalPool && tab === "catalog" && inPool ? " · In pool" : ""}
+                        {usePersonalPool && tab === "catalog" && inPool ? " · In pack" : ""}
                       </span>
                     </div>
                   </button>
@@ -541,13 +739,13 @@ export function BookScreen() {
                             onClick={async () => {
                               setBusyId(s.id);
                               try {
-                                await addToPool(s);
+                                await addToPool(s, targetPack);
                               } finally {
                                 setBusyId(null);
                               }
                             }}
                           >
-                            {locked ? "Locked" : inPool ? "In pool" : "Add to pool"}
+                            {locked ? "Locked" : inPool ? "In pack" : "Add to pack"}
                           </button>
                         )}
                         {canEditStrat(s) && (
