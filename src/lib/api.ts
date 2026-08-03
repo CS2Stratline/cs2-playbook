@@ -19,7 +19,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
-const SEED_REVISION = 9;
+const SEED_REVISION = 10;
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
@@ -823,14 +823,19 @@ export async function addCatalogStratToPool(
   return String(data.id);
 }
 
-/** Add all Fundamentals (pug) catalog strats for a map into the default personal pack. */
+/** Add all Starter catalog strats for a map into the default personal pack. */
 export async function addFundamentalsForMap(userId: string, map: string, packs: Pack[]): Promise<number> {
   const all = await listStrats();
   const packId = defaultPrivatePackId(packs, userId) || (await ensureUserPrivatePack(userId));
   const mine = all.filter((s) => s.owner_user_id === userId);
   const fundamentals = all.filter((s) => {
     const pack = packs.find((p) => p.id === s.pack_id);
-    return pack?.visibility === "system" && pack.tier === "pug" && s.map === map && !s.owner_user_id;
+    return (
+      pack?.visibility === "system" &&
+      (pack.slug === "starter-pack" || pack.slug === "essentials-pug") &&
+      s.map === map &&
+      !s.owner_user_id
+    );
   });
   let added = 0;
   for (const s of fundamentals) {
@@ -864,7 +869,7 @@ export function markAutoSeededFundamentals(userId: string) {
 }
 
 /**
- * First-login bootstrap: copy Fundamentals for every map into My pool.
+ * First-login bootstrap: copy Starter pack strats for every map into My pool.
  * Idempotent — skips strats already in the pool. Marks a local flag so we
  * don't re-run after the user intentionally clears their pool.
  */

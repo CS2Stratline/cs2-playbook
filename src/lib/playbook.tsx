@@ -98,7 +98,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         api.getSession(userId),
       ]);
       let nextStrats = s;
-      // Signed-in users get Fundamentals auto-copied once so Match is ready
+      // Signed-in users get Starter pack auto-copied once so Match is ready
       // immediately (same day-1 feel as guest packs — no shop gate).
       if (usePersonalPool && !api.hasAutoSeededFundamentals(userId)) {
         const mine = s.filter((row) => row.owner_user_id === userId);

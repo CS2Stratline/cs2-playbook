@@ -11,25 +11,14 @@
   "packs": [
     {
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
-      "slug": "essentials-pug",
-      "title": "Fundamentals",
-      "description": "Rushes, holds, and simple executes. Easy to call in freeze time.",
+      "slug": "starter-pack",
+      "title": "Starter",
+      "description": "Day-1 calls for every map — filter by level in Match.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 32
-    },
-    {
-      "id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
-      "slug": "stack-standard",
-      "title": "Stack",
-      "description": "Standard smokes and mid control for a coordinated five.",
-      "tier": "five_stack",
-      "visibility": "system",
-      "owner_user_id": null,
-      "team_id": null,
-      "strat_count": 39
+      "strat_count": 106
     },
     {
       "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
@@ -40,7 +29,7 @@
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
-      "strat_count": 12
+      "strat_count": 31
     },
     {
       "id": "92eba09f-84c7-4820-8b55-44a42e2579af",
@@ -216,7 +205,6 @@
         "Spray bench, plant fast"
       ],
       "rounds": [
-        "pistol",
         "eco",
         "force"
       ],
@@ -434,7 +422,6 @@
         "Plant near long"
       ],
       "rounds": [
-        "pistol",
         "eco",
         "force"
       ],
@@ -468,7 +455,6 @@
         "Plant default B"
       ],
       "rounds": [
-        "pistol",
         "eco",
         "force"
       ],
@@ -520,11 +506,12 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Double B, punish tunnels.",
+      "description": "Three B. Punish tunnel rushes, give A space.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Molly tunnels entry",
-        "Don't over-rotate A"
+        "3 B: car, closet, plat",
+        "1 mid doors, 1 A short",
+        "Molly tunnels on first sound",
+        "Don't rotate A until the plant"
       ],
       "rounds": [],
       "status": "ready",
@@ -581,8 +568,7 @@
       ],
       "rounds": [
         "full",
-        "force",
-        "pistol"
+        "force"
       ],
       "status": "ready",
       "links": [
@@ -709,7 +695,7 @@
       "callout": "A hold",
       "description": "Strong A/donut.",
       "tasks": [
-        "2–3 A, 1 mid, 1 B",
+        "3 A: site, donut, long",
         "Deny donut early",
         "Rotate on ruins sound"
       ],
@@ -732,11 +718,12 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Strong ruins/B.",
+      "description": "Three B. Deny ramp early, give A space.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Utility ruins entry",
-        "Hold cave close"
+        "3 B: ramp close, cave, back alley",
+        "1 mid, 1 A",
+        "Util ramp on first sound",
+        "Nobody peeks top mid"
       ],
       "rounds": [],
       "status": "ready",
@@ -759,7 +746,7 @@
       "callout": "A hold",
       "description": "Strong A (heaven/water), soft B.",
       "tasks": [
-        "2–3 A (heaven/water), 1 mid, 1 B",
+        "3 A: heaven, site, main",
         "Deny water early",
         "Rotate B only on clear ruins / mid info"
       ],
@@ -782,10 +769,11 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Strong ruins/ebox.",
+      "description": "Three B. Deny B long early, give A space.",
       "tasks": [
-        "2 B, 1 mid, 2 A",
-        "Utility ruins",
+        "3 B: corner, back site, sniper",
+        "1 middle, 1 A",
+        "Util B long on first sound",
         "Hold ebox close"
       ],
       "rounds": [],
@@ -809,7 +797,7 @@
       "callout": "A hold",
       "description": "Strong A (forklift/checker), soft B.",
       "tasks": [
-        "2–3 A (forklift/checker/site), 1 mid, 1 B",
+        "3 A: quad, forklift, NBK",
         "Deny squeaky / A main entry",
         "Rotate B only on clear mid or B info"
       ],
@@ -832,11 +820,12 @@
       "side": "CT",
       "site": null,
       "callout": "B hold",
-      "description": "Strong heaven / B main. Punish halls commits.",
+      "description": "Three B. Punish halls commits, give A space.",
       "tasks": [
-        "2 B (heaven + site), 1 mid, 2 A soft",
-        "Hold heaven, watch B main / garbage",
-        "Smoke B main from heaven when they commit halls"
+        "3 B: heaven, new boxes, close left",
+        "1 mid, 1 A",
+        "Smoke B main from heaven on halls commit",
+        "Watch checkers for the vents flank"
       ],
       "rounds": [],
       "status": "ready",
@@ -1044,7 +1033,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1089,7 +1078,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1134,7 +1123,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1184,7 +1173,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1229,7 +1218,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1269,7 +1258,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1309,7 +1298,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1349,7 +1338,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1375,7 +1364,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1420,7 +1409,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1465,7 +1454,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1506,7 +1495,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1546,7 +1535,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1586,7 +1575,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1627,7 +1616,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1664,7 +1653,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1709,7 +1698,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1749,7 +1738,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1785,7 +1774,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1829,7 +1818,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1869,7 +1858,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1905,7 +1894,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1945,7 +1934,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -1981,7 +1970,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2025,7 +2014,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2065,7 +2054,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2105,7 +2094,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2119,7 +2108,7 @@
       "description": "Heaven/canal smokes, entry water/A.",
       "tasks": [
         "Smoke heaven",
-        "Smoke temple / connector",
+        "Smoke heaven and platform",
         "Entry water → A"
       ],
       "rounds": [
@@ -2142,6 +2131,10 @@
         {
           "label": "Smoke: Platform",
           "url": "https://csnades.gg/anubis/smokes/platform-from-water"
+        },
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/anubis/smokes/heaven-from-water-b"
         }
       ],
       "level": 7,
@@ -2149,7 +2142,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2194,7 +2187,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2204,12 +2197,12 @@
       "map": "Anubis",
       "side": "T",
       "site": "b",
-      "callout": "Street B",
-      "description": "Mid street → B door.",
+      "callout": "Ebox B",
+      "description": "Mid into B through ebox.",
       "tasks": [
-        "Control street/mid",
-        "Smoke mid B door",
-        "Hit B with ruins support"
+        "Take top mid and double doors",
+        "Smoke street and sniper",
+        "Enter ebox, ruins group supports"
       ],
       "rounds": [
         "full"
@@ -2234,7 +2227,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2274,7 +2267,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2314,7 +2307,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2329,7 +2322,7 @@
       "tasks": [
         "Smoke forklift from main",
         "Flash site",
-        "Clear checker / NBK"
+        "Clear quad and NBK"
       ],
       "rounds": [
         "full"
@@ -2354,7 +2347,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2398,7 +2391,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2407,13 +2400,13 @@
       "id": "139e8603-a6d2-4e87-9fd0-65fe1202e461",
       "map": "Cache",
       "side": "T",
-      "site": "b",
-      "callout": "Highway B",
-      "description": "Highway/truck path to B.",
+      "site": "a",
+      "callout": "Highway A",
+      "description": "Mid into A over highway.",
       "tasks": [
-        "Smoke highway",
-        "Support B main",
-        "Trade heaven"
+        "Take garage and white box",
+        "Smoke CT connector and elektro",
+        "Enter highway, trade at forklift"
       ],
       "rounds": [
         "full"
@@ -2438,7 +2431,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2464,7 +2457,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2490,7 +2483,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2518,7 +2511,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -2546,7 +2539,7 @@
       "losses": 0,
       "times_used": 0,
       "last_used": null,
-      "pack_id": "a90abddf-39a8-478b-a780-f96b9a511ae4",
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
@@ -8242,6 +8235,1783 @@
       "owner_user_id": null,
       "team_id": null,
       "source": "system-seed"
+    },
+    {
+      "id": "621a7449-4700-44d7-aa1b-54ab4758e095",
+      "map": "Dust II",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol short",
+      "description": "Pistol A through catwalk. Numbers and flashes, nothing saved.",
+      "tasks": [
+        "Four cat, one long for info",
+        "Flash short from lower tunnels",
+        "Plant default, spread wide"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Short",
+          "url": "https://csnades.gg/dust2/flashbangs/short-from-lower-tunnels"
+        }
+      ],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "7d11fda3-3e14-4cad-8a95-7a2478775b68",
+      "map": "Dust II",
+      "side": "T",
+      "site": "b",
+      "callout": "Long fake B",
+      "description": "Show long, pull the CTs there, then five B through tunnels.",
+      "tasks": [
+        "Two long: shoot doors, smoke cross",
+        "Three wait upper tunnels",
+        "All five B on the call",
+        "Smoke B doors, molly back plat"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: A cross",
+          "url": "https://csnades.gg/dust2/smokes/a-cross-from-long-doors"
+        },
+        {
+          "label": "Smoke: B doors",
+          "url": "https://csnades.gg/dust2/smokes/b-doors-from-outside-b-tunnels"
+        },
+        {
+          "label": "Molly: Back plat",
+          "url": "https://csnades.gg/dust2/molotovs/back-plat-from-upper-tunnels"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "4987bf2f-e53f-4e65-8a73-6749171dee64",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Dust II setup. Two A, one mid, two B.",
+      "tasks": [
+        "2 A: long/pit and short",
+        "1 mid doors for info",
+        "2 B: car and tunnel close",
+        "Call the rotate early, not late"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "d39c4e38-9cc5-4e1c-a630-36dac28c2c03",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco close",
+      "description": "Their eco. Close angles only, no long peeks, keep your armour.",
+      "tasks": [
+        "3 B close: car, closet, doors",
+        "2 A: short and goose",
+        "No AWP peeks, no wide angles",
+        "Trade every contact"
+      ],
+      "rounds": [
+        "eco",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c7346107-39f9-42df-8d78-dfe11cec19ae",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Give mid",
+      "description": "Give mid on purpose. Five alive beats five metres of map.",
+      "tasks": [
+        "No mid or long duels",
+        "2 A deep, 2 B deep, 1 CT",
+        "Save util for after the plant",
+        "Retake together, never solo"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 5,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "be4a88fb-7e44-4c7a-9d8b-56e080672883",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Group in CT spawn, then hit A together with utility first.",
+      "tasks": [
+        "Gather 3+ in CT before peeking",
+        "HE and molly default and goose",
+        "One clears short, rest cross",
+        "Flash long, swing together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: A long (CT)",
+          "url": "https://csnades.gg/dust2/flashbangs/a-long-from-ct-cross"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c27490de-e62b-4ca5-80c0-28d28362c585",
+      "map": "Dust II",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake B from doors and window at the same second.",
+      "tasks": [
+        "Gather 3+ before you peek",
+        "HE B main, molly under window",
+        "One window, rest doors",
+        "Flash site, swing together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "HE: B main",
+          "url": "https://csnades.gg/dust2/hegrenades/b-main-from-b-site"
+        },
+        {
+          "label": "Molly: Under window",
+          "url": "https://csnades.gg/dust2/molotovs/under-b-window-from-scaffolding"
+        },
+        {
+          "label": "Flash: B site (CT)",
+          "url": "https://csnades.gg/dust2/flashbangs/b-site-from-ct-mid"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "bbd07155-946a-489b-847a-d25f327776b2",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Mirage setup. Two A, one window, two B.",
+      "tasks": [
+        "2 A: ramp/tetris and CT/jungle",
+        "1 window for mid info",
+        "2 B: van and market",
+        "Rotate on the second sound, not the first"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "429633c4-98a2-4389-8ff8-583e8bb10b7b",
+      "map": "Mirage",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake B from market and short together, never one at a time.",
+      "tasks": [
+        "Gather 3+ in market or CT",
+        "Molly van and bench",
+        "One short, rest market door",
+        "Swing on the flash together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "448c4953-80e6-47c6-bd01-bdbceb9e0ce5",
+      "map": "Inferno",
+      "side": "T",
+      "site": "b",
+      "callout": "Pistol banana",
+      "description": "Pistol B. Flood banana early and plant before CTs settle.",
+      "tasks": [
+        "Five banana, first man flashes",
+        "Trade at car, do not stop",
+        "Plant for banana, hold together"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "5165ccf2-22ee-4aa8-9e12-dc28ab940c57",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Rush apps",
+      "description": "Eco A. Five through apartments, no smokes, every flash.",
+      "tasks": [
+        "Five apps, flash balcony from apts",
+        "Drop together, spray the site",
+        "Plant default, hold pit and library"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Balcony",
+          "url": "https://csnades.gg/inferno/flashbangs/balcony-from-apts"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "8743cdf4-1567-48e0-93a0-6f20fcdad204",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Banana fake A",
+      "description": "Noise and utility at banana, then five A through short.",
+      "tasks": [
+        "Two banana: molly and flash deep",
+        "Three quiet at alt mid",
+        "All five short on the call",
+        "Smoke moto, arches and pit"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Moto",
+          "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Arches",
+          "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Pit",
+          "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "265ed782-638d-4ad5-bcb5-d705236ad92b",
+      "map": "Inferno",
+      "side": "T",
+      "site": "a",
+      "callout": "Apps and short",
+      "description": "A split. Two down balcony, three from short, same second.",
+      "tasks": [
+        "Smoke moto, arches and pit",
+        "Two apps to balcony, three short",
+        "Flash balcony, drop together",
+        "Count down, enter on three"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Moto",
+          "url": "https://csnades.gg/inferno/smokes/moto-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Arches",
+          "url": "https://csnades.gg/inferno/smokes/arches-from-alt-mid"
+        },
+        {
+          "label": "Smoke: Pit",
+          "url": "https://csnades.gg/inferno/smokes/pit-from-alt-mid"
+        },
+        {
+          "label": "Flash: Balcony",
+          "url": "https://csnades.gg/inferno/flashbangs/balcony-from-apts"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c342dbad-ce2f-4bd4-947f-2315b8d20479",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Inferno setup. Two banana, one mid, two A.",
+      "tasks": [
+        "2 banana: car and sandbags",
+        "1 mid for apps and second mid",
+        "2 A: pit and site/library",
+        "Banana player calls the number early"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "b5d48474-3bc0-4b19-a511-220b6232c9d2",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco banana",
+      "description": "Their eco. Dump utility into banana, hold close, do not peek.",
+      "tasks": [
+        "3 banana: molly and HE on first sound",
+        "Fall to coffins, never hold deep",
+        "2 A close: pit and site",
+        "No mid peeks at all"
+      ],
+      "rounds": [
+        "eco",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Banana",
+          "url": "https://csnades.gg/inferno/molotovs/banana-from-top-banana"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "ce26e626-392e-4be7-b6a7-77d0a603e288",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Give banana",
+      "description": "Concede banana. Play the site, not the choke.",
+      "tasks": [
+        "No deep banana fight, fall early",
+        "2 coffins and new box, 1 CT",
+        "2 A: pit and apps",
+        "Save util for after the plant"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: New box (CT)",
+          "url": "https://csnades.gg/inferno/molotovs/new-box-from-ct"
+        }
+      ],
+      "level": 6,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "4a62eac1-f538-41f2-a114-c41b09715bbe",
+      "map": "Inferno",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Retake A from CT and library together, utility first.",
+      "tasks": [
+        "Gather 3+ at CT before peeking",
+        "Molly graveyard and pit",
+        "One library, rest CT",
+        "Swing on the flash together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "fe6b2dbb-9750-4569-ad76-1636aa060d35",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Pistol lobby",
+      "description": "Pistol A. Everyone lobby, flood hut and squeaky together.",
+      "tasks": [
+        "Five lobby, flash hut from lobby",
+        "Two squeaky, three hut",
+        "Plant A, watch heaven and main"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Hut",
+          "url": "https://csnades.gg/nuke/flashbangs/hut-from-lobby-a"
+        }
+      ],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "987c15e7-7b3d-4714-882b-c3ccfc754bf0",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Rush hut",
+      "description": "Eco A. Five through lobby and hut, no stopping.",
+      "tasks": [
+        "Five lobby, flash hut from lobby",
+        "Straight through hut, spray tetris",
+        "Plant A, watch heaven and main"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Hut",
+          "url": "https://csnades.gg/nuke/flashbangs/hut-from-lobby-a"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "811cf1b2-ce0a-4165-9c8f-a976dfdda991",
+      "map": "Nuke",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush ramp",
+      "description": "Eco B. All five down ramp before the CTs settle.",
+      "tasks": [
+        "Five through radio, trophy, control",
+        "Flash ramp from trophy, do not stop",
+        "Plant B, watch vents and doors"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "a5184339-6d45-43c1-9495-912e3bcb31b3",
+      "map": "Nuke",
+      "side": "T",
+      "site": "outside",
+      "callout": "Outside default",
+      "description": "Take outside for information, then commit main or secret.",
+      "tasks": [
+        "Two silo, two T red, one lobby",
+        "Smoke garage, flash T red",
+        "Call main or secret, do not stall"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Garage",
+          "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"
+        },
+        {
+          "label": "Flash: T red",
+          "url": "https://csnades.gg/nuke/flashbangs/t-red-from-under-silo"
+        }
+      ],
+      "level": 6,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "37fddcdd-9eff-4085-b4ec-b7968f5e6709",
+      "map": "Nuke",
+      "side": "T",
+      "site": "b",
+      "callout": "Outside fake ramp",
+      "description": "Show outside, pull the CTs there, then five down ramp.",
+      "tasks": [
+        "Two outside: smoke garage, make noise",
+        "Three hold radio, stay quiet",
+        "All five ramp on the call",
+        "Smoke and flash ramp from trophy"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Garage",
+          "url": "https://csnades.gg/nuke/smokes/garage-from-outside-t-spawn"
+        },
+        {
+          "label": "Smoke: Ramp",
+          "url": "https://csnades.gg/nuke/smokes/ramp-from-trophy-b"
+        },
+        {
+          "label": "Flash: Ramp",
+          "url": "https://csnades.gg/nuke/flashbangs/ramp-from-trophy"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "84ff08a1-a291-48b2-9474-06c4e0dc2b50",
+      "map": "Nuke",
+      "side": "T",
+      "site": "a",
+      "callout": "Main and squeaky",
+      "description": "A split. Outside main and squeaky on the same second.",
+      "tasks": [
+        "Smoke A main, molly hut roof",
+        "Two outside to main, three lobby",
+        "Flash A site and hut together",
+        "Count down, enter as one"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: A main",
+          "url": "https://csnades.gg/nuke/smokes/a-main-from-t-roof"
+        },
+        {
+          "label": "Molly: Hut roof",
+          "url": "https://csnades.gg/nuke/molotovs/hut-roof-from-silo"
+        },
+        {
+          "label": "Flash: A site",
+          "url": "https://csnades.gg/nuke/flashbangs/a-site-from-t-roof-a"
+        },
+        {
+          "label": "Flash: Hut",
+          "url": "https://csnades.gg/nuke/flashbangs/hut-from-lobby-a"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "d92dbbaa-9b4c-4004-89fe-14bd866d67f0",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Outside push",
+      "description": "Contest outside early for information, then fall back inside.",
+      "tasks": [
+        "2 outside: garage and CT red",
+        "Flash and peek silo once",
+        "Fall to main or secret on contact",
+        "Do not die outside"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 3,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "a751a961-fc82-4069-a1ac-ecb72df4307e",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Give outside",
+      "description": "Concede outside. Hold the doorways and keep five alive.",
+      "tasks": [
+        "No outside duels, hold main",
+        "2 A: hut and heaven",
+        "1 ramp, 1 secret, 1 vents",
+        "Save util for the retake"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 6,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "28d027f6-fcf4-4fe4-ba36-8d5630f537bf",
+      "map": "Nuke",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Drop into B together from vents and ramp, never alone.",
+      "tasks": [
+        "Gather 3+ before dropping",
+        "Molly dark, smoke double doors",
+        "Two ramp, rest vents",
+        "Go on the count, not on sound"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Dark",
+          "url": "https://csnades.gg/nuke/molotovs/dark-from-b-ramp"
+        },
+        {
+          "label": "Smoke: Double doors",
+          "url": "https://csnades.gg/nuke/smokes/double-doors-from-b-ramp"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c91e89eb-16e7-49f6-b7e0-e11cfb437ba6",
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Pistol ramp",
+      "description": "Pistol B. Ramp with numbers, plant before rotations land.",
+      "tasks": [
+        "Five through ruins and doors",
+        "Flash B site from ruins box",
+        "Plant behind pillar, spread out"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/ancient/flashbangs/b-site-from-ruins-box"
+        }
+      ],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "8247428b-0d31-4027-871a-a35c2096430a",
+      "map": "Ancient",
+      "side": "T",
+      "site": "a",
+      "callout": "Rush A main",
+      "description": "Eco A. Five through A main, flashes only.",
+      "tasks": [
+        "Five through split, stairs, A halls",
+        "Flash A site from main, entry together",
+        "Plant triple, hold main and short"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: A site",
+          "url": "https://csnades.gg/ancient/flashbangs/a-site-from-a-main"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "ee590f5e-4309-48df-9440-a39aafb9d659",
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush ramp",
+      "description": "Eco B. Straight through ruins to ramp, no stopping.",
+      "tasks": [
+        "Five tunnel, water, ruins",
+        "Flash B site, take ramp",
+        "Plant pillar side, hold together"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/ancient/flashbangs/b-site-from-ruins-box"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "bcd16ba2-6263-49d0-a8f8-67919edf7273",
+      "map": "Ancient",
+      "side": "T",
+      "site": "b",
+      "callout": "Mid fake B",
+      "description": "Show mid and donut, then drop all five to ramp.",
+      "tasks": [
+        "Two mid: smoke top mid, make noise",
+        "Three quiet in ruins",
+        "All five ramp on the call",
+        "Smoke back alley, molly pillar"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Top mid",
+          "url": "https://csnades.gg/ancient/smokes/top-mid-from-t-spawn"
+        },
+        {
+          "label": "Smoke: Back alley",
+          "url": "https://csnades.gg/ancient/smokes/back-alley-from-ruins-corner"
+        },
+        {
+          "label": "Molly: Pillar",
+          "url": "https://csnades.gg/ancient/molotovs/pillar-from-b-doors"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c09d34b8-7b8f-4f09-bef9-e12d06b297c0",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Ancient setup. Two A, one mid, two B.",
+      "tasks": [
+        "2 A: site and donut",
+        "1 mid at snipers nest",
+        "2 B: ramp and back alley",
+        "Rotate on the plant, not on noise"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "f67862c4-6aba-459a-9892-041e57b045e9",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco close",
+      "description": "Their eco. Close angles only, no mid, no long peeks.",
+      "tasks": [
+        "3 B: ramp close, cave, back alley",
+        "2 A: site and donut close",
+        "No AWP peeks, no wide angles",
+        "Trade every contact"
+      ],
+      "rounds": [
+        "eco",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "f6ad2a6c-3f9c-4740-9c38-7ee188cb5d82",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Give mid",
+      "description": "Concede mid, keep five alive, win the retake instead.",
+      "tasks": [
+        "No mid duels, hold from site",
+        "2 A, 2 B, 1 CT for rotates",
+        "Save util for after the plant",
+        "Retake as a group of three"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 5,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "e3db5245-c8a8-4ab9-8503-307b7e792840",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Retake A from CT lane and temple together.",
+      "tasks": [
+        "Gather 3+ in CT before peeking",
+        "Molly triple and plat",
+        "One temple, rest CT lane",
+        "Swing on the flash together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "b4777a58-6ef9-473d-a33a-1a369044e6eb",
+      "map": "Ancient",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake B from back alley and cave at the same time.",
+      "tasks": [
+        "Gather 3+ in back alley first",
+        "Molly pillar and lower catwalk",
+        "One cave, rest back alley",
+        "Flash ramp, go on the count"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: Pillar",
+          "url": "https://csnades.gg/ancient/molotovs/pillar-from-b-doors"
+        },
+        {
+          "label": "Molly: Lower catwalk",
+          "url": "https://csnades.gg/ancient/molotovs/lower-catwalk-from-b-entry"
+        },
+        {
+          "label": "Flash: B ramp (CT)",
+          "url": "https://csnades.gg/ancient/flashbangs/b-ramp-from-cave"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "f43b02ef-dcd8-46da-bf64-5040052e5141",
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Pistol B long",
+      "description": "Pistol B. Numbers through B long, plant before rotations.",
+      "tasks": [
+        "Five ruins into B long",
+        "Flash B site from ruins, enter together",
+        "Plant default, hold gate and ebox"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins-b"
+        }
+      ],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "b7c67fe1-e907-4a06-8621-f12596da7996",
+      "map": "Anubis",
+      "side": "T",
+      "site": "a",
+      "callout": "Rush water",
+      "description": "Eco A. Five through water into main, flashes only.",
+      "tasks": [
+        "Five down stairs into water",
+        "Flash main, entry together",
+        "Plant A, watch heaven and connector"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "83297905-4b6a-4c3a-b4b8-858db7c8eb22",
+      "map": "Anubis",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush gate",
+      "description": "Eco B. Straight from ruins to gate, no stopping.",
+      "tasks": [
+        "Five through ruins, hug the wall",
+        "Flash B site, spray corner and pillar",
+        "Check ninja, plant default"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Flash: B site",
+          "url": "https://csnades.gg/anubis/flashbangs/b-site-from-ruins-b"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "0b93a27d-bf81-4cd6-90a2-2018c8c3687d",
+      "map": "Anubis",
+      "side": "T",
+      "site": "a",
+      "callout": "B fake A",
+      "description": "Noise at B long, then five through water into main.",
+      "tasks": [
+        "Two B long: shoot gate, make noise",
+        "Three quiet in water",
+        "All five main on the call",
+        "Smoke heaven and platform, molly site"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/anubis/smokes/heaven-from-water-b"
+        },
+        {
+          "label": "Smoke: Platform",
+          "url": "https://csnades.gg/anubis/smokes/platform-from-water"
+        },
+        {
+          "label": "Molly: A site",
+          "url": "https://csnades.gg/anubis/molotovs/a-site-from-water"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "8fae0897-aede-4c1b-8114-2b335eb91c4a",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Anubis setup. Two A, one mid, two B.",
+      "tasks": [
+        "2 A: heaven and site",
+        "1 middle at double doors",
+        "2 B: sniper and back site",
+        "Rotate through palace, not street"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "c2b8a489-4be4-4728-8a56-3924a5050982",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco close",
+      "description": "Their eco. Hold close angles, no water, no mid peeks.",
+      "tasks": [
+        "3 B close: corner, pillar, back site",
+        "2 A: heaven and main close",
+        "No wide angles, no AWP peeks",
+        "Trade every contact"
+      ],
+      "rounds": [
+        "eco",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "8eb571ae-54d5-4020-8537-d949fe0b2919",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Give mid",
+      "description": "Concede mid and water. Play the sites, save util for the retake.",
+      "tasks": [
+        "No double doors duels",
+        "2 A, 2 B, 1 palace to rotate",
+        "Fall back on first contact",
+        "Retake together with utility"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 5,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "61f8dd59-e8d1-4e7e-8b4a-e04bb3d62a56",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Retake A from connector and heaven together.",
+      "tasks": [
+        "Gather 3+ in middle or tunnel",
+        "HE A main from plat",
+        "One heaven, rest connector",
+        "Flash main, swing together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "HE: A main",
+          "url": "https://csnades.gg/anubis/hegrenades/a-main-from-plat"
+        },
+        {
+          "label": "Flash: A main",
+          "url": "https://csnades.gg/anubis/flashbangs/a-main-from-connector"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "2a57da19-b086-4939-a263-d2231b4846f3",
+      "map": "Anubis",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake B from street and ebox at the same time.",
+      "tasks": [
+        "Gather 3+ in palace first",
+        "Molly B default and back site",
+        "One ebox, rest street",
+        "Check ninja before you defuse"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Molly: B default",
+          "url": "https://csnades.gg/anubis/molotovs/b-default-from-sniper"
+        },
+        {
+          "label": "Molly: Back site",
+          "url": "https://csnades.gg/anubis/molotovs/backsite-from-temple"
+        }
+      ],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "41aa3c82-d92e-41b7-af88-2ba2ec8ffeb8",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Pistol B halls",
+      "description": "Pistol B. Five through halls and main, plant fast.",
+      "tasks": [
+        "Five T boxes into B halls",
+        "Flash B main, enter together",
+        "Plant default, watch heaven and checkers"
+      ],
+      "rounds": [
+        "pistol"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "0e17ff18-9b57-4d1b-8f52-a560cf63ede8",
+      "map": "Cache",
+      "side": "T",
+      "site": "a",
+      "callout": "Rush A main",
+      "description": "Eco A. Five through A main, flashes only, no stopping.",
+      "tasks": [
+        "Five A long into A main",
+        "Flash site over lockers, enter",
+        "Plant default, hold quad and squeaky"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "5c9b7207-dde9-4dc6-97b8-f2c1f54e727a",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "Rush B main",
+      "description": "Eco B. Five through halls, straight into the site.",
+      "tasks": [
+        "Five B halls into B main",
+        "Smoke front B from sun room",
+        "Spray heaven side, plant default"
+      ],
+      "rounds": [
+        "eco",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Front B",
+          "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room"
+        }
+      ],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "34eb4296-030a-4ad9-959b-0f2e930a9393",
+      "map": "Cache",
+      "side": "T",
+      "site": "mid",
+      "callout": "Garage default",
+      "description": "Take garage and mid for info, then commit A or B.",
+      "tasks": [
+        "Two garage, one boost, two B halls",
+        "Smoke left and right mid",
+        "Call highway A or checkers B"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Left mid",
+          "url": "https://csnades.gg/cache/smokes/left-mid-from-garage"
+        },
+        {
+          "label": "Smoke: Right mid",
+          "url": "https://csnades.gg/cache/smokes/right-mid-from-garage"
+        }
+      ],
+      "level": 6,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "73dd683e-c52a-4498-bc0f-4f01b1d412f1",
+      "map": "Cache",
+      "side": "T",
+      "site": "b",
+      "callout": "A fake B",
+      "description": "Show A main and long, then five B through halls.",
+      "tasks": [
+        "Two A long: shoot squeaky, make noise",
+        "Three quiet in B halls",
+        "All five B main on the call",
+        "Smoke heaven and front B"
+      ],
+      "rounds": [
+        "full"
+      ],
+      "status": "ready",
+      "links": [
+        {
+          "label": "Smoke: Heaven",
+          "url": "https://csnades.gg/cache/smokes/heaven-from-garbage"
+        },
+        {
+          "label": "Smoke: Front B",
+          "url": "https://csnades.gg/cache/smokes/front-b-site-from-sun-room"
+        }
+      ],
+      "level": 9,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "13474fec-f0f9-4f2b-a7d8-d2a2411f0751",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Default 2-1-2",
+      "description": "Standard Cache setup. Two A, one mid, two B.",
+      "tasks": [
+        "2 A: quad and forklift/balcony",
+        "1 mid at CT connector",
+        "2 B: heaven and checkers side",
+        "Rotate through CT halls, not mid"
+      ],
+      "rounds": [],
+      "status": "ready",
+      "links": [],
+      "level": 2,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "5d248b24-5876-4fcf-b692-f4ffa6484c63",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Anti-eco close",
+      "description": "Their eco. Close angles, no mid, no early peeks.",
+      "tasks": [
+        "3 B: heaven, new boxes, close left",
+        "2 A: quad and forklift",
+        "No mid or highway peeks",
+        "Trade every contact"
+      ],
+      "rounds": [
+        "eco",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 1,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "e21246a2-ac5e-401c-8cc3-c529b37d9a95",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Give mid",
+      "description": "Concede mid. Hold the sites with five alive and full utility.",
+      "tasks": [
+        "No garage or vents duels",
+        "2 A, 2 B, 1 CT halls",
+        "Fall back on first contact",
+        "Save util for the retake"
+      ],
+      "rounds": [
+        "full",
+        "force"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 5,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "357e3664-55ca-48b9-8bf2-6b2c865955b8",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake A",
+      "description": "Retake A from highway and elektro together, utility first.",
+      "tasks": [
+        "Gather 3+ before peeking",
+        "Molly default and quad",
+        "One highway, rest elektro",
+        "Swing on the flash together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
+    },
+    {
+      "id": "ded7f77e-c813-4656-bfff-0f3031f764c6",
+      "map": "Cache",
+      "side": "CT",
+      "site": null,
+      "callout": "Retake B",
+      "description": "Retake B from heaven and checkers at the same time.",
+      "tasks": [
+        "Gather 3+ in CT halls first",
+        "Molly default and new boxes",
+        "One checkers, rest heaven",
+        "Go on the count together"
+      ],
+      "rounds": [
+        "full",
+        "force",
+        "anti"
+      ],
+      "status": "ready",
+      "links": [],
+      "level": 10,
+      "wins": 0,
+      "losses": 0,
+      "times_used": 0,
+      "last_used": null,
+      "pack_id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "owner_user_id": null,
+      "team_id": null,
+      "source": "starter-pack-mece"
     }
   ]
 }

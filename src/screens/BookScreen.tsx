@@ -11,7 +11,7 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
+import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack, LEVEL_BANDS, levelInBand } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -60,6 +60,7 @@ export function BookScreen() {
   } = usePlaybook();
   const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
+  const [levelBand, setLevelBand] = useState<string>("all");
   const [catalogTargetPack, setCatalogTargetPack] = useState("");
   const [packDraftTitle, setPackDraftTitle] = useState("");
   const [renamingPackId, setRenamingPackId] = useState<string | null>(null);
@@ -123,7 +124,7 @@ export function BookScreen() {
   /** Packs shown in Match toggles: personal packs first, then unlocked system packs. */
   const togglePacks = useMemo(() => {
     const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["essentials-pug", "stack-standard", "meme-strats"];
+    const order = ["starter-pack", "essentials-pug", "meme-strats", "pro-structure"];
     system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
       const bi = order.indexOf(b.slug);
@@ -141,10 +142,11 @@ export function BookScreen() {
         if (!pack || isPackLocked(pack)) return false;
         if (s.side !== session.selected_side) return false;
         if (!isAllMaps(session.selected_map) && s.map !== session.selected_map) return false;
+        if (!levelInBand(s.level, levelBand)) return false;
         return true;
       })
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
-  }, [catalogStrats, packs, session.selected_map, session.selected_side, query]);
+  }, [catalogStrats, packs, session.selected_map, session.selected_side, query, levelBand]);
 
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -154,10 +156,11 @@ export function BookScreen() {
       .filter((s) => {
         if (s.side !== session.selected_side) return false;
         if (!isAllMaps(session.selected_map) && s.map !== session.selected_map) return false;
+        if (!levelInBand(s.level, levelBand)) return false;
         return true;
       })
       .filter((s) => !q || `${s.callout} ${s.description} ${s.tasks.join(" ")} ${s.map}`.toLowerCase().includes(q));
-  }, [usePersonalPool, myPoolStrats, enabledStrats, session.selected_map, session.selected_side, query]);
+  }, [usePersonalPool, myPoolStrats, enabledStrats, session.selected_map, session.selected_side, query, levelBand]);
 
   const displayList = usePersonalPool && tab === "catalog" ? catalogList : poolList;
 
@@ -530,6 +533,18 @@ export function BookScreen() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        <div className="row" style={{ marginTop: 4, flexWrap: "wrap", gap: 6 }}>
+          {LEVEL_BANDS.map((b) => (
+            <button
+              key={b.id}
+              type="button"
+              className={`pill ${levelBand === b.id ? "active" : ""}`}
+              onClick={() => setLevelBand(b.id)}
+            >
+              {b.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {showForm && (

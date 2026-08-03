@@ -27,7 +27,7 @@ type AuthState = {
   supabaseReady: boolean;
   userId: string;
   profile: Profile | null;
-  /** Edit Fundamentals/Stack strats for everyone (admin), or this device in local demo. */
+  /** Edit shared system strats for everyone (admin), or this device in local demo. */
   canEditShared: boolean;
   /** Grant/revoke admins in Settings (super admin only). */
   canManageAdmins: boolean;
