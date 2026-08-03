@@ -11,11 +11,19 @@ import {
 } from "./api";
 import type { Profile } from "./types";
 
+function isAnonymousUser(user: User | null | undefined): boolean {
+  return Boolean(user?.is_anonymous);
+}
+
 type AuthState = {
   loading: boolean;
   user: User | null;
   session: Session | null;
   mode: "cloud" | "local";
+  /** True when the session is an anonymous (no-login) cloud user. */
+  isAnonymous: boolean;
+  /** Permanent Discord/email account (not anonymous). */
+  isPermanent: boolean;
   supabaseReady: boolean;
   userId: string;
   profile: Profile | null;
@@ -64,6 +72,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  function applySession(next: Session | null) {
+    setSession(next);
+    setCloudSignedInUser(next?.user?.id ?? null);
+    void loadProfile(next?.user?.id ?? null);
+  }
+
+  /** Silent browser identity for voting — no email/Discord required. */
+  async function ensureAnonymousSession(): Promise<Session | null> {
+    if (!supabase) return null;
+    const { data, error } = await supabase.auth.signInAnonymously();
+    if (error || !data.session) {
+      console.warn("Anonymous sign-in unavailable:", error?.message || "no session");
+      return null;
+    }
+    return data.session;
+  }
+
   useEffect(() => {
     if (!supabaseConfigured || !supabase) {
       setCloudSignedInUser(null);
@@ -71,28 +96,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       return;
     }
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setCloudSignedInUser(data.session?.user?.id ?? null);
-      void loadProfile(data.session?.user?.id ?? null).finally(() => setLoading(false));
-    });
+
+    let cancelled = false;
+
+    void (async () => {
+      const { data } = await supabase.auth.getSession();
+      if (cancelled) return;
+      if (data.session) {
+        applySession(data.session);
+        setLoading(false);
+        return;
+      }
+      const anon = await ensureAnonymousSession();
+      if (cancelled) return;
+      if (anon) applySession(anon);
+      else {
+        setCloudSignedInUser(null);
+        setSession(null);
+        void loadProfile(null);
+      }
+      setLoading(false);
+    })();
+
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
       setSession(s);
       setCloudSignedInUser(s?.user?.id ?? null);
       void loadProfile(s?.user?.id ?? null);
     });
-    return () => sub.subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
   }, []);
 
   const value = useMemo<AuthState>(() => {
     const user = session?.user ?? null;
     const cloud = isCloudMode();
+    const anonymous = isAnonymousUser(user);
+    const permanent = Boolean(user && !anonymous);
     const userId = cloud && user ? user.id : getLocalUserId();
     return {
       loading,
       user,
       session,
       mode: cloud ? "cloud" : "local",
+      isAnonymous: anonymous,
+      isPermanent: permanent,
       supabaseReady: supabaseConfigured,
       userId,
       profile,
@@ -101,6 +150,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async signInWithEmail(email: string) {
         if (!supabase) return { error: "Supabase is not configured." };
         const redirectTo = authRedirectTo();
+        // Upgrade anonymous → permanent while keeping the same user id (and votes).
+        if (isAnonymousUser(user)) {
+          const { error } = await supabase.auth.updateUser({ email });
+          return { error: error?.message };
+        }
         const { error } = await supabase.auth.signInWithOtp({
           email,
           options: { emailRedirectTo: redirectTo },
@@ -110,6 +164,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async signInWithDiscord() {
         if (!supabase) return { error: "Supabase is not configured." };
         const redirectTo = authRedirectTo();
+        if (isAnonymousUser(user)) {
+          const { error } = await supabase.auth.linkIdentity({
+            provider: "discord",
+            options: { redirectTo },
+          });
+          return { error: error?.message };
+        }
         const { error } = await supabase.auth.signInWithOAuth({
           provider: "discord",
           options: { redirectTo },
@@ -117,9 +178,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return { error: error?.message };
       },
       async signOut() {
-        if (supabase) await supabase.auth.signOut();
-        setCloudSignedInUser(null);
-        setProfile(null);
+        if (!supabase) return;
+        await supabase.auth.signOut();
+        // Drop back to a fresh anonymous identity so voting still works.
+        const anon = await ensureAnonymousSession();
+        if (anon) applySession(anon);
+        else {
+          setCloudSignedInUser(null);
+          setSession(null);
+          setProfile(null);
+        }
       },
       async refreshProfile() {
         await loadProfile(user?.id ?? null);

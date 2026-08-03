@@ -23,6 +23,9 @@ export function AuthScreen() {
       <h2 className="h2" style={{ fontSize: 22 }}>
         Sync across devices
       </h2>
+      <p className="muted" style={{ marginBottom: 12 }}>
+        Optional — voting already works on this device. Sign in to keep your pool and favorites.
+      </p>
 
       <button
         type="button"

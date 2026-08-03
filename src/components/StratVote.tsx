@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ChevronDown, ChevronUp } from "./icons";
 import { usePlaybook } from "../lib/playbook";
 import type { Strat } from "../lib/types";
@@ -9,21 +8,16 @@ type Props = {
   compact?: boolean;
 };
 
-/** Up / score / down. Voting requires cloud sign-in; score is always shown. */
+/**
+ * Up / score / down.
+ * Works for anonymous browser sessions and Discord/email accounts (one vote each).
+ * Disabled only when Supabase is not configured (pure local demo).
+ */
 export function StratVote({ strat, compact = false }: Props) {
-  const navigate = useNavigate();
   const { getVote, getVoteScore, castVote, canVote } = usePlaybook();
   const myVote = canVote ? getVote(strat) : 0;
   const { score } = getVoteScore(strat);
   const size = compact ? 14 : 16;
-
-  function onVote(value: 1 | -1) {
-    if (!canVote) {
-      navigate("/settings");
-      return;
-    }
-    void castVote(strat, value);
-  }
 
   return (
     <div
@@ -36,10 +30,13 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === 1 ? " active up" : ""}`}
-        onClick={() => onVote(1)}
-        aria-label={canVote ? (myVote === 1 ? "Remove upvote" : "Upvote") : "Sign in to upvote"}
+        onClick={() => {
+          if (canVote) void castVote(strat, 1);
+        }}
+        disabled={!canVote}
+        aria-label={myVote === 1 ? "Remove upvote" : "Upvote"}
         aria-pressed={myVote === 1}
-        title={canVote ? (myVote === 1 ? "Remove upvote" : "Upvote") : "Sign in to vote"}
+        title={canVote ? (myVote === 1 ? "Remove upvote" : "Upvote") : "Voting unavailable"}
       >
         <ChevronUp size={size} />
       </button>
@@ -49,10 +46,13 @@ export function StratVote({ strat, compact = false }: Props) {
       <button
         type="button"
         className={`strat-vote-btn${myVote === -1 ? " active down" : ""}`}
-        onClick={() => onVote(-1)}
-        aria-label={canVote ? (myVote === -1 ? "Remove downvote" : "Downvote") : "Sign in to downvote"}
+        onClick={() => {
+          if (canVote) void castVote(strat, -1);
+        }}
+        disabled={!canVote}
+        aria-label={myVote === -1 ? "Remove downvote" : "Downvote"}
         aria-pressed={myVote === -1}
-        title={canVote ? (myVote === -1 ? "Remove downvote" : "Downvote") : "Sign in to vote"}
+        title={canVote ? (myVote === -1 ? "Remove downvote" : "Downvote") : "Voting unavailable"}
       >
         <ChevronDown size={size} />
       </button>

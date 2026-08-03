@@ -151,13 +151,14 @@ function saveLocal(store: Store) {
 
 let memory = typeof window !== "undefined" ? loadLocal() : seedStore();
 
-/** True only when Supabase is configured AND the user is signed in. Guests always use local data. */
+/** Session user id when Supabase is configured (anonymous or permanent). */
 let signedInUserId: string | null = null;
 
 export function setCloudSignedInUser(userId: string | null) {
   signedInUserId = userId;
 }
 
+/** True when Supabase is configured AND a session exists (anonymous browser id or Discord/email). */
 export function isCloudMode() {
   return supabaseConfigured && !!supabase && !!signedInUserId;
 }
@@ -311,8 +312,8 @@ export type StratVoteResult = {
   myVote: StratVoteValue;
 };
 
+/** Community votes are cloud-only (anonymous browser session or Discord/email). */
 export async function getMyVotes(userId: string): Promise<Record<string, StratVoteValue>> {
-  // Community votes are cloud-only — guests/local demo do not keep a private scoreboard.
   if (!isCloudMode()) return {};
   const { data, error } = await supabase!
     .from("user_strat_votes")
