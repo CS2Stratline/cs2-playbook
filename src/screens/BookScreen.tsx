@@ -11,7 +11,7 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, isAllMaps, isCommunityStrat, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
+import { MAPS, isAllMaps, isCommunityStrat, isPackInMatchPool, isPackLocked, isMemePack, compareSystemPacks } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -127,14 +127,11 @@ export function BookScreen() {
 
   /** Packs shown in Match toggles: personal packs first, then unlocked system packs. */
   const togglePacks = useMemo(() => {
-    const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["essentials-pug", "stack-standard", "meme-strats"];
-    system.sort((a, b) => {
-      const ai = order.indexOf(a.slug);
-      const bi = order.indexOf(b.slug);
-      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-    });
+    const system = packs
+      .filter((p) => p.visibility === "system" && !isPackLocked(p))
+      .sort(compareSystemPacks);
     const mine = usePersonalPool ? myPrivatePacks : [];
+    // Personal packs first, then Starter Pack → … → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, myPrivatePacks]);
 
@@ -354,6 +351,15 @@ export function BookScreen() {
         <p className="eyebrow">Packs</p>
         <p className="muted" style={{ fontSize: 11, marginBottom: 8 }}>
           Match only shows packs that are On.
+          {!usePersonalPool && (
+            <>
+              {" "}
+              <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
+                Sign in
+              </button>{" "}
+              to build your own.
+            </>
+          )}
         </p>
         {togglePacks.map((p) => {
           const on = isPackInMatchPool(p.id, subscriptions, packs);
