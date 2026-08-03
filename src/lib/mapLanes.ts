@@ -9,7 +9,7 @@ export type LaneDef = {
   short: string;
 };
 
-/** Shared approach lanes — Mid = undecided map control (not mid→A/B executes). */
+/** Shared approach lanes: Mid = undecided map control (not mid→A/B executes). */
 const STANDARD_LANES: LaneDef[] = [
   { id: "a", label: "A site", short: "A" },
   { id: "b", label: "B site", short: "B" },
@@ -24,7 +24,7 @@ const NUKE_LANES: LaneDef[] = [
   { id: "ramp", label: "Ramp", short: "Ramp" },
 ];
 
-/** Uncategorized / map-wide calls (pistols, memes, etc.) — authoring + Playbook only. */
+/** Uncategorized / map-wide calls (pistols, memes, etc.). Authoring + Playbook only. */
 const OTHER_LANE: LaneDef = { id: "default", label: "Other (any lane)", short: "Other" };
 
 const LANES_BY_MAP: Record<string, LaneDef[]> = {
@@ -43,7 +43,7 @@ export function formLanesForMap(map: string): LaneDef[] {
 
 export function isValidLane(map: string, site: string | null | undefined): boolean {
   if (!site || site === "all") return true;
-  // Legacy "default" / Def filter — treat as All (no longer a Match pill).
+  // Legacy "default" / Def filter. Treat as All (no longer a Match pill).
   if (site === "default") return false;
   return lanesForMap(map).some((l) => l.id === site);
 }

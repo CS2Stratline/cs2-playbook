@@ -23,7 +23,7 @@ export function MapSideChrome() {
   const location = useLocation();
   const accent = session.selected_side === "CT" ? "ct" : "";
   const onPlaybook = location.pathname.startsWith("/playbook");
-  // Match + Roulette need a real map — All is Playbook-only.
+  // Match + Roulette need a real map. All is Playbook-only.
   useEffect(() => {
     if (!onPlaybook && isAllMaps(session.selected_map)) {
       void setSession({ selected_map: "Mirage", current_pick_id: null, timer_ends_at: null, called_at: null });

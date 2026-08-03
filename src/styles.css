@@ -10,7 +10,7 @@
   --brand: #ff5500;
   --brand-soft: rgba(255, 85, 0, 0.14);
   --brand-ink: #1a0a00;
-  /* Side accents — T rides brand orange; CT stays cool blue for glanceability */
+  /* Side accents: T rides brand orange; CT stays cool blue for glanceability */
   --accent-t: #ff5500;
   --accent-t-soft: rgba(255, 85, 0, 0.14);
   --accent-ct: #4d9fd6;
@@ -785,7 +785,7 @@ select {
   border-radius: 4px;
 }
 
-/* —— Strat builder (build-order style steps) —— */
+/* === Strat builder (build-order style steps) === */
 .strat-builder {
   margin-bottom: 10px;
   padding: 10px 10px 8px;

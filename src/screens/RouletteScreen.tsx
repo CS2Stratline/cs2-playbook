@@ -18,7 +18,7 @@ export function RouletteScreen() {
       <div className="panel roulette-panel">
         <p className="eyebrow roulette-eyebrow">Strat roulette</p>
         <p className="muted" style={{ marginTop: 0, marginBottom: 14 }}>
-          Pure chaos. Not a Match pack — just roll and shout.
+          Pure chaos. Not a Match pack. Just roll and shout.
         </p>
 
         <div className="roulette-stage">

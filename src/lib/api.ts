@@ -19,7 +19,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
-const SEED_REVISION = 18;
+const SEED_REVISION = 19;
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
@@ -136,7 +136,7 @@ function loadLocal(): Store {
             estimateStratLevel({ ...s, tier: store.packs.find((p) => p.id === s.pack_id)?.tier }),
           upvotes: Number(s.upvotes || 0),
           downvotes: Number(s.downvotes || 0),
-          // Legacy local rows had no flag — keep them private.
+          // Legacy local rows had no flag. Keep them private.
           is_private: s.is_private ?? true,
         }));
         // Drop legacy local vote map from early vote prototypes (never read anymore).
@@ -338,7 +338,7 @@ export async function getMyVotes(userId: string): Promise<Record<string, StratVo
     .from("user_strat_votes")
     .select("strat_id, value")
     .eq("user_id", userId);
-  // Migration may not be applied yet — don't break the whole playbook load.
+  // Migration may not be applied yet. Don't break the whole playbook load.
   if (error) return {};
   const out: Record<string, StratVoteValue> = {};
   for (const row of data || []) {
@@ -349,7 +349,7 @@ export async function getMyVotes(userId: string): Promise<Record<string, StratVo
 }
 
 /**
- * Set or toggle a vote (cloud session required — anonymous or Discord/email).
+ * Set or toggle a vote (cloud session required; anonymous or Discord/email).
  * Pass 1 (up) or -1 (down). Same value again clears. Pass 0 to clear explicitly.
  */
 export async function setStratVote(stratId: string, value: StratVoteValue): Promise<StratVoteResult> {
@@ -687,7 +687,7 @@ export async function createPrivatePack(userId: string, input: { title: string; 
   return data.id as string;
 }
 
-/** Soft cap — Match toggles stay scannable. */
+/** Soft cap so Match toggles stay scannable. */
 export const MAX_PRIVATE_PACKS = 8;
 
 /** Private packs owned by this user, oldest first (stable default = first). */
@@ -913,7 +913,7 @@ export function markAutoSeededStarterPack(userId: string) {
 
 /**
  * First-login bootstrap: copy Starter Pack strats for every map into My pool.
- * Idempotent — skips strats already in the pool. Marks a local flag so we
+ * Idempotent. Skips strats already in the pool. Marks a local flag so we
  * don't re-run after the user intentionally clears their pool.
  */
 export async function ensureStarterPackSeeded(userId: string, packs: Pack[]): Promise<number> {

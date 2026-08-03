@@ -21,7 +21,7 @@ Pinned lineup links live on each strat; dashed chips are **suggested** from the 
 
 ## Quick start (local demo)
 
-No Supabase required — packs seed into `localStorage`.
+No Supabase required. Packs seed into `localStorage`.
 
 ```bash
 npm install
