@@ -39,12 +39,13 @@ npm run seed:supabase
 
 5. Add the same URL/anon key as GitHub Actions secrets (or `.env.local` for `npm run dev`).
 6. SQL editor: run [`003_live_share.sql`](supabase/migrations/003_live_share.sql) then [`004_fix_live_share_pgcrypto.sql`](supabase/migrations/004_fix_live_share_pgcrypto.sql) for private live-call links (Settings → Live call link when signed in).
-7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.
+7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.  
+   Seed **does not** reset `upvotes` / `downvotes` / usage counters (omitted from the upsert; DB trigger also blocks accidental overwrites).
 
 8. **Migrations (run in order in the SQL editor):**  
-   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql` → `012_vote_ip_lock.sql`.  
+   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql` → `012_vote_ip_lock.sql` → `013_preserve_vote_counters.sql`.  
    Do **not** stop after `001` + seed — without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
-   `011`–`012` enable community upvote/downvote with a soft IP lock (same network can’t stack Incognito votes on one strat). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes` (also turns on **Anonymous Sign-Ins** + **Manual linking**).
+   `011`–`013` enable community upvote/downvote (IP soft-lock + counters preserved across catalog re-seeds). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes` (also turns on **Anonymous Sign-Ins** + **Manual linking**).
 
 9. **Anonymous voting (no login UI):** Authentication → Providers → enable **Anonymous Sign-Ins**. Optionally enable **Manual linking** so Discord/email upgrades keep the same user id (and their votes).
 
@@ -72,7 +73,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 ## Launch security checklist
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
-- [x] `011_strat_votes.sql` + `012_vote_ip_lock.sql` applied + Anonymous Sign-Ins enabled (guest voting)
+- [x] `011_strat_votes.sql` + `012_vote_ip_lock.sql` + `013_preserve_vote_counters.sql` applied + Anonymous Sign-Ins enabled (guest voting; counters survive re-seed)
 - [x] Super admin bootstrapped via SQL (not open signup claim)
 - [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
 - [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
