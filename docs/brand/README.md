@@ -1,16 +1,16 @@
 # Stratline brand
 
-Canonical identity for Stratline / Cloud Playbook.
+Canonical identity for Stratline.
 
 ## Assets
 
 | File | Use |
 |------|-----|
-| [stratline-brand-sheet.png](./stratline-brand-sheet.png) | Human reference: size ladder, lockup, construction, palette, type |
+| [stratline-brand-sheet.pdf](./stratline-brand-sheet.pdf) | Official brand profile (size ladder, lockup, construction, palette, type) |
 | [`/public/stratline-mark.svg`](../../public/stratline-mark.svg) | Bare list→play mark (in-app header) |
 | [`/public/favicon.svg`](../../public/favicon.svg) | Squircle favicon / apple-touch-icon |
 
-SVGs in `public/` are the source of truth for shipping UI. The brand sheet is the design reference — do not regenerate icons from a screenshot of the sheet; edit the SVGs.
+SVGs in `public/` are the source of truth for shipping UI. The PDF is the human design reference — do not regenerate icons from a raster of the sheet; edit the SVGs.
 
 ## Mark
 
