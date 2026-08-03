@@ -11,7 +11,16 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, isAllMaps, isCommunityStrat, isPackInMatchPool, isPackLocked, isMemePack, compareSystemPacks } from "../lib/types";
+import {
+  MAPS,
+  catalogIdFromSource,
+  isAllMaps,
+  isCommunityStrat,
+  isPackInMatchPool,
+  isPackLocked,
+  isMemePack,
+  compareSystemPacks,
+} from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -68,21 +77,18 @@ export function BookScreen() {
   } = usePlaybook();
   const [tab, setTab] = useState<Tab>("pool");
   const [query, setQuery] = useState("");
-  const [catalogTargetPack, setCatalogTargetPack] = useState("");
   const [packDraftTitle, setPackDraftTitle] = useState("");
   const [renamingPackId, setRenamingPackId] = useState<string | null>(null);
   const [renameTitle, setRenameTitle] = useState("");
   const [packBusy, setPackBusy] = useState(false);
   const [packError, setPackError] = useState("");
+  /** Strat id whose “Add to…” pack checklist is open. */
+  const [addToMenuId, setAddToMenuId] = useState<string | null>(null);
 
   useEffect(() => {
     if (usePersonalPool) setTab("pool");
     else setTab("catalog");
   }, [usePersonalPool]);
-
-  useEffect(() => {
-    if (!catalogTargetPack && defaultPackId) setCatalogTargetPack(defaultPackId);
-  }, [defaultPackId, catalogTargetPack]);
 
   const [expanded, setExpanded] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -321,7 +327,7 @@ export function BookScreen() {
     try {
       const id = await createPrivatePack(title);
       setPackDraftTitle("");
-      setCatalogTargetPack(id);
+      setForm((prev) => ({ ...prev, packId: id }));
     } catch (e) {
       setPackError(e instanceof Error ? e.message : "Could not create pack");
     } finally {
@@ -350,11 +356,41 @@ export function BookScreen() {
     setPackBusy(true);
     try {
       await deletePrivatePack(packId);
-      if (catalogTargetPack === packId) setCatalogTargetPack(defaultPackId || "");
     } catch (e) {
       setPackError(e instanceof Error ? e.message : "Could not delete pack");
     } finally {
       setPackBusy(false);
+    }
+  }
+
+  /** Pool row for this strat (or its catalog source) inside a personal pack. */
+  function poolCopyInPack(s: Strat, packId: string): Strat | undefined {
+    if (s.owner_user_id === userId && s.pack_id === packId) return s;
+    const src = catalogIdFromSource(s.source);
+    if (src) {
+      const bySource = findCopy(myPoolStrats, src, packId);
+      if (bySource) return bySource;
+    }
+    return findCopy(myPoolStrats, s.id, packId);
+  }
+
+  function sourceRowForAdd(s: Strat): Strat {
+    const src = catalogIdFromSource(s.source);
+    if (!src) return s;
+    return strats.find((row) => row.id === src) || s;
+  }
+
+  async function togglePackMembership(s: Strat, packId: string) {
+    setBusyId(`${s.id}:${packId}`);
+    try {
+      const existing = poolCopyInPack(s, packId);
+      if (existing) {
+        await removeFromPool(existing.id);
+      } else {
+        await addToPool(sourceRowForAdd(s), packId);
+      }
+    } finally {
+      setBusyId(null);
     }
   }
 
@@ -515,38 +551,14 @@ export function BookScreen() {
             Community · {communityList.length}
           </button>
         </div>
-        {(tab === "catalog" || tab === "community") && usePersonalPool && myPrivatePacks.length > 0 && (
-          <div style={{ marginTop: 10 }}>
-            <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
-              {tab === "community" ? "Add Community calls into" : "Add Catalog calls into"}
-            </p>
-            <select
-              className="input"
-              style={{ marginBottom: 0 }}
-              aria-label="Pack to add into"
-              value={
-                myPrivatePacks.some((p) => p.id === catalogTargetPack)
-                  ? catalogTargetPack
-                  : defaultPackId || myPrivatePacks[0].id
-              }
-              onChange={(e) => setCatalogTargetPack(e.target.value)}
-            >
-              {myPrivatePacks.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.title}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
         {tab === "community" && (
           <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
-            Shared player calls. Expand one → Add to pack (uses the pack above).
+            Shared player calls. Expand one → Add to… to put it in your packs.
           </p>
         )}
-        {tab === "catalog" && usePersonalPool && myPrivatePacks.length > 0 && (
+        {tab === "catalog" && usePersonalPool && (
           <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
-            Expand a call → Add to pack (uses the pack above).
+            Expand a call → Add to… to choose which pack(s) get it.
           </p>
         )}
       </div>
@@ -783,20 +795,23 @@ export function BookScreen() {
               const open = expanded === s.id;
               const pack = packs.find((p) => p.id === s.pack_id);
               const locked = isPackLocked(pack);
-              const targetPack =
-                myPrivatePacks.some((p) => p.id === catalogTargetPack)
-                  ? catalogTargetPack
-                  : defaultPackId || myPrivatePacks[0]?.id;
-              const targetPackTitle =
-                myPrivatePacks.find((p) => p.id === targetPack)?.title || "pack";
-              const inPool = usePersonalPool
-                ? !!findCopy(myPoolStrats, s.id, tab === "catalog" || tab === "community" ? targetPack : undefined)
-                : false;
               const showingShop = tab === "catalog" || tab === "community";
               const community = isCommunityStrat(s) || tab === "community";
+              const inAnyPack = usePersonalPool
+                ? myPrivatePacks.some((p) => !!poolCopyInPack(s, p.id))
+                : false;
+              const addMenuOpen = addToMenuId === s.id;
               return (
                 <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && tab === "catalog" ? 0.75 : 1 }}>
-                  <button type="button" className="list-item" style={{ margin: 0 }} onClick={() => setExpanded(open ? null : s.id)}>
+                  <button
+                    type="button"
+                    className="list-item"
+                    style={{ margin: 0 }}
+                    onClick={() => {
+                      setExpanded(open ? null : s.id);
+                      setAddToMenuId(null);
+                    }}
+                  >
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong>{s.callout}</strong>
                       <span className="row" style={{ gap: 4, flexShrink: 0 }} onClick={(e) => e.stopPropagation()}>
@@ -807,12 +822,7 @@ export function BookScreen() {
                             className="btn-ghost"
                             style={{ padding: 4 }}
                             onClick={() => void toggleFavorite(s.id)}
-                            aria-label={isFavorite(s.id) ? "Unpin favorite" : "Add to pack"}
-                            title={
-                              showingShop && !inPool && !isFavorite(s.id)
-                                ? "Add to pack"
-                                : undefined
-                            }
+                            aria-label={isFavorite(s.id) ? "Unpin favorite" : "Favorite"}
                           >
                             <Star size={14} filled={isFavorite(s.id)} />
                           </button>
@@ -844,7 +854,7 @@ export function BookScreen() {
                         {s.owner_user_id === userId && s.is_private ? " · Private" : ""}
                         {s.tasks.length ? ` · ${s.tasks.length} tasks` : ""}
                         {locked ? " · Locked" : ""}
-                        {usePersonalPool && showingShop && inPool ? " · In pack" : ""}
+                        {usePersonalPool && inAnyPack && showingShop ? " · In a pack" : ""}
                       </span>
                     </div>
                   </button>
@@ -863,28 +873,14 @@ export function BookScreen() {
                         })()}
                         accent={session.selected_side === "CT" ? "ct" : ""}
                       />
-                      <div className="row" style={{ marginTop: 8 }}>
-                        {usePersonalPool && showingShop && (
+                      <div className="row" style={{ marginTop: 8, flexWrap: "wrap", gap: 6 }}>
+                        {usePersonalPool && myPrivatePacks.length > 0 && !locked && (
                           <button
                             type="button"
-                            className="btn-ghost"
-                            disabled={locked || busyId === s.id || inPool || s.owner_user_id === userId}
-                            onClick={async () => {
-                              setBusyId(s.id);
-                              try {
-                                await addToPool(s, targetPack);
-                              } finally {
-                                setBusyId(null);
-                              }
-                            }}
+                            className={`btn-ghost ${addMenuOpen ? "active" : ""}`}
+                            onClick={() => setAddToMenuId(addMenuOpen ? null : s.id)}
                           >
-                            {locked
-                              ? "Locked"
-                              : s.owner_user_id === userId
-                                ? "Yours"
-                                : inPool
-                                  ? `In ${targetPackTitle}`
-                                  : `Add to ${targetPackTitle}`}
+                            Add to…
                           </button>
                         )}
                         {canEditStrat(s) && (
@@ -917,6 +913,44 @@ export function BookScreen() {
                           </button>
                         )}
                       </div>
+                      {addMenuOpen && usePersonalPool && (
+                        <div
+                          style={{
+                            marginTop: 8,
+                            padding: "8px 10px",
+                            border: "1px solid var(--line)",
+                            borderRadius: 8,
+                            background: "var(--panel-2, transparent)",
+                          }}
+                        >
+                          <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+                            Packs that include this call
+                          </p>
+                          {myPrivatePacks.map((p) => {
+                            const copy = poolCopyInPack(s, p.id);
+                            const checked = !!copy;
+                            const rowBusy = busyId === `${s.id}:${p.id}`;
+                            return (
+                              <button
+                                key={p.id}
+                                type="button"
+                                className="list-item"
+                                style={{ margin: 0, padding: "8px 0" }}
+                                disabled={rowBusy || (locked && showingShop)}
+                                onClick={() => void togglePackMembership(s, p.id)}
+                                aria-pressed={checked}
+                              >
+                                <span className="row" style={{ justifyContent: "space-between", width: "100%" }}>
+                                  <span>{p.title}</span>
+                                  <span className="muted" style={{ fontSize: 13 }}>
+                                    {rowBusy ? "…" : checked ? "✓" : ""}
+                                  </span>
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
