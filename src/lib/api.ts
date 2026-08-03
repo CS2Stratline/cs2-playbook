@@ -19,7 +19,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
-const SEED_REVISION = 11;
+const SEED_REVISION = 12;
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
