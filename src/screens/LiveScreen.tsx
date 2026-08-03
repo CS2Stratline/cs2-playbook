@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchLiveCall, type LiveCallView } from "../lib/api";
+import { BrandLockup } from "../components/BrandLockup";
 import { SiteIcon } from "../components/icons";
 import { MapLogo } from "../components/MapLogo";
 import { StratTasks } from "../components/StratTasks";
@@ -37,10 +38,7 @@ export function LiveScreen() {
   return (
     <div className="app-shell live-shell">
       <header className="topbar">
-        <p className="brand">
-          <span>Live call</span>
-          <span className="brand-mark">Playbook</span>
-        </p>
+        <BrandLockup eyebrow="Live call" />
       </header>
 
       {error && (

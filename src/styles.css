@@ -98,18 +98,16 @@ select {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32em;
 }
 
-.brand .brand-mark::after {
-  content: "";
-  display: inline-block;
-  width: 0.55em;
-  height: 0.55em;
-  margin-left: 0.28em;
-  background: var(--brand);
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-  vertical-align: 0.05em;
+.brand .brand-icon {
+  width: 0.95em;
+  height: 0.95em;
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav {

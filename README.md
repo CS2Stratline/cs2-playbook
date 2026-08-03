@@ -32,6 +32,10 @@ npm run dev
 
 See **[DEPLOY.md](DEPLOY.md)** for GitHub Pages, Supabase seed, and Vercel.
 
+## Brand
+
+Stratline list→play mark, palette, and lockup: **[docs/brand/](docs/brand/)**.
+
 ## Architecture
 
 - Solo IGL v1; `team_id` reserved for Phase 5 ([TEAM.md](TEAM.md)).

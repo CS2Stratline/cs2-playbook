@@ -1,6 +1,7 @@
 import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AuthProvider, useAuth } from "./lib/auth";
 import { PlaybookProvider } from "./lib/playbook";
+import { BrandLockup } from "./components/BrandLockup";
 import { MapSideChrome } from "./components/MapSideChrome";
 import { BookOpen, Crosshair, Dice, Gear } from "./components/icons";
 import { MatchScreen } from "./screens/MatchScreen";
@@ -43,10 +44,7 @@ function Shell() {
     <PlaybookProvider>
       <div className="app-shell">
         <header className="topbar">
-          <p className="brand">
-            <span>CS2 · {subtitle}</span>
-            <span className="brand-mark">Playbook</span>
-          </p>
+          <BrandLockup eyebrow={`CS2 · ${subtitle}`} />
           {showChrome && <MapSideChrome />}
         </header>
         <Routes>
