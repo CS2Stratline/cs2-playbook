@@ -9,7 +9,7 @@ export type LaneDef = {
   short: string;
 };
 
-/** Shared approach lanes — no "Def" catch-all (that confused Match filters). */
+/** Shared approach lanes — Mid = undecided map control (not mid→A/B executes). */
 const STANDARD_LANES: LaneDef[] = [
   { id: "a", label: "A site", short: "A" },
   { id: "b", label: "B site", short: "B" },
