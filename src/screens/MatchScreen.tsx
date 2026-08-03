@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
-import { bumpStratUsage, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
+import { catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
+import { bumpStratUsage, findPoolCopy, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -46,11 +46,17 @@ export function MatchScreen() {
     loading,
     usePersonalPool,
     refresh,
+    myPrivatePacks,
+    myPoolStrats,
+    addToPool,
+    removeFromPool,
   } = usePlaybook();
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveBusy, setSaveBusy] = useState(false);
+  const [addToOpen, setAddToOpen] = useState(false);
+  const [packBusyId, setPackBusyId] = useState<string | null>(null);
   const [form, setForm] = useState({
     callout: "",
     description: "",
@@ -253,6 +259,38 @@ export function MatchScreen() {
   const canEditCurrent =
     !!currentPick &&
     (currentPick.owner_user_id === userId || (canEditShared && !!sharedStratTargetId(currentPick)));
+
+  useEffect(() => {
+    setAddToOpen(false);
+    setPackBusyId(null);
+  }, [currentPick?.id]);
+
+  function poolCopyInPack(s: Strat, packId: string): Strat | undefined {
+    if (s.owner_user_id === userId && s.pack_id === packId) return s;
+    const src = catalogIdFromSource(s.source);
+    if (src) {
+      const bySource = findPoolCopy(myPoolStrats, src, packId);
+      if (bySource) return bySource;
+    }
+    return findPoolCopy(myPoolStrats, s.id, packId);
+  }
+
+  function sourceRowForAdd(s: Strat): Strat {
+    const src = catalogIdFromSource(s.source);
+    if (!src) return s;
+    return strats.find((row) => row.id === src) || s;
+  }
+
+  async function togglePackMembership(s: Strat, packId: string) {
+    setPackBusyId(packId);
+    try {
+      const existing = poolCopyInPack(s, packId);
+      if (existing) await removeFromPool(existing.id);
+      else await addToPool(sourceRowForAdd(s), packId);
+    } finally {
+      setPackBusyId(null);
+    }
+  }
 
   function startEdit() {
     if (!currentPick) return;
@@ -621,19 +659,65 @@ export function MatchScreen() {
                 {currentPick.description && <p className="muted" style={{ marginBottom: 10 }}>{currentPick.description}</p>}
                 <StratTasks tasks={currentPick.tasks} links={callLinks} accent={accent} />
 
-                <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10, marginTop: 4 }}>
+                <div className="row" style={{ borderTop: "1px solid var(--line)", paddingTop: 10, marginTop: 4, flexWrap: "wrap", gap: 6 }}>
                   <button type="button" className="btn-ghost" onClick={() => void changeStrat()}>
                     Change strat
                   </button>
                   <button type="button" className="btn-ghost" onClick={pickRandom} disabled={!pickList.length}>
                     <Shuffle size={14} /> Surprise again
                   </button>
+                  {usePersonalPool && myPrivatePacks.length > 0 && (
+                    <button
+                      type="button"
+                      className={`btn-ghost ${addToOpen ? "active" : ""}`}
+                      onClick={() => setAddToOpen((v) => !v)}
+                    >
+                      Add to…
+                    </button>
+                  )}
                   {canEditCurrent && (
                     <button type="button" className="btn-ghost" onClick={startEdit}>
                       Edit
                     </button>
                   )}
                 </div>
+                {addToOpen && usePersonalPool && currentPick && (
+                  <div
+                    style={{
+                      marginTop: 8,
+                      padding: "8px 10px",
+                      border: "1px solid var(--line)",
+                      borderRadius: 8,
+                    }}
+                  >
+                    <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
+                      Packs that include this call
+                    </p>
+                    {myPrivatePacks.map((p) => {
+                      const copy = poolCopyInPack(currentPick, p.id);
+                      const checked = !!copy;
+                      const rowBusy = packBusyId === p.id;
+                      return (
+                        <button
+                          key={p.id}
+                          type="button"
+                          className="list-item"
+                          style={{ margin: 0, padding: "8px 0" }}
+                          disabled={rowBusy}
+                          onClick={() => void togglePackMembership(currentPick, p.id)}
+                          aria-pressed={checked}
+                        >
+                          <span className="row" style={{ justifyContent: "space-between", width: "100%" }}>
+                            <span>{p.title}</span>
+                            <span className="muted" style={{ fontSize: 13 }}>
+                              {rowBusy ? "…" : checked ? "✓" : ""}
+                            </span>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </>
             )}
           </>
