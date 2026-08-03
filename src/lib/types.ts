@@ -145,7 +145,10 @@ export function isPackLocked(pack: Pick<Pack, "tier"> | undefined | null): boole
   return pack.tier === "pro" && !PREMIUM_UNLOCKED;
 }
 
-/** Match pack toggles (guest + signed-in). Missing subscription key defaults to on (except locked). */
+/**
+ * Match pack toggles (guest + signed-in).
+ * Missing subscription key uses pack defaults (Starter On; Meme / Advanced Off).
+ */
 export function isPackInMatchPool(
   packId: string,
   subscriptions: Record<string, boolean>,
@@ -154,7 +157,9 @@ export function isPackInMatchPool(
   const pack = packs.find((p) => p.id === packId);
   if (!pack) return false;
   if (isPackLocked(pack)) return false;
-  return subscriptions[packId] !== false;
+  const sub = subscriptions[packId];
+  if (sub === undefined) return isPackDefaultEnabled(pack);
+  return sub;
 }
 
 export function catalogSourceKey(catalogStratId: string) {
