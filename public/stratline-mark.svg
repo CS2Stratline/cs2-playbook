@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Stratline icon</title>
+  <desc id="desc">Three tactical call bars leading into a right-pointing execution triangle.</desc>
+  <g fill="#FF5500">
+    <rect x="44" y="116" width="180" height="56"/>
+    <rect x="44" y="228" width="180" height="56"/>
+    <rect x="44" y="340" width="180" height="56"/>
+    <path d="M280 116 L468 256 L280 396 Z"/>
+  </g>
+</svg>
