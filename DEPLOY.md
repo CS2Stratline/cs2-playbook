@@ -72,7 +72,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 ## Launch security checklist
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
-- [ ] `011_strat_votes.sql` + `012_vote_ip_lock.sql` applied + Anonymous Sign-Ins enabled (guest voting)
+- [x] `011_strat_votes.sql` + `012_vote_ip_lock.sql` applied + Anonymous Sign-Ins enabled (guest voting)
 - [x] Super admin bootstrapped via SQL (not open signup claim)
 - [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
 - [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
