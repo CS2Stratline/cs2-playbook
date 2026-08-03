@@ -249,16 +249,13 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   /**
    * Match feed: enabled system packs + strats from each personal pack that is On.
    * Off packs stay out of Match so the call deck stays uncluttered.
+   * Guests with private "Yours" packs follow the same On/Off rules.
    */
   const enabledStrats = useMemo(() => {
     const fromPacks = strats.filter((s) => {
       if (s.owner_user_id) return false;
       return isPackInMatchPool(s.pack_id, subscriptions, packs);
     });
-    // Local demo / guest: still surface privately created strats so New → Save is usable.
-    if (!usePersonalPool) {
-      return myPoolStrats.length ? [...myPoolStrats, ...fromPacks] : fromPacks;
-    }
 
     const fromMine = myPoolStrats.filter((s) => isPackInMatchPool(s.pack_id, subscriptions, packs));
     if (!fromMine.length) return fromPacks;
@@ -270,7 +267,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     );
     const packsWithoutDupes = fromPacks.filter((s) => !coveredCatalogIds.has(s.id));
     return [...fromMine, ...packsWithoutDupes];
-  }, [usePersonalPool, myPoolStrats, strats, subscriptions, packs]);
+  }, [myPoolStrats, strats, subscriptions, packs]);
 
   const isFavorite = useCallback(
     (stratId: string) => {
