@@ -2108,7 +2108,7 @@
       "description": "Heaven/canal smokes, entry water/A.",
       "tasks": [
         "Smoke heaven",
-        "Smoke heaven and platform",
+        "Smoke platform",
         "Entry water → A"
       ],
       "rounds": [
@@ -2121,20 +2121,8 @@
           "url": "https://csnades.gg/anubis/smokes/heaven-from-water"
         },
         {
-          "label": "Smoke: Temple",
-          "url": "https://csnades.gg/anubis/smokes/temple-from-canals"
-        },
-        {
-          "label": "Molly: Heaven",
-          "url": "https://csnades.gg/anubis/molotovs/heaven-from-water"
-        },
-        {
           "label": "Smoke: Platform",
           "url": "https://csnades.gg/anubis/smokes/platform-from-water"
-        },
-        {
-          "label": "Smoke: Heaven",
-          "url": "https://csnades.gg/anubis/smokes/heaven-from-water-b"
         }
       ],
       "level": 7,

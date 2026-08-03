@@ -25,17 +25,15 @@ function must(map, side, callout) {
 // ── §3 map vocabulary corrections ──────────────────────────────────────────
 {
   const s = must("Anubis", "T", "Water A");
-  if (s.tasks[1] !== "Smoke temple / connector" && s.tasks[1] !== "Smoke heaven and platform") {
+  if (s.tasks[1] !== "Smoke temple / connector" && s.tasks[1] !== "Smoke heaven and platform" && s.tasks[1] !== "Smoke platform") {
     throw new Error(`Water A unexpected tasks[1]: ${s.tasks[1]}`);
   }
-  s.tasks[1] = "Smoke heaven and platform";
-  const urls = new Set(s.links.map((l) => l.url));
-  for (const link of [
-    { label: "Smoke: Heaven", url: "https://csnades.gg/anubis/smokes/heaven-from-water-b" },
+  s.tasks[0] = "Smoke heaven";
+  s.tasks[1] = "Smoke platform";
+  s.links = [
+    { label: "Smoke: Heaven", url: "https://csnades.gg/anubis/smokes/heaven-from-water" },
     { label: "Smoke: Platform", url: "https://csnades.gg/anubis/smokes/platform-from-water" },
-  ]) {
-    if (!urls.has(link.url)) s.links.push(link);
-  }
+  ];
 }
 
 {
