@@ -76,6 +76,7 @@ function seedStore(): Store {
     level: s.level || estimateStratLevel({ ...s, tier: packs.find((p) => p.id === s.pack_id)?.tier }),
     upvotes: Number(s.upvotes || 0),
     downvotes: Number(s.downvotes || 0),
+    is_private: s.is_private ?? true,
   }));
   const subscriptions: Record<string, boolean> = {};
   for (const p of packs) subscriptions[p.id] = isPackDefaultEnabled(p);
@@ -133,6 +134,8 @@ function loadLocal(): Store {
             estimateStratLevel({ ...s, tier: store.packs.find((p) => p.id === s.pack_id)?.tier }),
           upvotes: Number(s.upvotes || 0),
           downvotes: Number(s.downvotes || 0),
+          // Legacy local rows had no flag — keep them private.
+          is_private: s.is_private ?? true,
         }));
         // Drop legacy local vote map from early vote prototypes (never read anymore).
         if ("votes" in store) delete (store as { votes?: unknown }).votes;
@@ -301,6 +304,8 @@ function mapStratRow(row: Record<string, unknown>): Strat {
     times_used: Number(row.times_used || 0),
     last_used: (row.last_used as string) || null,
     source: (row.source as string) || null,
+    // Missing column (pre-migration) → treat owned rows as private.
+    is_private: row.is_private == null ? true : Boolean(row.is_private),
   };
 }
 
@@ -539,11 +544,20 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
   const callout = String(strat.callout || "").trim().slice(0, 60);
   const description = String(strat.description || "").trim().slice(0, 280);
   const cleaned = { ...strat, links, tasks, callout, description };
+  // New strats default to public (Community). Edits keep existing unless overridden.
+  const isPrivate = cleaned.is_private ?? false;
 
   if (!isCloudMode()) {
     if (cleaned.id) {
       memory.strats = memory.strats.map((s) =>
-        s.id === cleaned.id ? ({ ...s, ...cleaned, pack_id: packId } as Strat) : s
+        s.id === cleaned.id
+          ? ({
+              ...s,
+              ...cleaned,
+              pack_id: packId,
+              is_private: cleaned.is_private ?? s.is_private,
+            } as Strat)
+          : s
       );
     } else {
       const id = crypto.randomUUID();
@@ -579,12 +593,13 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
         times_used: 0,
         last_used: null,
         source: "user",
+        is_private: isPrivate,
       });
     }
     saveLocal(memory);
     return;
   }
-  const payload = {
+  const payload: Record<string, unknown> = {
     pack_id: packId,
     owner_user_id: userId,
     map: cleaned.map,
@@ -607,9 +622,16 @@ export async function upsertPrivateStrat(userId: string, packId: string, strat: 
         side: cleaned.side,
       }),
     source: "user",
+    is_private: cleaned.id ? (cleaned.is_private ?? isPrivate) : isPrivate,
   };
-  if (cleaned.id) await supabase!.from("strats").update(payload).eq("id", cleaned.id).eq("owner_user_id", userId);
-  else await supabase!.from("strats").insert(payload);
+  if (cleaned.id) {
+    // On edit, only send is_private when the caller set it.
+    if (strat.is_private === undefined) delete payload.is_private;
+    else payload.is_private = strat.is_private;
+    await supabase!.from("strats").update(payload).eq("id", cleaned.id).eq("owner_user_id", userId);
+  } else {
+    await supabase!.from("strats").insert(payload);
+  }
 }
 
 export async function createPrivatePack(userId: string, input: { title: string; description: string; tier: Pack["tier"] }) {
@@ -758,7 +780,8 @@ export async function addCatalogStratToPool(
   targetPackId?: string
 ): Promise<string> {
   const packMeta = packs.find((p) => p.id === catalog.pack_id);
-  if (isPackLocked(packMeta)) throw new Error("This level is locked.");
+  // Community rows may hide their private pack; only block known locked Advanced packs.
+  if (packMeta && isPackLocked(packMeta)) throw new Error("This level is locked.");
   const packId = targetPackId || defaultPrivatePackId(packs, userId) || (await ensureUserPrivatePack(userId));
   const target = packs.find((p) => p.id === packId);
   if (!target || target.visibility !== "private" || target.owner_user_id !== userId) {
@@ -794,6 +817,7 @@ export async function addCatalogStratToPool(
       times_used: 0,
       last_used: null,
       source,
+      is_private: true,
     });
     saveLocal(memory);
     return id;
@@ -815,6 +839,7 @@ export async function addCatalogStratToPool(
       links: catalog.links,
       level: catalog.level || estimateStratLevel(catalog),
       source,
+      is_private: true,
     })
     .select("id")
     .single();
@@ -835,7 +860,14 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
   for (const s of fundamentals) {
     if (findPoolCopy(mine, s.id, packId)) continue;
     await addCatalogStratToPool(userId, s, packs, packId);
-    mine.push({ ...s, id: "pending", pack_id: packId, owner_user_id: userId, source: catalogSourceKey(s.id) });
+    mine.push({
+      ...s,
+      id: "pending",
+      pack_id: packId,
+      owner_user_id: userId,
+      source: catalogSourceKey(s.id),
+      is_private: true,
+    });
     added += 1;
   }
   return added;

@@ -59,6 +59,12 @@ export type Strat = {
   times_used: number;
   last_used: string | null;
   source?: string | null;
+  /**
+   * User-authored strats only. false = visible in Community for everyone.
+   * System catalog rows ignore this (always treated as shared catalog).
+   * Pool copies of catalog/community should stay private (true).
+   */
+  is_private: boolean;
 };
 
 /** Per-user vote on a strat: +1 upvote, -1 downvote, 0 none. */
@@ -148,6 +154,15 @@ export function catalogSourceKey(catalogStratId: string) {
 export function catalogIdFromSource(source: string | null | undefined): string | null {
   if (!source || !source.startsWith("catalog:")) return null;
   return source.slice("catalog:".length);
+}
+
+/** User-authored public call (not a pool copy of catalog/community). */
+export function isCommunityStrat(
+  s: Pick<Strat, "owner_user_id" | "is_private" | "source"> | null | undefined
+): boolean {
+  if (!s?.owner_user_id || s.is_private) return false;
+  if (catalogIdFromSource(s.source)) return false;
+  return true;
 }
 
 export const SCHEMA_VERSION = 3;

@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, StratVoteValue, UserSession } from "./types";
-import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
+import { MAPS, catalogIdFromSource, isAllMaps, isCommunityStrat, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
 
 type PlaybookState = {
   loading: boolean;
@@ -15,6 +15,8 @@ type PlaybookState = {
   /** Signed-in (or local demo) users manage personal packs; cloud guests use system toggles only. */
   usePersonalPool: boolean;
   catalogStrats: Strat[];
+  /** Public user-authored strats (Community). */
+  communityStrats: Strat[];
   myPoolStrats: Strat[];
   /** Personal packs owned by the current user. */
   myPrivatePacks: Pack[];
@@ -219,6 +221,10 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     });
   }, [strats, packs]);
 
+  const communityStrats = useMemo(() => {
+    return strats.filter((s) => isCommunityStrat(s));
+  }, [strats]);
+
   const myPrivatePacks = useMemo(() => {
     return packs
       .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
@@ -288,13 +294,15 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       const poolRow = myPoolStrats.find((s) => s.id === stratId);
       const catalogRow =
         catalogStrats.find((s) => s.id === stratId) ||
+        communityStrats.find((s) => s.id === stratId) ||
         strats.find((s) => s.id === stratId && !s.owner_user_id);
 
       let pinId = poolRow?.id ?? api.findPoolCopy(myPoolStrats, catalogRow?.id || stratId)?.id;
 
       if (!pinId && catalogRow) {
         const pack = packs.find((p) => p.id === catalogRow.pack_id);
-        if (isPackLocked(pack)) return;
+        // Community rows may not expose their private pack; still allow copy.
+        if (pack && isPackLocked(pack)) return;
         try {
           pinId = await api.addCatalogStratToPool(userId, catalogRow, packs, defaultPackId || undefined);
         } catch {
@@ -332,7 +340,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         await api.setFavorite(userId, catalogRow.id, false);
       }
     },
-    [userId, usePersonalPool, myPoolStrats, catalogStrats, strats, packs, favorites, refresh, defaultPackId]
+    [userId, usePersonalPool, myPoolStrats, catalogStrats, communityStrats, strats, packs, favorites, refresh, defaultPackId]
   );
 
   const getVote = useCallback(
@@ -453,6 +461,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     session,
     usePersonalPool,
     catalogStrats,
+    communityStrats,
     myPoolStrats,
     myPrivatePacks,
     defaultPackId,
