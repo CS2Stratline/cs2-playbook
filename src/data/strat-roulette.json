@@ -1077,12 +1077,88 @@
       ]
     },
     "Ancient": {
-      "ct": [],
-      "t": []
+      "ct": [
+        {
+          "callout": "5 Man Donut",
+          "description": "Everyone stack Donut with @SHOTGUNs. Nobody leaves until one of you gets a kill.",
+          "side": "CT",
+          "site": "mid"
+        },
+        {
+          "callout": "Temple Vigil",
+          "description": "All five wait in Temple/A site. First contact, everyone peeks together yelling the same word.",
+          "side": "CT",
+          "site": "a"
+        },
+        {
+          "callout": "Cave Camp",
+          "description": "Everyone hide in Cave/B. Absolute silence until an enemy walks in, then all swing.",
+          "side": "CT",
+          "site": "b"
+        }
+      ],
+      "t": [
+        {
+          "callout": "Door Dash",
+          "description": "Rush Mid doors as a five-stack. First person through must yell a movie quote.",
+          "side": "T",
+          "site": "mid"
+        },
+        {
+          "callout": "Temple Run",
+          "description": "A main → Temple → plant. Nobody uses guns until a util kill or knife touch.",
+          "side": "T",
+          "site": "a"
+        },
+        {
+          "callout": "Cave Dive",
+          "description": "All five through Cave/B. Bomb carrier plants while everyone else jumps on the same box.",
+          "side": "T",
+          "site": "b"
+        }
+      ]
     },
     "Anubis": {
-      "ct": [],
-      "t": []
+      "ct": [
+        {
+          "callout": "5 Man Bridge",
+          "description": "Everyone hold Mid bridge with @RIFLEs. Nobody rotates until one of you gets a kill.",
+          "side": "CT",
+          "site": "mid"
+        },
+        {
+          "callout": "Canal Camp",
+          "description": "Stack Canal/B with @SHOTGUNs. First footsteps, all swing at once.",
+          "side": "CT",
+          "site": "b"
+        },
+        {
+          "callout": "Palace Party",
+          "description": "All five sit Palace/A. You may only leave after someone on the team dies.",
+          "side": "CT",
+          "site": "a"
+        }
+      ],
+      "t": [
+        {
+          "callout": "Bridge Troll",
+          "description": "Take Mid bridge control, then everyone must jump into water before committing a site.",
+          "side": "T",
+          "site": "mid"
+        },
+        {
+          "callout": "Canal Cruise",
+          "description": "Slow walk Canal as a group humming the same tune. Plant B default, then dance.",
+          "side": "T",
+          "site": "b"
+        },
+        {
+          "callout": "E Palace",
+          "description": "Rush Palace/A. Bomb goes first. Everyone else buys only @PISTOL and flashes.",
+          "side": "T",
+          "site": "a"
+        }
+      ]
     }
   }
 }
