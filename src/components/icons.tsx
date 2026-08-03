@@ -232,8 +232,8 @@ export function SiteIcon({ site, size = 12 }: { site: string; size?: number }) {
                 ? "all"
                 : null;
   if (key) return <CsIcon name={key} size={size} />;
-  // Default / other — letter badge
-  const label = site === "default" ? "D" : String(site).toUpperCase().slice(0, 1) || "?";
+  // Other / uncategorized — letter badge
+  const label = site === "default" ? "O" : String(site).toUpperCase().slice(0, 1) || "?";
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" aria-hidden="true" focusable="false" className="site-icon">
       <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="currentColor" strokeWidth="1.5" />

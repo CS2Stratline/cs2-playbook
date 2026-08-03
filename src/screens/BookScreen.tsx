@@ -21,7 +21,7 @@ import {
   isMemePack,
   compareSystemPacks,
 } from "../lib/types";
-import { lanesForMap } from "../lib/mapLanes";
+import { formLanesForMap, lanesForMap, isOtherLane } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -100,7 +100,7 @@ export function BookScreen() {
     callout: "",
     description: "",
     build: { steps: [emptyStep()], extraLinks: [] as StratLink[] } as StratBuild,
-    site: "default",
+    site: "a",
     rounds: [] as string[],
     status: "ready" as "ready" | "practice",
     level: "" as string,
@@ -200,7 +200,7 @@ export function BookScreen() {
     tab === "community" ? communityList : tab === "catalog" ? catalogList : poolList;
 
   const formMap = allMaps ? form.map : session.selected_map;
-  const formLanes = useMemo(() => lanesForMap(formMap), [formMap]);
+  const formLanes = useMemo(() => formLanesForMap(formMap), [formMap]);
 
   const formSuggestedLinks = useMemo(() => {
     if (!showForm) return [] as StratLink[];
@@ -227,16 +227,20 @@ export function BookScreen() {
       })).filter((g) => g.items.length);
     }
     if (session.selected_side === "CT") return [{ id: "ct", label: "CT setups", kind: "site" as const, items: displayList }];
-    return lanesForMap(session.selected_map)
-      .map((lane) => ({
-        id: lane.id,
-        label: lane.label,
-        kind: "site" as const,
-        items: displayList.filter((s) =>
-          lane.id === "default" ? !s.site || s.site === "default" : s.site === lane.id
-        ),
-      }))
-      .filter((g) => g.items.length);
+    const lanes = lanesForMap(session.selected_map);
+    const byLane = lanes.map((lane) => ({
+      id: lane.id,
+      label: lane.label,
+      kind: "site" as const,
+      items: displayList.filter((s) => s.site === lane.id),
+    }));
+    const other = displayList.filter((s) => isOtherLane(s.site));
+    return [
+      ...byLane,
+      ...(other.length
+        ? [{ id: "default", label: "Other", kind: "site" as const, items: other }]
+        : []),
+    ].filter((g) => g.items.length);
   }, [displayList, session.selected_side, session.selected_map]);
 
   async function resolveSavePackId() {
@@ -268,12 +272,12 @@ export function BookScreen() {
       description: form.description.trim(),
       tasks,
     };
-    const lanes = lanesForMap(map);
+    const lanes = formLanesForMap(map);
     const site: Strat["site"] =
       side === "T"
         ? lanes.some((l) => l.id === form.site)
           ? (form.site as Strat["site"])
-          : "default"
+          : "a"
         : null;
     let links = builtLinks;
     // New strat with empty lineups: seed suggestions from tasks (editable after).
@@ -588,7 +592,7 @@ export function BookScreen() {
                 callout: "",
                 description: "",
                 build: applyTemplate("execute", session.selected_side),
-                site: "default",
+                site: "a",
                 rounds: [],
                 status: "ready",
                 level: "",
