@@ -11,7 +11,7 @@ import {
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
-import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack } from "../lib/types";
+import { MAPS, isAllMaps, isPackInMatchPool, isPackLocked, isMemePack, compareSystemPacks } from "../lib/types";
 import { lanesForMap } from "../lib/mapLanes";
 import { Plus, SideCT, SideT, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -122,15 +122,11 @@ export function BookScreen() {
 
   /** Packs shown in Match toggles: personal packs first, then unlocked system packs. */
   const togglePacks = useMemo(() => {
-    const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["starter-pack", "meme-strats", "pro-structure"];
-    system.sort((a, b) => {
-      const ai = order.indexOf(a.slug);
-      const bi = order.indexOf(b.slug);
-      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-    });
+    const system = packs
+      .filter((p) => p.visibility === "system" && !isPackLocked(p))
+      .sort(compareSystemPacks);
     const mine = usePersonalPool ? myPrivatePacks : [];
-    // Personal packs first, then Starter Pack → Meme
+    // Personal packs first, then Starter Pack → … → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, myPrivatePacks]);
 

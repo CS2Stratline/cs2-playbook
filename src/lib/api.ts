@@ -1,7 +1,7 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, isPackLocked, isPackDefaultEnabled } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
 
@@ -246,14 +246,23 @@ export async function setAdminByEmail(email: string, isAdmin: boolean): Promise<
 }
 
 export async function listPacks(): Promise<Pack[]> {
-  if (!isCloudMode()) return memory.packs;
+  const sortPacks = (packs: Pack[]) =>
+    [...packs].sort((a, b) => {
+      if (a.visibility === "system" && b.visibility === "system") return compareSystemPacks(a, b);
+      if (a.visibility === "system") return -1;
+      if (b.visibility === "system") return 1;
+      return a.slug.localeCompare(b.slug);
+    });
+
+  if (!isCloudMode()) return sortPacks(memory.packs);
+
   const { data, error } = await supabase!.from("packs").select("*").order("tier");
   if (error) throw error;
   const packs = (data || []) as Pack[];
   const { data: counts } = await supabase!.from("strats").select("pack_id");
   const tally: Record<string, number> = {};
   for (const row of counts || []) tally[(row as { pack_id: string }).pack_id] = (tally[(row as { pack_id: string }).pack_id] || 0) + 1;
-  return packs.map((p) => ({ ...p, strat_count: tally[p.id] || 0 }));
+  return sortPacks(packs.map((p) => ({ ...p, strat_count: tally[p.id] || 0 })));
 }
 
 export async function listStrats(): Promise<Strat[]> {
