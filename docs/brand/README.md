@@ -39,5 +39,6 @@ Matches app CSS `--brand` / shell background.
 ## Usage
 
 - **Favicon / PWA:** squircle (`favicon.svg`)
-- **Header lockup:** bare mark + product name (`BrandLockup`)
+- **Header lockup:** bare mark + **Stratline** (`BrandLockup`)
+- **Playbook** remains the in-app screen/tab name for the strat book — not the product wordmark
 - Do not use outline-on-white or glossy iOS-style tiles
