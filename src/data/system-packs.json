@@ -12,24 +12,13 @@
     {
       "id": "2cf8d928-3c9a-4002-a6ba-f2cbe6047304",
       "slug": "starter-pack",
-      "title": "Starter",
+      "title": "Starter Pack",
       "description": "Day-1 calls for every map.",
       "tier": "pug",
       "visibility": "system",
       "owner_user_id": null,
       "team_id": null,
       "strat_count": 106
-    },
-    {
-      "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
-      "slug": "pro-structure",
-      "title": "Advanced",
-      "description": "Fakes, timings, denser utility. Premium / locked for now.",
-      "tier": "pro",
-      "visibility": "system",
-      "owner_user_id": null,
-      "team_id": null,
-      "strat_count": 31
     },
     {
       "id": "92eba09f-84c7-4820-8b55-44a42e2579af",
@@ -41,6 +30,17 @@
       "owner_user_id": null,
       "team_id": null,
       "strat_count": 184
+    },
+    {
+      "id": "cd992d39-87c4-423f-b543-b8ed209e41c0",
+      "slug": "pro-structure",
+      "title": "Advanced",
+      "description": "Fakes, timings, denser utility. Premium / locked for now.",
+      "tier": "pro",
+      "visibility": "system",
+      "owner_user_id": null,
+      "team_id": null,
+      "strat_count": 31
     }
   ],
   "strats": [
