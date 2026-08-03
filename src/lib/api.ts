@@ -125,6 +125,7 @@ function loadLocal(): Store {
       if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats) && parsed.packs.length > 0) {
         const store =
           parsed.seedRevision === SEED_REVISION ? parsed : refreshSystemSeed(parsed);
+        const hadLegacyVotes = Object.prototype.hasOwnProperty.call(parsed, "votes");
         store.strats = store.strats.map((s) => ({
           ...s,
           level:
@@ -133,7 +134,9 @@ function loadLocal(): Store {
           upvotes: Number(s.upvotes || 0),
           downvotes: Number(s.downvotes || 0),
         }));
-        if (store.seedRevision !== parsed.seedRevision) saveLocal(store);
+        // Drop legacy local vote map from early vote prototypes (never read anymore).
+        if ("votes" in store) delete (store as { votes?: unknown }).votes;
+        if (store.seedRevision !== parsed.seedRevision || hadLegacyVotes) saveLocal(store);
         return store;
       }
     }
@@ -339,16 +342,12 @@ export async function getMyVotes(userId: string): Promise<Record<string, StratVo
 }
 
 /**
- * Set or toggle a vote (cloud / signed-in only).
+ * Set or toggle a vote (cloud session required — anonymous or Discord/email).
  * Pass 1 (up) or -1 (down). Same value again clears. Pass 0 to clear explicitly.
  */
-export async function setStratVote(
-  userId: string,
-  stratId: string,
-  value: StratVoteValue
-): Promise<StratVoteResult> {
+export async function setStratVote(stratId: string, value: StratVoteValue): Promise<StratVoteResult> {
   if (!isCloudMode()) {
-    throw new Error("Sign in to vote");
+    throw new Error("Voting requires a cloud session");
   }
 
   const { data, error } = await supabase!.rpc("set_strat_vote", {
