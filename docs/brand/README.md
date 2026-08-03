@@ -9,7 +9,7 @@ Canonical identity for Stratline.
 | [stratline-brand-sheet.pdf](./stratline-brand-sheet.pdf) | Official brand profile (size ladder, lockup, construction, palette, type) |
 | [`/public/stratline-mark.svg`](../../public/stratline-mark.svg) | Bare list→play mark (in-app header) |
 | [`/public/favicon.svg`](../../public/favicon.svg) | Squircle favicon (browsers) |
-| [`/public/apple-touch-icon.png`](../../public/apple-touch-icon.png) | iOS home-screen icon (180×180 PNG — iOS ignores SVG) |
+| [`/public/apple-touch-icon.png`](../../public/apple-touch-icon.png) | iOS home-screen icon (180×180 PNG, padded + anti-aliased — iOS ignores SVG) |
 | [`/public/icon-192.png`](../../public/icon-192.png) / [`icon-512.png`](../../public/icon-512.png) | PWA / Android icons |
 | [`/public/og-image.png`](../../public/og-image.png) | Open Graph / Twitter share card (1200×630) |
 
