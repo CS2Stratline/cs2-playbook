@@ -51,11 +51,15 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 
 ```bash
 npm run starter          # writes src/starter-library.json (fails if a lineup URL is missing)
-npm run seed:packs       # rebuilds src/data/system-packs.json
+npm run seed:packs       # rebuilds src/data/system-packs.json (Starter + Advanced + Meme; appends starter-pack-strats.json if present)
+# Prefer applying Claude MECE diffs without a full regen:
+node scripts/apply-starter-pack-mece.mjs
 npm run seed:supabase    # upserts packs/strats/nades (needs SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY)
 ```
 
 Guests pick up catalog fixes via the app seed revision. Signed-in users need `seed:supabase` (and a hard refresh).
+
+Catalog packs: **Starter** (day-1 calls), **Advanced** (premium), **Meme**.
 
 ## Local export schema
 

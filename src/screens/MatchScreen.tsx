@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
 import { bumpStratUsage, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -66,13 +66,9 @@ export function MatchScreen() {
 
   /** Compact Match pool switches — personal packs + unlocked system packs. Only On packs feed the call list. */
   const matchPacks = useMemo(() => {
-    const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["essentials-pug", "stack-standard", "meme-strats"];
-    system.sort((a, b) => {
-      const ai = order.indexOf(a.slug);
-      const bi = order.indexOf(b.slug);
-      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-    });
+    const system = packs
+      .filter((p) => p.visibility === "system" && !isPackLocked(p))
+      .sort(compareSystemPacks);
     if (!usePersonalPool) return system;
     const mine = packs
       .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
@@ -81,6 +77,7 @@ export function MatchScreen() {
         if (b.title === "My pool" && a.title !== "My pool") return 1;
         return a.slug.localeCompare(b.slug);
       });
+    // Personal packs first, then catalog: Starter Pack → … → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, userId]);
 

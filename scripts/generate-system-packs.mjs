@@ -11,6 +11,10 @@ const memeLib = JSON.parse(readFileSync("src/data/meme-strats.json", "utf8"));
 const prevPath = "src/data/system-packs.json";
 const prev = existsSync(prevPath) ? JSON.parse(readFileSync(prevPath, "utf8")) : { packs: [], strats: [] };
 const prevPackIdBySlug = Object.fromEntries((prev.packs || []).map((p) => [p.slug, p.id]));
+// Legacy Fundamentals id survives the Starter rename.
+if (!prevPackIdBySlug["starter-pack"] && prevPackIdBySlug["essentials-pug"]) {
+  prevPackIdBySlug["starter-pack"] = prevPackIdBySlug["essentials-pug"];
+}
 const prevStratIdByKey = Object.fromEntries(
   (prev.strats || []).map((s) => {
     const pack = (prev.packs || []).find((p) => p.id === s.pack_id);
@@ -19,12 +23,15 @@ const prevStratIdByKey = Object.fromEntries(
 );
 /** Renames / splits that should keep the previous UUID when callout text changes. */
 const STRAT_ID_ALIASES = {
-  "pro-structure|Ancient|T|Donut split": "pro-structure|Ancient|T|Cave split",
-  "essentials-pug|Nuke|CT|Anti-eco A": "essentials-pug|Nuke|CT|Anti-eco stack",
+  "pro-structure|Ancient|T|Donut split": ["pro-structure|Ancient|T|Cave split"],
+  "starter-pack|Nuke|CT|Anti-eco A": [
+    "starter-pack|Nuke|CT|Anti-eco stack",
+    "essentials-pug|Nuke|CT|Anti-eco stack",
+  ],
 };
 /** Pin UUIDs for newly inserted catalog cards. */
 const FIXED_STRAT_IDS = {
-  "essentials-pug|Nuke|CT|Anti-eco B": "682bdfb8-60b6-4ca6-aa23-6ec931033eec",
+  "starter-pack|Nuke|CT|Anti-eco B": "682bdfb8-60b6-4ca6-aa23-6ec931033eec",
 };
 /** Force pack tier for content-review overrides (slug of destination pack). */
 const PACK_OVERRIDES = {
@@ -43,7 +50,15 @@ const stratId = (slug, s) => {
   if (FIXED_STRAT_IDS[key]) return FIXED_STRAT_IDS[key];
   if (prevStratIdByKey[key]) return prevStratIdByKey[key];
   const alias = STRAT_ID_ALIASES[key];
-  if (alias && prevStratIdByKey[alias]) return prevStratIdByKey[alias];
+  const aliases = Array.isArray(alias) ? alias : alias ? [alias] : [];
+  for (const a of aliases) {
+    if (prevStratIdByKey[a]) return prevStratIdByKey[a];
+  }
+  // Also try legacy essentials-pug / stack-standard keys for the same callout.
+  for (const legacy of ["essentials-pug", "stack-standard", "starter-pack"]) {
+    const lk = `${legacy}|${s.map}|${s.side}|${(s.callout || "").trim()}`;
+    if (prevStratIdByKey[lk]) return prevStratIdByKey[lk];
+  }
   return uid();
 };
 
@@ -100,42 +115,23 @@ function toStrat(s, tier = "five_stack", packSlug = "") {
 
 function tierOf(s) {
   const override = PACK_OVERRIDES[`${s.map}|${s.side}|${(s.callout || "").trim()}`];
-  if (override) return override;
+  if (override === "pro") return "pro";
+  if (override === "pug" || override === "five_stack" || override === "starter") return "starter";
   const blob = `${s.callout || ""} ${(s.tasks || []).join(" ")}`.toLowerCase();
   const rounds = s.rounds || [];
   if (/fake|split|retake|under split|four in market|pro/.test(blob)) return "pro";
-  if (rounds.some((r) => ["pistol", "eco", "force"].includes(r)) || /rush|fast |pop|palace pop/.test(blob)) return "pug";
-  if ((s.tasks || []).length <= 3 && s.side === "CT") return "pug";
-  return "five_stack";
+  // Everything non-pro lands in the single Starter catalog (level encodes difficulty).
+  return "starter";
 }
 
 const packs = {
-  pug: {
-    id: packId("essentials-pug"),
-    slug: "essentials-pug",
-    title: "Fundamentals",
-    description: "Rushes, holds, and simple executes. Easy to call in freeze time.",
+  starter: {
+    // Prefer starter-pack slug; fall back to legacy essentials-pug id if present.
+    id: prevPackIdBySlug["starter-pack"] || prevPackIdBySlug["essentials-pug"] || uid(),
+    slug: "starter-pack",
+    title: "Starter Pack",
+    description: "The default starter pack.",
     tier: "pug",
-    visibility: "system",
-    owner_user_id: null,
-    strats: [],
-  },
-  five_stack: {
-    id: packId("stack-standard"),
-    slug: "stack-standard",
-    title: "Stack",
-    description: "Standard smokes and mid control for a coordinated five.",
-    tier: "five_stack",
-    visibility: "system",
-    owner_user_id: null,
-    strats: [],
-  },
-  pro: {
-    id: packId("pro-structure"),
-    slug: "pro-structure",
-    title: "Advanced",
-    description: "Fakes, timings, denser utility. Premium / locked for now.",
-    tier: "pro",
     visibility: "system",
     owner_user_id: null,
     strats: [],
@@ -147,6 +143,16 @@ const packs = {
     description: "Funny chaos calls. Rush B, Zeus openers, flash rain. Off by default.",
     // Use pug tier so Supabase pack_tier enum stays valid without a migration.
     tier: "pug",
+    visibility: "system",
+    owner_user_id: null,
+    strats: [],
+  },
+  pro: {
+    id: packId("pro-structure"),
+    slug: "pro-structure",
+    title: "Advanced",
+    description: "Fakes, timings, denser utility. Premium / locked for now.",
+    tier: "pro",
     visibility: "system",
     owner_user_id: null,
     strats: [],
@@ -186,6 +192,53 @@ for (const raw of memeLib.strats || []) {
   packs.meme.strats.push(strat);
 }
 
+// MECE starter-pack expansion (optional file at repo root).
+// Prefer `scripts/apply-starter-pack-mece.mjs` on an existing catalog; this path
+// re-appends MECE rows when regenerating from starter-library.json.
+const ADV_ID = packs.pro.id;
+const mecePath = "starter-pack-strats.json";
+const meceIds = new Set();
+if (existsSync(mecePath)) {
+  const mece = JSON.parse(readFileSync(mecePath, "utf8"));
+  const seen = new Set(
+    [...packs.starter.strats, ...packs.pro.strats, ...packs.meme.strats].map(
+      (s) => `${s.map}|${s.side}|${s.callout}`
+    )
+  );
+  for (const raw of mece) {
+    const key = `${raw.map}|${raw.side}|${raw.callout}`;
+    if (seen.has(key)) continue;
+    const dest = raw.pack_id === ADV_ID ? "pro" : "starter";
+    const pack = packs[dest];
+    const strat = {
+      id: raw.id || stratId(pack.slug, raw),
+      map: raw.map,
+      side: raw.side,
+      site: raw.site ?? null,
+      callout: raw.callout,
+      description: raw.description || "",
+      tasks: raw.tasks || [],
+      rounds: raw.rounds || [],
+      status: raw.status || "ready",
+      links: raw.links || [],
+      level: typeof raw.level === "number" ? raw.level : estimateLevel(raw, dest === "pro" ? "pro" : "pug"),
+      wins: 0,
+      losses: 0,
+      upvotes: 0,
+      downvotes: 0,
+      times_used: 0,
+      last_used: null,
+      pack_id: pack.id,
+    };
+    pack.strats.push(strat);
+    seen.add(key);
+    if (strat.id) meceIds.add(strat.id);
+  }
+  for (const raw of mece) {
+    if (raw.id) meceIds.add(raw.id);
+  }
+}
+
 mkdirSync("src/data", { recursive: true });
 const out = {
   maps: starter.maps,
@@ -205,7 +258,7 @@ const out = {
       ...s,
       owner_user_id: null,
       team_id: null,
-      source: "system-seed",
+      source: meceIds.has(s.id) ? "starter-pack-mece" : "system-seed",
     }))
   ),
 };

@@ -10,10 +10,10 @@ English-only UI for v1.
 | Screen | Job |
 |--------|-----|
 | **Match** | Pick (or Surprise) a call → tasks + lineups |
-| **Playbook** | Pack toggles for Match (Fundamentals + Stack). Signed in: also My pool / favorites |
+| **Playbook** | Pack toggles for Match (Starter + Meme; Advanced locked). Signed in: personal packs / favorites |
 | **Settings** | Optional Discord login, live-call link, export |
 
-Day-1 Match is ready immediately via Fundamentals (on by default) for guests and signed-in users. Stack is optional depth; Advanced is hidden until premium.
+Day-1 Match is ready immediately via the Starter Pack (on by default). Advanced is hidden until premium.
 
 Strats carry a FACEIT-style **execution level** (1–10): how hard the call is to run in freeze time (not player Elo). UI theme uses FACEIT orange `#FF5500` on a dark shell.
 

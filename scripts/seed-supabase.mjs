@@ -16,6 +16,13 @@ if (!url || !key) {
 const seed = JSON.parse(readFileSync("src/data/system-packs.json", "utf8"));
 const sb = createClient(url, key, { auth: { persistSession: false } });
 
+const LEGACY_STACK_ID = "a90abddf-39a8-478b-a780-f96b9a511ae4";
+const STARTER_ID =
+  seed.packs.find((p) => p.slug === "starter-pack" || p.slug === "essentials-pug")?.id ||
+  "2cf8d928-3c9a-4002-a6ba-f2cbe6047304";
+
+// Conflict on id so renaming essentials-pug → starter-pack updates in place
+// (onConflict slug would INSERT a new row and hit packs_pkey on the same UUID).
 for (const p of seed.packs) {
   const { error } = await sb.from("packs").upsert(
     {
@@ -28,13 +35,32 @@ for (const p of seed.packs) {
       owner_user_id: null,
       team_id: null,
     },
-    { onConflict: "slug" }
+    { onConflict: "id" }
   );
   if (error) throw error;
   console.log("pack", p.slug);
 }
 
-// Resolve pack ids by slug (upsert may keep existing ids)
+// Point legacy Stack strats at Starter before dropping the pack row.
+{
+  const { error } = await sb.from("strats").update({ pack_id: STARTER_ID }).eq("pack_id", LEGACY_STACK_ID);
+  if (error) throw error;
+}
+{
+  const { error } = await sb.from("packs").delete().eq("id", LEGACY_STACK_ID);
+  if (error) throw error;
+  console.log("removed legacy stack-standard pack");
+}
+// Drop orphan slug if a second Starter row ever existed.
+{
+  const { error } = await sb
+    .from("packs")
+    .delete()
+    .eq("slug", "essentials-pug")
+    .neq("id", STARTER_ID);
+  if (error) throw error;
+}
+
 const { data: packRows } = await sb.from("packs").select("id, slug");
 const bySlug = Object.fromEntries((packRows || []).map((r) => [r.slug, r.id]));
 
@@ -59,7 +85,7 @@ const rows = seed.strats.map((s) => {
     status: s.status,
     links: s.links,
     level: s.level || 5,
-    source: "system-seed",
+    source: s.source || "system-seed",
   };
 });
 
