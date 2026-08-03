@@ -63,7 +63,7 @@ export function MatchScreen() {
   const needsMap = isAllMaps(session.selected_map);
   const siteFilters = useMemo(() => matchSiteFilters(session.selected_map), [session.selected_map]);
 
-  /** Compact Match pool switches — same toggles as Playbook, no descriptions. */
+  /** Compact Match pool switches — personal packs + unlocked system packs. Only On packs feed the call list. */
   const matchPacks = useMemo(() => {
     const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
     const order = ["essentials-pug", "stack-standard", "meme-strats"];
@@ -73,8 +73,14 @@ export function MatchScreen() {
       return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
     });
     if (!usePersonalPool) return system;
-    const mine = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
-    return mine ? [mine, ...system] : system;
+    const mine = packs
+      .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
+      .sort((a, b) => {
+        if (a.title === "My pool" && b.title !== "My pool") return -1;
+        if (b.title === "My pool" && a.title !== "My pool") return 1;
+        return a.slug.localeCompare(b.slug);
+      });
+    return [...mine, ...system];
   }, [packs, usePersonalPool, userId]);
 
   // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
