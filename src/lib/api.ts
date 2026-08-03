@@ -19,7 +19,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
-const SEED_REVISION = 12;
+const SEED_REVISION = 13;
 
 /** Shared catalog row id to edit, or null if this is a private-only strat. */
 export function sharedStratTargetId(strat: Pick<Strat, "id" | "owner_user_id" | "source">): string | null {
@@ -102,9 +102,11 @@ function refreshSystemSeed(store: Store): Store {
   const fresh = seedStore();
   const customStrats = store.strats.filter((s) => s.source !== "system-seed");
   const privatePacks = (store.packs || []).filter((p) => p.visibility === "private");
-  const subscriptions = { ...fresh.subscriptions, ...store.subscriptions };
+  // Reset system pack toggles to defaults (Starter On; Meme/Advanced Off) so stale
+  // localStorage from older "missing = on" logic does not leave Meme auto-selected.
+  const subscriptions = { ...store.subscriptions };
   for (const p of fresh.packs) {
-    if (subscriptions[p.id] === undefined) subscriptions[p.id] = isPackDefaultEnabled(p);
+    subscriptions[p.id] = isPackDefaultEnabled(p);
   }
   for (const p of privatePacks) {
     if (subscriptions[p.id] === undefined) subscriptions[p.id] = true;
