@@ -24,28 +24,28 @@ Each strat must work as a **15-second freeze-time call** on a phone. Prefer clar
 
 - `site` (T-side approach lane; CT always `null`):
   - Most maps: `a` | `b` | `mid` | `default`
-  - Nuke: `a` | `b` | `outside` | `ramp` | `default` (no Mid — Outside is the control layer)
+  - Nuke: `a` | `b` | `outside` | `ramp` | `default` (no Mid; Outside is the control layer)
 - `rounds`: empty array = all round types; otherwise subset of `full` | `force` | `eco` | `pistol` | `anti`
 - `status`: `ready` (match pool) or `practice`
 - `links`: optional CSNADES URLs (see [LINEUPS.md](./LINEUPS.md)); leave `[]` to let the app suggest
 
 ## Writing rules
 
-1. **Callout:** 1–3 words, shoutable (`Short split`, `Rush B`, not a sentence). Avoid vague `Default` callouts — name the approach (`Window control`, `Outside`, `Banana B`).
-2. **Description:** one sentence — the idea, not a novel.
+1. **Callout:** 1–3 words, shoutable (`Short split`, `Rush B`, not a sentence). Avoid vague `Default` callouts. Name the approach (`Window control`, `Outside`, `Banana B`).
+2. **Description:** one sentence. The idea, not a novel.
 3. **Tasks:** max 5, one per player / job; concrete verbs.
 4. **Landings:** name real spots (`ticket booth`, `xbox`, `banana`, `heaven`) so CSNADES matching works.
-5. **English only** — no bilingual `*En` fields or Norwegian copy.
-6. **No boards / demos / role sheets** in this JSON — that belongs in heavier tools (Stratbase etc.).
+5. **English only.** No bilingual `*En` fields or Norwegian copy.
+6. **No boards / demos / role sheets** in this JSON. That belongs in heavier tools (Stratbase etc.).
 
 ## Coverage goals
 
 - Every configured map × both sides
 - Mix of full / force / eco / pistol where it makes sense
 - Defaults and mid control, not only site executes
-- Quality over volume — cut vague or duplicate callouts
+- Quality over volume: cut vague or duplicate callouts
 - Prefer well-known executes (BLAST / standard meta) with CSNADES URLs that exist in `csnades-catalog.json`
-- Inspiration (adapt to freeze-time tasks — do not copy role boards / demo titles): [cs2tactics](https://cs2tactics.vercel.app/tactics), [cs2strats.net](https://cs2strats.net), [cs2strat.com Mirage](https://www.cs2strat.com/en/maps/mirage)
+- Inspiration (adapt to freeze-time tasks, do not copy role boards / demo titles): [cs2tactics](https://cs2tactics.vercel.app/tactics), [cs2strats.net](https://cs2strats.net), [cs2strat.com Mirage](https://www.cs2strat.com/en/maps/mirage)
 
 ## Regenerating the starter + cloud seed
 
@@ -64,4 +64,4 @@ Catalog packs: **Starter** (day-1 calls), **Advanced** (premium), **Meme**.
 ## Local export schema
 
 Settings → **Export JSON** writes `{ version: 3, maps, packs, strats }` (`SCHEMA_VERSION` in `src/lib/types.ts`).
-There is no in-app “restore backup” — use Reset local data (guest) or re-seed Supabase for cloud.
+There is no in-app “restore backup”. Use Reset local data (guest) or re-seed Supabase for cloud.

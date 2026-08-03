@@ -1,6 +1,6 @@
-# Starter pack — MECE strat grid
+# Starter pack: MECE strat grid
 
-Companion to `starter-pack-strats.json` (54 new strats). **Apply `playbook-fixes.md` first** — this builds on the deduped, corrected file.
+Companion to `starter-pack-strats.json` (54 new strats). **Apply `playbook-fixes.md` first.** This builds on the deduped, corrected file.
 
 New records carry `"source": "starter-pack-mece"`, so they can be filtered or rolled back in one query. No meme strats.
 
@@ -8,7 +8,7 @@ New records carry `"source": "starter-pack-mece"`, so they can be filtered or ro
 
 ## 1. The grid
 
-Every map gets the same 16 slots. Two cards are in the same slot only if a five-stack would play them the same way — that's the exclusivity test, and it's what the duplicate audit was really about.
+Every map gets the same 16 slots. Two cards are in the same slot only if a five-stack would play them the same way. That's the exclusivity test, and it's what the duplicate audit was really about.
 
 **T side (8 slots)**
 
@@ -27,7 +27,7 @@ Every map gets the same 16 slots. Two cards are in the same slot only if a five-
 
 | Slot | What it is | Pack | Level | Rounds |
 |---|---|---|---|---|
-| `CT-DEFAULT` | The balanced setup — 2-1-2 or the map's standard | Fundamentals | 2 | any |
+| `CT-DEFAULT` | The balanced setup (2-1-2 or the map's standard) | Fundamentals | 2 | any |
 | `CT-STACK-A` | Three bodies A | Fundamentals | 2 | any |
 | `CT-STACK-B` | Three bodies B | Fundamentals | 2 | any |
 | `CT-AGGRO` | Early contest for info, then reset | Fundamentals/Stack | 3–6 | `full`, `force` |
@@ -36,7 +36,7 @@ Every map gets the same 16 slots. Two cards are in the same slot only if a five-
 | `CT-RETAKE-A` | Grouped A retake | Advanced | 10 | `full`, `force`, `anti` |
 | `CT-RETAKE-B` | Grouped B retake | Advanced | 10 | `full`, `force`, `anti` |
 
-Extra cards beyond one per slot are fine — they're variants, and Mirage has plenty. The rule is that no slot is **empty** and no two cards in the same slot are **interchangeable**.
+Extra cards beyond one per slot are fine. They're variants, and Mirage has plenty. The rule is that no slot is **empty** and no two cards in the same slot are **interchangeable**.
 
 ---
 
@@ -132,27 +132,27 @@ Extra cards beyond one per slot are fine — they're variants, and Mirage has pl
 
 ## 3. Corrections to the earlier audit
 
-Found while checking route vocabulary against the official callout lists for this build. **These are map errors I missed on the first pass** — I cleared Anubis and Cache as "nothing broken" and that was wrong. Apply them alongside `playbook-fixes.md`.
+Found while checking route vocabulary against the official callout lists for this build. **These are map errors I missed on the first pass.** I cleared Anubis and Cache as "nothing broken" and that was wrong. Apply them alongside `playbook-fixes.md`.
 
-**Anubis T "Water A"** — `tasks[1]` is `"Smoke temple / connector"`. Anubis does have a spot people call Temple, but it's a **CT-side throwing position on B** (csnades lists a backsite molly from there under B Defensive), so it has no business in an A execute. The lineups that actually make up the A exec from water are Heaven and Platform.
+**Anubis T "Water A"**: `tasks[1]` is `"Smoke temple / connector"`. Anubis does have a spot people call Temple, but it's a **CT-side throwing position on B** (csnades lists a backsite molly from there under B Defensive), so it has no business in an A execute. The lineups that actually make up the A exec from water are Heaven and Platform.
 → `"Smoke heaven and platform"`
 → add links: `Smoke: Heaven` `https://csnades.gg/anubis/smokes/heaven-from-water-b`, `Smoke: Platform` `https://csnades.gg/anubis/smokes/platform-from-water`
 
-**Anubis T "Street B"** — Street runs from CT Spawn to B Site; Ts can't take it. The mid route into B is E Box.
+**Anubis T "Street B"**: Street runs from CT Spawn to B Site; Ts can't take it. The mid route into B is E Box.
 → `callout`: `"Street B"` → `"Ebox B"`
 → `description`: `"Mid street → B door."` → `"Mid into B through ebox."`
 → `tasks`: `["Take top mid and double doors", "Smoke street and sniper", "Enter ebox, ruins group supports"]`
 
-**Cache T "Highway B"** — Highway connects Mid to **A Site**, not B. The card is a mid-to-A execute wearing a B label.
+**Cache T "Highway B"**: Highway connects Mid to **A Site**, not B. The card is a mid-to-A execute wearing a B label.
 → `callout`: `"Highway B"` → `"Highway A"`
 → `site`: `"b"` → `"a"`
 → `description`: `"Highway/truck path to B."` → `"Mid into A over highway."`
 → `tasks`: `["Take garage and white box", "Smoke CT connector and elektro", "Enter highway, trade at forklift"]`
 
-**Cache T "Main A"** — `tasks[2]` is `"Clear checker / NBK"`. Checkers is on the B side (Vents → Checkers → B Main).
+**Cache T "Main A"**: `tasks[2]` is `"Clear checker / NBK"`. Checkers is on the B side (Vents → Checkers → B Main).
 → `"Clear quad and NBK"`
 
-**Cache CT "B hold"** — `tasks[1]` says `"watch B main / garbage"`. Garbage isn't a Cache callout.
+**Cache CT "B hold"**: `tasks[1]` says `"watch B main / garbage"`. Garbage isn't a Cache callout.
 → see §4, this card is being rewritten anyway.
 
 *Watch item, no edit:* Inferno CT `A stack` and `Apps watch` both distribute 3 A / 1 mid / 1 banana. They differ in where the three A players stand (site+library vs apps+balcony), which is enough to keep both, but if you ever trim Inferno, that's the pair to look at.
@@ -173,21 +173,21 @@ On Dust II, Ancient, Anubis and Cache the card called **"B hold" is actually a 2
 
 *(Vocabulary note: TotalCS calls these Back Halls / Square / House; csnades and your existing Ancient cards use Back Alley / B Alley / Cave. I've matched your file, so the callouts line up with the lineups you can link.)*
 
-**Ancient CT "A hold"** — `tasks[0]` `"2–3 A, 1 mid, 1 B"` → `"3 A: site, donut, long"`
+**Ancient CT "A hold"**: `tasks[0]` `"2–3 A, 1 mid, 1 B"` → `"3 A: site, donut, long"`
 
 **Anubis CT "B hold"**
 - `description` → `"Three B. Deny B long early, give A space."`
 - `tasks` → `["3 B: corner, back site, sniper", "1 middle, 1 A", "Util B long on first sound", "Hold ebox close"]`
 
-**Anubis CT "A hold"** — `tasks[0]` `"2–3 A (heaven/water), 1 mid, 1 B"` → `"3 A: heaven, site, main"`
+**Anubis CT "A hold"**: `tasks[0]` `"2–3 A (heaven/water), 1 mid, 1 B"` → `"3 A: heaven, site, main"`
 
 **Cache CT "B hold"**
 - `description` → `"Three B. Punish halls commits, give A space."`
 - `tasks` → `["3 B: heaven, new boxes, close left", "1 mid, 1 A", "Smoke B main from heaven on halls commit", "Watch checkers for the vents flank"]`
 
-**Cache CT "A hold"** — `tasks[0]` `"2–3 A (forklift/checker/site), 1 mid, 1 B"` → `"3 A: quad, forklift, NBK"`
+**Cache CT "A hold"**: `tasks[0]` `"2–3 A (forklift/checker/site), 1 mid, 1 B"` → `"3 A: quad, forklift, NBK"`
 
-**Round retags** — a card tagged `pistol` *and* `eco` *and* `force` occupies two slots at once. Now that each map has a dedicated pistol card, drop `pistol` from these:
+**Round retags.** A card tagged `pistol` *and* `eco` *and* `force` occupies two slots at once. Now that each map has a dedicated pistol card, drop `pistol` from these:
 
 | Map | Side | Callout | `rounds` becomes |
 |---|---|---|---|
@@ -201,7 +201,7 @@ On Dust II, Ancient, Anubis and Cache the card called **"B hold" is actually a 2
 ## 5. Merge
 
 1. Apply `playbook-fixes.md`, then §3 and §4 above.
-2. Append all 54 objects from `starter-pack-strats.json` into the `strats` array. Key order already matches the existing schema — don't reorder.
+2. Append all 54 objects from `starter-pack-strats.json` into the `strats` array. Key order already matches the existing schema. Don't reorder.
 3. Recompute `packs[].strat_count`. Expected end state:
 
 | Pack | slug | strat_count |
@@ -217,22 +217,22 @@ Total strats: **321**.
 
 ## 6. Sourcing and links
 
-The utility on these cards isn't invented. csnades.gg publishes a per-map nade guide grouped by execute (A Exec / B Exec / Mid Control / A Defensive / B Defensive), and the cards were built against those groupings — so a card that says "smoke moto, arches and pit" is naming the three lineups that guide actually lists for the Inferno A exec, not three plausible-sounding smokes.
+The utility on these cards isn't invented. csnades.gg publishes a per-map nade guide grouped by execute (A Exec / B Exec / Mid Control / A Defensive / B Defensive), and the cards were built against those groupings. So a card that says "smoke moto, arches and pit" is naming the three lineups that guide actually lists for the Inferno A exec, not three plausible-sounding smokes.
 
-**29 of the 54 cards carry links — 55 link objects, 43 distinct URLs, every one read off a real page.** The remaining 25 are rushes, holds, defaults and eco setups that are positional and don't call for utility.
+**29 of the 54 cards carry links, 55 link objects, 43 distinct URLs, every one read off a real page.** The remaining 25 are rushes, holds, defaults and eco setups that are positional and don't call for utility.
 
 Where the source changed my draft:
 
 | Card | Was | Now |
 |---|---|---|
-| Nuke "Main and squeaky" | smoke heaven and hut | smoke A main from T roof, molly hut roof, flash A site + hut — the actual listed A exec |
+| Nuke "Main and squeaky" | smoke heaven and hut | smoke A main from T roof, molly hut roof, flash A site + hut (the actual listed A exec) |
 | Inferno "Banana fake A" | smoke library and CT, molly pit | smoke moto, arches and pit |
 | Inferno "Apps and short" | smoke library and CT | smoke moto, arches and pit, flash balcony from apts |
 | Anubis "B fake A" | smoke heaven and connector | smoke heaven and platform, molly site |
 | Ancient "Mid fake B" | smoke back halls, molly square | smoke back alley, molly pillar |
 | Nuke rush/pistol cards | flash over sandbags | flash hut from lobby / flash ramp from trophy |
 
-**Cache is the exception.** csnades has no Cache guide, so its four links are reused from URLs already present in your export rather than re-verified. Cache is also a reserve map, not Active Duty — lowest priority if you're spot-checking.
+**Cache is the exception.** csnades has no Cache guide, so its four links are reused from URLs already present in your export rather than re-verified. Cache is also a reserve map, not Active Duty. Lowest priority if you're spot-checking.
 
 Two things worth knowing about the links:
 
@@ -246,7 +246,7 @@ Two things worth knowing about the links:
 - [ ] JSON parses; `len(strats) == 321`.
 - [ ] All ids unique.
 - [ ] 54 strats have `source == "starter-pack-mece"`.
-- [ ] Every map has exactly one card per slot minimum — 16 slots × 7 maps, no empties.
+- [ ] Every map has exactly one card per slot minimum (16 slots × 7 maps, no empties).
 - [ ] No task string exceeds 10 words (longest new one is 8).
 - [ ] No two cards share a `callout` within the same map + side.
 - [ ] Every strat tagged `pistol` is a dedicated pistol card.

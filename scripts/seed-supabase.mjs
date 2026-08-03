@@ -98,7 +98,7 @@ console.log("strats", rows.length);
 
 // Drop system-catalog rows that are no longer in the seed (e.g. Roulette noise
 // previously copied into the Meme pack). Only touch owner_user_id IS NULL rows
-// on current system pack ids — never private / community copies.
+// on current system pack ids. Never private / community copies.
 {
   const systemPackIds = seed.packs.map((p) => bySlug[p.slug]).filter(Boolean);
   const keepIds = new Set(rows.map((r) => r.id));

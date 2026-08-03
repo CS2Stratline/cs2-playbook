@@ -8,7 +8,7 @@ type Props = {
   showLabel?: boolean;
 };
 
-/** FACEIT-style level badge — icon + optional "Lv N" label. */
+/** FACEIT-style level badge: icon + optional "Lv N" label. */
 export function LevelBadge({ level, size = 22, title, showLabel }: Props) {
   const label = level === "challenger" ? "Challenger" : `Level ${level}`;
 

@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     void loadProfile(next?.user?.id ?? null);
   }
 
-  /** Silent browser identity for voting — no email/Discord required. */
+  /** Silent browser identity for voting. No email/Discord required. */
   async function ensureAnonymousSession(): Promise<Session | null> {
     if (!supabase) return null;
     const { data, error } = await supabase.auth.signInAnonymously();

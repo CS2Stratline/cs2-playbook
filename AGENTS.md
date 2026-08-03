@@ -5,7 +5,7 @@
 **Canonical repo:** [CS2Stratline/cs2-playbook](https://github.com/CS2Stratline/cs2-playbook)  
 **Live:** https://cs2stratline.github.io/cs2-playbook/
 
-Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use an old personal fork of this repo or the typo org name `CS2Startline` — those break push / PR tooling even when GitHub redirects.
+Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use an old personal fork of this repo or the typo org name `CS2Startline`. Those break push / PR tooling even when GitHub redirects.
 
 Cloud Playbook is a single-page **Vite + React 19 + TypeScript** web app (a CS2 IGL freeze-time playbook). There is no backend to run locally: `src/lib/api.ts` falls back to a `localStorage`-backed **local demo** mode whenever Supabase env vars are absent, so the app is fully usable without any secrets.
 
@@ -13,11 +13,11 @@ Standard commands live in `package.json` (`dev`, `build`, `preview`, `seed:packs
 
 - Run the app in development with `npm run dev` (Vite dev server on http://localhost:5173/).
 - There is **no separate lint step and no test framework**. `npm run build` runs `tsc --noEmit && vite build`, so use `npm run build` as the typecheck/lint gate.
-- The `seed:packs` / `seed:supabase` scripts and everything under `supabase/` are **optional** — only needed to populate a real Supabase project (requires `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`, or `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` for cloud auth). Not required for local development or the demo.
+- The `seed:packs` / `seed:supabase` scripts and everything under `supabase/` are **optional** (only needed to populate a real Supabase project; requires `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`, or `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY` for cloud auth). Not required for local development or the demo.
 - Supabase auth/sync only activates when `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set (and the URL does not contain `YOUR_`); see `.env.example`. Without them the Settings login is hidden and data stays in the browser. With them configured, guests get a silent anonymous session for community strat votes (`011`/`012`); Discord/email is optional for My pool sync.
 - Signed-in (permanent) users use personal packs for Match. On first login with an empty pool, Starter Pack strats are auto-copied for all maps (`ensureStarterPackSeeded` + `localStorage` flag `cs2-playbook-fundamentals-seeded:<userId>`). Anonymous guests instead toggle system packs (Starter Pack on by default; Meme off; Advanced locked).
 - Each strat has `level` 1–10 (FACEIT-style execution difficulty). Icons live in `FaceitLevelIcon`; Elo brackets in `src/lib/faceitLevels.ts`. After changing catalog levels, re-seed Supabase (`npm run seed:supabase`) once migration `005_strat_level.sql` is applied. Re-seed preserves `upvotes` / `downvotes` (not included in the upsert payload; see `013_preserve_vote_counters.sql`).
 - Content pipeline: `npm run starter` → `src/starter-library.json` → `npm run seed:packs` → `src/data/system-packs.json` → `npm run seed:supabase`.
 - Routing uses `HashRouter` (URLs look like `/#/...`) because the production target is GitHub Pages under `/cs2-playbook/`. For a custom domain at site root, set `VITE_BASE_PATH=/` in the deploy workflow and update Supabase Auth redirect URLs (see `DEPLOY.md`).
-- Live cloud project is already wired via GitHub Actions `VITE_SUPABASE_*` secrets. Service role is for seed/admin only — never `VITE_*`.
+- Live cloud project is already wired via GitHub Actions `VITE_SUPABASE_*` secrets. Service role is for seed/admin only. Never `VITE_*`.
 - Org cutover done: repo lives under **CS2Stratline**, Pages deploys from `main`, docs use Stratline URLs. Confirm Supabase Auth Site URL + Redirect URLs are `https://cs2stratline.github.io/cs2-playbook/` (and Actions secrets still on the org repo). Remaining product cutover is custom-domain DNS / `VITE_BASE_PATH=/` / Auth allowlist (see `DEPLOY.md`).
