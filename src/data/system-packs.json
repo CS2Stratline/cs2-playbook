@@ -523,7 +523,7 @@
       "id": "0cf589f1-2f05-4280-8527-cc08cc1a57e2",
       "map": "Mirage",
       "side": "T",
-      "site": "mid",
+      "site": "b",
       "callout": "Mid to B",
       "description": "Window → short → B after mid control.",
       "tasks": [
@@ -565,7 +565,7 @@
       "id": "3658f1fc-47d7-4d2a-835d-c9e90cbaf408",
       "map": "Mirage",
       "side": "T",
-      "site": "mid",
+      "site": "a",
       "callout": "Mid to A",
       "description": "Window/con control, then A through connector.",
       "tasks": [
