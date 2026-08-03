@@ -140,7 +140,7 @@ const packs = {
     id: packId("meme-strats"),
     slug: "meme-strats",
     title: "Meme",
-    description: "Funny chaos calls. Rush B, Zeus openers, flash rain. Off by default.",
+    description: "Somewhat viable funny calls for Match. Rush B, Snake, Zeus. Off by default. Pure noise is Roulette only.",
     // Use pug tier so Supabase pack_tier enum stays valid without a migration.
     tier: "pug",
     visibility: "system",
