@@ -60,6 +60,8 @@ function toStrat(s, tier = "five_stack", packSlug = "") {
     level: typeof s.level === "number" ? s.level : estimateLevel(s, tier),
     wins: 0,
     losses: 0,
+    upvotes: 0,
+    downvotes: 0,
     times_used: 0,
     last_used: null,
   };

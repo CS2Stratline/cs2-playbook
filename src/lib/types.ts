@@ -52,10 +52,17 @@ export type Strat = {
   level: number;
   wins: number;
   losses: number;
+  /** Community upvotes (catalog / shared target). */
+  upvotes: number;
+  /** Community downvotes (catalog / shared target). */
+  downvotes: number;
   times_used: number;
   last_used: string | null;
   source?: string | null;
 };
+
+/** Per-user vote on a strat: +1 upvote, -1 downvote, 0 none. */
+export type StratVoteValue = -1 | 0 | 1;
 
 export type UserSession = {
   tab: "match" | "book" | "settings";
