@@ -13,7 +13,7 @@ import { StratVote } from "../components/StratVote";
 import { NADE_CATALOG } from "../lib/catalog";
 import { clampFaceitLevel } from "../lib/faceitLevels";
 import { mergeSuggested, suggestLineupLinks } from "../lib/lineupMatch";
-import { isValidLane, matchSiteFilters } from "../lib/mapLanes";
+import { isValidLane, matchSiteFilters, matchesSiteFilter } from "../lib/mapLanes";
 import { StratStepEditor } from "../components/StratStepEditor";
 import {
   buildFromTasksLinks,
@@ -75,7 +75,6 @@ export function MatchScreen() {
     const system = packs
       .filter((p) => p.visibility === "system" && !isPackLocked(p))
       .sort(compareSystemPacks);
-    if (!usePersonalPool) return system;
     const mine = packs
       .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
       .sort((a, b) => {
@@ -83,9 +82,17 @@ export function MatchScreen() {
         if (b.title === "My pool" && a.title !== "My pool") return 1;
         return a.slug.localeCompare(b.slug);
       });
+    // Guests only see personal packs after they have created one (Yours).
+    if (!usePersonalPool && !mine.length) return system;
     // Personal packs first, then catalog: Starter Pack → … → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, userId]);
+
+  function packPillLabel(p: { title: string; visibility: string }) {
+    if (!usePersonalPool && p.visibility === "private" && (p.title === "My pool" || !p.title)) return "Yours";
+    if (!usePersonalPool && p.visibility === "private") return p.title;
+    return p.title;
+  }
 
   // Drop lane filter when switching to a map that doesn't have that lane (e.g. Mid → Nuke).
   // Map pills already reset this atomically; keep as a safety net for other session writers.
@@ -102,7 +109,7 @@ export function MatchScreen() {
     const pick = enabledStrats.find((s) => s.id === session.current_pick_id) || null;
     if (!pick) return null;
     if (pick.map !== session.selected_map || pick.side !== session.selected_side) return null;
-    if (isT && session.site_filter !== "all" && pick.site !== session.site_filter) return null;
+    if (isT && !matchesSiteFilter(pick.site, session.site_filter, { isT })) return null;
     if (session.round_filter !== "all" && pick.rounds.length && !pick.rounds.includes(session.round_filter)) {
       return null;
     }
@@ -129,7 +136,7 @@ export function MatchScreen() {
   const eligible = useMemo(() => {
     return enabledStrats.filter((s) => {
       if (s.map !== session.selected_map || s.side !== session.selected_side) return false;
-      if (isT && session.site_filter !== "all" && s.site !== session.site_filter) return false;
+      if (isT && !matchesSiteFilter(s.site, session.site_filter, { isT })) return false;
       if (session.round_filter !== "all" && s.rounds.length && !s.rounds.includes(session.round_filter)) return false;
       return true;
     });
@@ -328,6 +335,11 @@ export function MatchScreen() {
     try {
       const sharedId = sharedStratTargetId(currentPick);
       if (sharedId && canEditShared) {
+        const title = form.callout.trim() || currentPick.callout;
+        const ok = window.confirm(
+          `Save "${title}" for everyone?\n\nThis updates the shared catalog for all players.`
+        );
+        if (!ok) return;
         await upsertSharedStrat(sharedId, patch);
       } else if (currentPick.owner_user_id === userId) {
         await upsertPrivateStrat(userId, currentPick.pack_id, { id: currentPick.id, ...patch });
@@ -345,96 +357,105 @@ export function MatchScreen() {
 
   if (loading) return <div className="empty">Loading Match…</div>;
 
+  const showFilters = !currentPick || editing;
+
   return (
     <div>
-      <div className="panel" style={{ paddingTop: 10, paddingBottom: 10 }}>
-        {matchPacks.length > 0 && (
-          <div className="row" style={{ marginBottom: 8 }}>
-            {matchPacks.map((p) => {
-              const on = isPackInMatchPool(p.id, subscriptions, packs);
+      {showFilters && (
+        <div className="panel" style={{ paddingTop: 10, paddingBottom: 10 }}>
+          {matchPacks.length > 0 && (
+            <div className="row" style={{ marginBottom: 8 }}>
+              {matchPacks.map((p) => {
+                const on = isPackInMatchPool(p.id, subscriptions, packs);
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    className={`pill ${on ? `active ${accent}` : ""}`}
+                    onClick={() => {
+                      const nextOn = !on;
+                      void setPackEnabled(p.id, nextOn);
+                      // Clear immediately when turning Off a pack that owns the open call
+                      // (effect also clears when the pick leaves enabledStrats).
+                      if (!nextOn && session.current_pick_id) {
+                        const pick = enabledStrats.find((s) => s.id === session.current_pick_id);
+                        if (pick?.pack_id === p.id) {
+                          void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+                        }
+                      }
+                    }}
+                    aria-pressed={on}
+                    title={p.description || p.title}
+                  >
+                    {packPillLabel(p)}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+          {usePersonalPool && (
+            <p className="muted" style={{ fontSize: 11, marginTop: 0, marginBottom: 8 }}>
+              Catalog Off only hides the live pack. Copies already in your personal packs stay until you remove them.
+            </p>
+          )}
+          {isT && (
+            <div className="row" style={{ marginBottom: 8 }}>
+              {siteFilters.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  className={`pill pill-icon ${session.site_filter === s.id ? `active ${accent}` : ""}`}
+                  onClick={() =>
+                    void setSession({
+                      site_filter: s.id,
+                      current_pick_id: null,
+                      timer_ends_at: null,
+                      called_at: null,
+                    })
+                  }
+                >
+                  <SiteIcon site={s.id} size={14} />
+                  <span>{s.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="row">
+            {ROUNDS.map((r) => {
+              const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
               return (
                 <button
-                  key={p.id}
+                  key={r.id}
                   type="button"
-                  className={`pill ${on ? `active ${accent}` : ""}`}
-                  onClick={() => {
-                    const nextOn = !on;
-                    void setPackEnabled(p.id, nextOn);
-                    // Clear immediately when turning Off a pack that owns the open call
-                    // (effect also clears when the pick leaves enabledStrats).
-                    if (!nextOn && session.current_pick_id) {
-                      const pick = enabledStrats.find((s) => s.id === session.current_pick_id);
-                      if (pick?.pack_id === p.id) {
-                        void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
-                      }
-                    }
-                  }}
-                  aria-pressed={on}
-                  title={p.description || p.title}
+                  className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
+                  onClick={() =>
+                    void setSession({
+                      round_filter: r.id,
+                      current_pick_id: null,
+                      timer_ends_at: null,
+                      called_at: null,
+                    })
+                  }
                 >
-                  {p.title}
+                  <RoundIcon size={13} />
+                  <span>{r.label}</span>
                 </button>
               );
             })}
-          </div>
-        )}
-        {isT && (
-          <div className="row" style={{ marginBottom: 8 }}>
-            {siteFilters.map((s) => (
+            {usePersonalPool && (
               <button
-                key={s.id}
                 type="button"
-                className={`pill pill-icon ${session.site_filter === s.id ? `active ${accent}` : ""}`}
-                onClick={() =>
-                  void setSession({
-                    site_filter: s.id,
-                    current_pick_id: null,
-                    timer_ends_at: null,
-                    called_at: null,
-                  })
-                }
+                className={`pill pill-icon ${favoritesOnly ? `active ${accent}` : ""}`}
+                onClick={() => setFavoritesOnly((v) => !v)}
+                aria-pressed={favoritesOnly}
               >
-                <SiteIcon site={s.id} size={14} />
-                <span>{s.label}</span>
+                <Star size={13} filled={favoritesOnly} />
+                <span>Favorites</span>
               </button>
-            ))}
+            )}
           </div>
-        )}
-        <div className="row">
-          {ROUNDS.map((r) => {
-            const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
-            return (
-              <button
-                key={r.id}
-                type="button"
-                className={`pill pill-icon ${session.round_filter === r.id ? `active ${accent}` : ""}`}
-                onClick={() =>
-                  void setSession({
-                    round_filter: r.id,
-                    current_pick_id: null,
-                    timer_ends_at: null,
-                    called_at: null,
-                  })
-                }
-              >
-                <RoundIcon size={13} />
-                <span>{r.label}</span>
-              </button>
-            );
-          })}
-          {usePersonalPool && (
-            <button
-              type="button"
-              className={`pill pill-icon ${favoritesOnly ? `active ${accent}` : ""}`}
-              onClick={() => setFavoritesOnly((v) => !v)}
-              aria-pressed={favoritesOnly}
-            >
-              <Star size={13} filled={favoritesOnly} />
-              <span>Favorites</span>
-            </button>
-          )}
         </div>
-      </div>
+      )}
 
       <div className="panel">
         {needsMap && !currentPick ? (
@@ -608,7 +629,7 @@ export function MatchScreen() {
                 <p className="eyebrow">Edit call</p>
                 {canEditShared && sharedStratTargetId(currentPick) && (
                   <p className="banner" style={{ marginBottom: 10 }}>
-                    Saves for everyone
+                    Shared catalog. Saving asks for confirmation. Changes apply for everyone.
                   </p>
                 )}
                 <input

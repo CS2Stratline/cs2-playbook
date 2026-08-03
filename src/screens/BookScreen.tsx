@@ -106,7 +106,7 @@ export function BookScreen() {
     level: "" as string,
     packId: "" as string,
     /** Share to Community by default; toggle on for private-only. */
-    isPrivate: false,
+    isPrivate: true,
   });
   const allMaps = isAllMaps(session.selected_map);
 
@@ -154,7 +154,9 @@ export function BookScreen() {
     const system = packs
       .filter((p) => p.visibility === "system" && !isPackLocked(p))
       .sort(compareSystemPacks);
-    const mine = usePersonalPool ? myPrivatePacks : [];
+    const mine = myPrivatePacks;
+    // Guests only list personal packs once they have one (Yours).
+    if (!usePersonalPool && !mine.length) return system;
     // Personal packs first, then Starter Pack → … → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, myPrivatePacks]);
@@ -290,6 +292,11 @@ export function BookScreen() {
     try {
       const sharedId = editing ? sharedStratTargetId(editing) : null;
       if (editing && sharedId && canEditShared) {
+        const title = draft.callout || editing.callout;
+        const ok = window.confirm(
+          `Save "${title}" for everyone?\n\nThis updates the shared catalog for all players.`
+        );
+        if (!ok) return;
         await upsertSharedStrat(sharedId, {
           ...draft,
           site,
@@ -301,7 +308,7 @@ export function BookScreen() {
       } else {
         // Public Community saves need a permanent account in cloud mode.
         if (!form.isPrivate && mode === "cloud" && supabaseReady && !isPermanent) {
-          setSaveError("Sign in to share a call with Community (or mark it Private).");
+          setSaveError("Sign in to share a call with Community (or leave Share off).");
           return;
         }
         const packId = await resolveSavePackId();
@@ -408,6 +415,9 @@ export function BookScreen() {
         <p className="eyebrow">Packs</p>
         <p className="muted" style={{ fontSize: 11, marginBottom: 8 }}>
           Match only shows packs that are On.
+          {usePersonalPool && (
+            <> Catalog Off still leaves copies already in your personal packs.</>
+          )}
           {!usePersonalPool && (
             <>
               {" "}
@@ -462,10 +472,12 @@ export function BookScreen() {
                   </div>
                 ) : (
                   <>
-                    <strong style={{ fontSize: 13 }}>{p.title}</strong>
+                    <strong style={{ fontSize: 13 }}>
+                      {!usePersonalPool && isMine && p.title === "My pool" ? "Yours" : p.title}
+                    </strong>
                     <p className="muted" style={{ marginTop: 2, fontSize: 11 }}>
                       {isMine
-                        ? `${count} strat${count === 1 ? "" : "s"} · personal`
+                        ? `${count} strat${count === 1 ? "" : "s"} · ${usePersonalPool ? "personal" : "this device"}`
                         : p.description || `${count ?? "—"} strats`}
                     </p>
                   </>
@@ -608,9 +620,8 @@ export function BookScreen() {
                 status: "ready",
                 level: "",
                 packId: defaultPackId || myPrivatePacks[0]?.id || "",
-                // Cloud guests can't share publicly without sign-in — default private.
-                // Signed-in / local: default Community (Private off).
-                isPrivate: mode === "cloud" && supabaseReady && !isPermanent,
+                // New calls stay private until you opt into Community.
+                isPrivate: true,
               });
               setShowForm(true);
             }}
@@ -637,7 +648,7 @@ export function BookScreen() {
           </p>
           {editing && canEditShared && sharedStratTargetId(editing) && (
             <p className="banner" style={{ marginBottom: 10 }}>
-              Saves for everyone
+              Shared catalog. Saving asks for confirmation. Changes apply for everyone.
             </p>
           )}
           {(allMaps || editing) && (
@@ -684,18 +695,20 @@ export function BookScreen() {
               }}
             >
               <div style={{ minWidth: 0 }}>
-                <strong style={{ fontSize: 13 }}>Private</strong>
+                <strong style={{ fontSize: 13 }}>Share to Community</strong>
                 <p className="muted" style={{ fontSize: 11, marginTop: 2 }}>
-                  {form.isPrivate ? "Only in your packs." : "Shared in Community for others to use."}
+                  {form.isPrivate
+                    ? "Off. Only in your packs."
+                    : "On. Visible to everyone in Community."}
                 </p>
               </div>
               <button
                 type="button"
-                className={`pill ${form.isPrivate ? "active" : ""}`}
-                aria-pressed={form.isPrivate}
+                className={`pill ${!form.isPrivate ? "active" : ""}`}
+                aria-pressed={!form.isPrivate}
                 onClick={() => setForm({ ...form, isPrivate: !form.isPrivate })}
               >
-                {form.isPrivate ? "On" : "Off"}
+                {form.isPrivate ? "Off" : "On"}
               </button>
             </div>
           )}
@@ -704,7 +717,7 @@ export function BookScreen() {
               <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
                 Sign in
               </button>{" "}
-              to share with Community, or turn Private on.
+              to share with Community, or leave Share off.
             </p>
           )}
           <input

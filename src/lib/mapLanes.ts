@@ -24,7 +24,7 @@ const NUKE_LANES: LaneDef[] = [
   { id: "ramp", label: "Ramp", short: "Ramp" },
 ];
 
-/** Uncategorized / map-wide calls (pistols, memes, etc.). Authoring + Playbook only. */
+/** Uncategorized / map-wide calls (pistols, memes, etc.). */
 const OTHER_LANE: LaneDef = { id: "default", label: "Other (any lane)", short: "Other" };
 
 const LANES_BY_MAP: Record<string, LaneDef[]> = {
@@ -43,16 +43,31 @@ export function formLanesForMap(map: string): LaneDef[] {
 
 export function isValidLane(map: string, site: string | null | undefined): boolean {
   if (!site || site === "all") return true;
-  // Legacy "default" / Def filter. Treat as All (no longer a Match pill).
-  if (site === "default") return false;
+  if (site === "default") return true;
   return lanesForMap(map).some((l) => l.id === site);
 }
 
-/** Match filter pills: All + real approach lanes (no Def/Other). */
+/** Match filter pills: All + approach lanes + Other (unlaned / map-wide). */
 export function matchSiteFilters(map: string): { id: string; label: string }[] {
-  return [{ id: "all", label: "All" }, ...lanesForMap(map).map((l) => ({ id: l.id, label: l.short }))];
+  return [
+    { id: "all", label: "All" },
+    ...lanesForMap(map).map((l) => ({ id: l.id, label: l.short })),
+    { id: OTHER_LANE.id, label: OTHER_LANE.short },
+  ];
 }
 
 export function isOtherLane(site: string | null | undefined): boolean {
   return !site || site === "default";
+}
+
+/** True when a strat matches the active Match site / lane filter. */
+export function matchesSiteFilter(
+  site: string | null | undefined,
+  siteFilter: string,
+  opts?: { isT?: boolean }
+): boolean {
+  if (opts?.isT === false) return true;
+  if (!siteFilter || siteFilter === "all") return true;
+  if (siteFilter === "default") return isOtherLane(site);
+  return site === siteFilter;
 }
