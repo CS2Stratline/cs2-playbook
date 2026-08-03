@@ -212,7 +212,10 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       if (s.owner_user_id) return false;
       return isPackInMatchPool(s.pack_id, subscriptions, packs);
     });
-    if (!usePersonalPool) return fromPacks;
+    // Local demo / guest: still surface privately created strats so New → Save is usable.
+    if (!usePersonalPool) {
+      return myPoolStrats.length ? [...myPoolStrats, ...fromPacks] : fromPacks;
+    }
 
     const myPack = packs.find((p) => p.visibility === "private" && p.owner_user_id === userId);
     const myPoolOn = myPack ? isPackInMatchPool(myPack.id, subscriptions, packs) : false;
