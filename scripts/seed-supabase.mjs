@@ -41,6 +41,9 @@ const bySlug = Object.fromEntries((packRows || []).map((r) => [r.slug, r.id]));
 const rows = seed.strats.map((s) => {
   const pack = seed.packs.find((p) => p.id === s.pack_id);
   const pack_id = bySlug[pack?.slug] || s.pack_id;
+  // Do NOT include upvotes / downvotes / times_used / wins / losses.
+  // Upsert would overwrite live community stats with zeros on every content re-seed.
+  // New rows pick up DB defaults (0); existing rows keep their counters.
   return {
     id: s.id,
     pack_id,
@@ -56,11 +59,6 @@ const rows = seed.strats.map((s) => {
     status: s.status,
     links: s.links,
     level: s.level || 5,
-    wins: 0,
-    losses: 0,
-    upvotes: 0,
-    downvotes: 0,
-    times_used: 0,
     source: "system-seed",
   };
 });
