@@ -44,9 +44,11 @@ npm run seed:supabase
 8. **Migrations (run in order in the SQL editor):**  
    `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql`.  
    Do **not** stop after `001` + seed — without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
-   `011` enables community upvote/downvote (signed-in only). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes`.
+   `011` enables community upvote/downvote. Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes` (also turns on **Anonymous Sign-Ins** + **Manual linking** so guests can vote without Discord/email).
 
-9. **Admins / super admin (shared strat edits):**
+9. **Anonymous voting (no login UI):** Authentication → Providers → enable **Anonymous Sign-Ins**. Optionally enable **Manual linking** so Discord/email upgrades keep the same user id (and their votes).
+
+10. **Admins / super admin (shared strat edits):**
 
    1. Sign in once with your Discord/email account (so a `profiles` row exists).
    2. Bootstrap **only via SQL** (in-app claim is revoked in `010` so random signups cannot own the catalog):
@@ -70,7 +72,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 ## Launch security checklist
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
-- [ ] `011_strat_votes.sql` applied (community upvote/downvote for signed-in users)
+- [ ] `011_strat_votes.sql` applied + Anonymous Sign-Ins enabled (guest voting)
 - [x] Super admin bootstrapped via SQL (not open signup claim)
 - [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
 - [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`

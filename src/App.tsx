@@ -10,7 +10,7 @@ import { SettingsScreen } from "./screens/SettingsScreen";
 import { LiveScreen } from "./screens/LiveScreen";
 
 function Shell() {
-  const { loading, mode, user, supabaseReady } = useAuth();
+  const { loading, mode, user, supabaseReady, isPermanent } = useAuth();
   const location = useLocation();
   const isLive = location.pathname.startsWith("/live");
   const showChrome = !isLive && !location.pathname.startsWith("/settings");
@@ -31,13 +31,13 @@ function Shell() {
     );
   }
 
-  const subtitle = user
-    ? "Cloud"
-    : supabaseReady
-      ? "Guest · local"
-      : mode === "local"
-        ? "Local demo"
-        : "Guest";
+  const subtitle = !supabaseReady
+    ? mode === "local"
+      ? "Local demo"
+      : "Guest"
+    : isPermanent
+      ? "Cloud"
+      : "Guest";
 
   return (
     <PlaybookProvider>

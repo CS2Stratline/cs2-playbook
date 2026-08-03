@@ -391,9 +391,19 @@ select {
   padding: 3px;
 }
 
-.strat-vote-btn:hover {
+.strat-vote-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.strat-vote-btn:hover:not(:disabled) {
   color: var(--chalk);
   background: var(--panel-hi);
+}
+
+.strat-vote-btn:disabled:hover {
+  color: var(--dim);
+  background: transparent;
 }
 
 .strat-vote-btn.active.up,
