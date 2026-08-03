@@ -54,7 +54,8 @@ end;
 $$;
 
 revoke all on function public.vote_client_ip_hash() from public;
-grant execute on function public.vote_client_ip_hash() to authenticated;
+revoke all on function public.vote_client_ip_hash() from anon, authenticated;
+-- Called only from security definer set_strat_vote (owner).
 
 create or replace function public.set_strat_vote(p_strat_id uuid, p_value int)
 returns table (upvotes int, downvotes int, my_vote int)
