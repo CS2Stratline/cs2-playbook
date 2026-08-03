@@ -34,6 +34,27 @@ export function isMemePack(pack: Pick<Pack, "slug"> | undefined | null): boolean
   return pack?.slug === "meme-strats";
 }
 
+export function isStarterPack(pack: Pick<Pack, "slug"> | undefined | null): boolean {
+  return pack?.slug === "starter-pack" || pack?.slug === "essentials-pug";
+}
+
+/** Match / catalog level bands for FACEIT-style filtering. */
+export const LEVEL_BANDS = [
+  { id: "all", label: "All lv", min: 1, max: 10 },
+  { id: "low", label: "1–3", min: 1, max: 3 },
+  { id: "mid", label: "4–6", min: 4, max: 6 },
+  { id: "high", label: "7–10", min: 7, max: 10 },
+] as const;
+
+export type LevelBandId = (typeof LEVEL_BANDS)[number]["id"];
+
+export function levelInBand(level: number | null | undefined, bandId: string): boolean {
+  const band = LEVEL_BANDS.find((b) => b.id === bandId) || LEVEL_BANDS[0];
+  if (band.id === "all") return true;
+  const n = typeof level === "number" && level >= 1 ? level : 5;
+  return n >= band.min && n <= band.max;
+}
+
 export type Strat = {
   id: string;
   pack_id: string;
@@ -116,8 +137,8 @@ export function isAllMaps(map: string | null | undefined): boolean {
 }
 
 export const TIER_LABEL: Record<PackTier, string> = {
-  pug: "Fundamentals",
-  five_stack: "Stack",
+  pug: "Starter",
+  five_stack: "Starter",
   pro: "Advanced",
 };
 

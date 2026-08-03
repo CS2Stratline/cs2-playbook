@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { isAllMaps, isPackInMatchPool, isPackLocked } from "../lib/types";
+import { isAllMaps, isPackInMatchPool, isPackLocked, LEVEL_BANDS, levelInBand } from "../lib/types";
 import { bumpStratUsage, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -48,6 +48,7 @@ export function MatchScreen() {
     refresh,
   } = usePlaybook();
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [levelBand, setLevelBand] = useState<string>("all");
   const [editing, setEditing] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [saveBusy, setSaveBusy] = useState(false);
@@ -67,7 +68,7 @@ export function MatchScreen() {
   /** Compact Match pool switches — personal packs + unlocked system packs. Only On packs feed the call list. */
   const matchPacks = useMemo(() => {
     const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["essentials-pug", "stack-standard", "meme-strats"];
+    const order = ["starter-pack", "essentials-pug", "meme-strats", "pro-structure"];
     system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
       const bi = order.indexOf(b.slug);
@@ -106,6 +107,7 @@ export function MatchScreen() {
     if (session.round_filter !== "all" && pick.rounds.length && !pick.rounds.includes(session.round_filter)) {
       return null;
     }
+    if (!levelInBand(pick.level, levelBand)) return null;
     return pick;
   }, [
     strats,
@@ -115,6 +117,7 @@ export function MatchScreen() {
     session.selected_side,
     session.site_filter,
     session.round_filter,
+    levelBand,
     isT,
   ]);
 
@@ -123,9 +126,10 @@ export function MatchScreen() {
       if (s.map !== session.selected_map || s.side !== session.selected_side) return false;
       if (isT && session.site_filter !== "all" && s.site !== session.site_filter) return false;
       if (session.round_filter !== "all" && s.rounds.length && !s.rounds.includes(session.round_filter)) return false;
+      if (!levelInBand(s.level, levelBand)) return false;
       return true;
     });
-  }, [enabledStrats, session.selected_map, session.selected_side, session.site_filter, session.round_filter, isT]);
+  }, [enabledStrats, session.selected_map, session.selected_side, session.site_filter, session.round_filter, levelBand, isT]);
 
   const pickList = useMemo(() => {
     const pool = favoritesOnly && usePersonalPool ? eligible.filter((s) => isFavorite(s.id)) : eligible;
@@ -142,7 +146,7 @@ export function MatchScreen() {
     return [...fav, ...rest];
   }, [eligible, isFavorite, favoritesOnly, usePersonalPool]);
 
-  const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}`;
+  const filterKey = `${session.selected_map}|${session.selected_side}|${session.site_filter}|${session.round_filter}|${levelBand}`;
 
   useEffect(() => {
     if (filterKeyRef.current === null) {
@@ -197,6 +201,14 @@ export function MatchScreen() {
           }),
       });
     }
+    if (levelBand !== "all") {
+      const band = LEVEL_BANDS.find((b) => b.id === levelBand);
+      chips.push({
+        key: "level",
+        label: band?.label || levelBand,
+        clear: () => setLevelBand("all"),
+      });
+    }
     if (favoritesOnly && usePersonalPool) {
       chips.push({
         key: "fav",
@@ -205,7 +217,7 @@ export function MatchScreen() {
       });
     }
     return chips;
-  }, [isT, session.site_filter, session.round_filter, favoritesOnly, usePersonalPool, siteFilters, setSession]);
+  }, [isT, session.site_filter, session.round_filter, levelBand, favoritesOnly, usePersonalPool, siteFilters, setSession]);
 
   async function commitCall(strat: Strat) {
     const calledAt = Date.now();
@@ -394,6 +406,22 @@ export function MatchScreen() {
             </button>
           )}
         </div>
+        <div className="row" style={{ marginTop: 8 }}>
+          {LEVEL_BANDS.map((b) => (
+            <button
+              key={b.id}
+              type="button"
+              className={`pill ${levelBand === b.id ? `active ${accent}` : ""}`}
+              onClick={() => {
+                setLevelBand(b.id);
+                void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+              }}
+              aria-pressed={levelBand === b.id}
+            >
+              {b.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="panel">
@@ -427,6 +455,7 @@ export function MatchScreen() {
                       called_at: null,
                     });
                     setFavoritesOnly(false);
+                    setLevelBand("all");
                   }}
                 >
                   Clear
@@ -455,6 +484,7 @@ export function MatchScreen() {
                         called_at: null,
                       });
                       setFavoritesOnly(false);
+                      setLevelBand("all");
                     }}
                   >
                     Clear filters
