@@ -3,7 +3,6 @@ import { useAuth } from "../lib/auth";
 import {
   ensureLiveShareToken,
   exportBookJson,
-  isSupabaseConfigured,
   listAdminProfiles,
   regenerateLiveShareToken,
   resetLocalDemo,
@@ -17,7 +16,8 @@ import { LogOut } from "../components/icons";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
-  const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile } = useAuth();
+  const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile, isPermanent, isAnonymous } =
+    useAuth();
   const { packs, strats, refresh } = usePlaybook();
   const baseUrl = typeof window !== "undefined" ? authRedirectTo() || window.location.href.split("#")[0] : "";
   const [liveToken, setLiveToken] = useState<string | null>(null);
@@ -31,7 +31,7 @@ export function SettingsScreen() {
   const liveUrl = liveToken && baseUrl ? `${baseUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
 
   useEffect(() => {
-    if (!user || !supabaseReady) {
+    if (!isPermanent || !supabaseReady) {
       setLiveToken(null);
       return;
     }
@@ -50,7 +50,7 @@ export function SettingsScreen() {
     return () => {
       cancelled = true;
     };
-  }, [user, supabaseReady]);
+  }, [isPermanent, supabaseReady]);
 
   useEffect(() => {
     if (!canManageAdmins) {
@@ -80,21 +80,23 @@ export function SettingsScreen() {
         </h2>
         <p className="muted">
           {mode}
-          {user
-            ? ` · ${user.email || user.user_metadata?.full_name || user.user_metadata?.name || "signed in"}`
-            : " · guest"}
-          {user && canEditShared ? (profile?.is_super_admin ? " · super admin" : " · admin") : ""}
+          {isPermanent
+            ? ` · ${user?.email || user?.user_metadata?.full_name || user?.user_metadata?.name || "signed in"}`
+            : isAnonymous
+              ? " · guest (votes sync)"
+              : " · guest"}
+          {isPermanent && canEditShared ? (profile?.is_super_admin ? " · super admin" : " · admin") : ""}
         </p>
-        {user && (
+        {isPermanent && (
           <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>
             <LogOut size={14} /> Sign out
           </button>
         )}
       </div>
 
-      {supabaseReady && !user && <AuthScreen />}
+      {supabaseReady && !isPermanent && <AuthScreen />}
 
-      {user && (
+      {isPermanent && (
         <div className="panel">
           <p className="eyebrow">Live call</p>
           <p className="muted">Teammates see your current Match call — no login.</p>
@@ -245,7 +247,7 @@ export function SettingsScreen() {
           >
             Export JSON
           </button>
-          {!isSupabaseConfigured() || !user ? (
+          {!isPermanent ? (
             <button
               type="button"
               className="btn-ghost"

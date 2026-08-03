@@ -34,7 +34,7 @@ type PlaybookState = {
   getVote: (strat: Strat) => StratVoteValue;
   /** Net score (up − down) for the shared vote target. */
   getVoteScore: (strat: Strat) => { upvotes: number; downvotes: number; score: number };
-  /** True when signed into cloud — community votes require auth. */
+  /** True when a cloud session exists (anonymous browser id or Discord/email). */
   canVote: boolean;
   /** Toggle upvote (1) or downvote (−1); same click again clears. No-op unless canVote. */
   castVote: (strat: Strat, value: 1 | -1) => Promise<void>;
@@ -50,11 +50,11 @@ type PlaybookState = {
 const Ctx = createContext<PlaybookState | null>(null);
 
 export function PlaybookProvider({ children }: { children: ReactNode }) {
-  const { userId, loading: authLoading, user, mode } = useAuth();
+  const { userId, loading: authLoading, user, mode, isPermanent } = useAuth();
   // Local demo uses the signed-in pack UX so personal packs are testable without Supabase.
-  // Cloud guests (no session) stay on system pack toggles only.
-  const usePersonalPool = mode === "local" || (mode === "cloud" && !!user);
-  /** Community votes only when signed into Supabase — never localStorage. */
+  // Anonymous cloud users stay on system pack toggles (no My pool) — same as old guests.
+  const usePersonalPool = mode === "local" || (mode === "cloud" && isPermanent);
+  /** Anyone with a cloud session (anonymous or Discord/email) can cast one vote per strat. */
   const canVote = mode === "cloud" && !!user;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
