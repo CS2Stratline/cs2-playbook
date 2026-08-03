@@ -96,6 +96,41 @@ for (let i = 0; i < rows.length; i += chunk) {
 }
 console.log("strats", rows.length);
 
+// Drop system-catalog rows that are no longer in the seed (e.g. Roulette noise
+// previously copied into the Meme pack). Only touch owner_user_id IS NULL rows
+// on current system pack ids — never private / community copies.
+{
+  const systemPackIds = seed.packs.map((p) => bySlug[p.slug]).filter(Boolean);
+  const keepIds = new Set(rows.map((r) => r.id));
+  let removed = 0;
+  for (const packId of systemPackIds) {
+    const orphanIds = [];
+    let start = 0;
+    for (;;) {
+      const { data, error } = await sb
+        .from("strats")
+        .select("id")
+        .eq("pack_id", packId)
+        .is("owner_user_id", null)
+        .range(start, start + 999);
+      if (error) throw error;
+      const batch = data || [];
+      for (const r of batch) {
+        if (!keepIds.has(r.id)) orphanIds.push(r.id);
+      }
+      if (batch.length < 1000) break;
+      start += 1000;
+    }
+    for (let i = 0; i < orphanIds.length; i += chunk) {
+      const slice = orphanIds.slice(i, i + chunk);
+      const { error: delErr } = await sb.from("strats").delete().in("id", slice);
+      if (delErr) throw delErr;
+      removed += slice.length;
+    }
+  }
+  console.log("removed orphan system strats", removed);
+}
+
 const catalog = JSON.parse(readFileSync("src/csnades-catalog.json", "utf8"));
 const nades = (catalog.nades || []).map((n) => ({
   map: n.map,
