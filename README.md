@@ -1,4 +1,4 @@
-# Cloud Playbook
+# Stratline
 
 Match-first **IGL freeze-time** webapp with strat packs, favorites (signed-in: add to My pool + pin), and optional Supabase auth/sync.
 
