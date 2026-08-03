@@ -48,6 +48,18 @@ export const Star = (p: { size?: number; filled?: boolean }) => (
   </Icon>
 );
 
+export const ChevronUp = (p: { size?: number }) => (
+  <Icon {...p}>
+    <path d="m18 15-6-6-6 6" />
+  </Icon>
+);
+
+export const ChevronDown = (p: { size?: number }) => (
+  <Icon {...p}>
+    <path d="m6 9 6 6 6-6" />
+  </Icon>
+);
+
 export const ExternalLink = (p: { size?: number }) => (
   <Icon {...p}>
     <path d="M15 3h6v6" />

@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useAuth } from "./auth";
 import * as api from "./api";
-import type { Pack, Strat, UserSession } from "./types";
+import type { Pack, Strat, StratVoteValue, UserSession } from "./types";
 import { MAPS, catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
 
 type PlaybookState = {
@@ -30,6 +30,12 @@ type PlaybookState = {
    * also copies it into the default personal pack and pins the pool copy.
    */
   toggleFavorite: (stratId: string) => Promise<void>;
+  /** Current user's vote for a strat (−1 / 0 / +1), keyed by shared catalog id when present. */
+  getVote: (strat: Strat) => StratVoteValue;
+  /** Net score (up − down) for the shared vote target. */
+  getVoteScore: (strat: Strat) => { upvotes: number; downvotes: number; score: number };
+  /** Toggle upvote (1) or downvote (−1); same click again clears. */
+  castVote: (strat: Strat, value: 1 | -1) => Promise<void>;
   addToPool: (catalogStrat: Strat, packId?: string) => Promise<void>;
   removeFromPool: (poolStratId: string) => Promise<void>;
   addFundamentalsStarter: (map: string) => Promise<number>;
@@ -51,6 +57,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   const [packs, setPacks] = useState<Pack[]>([]);
   const [strats, setStrats] = useState<Strat[]>([]);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [votes, setVotes] = useState<Record<string, StratVoteValue>>({});
   const [subscriptions, setSubscriptions] = useState<Record<string, boolean>>({});
   const [session, setSessionState] = useState<UserSession>({
     tab: "match",
@@ -78,10 +85,11 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
         // Ensure at least one personal pack exists so Match can toggle it.
         await api.ensureUserPrivatePack(userId);
       }
-      const [p, s, fav, subs, sess] = await Promise.all([
+      const [p, s, fav, myVotes, subs, sess] = await Promise.all([
         api.listPacks(),
         api.listStrats(),
         api.getFavorites(userId),
+        api.getMyVotes(userId),
         api.getSubscriptions(userId),
         api.getSession(userId),
       ]);
@@ -99,6 +107,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       }
       setPacks(p);
       setStrats(nextStrats);
+      setVotes(myVotes);
       // Signed-in favorites should key off My-pool copy ids (Match eligibility).
       // Migrate legacy catalog-id favorites onto existing pool copies when present.
       if (usePersonalPool) {
@@ -319,6 +328,49 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     [userId, usePersonalPool, myPoolStrats, catalogStrats, strats, packs, favorites, refresh, defaultPackId]
   );
 
+  const getVote = useCallback(
+    (strat: Strat): StratVoteValue => {
+      const target = api.voteTargetId(strat);
+      const v = votes[target];
+      return v === 1 || v === -1 ? v : 0;
+    },
+    [votes]
+  );
+
+  const getVoteScore = useCallback(
+    (strat: Strat) => {
+      const target = api.voteTargetId(strat);
+      const row = strats.find((s) => s.id === target) || strat;
+      const upvotes = Number(row.upvotes || 0);
+      const downvotes = Number(row.downvotes || 0);
+      return { upvotes, downvotes, score: upvotes - downvotes };
+    },
+    [strats]
+  );
+
+  const castVote = useCallback(
+    async (strat: Strat, value: 1 | -1) => {
+      const target = api.voteTargetId(strat);
+      try {
+        const result = await api.setStratVote(userId, target, value);
+        setVotes((prev) => {
+          const next = { ...prev };
+          if (result.myVote === 0) delete next[target];
+          else next[target] = result.myVote;
+          return next;
+        });
+        setStrats((prev) =>
+          prev.map((s) =>
+            s.id === target ? { ...s, upvotes: result.upvotes, downvotes: result.downvotes } : s
+          )
+        );
+      } catch {
+        // Keep UI stable if cloud vote fails (e.g. migration not applied yet).
+      }
+    },
+    [userId]
+  );
+
   const addToPool = useCallback(
     async (catalogStrat: Strat, packId?: string) => {
       await api.addCatalogStratToPool(userId, catalogStrat, packs, packId || defaultPackId || undefined);
@@ -401,6 +453,9 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     setPackEnabled,
     isFavorite,
     toggleFavorite,
+    getVote,
+    getVoteScore,
+    castVote,
     addToPool,
     removeFromPool,
     addFundamentalsStarter,
