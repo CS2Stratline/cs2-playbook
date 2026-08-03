@@ -576,7 +576,7 @@ export function BookScreen() {
               setShowForm(true);
             }}
           >
-            <Plus size={14} /> New
+            <Plus size={14} /> New strat
           </button>
         </div>
         <input
