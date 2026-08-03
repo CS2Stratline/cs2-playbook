@@ -2,6 +2,7 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { AuthProvider, useAuth } from "./lib/auth";
 import { PlaybookProvider } from "./lib/playbook";
 import { BrandLockup } from "./components/BrandLockup";
+import { BrandSplash } from "./components/BrandSplash";
 import { MapSideChrome } from "./components/MapSideChrome";
 import { BookOpen, Crosshair, Dice, Gear } from "./components/icons";
 import { MatchScreen } from "./screens/MatchScreen";
@@ -25,11 +26,7 @@ function Shell() {
   }
 
   if (loading) {
-    return (
-      <div className="app-shell">
-        <div className="empty">LOADING…</div>
-      </div>
-    );
+    return <BrandSplash />;
   }
 
   const subtitle = !supabaseReady

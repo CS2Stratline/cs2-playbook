@@ -661,6 +661,61 @@ select {
   font-size: 13px;
 }
 
+.splash-shell {
+  justify-content: center;
+}
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 48px 16px;
+}
+
+.splash-mark {
+  width: 48px;
+  height: 48px;
+  display: block;
+  animation: splash-pulse 1.4s ease-in-out infinite;
+}
+
+.splash-wordmark {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+
+.splash-label {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+@keyframes splash-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-mark {
+    animation: none;
+  }
+}
+
 .banner {
   font-size: 11px;
   color: var(--dim);
