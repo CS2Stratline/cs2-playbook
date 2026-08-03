@@ -3,12 +3,14 @@ import { useAuth } from "../lib/auth";
 import {
   ensureLiveShareToken,
   exportBookJson,
+  isCloudMode,
   listAdminProfiles,
   regenerateLiveShareToken,
   resetLocalDemo,
   setAdminByEmail,
 } from "../lib/api";
 import type { AdminProfile } from "../lib/types";
+import { MAPS, SCHEMA_VERSION } from "../lib/types";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
@@ -29,6 +31,7 @@ export function SettingsScreen() {
   const [adminBusy, setAdminBusy] = useState(false);
 
   const liveUrl = liveToken && baseUrl ? `${baseUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
+  const canResetLocal = !isCloudMode();
 
   useEffect(() => {
     if (!isPermanent || !supabaseReady) {
@@ -236,16 +239,21 @@ export function SettingsScreen() {
             type="button"
             className="btn-ghost"
             onClick={() => {
-              const blob = new Blob([JSON.stringify(exportBookJson(), null, 2)], { type: "application/json" });
+              // Prefer live in-memory playbook data (cloud or local), not the local seed blob.
+              const payload = isCloudMode()
+                ? { version: SCHEMA_VERSION, maps: [...MAPS], packs, strats }
+                : exportBookJson();
+              const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
               const a = document.createElement("a");
               a.href = URL.createObjectURL(blob);
               a.download = "playbook-export.json";
               a.click();
+              URL.revokeObjectURL(a.href);
             }}
           >
             Export JSON
           </button>
-          {!isPermanent ? (
+          {canResetLocal ? (
             <button
               type="button"
               className="btn-ghost"

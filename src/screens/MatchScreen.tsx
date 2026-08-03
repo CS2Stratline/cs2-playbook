@@ -96,13 +96,10 @@ export function MatchScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.selected_map]);
 
-  // Resolve from full library. Ignore picks that don't match the active filters
-  // (fast map/side/site/round taps used to leave a stale call on screen).
+  // Only show calls that are still in the Match pool (enabled packs) and match filters.
+  // Resolving from the full library left stale cards after pack Off / Roulette meme rolls.
   const currentPick = useMemo(() => {
-    const pick =
-      strats.find((s) => s.id === session.current_pick_id) ||
-      enabledStrats.find((s) => s.id === session.current_pick_id) ||
-      null;
+    const pick = enabledStrats.find((s) => s.id === session.current_pick_id) || null;
     if (!pick) return null;
     if (pick.map !== session.selected_map || pick.side !== session.selected_side) return null;
     if (isT && session.site_filter !== "all" && pick.site !== session.site_filter) return null;
@@ -111,7 +108,6 @@ export function MatchScreen() {
     }
     return pick;
   }, [
-    strats,
     enabledStrats,
     session.current_pick_id,
     session.selected_map,
@@ -120,6 +116,15 @@ export function MatchScreen() {
     session.round_filter,
     isT,
   ]);
+
+  // Drop the stored pick id when it left the Match pool (pack Off) so it does not
+  // resurrect when the pack is turned back on.
+  useEffect(() => {
+    if (!session.current_pick_id) return;
+    if (enabledStrats.some((s) => s.id === session.current_pick_id)) return;
+    void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [enabledStrats, session.current_pick_id]);
 
   const eligible = useMemo(() => {
     return enabledStrats.filter((s) => {
@@ -354,15 +359,8 @@ export function MatchScreen() {
                   className={`pill ${on ? `active ${accent}` : ""}`}
                   onClick={() => {
                     void setPackEnabled(p.id, !on);
-                    // If the open call belongs to this pack, drop it so the list can refresh.
-                    if (session.current_pick_id) {
-                      const pick =
-                        strats.find((s) => s.id === session.current_pick_id) ||
-                        enabledStrats.find((s) => s.id === session.current_pick_id);
-                      if (pick?.pack_id === p.id) {
-                        void setSession({ current_pick_id: null, timer_ends_at: null, called_at: null });
-                      }
-                    }
+                    // Clearing is handled by the enabledStrats effect below when the
+                    // open call leaves the Match pool (covers catalog + pool copies).
                   }}
                   aria-pressed={on}
                   title={p.description || p.title}
@@ -515,11 +513,18 @@ export function MatchScreen() {
             {pickList.map((s) => {
               const pack = packs.find((p) => p.id === s.pack_id);
               return (
-                <button
+                <div
                   key={`${session.selected_map}:${session.selected_side}:${s.id}`}
-                  type="button"
+                  role="button"
+                  tabIndex={0}
                   className="list-item"
                   onClick={() => void commitCall(s)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      void commitCall(s);
+                    }
+                  }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
                     <strong className="list-callout">
@@ -550,7 +555,7 @@ export function MatchScreen() {
                     {s.description.length > 80 ? "…" : ""}
                     {pack ? ` · ${pack.title}` : ""}
                   </div>
-                </button>
+                </div>
               );
             })}
 

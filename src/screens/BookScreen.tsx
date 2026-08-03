@@ -185,8 +185,8 @@ export function BookScreen() {
 
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
-    // Guest / local: enabledStrats already includes privately created strats.
-    const base = usePersonalPool ? myPoolStrats : enabledStrats;
+    // Guests may still have private calls (Yours tab); signed-in uses personal packs.
+    const base = usePersonalPool || myPoolStrats.length > 0 ? myPoolStrats : enabledStrats;
     return base
       .filter((s) => {
         if (s.side !== session.selected_side) return false;
@@ -541,9 +541,9 @@ export function BookScreen() {
       <div className="panel" style={{ paddingBottom: 10 }}>
         <p className="eyebrow">Browse</p>
         <div className="row" style={{ flexWrap: "wrap", gap: 6 }}>
-          {usePersonalPool && (
+          {(usePersonalPool || myPoolStrats.length > 0) && (
             <button type="button" className={`pill ${tab === "pool" ? "active" : ""}`} onClick={() => setTab("pool")}>
-              My packs · {myPoolStrats.length}
+              {usePersonalPool ? "My packs" : "Yours"} · {myPoolStrats.length}
             </button>
           )}
           <button type="button" className={`pill ${tab === "catalog" ? "active" : ""}`} onClick={() => setTab("catalog")}>
@@ -560,6 +560,15 @@ export function BookScreen() {
         {tab === "community" && (
           <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
             Shared player calls. Expand one → Add to… to put it in your packs.
+          </p>
+        )}
+        {tab === "pool" && !usePersonalPool && (
+          <p className="muted" style={{ fontSize: 11, marginTop: 8, marginBottom: 0 }}>
+            Private calls on this device.{" "}
+            <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
+              Sign in
+            </button>{" "}
+            to keep them across devices.
           </p>
         )}
         {tab === "catalog" && usePersonalPool && (
@@ -599,7 +608,9 @@ export function BookScreen() {
                 status: "ready",
                 level: "",
                 packId: defaultPackId || myPrivatePacks[0]?.id || "",
-                isPrivate: false,
+                // Cloud guests can't share publicly without sign-in — default private.
+                // Signed-in / local: default Community (Private off).
+                isPrivate: mode === "cloud" && supabaseReady && !isPermanent,
               });
               setShowForm(true);
             }}
@@ -781,7 +792,7 @@ export function BookScreen() {
         <div className="empty">
           {tab === "community"
             ? "No community calls for this selection yet. Be the first."
-            : tab === "pool" && usePersonalPool
+            : tab === "pool" && (usePersonalPool || myPoolStrats.length > 0)
               ? allMaps
                 ? `Nothing for ${session.selected_side} yet.`
                 : `Nothing for ${session.selected_map} ${session.selected_side} yet.`
@@ -809,13 +820,21 @@ export function BookScreen() {
               const addMenuOpen = addToMenuId === s.id;
               return (
                 <div key={s.id} style={{ borderBottom: "1px solid var(--line)", padding: "10px 0", opacity: locked && tab === "catalog" ? 0.75 : 1 }}>
-                  <button
-                    type="button"
+                  <div
+                    role="button"
+                    tabIndex={0}
                     className="list-item"
                     style={{ margin: 0 }}
                     onClick={() => {
                       setExpanded(open ? null : s.id);
                       setAddToMenuId(null);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setExpanded(open ? null : s.id);
+                        setAddToMenuId(null);
+                      }
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
@@ -863,7 +882,7 @@ export function BookScreen() {
                         {usePersonalPool && inAnyPack && showingShop ? " · In a pack" : ""}
                       </span>
                     </div>
-                  </button>
+                  </div>
                   {open && (
                     <div style={{ padding: "8px 4px 0" }}>
                       {s.description && <p className="muted" style={{ marginBottom: 8 }}>{s.description}</p>}
