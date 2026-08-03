@@ -144,9 +144,13 @@ export function StratStepEditor({
   const attachedUrls = new Set(
     steps.map((s) => s.link?.url).filter(Boolean) as string[]
   );
-  const unusedSuggested = suggestedLinks.filter(
-    (l) => !attachedUrls.has(l.url) && !build.extraLinks.some((e) => e.url === l.url)
-  );
+  const seenSuggest = new Set<string>();
+  const unusedSuggested = suggestedLinks.filter((l) => {
+    if (!l.url || attachedUrls.has(l.url) || build.extraLinks.some((e) => e.url === l.url)) return false;
+    if (seenSuggest.has(l.url)) return false;
+    seenSuggest.add(l.url);
+    return true;
+  });
 
   return (
     <div className="strat-builder">

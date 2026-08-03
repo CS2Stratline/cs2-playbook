@@ -134,6 +134,7 @@ export function BookScreen() {
 
   const poolList = useMemo(() => {
     const q = query.trim().toLowerCase();
+    // Guest / local: enabledStrats already includes privately created strats.
     const base = usePersonalPool ? myPoolStrats : enabledStrats;
     return base
       .filter((s) => {

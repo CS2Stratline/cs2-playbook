@@ -22,11 +22,21 @@ export const MAX_STRAT_LINKS = 8;
 let stepSeq = 0;
 export function newStepId(): string {
   stepSeq += 1;
-  return `step-${Date.now().toString(36)}-${stepSeq}`;
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return `step-${crypto.randomUUID()}`;
+  }
+  return `step-${Date.now().toString(36)}-${stepSeq}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 export function emptyStep(text = ""): StratStep {
   return { id: newStepId(), text, link: null };
+}
+
+/** Template filler lines like "Smoke …" — drop on save until the user edits them. */
+export function isPlaceholderStep(text: string): boolean {
+  const t = String(text || "").trim();
+  if (!t) return true;
+  return /…$/.test(t) || /\.{2,}$/.test(t);
 }
 
 /** Rebuild an editable build from stored tasks + links. */
@@ -64,7 +74,7 @@ export function buildFromTasksLinks(tasks: string[], links: StratLink[] = []): S
 export function tasksLinksFromBuild(build: StratBuild): { tasks: string[]; links: StratLink[] } {
   const steps = build.steps
     .map((s) => ({ ...s, text: s.text.trim() }))
-    .filter((s) => s.text)
+    .filter((s) => s.text && !isPlaceholderStep(s.text))
     .slice(0, MAX_STRAT_STEPS);
 
   const tasks = steps.map((s) => s.text);
