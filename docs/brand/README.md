@@ -11,6 +11,7 @@ Canonical identity for Stratline.
 | [`/public/favicon.svg`](../../public/favicon.svg) | Squircle favicon (browsers) |
 | [`/public/apple-touch-icon.png`](../../public/apple-touch-icon.png) | iOS home-screen icon (180×180 PNG — iOS ignores SVG) |
 | [`/public/icon-192.png`](../../public/icon-192.png) / [`icon-512.png`](../../public/icon-512.png) | PWA / Android icons |
+| [`/public/og-image.png`](../../public/og-image.png) | Open Graph / Twitter share card (1200×630) |
 
 SVGs in `public/` are the source of truth for shipping UI. The PDF is the human design reference — do not regenerate icons from a raster of the sheet; edit the SVGs.
 
