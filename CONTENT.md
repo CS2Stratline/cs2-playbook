@@ -59,7 +59,7 @@ npm run seed:supabase    # upserts packs/strats/nades (needs SUPABASE_URL + SUPA
 
 Guests pick up catalog fixes via the app seed revision. Signed-in users need `seed:supabase` (and a hard refresh).
 
-Catalog packs: **Starter** (day-1 calls; filter by level), **Advanced** (premium), **Meme**.
+Catalog packs: **Starter** (day-1 calls), **Advanced** (premium), **Meme**.
 
 ## Local export schema
 
