@@ -42,8 +42,9 @@ npm run seed:supabase
 7. After updating [`src/data/system-packs.json`](src/data/system-packs.json), re-run `npm run seed:supabase` so catalog titles/levels and new strats land in the project.
 
 8. **Migrations (run in order in the SQL editor):**  
-   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql`.  
-   Do **not** stop after `001` + seed — without `007`–`010`, signed-in users can escalate or leak private strats via live share.
+   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql`.  
+   Do **not** stop after `001` + seed — without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
+   `011` enables community upvote/downvote (signed-in only). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes`.
 
 9. **Admins / super admin (shared strat edits):**
 
@@ -69,6 +70,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 ## Launch security checklist
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
+- [ ] `011_strat_votes.sql` applied (community upvote/downvote for signed-in users)
 - [x] Super admin bootstrapped via SQL (not open signup claim)
 - [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
 - [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`
