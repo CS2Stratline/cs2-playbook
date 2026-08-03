@@ -67,6 +67,7 @@ export function MatchScreen() {
   /** Compact Match pool switches — personal packs + unlocked system packs. Only On packs feed the call list. */
   const matchPacks = useMemo(() => {
     const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
+    // Starter Pack before Meme (Advanced stays locked / filtered out).
     const order = ["starter-pack", "essentials-pug", "meme-strats", "pro-structure"];
     system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
@@ -81,6 +82,7 @@ export function MatchScreen() {
         if (b.title === "My pool" && a.title !== "My pool") return 1;
         return a.slug.localeCompare(b.slug);
       });
+    // Personal packs first, then catalog: Starter Pack → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, userId]);
 

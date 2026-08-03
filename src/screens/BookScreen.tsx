@@ -130,6 +130,7 @@ export function BookScreen() {
       return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
     });
     const mine = usePersonalPool ? myPrivatePacks : [];
+    // Personal packs first, then Starter Pack → Meme
     return [...mine, ...system];
   }, [packs, usePersonalPool, myPrivatePacks]);
 
@@ -331,6 +332,15 @@ export function BookScreen() {
         <p className="eyebrow">Packs</p>
         <p className="muted" style={{ fontSize: 11, marginBottom: 8 }}>
           Match only shows packs that are On.
+          {!usePersonalPool && (
+            <>
+              {" "}
+              <button type="button" className="btn-ghost" style={{ padding: 0, fontSize: 11 }} onClick={() => navigate("/settings")}>
+                Sign in
+              </button>{" "}
+              to build your own.
+            </>
+          )}
         </p>
         {togglePacks.map((p) => {
           const on = isPackInMatchPool(p.id, subscriptions, packs);

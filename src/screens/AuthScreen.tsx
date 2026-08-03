@@ -24,7 +24,7 @@ export function AuthScreen() {
         Sync across devices
       </h2>
       <p className="muted" style={{ marginBottom: 12 }}>
-        Optional — voting already works on this device. Sign in to keep your pool and favorites.
+        Optional — voting already works on this device. Sign in to build your own packs and keep favorites.
       </p>
 
       <button

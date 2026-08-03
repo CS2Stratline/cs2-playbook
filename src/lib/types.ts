@@ -120,8 +120,8 @@ export function isAllMaps(map: string | null | undefined): boolean {
 }
 
 export const TIER_LABEL: Record<PackTier, string> = {
-  pug: "Starter",
-  five_stack: "Starter",
+  pug: "Starter Pack",
+  five_stack: "Starter Pack",
   pro: "Advanced",
 };
 

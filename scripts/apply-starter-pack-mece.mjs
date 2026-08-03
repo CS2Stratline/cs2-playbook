@@ -136,12 +136,19 @@ for (const s of data.strats) {
 
 const starter = data.packs.find((p) => p.id === FUND);
 if (!starter) throw new Error("Missing essentials-pug pack");
-starter.title = "Starter";
+starter.title = "Starter Pack";
 starter.description = "Day-1 calls for every map.";
 starter.slug = "starter-pack";
 // Keep same id so cloud subscriptions still resolve.
 
 data.packs = data.packs.filter((p) => p.id !== STACK);
+// Stable UI order: Starter Pack → Meme → Advanced
+const packOrder = ["starter-pack", "meme-strats", "pro-structure"];
+data.packs.sort((a, b) => {
+  const ai = packOrder.indexOf(a.slug);
+  const bi = packOrder.indexOf(b.slug);
+  return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+});
 
 for (const p of data.packs) {
   p.strat_count = data.strats.filter((s) => s.pack_id === p.id).length;
