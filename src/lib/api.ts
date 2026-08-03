@@ -823,12 +823,12 @@ export async function addCatalogStratToPool(
   return String(data.id);
 }
 
-/** Add all Starter catalog strats for a map into the default personal pack. */
-export async function addFundamentalsForMap(userId: string, map: string, packs: Pack[]): Promise<number> {
+/** Add all Starter Pack catalog strats for a map into the default personal pack. */
+export async function addStarterPackForMap(userId: string, map: string, packs: Pack[]): Promise<number> {
   const all = await listStrats();
   const packId = defaultPrivatePackId(packs, userId) || (await ensureUserPrivatePack(userId));
   const mine = all.filter((s) => s.owner_user_id === userId);
-  const fundamentals = all.filter((s) => {
+  const starter = all.filter((s) => {
     const pack = packs.find((p) => p.id === s.pack_id);
     return (
       pack?.visibility === "system" &&
@@ -838,7 +838,7 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
     );
   });
   let added = 0;
-  for (const s of fundamentals) {
+  for (const s of starter) {
     if (findPoolCopy(mine, s.id, packId)) continue;
     await addCatalogStratToPool(userId, s, packs, packId);
     mine.push({ ...s, id: "pending", pack_id: packId, owner_user_id: userId, source: catalogSourceKey(s.id) });
@@ -847,39 +847,40 @@ export async function addFundamentalsForMap(userId: string, map: string, packs: 
   return added;
 }
 
-function fundamentalsSeedKey(userId: string) {
+/** Keep legacy key so already-seeded accounts are not re-copied. */
+function starterSeedKey(userId: string) {
   return `cs2-playbook-fundamentals-seeded:${userId}`;
 }
 
 /** True after we have auto-seeded (or user already has pool strats). */
-export function hasAutoSeededFundamentals(userId: string) {
+export function hasAutoSeededStarterPack(userId: string) {
   try {
-    return localStorage.getItem(fundamentalsSeedKey(userId)) === "1";
+    return localStorage.getItem(starterSeedKey(userId)) === "1";
   } catch {
     return false;
   }
 }
 
-export function markAutoSeededFundamentals(userId: string) {
+export function markAutoSeededStarterPack(userId: string) {
   try {
-    localStorage.setItem(fundamentalsSeedKey(userId), "1");
+    localStorage.setItem(starterSeedKey(userId), "1");
   } catch {
     /* ignore */
   }
 }
 
 /**
- * First-login bootstrap: copy Starter pack strats for every map into My pool.
+ * First-login bootstrap: copy Starter Pack strats for every map into My pool.
  * Idempotent — skips strats already in the pool. Marks a local flag so we
  * don't re-run after the user intentionally clears their pool.
  */
-export async function ensureFundamentalsSeeded(userId: string, packs: Pack[]): Promise<number> {
-  if (hasAutoSeededFundamentals(userId)) return 0;
+export async function ensureStarterPackSeeded(userId: string, packs: Pack[]): Promise<number> {
+  if (hasAutoSeededStarterPack(userId)) return 0;
   let total = 0;
   for (const map of MAPS) {
-    total += await addFundamentalsForMap(userId, map, packs);
+    total += await addStarterPackForMap(userId, map, packs);
   }
-  markAutoSeededFundamentals(userId);
+  markAutoSeededStarterPack(userId);
   return total;
 }
 

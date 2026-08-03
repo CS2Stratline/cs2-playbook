@@ -123,7 +123,7 @@ export function BookScreen() {
   /** Packs shown in Match toggles: personal packs first, then unlocked system packs. */
   const togglePacks = useMemo(() => {
     const system = packs.filter((p) => p.visibility === "system" && !isPackLocked(p));
-    const order = ["starter-pack", "essentials-pug", "meme-strats", "pro-structure"];
+    const order = ["starter-pack", "meme-strats", "pro-structure"];
     system.sort((a, b) => {
       const ai = order.indexOf(a.slug);
       const bi = order.indexOf(b.slug);
