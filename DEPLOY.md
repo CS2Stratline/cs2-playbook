@@ -43,10 +43,11 @@ npm run seed:supabase
    Seed **does not** reset `upvotes` / `downvotes` / usage counters (omitted from the upsert; DB trigger also blocks accidental overwrites).
 
 8. **Migrations (run in order in the SQL editor):**  
-   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql` → `012_vote_ip_lock.sql` → `013_preserve_vote_counters.sql` → `014_community_strats.sql` → `015_fix_set_admin_by_email.sql`.  
+   `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql` → `012_vote_ip_lock.sql` → `013_preserve_vote_counters.sql` → `014_community_strats.sql` → `015_fix_set_admin_by_email.sql` → `016_fix_vote_counter_allow_flag.sql`.  
    Do **not** stop after `001` + seed. Without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
    `011`–`013` enable community upvote/downvote (IP soft-lock + counters preserved across catalog re-seeds). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes` (also turns on **Anonymous Sign-Ins** + **Manual linking**).  
-   `015` fixes Settings → Admins → Add (`set_admin_by_email` ambiguous `id`).
+   `015` fixes Settings → Admins → Add (`set_admin_by_email` ambiguous `id`).  
+   `016` restores `app.allow_vote_counter_write` in `set_strat_vote` (014 had dropped it; scores otherwise stay at 0).
 
 9. **Anonymous voting (no login UI):** Authentication → Providers → enable **Anonymous Sign-Ins**. Optionally enable **Manual linking** so Discord/email upgrades keep the same user id (and their votes).
 
@@ -74,7 +75,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 ## Launch security checklist
 
 - [x] All migrations through `010_live_share_and_bootstrap_hardening.sql` applied
-- [x] `011_strat_votes.sql` + `012_vote_ip_lock.sql` + `013_preserve_vote_counters.sql` applied + Anonymous Sign-Ins enabled (guest voting; counters survive re-seed)
+- [x] `011_strat_votes.sql` + `012_vote_ip_lock.sql` + `013_preserve_vote_counters.sql` + `016_fix_vote_counter_allow_flag.sql` applied + Anonymous Sign-Ins enabled (guest voting; counters survive re-seed)
 - [x] Super admin bootstrapped via SQL (not open signup claim)
 - [x] Non-admin JWT cannot `update profiles set is_admin = true` (returns `role flags are immutable`)
 - [x] Non-admin JWT cannot rewrite system strats / promote private packs to `system`

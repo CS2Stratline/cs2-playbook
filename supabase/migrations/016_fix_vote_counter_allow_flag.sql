@@ -1,54 +1,8 @@
--- Community strats: user-authored calls can be public (is_private = false).
--- Existing user rows stay private. System catalog rows stay non-owned (is_private unused).
+-- 014_community_strats re-applied set_strat_vote for community visibility but
+-- omitted app.allow_vote_counter_write. The preserve-counters trigger from 013
+-- then silently blocked every upvotes/downvotes change, so guests saw my_vote
+-- highlight while the score stayed at 0.
 
-alter table strats
-  add column if not exists is_private boolean not null default true;
-
-comment on column strats.is_private is
-  'When true, only the owner can read. When false (and owner_user_id set), visible in Community.';
-
--- Backfill: keep every existing owned strat private; system rows stay default true (ignored).
-update strats
-set is_private = true
-where owner_user_id is not null;
-
-create index if not exists strats_community_idx
-  on strats (map, side)
-  where owner_user_id is not null and is_private = false;
-
--- Readable: system pack, own private pack, OR public user-authored strat.
-drop policy if exists "strats_select_visible" on strats;
-create policy "strats_select_visible" on strats for select using (
-  exists (
-    select 1 from packs p
-    where p.id = strats.pack_id
-      and (
-        p.visibility = 'system'
-        or p.owner_user_id = auth.uid()
-      )
-  )
-  or (
-    owner_user_id is not null
-    and is_private = false
-  )
-);
-
--- Owners may flip is_private on update (still must stay on their private pack).
-drop policy if exists "strats_update_own" on strats;
-create policy "strats_update_own" on strats
-for update to authenticated
-using (owner_user_id = auth.uid())
-with check (
-  owner_user_id = auth.uid()
-  and exists (
-    select 1 from packs p
-    where p.id = pack_id
-      and p.owner_user_id = auth.uid()
-      and p.visibility = 'private'
-  )
-);
-
--- Votes allowed on system strats, own strats, and public community strats.
 create or replace function public.set_strat_vote(p_strat_id uuid, p_value int)
 returns table (upvotes int, downvotes int, my_vote int)
 language plpgsql
@@ -105,7 +59,6 @@ begin
       if v_prev is null then
         v_prev := v_ip_prev;
       else
-        -- Required so strats_preserve_vote_counters allows the write.
         perform set_config('app.allow_vote_counter_write', 'on', true);
         update strats s
         set
@@ -142,7 +95,6 @@ begin
       set value = excluded.value, updated_at = now();
   end if;
 
-  -- Required so strats_preserve_vote_counters allows the write.
   perform set_config('app.allow_vote_counter_write', 'on', true);
 
   update strats s
