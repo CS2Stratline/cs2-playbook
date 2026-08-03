@@ -26,7 +26,7 @@ function labelFromUrl(url: string): string {
 
 /**
  * Parse lineup lines from the edit field.
- * Formats: `Label | https://…`, `Label — https://…`, or bare `https://…`.
+ * Formats: `Label | https://…`, legacy em-dash label/url lines, or bare `https://…`.
  */
 export function textToLinks(text: string): StratLink[] {
   const out: StratLink[] = [];
@@ -37,7 +37,8 @@ export function textToLinks(text: string): StratLink[] {
     let label = "";
     let urlRaw = line;
     const pipe = line.indexOf("|");
-    const em = line.indexOf(" — ");
+    // Accept legacy em-dash separators from older paste formats.
+    const em = line.indexOf(" \u2014 ");
     const sep = pipe >= 0 ? pipe : em >= 0 ? em : -1;
     const sepLen = pipe >= 0 ? 1 : em >= 0 ? 3 : 0;
     if (sep >= 0) {

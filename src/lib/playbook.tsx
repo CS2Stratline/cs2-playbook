@@ -53,7 +53,7 @@ const Ctx = createContext<PlaybookState | null>(null);
 export function PlaybookProvider({ children }: { children: ReactNode }) {
   const { userId, loading: authLoading, user, mode, isPermanent } = useAuth();
   // Local demo uses the signed-in pack UX so personal packs are testable without Supabase.
-  // Anonymous cloud users stay on system pack toggles (no My pool) — same as old guests.
+  // Anonymous cloud users stay on system pack toggles (no My pool), same as old guests.
   const usePersonalPool = mode === "local" || (mode === "cloud" && isPermanent);
   /** Anyone with a cloud session (anonymous or Discord/email) can cast one vote per strat. */
   const canVote = mode === "cloud" && !!user;
@@ -100,7 +100,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       ]);
       let nextStrats = s;
       // Signed-in users get Starter Pack auto-copied once so Match is ready
-      // immediately (same day-1 feel as guest packs — no shop gate).
+      // immediately (same day-1 feel as guest packs, no shop gate).
       if (usePersonalPool && !api.hasAutoSeededStarterPack(userId)) {
         const mine = s.filter((row) => row.owner_user_id === userId);
         if (mine.length === 0) {
@@ -195,7 +195,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       sessionRef.current = next;
       setSessionState(next);
       await api.saveSession(userId, next);
-      // A newer tap already saved — don't let an older await leave stale DB state without a follow-up.
+      // A newer tap already saved. Don't let an older await leave stale DB state without a follow-up.
       if (gen !== sessionSaveGen.current) {
         await api.saveSession(userId, sessionRef.current);
       }

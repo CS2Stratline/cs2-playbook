@@ -39,7 +39,7 @@ App map name → slug: `Dust II` → `dust2`.
 ## When writing new strats
 
 1. Use **concrete landing spots** in tasks (ticket booth, jungle, xbox, banana, heaven, …).
-2. Set `links` to real CSNADES URLs, or leave `[]` — the app suggests on save.
+2. Set `links` to real CSNADES URLs, or leave `[]`. The app suggests on save.
 3. Prefer CSNADES over other domains unless a nade is missing.
 4. Prefer one canonical variant per landing (avoid `-b`/`-2` unless the team has a preferred line).
 5. For multi-smoke executes: one link per smoke, or a `combinations/` page if it exists.
@@ -69,4 +69,4 @@ No auto-regen script yet. Update `csnades-catalog.json` manually when patches ch
 
 ## Design rule
 
-Lineups are **prep**. Match shows small link chips only — do not embed video in the live caller.
+Lineups are **prep**. Match shows small link chips only. Do not embed video in the live caller.

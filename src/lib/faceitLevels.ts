@@ -27,7 +27,7 @@ export function clampFaceitLevel(n: number): FaceitLevel {
 
 /**
  * Heuristic: how hard is this strat to execute in a real freeze-time call?
- * Used when assigning / regenerating levels — not a substitute for curated values.
+ * Used when assigning / regenerating levels, not a substitute for curated values.
  */
 export function estimateStratLevel(input: {
   tier?: "pug" | "five_stack" | "pro" | string;

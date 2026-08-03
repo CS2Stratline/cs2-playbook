@@ -27,7 +27,7 @@ Optional repo secrets for cloud builds:
     Create an app at [discord.com/developers](https://discord.com/developers/applications):  
     - OAuth2 redirect: `https://YOUR_PROJECT.supabase.co/auth/v1/callback`  
     - Paste Client ID + Secret into Supabase Discord provider.  
-    Login is **optional** — guests use the app without an account. Share `https://cs2stratline.github.io/cs2-playbook/`.
+    Login is **optional**. Guests use the app without an account. Share `https://cs2stratline.github.io/cs2-playbook/`.
 
 4. Seed packs + nades:
 
@@ -44,7 +44,7 @@ npm run seed:supabase
 
 8. **Migrations (run in order in the SQL editor):**  
    `001` → `002` → `003` → `004` → `005` → `006` → `007` → `008` → `009_launch_security.sql` → `010_live_share_and_bootstrap_hardening.sql` → `011_strat_votes.sql` → `012_vote_ip_lock.sql` → `013_preserve_vote_counters.sql`.  
-   Do **not** stop after `001` + seed — without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
+   Do **not** stop after `001` + seed. Without `007`–`010`, signed-in users can escalate or leak private strats via live share.  
    `011`–`013` enable community upvote/downvote (IP soft-lock + counters preserved across catalog re-seeds). Or: `SUPABASE_ACCESS_TOKEN=sbp_… npm run migrate:votes` (also turns on **Anonymous Sign-Ins** + **Manual linking**).
 
 9. **Anonymous voting (no login UI):** Authentication → Providers → enable **Anonymous Sign-Ins**. Optionally enable **Manual linking** so Discord/email upgrades keep the same user id (and their votes).
@@ -62,7 +62,7 @@ from auth.users u
 where p.id = u.id and lower(u.email) = lower('you@example.com');
 ```
 
-   3. **Settings → Admins** — add others by email (they must sign in once first).  
+   3. **Settings → Admins:** add others by email (they must sign in once first).  
       - **Super admin:** edit shared strats + manage admins.  
       - **Admin:** edit shared strats only.  
       - Role flags cannot be self-granted via the profiles table (`009`).  
@@ -104,4 +104,4 @@ With HashRouter, Vercel and Pages both work without rewrite tricks.
 
 ## Phase 5
 
-See [TEAM.md](TEAM.md) — team workspaces parked; `team_id` is reserved in schema.
+See [TEAM.md](TEAM.md). Team workspaces are parked; `team_id` is reserved in schema.

@@ -1,7 +1,7 @@
 import type { StratLink } from "./types";
 import { attachLinksToTasks } from "./taskLinks";
 
-/** One freeze-time instruction — build-order style step. */
+/** One freeze-time instruction (build-order style step). */
 export type StratStep = {
   /** Local React key only; not persisted. */
   id: string;
@@ -32,7 +32,7 @@ export function emptyStep(text = ""): StratStep {
   return { id: newStepId(), text, link: null };
 }
 
-/** Template filler lines like "Smoke …" — drop on save until the user edits them. */
+/** Template filler lines like "Smoke …". Drop on save until the user edits them. */
 export function isPlaceholderStep(text: string): boolean {
   const t = String(text || "").trim();
   if (!t) return true;
@@ -107,7 +107,7 @@ export type StratTemplate = {
   lines: (side: "T" | "CT") => string[];
 };
 
-/** Lightweight starters — same idea as RTS build-order templates. */
+/** Lightweight starters. Same idea as RTS build-order templates. */
 export const STRAT_TEMPLATES: StratTemplate[] = [
   {
     id: "blank",

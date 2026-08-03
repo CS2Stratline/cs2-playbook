@@ -25,7 +25,7 @@ export function FaceitLevelIcon({
   size?: number;
   className?: string;
 }) {
-  // Challenger not used — map to level 10 artwork if ever requested.
+  // Challenger not used. Map to level 10 artwork if ever requested.
   const resolved: FaceitLevel = level === "challenger" ? 10 : level;
   const primary = levelAssetUrl(resolved, EXT_CANDIDATES[0]);
 

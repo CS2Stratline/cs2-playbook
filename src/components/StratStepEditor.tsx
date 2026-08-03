@@ -276,12 +276,12 @@ export function StratStepEditor({
           <p className="eyebrow">Lineups</p>
           <p className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
             Attaches to step {focusedIndex >= 0 ? focusedIndex + 1 : "…"}
-            {focusedStep?.text.trim() ? ` — ${focusedStep.text.trim().slice(0, 40)}` : ""}
+            {focusedStep?.text.trim() ? `: ${focusedStep.text.trim().slice(0, 40)}` : ""}
           </p>
           {unusedSuggested.length > 0 && (
             <div className="strat-suggest-row">
               <span className="muted" style={{ fontSize: 11, width: "100%" }}>
-                Suggested — tap to attach
+                Suggested: tap to attach
               </span>
               {unusedSuggested.map((l) => {
                 const kind = nadeTypeFromLink(l);
