@@ -149,14 +149,16 @@ for (let i = 0; i < nades.length; i += chunk) {
 }
 console.log("nades", nades.length);
 
-// Meme pack stays off until the user toggles it (avoid polluting Match by default).
-const memePackId = bySlug["meme-strats"];
-if (memePackId) {
+// Meme / Advanced stay off until the user toggles them (Match defaults = Starter only).
+// Also heals rows created by the old handle_new_user trigger (all system packs On).
+for (const slug of ["meme-strats", "pro-structure"]) {
+  const packId = bySlug[slug];
+  if (!packId) continue;
   const { data: profiles, error: profileErr } = await sb.from("profiles").select("id");
   if (profileErr) throw profileErr;
   const rows = (profiles || []).map((p) => ({
     user_id: p.id,
-    pack_id: memePackId,
+    pack_id: packId,
     enabled: false,
   }));
   for (let i = 0; i < rows.length; i += chunk) {
@@ -165,5 +167,5 @@ if (memePackId) {
     });
     if (error) throw error;
   }
-  console.log("meme pack default-off for", rows.length, "profiles");
+  console.log(slug, "default-off for", rows.length, "profiles");
 }

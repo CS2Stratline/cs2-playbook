@@ -155,9 +155,14 @@ as $$
 begin
   insert into public.profiles (id, display_name)
   values (new.id, coalesce(new.raw_user_meta_data->>'full_name', split_part(new.email, '@', 1)));
-  -- subscribe to all system packs by default
+  -- Only Starter Pack On by default (legacy essentials-pug slug). Meme / Advanced stay Off.
   insert into public.user_pack_subscriptions (user_id, pack_id, enabled)
-  select new.id, p.id, true from public.packs p where p.visibility = 'system'
+  select
+    new.id,
+    p.id,
+    (p.slug in ('starter-pack', 'essentials-pug'))
+  from public.packs p
+  where p.visibility = 'system'
   on conflict do nothing;
   return new;
 end;
