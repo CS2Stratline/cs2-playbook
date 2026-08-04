@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 import { isSupabaseConfigured } from "../lib/api";
 import { Discord } from "../components/icons";
 
 export function AuthScreen() {
-  const { signInWithEmail, signInWithDiscord, supabaseReady } = useAuth();
+  const { signInWithEmail, signInWithDiscord, supabaseReady, authError, clearAuthError } = useAuth();
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (authError) setMsg(authError);
+  }, [authError]);
 
   if (!isSupabaseConfigured() && !supabaseReady) {
     return (
@@ -36,6 +40,7 @@ export function AuthScreen() {
         onClick={async () => {
           setBusy(true);
           setMsg("");
+          clearAuthError();
           const res = await signInWithDiscord();
           setBusy(false);
           if (res.error) setMsg(res.error);
@@ -53,6 +58,7 @@ export function AuthScreen() {
           e.preventDefault();
           setBusy(true);
           setMsg("");
+          clearAuthError();
           const res = await signInWithEmail(email.trim());
           setBusy(false);
           setMsg(res.error || "Check your email for the login link.");
