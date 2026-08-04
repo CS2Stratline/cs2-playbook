@@ -13,8 +13,46 @@ import {
 import type { Profile } from "./types";
 import { suggestedDisplayNameFromUser } from "./displayName";
 
-function isAnonymousUser(user: User | null | undefined): boolean {
-  return Boolean(user?.is_anonymous);
+/** True when the session is still a no-login browser identity. */
+export function isAnonymousUser(user: User | null | undefined): boolean {
+  if (!user) return false;
+  // Prefer identities: a linked Discord/email means permanent even if the
+  // is_anonymous claim is briefly stale after linking.
+  const identities = user.identities ?? [];
+  if (identities.some((i) => i.provider && i.provider !== "anonymous")) return false;
+  return Boolean(user.is_anonymous);
+}
+
+/** PKCE / OAuth callback still in the address bar — do not create a new anon user yet. */
+function authCallbackPending(): boolean {
+  if (typeof window === "undefined") return false;
+  const q = new URLSearchParams(window.location.search);
+  if (q.has("code") || q.has("error") || q.has("error_description")) return true;
+  const hash = window.location.hash || "";
+  // Implicit-style tokens (rare with PKCE) — ignore HashRouter paths like #/settings.
+  if (hash.includes("access_token=") || hash.includes("error_description=")) return true;
+  return false;
+}
+
+function readAuthCallbackError(): string | null {
+  if (typeof window === "undefined") return null;
+  const q = new URLSearchParams(window.location.search);
+  const fromQuery = q.get("error_description") || q.get("error");
+  if (fromQuery) return fromQuery.replace(/\+/g, " ");
+  return null;
+}
+
+function clearAuthCallbackParams() {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has("code") && !url.searchParams.has("error") && !url.searchParams.has("error_description") && !url.searchParams.has("state")) {
+    return;
+  }
+  url.searchParams.delete("code");
+  url.searchParams.delete("state");
+  url.searchParams.delete("error");
+  url.searchParams.delete("error_description");
+  window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
 }
 
 type AuthState = {
@@ -29,6 +67,8 @@ type AuthState = {
   supabaseReady: boolean;
   userId: string;
   profile: Profile | null;
+  /** OAuth / magic-link error surfaced from the redirect URL. */
+  authError: string | null;
   /** Edit shared system strats for everyone (admin), or this device in local demo. */
   canEditShared: boolean;
   /** Grant/revoke admins in Settings (super admin only). */
@@ -37,6 +77,7 @@ type AuthState = {
   signInWithDiscord: () => Promise<{ error?: string }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
+  clearAuthError: () => void;
 };
 
 const AuthContext = createContext<AuthState | null>(null);
@@ -45,6 +86,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
 
   async function loadProfile(userId: string | null, authUser?: User | null) {
     if (!userId || !supabaseConfigured) {
@@ -112,15 +154,51 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     let cancelled = false;
+    const callbackError = readAuthCallbackError();
+    if (callbackError) setAuthError(callbackError);
+
+    const { data: sub } = supabase.auth.onAuthStateChange((event, s) => {
+      if (cancelled) return;
+      setSession(s);
+      setCloudSignedInUser(s?.user?.id ?? null);
+      void loadProfile(s?.user?.id ?? null, s?.user ?? null);
+      if (event === "SIGNED_IN" || event === "USER_UPDATED") {
+        clearAuthCallbackParams();
+        if (s?.user && !isAnonymousUser(s.user)) setAuthError(null);
+      }
+    });
 
     void (async () => {
-      const { data } = await supabase.auth.getSession();
+      // getSession waits for client init (including PKCE code exchange).
+      let { data } = await supabase.auth.getSession();
       if (cancelled) return;
+
+      // If a code is still present, give the exchange a moment before falling back to anon.
+      if (authCallbackPending()) {
+        for (let i = 0; i < 8 && !cancelled; i++) {
+          await new Promise((r) => setTimeout(r, 150));
+          const again = await supabase.auth.getSession();
+          data = again.data;
+          if (data.session && !isAnonymousUser(data.session.user)) break;
+          if (!authCallbackPending()) break;
+        }
+        clearAuthCallbackParams();
+      }
+
+      if (cancelled) return;
+
       if (data.session) {
         applySession(data.session);
         setLoading(false);
         return;
       }
+
+      // Never invent a guest session while an OAuth redirect is still resolving.
+      if (authCallbackPending()) {
+        setLoading(false);
+        return;
+      }
+
       const anon = await ensureAnonymousSession();
       if (cancelled) return;
       if (anon) applySession(anon);
@@ -132,11 +210,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     })();
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
-      setSession(s);
-      setCloudSignedInUser(s?.user?.id ?? null);
-      void loadProfile(s?.user?.id ?? null, s?.user ?? null);
-    });
     return () => {
       cancelled = true;
       sub.subscription.unsubscribe();
@@ -159,15 +232,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       supabaseReady: supabaseConfigured,
       userId,
       profile,
+      authError,
       canEditShared: canEditSharedStrats({ profile }),
       canManageAdmins: canManageAdmins({ profile }),
+      clearAuthError() {
+        setAuthError(null);
+      },
       async signInWithEmail(email: string) {
         if (!supabase) return { error: "Supabase is not configured." };
         const redirectTo = authRedirectTo();
-        // Upgrade anonymous → permanent while keeping the same user id (and votes).
+        // Try upgrading the anonymous session in place (keeps votes).
         if (isAnonymousUser(user)) {
           const { error } = await supabase.auth.updateUser({ email });
-          return { error: error?.message };
+          if (!error) return {};
+          // Email already belongs to another account (or linking failed) —
+          // send a magic link that signs into that permanent user instead.
         }
         const { error } = await supabase.auth.signInWithOtp({
           email,
@@ -178,13 +257,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       async signInWithDiscord() {
         if (!supabase) return { error: "Supabase is not configured." };
         const redirectTo = authRedirectTo();
-        if (isAnonymousUser(user)) {
-          const { error } = await supabase.auth.linkIdentity({
-            provider: "discord",
-            options: { redirectTo },
-          });
-          return { error: error?.message };
-        }
+        // Use OAuth sign-in, not linkIdentity. Linking Discord onto a fresh
+        // anonymous session fails when that Discord user already exists
+        // (returning IGLs) — the redirect comes back and the app stays guest.
+        // signInWithOAuth switches to the permanent Discord account.
         const { error } = await supabase.auth.signInWithOAuth({
           provider: "discord",
           options: { redirectTo },
@@ -207,7 +283,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await loadProfile(user?.id ?? null, user);
       },
     };
-  }, [loading, session, profile]);
+  }, [loading, session, profile, authError]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -2,7 +2,9 @@
 
 v1 uses **Supabase Auth**: Discord (recommended) and email magic link.
 
-When `VITE_SUPABASE_*` is set, visitors also get a **silent anonymous session** (no login UI) so community strat votes work with one vote per browser. Discord/email is optional and upgrades that identity (Manual linking) so My pool / favorites can sync across devices.
+When `VITE_SUPABASE_*` is set, visitors also get a **silent anonymous session** (no login UI) so community strat votes work with one vote per browser. Discord/email is optional for My pool sync.
+
+**Discord uses `signInWithOAuth`** (not `linkIdentity`). Returning Discord accounts are already bound to a permanent user; linking them onto a fresh anonymous session fails and the app stays guest. OAuth signs into the existing account instead. Guest votes from that browser may not carry over — acceptable for v1.
 
 Without `VITE_SUPABASE_*`, the app runs as a local demo (no cloud votes).
 
