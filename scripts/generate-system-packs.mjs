@@ -11,10 +11,6 @@ const memeLib = JSON.parse(readFileSync("src/data/meme-strats.json", "utf8"));
 const prevPath = "src/data/system-packs.json";
 const prev = existsSync(prevPath) ? JSON.parse(readFileSync(prevPath, "utf8")) : { packs: [], strats: [] };
 const prevPackIdBySlug = Object.fromEntries((prev.packs || []).map((p) => [p.slug, p.id]));
-// Legacy Fundamentals id survives the Starter rename.
-if (!prevPackIdBySlug["starter-pack"] && prevPackIdBySlug["essentials-pug"]) {
-  prevPackIdBySlug["starter-pack"] = prevPackIdBySlug["essentials-pug"];
-}
 const prevStratIdByKey = Object.fromEntries(
   (prev.strats || []).map((s) => {
     const pack = (prev.packs || []).find((p) => p.id === s.pack_id);
@@ -24,10 +20,7 @@ const prevStratIdByKey = Object.fromEntries(
 /** Renames / splits that should keep the previous UUID when callout text changes. */
 const STRAT_ID_ALIASES = {
   "pro-structure|Ancient|T|Donut split": ["pro-structure|Ancient|T|Cave split"],
-  "starter-pack|Nuke|CT|Anti-eco A": [
-    "starter-pack|Nuke|CT|Anti-eco stack",
-    "essentials-pug|Nuke|CT|Anti-eco stack",
-  ],
+  "starter-pack|Nuke|CT|Anti-eco A": ["starter-pack|Nuke|CT|Anti-eco stack"],
 };
 /** Pin UUIDs for newly inserted catalog cards. */
 const FIXED_STRAT_IDS = {
@@ -53,11 +46,6 @@ const stratId = (slug, s) => {
   const aliases = Array.isArray(alias) ? alias : alias ? [alias] : [];
   for (const a of aliases) {
     if (prevStratIdByKey[a]) return prevStratIdByKey[a];
-  }
-  // Also try legacy essentials-pug / stack-standard keys for the same callout.
-  for (const legacy of ["essentials-pug", "stack-standard", "starter-pack"]) {
-    const lk = `${legacy}|${s.map}|${s.side}|${(s.callout || "").trim()}`;
-    if (prevStratIdByKey[lk]) return prevStratIdByKey[lk];
   }
   return uid();
 };
@@ -126,8 +114,7 @@ function tierOf(s) {
 
 const packs = {
   starter: {
-    // Prefer starter-pack slug; fall back to legacy essentials-pug id if present.
-    id: prevPackIdBySlug["starter-pack"] || prevPackIdBySlug["essentials-pug"] || uid(),
+    id: packId("starter-pack"),
     slug: "starter-pack",
     title: "Starter Pack",
     description: "The default starter pack.",
@@ -193,8 +180,7 @@ for (const raw of memeLib.strats || []) {
 }
 
 // MECE starter-pack expansion (optional file at repo root).
-// Prefer `scripts/apply-starter-pack-mece.mjs` on an existing catalog; this path
-// re-appends MECE rows when regenerating from starter-library.json.
+// Re-appends MECE rows when regenerating from starter-library.json.
 const ADV_ID = packs.pro.id;
 const mecePath = "starter-pack-strats.json";
 const meceIds = new Set();

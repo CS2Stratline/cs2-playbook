@@ -18,7 +18,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
     .slice(0, MAX_STRAT_LINKS);
 }
 
-const LOCAL_KEY = "cs2-playbook-cloud-v2";
+const LOCAL_KEY = "stratline-local-v1";
 const LOCAL_USER = "local-demo-user";
 /** Bump when `system-packs.json` content changes so guests pick up fixes. */
 const SEED_REVISION = 20;
@@ -104,8 +104,7 @@ function refreshSystemSeed(store: Store): Store {
   const fresh = seedStore();
   const customStrats = store.strats.filter((s) => s.source !== "system-seed");
   const privatePacks = (store.packs || []).filter((p) => p.visibility === "private");
-  // Reset system pack toggles to defaults (Starter On; Meme/Advanced Off) so stale
-  // localStorage from older "missing = on" logic does not leave Meme auto-selected.
+  // Reset system pack toggles to defaults (Starter On; Meme/Advanced Off).
   const subscriptions = { ...store.subscriptions };
   for (const p of fresh.packs) {
     subscriptions[p.id] = isPackDefaultEnabled(p);
@@ -130,7 +129,6 @@ function loadLocal(): Store {
       if (Array.isArray(parsed.packs) && Array.isArray(parsed.strats) && parsed.packs.length > 0) {
         const store =
           parsed.seedRevision === SEED_REVISION ? parsed : refreshSystemSeed(parsed);
-        const hadLegacyVotes = Object.prototype.hasOwnProperty.call(parsed, "votes");
         store.strats = store.strats.map((s) => ({
           ...s,
           level:
@@ -138,12 +136,9 @@ function loadLocal(): Store {
             estimateStratLevel({ ...s, tier: store.packs.find((p) => p.id === s.pack_id)?.tier }),
           upvotes: Number(s.upvotes || 0),
           downvotes: Number(s.downvotes || 0),
-          // Legacy local rows had no flag. Keep them private.
           is_private: s.is_private ?? true,
         }));
-        // Drop legacy local vote map from early vote prototypes (never read anymore).
-        if ("votes" in store) delete (store as { votes?: unknown }).votes;
-        if (store.seedRevision !== parsed.seedRevision || hadLegacyVotes) saveLocal(store);
+        if (store.seedRevision !== parsed.seedRevision) saveLocal(store);
         return store;
       }
     }
@@ -336,7 +331,7 @@ async function attachAuthorDisplayNames(strats: Strat[]): Promise<Strat[]> {
   if (!ownerIds.length) return strats;
 
   const { data, error } = await supabase!.rpc("author_display_names", { p_ids: ownerIds });
-  // Migration may not be applied yet — keep playbook usable without names.
+  // Optional enrichment — playbook still works without author labels.
   if (error || !data) return strats;
 
   const byId: Record<string, string> = {};
@@ -387,8 +382,7 @@ function mapStratRow(row: Record<string, unknown>): Strat {
     times_used: Number(row.times_used || 0),
     last_used: (row.last_used as string) || null,
     source: (row.source as string) || null,
-    // Missing column (pre-migration) → treat owned rows as private.
-    is_private: row.is_private == null ? true : Boolean(row.is_private),
+    is_private: Boolean(row.is_private ?? true),
   };
 }
 
@@ -410,8 +404,7 @@ export async function getMyVotes(userId: string): Promise<Record<string, StratVo
     .from("user_strat_votes")
     .select("strat_id, value")
     .eq("user_id", userId);
-  // Migration may not be applied yet. Don't break the whole playbook load.
-  if (error) return {};
+  if (error) throw error;
   const out: Record<string, StratVoteValue> = {};
   for (const row of data || []) {
     const r = row as { strat_id: string; value: number };
@@ -757,7 +750,7 @@ export async function listUserPrivatePacks(userId: string): Promise<Pack[]> {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-/** Default personal pack for catalog stars / fundamentals seed / New strat fallback. */
+/** Default personal pack for catalog stars / starter seed / New strat fallback. */
 export function defaultPrivatePackId(packs: Pack[], userId: string): string | null {
   const mine = packs
     .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
@@ -947,7 +940,7 @@ export async function addStarterPackForMap(userId: string, map: string, packs: P
     const pack = packs.find((p) => p.id === s.pack_id);
     return (
       pack?.visibility === "system" &&
-      (pack.slug === "starter-pack" || pack.slug === "essentials-pug") &&
+      pack.slug === "starter-pack" &&
       s.map === map &&
       !s.owner_user_id
     );
@@ -969,9 +962,8 @@ export async function addStarterPackForMap(userId: string, map: string, packs: P
   return added;
 }
 
-/** Keep legacy key so already-seeded accounts are not re-copied. */
 function starterSeedKey(userId: string) {
-  return `cs2-playbook-fundamentals-seeded:${userId}`;
+  return `stratline-starter-seeded:${userId}`;
 }
 
 /** True after we have auto-seeded (or user already has pool strats). */

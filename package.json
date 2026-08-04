@@ -12,8 +12,7 @@
     "preview": "vite preview",
     "starter": "node scripts/build-starter-library.mjs",
     "seed:packs": "node scripts/generate-system-packs.mjs",
-    "seed:supabase": "node scripts/seed-supabase.mjs",
-    "migrate:votes": "node scripts/apply-strat-votes-migration.mjs"
+    "seed:supabase": "node scripts/seed-supabase.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

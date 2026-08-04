@@ -25,24 +25,15 @@ export type Pack = {
 /** Serious match packs: only Starter Pack is On by default. Meme / Advanced stay off. */
 export function isPackDefaultEnabled(pack: Pick<Pack, "tier" | "slug"> | undefined | null): boolean {
   if (!pack) return false;
-  return pack.slug === "starter-pack" || pack.slug === "essentials-pug";
+  return pack.slug === "starter-pack";
 }
 
 export function isMemePack(pack: Pick<Pack, "slug"> | undefined | null): boolean {
   return pack?.slug === "meme-strats";
 }
 
-/**
- * Match / Playbook pack pill order: Starter Pack first, Meme last.
- * Includes legacy slugs so a partially migrated catalog never ranks Meme above Starter.
- */
-const SYSTEM_PACK_ORDER = [
-  "starter-pack",
-  "essentials-pug",
-  "stack-standard",
-  "pro-structure",
-  "meme-strats",
-] as const;
+/** Match / Playbook pack pill order: Starter Pack first, Meme last. */
+const SYSTEM_PACK_ORDER = ["starter-pack", "pro-structure", "meme-strats"] as const;
 
 export function compareSystemPacks(a: Pick<Pack, "slug">, b: Pick<Pack, "slug">): number {
   const ai = SYSTEM_PACK_ORDER.indexOf(a.slug as (typeof SYSTEM_PACK_ORDER)[number]);

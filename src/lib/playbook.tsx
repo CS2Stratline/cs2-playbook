@@ -52,7 +52,7 @@ const Ctx = createContext<PlaybookState | null>(null);
 export function PlaybookProvider({ children }: { children: ReactNode }) {
   const { userId, loading: authLoading, user, mode, isPermanent } = useAuth();
   // Local demo uses the signed-in pack UX so personal packs are testable without Supabase.
-  // Anonymous cloud users stay on system pack toggles (no My pool), same as old guests.
+  // Anonymous cloud users stay on system pack toggles (no My pool).
   const usePersonalPool = mode === "local" || (mode === "cloud" && isPermanent);
   /** Anyone with a cloud session (anonymous or Discord/email) can cast one vote per strat. */
   const canVote = mode === "cloud" && !!user;
@@ -101,31 +101,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
       setPacks(p);
       setStrats(nextStrats);
       setVotes(myVotes);
-      // Signed-in favorites should key off My-pool copy ids (Match eligibility).
-      // Migrate legacy catalog-id favorites onto existing pool copies when present.
-      if (usePersonalPool) {
-        const mine = nextStrats.filter((row) => row.owner_user_id === userId);
-        const normalized = new Set<string>();
-        for (const id of fav) {
-          if (mine.some((row) => row.id === id)) {
-            normalized.add(id);
-            continue;
-          }
-          const copy = api.findPoolCopy(mine, id);
-          if (copy) {
-            normalized.add(copy.id);
-            if (copy.id !== id) {
-              void api.setFavorite(userId, copy.id, true);
-              void api.setFavorite(userId, id, false);
-            }
-            continue;
-          }
-          normalized.add(id);
-        }
-        setFavorites(normalized);
-      } else {
-        setFavorites(new Set(fav));
-      }
+      setFavorites(new Set(fav));
       const nextSubs = { ...subs };
       for (const pack of p) {
         const isMine = pack.visibility === "private" && pack.owner_user_id === userId;
@@ -135,28 +111,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
           // Personal packs default on; system packs use pack defaults (Meme/Advanced off).
           nextSubs[pack.id] = isMine ? true : isPackDefaultEnabled(pack);
         }
-      }
-      // Old handle_new_user enabled every system pack. One-time heal when the unlocked
-      // catalog looks like that bootstrap (Starter+Meme both On) so Match starts Starter-only.
-      try {
-        const healKey = `cs2-playbook-starter-only-defaults:${userId}`;
-        if (!localStorage.getItem(healKey)) {
-          const unlockedSystem = p.filter((pack) => pack.visibility === "system" && !isPackLocked(pack));
-          const looksLikeBootstrap =
-            unlockedSystem.length >= 2 && unlockedSystem.every((pack) => nextSubs[pack.id] === true);
-          if (looksLikeBootstrap) {
-            for (const pack of p.filter((x) => x.visibility === "system")) {
-              const want = isPackDefaultEnabled(pack);
-              if (nextSubs[pack.id] !== want) {
-                nextSubs[pack.id] = want;
-                void api.setPackEnabled(userId, pack.id, want);
-              }
-            }
-          }
-          localStorage.setItem(healKey, "1");
-        }
-      } catch {
-        /* ignore private-mode / SSR */
       }
       setSubscriptions(nextSubs);
       // Don't clobber a newer in-UI session with a slower getSession response.
@@ -383,7 +337,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
           )
         );
       } catch {
-        // Keep UI stable if the vote RPC fails (network / schema lag).
+        // Keep UI stable on network failure.
       }
     },
     [canVote]

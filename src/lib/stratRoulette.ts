@@ -26,7 +26,7 @@ type RouletteCatalog = {
 
 const data = catalog as RouletteCatalog;
 
-const RECENT_KEY = "cs2-playbook-roulette-recent";
+const RECENT_KEY = "stratline-roulette-recent";
 const RECENT_MAX = 15;
 
 function loadRecent(): string[] {
@@ -74,7 +74,7 @@ export function replaceRouletteTokens(desc: string, side: Side): string {
   const direction = ["right", "left"];
 
   let out = desc;
-  // Strip any leftover HTML from old catalog rows.
+  // Strip leftover HTML entities from catalog copy.
   out = out.replace(/<br\s*\/?>/gi, "\n");
   out = out.replace(/<[^>]+>/g, "");
   out = out.replace(/&nbsp;/gi, " ").replace(/&amp;/g, "&");

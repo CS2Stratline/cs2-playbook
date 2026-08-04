@@ -18,11 +18,9 @@ const sb = createClient(url, key, { auth: { persistSession: false } });
 
 const LEGACY_STACK_ID = "a90abddf-39a8-478b-a780-f96b9a511ae4";
 const STARTER_ID =
-  seed.packs.find((p) => p.slug === "starter-pack" || p.slug === "essentials-pug")?.id ||
+  seed.packs.find((p) => p.slug === "starter-pack")?.id ||
   "2cf8d928-3c9a-4002-a6ba-f2cbe6047304";
 
-// Conflict on id so renaming essentials-pug → starter-pack updates in place
-// (onConflict slug would INSERT a new row and hit packs_pkey on the same UUID).
 for (const p of seed.packs) {
   const { error } = await sb.from("packs").upsert(
     {
@@ -41,7 +39,7 @@ for (const p of seed.packs) {
   console.log("pack", p.slug);
 }
 
-// Point legacy Stack strats at Starter before dropping the pack row.
+// Drop retired catalog packs if they still exist in the project.
 {
   const { error } = await sb.from("strats").update({ pack_id: STARTER_ID }).eq("pack_id", LEGACY_STACK_ID);
   if (error) throw error;
@@ -49,9 +47,7 @@ for (const p of seed.packs) {
 {
   const { error } = await sb.from("packs").delete().eq("id", LEGACY_STACK_ID);
   if (error) throw error;
-  console.log("removed legacy stack-standard pack");
 }
-// Drop orphan slug if a second Starter row ever existed.
 {
   const { error } = await sb
     .from("packs")

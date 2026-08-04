@@ -180,12 +180,6 @@ export function MatchScreen() {
     if (!usePersonalPool) setFavoritesOnly(false);
   }, [usePersonalPool]);
 
-  // Retired round filter. Normalize old sessions.
-  useEffect(() => {
-    if (session.round_filter === "anti") void setSession({ round_filter: "all" });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session.round_filter]);
-
   const activeFilters = useMemo(() => {
     const chips: { key: string; label: string; clear: () => void }[] = [];
     if (isT && session.site_filter !== "all") {
