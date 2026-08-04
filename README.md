@@ -11,7 +11,7 @@ English-only UI for v1.
 |--------|-----|
 | **Match** | Pick (or Surprise) a call → tasks + lineups |
 | **Playbook** | Pack toggles for Match (Starter + Meme; Advanced locked). Signed in: personal packs / favorites |
-| **Settings** | Optional Discord login, live-call link, export |
+| **Settings** | Optional Discord login, community invite, live-call link, export |
 
 Day-1 Match is ready immediately via the Starter Pack (on by default). Advanced is hidden until premium.
 

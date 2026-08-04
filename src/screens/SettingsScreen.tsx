@@ -14,7 +14,8 @@ import { MAPS, SCHEMA_VERSION } from "../lib/types";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
-import { LogOut } from "../components/icons";
+import { ExternalLink, LogOut } from "../components/icons";
+import { DISCORD_INVITE_URL } from "../lib/community";
 import { authRedirectTo } from "../lib/supabase";
 
 export function SettingsScreen() {
@@ -266,6 +267,20 @@ export function SettingsScreen() {
             </button>
           ) : null}
         </div>
+      </div>
+
+      <div className="panel">
+        <p className="eyebrow">Community</p>
+        <a
+          className="btn-ghost"
+          href={DISCORD_INVITE_URL}
+          target="_blank"
+          rel="noreferrer"
+          style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 4, textDecoration: "none" }}
+        >
+          <ExternalLink size={14} />
+          Join Discord
+        </a>
       </div>
     </div>
   );
