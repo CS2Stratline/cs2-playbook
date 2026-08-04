@@ -9,13 +9,17 @@ import { MatchScreen } from "./screens/MatchScreen";
 import { BookScreen } from "./screens/BookScreen";
 import { RouletteScreen } from "./screens/RouletteScreen";
 import { SettingsScreen } from "./screens/SettingsScreen";
+import { PrivacyScreen } from "./screens/PrivacyScreen";
 import { LiveScreen } from "./screens/LiveScreen";
 
 function Shell() {
   const { loading, mode, supabaseReady, isPermanent } = useAuth();
   const location = useLocation();
   const isLive = location.pathname.startsWith("/live");
-  const showChrome = !isLive && !location.pathname.startsWith("/settings");
+  const showChrome =
+    !isLive &&
+    !location.pathname.startsWith("/settings") &&
+    !location.pathname.startsWith("/privacy");
 
   if (isLive) {
     return (
@@ -50,6 +54,7 @@ function Shell() {
           <Route path="/match" element={<MatchScreen />} />
           <Route path="/playbook" element={<BookScreen />} />
           <Route path="/settings" element={<SettingsScreen />} />
+          <Route path="/privacy" element={<PrivacyScreen />} />
           <Route path="*" element={<Navigate to="/match" replace />} />
         </Routes>
         <nav className="nav">

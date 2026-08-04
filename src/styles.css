@@ -1088,6 +1088,34 @@ select {
   color: var(--chalk);
 }
 
+.privacy-panel .privacy-h {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 18px 0 8px;
+}
+
+.privacy-panel .privacy-h:first-child {
+  margin-top: 0;
+}
+
+.privacy-list {
+  margin: 0 0 12px;
+  padding-left: 1.15rem;
+}
+
+.privacy-list li {
+  margin-bottom: 6px;
+}
+
+.privacy-panel code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--chalk);
+}
+
 @media (max-width: 480px) {
   .strat-step-actions {
     flex-direction: column;

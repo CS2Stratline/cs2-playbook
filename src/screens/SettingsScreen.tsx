@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../lib/auth";
 import {
   ensureLiveShareToken,
@@ -340,6 +341,16 @@ export function SettingsScreen() {
           <Discord size={16} />
           Join Stratline on Discord
         </a>
+      </div>
+
+      <div className="panel">
+        <p className="eyebrow">Legal</p>
+        <p className="muted" style={{ marginBottom: 10 }}>
+          What we store, auth, and why there’s no cookie wall today.
+        </p>
+        <Link to="/privacy" className="btn-ghost" style={{ display: "inline-flex" }}>
+          Privacy
+        </Link>
       </div>
     </div>
   );
