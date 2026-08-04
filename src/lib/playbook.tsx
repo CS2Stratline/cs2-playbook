@@ -148,6 +148,28 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
           nextSubs[pack.id] = isMine ? true : isPackDefaultEnabled(pack);
         }
       }
+      // Old handle_new_user enabled every system pack. One-time heal when the unlocked
+      // catalog looks like that bootstrap (Starter+Meme both On) so Match starts Starter-only.
+      try {
+        const healKey = `cs2-playbook-starter-only-defaults:${userId}`;
+        if (!localStorage.getItem(healKey)) {
+          const unlockedSystem = p.filter((pack) => pack.visibility === "system" && !isPackLocked(pack));
+          const looksLikeBootstrap =
+            unlockedSystem.length >= 2 && unlockedSystem.every((pack) => nextSubs[pack.id] === true);
+          if (looksLikeBootstrap) {
+            for (const pack of p.filter((x) => x.visibility === "system")) {
+              const want = isPackDefaultEnabled(pack);
+              if (nextSubs[pack.id] !== want) {
+                nextSubs[pack.id] = want;
+                void api.setPackEnabled(userId, pack.id, want);
+              }
+            }
+          }
+          localStorage.setItem(healKey, "1");
+        }
+      } catch {
+        /* ignore private-mode / SSR */
+      }
       setSubscriptions(nextSubs);
       // Don't clobber a newer in-UI session with a slower getSession response.
       const incoming = sess;
