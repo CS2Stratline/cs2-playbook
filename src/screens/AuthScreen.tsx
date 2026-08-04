@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../lib/auth";
 import { isSupabaseConfigured } from "../lib/api";
+import { Discord } from "../components/icons";
 
 export function AuthScreen() {
   const { signInWithEmail, signInWithDiscord, supabaseReady } = useAuth();
@@ -30,7 +31,7 @@ export function AuthScreen() {
       <button
         type="button"
         className="btn btn-primary"
-        style={{ marginBottom: 10 }}
+        style={{ marginBottom: 10, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10 }}
         disabled={busy}
         onClick={async () => {
           setBusy(true);
@@ -40,6 +41,7 @@ export function AuthScreen() {
           if (res.error) setMsg(res.error);
         }}
       >
+        <Discord size={20} />
         Continue with Discord
       </button>
 
