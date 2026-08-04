@@ -8,7 +8,7 @@ export function RouletteScreen() {
   const { session } = usePlaybook();
   const [card, setCard] = useState<RouletteCard | null>(null);
 
-  // Drop the previous chaos roll when map/side changes so it never looks like a Match call.
+  // Drop the previous roll when map/side changes so it never looks like a Match call.
   useEffect(() => {
     setCard(null);
   }, [session.selected_map, session.selected_side]);
@@ -20,10 +20,10 @@ export function RouletteScreen() {
   return (
     <div className="roulette-screen">
       <div className="panel roulette-panel">
-        <p className="eyebrow roulette-eyebrow">Chaos roulette</p>
-        <p className="roulette-lede">
-          Party rolls only. This is not Match — Match&apos;s <strong>Surprise me</strong> picks real
-          strats from your pack.
+        <p className="eyebrow roulette-eyebrow">Strat roulette</p>
+        <p className="roulette-lede roulette-warn" role="note">
+          Warning: party rolls only — not real Match calls. Match&apos;s <strong>Surprise me</strong>{" "}
+          picks strats from your pack.
         </p>
 
         <div className="roulette-stage">
@@ -49,10 +49,10 @@ export function RouletteScreen() {
           ) : (
             <div className="roulette-empty">
               <p className="h2" style={{ fontSize: 26, marginBottom: 6 }}>
-                Spin for chaos
+                Hit roll
               </p>
               <p className="muted" style={{ margin: 0 }}>
-                Map and side above flavor the silliness. Nothing here belongs in a ranked call.
+                Pick map and side above, then roll. Nothing here belongs in a ranked call.
               </p>
             </div>
           )}
@@ -60,7 +60,7 @@ export function RouletteScreen() {
 
         <button type="button" className="btn roulette-roll" onClick={roll}>
           <Dice size={18} />
-          {card ? "Spin again" : "Spin chaos"}
+          {card ? "Roll again" : "Roll"}
         </button>
       </div>
     </div>
