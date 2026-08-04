@@ -7,7 +7,7 @@
 
 Always open / bind cloud agents to **CS2Stratline/cs2-playbook**. Do **not** use an old personal fork of this repo or the typo org name `CS2Startline`. Those break push / PR tooling even when GitHub redirects.
 
-Cloud Playbook is a single-page **Vite + React 19 + TypeScript** web app (a CS2 IGL freeze-time playbook). There is no backend to run locally: `src/lib/api.ts` falls back to a `localStorage`-backed **local demo** mode whenever Supabase env vars are absent, so the app is fully usable without any secrets.
+**Stratline** is a single-page **Vite + React 19 + TypeScript** web app (a CS2 IGL freeze-time playbook). There is no backend to run locally: `src/lib/api.ts` falls back to a `localStorage`-backed **local demo** mode whenever Supabase env vars are absent, so the app is fully usable without any secrets. Product name is **Stratline**; **Playbook** is the in-app tab only — do not use “Cloud Playbook” in user-facing copy.
 
 Standard commands live in `package.json` (`dev`, `build`, `preview`, `seed:packs`, `seed:supabase`). Notable points:
 

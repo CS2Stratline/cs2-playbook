@@ -43,6 +43,7 @@ Matches app CSS `--brand` / shell background.
 
 - **Favicon / browsers:** `favicon.svg` (squircle)
 - **iOS home screen:** `apple-touch-icon.png` (full-bleed PNG; Apple applies its own mask)
+- **Product name:** **Stratline** (never “Cloud Playbook” in user-facing copy)
 - **Header lockup:** bare mark + **Stratline** (`BrandLockup`)
 - **Playbook** remains the in-app screen/tab name for the strat book — not the product wordmark
 - Do not use outline-on-white or glossy iOS-style tiles

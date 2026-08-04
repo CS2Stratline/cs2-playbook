@@ -1,4 +1,4 @@
-# Auth: Cloud Playbook
+# Auth: Stratline
 
 v1 uses **Supabase Auth**: Discord (recommended) and email magic link.
 

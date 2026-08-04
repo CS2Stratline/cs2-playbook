@@ -1,4 +1,4 @@
--- Cloud Playbook schema (solo IGL v1, team_id reserved for Phase 5)
+-- Stratline schema (solo IGL v1, team_id reserved for Phase 5)
 
 create extension if not exists "pgcrypto";
 
