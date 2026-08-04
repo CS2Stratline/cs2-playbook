@@ -158,25 +158,11 @@ select {
   line-height: 1.45;
 }
 
-.roulette-lede strong {
-  color: var(--chalk);
-  font-weight: 600;
-}
-
-.roulette-warn {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(232, 196, 74, 0.35);
-  background: rgba(232, 196, 74, 0.08);
-  color: #e8d090;
-}
-
 .roulette-panel {
   border-color: rgba(232, 196, 74, 0.28);
 }
 
 .roulette-stage {
-  position: relative;
   min-height: 200px;
   padding: 14px 12px;
   border-radius: var(--radius);
@@ -185,25 +171,6 @@ select {
     var(--panel-hi);
   border: 1px dashed rgba(232, 196, 74, 0.35);
   margin-bottom: 14px;
-  overflow: hidden;
-}
-
-.roulette-stamp {
-  position: absolute;
-  top: 18px;
-  right: -6px;
-  transform: rotate(12deg);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(232, 196, 74, 0.45);
-  border: 2px solid rgba(232, 196, 74, 0.4);
-  border-radius: 4px;
-  padding: 4px 10px;
-  pointer-events: none;
-  user-select: none;
 }
 
 .roulette-map-badge {
@@ -212,7 +179,7 @@ select {
   color: #f0d060;
 }
 
-/* Gold chaos title — never T/CT Match accents */
+/* Gold title — distinct from T/CT Match accents */
 .roulette-hero {
   font-family: var(--font-display);
   font-stretch: condensed;
@@ -233,13 +200,6 @@ select {
   font-size: 16px;
   line-height: 1.45;
   white-space: pre-line;
-}
-
-.roulette-disclaimer {
-  margin: 12px 0 0;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: #c4a35a;
 }
 
 .roulette-empty {
@@ -268,19 +228,6 @@ select {
   background: rgba(232, 196, 74, 0.18);
   color: #f0d060;
   border-color: rgba(232, 196, 74, 0.45);
-}
-
-.roulette-tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #1a1400;
-  background: #e8c44a;
-  font-weight: 700;
-  border-radius: 4px;
-  padding: 3px 8px;
 }
 
 .map-side-chrome {
