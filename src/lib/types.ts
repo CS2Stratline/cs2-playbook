@@ -81,6 +81,8 @@ export type Strat = {
    * Pool copies of catalog/community should stay private (true).
    */
   is_private: boolean;
+  /** Community author username (from profiles.display_name). Client-joined. */
+  author_display_name?: string | null;
 };
 
 /** Per-user vote on a strat: +1 upvote, -1 downvote, 0 none. */
@@ -178,6 +180,18 @@ export function isCommunityStrat(
   if (!s?.owner_user_id || s.is_private) return false;
   if (catalogIdFromSource(s.source)) return false;
   return true;
+}
+
+/** Community meta label: "Community · You" or "Community · ples0". */
+export function communityAuthorLabel(
+  s: Pick<Strat, "owner_user_id" | "author_display_name">,
+  viewerUserId: string | null | undefined
+): string {
+  if (s.owner_user_id && viewerUserId && s.owner_user_id === viewerUserId) {
+    return "Community · You";
+  }
+  if (s.author_display_name) return `Community · ${s.author_display_name}`;
+  return "Community";
 }
 
 export const SCHEMA_VERSION = 3;

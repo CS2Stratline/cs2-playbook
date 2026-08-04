@@ -8,6 +8,7 @@ import {
   regenerateLiveShareToken,
   resetLocalDemo,
   setAdminByEmail,
+  updateDisplayName,
 } from "../lib/api";
 import type { AdminProfile } from "../lib/types";
 import { MAPS, SCHEMA_VERSION } from "../lib/types";
@@ -17,6 +18,7 @@ import { AuthScreen } from "./AuthScreen";
 import { Discord, LogOut } from "../components/icons";
 import { DISCORD_INVITE_URL } from "../lib/community";
 import { authRedirectTo } from "../lib/supabase";
+import { normalizeDisplayName, suggestedDisplayNameFromUser } from "../lib/displayName";
 
 export function SettingsScreen() {
   const { mode, user, signOut, supabaseReady, canEditShared, canManageAdmins, profile, refreshProfile, isPermanent } =
@@ -30,9 +32,25 @@ export function SettingsScreen() {
   const [adminEmail, setAdminEmail] = useState("");
   const [adminMsg, setAdminMsg] = useState("");
   const [adminBusy, setAdminBusy] = useState(false);
+  const [username, setUsername] = useState("");
+  const [usernameMsg, setUsernameMsg] = useState("");
+  const [usernameBusy, setUsernameBusy] = useState(false);
 
   const liveUrl = liveToken && baseUrl ? `${baseUrl.replace(/\/$/, "")}/#/live/${liveToken}` : "";
   const canResetLocal = !isCloudMode();
+  const accountLabel = isPermanent
+    ? profile?.display_name || suggestedDisplayNameFromUser(user) || user?.email || "signed in"
+    : "guest";
+
+  useEffect(() => {
+    if (!isPermanent) {
+      setUsername("");
+      return;
+    }
+    setUsername(
+      normalizeDisplayName(profile?.display_name || suggestedDisplayNameFromUser(user) || "")
+    );
+  }, [isPermanent, profile?.display_name, user]);
 
   useEffect(() => {
     if (!isPermanent || !supabaseReady) {
@@ -84,11 +102,55 @@ export function SettingsScreen() {
         </h2>
         <p className="muted">
           {mode}
-          {isPermanent
-            ? ` · ${user?.email || user?.user_metadata?.full_name || user?.user_metadata?.name || "signed in"}`
-            : " · guest"}
+          {` · ${accountLabel}`}
           {isPermanent && canEditShared ? (profile?.is_super_admin ? " · super admin" : " · admin") : ""}
         </p>
+        {isPermanent && (
+          <form
+            style={{ marginTop: 12 }}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setUsernameBusy(true);
+              setUsernameMsg("");
+              try {
+                await updateDisplayName(username);
+                await refreshProfile();
+                await refresh();
+                setUsernameMsg("Username saved");
+              } catch (err) {
+                setUsernameMsg(err instanceof Error ? err.message : "Could not save username");
+              } finally {
+                setUsernameBusy(false);
+              }
+            }}
+          >
+            <p className="eyebrow" style={{ marginBottom: 6 }}>
+              Username
+            </p>
+            <p className="muted" style={{ marginBottom: 8, fontSize: 12 }}>
+              Shown in Stratline. Defaults from Discord; you can change it anytime.
+            </p>
+            <div className="row">
+              <input
+                className="input"
+                style={{ flex: 1 }}
+                value={username}
+                maxLength={24}
+                placeholder="your_name"
+                autoComplete="nickname"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="btn-ghost"
+                disabled={usernameBusy || !username.trim()}
+              >
+                {usernameBusy ? "Saving…" : "Save"}
+              </button>
+            </div>
+            {usernameMsg && <p className="banner" style={{ marginTop: 8 }}>{usernameMsg}</p>}
+          </form>
+        )}
         {isPermanent && (
           <button type="button" className="btn-ghost" style={{ marginTop: 10 }} onClick={() => void signOut()}>
             <LogOut size={14} /> Sign out
@@ -193,10 +255,10 @@ export function SettingsScreen() {
                 }}
               >
                 <div style={{ minWidth: 0 }}>
-                  <strong style={{ display: "block", fontSize: 14 }}>{a.email || a.id.slice(0, 8)}</strong>
+                  <strong style={{ display: "block", fontSize: 14 }}>{a.display_name || a.email || a.id.slice(0, 8)}</strong>
                   <span className="muted" style={{ fontSize: 12 }}>
                     {a.is_super_admin ? "Super admin" : "Admin"}
-                    {a.display_name ? ` · ${a.display_name}` : ""}
+                    {a.email ? ` · ${a.email}` : ""}
                   </span>
                 </div>
                 {!a.is_super_admin && (

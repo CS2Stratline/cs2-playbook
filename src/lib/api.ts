@@ -1,9 +1,10 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isPackLocked, isPackDefaultEnabled } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isCommunityStrat, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
+import { normalizeDisplayName, validateDisplayName } from "./displayName";
 
 function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
   return (links || [])
@@ -210,6 +211,40 @@ export async function getProfile(userId: string): Promise<Profile> {
   };
 }
 
+/** Update the signed-in user's Stratline username (`profiles.display_name`). */
+export async function updateDisplayName(name: string): Promise<Profile> {
+  const cleaned = normalizeDisplayName(name);
+  const invalid = validateDisplayName(cleaned);
+  if (invalid) throw new Error(invalid);
+
+  if (!isCloudMode()) {
+    memory.profile = { ...memory.profile, display_name: cleaned };
+    saveLocal(memory);
+    return memory.profile;
+  }
+
+  const uid = signedInUserId;
+  if (!uid) throw new Error("Sign in to set a username");
+
+  const { data, error } = await supabase!
+    .from("profiles")
+    .update({ display_name: cleaned })
+    .eq("id", uid)
+    .select("*")
+    .maybeSingle();
+  if (error) throw error;
+  if (!data) throw new Error("Could not update username");
+
+  const superAdmin = Boolean(data.is_super_admin);
+  return {
+    id: String(data.id),
+    display_name: (data.display_name as string) || cleaned,
+    default_tier_filter: String(data.default_tier_filter || "all"),
+    is_admin: Boolean(data.is_admin) || superAdmin,
+    is_super_admin: superAdmin,
+  };
+}
+
 function mapAdminRow(row: Record<string, unknown>): AdminProfile {
   return {
     id: String(row.id),
@@ -274,10 +309,46 @@ export async function listPacks(): Promise<Pack[]> {
 }
 
 export async function listStrats(): Promise<Strat[]> {
-  if (!isCloudMode()) return memory.strats;
+  if (!isCloudMode()) {
+    const mine = memory.profile.display_name;
+    return memory.strats.map((s) =>
+      s.owner_user_id === memory.profile.id && mine
+        ? { ...s, author_display_name: mine }
+        : s
+    );
+  }
   const { data, error } = await supabase!.from("strats").select("*");
   if (error) throw error;
-  return (data || []).map(mapStratRow);
+  const strats = (data || []).map(mapStratRow);
+  return attachAuthorDisplayNames(strats);
+}
+
+async function attachAuthorDisplayNames(strats: Strat[]): Promise<Strat[]> {
+  const ownerIds = [
+    ...new Set(
+      strats
+        .filter((s) => isCommunityStrat(s) || (s.owner_user_id && s.owner_user_id === signedInUserId))
+        .map((s) => s.owner_user_id!)
+        .filter(Boolean)
+    ),
+  ];
+  if (!ownerIds.length) return strats;
+
+  const { data, error } = await supabase!.rpc("author_display_names", { p_ids: ownerIds });
+  // Migration may not be applied yet — keep playbook usable without names.
+  if (error || !data) return strats;
+
+  const byId: Record<string, string> = {};
+  for (const row of data as { id: string; display_name: string | null }[]) {
+    const name = row.display_name?.trim();
+    if (name) byId[String(row.id)] = name;
+  }
+
+  return strats.map((s) => {
+    if (!s.owner_user_id) return s;
+    const name = byId[s.owner_user_id];
+    return name ? { ...s, author_display_name: name } : s;
+  });
 }
 
 function mapStratRow(row: Record<string, unknown>): Strat {

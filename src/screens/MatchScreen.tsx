@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { catalogIdFromSource, isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
+import { catalogIdFromSource, communityAuthorLabel, isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
 import { bumpStratUsage, findPoolCopy, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
@@ -584,7 +584,7 @@ export function MatchScreen() {
                     {s.owner_user_id
                       ? s.is_private
                         ? " · Private"
-                        : " · Community"
+                        : ` · ${communityAuthorLabel(s, userId)}`
                       : pack
                         ? ` · ${pack.title}`
                         : ""}

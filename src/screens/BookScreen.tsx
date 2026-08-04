@@ -14,6 +14,7 @@ import type { PackTier, Strat, StratLink } from "../lib/types";
 import {
   MAPS,
   catalogIdFromSource,
+  communityAuthorLabel,
   isAllMaps,
   isCommunityStrat,
   isPackInMatchPool,
@@ -883,9 +884,7 @@ export function BookScreen() {
                       <span>
                         Lv {s.level || "?"}
                         {community
-                          ? s.owner_user_id === userId
-                            ? " · Community · You"
-                            : " · Community"
+                          ? ` · ${communityAuthorLabel(s, userId)}`
                           : pack
                             ? ` · ${pack.title}`
                             : ""}

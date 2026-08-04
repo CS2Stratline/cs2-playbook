@@ -8,8 +8,10 @@ import {
   getProfile,
   isCloudMode,
   setCloudSignedInUser,
+  updateDisplayName,
 } from "./api";
 import type { Profile } from "./types";
+import { suggestedDisplayNameFromUser } from "./displayName";
 
 function isAnonymousUser(user: User | null | undefined): boolean {
   return Boolean(user?.is_anonymous);
@@ -44,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
 
-  async function loadProfile(userId: string | null) {
+  async function loadProfile(userId: string | null, authUser?: User | null) {
     if (!userId || !supabaseConfigured) {
       setProfile(
         supabaseConfigured
@@ -60,7 +62,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     try {
-      setProfile(await getProfile(userId));
+      let next = await getProfile(userId);
+      // Permanent accounts with an empty profile name: seed once from Discord/email.
+      if (authUser && !isAnonymousUser(authUser) && !next.display_name?.trim()) {
+        const suggested = suggestedDisplayNameFromUser(authUser);
+        if (suggested) {
+          try {
+            next = await updateDisplayName(suggested);
+          } catch {
+            /* keep empty; user can set in Settings */
+          }
+        }
+      }
+      setProfile(next);
     } catch {
       setProfile({
         id: userId,
@@ -75,7 +89,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   function applySession(next: Session | null) {
     setSession(next);
     setCloudSignedInUser(next?.user?.id ?? null);
-    void loadProfile(next?.user?.id ?? null);
+    void loadProfile(next?.user?.id ?? null, next?.user ?? null);
   }
 
   /** Silent browser identity for voting. No email/Discord required. */
@@ -121,7 +135,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
       setSession(s);
       setCloudSignedInUser(s?.user?.id ?? null);
-      void loadProfile(s?.user?.id ?? null);
+      void loadProfile(s?.user?.id ?? null, s?.user ?? null);
     });
     return () => {
       cancelled = true;
@@ -190,7 +204,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       },
       async refreshProfile() {
-        await loadProfile(user?.id ?? null);
+        await loadProfile(user?.id ?? null, user);
       },
     };
   }, [loading, session, profile]);
