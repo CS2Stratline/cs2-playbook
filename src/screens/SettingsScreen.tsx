@@ -14,7 +14,7 @@ import { MAPS, SCHEMA_VERSION } from "../lib/types";
 import { CATALOG_SIZE } from "../lib/catalog";
 import { usePlaybook } from "../lib/playbook";
 import { AuthScreen } from "./AuthScreen";
-import { ExternalLink, LogOut } from "../components/icons";
+import { Discord, LogOut } from "../components/icons";
 import { DISCORD_INVITE_URL } from "../lib/community";
 import { authRedirectTo } from "../lib/supabase";
 
@@ -271,14 +271,11 @@ export function SettingsScreen() {
 
       <div className="panel">
         <p className="eyebrow">Community</p>
-        <a
-          className="btn-ghost"
-          href={DISCORD_INVITE_URL}
-          target="_blank"
-          rel="noreferrer"
-          style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 4, textDecoration: "none" }}
-        >
-          <ExternalLink size={14} />
+        <p className="muted" style={{ marginBottom: 10 }}>
+          Call talk, feedback, and Strat Roulette with other IGLs.
+        </p>
+        <a className="btn-discord" href={DISCORD_INVITE_URL} target="_blank" rel="noreferrer">
+          <Discord size={16} />
           Join Discord
         </a>
       </div>
