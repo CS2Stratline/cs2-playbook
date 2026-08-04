@@ -35,8 +35,7 @@ export function RouletteScreen() {
             <span className="roulette-tag">Not a real call</span>
             <span className="badge badge-map roulette-map-badge">
               <MapLogo map={session.selected_map} size={16} />
-              {session.selected_map}
-              {session.selected_side}
+              {session.selected_map} {session.selected_side}
               {card?.site ? <SiteIcon site={String(card.site)} size={12} /> : null}
             </span>
           </div>
