@@ -272,11 +272,11 @@ export function SettingsScreen() {
       <div className="panel">
         <p className="eyebrow">Community</p>
         <p className="muted" style={{ marginBottom: 10 }}>
-          Call talk, feedback, and Strat Roulette with other IGLs.
+          Call talk, feedback, and Strat Roulette.
         </p>
         <a className="btn-discord" href={DISCORD_INVITE_URL} target="_blank" rel="noreferrer">
           <Discord size={16} />
-          Join Discord
+          Join Stratline on Discord
         </a>
       </div>
     </div>
