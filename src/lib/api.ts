@@ -1,7 +1,7 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isPackLocked, isPackDefaultEnabled } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isCommunityStrat, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
 import { normalizeDisplayName, validateDisplayName } from "./displayName";
@@ -309,10 +309,46 @@ export async function listPacks(): Promise<Pack[]> {
 }
 
 export async function listStrats(): Promise<Strat[]> {
-  if (!isCloudMode()) return memory.strats;
+  if (!isCloudMode()) {
+    const mine = memory.profile.display_name;
+    return memory.strats.map((s) =>
+      s.owner_user_id === memory.profile.id && mine
+        ? { ...s, author_display_name: mine }
+        : s
+    );
+  }
   const { data, error } = await supabase!.from("strats").select("*");
   if (error) throw error;
-  return (data || []).map(mapStratRow);
+  const strats = (data || []).map(mapStratRow);
+  return attachAuthorDisplayNames(strats);
+}
+
+async function attachAuthorDisplayNames(strats: Strat[]): Promise<Strat[]> {
+  const ownerIds = [
+    ...new Set(
+      strats
+        .filter((s) => isCommunityStrat(s) || (s.owner_user_id && s.owner_user_id === signedInUserId))
+        .map((s) => s.owner_user_id!)
+        .filter(Boolean)
+    ),
+  ];
+  if (!ownerIds.length) return strats;
+
+  const { data, error } = await supabase!.rpc("author_display_names", { p_ids: ownerIds });
+  // Migration may not be applied yet — keep playbook usable without names.
+  if (error || !data) return strats;
+
+  const byId: Record<string, string> = {};
+  for (const row of data as { id: string; display_name: string | null }[]) {
+    const name = row.display_name?.trim();
+    if (name) byId[String(row.id)] = name;
+  }
+
+  return strats.map((s) => {
+    if (!s.owner_user_id) return s;
+    const name = byId[s.owner_user_id];
+    return name ? { ...s, author_display_name: name } : s;
+  });
 }
 
 function mapStratRow(row: Record<string, unknown>): Strat {

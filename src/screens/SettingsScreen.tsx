@@ -115,6 +115,7 @@ export function SettingsScreen() {
               try {
                 await updateDisplayName(username);
                 await refreshProfile();
+                await refresh();
                 setUsernameMsg("Username saved");
               } catch (err) {
                 setUsernameMsg(err instanceof Error ? err.message : "Could not save username");
