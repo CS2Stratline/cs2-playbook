@@ -4,6 +4,7 @@ import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, S
 import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
+import { normalizeDisplayName, validateDisplayName } from "./displayName";
 
 function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
   return (links || [])
@@ -204,6 +205,40 @@ export async function getProfile(userId: string): Promise<Profile> {
   return {
     id: String(data.id),
     display_name: (data.display_name as string) || null,
+    default_tier_filter: String(data.default_tier_filter || "all"),
+    is_admin: Boolean(data.is_admin) || superAdmin,
+    is_super_admin: superAdmin,
+  };
+}
+
+/** Update the signed-in user's Stratline username (`profiles.display_name`). */
+export async function updateDisplayName(name: string): Promise<Profile> {
+  const cleaned = normalizeDisplayName(name);
+  const invalid = validateDisplayName(cleaned);
+  if (invalid) throw new Error(invalid);
+
+  if (!isCloudMode()) {
+    memory.profile = { ...memory.profile, display_name: cleaned };
+    saveLocal(memory);
+    return memory.profile;
+  }
+
+  const uid = signedInUserId;
+  if (!uid) throw new Error("Sign in to set a username");
+
+  const { data, error } = await supabase!
+    .from("profiles")
+    .update({ display_name: cleaned })
+    .eq("id", uid)
+    .select("*")
+    .maybeSingle();
+  if (error) throw error;
+  if (!data) throw new Error("Could not update username");
+
+  const superAdmin = Boolean(data.is_super_admin);
+  return {
+    id: String(data.id),
+    display_name: (data.display_name as string) || cleaned,
     default_tier_filter: String(data.default_tier_filter || "all"),
     is_admin: Boolean(data.is_admin) || superAdmin,
     is_super_admin: superAdmin,
