@@ -50,6 +50,16 @@ export function compareSystemPacks(a: Pick<Pack, "slug">, b: Pick<Pack, "slug">)
   return (ai === -1 ? 50 : ai) - (bi === -1 ? 50 : bi);
 }
 
+/** Personal packs: "My pool" first, then stable slug order. */
+export function comparePersonalPacks(
+  a: Pick<Pack, "title" | "slug">,
+  b: Pick<Pack, "title" | "slug">
+): number {
+  if (a.title === "My pool" && b.title !== "My pool") return -1;
+  if (b.title === "My pool" && a.title !== "My pool") return 1;
+  return a.slug.localeCompare(b.slug);
+}
+
 export type Strat = {
   id: string;
   pack_id: string;

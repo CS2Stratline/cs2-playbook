@@ -132,15 +132,3 @@ export function rollClassicRoulette(map: string, side: Side): RouletteCard | nul
   };
 }
 
-export function rouletteCatalogStats() {
-  const mapCount = Object.values(data.maps).reduce(
-    (n, m) => n + m.ct.length + m.t.length,
-    0
-  );
-  return {
-    reg: data.reg.length,
-    ct: data.ct.length,
-    t: data.t.length,
-    mapSpecific: mapCount,
-  };
-}

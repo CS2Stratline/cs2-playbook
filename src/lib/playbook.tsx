@@ -2,14 +2,13 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useAuth } from "./auth";
 import * as api from "./api";
 import type { Pack, Strat, StratVoteValue, UserSession } from "./types";
-import { catalogIdFromSource, isCommunityStrat, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
+import { catalogIdFromSource, comparePersonalPacks, isCommunityStrat, isPackInMatchPool, isPackLocked, isPackDefaultEnabled } from "./types";
 
 type PlaybookState = {
   loading: boolean;
   error: string | null;
   packs: Pack[];
   strats: Strat[];
-  favorites: Set<string>;
   subscriptions: Record<string, boolean>;
   session: UserSession;
   /** Signed-in (or local demo) users manage personal packs; cloud guests use system toggles only. */
@@ -64,18 +63,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [votes, setVotes] = useState<Record<string, StratVoteValue>>({});
   const [subscriptions, setSubscriptions] = useState<Record<string, boolean>>({});
-  const [session, setSessionState] = useState<UserSession>({
-    tab: "match",
-    selected_map: "Mirage",
-    selected_side: "T",
-    site_filter: "all",
-    round_filter: "all",
-    include_practice: false,
-    current_pick_id: null,
-    logged: null,
-    timer_ends_at: null,
-    called_at: null,
-  });
+  const [session, setSessionState] = useState<UserSession>(() => api.createDefaultSession());
   /** Keep latest session for atomic patches (fast map taps) without stale closures. */
   const sessionRef = useRef(session);
   sessionRef.current = session;
@@ -249,11 +237,7 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
   const myPrivatePacks = useMemo(() => {
     return packs
       .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
-      .sort((a, b) => {
-        if (a.title === "My pool" && b.title !== "My pool") return -1;
-        if (b.title === "My pool" && a.title !== "My pool") return 1;
-        return a.slug.localeCompare(b.slug);
-      });
+      .sort(comparePersonalPacks);
   }, [packs, userId]);
 
   const defaultPackId = useMemo(
@@ -460,7 +444,6 @@ export function PlaybookProvider({ children }: { children: ReactNode }) {
     error,
     packs,
     strats,
-    favorites,
     subscriptions,
     session,
     usePersonalPool,

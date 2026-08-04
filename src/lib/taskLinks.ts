@@ -1,11 +1,5 @@
 import type { StratLink } from "./types";
-
-function norm(s: string) {
-  return (s || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
+import { normalizeSearchText as norm } from "./text";
 
 /** Short chip label: "Smoke: Jungle" → "Jungle", keep short labels as-is. */
 export function shortLinkLabel(label: string): string {

@@ -286,11 +286,5 @@ export const RoundIcons = {
       <path d="M14 10V8h3v2" />
     </Icon>
   ),
-  anti: (p: { size?: number }) => (
-    <Icon {...p} strokeWidth={1.75}>
-      <path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6Z" />
-      <path d="M9 12h6" />
-    </Icon>
-  ),
   all: (p: { size?: number }) => <CsIcon name="all" size={p.size ?? 13} />,
 };

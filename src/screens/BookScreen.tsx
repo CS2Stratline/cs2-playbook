@@ -4,16 +4,16 @@ import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import {
   ensureUserPrivatePack,
-  findPoolCopy as findCopy,
   MAX_PRIVATE_PACKS,
+  poolCopyInPack,
   sharedStratTargetId,
+  sourceRowForAdd,
   upsertPrivateStrat,
   upsertSharedStrat,
 } from "../lib/api";
 import type { PackTier, Strat, StratLink } from "../lib/types";
 import {
   MAPS,
-  catalogIdFromSource,
   communityAuthorLabel,
   isAllMaps,
   isCommunityStrat,
@@ -60,6 +60,7 @@ export function BookScreen() {
     refresh,
     session,
     loading,
+    error,
     subscriptions,
     setPackEnabled,
     enabledStrats,
@@ -106,7 +107,7 @@ export function BookScreen() {
     status: "ready" as "ready" | "practice",
     level: "" as string,
     packId: "" as string,
-    /** Share to Community by default; toggle on for private-only. */
+    /** New calls stay private until you opt into Community. */
     isPrivate: true,
   });
   const allMaps = isAllMaps(session.selected_map);
@@ -377,31 +378,14 @@ export function BookScreen() {
     }
   }
 
-  /** Pool row for this strat (or its catalog source) inside a personal pack. */
-  function poolCopyInPack(s: Strat, packId: string): Strat | undefined {
-    if (s.owner_user_id === userId && s.pack_id === packId) return s;
-    const src = catalogIdFromSource(s.source);
-    if (src) {
-      const bySource = findCopy(myPoolStrats, src, packId);
-      if (bySource) return bySource;
-    }
-    return findCopy(myPoolStrats, s.id, packId);
-  }
-
-  function sourceRowForAdd(s: Strat): Strat {
-    const src = catalogIdFromSource(s.source);
-    if (!src) return s;
-    return strats.find((row) => row.id === src) || s;
-  }
-
   async function togglePackMembership(s: Strat, packId: string) {
     setBusyId(`${s.id}:${packId}`);
     try {
-      const existing = poolCopyInPack(s, packId);
+      const existing = poolCopyInPack(s, packId, userId, myPoolStrats);
       if (existing) {
         await removeFromPool(existing.id);
       } else {
-        await addToPool(sourceRowForAdd(s), packId);
+        await addToPool(sourceRowForAdd(s, strats), packId);
       }
     } finally {
       setBusyId(null);
@@ -409,6 +393,7 @@ export function BookScreen() {
   }
 
   if (loading) return <div className="empty">Loading playbook…</div>;
+  if (error) return <div className="empty">{error}</div>;
 
   return (
     <div>
@@ -829,7 +814,7 @@ export function BookScreen() {
               const showingShop = tab === "catalog" || tab === "community";
               const community = isCommunityStrat(s) || tab === "community";
               const inAnyPack = usePersonalPool
-                ? myPrivatePacks.some((p) => !!poolCopyInPack(s, p.id))
+                ? myPrivatePacks.some((p) => !!poolCopyInPack(s, p.id, userId, myPoolStrats))
                 : false;
               const addMenuOpen = addToMenuId === s.id;
               return (
@@ -964,7 +949,7 @@ export function BookScreen() {
                             Packs that include this call
                           </p>
                           {myPrivatePacks.map((p) => {
-                            const copy = poolCopyInPack(s, p.id);
+                            const copy = poolCopyInPack(s, p.id, userId, myPoolStrats);
                             const checked = !!copy;
                             const rowBusy = busyId === `${s.id}:${p.id}`;
                             return (

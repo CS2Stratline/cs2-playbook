@@ -22,7 +22,8 @@ export function nadeChipClass(type: NadeKind | null): string {
   return `nade-${type === "hegrenade" ? "he" : type === "flashbang" ? "flash" : type === "combination" ? "combo" : type}`;
 }
 
-const TASK_UTIL: { kind: NadeKind; label: string; words: string[] }[] = [
+/** Shared util vocabulary for task pills and lineup matching. */
+export const NADE_TYPE_WORDS: { kind: Exclude<NadeKind, "combination">; label: string; words: string[] }[] = [
   { kind: "smoke", label: "Smoke", words: ["smoke", "smokes"] },
   { kind: "flashbang", label: "Flash", words: ["flash", "flashbang", "popflash", "pop-flash"] },
   { kind: "molotov", label: "Molly", words: ["molly", "molotov", "incendiary"] },
@@ -32,7 +33,7 @@ const TASK_UTIL: { kind: NadeKind; label: string; words: string[] }[] = [
 /** First utility type mentioned in a task line (for freeze-time scan pills). */
 export function utilTagFromTask(task: string): { kind: NadeKind; label: string } | null {
   const n = ` ${String(task || "").toLowerCase()} `;
-  for (const row of TASK_UTIL) {
+  for (const row of NADE_TYPE_WORDS) {
     if (row.words.some((w) => n.includes(w))) return { kind: row.kind, label: row.label };
   }
   return null;

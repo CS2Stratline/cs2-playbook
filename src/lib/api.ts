@@ -1,10 +1,11 @@
 import systemSeed from "../data/system-packs.json";
 import { supabase, supabaseConfigured } from "./supabase";
 import type { AdminProfile, Pack, Strat, StratVoteValue, UserSession, Profile, Side, StratLink } from "./types";
-import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, compareSystemPacks, isCommunityStrat, isPackLocked, isPackDefaultEnabled } from "./types";
+import { MAPS, SCHEMA_VERSION, catalogIdFromSource, catalogSourceKey, comparePersonalPacks, compareSystemPacks, isCommunityStrat, isPackLocked, isPackDefaultEnabled } from "./types";
 import { clampFaceitLevel, estimateStratLevel } from "./faceitLevels";
 import { safeHttpUrl } from "./safeUrl";
 import { normalizeDisplayName, validateDisplayName } from "./displayName";
+import { MAX_STRAT_LINKS, MAX_STRAT_STEPS } from "./stratSteps";
 
 function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
   return (links || [])
@@ -14,7 +15,7 @@ function sanitizeLinks(links: StratLink[] | undefined | null): StratLink[] {
       return { label: String(l.label || "").trim().slice(0, 80), url };
     })
     .filter((l): l is StratLink => !!l)
-    .slice(0, 8);
+    .slice(0, MAX_STRAT_LINKS);
 }
 
 const LOCAL_KEY = "cs2-playbook-cloud-v2";
@@ -55,7 +56,7 @@ type Store = {
   seedRevision?: number;
 };
 
-function defaultSession(): UserSession {
+export function createDefaultSession(): UserSession {
   return {
     tab: "match",
     selected_map: MAPS[1],
@@ -93,7 +94,7 @@ function seedStore(): Store {
     strats,
     favorites: [],
     subscriptions,
-    session: defaultSession(),
+    session: createDefaultSession(),
     seedRevision: SEED_REVISION,
   };
 }
@@ -484,23 +485,10 @@ export async function setFavorite(userId: string, stratId: string, on: boolean) 
   }
 }
 
-export async function toggleFavorite(userId: string, stratId: string) {
-  if (!isCloudMode()) {
-    const i = memory.favorites.indexOf(stratId);
-    if (i >= 0) memory.favorites.splice(i, 1);
-    else memory.favorites.push(stratId);
-    saveLocal(memory);
-    return;
-  }
-  const { data } = await supabase!.from("user_favorites").select("strat_id").eq("user_id", userId).eq("strat_id", stratId).maybeSingle();
-  if (data) await supabase!.from("user_favorites").delete().eq("user_id", userId).eq("strat_id", stratId);
-  else await supabase!.from("user_favorites").insert({ user_id: userId, strat_id: stratId });
-}
-
 export async function getSession(userId: string): Promise<UserSession> {
   if (!isCloudMode()) return { ...memory.session };
   const { data } = await supabase!.from("user_sessions").select("*").eq("user_id", userId).maybeSingle();
-  if (!data) return defaultSession();
+  if (!data) return createDefaultSession();
   const row = data as Record<string, unknown>;
   return {
     tab: row.tab === "book" || row.tab === "settings" ? row.tab : "match",
@@ -567,7 +555,7 @@ export type SharedStratPatch = {
 /** Update a system strat for everyone. Syncs personal pool copies (`catalog:<id>`). */
 export async function upsertSharedStrat(systemStratId: string, patch: SharedStratPatch) {
   const links = sanitizeLinks(patch.links);
-  const tasks = (patch.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const tasks = (patch.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, MAX_STRAT_STEPS);
   const callout = String(patch.callout || "").trim().slice(0, 60);
   const description = String(patch.description || "").trim().slice(0, 280);
   const level =
@@ -622,7 +610,7 @@ export async function upsertSharedStrat(systemStratId: string, patch: SharedStra
 
 export async function upsertPrivateStrat(userId: string, packId: string, strat: Partial<Strat> & { id?: string }) {
   const links = sanitizeLinks(strat.links);
-  const tasks = (strat.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, 5);
+  const tasks = (strat.tasks || []).map((t) => String(t).trim()).filter(Boolean).slice(0, MAX_STRAT_STEPS);
   const callout = String(strat.callout || "").trim().slice(0, 60);
   const description = String(strat.description || "").trim().slice(0, 280);
   const cleaned = { ...strat, links, tasks, callout, description };
@@ -773,12 +761,7 @@ export async function listUserPrivatePacks(userId: string): Promise<Pack[]> {
 export function defaultPrivatePackId(packs: Pack[], userId: string): string | null {
   const mine = packs
     .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
-    .sort((a, b) => {
-      // Prefer the original "My pool" label, then stable slug order.
-      if (a.title === "My pool" && b.title !== "My pool") return -1;
-      if (b.title === "My pool" && a.title !== "My pool") return 1;
-      return a.slug.localeCompare(b.slug);
-    });
+    .sort(comparePersonalPacks);
   return mine[0]?.id || null;
 }
 
@@ -852,6 +835,32 @@ export async function deletePrivatePack(userId: string, packId: string): Promise
 export function findPoolCopy(poolStrats: Strat[], catalogStratId: string, packId?: string): Strat | undefined {
   const key = catalogSourceKey(catalogStratId);
   return poolStrats.find((s) => s.source === key && (!packId || s.pack_id === packId));
+}
+
+/**
+ * Pool row for this strat (or its catalog source) inside a personal pack.
+ * Used by Match / Playbook "Add to pack" menus.
+ */
+export function poolCopyInPack(
+  s: Strat,
+  packId: string,
+  userId: string,
+  myPoolStrats: Strat[]
+): Strat | undefined {
+  if (s.owner_user_id === userId && s.pack_id === packId) return s;
+  const src = catalogIdFromSource(s.source);
+  if (src) {
+    const bySource = findPoolCopy(myPoolStrats, src, packId);
+    if (bySource) return bySource;
+  }
+  return findPoolCopy(myPoolStrats, s.id, packId);
+}
+
+/** Prefer the shared catalog row when adding a pool copy of a sourced strat. */
+export function sourceRowForAdd(s: Strat, strats: Strat[]): Strat {
+  const src = catalogIdFromSource(s.source);
+  if (!src) return s;
+  return strats.find((row) => row.id === src) || s;
 }
 
 /** Copy a catalog strat into a personal pack (idempotent per pack). */

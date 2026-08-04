@@ -60,8 +60,6 @@ type AuthState = {
   user: User | null;
   session: Session | null;
   mode: "cloud" | "local";
-  /** True when the session is an anonymous (no-login) cloud user. */
-  isAnonymous: boolean;
   /** Permanent Discord/email account (not anonymous). */
   isPermanent: boolean;
   supabaseReady: boolean;
@@ -227,7 +225,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       session,
       mode: cloud ? "cloud" : "local",
-      isAnonymous: anonymous,
       isPermanent: permanent,
       supabaseReady: supabaseConfigured,
       userId,
