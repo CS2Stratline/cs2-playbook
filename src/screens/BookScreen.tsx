@@ -263,6 +263,12 @@ export function BookScreen() {
     return canEditShared && !!sharedStratTargetId(s);
   }
 
+  /** Own strats, or any strat when admin / super admin. */
+  function canDeleteStrat(s: Strat) {
+    if (s.owner_user_id === userId) return true;
+    return canEditShared;
+  }
+
   async function saveForm() {
     setSaveError("");
     const { tasks, links: builtLinks } = tasksLinksFromBuild(form.build);
@@ -925,28 +931,22 @@ export function BookScreen() {
                             Edit
                           </button>
                         )}
-                        {tab === "pool" && usePersonalPool && s.owner_user_id === userId && (
+                        {canDeleteStrat(s) && (
                           <button
                             type="button"
                             className="btn-ghost"
                             style={{ color: "var(--warn)" }}
                             onClick={async () => {
-                              await removeFromPool(s.id);
+                              const label = s.callout?.trim() || "this strat";
+                              if (!window.confirm(`Delete “${label}”? This cannot be undone.`)) return;
+                              try {
+                                await removeFromPool(s.id);
+                              } catch (e) {
+                                window.alert(e instanceof Error ? e.message : "Could not delete strat");
+                              }
                             }}
                           >
-                            Remove
-                          </button>
-                        )}
-                        {!usePersonalPool && s.owner_user_id === userId && (
-                          <button
-                            type="button"
-                            className="btn-ghost"
-                            style={{ color: "var(--warn)" }}
-                            onClick={async () => {
-                              await removeFromPool(s.id);
-                            }}
-                          >
-                            Delete
+                            {tab === "pool" && s.owner_user_id === userId ? "Remove" : "Delete"}
                           </button>
                         )}
                       </div>

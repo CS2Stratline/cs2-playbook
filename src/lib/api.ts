@@ -999,12 +999,26 @@ export async function ensureStarterPackSeeded(userId: string, packs: Pack[]): Pr
 
 export async function deleteStrat(userId: string, stratId: string) {
   if (!isCloudMode()) {
-    memory.strats = memory.strats.filter((s) => !(s.id === stratId && s.owner_user_id === userId));
+    const target = memory.strats.find((s) => s.id === stratId);
+    if (!target) return;
+    const admin = Boolean(memory.profile.is_admin || memory.profile.is_super_admin);
+    if (target.owner_user_id !== userId && !admin) {
+      throw new Error("Not allowed to delete this strat");
+    }
+    const sourceKey = catalogSourceKey(stratId);
+    memory.strats = memory.strats.filter((s) => s.id !== stratId && s.source !== sourceKey);
     memory.favorites = memory.favorites.filter((id) => id !== stratId);
     saveLocal(memory);
     return;
   }
-  await supabase!.from("strats").delete().eq("id", stratId).eq("owner_user_id", userId);
+
+  // RLS: owner_user_id = auth.uid() OR viewer_is_admin() (admin / super admin).
+  const { data, error } = await supabase!.from("strats").delete().eq("id", stratId).select("id");
+  if (error) throw error;
+  if (!data?.length) throw new Error("Not allowed to delete this strat (or it was already removed)");
+
+  // Drop personal pool copies of a catalog / community original.
+  await supabase!.from("strats").delete().eq("source", catalogSourceKey(stratId));
 }
 
 export function resetLocalDemo() {
