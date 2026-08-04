@@ -1,6 +1,6 @@
 # Strat content rules (for Claude / ChatGPT)
 
-Use this when generating or expanding the starter strat database for The Playbook.
+Use this when generating or expanding the starter strat database for Stratline.
 
 ## Product job
 

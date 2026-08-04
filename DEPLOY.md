@@ -1,4 +1,4 @@
-# Deploy Cloud Playbook
+# Deploy Stratline
 
 ## Live (GitHub Pages)
 
@@ -8,7 +8,7 @@ After push to `main`, Actions deploys:
 
 Uses `HashRouter`, so routes work on project Pages. Without Supabase secrets the site runs in **local demo** mode (packs in the browser).
 
-Optional repo secrets for cloud builds:
+Optional repo secrets for Supabase-backed builds:
 
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
@@ -85,7 +85,7 @@ Without Supabase, local demo can edit shared strats on that device only.
 - [x] Supabase Auth redirect URLs match Pages + localhost; Discord login verified
 - [ ] Custom domain: set `VITE_BASE_PATH=/` in deploy workflow, attach DNS, update Auth allowlist
 - [ ] Soft Reddit launch: prefer guest mode first, or invite-only Discord until you’re ready for open signup
-- [x] Cloud catalog re-seeded from `system-packs.json` (`npm run seed:supabase`)
+- [x] Supabase catalog re-seeded from `system-packs.json` (`npm run seed:supabase`)
 
 ## Custom domain (when ready)
 

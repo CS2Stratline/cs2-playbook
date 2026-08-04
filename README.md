@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-## Cloud + deploy
+## Deploy
 
 See **[DEPLOY.md](DEPLOY.md)** for GitHub Pages, Supabase seed, and Vercel.
 

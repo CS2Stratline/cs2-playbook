@@ -34,7 +34,7 @@ function Shell() {
       ? "Local demo"
       : "Guest"
     : isPermanent
-      ? "Cloud"
+      ? "Signed in"
       : "Guest";
 
   return (
