@@ -71,6 +71,7 @@ function Shell() {
             <NavLink
               to="/roulette"
               className={({ isActive }) => (isActive ? "active nav-meme" : "nav-meme")}
+              title="Strat Roulette — party rolls, not Match"
             >
               <Dice size={16} />
               <span>Roulette</span>
