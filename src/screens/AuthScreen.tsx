@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
-import { isSupabaseConfigured } from "../lib/api";
 import { Discord } from "../components/icons";
 
 export function AuthScreen() {
-  const { signInWithEmail, signInWithDiscord, supabaseReady, authError, clearAuthError } = useAuth();
+  const { signInWithEmail, signInWithDiscord, authError, clearAuthError } = useAuth();
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
@@ -12,15 +11,6 @@ export function AuthScreen() {
   useEffect(() => {
     if (authError) setMsg(authError);
   }, [authError]);
-
-  if (!isSupabaseConfigured() && !supabaseReady) {
-    return (
-      <div className="panel">
-        <p className="eyebrow">Local only</p>
-        <p className="muted">Supabase is not configured.</p>
-      </div>
-    );
-  }
 
   return (
     <div className="panel">

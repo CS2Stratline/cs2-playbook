@@ -3,8 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { usePlaybook } from "../lib/playbook";
 import { useAuth } from "../lib/auth";
 import type { Strat } from "../lib/types";
-import { catalogIdFromSource, communityAuthorLabel, isAllMaps, isPackInMatchPool, isPackLocked, compareSystemPacks } from "../lib/types";
-import { bumpStratUsage, findPoolCopy, sharedStratTargetId, upsertPrivateStrat, upsertSharedStrat } from "../lib/api";
+import { communityAuthorLabel, isAllMaps, isPackInMatchPool, isPackLocked, comparePersonalPacks, compareSystemPacks } from "../lib/types";
+import {
+  bumpStratUsage,
+  poolCopyInPack,
+  sharedStratTargetId,
+  sourceRowForAdd,
+  upsertPrivateStrat,
+  upsertSharedStrat,
+} from "../lib/api";
 import { RoundIcons, Shuffle, SiteIcon, Star } from "../components/icons";
 import { LevelBadge } from "../components/LevelBadge";
 import { MapLogo } from "../components/MapLogo";
@@ -44,6 +51,7 @@ export function MatchScreen() {
     subscriptions,
     setPackEnabled,
     loading,
+    error,
     usePersonalPool,
     refresh,
     myPrivatePacks,
@@ -77,11 +85,7 @@ export function MatchScreen() {
       .sort(compareSystemPacks);
     const mine = packs
       .filter((p) => p.visibility === "private" && p.owner_user_id === userId)
-      .sort((a, b) => {
-        if (a.title === "My pool" && b.title !== "My pool") return -1;
-        if (b.title === "My pool" && a.title !== "My pool") return 1;
-        return a.slug.localeCompare(b.slug);
-      });
+      .sort(comparePersonalPacks);
     // Guests only see personal packs after they have created one (Yours).
     if (!usePersonalPool && !mine.length) return system;
     // Personal packs first, then catalog: Starter Pack → … → Meme
@@ -90,7 +94,6 @@ export function MatchScreen() {
 
   function packPillLabel(p: { title: string; visibility: string }) {
     if (!usePersonalPool && p.visibility === "private" && (p.title === "My pool" || !p.title)) return "Yours";
-    if (!usePersonalPool && p.visibility === "private") return p.title;
     return p.title;
   }
 
@@ -176,12 +179,6 @@ export function MatchScreen() {
   useEffect(() => {
     if (!usePersonalPool) setFavoritesOnly(false);
   }, [usePersonalPool]);
-
-  // Retired round filter. Normalize old sessions.
-  useEffect(() => {
-    if (session.round_filter === "anti") void setSession({ round_filter: "all" });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session.round_filter]);
 
   const activeFilters = useMemo(() => {
     const chips: { key: string; label: string; clear: () => void }[] = [];
@@ -277,28 +274,12 @@ export function MatchScreen() {
     setPackBusyId(null);
   }, [currentPick?.id]);
 
-  function poolCopyInPack(s: Strat, packId: string): Strat | undefined {
-    if (s.owner_user_id === userId && s.pack_id === packId) return s;
-    const src = catalogIdFromSource(s.source);
-    if (src) {
-      const bySource = findPoolCopy(myPoolStrats, src, packId);
-      if (bySource) return bySource;
-    }
-    return findPoolCopy(myPoolStrats, s.id, packId);
-  }
-
-  function sourceRowForAdd(s: Strat): Strat {
-    const src = catalogIdFromSource(s.source);
-    if (!src) return s;
-    return strats.find((row) => row.id === src) || s;
-  }
-
   async function togglePackMembership(s: Strat, packId: string) {
     setPackBusyId(packId);
     try {
-      const existing = poolCopyInPack(s, packId);
+      const existing = poolCopyInPack(s, packId, userId, myPoolStrats);
       if (existing) await removeFromPool(existing.id);
-      else await addToPool(sourceRowForAdd(s), packId);
+      else await addToPool(sourceRowForAdd(s, strats), packId);
     } finally {
       setPackBusyId(null);
     }
@@ -356,6 +337,7 @@ export function MatchScreen() {
   }
 
   if (loading) return <div className="empty">Loading Match…</div>;
+  if (error) return <div className="empty">{error}</div>;
 
   const showFilters = !currentPick || editing;
 
@@ -422,7 +404,7 @@ export function MatchScreen() {
           )}
           <div className="row">
             {ROUNDS.map((r) => {
-              const RoundIcon = RoundIcons[r.id] || RoundIcons.all;
+              const RoundIcon = RoundIcons[r.id];
               return (
                 <button
                   key={r.id}
@@ -734,7 +716,7 @@ export function MatchScreen() {
                       Packs that include this call
                     </p>
                     {myPrivatePacks.map((p) => {
-                      const copy = poolCopyInPack(currentPick, p.id);
+                      const copy = poolCopyInPack(currentPick, p.id, userId, myPoolStrats);
                       const checked = !!copy;
                       const rowBusy = packBusyId === p.id;
                       return (

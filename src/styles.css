@@ -671,10 +671,8 @@ select {
   color: var(--dim);
 }
 
-.badge.pug { color: #2ecb3a; border-color: rgba(46, 203, 58, 0.35); }
 .badge.five_stack { color: #ff8a00; border-color: rgba(255, 138, 0, 0.4); }
 .badge.pro { color: #ff1e1e; border-color: rgba(255, 30, 30, 0.4); }
-.badge.meme { color: #e8b84a; border-color: rgba(232, 184, 74, 0.45); }
 
 /* FACEIT skill level badges (SVG icons) */
 .level-badge-wrap {
@@ -1090,21 +1088,7 @@ select {
   color: var(--chalk);
 }
 
-.strat-meta-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.strat-meta-row .input {
-  margin-bottom: 8px;
-}
-
 @media (max-width: 480px) {
-  .strat-meta-row {
-    grid-template-columns: 1fr;
-  }
-
   .strat-step-actions {
     flex-direction: column;
     gap: 0;

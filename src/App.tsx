@@ -46,8 +46,6 @@ function Shell() {
         </header>
         <Routes>
           <Route path="/" element={<Navigate to="/match" replace />} />
-          <Route path="/lobby" element={<Navigate to="/playbook" replace />} />
-          <Route path="/book" element={<Navigate to="/playbook" replace />} />
           <Route path="/roulette" element={<RouletteScreen />} />
           <Route path="/match" element={<MatchScreen />} />
           <Route path="/playbook" element={<BookScreen />} />

@@ -5,19 +5,6 @@
  */
 export type FaceitLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
-export const FACEIT_LEVEL_ELO: Record<FaceitLevel, string> = {
-  1: "100 – 500",
-  2: "501 – 750",
-  3: "751 – 900",
-  4: "901 – 1050",
-  5: "1051 – 1200",
-  6: "1201 – 1350",
-  7: "1351 – 1530",
-  8: "1531 – 1750",
-  9: "1751 – 2000",
-  10: "2001+",
-};
-
 export function clampFaceitLevel(n: number): FaceitLevel {
   const v = Math.round(n);
   if (v <= 1) return 1;

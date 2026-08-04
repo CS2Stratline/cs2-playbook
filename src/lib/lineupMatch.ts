@@ -1,13 +1,7 @@
 import type { Nade, Site, Strat, StratLink } from "./types";
 import { linkLandingPhrase } from "./taskLinks";
-import { nadeTypeFromLink } from "./nadeType";
-
-const TYPE_WORDS = [
-  { type: "smoke", words: ["smoke", "smokes"] },
-  { type: "flashbang", words: ["flash", "flashbang", "popflash", "pop-flash"] },
-  { type: "molotov", words: ["molly", "molotov", "incendiary"] },
-  { type: "hegrenade", words: ["hegrenade", "grenade", "he "] },
-];
+import { NADE_TYPE_WORDS, nadeTypeFromLink } from "./nadeType";
+import { normalizeSearchText as norm } from "./text";
 
 /**
  * Longer / more specific landings first in practice via span matching.
@@ -90,13 +84,6 @@ const SITE_LANDING_HINTS: Record<string, { prefer: RegExp; demote: RegExp }> = {
   },
 };
 
-function norm(s: string) {
-  return (s || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
-
 function isBoundary(ch: string | undefined) {
   return !ch || /[^a-z0-9]/.test(ch);
 }
@@ -104,8 +91,8 @@ function isBoundary(ch: string | undefined) {
 function detectTypes(text: string) {
   const n = ` ${norm(text)} `;
   const found: string[] = [];
-  for (const row of TYPE_WORDS) {
-    if (row.words.some((w) => n.includes(norm(w)))) found.push(row.type);
+  for (const row of NADE_TYPE_WORDS) {
+    if (row.words.some((w) => n.includes(norm(w)))) found.push(row.kind);
   }
   return found;
 }
