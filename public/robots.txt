@@ -1,0 +1,6 @@
+# Stratline — allow indexing of the app shell.
+# Hash routes (#/match, etc.) are not separate URLs; do not list them.
+User-agent: *
+Allow: /
+
+Sitemap: https://cs2stratline.github.io/cs2-playbook/sitemap.xml

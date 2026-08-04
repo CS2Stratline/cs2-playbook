@@ -4,21 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0b0e12" />
-    <meta name="description" content="Stratline — CS2 IGL freeze-time playbook. Match-first calls with strat packs." />
+    <meta
+      name="description"
+      content="Stratline is a free CS2 IGL freeze-time playbook: match-first strat calls, packs, and community executes for Counter-Strike 2."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://cs2stratline.github.io/cs2-playbook/" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Stratline" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Stratline" />
-    <meta property="og:title" content="Stratline" />
-    <meta property="og:description" content="CS2 IGL freeze-time playbook. Match-first calls with strat packs." />
+    <meta property="og:title" content="Stratline — CS2 IGL Freeze-Time Playbook" />
+    <meta
+      property="og:description"
+      content="Match-first strat calls with packs for Counter-Strike 2. Open the playbook and call the round."
+    />
     <meta property="og:url" content="https://cs2stratline.github.io/cs2-playbook/" />
     <meta property="og:image" content="https://cs2stratline.github.io/cs2-playbook/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stratline" />
-    <meta name="twitter:description" content="CS2 IGL freeze-time playbook. Match-first calls with strat packs." />
+    <meta name="twitter:title" content="Stratline — CS2 IGL Freeze-Time Playbook" />
+    <meta
+      name="twitter:description"
+      content="Match-first strat calls with packs for Counter-Strike 2. Open the playbook and call the round."
+    />
     <meta name="twitter:image" content="https://cs2stratline.github.io/cs2-playbook/og-image.png" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180" />
@@ -26,10 +37,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    <title>Stratline</title>
+    <title>Stratline — CS2 IGL Freeze-Time Playbook</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Stratline",
+        "url": "https://cs2stratline.github.io/cs2-playbook/",
+        "description": "Free CS2 IGL freeze-time playbook with match-first strat calls, packs, and community executes.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "about": {
+          "@type": "VideoGame",
+          "name": "Counter-Strike 2"
+        }
+      }
+    </script>
   </head>
   <body>
+    <!-- App mounts here; no marketing gate — users land in the playbook. -->
     <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #e8eaed; background: #0b0e12">
+        <h1>Stratline</h1>
+        <p>
+          Stratline is a free Counter-Strike 2 IGL freeze-time playbook: match-first strat calls,
+          packs, and community executes. Enable JavaScript to open the app.
+        </p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

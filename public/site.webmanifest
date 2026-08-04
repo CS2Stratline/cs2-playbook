@@ -1,7 +1,7 @@
 {
   "name": "Stratline",
   "short_name": "Stratline",
-  "description": "CS2 IGL freeze-time playbook",
+  "description": "Free CS2 IGL freeze-time playbook — match-first strat calls and packs",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b0e12",
